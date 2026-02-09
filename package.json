@@ -1,0 +1,20 @@
+{
+  "name": "zenn-content",
+  "version": "1.0.0",
+  "description": "Zenn articles and books for pdf2anki ecosystem",
+  "private": true,
+  "scripts": {
+    "preview": "zenn preview",
+    "new:article": "zenn new:article",
+    "new:book": "zenn new:book",
+    "lint": "textlint articles/**/*.md books/**/*.md"
+  },
+  "keywords": ["zenn", "pdf2anki", "ai", "anki"],
+  "author": "shimomoto_tatsuya",
+  "license": "MIT",
+  "devDependencies": {
+    "zenn-cli": "^0.1.158",
+    "textlint": "^14.3.1",
+    "textlint-rule-preset-ja-technical-writing": "^10.0.1"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "rules": {
+    "preset-ja-technical-writing": {
+      "no-exclamation-question-mark": false,
+      "max-kanji-continuous-len": {
+        "max": 6,
+        "allow": ["機械学習", "深層学習", "自然言語処理"]
+      }
+    }
+  }
+}
