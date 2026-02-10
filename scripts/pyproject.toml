@@ -1,0 +1,9 @@
+[project]
+name = "publish-cli"
+version = "0.1.0"
+description = "Zenn articles cross-post CLI (Qiita, LinkedIn)"
+requires-python = ">=3.13"
+dependencies = [
+    "httpx>=0.28.1",
+    "python-frontmatter>=1.1.0",
+]

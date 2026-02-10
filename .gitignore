@@ -17,3 +17,9 @@ Thumbs.db
 
 # Zenn CLI
 .zenn/
+
+# Python (scripts/)
+scripts/.venv/
+scripts/__pycache__/
+scripts/.env
+*.pyc
