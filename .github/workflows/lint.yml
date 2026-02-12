@@ -25,5 +25,24 @@ jobs:
       - name: Run textlint
         run: npm run lint
 
+      - name: Run markdownlint
+        run: npm run lint:md
+
       - name: Validate Zenn articles
         run: npx zenn list:articles
+
+      - name: Check image sizes
+        run: |
+          MAX_SIZE=500000  # 500KB
+          oversized=""
+          for img in images/*; do
+            if [ -f "$img" ]; then
+              size=$(stat -f%z "$img" 2>/dev/null || stat -c%s "$img" 2>/dev/null)
+              if [ "$size" -gt "$MAX_SIZE" ]; then
+                oversized="$oversized\n  $img ($(( size / 1024 ))KB)"
+              fi
+            fi
+          done
+          if [ -n "$oversized" ]; then
+            echo "::warning::Oversized images found (>500KB):$oversized"
+          fi

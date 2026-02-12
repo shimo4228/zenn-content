@@ -1,0 +1,40 @@
+// markdownlint-cli2 configuration for Zenn articles
+{
+  "config": {
+    // Allow HTML for Zenn-specific elements (details, summary, etc.)
+    "MD033": {
+      "allowed_elements": ["details", "summary", "br", "sup", "sub"]
+    },
+    // Zenn uses frontmatter title as H1, so body H1 (#) is normal
+    "MD025": false,
+    // Allow duplicate headings in different sections
+    "MD024": {
+      "siblings_only": true
+    },
+    // Allow longer lines (Zenn articles often have long Japanese text)
+    "MD013": false,
+    // Allow trailing punctuation in headings (Japanese: 。？！)
+    "MD026": {
+      "punctuation": ".,;:!"
+    },
+    // Allow multiple blank lines (common in article formatting)
+    "MD012": {
+      "maximum": 2
+    },
+    // Disable first-line heading requirement (Zenn uses frontmatter)
+    "MD041": false,
+    // Disable table column style (Zenn tables use compact style)
+    "MD060": false,
+    // Allow non-standard heading style
+    "MD003": {
+      "style": "atx"
+    }
+  },
+  // Ignore Zenn-specific syntax blocks (:::message, :::details)
+  "customRules": [],
+  "ignores": [
+    "node_modules",
+    "drafts",
+    ".zenn"
+  ]
+}

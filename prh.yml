@@ -1,0 +1,66 @@
+version: 1
+rules:
+  # --- pdf2anki ecosystem terminology ---
+  - expected: pdf2anki
+    patterns:
+      - PDF2Anki
+      - Pdf2Anki
+      - PDF to Anki
+
+  - expected: Claude-Native
+    patterns:
+      - Claude based
+      - claude native
+
+  - expected: CLI-First
+    patterns:
+      - CLI first
+
+  # --- General technical terms (Japanese) ---
+  - expected: サーバー
+    patterns:
+      - サーバ
+    specs:
+      - from: サーバ
+        to: サーバー
+
+  - expected: ユーザー
+    patterns:
+      - ユーザ
+    specs:
+      - from: ユーザ
+        to: ユーザー
+
+  - expected: プログラマー
+    patterns:
+      - プログラマ
+
+  - expected: インターフェース
+    patterns:
+      - インターフェイス
+      - インタフェース
+      - インタフェイス
+
+  # --- Common misspellings ---
+  - expected: GitHub
+    patterns:
+      - Github
+    specs:
+      - from: Github
+        to: GitHub
+
+  - expected: TypeScript
+    patterns:
+      - Typescript
+
+  - expected: JavaScript
+    patterns:
+      - Javascript
+
+  # --- AI/LLM terms ---
+  - expected: Anki
+    patterns:
+      - ANKI
+    specs:
+      - from: ANKI
+        to: Anki

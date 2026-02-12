@@ -3,6 +3,8 @@
 Usage:
     python publish.py articles/ecc-cheatsheet.md --platform qiita
     python publish.py articles/ecc-cheatsheet.md --platform qiita --dry-run
+    python publish.py articles/ecc-cheatsheet.md --platform qiita --update ITEM_ID
+    python publish.py articles/ecc-cheatsheet.md --platform qiita --update auto
 """
 
 from __future__ import annotations
@@ -154,6 +156,42 @@ def publish_to_qiita(payload: dict, token: str) -> PublishResult:
     return PublishResult("qiita", False, None, f"{resp.status_code}: {resp.text}")
 
 
+def update_on_qiita(item_id: str, payload: dict, token: str) -> PublishResult:
+    """Update an existing Qiita article via API v2."""
+    resp = httpx.patch(
+        f"{QIITA_API_BASE}/items/{item_id}",
+        headers={"Authorization": f"Bearer {token}"},
+        json=payload,
+        timeout=30,
+    )
+    if resp.status_code == 200:
+        data = resp.json()
+        return PublishResult("qiita", True, data.get("url"), None)
+    return PublishResult("qiita", False, None, f"{resp.status_code}: {resp.text}")
+
+
+def find_qiita_item_by_title(title: str, token: str) -> str | None:
+    """Search authenticated user's items for a matching title."""
+    page = 1
+    while page <= 5:
+        resp = httpx.get(
+            f"{QIITA_API_BASE}/authenticated_user/items",
+            headers={"Authorization": f"Bearer {token}"},
+            params={"page": page, "per_page": 20},
+            timeout=30,
+        )
+        if resp.status_code != 200:
+            return None
+        items = resp.json()
+        if not items:
+            return None
+        for item in items:
+            if item.get("title") == title:
+                return item["id"]
+        page += 1
+    return None
+
+
 # ---------------------------------------------------------------------------
 # CLI
 # ---------------------------------------------------------------------------
@@ -178,6 +216,11 @@ def build_parser() -> argparse.ArgumentParser:
         "--dry-run",
         action="store_true",
         help="Convert and display without publishing",
+    )
+    parser.add_argument(
+        "--update",
+        metavar="ITEM_ID",
+        help="Update existing Qiita article. Use 'auto' to search by title.",
     )
     return parser
 
@@ -213,6 +256,23 @@ def main() -> int:
         if not token:
             print("Error: QIITA_ACCESS_TOKEN is not set", file=sys.stderr)
             return 1
+
+        if args.update:
+            item_id = args.update
+            if item_id == "auto":
+                print(f"Searching for existing article: {article.title}")
+                item_id = find_qiita_item_by_title(article.title, token)
+                if not item_id:
+                    print("Error: article not found on Qiita", file=sys.stderr)
+                    return 1
+                print(f"Found: {item_id}")
+            result = update_on_qiita(item_id, payload, token)
+            if result.success:
+                print(f"Updated on Qiita: {result.url}")
+                return 0
+            else:
+                print(f"Failed to update: {result.error}", file=sys.stderr)
+                return 1
 
         result = publish_to_qiita(payload, token)
         if result.success:
