@@ -17,10 +17,10 @@ from pathlib import Path
 import frontmatter
 import httpx
 
-
 # ---------------------------------------------------------------------------
 # Env
 # ---------------------------------------------------------------------------
+
 
 def _load_env(env_path: Path) -> None:
     """Load KEY=VALUE pairs from a .env file into os.environ."""
@@ -38,6 +38,7 @@ def _load_env(env_path: Path) -> None:
 # ---------------------------------------------------------------------------
 # Models
 # ---------------------------------------------------------------------------
+
 
 @dataclass(frozen=True)
 class Article:
@@ -59,6 +60,7 @@ class PublishResult:
 # ---------------------------------------------------------------------------
 # Parser
 # ---------------------------------------------------------------------------
+
 
 def parse_zenn_article(path: Path) -> Article:
     """Parse a Zenn article markdown file into an Article object."""
@@ -99,8 +101,20 @@ def convert_to_qiita(article: Article) -> dict:
     }
 
 
+_ZENN_IMAGE_RE = re.compile(
+    r"!\[([^\]]*)\]\(/images/([^)]+)\)",
+)
+
+GITHUB_RAW_BASE = "https://raw.githubusercontent.com/shimo4228/zenn-content/main/images"
+
+
 def _strip_zenn_syntax(content: str) -> str:
     """Replace Zenn-specific syntax with standard Markdown equivalents."""
+    # /images/xxx → GitHub raw URL (Qiita cannot resolve Zenn local paths)
+    content = _ZENN_IMAGE_RE.sub(
+        rf"![\1]({GITHUB_RAW_BASE}/\2)",
+        content,
+    )
     # :::message → blockquote
     content = _ZENN_MESSAGE_RE.sub(_message_to_blockquote, content)
     # :::details title → <details>
@@ -143,6 +157,7 @@ def publish_to_qiita(payload: dict, token: str) -> PublishResult:
 # ---------------------------------------------------------------------------
 # CLI
 # ---------------------------------------------------------------------------
+
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
