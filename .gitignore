@@ -18,8 +18,12 @@ Thumbs.db
 # Zenn CLI
 .zenn/
 
+# Drafts (working notes, not for publication)
+drafts/
+
 # Python (scripts/)
 scripts/.venv/
 scripts/__pycache__/
 scripts/.env
+scripts/.python-version
 *.pyc
