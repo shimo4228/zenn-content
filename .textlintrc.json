@@ -11,7 +11,8 @@
       "checkRelative": true,
       "baseURI": null,
       "ignore": [
-        "https://localhost*"
+        "https://localhost*",
+        "https://qiita.com/shimo4228/items/743f2b43f63b2bbe2dba"
       ],
       "preferGET": [],
       "retry": 3,
