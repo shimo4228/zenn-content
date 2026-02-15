@@ -1,10 +1,17 @@
 {
+  "filters": {
+    "comments": true
+  },
   "rules": {
     "preset-ja-technical-writing": {
       "no-exclamation-question-mark": false,
+      "ja-no-mixed-period": {
+        "periodMark": "。",
+        "allowPeriodMarks": ["："]
+      },
       "max-kanji-continuous-len": {
         "max": 6,
-        "allow": ["機械学習", "深層学習", "自然言語処理"]
+        "allow": ["機械学習", "深層学習", "自然言語処理", "選択肢破損修正"]
       }
     },
     "no-dead-link": {
@@ -12,7 +19,9 @@
       "baseURI": null,
       "ignore": [
         "https://localhost*",
-        "https://qiita.com/shimo4228/items/743f2b43f63b2bbe2dba"
+        "https://qiita.com/shimo4228/items/743f2b43f63b2bbe2dba",
+        "https://blog.devgenius.io/**",
+        "https://medium.com/**"
       ],
       "preferGET": [],
       "retry": 3,

@@ -25,6 +25,12 @@
     "MD041": false,
     // Disable table column style (Zenn tables use compact style)
     "MD060": false,
+    // Zenn uses bare URLs on their own line for rich embeds (YouTube, Spotify, etc.)
+    "MD034": false,
+    // Zenn articles use bold text as sub-headings to avoid TOC pollution
+    "MD036": false,
+    // Shell prompt indicator ($) is conventional in Zenn bash code blocks
+    "MD014": false,
     // Allow non-standard heading style
     "MD003": {
       "style": "atx"

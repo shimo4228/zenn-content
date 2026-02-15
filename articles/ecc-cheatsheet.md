@@ -205,7 +205,7 @@ ECC公式リポジトリ: [everything-claude-code](https://github.com/affaan-m/e
 
 `~/.claude/rules/` に配置され、常に適用されます。
 
-```
+```text
 rules/
 ├── common/           # 全言語共通
 │   ├── coding-style  # イミュータビリティ、ファイル構成、エラー処理
@@ -290,12 +290,15 @@ rules/
 ECCは、Claude Codeでの開発を劇的に効率化する包括的なフレームワークです。このチートシートを手元に置いて、必要な時にすぐに参照できるようにしておきましょう。
 
 特に重要なのは：
+
 - **開発フロー**: `/plan` → `/tdd` → `/code-review` → `/verify`
 - **自動起動エージェント**: 適切な場面で自動的に品質を担保
 - **ルール**: 常に適用され、コーディング規約とベストプラクティスを強制
 
 ECCを活用して、AI時代の開発フローを体験してください！
 
+<!-- textlint-disable ja-technical-writing/ja-no-mixed-period -->
 :::message
 より詳しい情報は、[ECC公式リポジトリ](https://github.com/affaan-m/everything-claude-code)をご覧ください。
 :::
+<!-- textlint-enable ja-technical-writing/ja-no-mixed-period -->

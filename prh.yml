@@ -18,22 +18,19 @@ rules:
 
   # --- General technical terms (Japanese) ---
   - expected: サーバー
-    patterns:
-      - サーバ
+    pattern: /サーバ(?!ー)/
     specs:
       - from: サーバ
         to: サーバー
 
   - expected: ユーザー
-    patterns:
-      - ユーザ
+    pattern: /ユーザ(?!ー)/
     specs:
       - from: ユーザ
         to: ユーザー
 
   - expected: プログラマー
-    patterns:
-      - プログラマ
+    pattern: /プログラマ(?!ー)/
 
   - expected: インターフェース
     patterns:

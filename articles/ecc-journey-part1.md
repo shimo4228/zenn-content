@@ -14,7 +14,7 @@ published: false
 
 ECCが提供するのは、開発の完全なPDCAサイクルを体験できる環境です。
 
-```
+```text
 Plan (計画)
 ├─ リサーチ（問題理解、技術調査）
 ├─ アーキテクト（システム設計）
@@ -34,7 +34,7 @@ Act (改善)
 └─ 次のサイクルへ
 ```
 
-このリポジトリの作者、**Affaan Mustafa氏**は、2025年9月に開催された**Anthropic x Forum Ventures hackathon**で、Claude Codeを使って[zenith.chat](https://zenith.chat)をわずか8時間で構築し、**$15,000相当のAPIクレジットを獲得**して優勝しました。
+このリポジトリの作者は**Affaan Mustafa氏**です。2025年9月の**Anthropic x Forum Ventures hackathon**で、Claude Codeを使って[zenith.chat](https://zenith.chat)をわずか8時間で構築しました。**$15,000相当のAPIクレジットを獲得**し優勝しています。
 
 ECC は、agents (15+)、skills (30+)、commands (30+)、rules、hooksで構成されています。重要なのは、これらが開発の一気通貫したフローを実現していることです。
 
@@ -49,6 +49,7 @@ AI時代以前、コーディング（実装）に時間がかかっていまし
 ECCは、この一気通貫の開発体験を、誰でも、10日間で体験できるようにします。
 
 **参考:**
+
 - [GitHub - Everything Claude Code](https://github.com/affaan-m/everything-claude-code)
 - [Everything Claude Code: The Repo That Won Anthropic Hackathon](https://medium.com/@joe.njenga/everything-claude-code-the-repo-that-won-anthropic-hackathon-33b040ba62f3)
 - [The Claude Code setup that won a hackathon](https://blog.devgenius.io/the-claude-code-setup-that-won-a-hackathon-a75a161cd41c)
@@ -68,7 +69,7 @@ ECCは、この一気通貫の開発体験を、誰でも、10日間で体験で
 
 Everything Claude Code環境で開発を始めてから10日間で、私が体得したのは個別のスキルではありません。
 
-開発の完全なPDCAサイクルを、何度も何度も回す経験でした：
+開発の完全なPDCAサイクルを、繰り返し回す経験でした：
 
 - 問題をどう理解するか（リサーチの方法）
 - システムをどう設計するか（アーキテクトの思考法）
@@ -85,6 +86,7 @@ Everything Claude Code環境で開発を始めてから10日間で、私が体�
 従来の開発環境も、手作業でのgit操作も、一切経験していません。開発者として最初の一歩を踏み出したとき、すでにEverything Claude Code環境でした。
 
 比較対象がないため：
+
 - 「計画は面倒」という抵抗感がない
 - 「テストは後回し」という悪習がない
 - 「ドキュメントは負債」という先入観がない
@@ -108,7 +110,9 @@ https://open.spotify.com/episode/6SzfYni0NBrlVTi0uADW7q
 
 いけとも氏がEverything Claude Code (ECC) について語る内容を、私は集中して聴きました。
 
+<!-- textlint-disable ja-technical-writing/ja-no-weak-phrase -->
 「これは使えるかもしれない」
+<!-- textlint-enable ja-technical-writing/ja-no-weak-phrase -->
 
 そう判断し、ポッドキャストを聴き終わった後、すぐにECCを導入することにしました。
 
@@ -116,7 +120,7 @@ https://open.spotify.com/episode/6SzfYni0NBrlVTi0uADW7q
 
 次に、いけとも氏のYoutube動画を見つけました。
 
-https://youtu.be/ElOLZ-L-Hk0
+https://www.youtube.com/watch?v=ElOLZ-L-Hk0&feature=youtu.be
 
 この動画を注意深く視聴しました：
 
@@ -150,7 +154,7 @@ https://github.com/affaan-m/everything-claude-code
 
 本来は `~/.claude/`（ユーザーホーム直下）に配置すべきでした。
 
-```
+```text
 間違った配置:
 MyAI_Lab/.claude/
 ├── rules/
@@ -194,7 +198,7 @@ MyAI_Lab/.claude/ (ワークスペース) ← settings.local.jsonのみ
 - **階層構造の理解**: ユーザー/ワークスペース/プロジェクトの役割分担
 - **実践から学ぶ**: 10日間の開発を通じて問題に気づき、修正
 
-比較対象がないため、失敗を恐れずに試行錯誤できました。この経験がなければ、ECCの階層構造を理解することはできなかったでしょう。
+比較対象がないため、失敗を恐れずに試行錯誤できました。この経験がなければ、ECCの階層構造を理解できなかったでしょう。
 
 ## ECCの本質 - 開発のPDCAサイクル
 
@@ -211,7 +215,7 @@ MyAI_Lab/.claude/ (ワークスペース) ← settings.local.jsonのみ
 
 ### ECCがもたらす民主化
 
-ECCは、この開発の完全なサイクルを、誰でも、短期間で、何度も回せるようにします。
+ECCはこの開発の完全なサイクルを、誰でも短期間で何度も回せるようにします。
 
 このPDCAサイクルは、ソフトウェア開発に限りません：
 
@@ -233,13 +237,14 @@ ECCで開発を学ぶことは、仕事の本質を学ぶことに他なりま�
 
 これが、私のECC導入初日の質問リストです。
 
-聞いたことがない言葉があるたびに、しつこく質問しました。
+未知の言葉を見つけるたびに、しつこく質問しました。
 
 Claude Codeが何か提案してくる度に、わからない言葉があれば即座に質問。回答を受けて、さらに質問。この繰り返しでした。
 
 ### 納得するまで質問し続けた
 
 Claude Codeの提案を鵜呑みにしたわけではありません。常に以下のような疑問を持ち続けました：
+
 - なぜそうするのか？
 - 他の方法はないのか？
 - この用語の意味は？
@@ -255,7 +260,7 @@ Claude Codeだけでは足りないとき、私は複数のLLMを使い分けま
 
 まず、開発中に出てきた用語や概念をClaude Codeに質問します。
 
-```
+```text
 me: 「gitって何ですか？」
 Claude Code: 「gitはバージョン管理システムです...」
 ```
@@ -266,7 +271,7 @@ Claude Code: 「gitはバージョン管理システムです...」
 
 Claude Codeの回答が不十分だと感じたとき、GeminiやClaude（通常版）に同じ質問をします。
 
-```
+```text
 me: 「gitとは何か、初心者にわかりやすく説明してください」
 Gemini: 「gitは、ファイルの変更履歴を記録するツールです。例えば...」
 ```
@@ -277,7 +282,7 @@ Gemini: 「gitは、ファイルの変更履歴を記録するツールです。
 
 それでもわからないとき、工夫しました。
 
-```
+```text
 me: 「TDD（テスト駆動開発）をグラップラー刃牙に例えて説明してください」
 Claude: 「TDDは、まず『相手の技を想定』してから『対策を練る』ようなものです。
 刃牙が戦う前に...」
@@ -315,11 +320,11 @@ git commit -m "feat: Add initial implementation"
 
 #### ADRの価値に気づいた瞬間
 
-あるプロジェクトで、重要なアルゴリズム選択を行う決断をしました。
+あるプロジェクトで、重要なアルゴリズムを選択する決断をしました。
 
 Claude Codeが「ADRを書きましょう」と提案してきました。
 
-```
+```text
 me: 「ADRって何ですか？」
 Claude Code: 「Architecture Decision Recordです。重要な意思決定を記録します」
 me: 「なぜ必要なんですか？」
@@ -345,7 +350,7 @@ Accepted
 
 #### TDDでテストが通った瞬間
 
-あるプロジェクトで、初めて**テストを先に書く**ことに挑戦しました。
+あるプロジェクトで、**テストを先に書く**手法へ初めて挑戦しました。
 
 ```python
 # 最初にテストを書く（RED）
@@ -427,10 +432,10 @@ https://open.spotify.com/episode/6SzfYni0NBrlVTi0uADW7q
 
 いけともさんのYoutube動画で具体的な使い方を学びました：
 
-https://youtu.be/ElOLZ-L-Hk0
+https://www.youtube.com/watch?v=ElOLZ-L-Hk0&feature=youtu.be
 
-**Before**: gitも知らない趣味プログラマー
-**After**: 開発の完全なPDCAサイクルを体得
+**Before**: gitも知らない趣味プログラマー。
+**After**: 開発の完全なPDCAサイクルを体得。
 
 この10日間の変化は、お二人の情報発信がなければ起こりませんでした。
 
@@ -467,4 +472,4 @@ gitも知らなかった初心者が、今ではこうしてZennに技術記事�
 
 この記事が役に立ったら、「いいね」と「ストック」をお願いします。
 
-#EverythingClaudeCode #ECC #ClaudeCode #BuildInPublic
+\#EverythingClaudeCode \#ECC \#ClaudeCode \#BuildInPublic

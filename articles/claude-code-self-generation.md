@@ -80,7 +80,7 @@ Claude Codeは高機能なLLMそのものです。テキスト生成、構造化
 
 まずPythonスクリプトで、397問を20問ずつのバッチ入力ファイルに分割しました。
 
-```
+```text
 397問（手作り3問を除外）
   ↓ prepare_enhanced_batches.py
 21個のバッチ入力ファイル (batch_01.txt 〜 batch_21.txt)
@@ -110,7 +110,7 @@ Claude Codeにバッチ入力ファイルを読ませ、手作りサンプル3�
 
 品質基準は明確にしました。
 
-- `correctSummary`: 「正解は{X}です。」で開始、2-3文、200文字以内、OCRアーティファクトなし
+- `correctSummary`: 「正解は{X}」で開始、2-3文、200文字以内、OCRアーティファクトなし
 - `contrastTable`: 各選択肢に固有の解説、判定ラベル付き、150文字以内
 - `keyPhrases`: 3-6個の技術用語、試験に関連するものだけ
 - `relatedConcepts`: 学習ヒントまたは `null`
@@ -228,15 +228,18 @@ AIツールを使いこなすとは、ツールの盲点を見抜くことです
 
 :::message
 **タイムライン（2026-02-11）**
+
 - 08:51 — 構造化解説UIの初期実装（手作りサンプル3問）
 - 09:14 — 正規表現スクリプトで全400問にデータ搭載
 - 11:14 — Claude Codeで397問を再生成し品質大幅改善
 - 14:28 — contrastTableのキー名不統一を正規化（96問修正）
+
 :::
 
 ---
 
 :::details EnhancedExplanation データモデル（Swift）
+
 ```swift
 /// 選択肢ごとの判定・解説エントリ
 public struct ContrastEntry: Codable, Equatable, Sendable {
@@ -253,10 +256,13 @@ public struct EnhancedExplanation: Codable, Equatable, Sendable {
     public let relatedConcepts: String?      // Layer 4: 関連概念（optional）
 }
 ```
+
 :::
 
+<!-- textlint-disable ja-technical-writing/ja-no-mixed-period -->
 :::details バッチ生成ワークフロー全体像
-```
+
+```text
 397問（手作り3問を除外）
   ↓ prepare_enhanced_batches.py
 21個のバッチ入力ファイル (batch_01.txt 〜 batch_21.txt)
@@ -267,4 +273,6 @@ questions.json に統合
   ↓ validate_enhanced.py
 品質バリデーション（4層チェック）→ 全テスト通過
 ```
+
 :::
+<!-- textlint-enable ja-technical-writing/ja-no-mixed-period -->
