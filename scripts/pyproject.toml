@@ -7,3 +7,19 @@ dependencies = [
     "httpx>=0.28.1",
     "python-frontmatter>=1.1.0",
 ]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0",
+    "respx>=0.22",
+    "pytest-cov>=6.0",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.coverage.run]
+source = ["publish"]
+
+[tool.coverage.report]
+fail_under = 80

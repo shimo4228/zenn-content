@@ -1,15 +1,16 @@
-"""Zenn → Qiita cross-post CLI.
+"""Zenn cross-post CLI — Qiita, Dev.to, Hashnode.
 
 Usage:
-    python publish.py articles/ecc-cheatsheet.md --platform qiita
-    python publish.py articles/ecc-cheatsheet.md --platform qiita --dry-run
-    python publish.py articles/ecc-cheatsheet.md --platform qiita --update ITEM_ID
-    python publish.py articles/ecc-cheatsheet.md --platform qiita --update auto
+    python publish.py articles/xxx.md --platform qiita
+    python publish.py articles/xxx.md --platform devto --canonical-url URL
+    python publish.py articles/xxx.md --platform devto --update auto
+    python publish.py articles-en/xxx.md --platform hashnode --canonical-url URL
 """
 
 from __future__ import annotations
 
 import argparse
+import json
 import os
 import re
 import sys
@@ -77,7 +78,7 @@ def parse_zenn_article(path: Path) -> Article:
 
 
 # ---------------------------------------------------------------------------
-# Converter
+# Converter (shared)
 # ---------------------------------------------------------------------------
 
 _ZENN_MESSAGE_RE = re.compile(
@@ -90,19 +91,6 @@ _ZENN_DETAILS_RE = re.compile(
     re.MULTILINE | re.DOTALL,
 )
 
-
-def convert_to_qiita(article: Article) -> dict:
-    """Convert an Article to a Qiita API v2 request body."""
-    body = _strip_zenn_syntax(article.body)
-    tags = [{"name": t} for t in article.topics[:5]]
-    return {
-        "title": article.title,
-        "body": body,
-        "tags": tags,
-        "private": False,
-    }
-
-
 _ZENN_IMAGE_RE = re.compile(
     r"!\[([^\]]*)\]\(/images/([^)]+)\)",
 )
@@ -112,7 +100,7 @@ GITHUB_RAW_BASE = "https://raw.githubusercontent.com/shimo4228/zenn-content/main
 
 def _strip_zenn_syntax(content: str) -> str:
     """Replace Zenn-specific syntax with standard Markdown equivalents."""
-    # /images/xxx → GitHub raw URL (Qiita cannot resolve Zenn local paths)
+    # /images/xxx → GitHub raw URL
     content = _ZENN_IMAGE_RE.sub(
         rf"![\1]({GITHUB_RAW_BASE}/\2)",
         content,
@@ -136,7 +124,94 @@ def _details_to_html(m: re.Match) -> str:
 
 
 # ---------------------------------------------------------------------------
-# Publisher
+# Converter — Qiita
+# ---------------------------------------------------------------------------
+
+
+def convert_to_qiita(article: Article) -> dict:
+    """Convert an Article to a Qiita API v2 request body."""
+    body = _strip_zenn_syntax(article.body)
+    tags = [{"name": t} for t in article.topics[:5]]
+    return {
+        "title": article.title,
+        "body": body,
+        "tags": tags,
+        "private": False,
+    }
+
+
+# ---------------------------------------------------------------------------
+# Converter — Dev.to
+# ---------------------------------------------------------------------------
+
+
+def convert_to_devto(article: Article, canonical_url: str | None = None) -> dict:
+    """Convert an Article to a Dev.to API request body."""
+    body = _strip_zenn_syntax(article.body)
+    payload: dict = {
+        "article": {
+            "title": article.title,
+            "body_markdown": body,
+            "published": True,
+            "tags": list(article.topics[:4]),
+        }
+    }
+    if canonical_url:
+        payload["article"]["canonical_url"] = canonical_url
+    return payload
+
+
+# ---------------------------------------------------------------------------
+# Converter — Hashnode
+# ---------------------------------------------------------------------------
+
+_HASHNODE_PUBLISH_MUTATION = """\
+mutation PublishPost($input: PublishPostInput!) {
+  publishPost(input: $input) {
+    post {
+      id
+      slug
+      title
+      url
+    }
+  }
+}"""
+
+_HASHNODE_UPDATE_MUTATION = """\
+mutation UpdatePost($input: UpdatePostInput!) {
+  updatePost(input: $input) {
+    post {
+      id
+      slug
+      title
+      url
+    }
+  }
+}"""
+
+
+def convert_to_hashnode(
+    article: Article,
+    publication_id: str,
+    canonical_url: str | None = None,
+) -> dict:
+    """Convert an Article to a Hashnode GraphQL request body."""
+    body = _strip_zenn_syntax(article.body)
+    input_data: dict = {
+        "title": article.title,
+        "contentMarkdown": body,
+        "publicationId": publication_id,
+    }
+    if canonical_url:
+        input_data["originalArticleURL"] = canonical_url
+    return {
+        "query": _HASHNODE_PUBLISH_MUTATION,
+        "variables": {"input": input_data},
+    }
+
+
+# ---------------------------------------------------------------------------
+# Publisher — Qiita
 # ---------------------------------------------------------------------------
 
 QIITA_API_BASE = "https://qiita.com/api/v2"
@@ -193,6 +268,120 @@ def find_qiita_item_by_title(title: str, token: str) -> str | None:
 
 
 # ---------------------------------------------------------------------------
+# Publisher — Dev.to
+# ---------------------------------------------------------------------------
+
+DEVTO_API_BASE = "https://dev.to/api"
+_DEVTO_HEADERS_BASE = {"Accept": "application/vnd.forem.api-v1+json"}
+
+
+def _devto_headers(api_key: str) -> dict:
+    return {**_DEVTO_HEADERS_BASE, "api-key": api_key}
+
+
+def publish_to_devto(payload: dict, api_key: str) -> PublishResult:
+    """Publish an article to Dev.to via API v1."""
+    resp = httpx.post(
+        f"{DEVTO_API_BASE}/articles",
+        headers=_devto_headers(api_key),
+        json=payload,
+        timeout=30,
+    )
+    if resp.status_code == 201:
+        data = resp.json()
+        return PublishResult("devto", True, data.get("url"), None)
+    return PublishResult("devto", False, None, f"{resp.status_code}: {resp.text}")
+
+
+def update_on_devto(article_id: int, payload: dict, api_key: str) -> PublishResult:
+    """Update an existing Dev.to article via API v1."""
+    resp = httpx.put(
+        f"{DEVTO_API_BASE}/articles/{article_id}",
+        headers=_devto_headers(api_key),
+        json=payload,
+        timeout=30,
+    )
+    if resp.status_code == 200:
+        data = resp.json()
+        return PublishResult("devto", True, data.get("url"), None)
+    return PublishResult("devto", False, None, f"{resp.status_code}: {resp.text}")
+
+
+def find_devto_article_by_title(title: str, api_key: str) -> int | None:
+    """Search authenticated user's published articles for a matching title."""
+    page = 1
+    while page <= 5:
+        resp = httpx.get(
+            f"{DEVTO_API_BASE}/articles/me/published",
+            headers=_devto_headers(api_key),
+            params={"page": page, "per_page": 30},
+            timeout=30,
+        )
+        if resp.status_code != 200:
+            return None
+        items = resp.json()
+        if not items:
+            return None
+        for item in items:
+            if item.get("title") == title:
+                return item["id"]
+        page += 1
+    return None
+
+
+# ---------------------------------------------------------------------------
+# Publisher — Hashnode
+# ---------------------------------------------------------------------------
+
+HASHNODE_API_URL = "https://gql.hashnode.com"
+
+
+def publish_to_hashnode(payload: dict, token: str) -> PublishResult:
+    """Publish an article to Hashnode via GraphQL API."""
+    resp = httpx.post(
+        HASHNODE_API_URL,
+        headers={"Authorization": token, "Content-Type": "application/json"},
+        json=payload,
+        timeout=30,
+    )
+    if resp.status_code != 200:
+        return PublishResult("hashnode", False, None, f"{resp.status_code}: {resp.text}")
+    data = resp.json()
+    if "errors" in data:
+        return PublishResult("hashnode", False, None, json.dumps(data["errors"]))
+    post = data.get("data", {}).get("publishPost", {}).get("post", {})
+    return PublishResult("hashnode", True, post.get("url"), None)
+
+
+def update_on_hashnode(post_id: str, article: Article, token: str) -> PublishResult:
+    """Update an existing Hashnode article via GraphQL API."""
+    body = _strip_zenn_syntax(article.body)
+    payload = {
+        "query": _HASHNODE_UPDATE_MUTATION,
+        "variables": {
+            "input": {
+                "id": post_id,
+                "title": article.title,
+                "contentMarkdown": body,
+            }
+        },
+    }
+    resp = httpx.post(
+        HASHNODE_API_URL,
+        headers={"Authorization": token, "Content-Type": "application/json"},
+        json=payload,
+        timeout=30,
+    )
+    if resp.status_code != 200:
+        return PublishResult("hashnode", False, None, f"{resp.status_code}: {resp.text}")
+    data = resp.json()
+    if "errors" in data:
+        return PublishResult("hashnode", False, None, json.dumps(data["errors"]))
+    post = data.get("data", {}).get("updatePost", {}).get("post", {})
+    return PublishResult("hashnode", True, post.get("url"), None)
+
+
+# ---------------------------------------------------------------------------
 # CLI
 # ---------------------------------------------------------------------------
 
@@ -208,7 +397,7 @@ def build_parser() -> argparse.ArgumentParser:
     )
     parser.add_argument(
         "--platform",
-        choices=["qiita"],
+        choices=["qiita", "devto", "hashnode"],
         required=True,
         help="Target platform",
     )
@@ -219,10 +408,154 @@ def build_parser() -> argparse.ArgumentParser:
     )
     parser.add_argument(
         "--update",
-        metavar="ITEM_ID",
-        help="Update existing Qiita article. Use 'auto' to search by title.",
+        metavar="ID",
+        help="Update existing article. Use 'auto' to search by title.",
+    )
+    parser.add_argument(
+        "--canonical-url",
+        help="Canonical URL of the original article (e.g. Zenn URL)",
     )
     return parser
+
+
+def _print_dry_run(platform: str, payload: dict) -> None:
+    """Pretty-print a dry-run payload."""
+    print(f"\n--- {platform} payload (dry-run) ---")
+    if platform == "qiita":
+        print(f"Title: {payload['title']}")
+        print(f"Tags:  {[t['name'] for t in payload['tags']]}")
+        body = payload["body"]
+    elif platform == "devto":
+        art = payload["article"]
+        print(f"Title: {art['title']}")
+        print(f"Tags:  {art.get('tags', [])}")
+        print(f"Canonical: {art.get('canonical_url', '(none)')}")
+        body = art["body_markdown"]
+    elif platform == "hashnode":
+        inp = payload["variables"]["input"]
+        print(f"Title: {inp['title']}")
+        print(f"Publication: {inp['publicationId']}")
+        print(f"Canonical: {inp.get('originalArticleURL', '(none)')}")
+        body = inp["contentMarkdown"]
+    else:
+        body = ""
+    print(f"Body ({len(body)} chars):\n")
+    print(body[:500])
+    if len(body) > 500:
+        print(f"\n... ({len(body) - 500} chars truncated)")
+
+
+def _run_qiita(article: Article, args: argparse.Namespace) -> int:
+    payload = convert_to_qiita(article)
+    if args.dry_run:
+        _print_dry_run("qiita", payload)
+        return 0
+
+    token = os.environ.get("QIITA_ACCESS_TOKEN")
+    if not token:
+        print("Error: QIITA_ACCESS_TOKEN is not set", file=sys.stderr)
+        return 1
+
+    if args.update:
+        item_id = args.update
+        if item_id == "auto":
+            print(f"Searching for existing article: {article.title}")
+            item_id = find_qiita_item_by_title(article.title, token)
+            if not item_id:
+                print("Error: article not found on Qiita", file=sys.stderr)
+                return 1
+            print(f"Found: {item_id}")
+        result = update_on_qiita(item_id, payload, token)
+    else:
+        result = publish_to_qiita(payload, token)
+
+    if result.success:
+        action = "Updated" if args.update else "Published"
+        print(f"{action} on Qiita: {result.url}")
+        return 0
+    print(f"Failed: {result.error}", file=sys.stderr)
+    return 1
+
+
+def _run_devto(article: Article, args: argparse.Namespace) -> int:
+    payload = convert_to_devto(article, canonical_url=args.canonical_url)
+    if args.dry_run:
+        _print_dry_run("devto", payload)
+        return 0
+
+    api_key = os.environ.get("DEVTO_API_KEY")
+    if not api_key:
+        print("Error: DEVTO_API_KEY is not set", file=sys.stderr)
+        return 1
+
+    if args.update:
+        article_id_str = args.update
+        if article_id_str == "auto":
+            print(f"Searching for existing article: {article.title}")
+            article_id = find_devto_article_by_title(article.title, api_key)
+            if not article_id:
+                print("Error: article not found on Dev.to", file=sys.stderr)
+                return 1
+            print(f"Found: {article_id}")
+        else:
+            try:
+                article_id = int(article_id_str)
+            except ValueError:
+                print(f"Error: invalid article ID: {article_id_str}", file=sys.stderr)
+                return 1
+        result = update_on_devto(article_id, payload, api_key)
+    else:
+        result = publish_to_devto(payload, api_key)
+
+    if result.success:
+        action = "Updated" if args.update else "Published"
+        print(f"{action} on Dev.to: {result.url}")
+        return 0
+    print(f"Failed: {result.error}", file=sys.stderr)
+    return 1
+
+
+def _run_hashnode(article: Article, args: argparse.Namespace) -> int:
+    publication_id = os.environ.get("HASHNODE_PUBLICATION_ID", "PLACEHOLDER")
+
+    payload = convert_to_hashnode(
+        article, publication_id, canonical_url=args.canonical_url
+    )
+    if args.dry_run:
+        _print_dry_run("hashnode", payload)
+        return 0
+
+    token = os.environ.get("HASHNODE_API_TOKEN")
+    if not token:
+        print("Error: HASHNODE_API_TOKEN is not set", file=sys.stderr)
+        return 1
+
+    if publication_id == "PLACEHOLDER":
+        print("Error: HASHNODE_PUBLICATION_ID is not set", file=sys.stderr)
+        return 1
+
+    if args.update:
+        post_id = args.update
+        if post_id == "auto":
+            print("Error: auto-search not supported for Hashnode", file=sys.stderr)
+            return 1
+        result = update_on_hashnode(post_id, article, token)
+    else:
+        result = publish_to_hashnode(payload, token)
+
+    if result.success:
+        action = "Updated" if args.update else "Published"
+        print(f"{action} on Hashnode: {result.url}")
+        return 0
+    print(f"Failed: {result.error}", file=sys.stderr)
+    return 1
+
+
+_RUNNERS = {
+    "qiita": _run_qiita,
+    "devto": _run_devto,
+    "hashnode": _run_hashnode,
+}
 
 
 def main() -> int:
@@ -239,50 +572,8 @@ def main() -> int:
     article = parse_zenn_article(article_path)
     print(f"Parsed: {article.title} ({len(article.topics)} topics)")
 
-    if args.platform == "qiita":
-        payload = convert_to_qiita(article)
-
-        if args.dry_run:
-            print("\n--- Qiita payload (dry-run) ---")
-            print(f"Title: {payload['title']}")
-            print(f"Tags:  {[t['name'] for t in payload['tags']]}")
-            print(f"Body ({len(payload['body'])} chars):\n")
-            print(payload["body"][:500])
-            if len(payload["body"]) > 500:
-                print(f"\n... ({len(payload['body']) - 500} chars truncated)")
-            return 0
-
-        token = os.environ.get("QIITA_ACCESS_TOKEN")
-        if not token:
-            print("Error: QIITA_ACCESS_TOKEN is not set", file=sys.stderr)
-            return 1
-
-        if args.update:
-            item_id = args.update
-            if item_id == "auto":
-                print(f"Searching for existing article: {article.title}")
-                item_id = find_qiita_item_by_title(article.title, token)
-                if not item_id:
-                    print("Error: article not found on Qiita", file=sys.stderr)
-                    return 1
-                print(f"Found: {item_id}")
-            result = update_on_qiita(item_id, payload, token)
-            if result.success:
-                print(f"Updated on Qiita: {result.url}")
-                return 0
-            else:
-                print(f"Failed to update: {result.error}", file=sys.stderr)
-                return 1
-
-        result = publish_to_qiita(payload, token)
-        if result.success:
-            print(f"Published to Qiita: {result.url}")
-            return 0
-        else:
-            print(f"Failed to publish: {result.error}", file=sys.stderr)
-            return 1
-
-    return 0
+    runner = _RUNNERS[args.platform]
+    return runner(article, args)
 
 
 if __name__ == "__main__":
