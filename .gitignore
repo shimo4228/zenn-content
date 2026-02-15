@@ -21,6 +21,9 @@ Thumbs.db
 # Drafts (working notes, not for publication)
 drafts/
 
+# Reports (generated analysis, session-specific)
+.reports/
+
 # Python (scripts/)
 scripts/.venv/
 scripts/__pycache__/
@@ -29,4 +32,5 @@ scripts/.python-version
 scripts/.coverage
 scripts/.pytest_cache/
 scripts/*.log
+scripts/*.plist
 *.pyc
