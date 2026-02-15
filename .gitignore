@@ -26,4 +26,7 @@ scripts/.venv/
 scripts/__pycache__/
 scripts/.env
 scripts/.python-version
+scripts/.coverage
+scripts/.pytest_cache/
+scripts/*.log
 *.pyc

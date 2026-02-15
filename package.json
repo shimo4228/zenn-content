@@ -11,7 +11,6 @@
     "lint:md": "markdownlint-cli2 'articles/**/*.md' 'books/**/*.md'",
     "lint:all": "npm run lint && npm run lint:md",
     "lint:fix": "textlint --fix articles/**/*.md books/**/*.md",
-    "optimize:images": "sharp --input images/ --output images/ --quality 80 --format png",
     "prepare": "husky"
   },
   "lint-staged": {
@@ -36,7 +35,6 @@
     "husky": "^9.1.7",
     "lint-staged": "^16.2.7",
     "markdownlint-cli2": "^0.20.0",
-    "sharp-cli": "^5.2.0",
     "textlint": "^14.3.1",
     "textlint-rule-no-dead-link": "^6.2.1",
     "textlint-rule-preset-ja-technical-writing": "^10.0.1",
