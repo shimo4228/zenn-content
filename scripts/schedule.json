@@ -1,0 +1,62 @@
+{
+  "post_time_utc": "09:00",
+  "articles": [
+    {
+      "file": "articles/daily-research-automation.md",
+      "canonical_url": "https://zenn.dev/shimo4228/articles/daily-research-automation",
+      "date": "2026-02-15",
+      "qiita": null,
+      "devto": "n/a",
+      "hashnode": "n/a"
+    },
+    {
+      "file": "articles-en/daily-research-automation.md",
+      "canonical_url": "https://zenn.dev/shimo4228/articles/daily-research-automation",
+      "date": "2026-02-15",
+      "devto": null,
+      "hashnode": null
+    },
+    {
+      "file": "articles-en/ecc-journey-part1.md",
+      "canonical_url": "https://zenn.dev/shimo4228/articles/ecc-journey-part1",
+      "date": "2026-02-18",
+      "devto": null,
+      "hashnode": null
+    },
+    {
+      "file": "articles-en/ecc-journey-part2.md",
+      "canonical_url": "https://zenn.dev/shimo4228/articles/ecc-journey-part2",
+      "date": "2026-02-20",
+      "devto": null,
+      "hashnode": null
+    },
+    {
+      "file": "articles-en/ecc-journey-part3.md",
+      "canonical_url": "https://zenn.dev/shimo4228/articles/ecc-journey-part3",
+      "date": "2026-02-22",
+      "devto": null,
+      "hashnode": null
+    },
+    {
+      "file": "articles-en/claude-code-self-generation.md",
+      "canonical_url": "https://zenn.dev/shimo4228/articles/claude-code-self-generation",
+      "date": "2026-02-24",
+      "devto": null,
+      "hashnode": null
+    },
+    {
+      "file": "articles-en/cursor-to-zed-migration.md",
+      "canonical_url": "https://zenn.dev/shimo4228/articles/cursor-to-zed-migration",
+      "date": "2026-02-26",
+      "devto": null,
+      "hashnode": null
+    },
+    {
+      "file": "articles-en/termius-iphone-claude-code.md",
+      "canonical_url": "https://zenn.dev/shimo4228/articles/termius-iphone-claude-code",
+      "date": "2026-02-28",
+      "devto": null,
+      "hashnode": null
+    }
+  ]
+}
