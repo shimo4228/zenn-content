@@ -273,3 +273,11 @@ If execution completes at 5:00 AM, the 5-hour window resets by late morning. Day
 3. **Start minimal, expand later.** Plan A (Claude Code standalone) delivered sufficient quality. If search quality falls short, there's room to upgrade with Gemini CLI.
 
 If you have a Max plan and haven't tried `claude -p`, give it a shot. Zero Python code can accomplish more than you'd expect.
+
+---
+
+## Source Code
+
+The complete source code for this system is available on GitHub. Clone it and get started right away.
+
+https://github.com/shimo4228/daily-research
