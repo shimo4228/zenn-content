@@ -115,6 +115,33 @@ dry-run の結果を確認後:
 cd scripts && .venv/bin/python publish.py ../{article_path} --platform qiita
 ```
 
+### Step 9: 英訳記事の作成（Dev.to / Hashnode 用）
+
+ユーザーに英訳してクロスポストするか確認する。
+
+```bash
+# /translate-article スキルで英訳を作成
+/translate-article {article_path}
+```
+
+英訳は `articles-en/` に同名で保存される。
+
+### Step 10: Dev.to / Hashnode クロスポスト（オプション）
+
+英訳記事が存在する場合、Dev.to と Hashnode にクロスポストする。
+
+```bash
+CANONICAL="https://zenn.dev/shimo4228/articles/{slug}"
+
+# Dev.to
+cd scripts && uv run python publish.py ../articles-en/{filename} --platform devto --canonical-url "$CANONICAL"
+
+# Hashnode
+cd scripts && uv run python publish.py ../articles-en/{filename} --platform hashnode --canonical-url "$CANONICAL"
+```
+
+> **Note:** `publish.py` は日本語記事（`articles/`）で Dev.to / Hashnode を指定するとガードが発動します。`--force` で回避可能。
+
 ---
 
 ## Error Recovery

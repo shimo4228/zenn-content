@@ -415,6 +415,11 @@ def build_parser() -> argparse.ArgumentParser:
         "--canonical-url",
         help="Canonical URL of the original article (e.g. Zenn URL)",
     )
+    parser.add_argument(
+        "--force",
+        action="store_true",
+        help="Skip English translation check for devto/hashnode",
+    )
     return parser
 
 
@@ -558,6 +563,45 @@ _RUNNERS = {
 }
 
 
+def _check_english_translation(article_path: Path, args: argparse.Namespace) -> int | None:
+    """Warn if a Japanese article is used for devto/hashnode without --force.
+
+    Returns an exit code if the command should stop, or None to continue.
+    """
+    if args.platform not in ("devto", "hashnode"):
+        return None
+    if getattr(args, "force", False):
+        return None
+
+    parts = article_path.resolve().parts
+    # Only guard articles under "articles/" (not "articles-en/")
+    try:
+        idx = parts.index("articles")
+    except ValueError:
+        return None
+    # If already under articles-en, no guard needed
+    if idx > 0 and parts[idx - 1] == "articles-en":
+        return None
+    # Also skip if the path literally contains "articles-en"
+    if "articles-en" in parts:
+        return None
+
+    en_path = article_path.parent.parent / "articles-en" / article_path.name
+    if en_path.exists():
+        print(
+            f"Warning: English version exists at {en_path}\n"
+            f"Use the English version for {args.platform}, or pass --force to skip this check.",
+            file=sys.stderr,
+        )
+    else:
+        print(
+            f"Warning: No English translation found at {en_path}\n"
+            f"Run /translate-article first, or pass --force to publish in Japanese.",
+            file=sys.stderr,
+        )
+    return 1
+
+
 def main() -> int:
     _load_env(Path(__file__).parent / ".env")
 
@@ -568,6 +612,11 @@ def main() -> int:
     if not article_path.exists():
         print(f"Error: file not found: {article_path}", file=sys.stderr)
         return 1
+
+    # Guard: Japanese article → devto/hashnode without --force
+    guard = _check_english_translation(article_path, args)
+    if guard is not None:
+        return guard
 
     article = parse_zenn_article(article_path)
     print(f"Parsed: {article.title} ({len(article.topics)} topics)")
