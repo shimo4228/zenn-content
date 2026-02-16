@@ -186,7 +186,7 @@ MOC は特定テーマのノートを手動リンクと Dataview クエリの組
 
 ```dataview
 TABLE date, status
-FROM #瞑想
+FROM #読書
 SORT date DESC
 ```
 
