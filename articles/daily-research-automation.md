@@ -1,5 +1,5 @@
 ---
-title: "Pythonコード0行で毎朝AIリサーチレポートが届く仕組みを作った"
+title: "Claude Code で毎朝AIリサーチが届く自動化を作った — Pythonコード0行"
 emoji: "🔬"
 type: "tech"
 topics: ["claude", "ai", "claudecode", "automation"]

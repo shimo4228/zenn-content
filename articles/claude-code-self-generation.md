@@ -3,7 +3,7 @@ title: "Claude Codeに「お前自身がLLMだろ」と言った日 — 397問�
 emoji: "🤖"
 type: "tech"
 topics: ["claude", "ai", "llm", "python"]
-published: false
+published: true
 ---
 
 # 397問の構造化解説を自動生成したら品質が壊滅的だった

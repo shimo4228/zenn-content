@@ -1,5 +1,5 @@
 ---
-title: "iPhoneの黒い画面からClaude Codeを操る — Geminiに教わりながら環境構築した全記録"
+title: "Claude Code をiPhoneから操作する方法 — Termius + Tailscale + tmux 環境構築ガイド"
 emoji: "📱"
 type: "tech"
 topics: ["claudecode", "termius", "ssh", "tailscale", "tmux"]

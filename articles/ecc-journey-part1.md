@@ -3,7 +3,7 @@ title: "Everything Claude Codeで初めて本格的な開発を始めた初心�
 emoji: "🚀"
 type: "tech"
 topics: ["claude", "ai", "git", "初心者", "学習"]
-published: false
+published: true
 ---
 
 ## はじめに - Everything Claude Codeとは

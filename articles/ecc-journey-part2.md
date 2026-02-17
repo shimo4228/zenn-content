@@ -3,7 +3,7 @@ title: "LLM の出力は信用するな — Claude API で PDF→Anki 自動生�
 emoji: "🃏"
 type: "tech"
 topics: ["claude", "anki", "python", "cli", "llm"]
-published: false
+published: true
 ---
 
 ## はじめに
