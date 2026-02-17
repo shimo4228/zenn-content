@@ -61,83 +61,74 @@
     {
       "file": "articles/prh-nodejs20-regex-error.md",
       "canonical_url": "https://zenn.dev/shimo4228/articles/prh-nodejs20-regex-error",
-      "zenn_date": "2026-02-19",
-      "date": "2026-02-20",
-      "qiita": null,
-      "devto": "n/a",
-      "hashnode": "n/a"
+      "date": "2026-02-18",
+      "qiita": "https://qiita.com/shimo4228/items/7f0fa215be2f2fb89760",
+      "devto": "https://dev.to/shimo4228/how-to-fix-prh-regex-errors-after-upgrading-to-nodejs-20-2f40",
+      "hashnode": "https://shimo4228.hashnode.dev/how-to-fix-prh-regex-errors-after-upgrading-to-nodejs-20"
     },
     {
       "file": "articles/claude-code-claudemd-hierarchy.md",
       "canonical_url": "https://zenn.dev/shimo4228/articles/claude-code-claudemd-hierarchy",
-      "zenn_date": "2026-02-20",
-      "date": "2026-02-21",
-      "qiita": null,
-      "devto": "n/a",
-      "hashnode": "n/a"
+      "date": "2026-02-18",
+      "qiita": "https://qiita.com/shimo4228/items/651dbb9023ef4ed48ce1",
+      "devto": "https://dev.to/shimo4228/claude-codes-claudemd-hierarchy-lessons-from-10-days-of-misconfiguration-1afa",
+      "hashnode": "https://shimo4228.hashnode.dev/claude-codes-claudemd-hierarchy-lessons-from-10-days-of-misconfiguration"
     },
     {
       "file": "articles/claude-code-context-audit.md",
       "canonical_url": "https://zenn.dev/shimo4228/articles/claude-code-context-audit",
-      "zenn_date": "2026-02-20",
-      "date": "2026-02-21",
-      "qiita": null,
-      "devto": "n/a",
-      "hashnode": "n/a"
+      "date": "2026-02-18",
+      "qiita": "https://qiita.com/shimo4228/items/83c7839f1722550d6761",
+      "devto": "https://dev.to/shimo4228/5-things-i-learned-from-auditing-all-my-claude-code-config-files-4mjj",
+      "hashnode": "https://shimo4228.hashnode.dev/5-things-i-learned-from-auditing-all-my-claude-code-config-files"
     },
     {
       "file": "articles/claude-code-crosspost-cli.md",
       "canonical_url": "https://zenn.dev/shimo4228/articles/claude-code-crosspost-cli",
-      "zenn_date": "2026-02-21",
-      "date": "2026-02-22",
-      "qiita": null,
-      "devto": "n/a",
-      "hashnode": "n/a"
+      "date": "2026-02-18",
+      "qiita": "https://qiita.com/shimo4228/items/36d58eb5cce9ba18b446",
+      "devto": "https://dev.to/shimo4228/cross-post-from-zenn-to-qiita-to-devto-in-one-command-with-claude-code-23m2",
+      "hashnode": "https://shimo4228.hashnode.dev/cross-post-from-zenn-to-qiita-to-devto-in-one-command-with-claude-code"
     },
     {
       "file": "articles/claude-code-zenn-lint-hooks.md",
       "canonical_url": "https://zenn.dev/shimo4228/articles/claude-code-zenn-lint-hooks",
-      "zenn_date": "2026-02-21",
-      "date": "2026-02-22",
-      "qiita": null,
-      "devto": "n/a",
-      "hashnode": "n/a"
+      "date": "2026-02-18",
+      "qiita": "https://qiita.com/shimo4228/items/c4bc91a95b873d72967a",
+      "devto": "https://dev.to/shimo4228/setting-up-textlint-markdownlint-hooks-for-zenn-writing-with-claude-code-g4b",
+      "hashnode": "https://shimo4228.hashnode.dev/setting-up-textlint-markdownlint-hooks-for-zenn-writing-with-claude-code"
     },
     {
       "file": "articles/claude-code-japanese-mcp.md",
       "canonical_url": "https://zenn.dev/shimo4228/articles/claude-code-japanese-mcp",
-      "zenn_date": "2026-02-22",
-      "date": "2026-02-23",
-      "qiita": null,
-      "devto": "n/a",
-      "hashnode": "n/a"
+      "date": "2026-02-18",
+      "qiita": "https://qiita.com/shimo4228/items/d01a96880df68072c930",
+      "devto": "https://dev.to/shimo4228/using-a-japanese-text-analysis-mcp-server-with-claude-code-kuromojijs-g92",
+      "hashnode": "https://shimo4228.hashnode.dev/using-a-japanese-text-analysis-mcp-server-with-claude-code-kuromojijs"
     },
     {
       "file": "articles/claude-code-skill-cleanup.md",
       "canonical_url": "https://zenn.dev/shimo4228/articles/claude-code-skill-cleanup",
-      "zenn_date": "2026-02-22",
-      "date": "2026-02-23",
-      "qiita": null,
-      "devto": "n/a",
-      "hashnode": "n/a"
+      "date": "2026-02-18",
+      "qiita": "https://qiita.com/shimo4228/items/8cc2db1f1409bc267de7",
+      "devto": "https://dev.to/shimo4228/how-to-audit-and-clean-up-overflowing-learned-skills-in-claude-code-38e1",
+      "hashnode": "https://shimo4228.hashnode.dev/how-to-audit-and-clean-up-overflowing-learned-skills-in-claude-code"
     },
     {
       "file": "articles/claude-code-multi-llm.md",
       "canonical_url": "https://zenn.dev/shimo4228/articles/claude-code-multi-llm",
-      "zenn_date": "2026-02-23",
-      "date": "2026-02-24",
-      "qiita": null,
-      "devto": "n/a",
-      "hashnode": "n/a"
+      "date": "2026-02-18",
+      "qiita": "https://qiita.com/shimo4228/items/e8074d7245a9c716f8a6",
+      "devto": "https://dev.to/shimo4228/using-multiple-llms-with-claude-code-when-to-reach-for-gemini-chatgpt-or-notebooklm-2mnm",
+      "hashnode": "https://shimo4228.hashnode.dev/using-multiple-llms-with-claude-code-when-to-reach-for-gemini-chatgpt-or-notebooklm"
     },
     {
       "file": "articles/claude-code-zed-setup.md",
       "canonical_url": "https://zenn.dev/shimo4228/articles/claude-code-zed-setup",
-      "zenn_date": "2026-02-23",
-      "date": "2026-02-24",
-      "qiita": null,
-      "devto": "n/a",
-      "hashnode": "n/a"
+      "date": "2026-02-18",
+      "qiita": "https://qiita.com/shimo4228/items/02312ef3357aa064f478",
+      "devto": "https://dev.to/shimo4228/running-claude-code-in-zed-why-i-disable-the-built-in-ai-58mc",
+      "hashnode": "https://shimo4228.hashnode.dev/running-claude-code-in-zed-why-i-disable-the-built-in-ai"
     }
   ]
 }
