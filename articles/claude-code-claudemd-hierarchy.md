@@ -3,7 +3,7 @@ title: "Claude Code の CLAUDE.md 階層構造でハマった話 — 正しい�
 emoji: "📂"
 type: "tech"
 topics: ["claudecode", "ai", "開発環境", "設定"]
-published: false
+published: true
 ---
 
 ## 10日間の配置ミス

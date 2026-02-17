@@ -3,7 +3,7 @@ title: "Claude Code × Zenn 執筆に textlint + markdownlint の hooks を設�
 emoji: "🔧"
 type: "tech"
 topics: ["claudecode", "zenn", "textlint", "markdownlint"]
-published: false
+published: true
 ---
 
 Claude Code で Zenn 記事を3本書いたあと、まとめて lint を回したら28件のエラーが出ました。全角スペース混入、見出しレベルの飛び、表記ゆれ――手動チェックでは漏れるものばかりです。

@@ -3,7 +3,7 @@ title: "Claude Code の learned skills が溜まりすぎた時の棚卸し手�
 emoji: "🗃️"
 type: "tech"
 topics: ["claudecode", "ai", "開発環境", "生産性"]
-published: false
+published: true
 ---
 
 ## 問題

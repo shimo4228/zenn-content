@@ -3,7 +3,7 @@ title: "Claude Code で Zenn → Qiita → Dev.to クロスポストを1コマ�
 emoji: "🔄"
 type: "tech"
 topics: ["claudecode", "zenn", "qiita", "python"]
-published: false
+published: true
 ---
 
 Zenn で書いた記事を Qiita にコピペしたら、`:::message` ブロックがそのまま表示されていることに翌日気づきました。読者から「表示が崩れています」とコメントが来てから慌てて修正。`:::details` や `/images/` パスも全部壊れていました。
