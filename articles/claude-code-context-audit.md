@@ -3,7 +3,7 @@ title: "Claude Code の設定ファイルを全棚卸しして分かった5つ�
 emoji: "🔍"
 type: "tech"
 topics: ["claudecode", "ai", "開発環境", "生産性"]
-published: true
+published: false
 ---
 
 ## きっかけ
