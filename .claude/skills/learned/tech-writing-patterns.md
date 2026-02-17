@@ -2,6 +2,7 @@
 name: tech-writing-patterns
 description: "Zenn/Qiita cross-posting, tone adjustment, technical article quality patterns."
 user-invocable: false
+origin: auto-extracted
 ---
 
 # Tech Writing Patterns

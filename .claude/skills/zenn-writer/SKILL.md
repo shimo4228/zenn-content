@@ -1,3 +1,4 @@
+<!-- origin: original -->
 # Zenn Writer Skill
 
 **Purpose:** Provide knowledge and templates for writing high-quality Zenn articles following pdf2anki ecosystem conventions.

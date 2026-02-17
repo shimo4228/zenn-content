@@ -1,3 +1,4 @@
+<!-- origin: auto-extracted -->
 # Zenn-Qiita Cross-Post Workflow
 
 **Extracted:** 2026-02-11

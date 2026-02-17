@@ -1,3 +1,4 @@
+<!-- origin: auto-extracted -->
 # Zenn Article Context-Driven Writing
 
 **Extracted:** 2026-02-13

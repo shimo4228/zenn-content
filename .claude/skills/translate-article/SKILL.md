@@ -1,3 +1,4 @@
+<!-- origin: original -->
 # Translate Article Skill
 
 **Purpose:** Zenn 記事を高品質な英語に翻訳し、Dev.to / Hashnode への投稿準備を行う。

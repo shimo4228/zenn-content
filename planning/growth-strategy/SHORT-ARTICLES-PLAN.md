@@ -16,14 +16,15 @@
 | # | 優先度 | slug | タイトル案 | 状態 | 素材ソース |
 |---|--------|------|-----------|------|-----------|
 | A1 | 1 | claude-code-auto-memory | Claude Code の auto memory でセッションを跨いで学習を蓄積する | **公開済** | MEMORY.md 実物（6プロジェクト分） |
-| B1 | 2 | claude-code-claudemd-hierarchy | Claude Code の CLAUDE.md 階層構造でハマった話 — user/workspace/project の正しい使い分け | 未着手 | ecc-journey-part1（配置ミス10日間）、MyAI_Lab MEMORY.md |
-| B2 | 3 | claude-code-zenn-lint-hooks | Claude Code × Zenn 執筆に textlint + markdownlint の hooks を設定する | 未着手 | .textlintrc.json, .markdownlint-cli2.jsonc, package.json, prh.yml |
-| A2 | 4 | claude-code-crosspost-cli | Claude Code で Zenn→Qiita→Dev.to クロスポストを1コマンドで | 未着手 | scripts/publish.py（630行、Qiita/Dev.to/Hashnode対応） |
-| B3 | 5 | prh-nodejs20-regex-error | prh と Node.js 20 で正規表現エラーが出たときの対処法 | 未着手 | MEMORY.md の Key Gotchas セクション |
-| A3 | 6 | claude-code-japanese-mcp | Claude Code で日本語テキスト分析MCPサーバーを作った — kuromoji.js | 未着手 | ~/.claude.json mcpServers設定、JapaneseTextAnalyzer MCP |
-| C1 | 7 | claude-code-skill-cleanup | Claude Code の learned skills が溜まりすぎた時の棚卸し手順 | 未着手 | ecc-journey-part3、pdf2anki MEMORY.md（Skill Stocktaking Log） |
-| C2 | 8 | claude-code-zed-setup | Claude Code を Zed で使う最適設定 — ビルトインAI を切る理由 | 未着手 | cursor-to-zed-migration 記事 |
-| C3 | 9 | claude-code-multi-llm | Claude Code でマルチLLM活用 — Gemini/ChatGPT/NotebookLM の使い分け | 未着手 | ecc-journey-part1（マルチLLM活用戦略セクション） |
+| B1 | 2 | claude-code-claudemd-hierarchy | Claude Code の CLAUDE.md 階層構造でハマった話 — 正しい使い分け | **下書き完了** | ecc-journey-part1（配置ミス10日間）、MyAI_Lab MEMORY.md |
+| B2 | 3 | claude-code-zenn-lint-hooks | Claude Code × Zenn 執筆に textlint + markdownlint の hooks を設定する | **下書き完了** | .textlintrc.json, .markdownlint-cli2.jsonc, package.json, prh.yml |
+| A2 | 4 | claude-code-crosspost-cli | Claude Code で Zenn→Qiita→Dev.to クロスポストを1コマンドで | **下書き完了** | scripts/publish.py（630行、Qiita/Dev.to/Hashnode対応） |
+| B3 | 5 | prh-nodejs20-regex-error | prh と Node.js 20 で正規表現エラーが出たときの対処法 | **下書き完了** | MEMORY.md の Key Gotchas セクション |
+| A3 | 6 | claude-code-japanese-mcp | Claude Code で日本語テキスト分析MCPサーバーを使う — kuromoji.js | **下書き完了** | ~/.claude.json mcpServers設定、JapaneseTextAnalyzer MCP |
+| C1 | 7 | claude-code-skill-cleanup | Claude Code の learned skills が溜まりすぎた時の棚卸し手順 | **下書き完了** | ecc-journey-part3、pdf2anki MEMORY.md（Skill Stocktaking Log） |
+| C2 | 8 | claude-code-zed-setup | Claude Code を Zed で使う最適設定 — ビルトインAI を切る理由 | **下書き完了** | cursor-to-zed-migration 記事 |
+| C3 | 9 | claude-code-multi-llm | Claude Code でマルチLLM活用 — Gemini/ChatGPT/NotebookLM の使い分け | **下書き完了** | ecc-journey-part1（マルチLLM活用戦略セクション） |
+| D1 | 10 | claude-code-context-audit | Claude Code の設定ファイルを全棚卸しして分かった5つのこと | **下書き完了** | 2/17 CLAUDE.md配備セッション + 2/18 rules/memory調査セッション |
 
 ## 各記事の執筆メモ
 
@@ -82,6 +83,11 @@
 - ecc-journey-part1 から切り出し
 - 4段階: Claude Code → Gemini/Claude通常 → 例え話で説明 → ディープリサーチ
 - 使い分け: Claude Code=実践、Gemini=概念説明、ChatGPT=ベストプラクティス、NotebookLM=情報統合
+
+### D1: 設定ファイル棚卸し
+- 2セッション分（2/17 CLAUDE.md配備 + 2/18 rules/memory調査）の知見を統合
+- 5つの発見: CLAUDE.md全配備、テンプレルール化、rules浪費は小(~1.4%)、~/.claude/CLAUDE.md不要、memory欠落の原因=起動場所
+- 結論: 設定を増やすより既存の仕組みを正しい場所で使う方が効果的
 
 ## 再開時の手順
 

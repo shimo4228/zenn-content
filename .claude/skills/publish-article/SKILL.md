@@ -1,3 +1,4 @@
+<!-- origin: original -->
 # Publish Article Skill
 
 **Purpose:** 記事公開前の全チェックを一連のフローで実行し、抜け漏れを防止する。

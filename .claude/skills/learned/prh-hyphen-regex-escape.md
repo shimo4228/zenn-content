@@ -1,3 +1,4 @@
+<!-- origin: auto-extracted -->
 # prh ハイフン含むパターンの正規表現エラー
 
 **Extracted:** 2026-02-12

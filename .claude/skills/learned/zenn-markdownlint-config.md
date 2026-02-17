@@ -1,3 +1,4 @@
+<!-- origin: auto-extracted -->
 # Zenn 記事向け markdownlint-cli2 設定パターン
 
 **Extracted:** 2026-02-12

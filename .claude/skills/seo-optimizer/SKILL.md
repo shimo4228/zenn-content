@@ -1,3 +1,4 @@
+<!-- origin: original -->
 # SEO Optimizer Skill
 
 **Purpose:** Zenn 記事のタイトル・topics・emoji を最適化し、検索流入とエンゲージメントを向上させる。

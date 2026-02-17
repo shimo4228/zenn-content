@@ -1,3 +1,4 @@
+<!-- origin: original -->
 # AI Chat Log → Zenn Article Pipeline
 
 **Purpose:** AI（Gemini/ChatGPT等）との対話ログを元に、Zenn記事のドラフトを作成するワークフロー。

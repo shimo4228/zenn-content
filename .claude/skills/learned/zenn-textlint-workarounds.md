@@ -1,3 +1,4 @@
+<!-- origin: auto-extracted -->
 # Zenn記事の textlint 誤検出ワークアラウンド
 
 **Extracted:** 2026-02-13
