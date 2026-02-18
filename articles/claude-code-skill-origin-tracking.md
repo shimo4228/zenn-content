@@ -2,11 +2,11 @@
 title: "Claude Code スキルの出自管理 ── origin メタデータで79個を分類した"
 emoji: "🏷️"
 type: "tech"
-topics: ["claudecode", "ai", "cli"]
-published: false
+topics: ["claudecode", "ai", "開発環境", "cli"]
+published: true
 ---
 
-Claude Code を半年使い続けると、`~/.claude/skills/` に数十のスキルが溜まります。ECC（Everything Claude Code）から一括導入したもの、GitHub で見つけたコミュニティ製、自分で作ったもの、セッション中に自動抽出されたもの。問題は、**どれがどの出自か分からなくなること**です。
+ECC（Everything Claude Code）から27個を一括導入し、GitHub で見つけたスキルを追加し、`/learn` で自動抽出されたものが溜まり、自分で書いたものもある。気づけば79個。**「このスキル、どこから来たんだっけ？」が分からない。**
 
 ECC は Claude Code 向けのスキル・設定をまとめたコミュニティリポジトリです。
 
@@ -69,7 +69,22 @@ frontmatter がない場合は HTML コメントで追加します。
 
 66個のグローバルスキルと13個のプロジェクトスキルを分類してタグ付けしました。
 
-手作業ではなく、まず ECC インストーラー（`configure-ecc/SKILL.md`）の中にある全27スキルのリストと照合し、それ以外のスキルはファイル内容から出自を特定しました。`nutrient-document-processing` は frontmatter に手がかりがなかったものの、ファイル末尾のリンクセクションに元リポジトリの URL が記載されていました。
+### 照合の手順
+
+1. **ECC スキルの特定**: `configure-ecc/SKILL.md` の中に全27スキルのリストがある。これと照合して ECC 由来を確定
+2. **外部リポジトリの特定**: frontmatter に手がかりがないスキルはファイル末尾のリンクや README を確認。`nutrient-document-processing` は末尾に元リポジトリの URL が記載されていた
+3. **自作・自動生成の分類**: `learned/` 配下は `auto-extracted`、`/skill-create` で生成したものは `skill-create`、残りは `original`
+
+### 結果の内訳
+
+```text
+origin 別スキル数（全79個）:
+  ECC             27  ── configure-ecc のリストと完全一致
+  original        22  ── 自作（rules, skills, agents）
+  auto-extracted  18  ── continuous-learning / /learn で自動生成
+  skill-create     6  ── git 履歴からパターン抽出
+  外部リポジトリ     6  ── GitHub で個別に発見・導入
+```
 
 タグ付け自体は Python スクリプトで一括処理しています。YAML frontmatter の有無を判定し、適切な形式で `origin` を挿入します。
 
@@ -107,4 +122,4 @@ ECC 側は変更が小さく受け入れやすいため先に提出し、Anthrop
 - 長期的にはスキルの標準メタデータ仕様が必要
 - ECC と Anthropic に Issue を提出済み
 
-スキルが10個を超えたら、まず `ls` して出自が分かるか試してみてください。分からなければ、origin タグの導入時です。
+`ls ~/.claude/skills/` して「これ何だっけ」が1つでもあれば、origin タグの導入時です。
