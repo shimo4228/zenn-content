@@ -129,6 +129,14 @@
       "qiita": "https://qiita.com/shimo4228/items/02312ef3357aa064f478",
       "devto": "https://dev.to/shimo4228/running-claude-code-in-zed-why-i-disable-the-built-in-ai-58mc",
       "hashnode": "https://shimo4228.hashnode.dev/running-claude-code-in-zed-why-i-disable-the-built-in-ai"
+    },
+    {
+      "file": "articles/claude-code-skill-origin-tracking.md",
+      "canonical_url": "https://zenn.dev/shimo4228/articles/claude-code-skill-origin-tracking",
+      "date": "2026-02-18",
+      "qiita": "https://qiita.com/shimo4228/items/82d960dbd401d007d01e",
+      "devto": "https://dev.to/shimo4228/tracking-skill-origins-in-claude-code-how-i-classified-79-skills-with-origin-metadata-5g1m",
+      "hashnode": "https://shimo4228.hashnode.dev/tracking-skill-origins-in-claude-code-how-i-classified-79-skills-with-origin-metadata"
     }
   ]
 }
