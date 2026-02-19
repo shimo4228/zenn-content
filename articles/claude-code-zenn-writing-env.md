@@ -3,7 +3,7 @@ title: "Claude Code と Zenn 執筆環境を一から育てた記録"
 emoji: "🛠️"
 type: "tech"
 topics: ["claudecode", "zenn", "textlint", "python"]
-published: false
+published: true
 ---
 
 Claude Code で Zenn の記事を書いています。自分の役割は方向性を決めて、書き上がった記事を全文読んでファクトチェックや指摘を入れることです。修正作業そのものは Claude Code がやります。
