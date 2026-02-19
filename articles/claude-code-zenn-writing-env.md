@@ -114,11 +114,11 @@ Claude Code: [JapaneseTextAnalyzer.count_chars を実行]
 
 推測ではなく kuromoji.js の辞書ベースで数えるので正確だ。`~/.claude.json`（グローバル設定）に置くことで、全プロジェクトから使える。
 
-## 第4章: Qiita で「表示が崩れています」とコメントが来た
+## 第4章: 「Qiita にも出したい」と言ったら記法の違いを先に指摘された
 
-Zenn で書いた記事を Qiita にコピペして投稿した。翌日、読者から「表示が崩れています」とコメントが来て初めて気づいた。Zenn の `:::message` ブロックがそのまま表示されていた。`:::details` や `/images/` パスも壊れていた。
+記事が何本か溜まってきた頃、「Qiita にもクロスポストしたい」と Claude Code に伝えた。すると「Zenn の `:::message` や `:::details` は Qiita では表示されません。記法変換が必要です」と先に指摘してきた。言われてみれば当然だが、自分では気づいていなかった。
 
-Claude Code に「Zenn 記法を自動変換してクロスポストする仕組みを作って」と依頼したら、`scripts/publish.py` を生成してくれた。
+そのまま Claude Code に変換スクリプトを作ってもらい、`scripts/publish.py` ができあがった。
 
 変換ルールは3つ。
 
