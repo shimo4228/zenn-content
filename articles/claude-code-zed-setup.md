@@ -3,7 +3,7 @@ title: "Claude Code を Zed で軽量に使う設定 — ビルトイン AI を�
 emoji: "⚡"
 type: "tech"
 topics: ["claudecode", "zed", "エディタ", "開発環境"]
-published: true
+published: false
 ---
 
 Cursor で Claude Code を使っていたとき、ファイル変更のたびに一瞬フリーズするのが気になっていました。Cursor の Tab 補完や Composer を使わず、Claude Code の拡張機能だけ動かしているのに、バックグラウンドのインデックス作成が CPU を使い続ける。重い器に軽い中身を入れている状態でした。

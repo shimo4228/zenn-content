@@ -3,7 +3,7 @@ title: "Claude Code の auto memory でセッションを跨いで学習を蓄�
 emoji: "🧠"
 type: "tech"
 topics: ["claudecode", "ai", "開発環境", "生産性"]
-published: true
+published: false
 ---
 
 ## auto memory とは
