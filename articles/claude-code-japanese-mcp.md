@@ -3,7 +3,7 @@ title: "Claude Code で日本語テキスト分析 MCP サーバーを使う —
 emoji: "🇯🇵"
 type: "tech"
 topics: ["claudecode", "mcp", "自然言語処理", "日本語"]
-published: true
+published: false
 ---
 
 ## やりたいこと
