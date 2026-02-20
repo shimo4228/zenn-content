@@ -50,13 +50,13 @@ The answer was immediate.
 
 > **Gemini**: To put it simply, thinking of them as "different people" is absolutely correct.
 
-Gemini explained in three layers: differences in parameter count, differences in tuning, and differences in how prompts are interpreted.
+Gemini explained in three layers: differences in parameter count, differences in tuning, and differences in how prompts are interpreted. Though Gemini mentioned "Ultra," it later clarified that this was an older naming convention — Pro is now the top tier. Here's how the current models map:
 
-| Model | Role | Human Analogy |
-|:---|:---|:---|
-| Haiku / Flash | Fast, follows instructions, returns structured formats | A quick junior assistant |
-| Sonnet / Pro | Balances speed and quality, handles practical work | A senior engineer in the field |
-| Opus / Ultra | Takes time to read complex context and produce designs | A veteran architect |
+| Role | Claude | Gemini | Human Analogy |
+|:---|:---|:---|:---|
+| Lightweight / Fast | Haiku | Flash | A quick junior assistant |
+| Core workhorse | Sonnet | Pro | A senior engineer in the field |
+| Deep reasoning | Opus | (Pro doubles up) | A veteran architect |
 
 In Claude Code's Task tool, specifying `model: "haiku"` for subagents makes simple searches and classifications many times faster than Opus. Right-person-for-the-job routing already works in practice.
 
