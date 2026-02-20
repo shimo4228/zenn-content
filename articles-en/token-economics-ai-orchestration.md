@@ -56,7 +56,7 @@ Gemini explained in three layers: differences in parameter count, differences in
 |:---|:---|:---|:---|
 | Lightweight / Fast | Haiku | Flash | A quick junior assistant |
 | Core workhorse | Sonnet | Pro | A senior engineer in the field |
-| Deep reasoning | Opus | (Pro doubles up) | A veteran architect |
+| Deep reasoning | Opus | Deep Think | A veteran architect |
 
 In Claude Code's Task tool, specifying `model: "haiku"` for subagents makes simple searches and classifications many times faster than Opus. Right-person-for-the-job routing already works in practice.
 
