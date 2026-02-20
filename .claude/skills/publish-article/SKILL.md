@@ -116,6 +116,23 @@ dry-run の結果を確認後:
 cd scripts && .venv/bin/python publish.py ../{article_path} --platform qiita
 ```
 
+**publish.py が自動変換する差異:**
+
+| Zenn | Qiita |
+|------|-------|
+| `:::message ... :::` | `> blockquote` |
+| `:::details title ... :::` | `<details><summary>` |
+| `topics` (frontmatter) | `tags` (API、最大5個) |
+
+**手動対応が必要な差異:**
+
+| 項目 | Zenn | Qiita |
+|------|------|-------|
+| CTA | 「いいね」のみ | 「いいね」+「ストック」 |
+| 前回記事リンク | Zenn URL | Qiita URL に差し替え |
+
+**クロスリンクの注意:** 前回記事リンクは公開済みプラットフォームの URL を使う。Zenn 側が `published: false` なら Qiita URL にフォールバック。
+
 ### Step 9: 英訳記事の作成（Dev.to / Hashnode 用）
 
 ユーザーに英訳してクロスポストするか確認する。
