@@ -20,8 +20,8 @@
       "file": "articles-en/ecc-journey-part1.md",
       "canonical_url": "https://zenn.dev/shimo4228/articles/ecc-journey-part1",
       "date": "2026-02-18",
-      "devto": null,
-      "hashnode": null
+      "devto": "https://dev.to/shimo4228/a-beginners-first-10-days-of-real-development-with-ecc-23k4",
+      "hashnode": "https://shimo4228.hashnode.dev/a-beginners-first-10-days-of-real-development-with-ecc"
     },
     {
       "file": "articles-en/ecc-journey-part2.md",
@@ -137,6 +137,33 @@
       "qiita": "https://qiita.com/shimo4228/items/82d960dbd401d007d01e",
       "devto": "https://dev.to/shimo4228/tracking-skill-origins-in-claude-code-how-i-classified-79-skills-with-origin-metadata-5g1m",
       "hashnode": "https://shimo4228.hashnode.dev/tracking-skill-origins-in-claude-code-how-i-classified-79-skills-with-origin-metadata"
+    },
+    {
+      "file": "articles/daily-research-agent-team.md",
+      "canonical_url": "https://zenn.dev/shimo4228/articles/daily-research-agent-team",
+      "zenn_date": "2026-02-21",
+      "date": "2026-02-22",
+      "qiita": null,
+      "devto": null,
+      "hashnode": null
+    },
+    {
+      "file": "articles/daily-research-postmortem.md",
+      "canonical_url": "https://zenn.dev/shimo4228/articles/daily-research-postmortem",
+      "zenn_date": "2026-02-22",
+      "date": "2026-02-23",
+      "qiita": null,
+      "devto": null,
+      "hashnode": null
+    },
+    {
+      "file": "articles/claude-code-context-orchestration.md",
+      "canonical_url": "https://zenn.dev/shimo4228/articles/claude-code-context-orchestration",
+      "zenn_date": "2026-02-23",
+      "date": "2026-02-24",
+      "qiita": null,
+      "devto": null,
+      "hashnode": null
     }
   ]
 }
