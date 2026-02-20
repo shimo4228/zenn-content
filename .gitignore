@@ -18,7 +18,9 @@ Thumbs.db
 # Zenn CLI
 .zenn/
 
-# Drafts (working notes, not for publication)
+# Internal docs and planning (not for publication)
+docs/
+planning/
 drafts/
 
 # Reports (generated analysis, session-specific)
