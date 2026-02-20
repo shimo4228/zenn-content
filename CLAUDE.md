@@ -139,6 +139,9 @@ Before publishing (see `docs/security-checklist.md` in Anki-QA):
 - [ ] Editor agent review completed
 - [ ] Lint passes (`npm run lint`)
 - [ ] Preview looks good (`npm run preview`)
+- [ ] English translation created in `articles-en/`
+- [ ] `schedule.json` updated with both Japanese and English entries (including cross-post dates)
+- [ ] Cross-post targets scheduled: Qiita (Japanese), Dev.to + Hashnode (English)
 
 ## Related Documentation
 
