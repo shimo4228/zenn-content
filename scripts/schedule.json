@@ -164,6 +164,27 @@
       "qiita": null,
       "devto": null,
       "hashnode": null
+    },
+    {
+      "file": "articles-en/daily-research-agent-team.md",
+      "canonical_url": "https://zenn.dev/shimo4228/articles/daily-research-agent-team",
+      "date": "2026-02-23",
+      "devto": null,
+      "hashnode": null
+    },
+    {
+      "file": "articles-en/daily-research-postmortem.md",
+      "canonical_url": "https://zenn.dev/shimo4228/articles/daily-research-postmortem",
+      "date": "2026-02-24",
+      "devto": null,
+      "hashnode": null
+    },
+    {
+      "file": "articles-en/claude-code-context-orchestration.md",
+      "canonical_url": "https://zenn.dev/shimo4228/articles/claude-code-context-orchestration",
+      "date": "2026-02-25",
+      "devto": null,
+      "hashnode": null
     }
   ]
 }
