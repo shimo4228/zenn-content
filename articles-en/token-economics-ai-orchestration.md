@@ -50,7 +50,7 @@ The answer was immediate.
 
 > **Gemini**: To put it simply, thinking of them as "different people" is absolutely correct.
 
-Gemini explained in three layers: differences in parameter count, differences in tuning, and differences in how prompts are interpreted. Though Gemini mentioned "Ultra," it later clarified that this was an older naming convention — Pro is now the top tier. Here's how the current models map:
+Gemini explained in three layers: differences in parameter count, differences in tuning, and differences in how prompts are interpreted. Here's how the current models map:
 
 | Role | Claude | Gemini | Human Analogy |
 |:---|:---|:---|:---|
