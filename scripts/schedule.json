@@ -145,7 +145,8 @@
       "date": "2026-02-22",
       "qiita": null,
       "devto": null,
-      "hashnode": null
+      "hashnode": null,
+      "zenn_published": true
     },
     {
       "file": "articles/daily-research-postmortem.md",
