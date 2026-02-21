@@ -3,7 +3,7 @@ title: "AI自動化パイプラインを2日間壊し続けて学んだこと"
 emoji: "🔥"
 type: "tech"
 topics: ["claudecode", "claude", "ai", "debugging"]
-published: false
+published: true
 ---
 
 毎朝5時に自動実行される AI リサーチパイプラインを[前回の記事](https://zenn.dev/shimo4228/articles/daily-research-automation)で紹介しました。Sonnet 単体でテーマ選定からリサーチ、レポート生成まで一気通貫。Python コード0行、Max プラン定額内で追加コスト0。
