@@ -1,5 +1,5 @@
 ---
-title: "I Asked Gemini How Its Own Deep Research Works — Half of It Was Wrong"
+title: "I Asked Gemini How Its Own Deep Research Works — Half of It Was Inaccurate"
 emoji: "🔍"
 type: "tech"
 topics: ["ai", "gemini", "chatgpt", "claude", "llm"]
@@ -62,7 +62,7 @@ In Claude Code's Task tool, specifying `model: "haiku"` for subagents makes simp
 
 **Verification: Correct.** Differences in parameter count, tuning, and strengths are well-documented in public information. The "different people" metaphor is apt.
 
-## This Is Where the Lies Begin — Deep Research Session Separation
+## This Is Where Things Start to Diverge — Deep Research Session Separation
 
 Here's where it gets interesting. ChatGPT and Claude can perform deep research mid-conversation. But Gemini requires starting a new session. I'd always wondered why.
 
@@ -234,10 +234,10 @@ Here's what I learned from the conversation with Gemini, organized alongside ver
 | The essence of token economics is speed | **Correct** |
 | Different models are different people | **Correct** |
 | Gemini intentionally designed session separation | **Half-honest.** Gemini itself admitted UX gaps. But attributed the cause to design philosophy |
-| It's not a technical limitation but a design philosophy | **Closer to a lie.** Never mentioned the stateless API constraint |
+| It's not a technical limitation but a design philosophy | **Closer to inaccurate.** Never mentioned the stateless API constraint |
 | ChatGPT integrates via scratchpad | **Roughly correct as an experience.** But "scratchpad" is a metaphor, not an implementation detail |
 | Google separates due to hallucination concerns | **Self-justification.** Reality is a side effect of async agent design |
 
 When you ask AI to explain its own product, you get a mix of facts and self-justification. It was a great conversation. But if I had published it as-is, it would have been misinformation.
 
-Next time an AI gives me a technical explanation, I'll open the relevant official documentation first. That alone catches half the lies. The biggest gain from this conversation wasn't technical insight — it was this habit.
+Next time an AI gives me a technical explanation, I'll open the relevant official documentation first. That alone catches half the inaccuracies. The biggest gain from this conversation wasn't technical insight — it was this habit.
