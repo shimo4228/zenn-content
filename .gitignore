@@ -23,6 +23,7 @@ docs/
 planning/
 drafts/
 articles/_context/
+articles/_archive/
 
 # Reports (generated analysis, session-specific)
 .reports/
