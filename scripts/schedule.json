@@ -199,6 +199,13 @@
       "zenn_published": true
     },
     {
+      "file": "articles-en/skill-stocktake-design-journey.md",
+      "canonical_url": "https://zenn.dev/shimo4228/articles/skill-stocktake-design-journey",
+      "date": "2026-02-23",
+      "devto": "https://dev.to/shimo4228/offloading-ais-weak-spots-to-shell-scripts-designing-building-and-publishing-a-skill-audit-2ll8",
+      "hashnode": "https://shimo4228.hashnode.dev/offloading-ais-weak-spots-to-shell-scripts-designing-building-and-publishing-a-skill-audit-command"
+    },
+    {
       "file": "articles/token-economics-ai-orchestration.md",
       "canonical_url": "https://zenn.dev/shimo4228/articles/token-economics-ai-orchestration",
       "zenn_date": "2026-02-25",
