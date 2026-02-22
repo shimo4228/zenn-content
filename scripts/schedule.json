@@ -162,9 +162,10 @@
       "canonical_url": "https://zenn.dev/shimo4228/articles/claude-code-context-orchestration",
       "zenn_date": "2026-02-23",
       "date": "2026-02-23",
-      "qiita": null,
+      "qiita": "https://qiita.com/shimo4228/items/a14c17b40f3861d628b7",
       "devto": "n/a",
-      "hashnode": "n/a"
+      "hashnode": "n/a",
+      "zenn_published": true
     },
     {
       "file": "articles-en/daily-research-agent-team.md",
@@ -184,14 +185,24 @@
       "file": "articles-en/claude-code-context-orchestration.md",
       "canonical_url": "https://zenn.dev/shimo4228/articles/claude-code-context-orchestration",
       "date": "2026-02-23",
-      "devto": null,
-      "hashnode": null
+      "devto": "https://dev.to/shimo4228/the-real-power-of-claude-code-isnt-code-generation-its-autonomous-context-orchestration-3djk",
+      "hashnode": "https://shimo4228.hashnode.dev/the-real-power-of-claude-code-isnt-code-generation-its-autonomous-context-orchestration"
+    },
+    {
+      "file": "articles/skill-stocktake-design-journey.md",
+      "canonical_url": "https://zenn.dev/shimo4228/articles/skill-stocktake-design-journey",
+      "zenn_date": "2026-02-23",
+      "date": "2026-02-23",
+      "qiita": null,
+      "devto": "n/a",
+      "hashnode": "n/a",
+      "zenn_published": true
     },
     {
       "file": "articles/token-economics-ai-orchestration.md",
       "canonical_url": "https://zenn.dev/shimo4228/articles/token-economics-ai-orchestration",
-      "zenn_date": "2026-02-24",
-      "date": "2026-02-24",
+      "zenn_date": "2026-02-25",
+      "date": "2026-02-25",
       "qiita": null,
       "devto": "n/a",
       "hashnode": "n/a"
@@ -199,7 +210,7 @@
     {
       "file": "articles-en/token-economics-ai-orchestration.md",
       "canonical_url": "https://zenn.dev/shimo4228/articles/token-economics-ai-orchestration",
-      "date": "2026-02-24",
+      "date": "2026-02-25",
       "devto": null,
       "hashnode": null
     },
