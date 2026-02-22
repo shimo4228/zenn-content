@@ -208,7 +208,7 @@
       "canonical_url": "https://zenn.dev/shimo4228/articles/base-model-experience",
       "zenn_date": "2026-02-22",
       "date": "2026-02-22",
-      "qiita": null,
+      "qiita": "https://qiita.com/shimo4228/items/e24cbefb383687634427",
       "devto": "n/a",
       "hashnode": "n/a",
       "zenn_published": true
@@ -217,8 +217,8 @@
       "file": "articles-en/base-model-experience.md",
       "canonical_url": "https://zenn.dev/shimo4228/articles/base-model-experience",
       "date": "2026-02-22",
-      "devto": null,
-      "hashnode": null
+      "devto": "https://dev.to/shimo4228/before-and-after-alignment-i-typed-hello-into-a-base-model-and-got-an-anime-review-16fk",
+      "hashnode": "https://shimo4228.hashnode.dev/before-and-after-alignment-i-typed-hello-into-a-base-model-and-got-an-anime-review"
     }
   ]
 }
