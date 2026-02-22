@@ -29,6 +29,8 @@ logger = logging.getLogger(__name__)
 
 
 def _setup_logging() -> None:
+    if logger.handlers:
+        return
     fmt = logging.Formatter("[%(asctime)s] %(message)s", datefmt="%Y-%m-%d %H:%M:%S")
     file_handler = logging.FileHandler(LOG_PATH)
     file_handler.setFormatter(fmt)
@@ -200,6 +202,21 @@ def publish_due(schedule: dict[str, Any], *, dry_run: bool = False) -> int:
 
     if published_count or errors:
         logger.info("%d article(s) published, %d error(s).", published_count, errors)
+
+    # Run cross-post for articles due today (after Zenn publish)
+    try:
+        import scheduled_publish as _sp
+        _sp._setup_logging()
+        logger.info("=== Cross-post ===")
+        updated_schedule = load_schedule()
+        crosspost_result = _sp.publish_due(updated_schedule, dry_run=dry_run)
+        if crosspost_result != 0:
+            errors += 1
+    except ImportError as e:
+        logger.warning("scheduled_publish not available (venv required): %s", e)
+    except Exception as e:
+        logger.error("Cross-post failed with unexpected error: %s", e)
+        errors += 1
 
     return 1 if errors > 0 else 0
 

@@ -1,5 +1,4 @@
 {
-  "post_time_utc": "09:00",
   "articles": [
     {
       "file": "articles/daily-research-automation.md",
@@ -142,7 +141,7 @@
       "file": "articles/daily-research-agent-team.md",
       "canonical_url": "https://zenn.dev/shimo4228/articles/daily-research-agent-team",
       "zenn_date": "2026-02-21",
-      "date": "2026-02-22",
+      "date": "2026-02-21",
       "qiita": null,
       "devto": null,
       "hashnode": null,
@@ -152,16 +151,17 @@
       "file": "articles/daily-research-postmortem.md",
       "canonical_url": "https://zenn.dev/shimo4228/articles/daily-research-postmortem",
       "zenn_date": "2026-02-22",
-      "date": "2026-02-23",
+      "date": "2026-02-22",
       "qiita": null,
       "devto": null,
-      "hashnode": null
+      "hashnode": null,
+      "zenn_published": true
     },
     {
       "file": "articles/claude-code-context-orchestration.md",
       "canonical_url": "https://zenn.dev/shimo4228/articles/claude-code-context-orchestration",
       "zenn_date": "2026-02-23",
-      "date": "2026-02-24",
+      "date": "2026-02-23",
       "qiita": null,
       "devto": null,
       "hashnode": null
@@ -191,7 +191,7 @@
       "file": "articles/token-economics-ai-orchestration.md",
       "canonical_url": "https://zenn.dev/shimo4228/articles/token-economics-ai-orchestration",
       "zenn_date": "2026-02-24",
-      "date": "2026-02-25",
+      "date": "2026-02-24",
       "qiita": null,
       "devto": null,
       "hashnode": null

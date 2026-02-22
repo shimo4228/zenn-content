@@ -41,6 +41,8 @@ logger = logging.getLogger(__name__)
 
 
 def _setup_logging() -> None:
+    if logger.handlers:
+        return
     fmt = logging.Formatter("[%(asctime)s] %(message)s", datefmt="%Y-%m-%d %H:%M:%S")
     file_handler = logging.FileHandler(LOG_PATH)
     file_handler.setFormatter(fmt)
