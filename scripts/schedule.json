@@ -33,29 +33,29 @@
       "file": "articles-en/ecc-journey-part3.md",
       "canonical_url": "https://zenn.dev/shimo4228/articles/ecc-journey-part3",
       "date": "2026-02-22",
-      "devto": null,
-      "hashnode": null
+      "devto": "https://dev.to/shimo4228/15-days-of-skill-sprawl-in-claude-code-lessons-from-3-audits-27em",
+      "hashnode": "https://shimo4228.hashnode.dev/15-days-of-skill-sprawl-in-claude-code-lessons-from-3-audits"
     },
     {
       "file": "articles-en/claude-code-self-generation.md",
       "canonical_url": "https://zenn.dev/shimo4228/articles/claude-code-self-generation",
-      "date": "2026-02-24",
-      "devto": null,
-      "hashnode": null
+      "date": "2026-02-22",
+      "devto": "https://dev.to/shimo4228/the-day-i-told-claude-code-you-are-the-llm-251j",
+      "hashnode": "https://shimo4228.hashnode.dev/the-day-i-told-claude-code-you-are-the-llm"
     },
     {
       "file": "articles-en/cursor-to-zed-migration.md",
       "canonical_url": "https://zenn.dev/shimo4228/articles/cursor-to-zed-migration",
-      "date": "2026-02-26",
-      "devto": null,
-      "hashnode": null
+      "date": "2026-02-22",
+      "devto": "https://dev.to/shimo4228/cursor-to-zed-disabling-built-in-ai-for-a-cli-first-setup-6e4",
+      "hashnode": "https://shimo4228.hashnode.dev/cursor-to-zed-disabling-built-in-ai-for-a-cli-first-setup"
     },
     {
       "file": "articles-en/termius-iphone-claude-code.md",
       "canonical_url": "https://zenn.dev/shimo4228/articles/termius-iphone-claude-code",
-      "date": "2026-02-28",
-      "devto": null,
-      "hashnode": null
+      "date": "2026-02-22",
+      "devto": "https://dev.to/shimo4228/running-claude-code-from-iphone-via-ssh-tmux-4c10",
+      "hashnode": "https://shimo4228.hashnode.dev/running-claude-code-from-iphone-via-ssh-tmux"
     },
     {
       "file": "articles/prh-nodejs20-regex-error.md",
@@ -142,9 +142,9 @@
       "canonical_url": "https://zenn.dev/shimo4228/articles/daily-research-agent-team",
       "zenn_date": "2026-02-21",
       "date": "2026-02-21",
-      "qiita": null,
-      "devto": null,
-      "hashnode": null,
+      "qiita": "https://qiita.com/shimo4228/items/14de47e9a7badd71e484",
+      "devto": "n/a",
+      "hashnode": "n/a",
       "zenn_published": true
     },
     {
@@ -152,9 +152,9 @@
       "canonical_url": "https://zenn.dev/shimo4228/articles/daily-research-postmortem",
       "zenn_date": "2026-02-22",
       "date": "2026-02-22",
-      "qiita": null,
-      "devto": null,
-      "hashnode": null,
+      "qiita": "https://qiita.com/shimo4228/items/ceb4c5b167fab2bfa837",
+      "devto": "n/a",
+      "hashnode": "n/a",
       "zenn_published": true
     },
     {
@@ -163,27 +163,27 @@
       "zenn_date": "2026-02-23",
       "date": "2026-02-23",
       "qiita": null,
-      "devto": null,
-      "hashnode": null
+      "devto": "n/a",
+      "hashnode": "n/a"
     },
     {
       "file": "articles-en/daily-research-agent-team.md",
       "canonical_url": "https://zenn.dev/shimo4228/articles/daily-research-agent-team",
-      "date": "2026-02-23",
-      "devto": null,
-      "hashnode": null
+      "date": "2026-02-22",
+      "devto": "https://dev.to/shimo4228/i-tried-an-opus-orchestrator-and-killed-it-the-roi-of-multi-agent-systems-1f7g",
+      "hashnode": "https://shimo4228.hashnode.dev/i-tried-an-opus-orchestrator-and-killed-it-the-roi-of-multi-agent-systems"
     },
     {
       "file": "articles-en/daily-research-postmortem.md",
       "canonical_url": "https://zenn.dev/shimo4228/articles/daily-research-postmortem",
-      "date": "2026-02-24",
-      "devto": null,
-      "hashnode": null
+      "date": "2026-02-22",
+      "devto": "https://dev.to/shimo4228/what-i-learned-from-breaking-my-ai-pipeline-for-two-days-straight-pol",
+      "hashnode": "https://shimo4228.hashnode.dev/what-i-learned-from-breaking-my-ai-pipeline-for-two-days-straight"
     },
     {
       "file": "articles-en/claude-code-context-orchestration.md",
       "canonical_url": "https://zenn.dev/shimo4228/articles/claude-code-context-orchestration",
-      "date": "2026-02-25",
+      "date": "2026-02-23",
       "devto": null,
       "hashnode": null
     },
@@ -193,13 +193,30 @@
       "zenn_date": "2026-02-24",
       "date": "2026-02-24",
       "qiita": null,
-      "devto": null,
-      "hashnode": null
+      "devto": "n/a",
+      "hashnode": "n/a"
     },
     {
       "file": "articles-en/token-economics-ai-orchestration.md",
       "canonical_url": "https://zenn.dev/shimo4228/articles/token-economics-ai-orchestration",
-      "date": "2026-02-26",
+      "date": "2026-02-24",
+      "devto": null,
+      "hashnode": null
+    },
+    {
+      "file": "articles/base-model-experience.md",
+      "canonical_url": "https://zenn.dev/shimo4228/articles/base-model-experience",
+      "zenn_date": "2026-02-22",
+      "date": "2026-02-22",
+      "qiita": null,
+      "devto": "n/a",
+      "hashnode": "n/a",
+      "zenn_published": true
+    },
+    {
+      "file": "articles-en/base-model-experience.md",
+      "canonical_url": "https://zenn.dev/shimo4228/articles/base-model-experience",
+      "date": "2026-02-22",
       "devto": null,
       "hashnode": null
     }
