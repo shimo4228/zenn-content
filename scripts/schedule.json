@@ -243,10 +243,17 @@
       "canonical_url": "https://zenn.dev/shimo4228/articles/claude-kimi-hybrid-setup",
       "zenn_date": "2026-02-24",
       "date": "2026-02-24",
-      "qiita": null,
+      "qiita": "https://qiita.com/shimo4228/items/5e00e135826fd32e7ab1",
       "devto": "n/a",
       "hashnode": "n/a",
       "zenn_published": true
+    },
+    {
+      "file": "articles-en/claude-kimi-hybrid-setup.md",
+      "canonical_url": "https://zenn.dev/shimo4228/articles/claude-kimi-hybrid-setup",
+      "date": "2026-02-24",
+      "devto": "https://dev.to/shimo4228/building-a-claude-code-x-kimi-k25-hybrid-environment-opus-designs-k25-implements-1ic",
+      "hashnode": "https://shimo4228.hashnode.dev/building-a-claude-code-kimi-k25-hybrid-environment-opus-designs-k25-implements"
     }
   ]
 }
