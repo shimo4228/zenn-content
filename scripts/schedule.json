@@ -193,7 +193,7 @@
       "canonical_url": "https://zenn.dev/shimo4228/articles/skill-stocktake-design-journey",
       "zenn_date": "2026-02-23",
       "date": "2026-02-23",
-      "qiita": null,
+      "qiita": "https://qiita.com/shimo4228/items/924a00bbc0760d0dfbda",
       "devto": "n/a",
       "hashnode": "n/a",
       "zenn_published": true
@@ -237,6 +237,16 @@
       "date": "2026-02-22",
       "devto": "https://dev.to/shimo4228/before-and-after-alignment-i-typed-hello-into-a-base-model-and-got-an-anime-review-16fk",
       "hashnode": "https://shimo4228.hashnode.dev/before-and-after-alignment-i-typed-hello-into-a-base-model-and-got-an-anime-review"
+    },
+    {
+      "file": "articles/claude-kimi-hybrid-setup.md",
+      "canonical_url": "https://zenn.dev/shimo4228/articles/claude-kimi-hybrid-setup",
+      "zenn_date": "2026-02-24",
+      "date": "2026-02-24",
+      "qiita": null,
+      "devto": "n/a",
+      "hashnode": "n/a",
+      "zenn_published": true
     }
   ]
 }
