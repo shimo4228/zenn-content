@@ -26,10 +26,16 @@ from publish import (
     convert_to_devto,
     convert_to_hashnode,
     convert_to_qiita,
+    find_devto_article_by_title,
+    find_hashnode_post_by_title,
+    find_qiita_item_by_title,
     parse_zenn_article,
     publish_to_devto,
     publish_to_hashnode,
     publish_to_qiita,
+    update_on_devto,
+    update_on_hashnode,
+    update_on_qiita,
 )
 
 SCRIPT_DIR = Path(__file__).parent
@@ -88,8 +94,8 @@ def show_status(schedule: dict[str, Any]) -> None:
         d = entry["date"]
         f = entry["file"]
         qiita = "done" if entry.get("qiita") else ("-" if "qiita" in entry else "n/a")
-        devto = "done" if entry["devto"] else "-"
-        hashnode = "done" if entry["hashnode"] else "-"
+        devto = "n/a" if entry["devto"] == "n/a" else ("done" if entry["devto"] else "-")
+        hashnode = "n/a" if entry["hashnode"] == "n/a" else ("done" if entry["hashnode"] else "-")
         entry_date = date.fromisoformat(d)
         if _is_entry_done(entry):
             status = "posted"
@@ -184,9 +190,15 @@ def _process_entry(
     errors = 0
 
     if "qiita" in entry and not entry["qiita"]:
+        def _qiita_upsert() -> PublishResult:
+            payload = convert_to_qiita(article)
+            existing_id = find_qiita_item_by_title(article.title, creds.qiita_token)
+            if existing_id:
+                logger.info("  Qiita: existing article found (%s), updating", existing_id)
+                return update_on_qiita(existing_id, payload, creds.qiita_token)
+            return publish_to_qiita(payload, creds.qiita_token)
         url, failed = _try_publish(
-            "Qiita",
-            lambda: publish_to_qiita(convert_to_qiita(article), creds.qiita_token),
+            "Qiita", _qiita_upsert,
             dry_run=dry_run, title=article.title,
         )
         if url:
@@ -194,9 +206,15 @@ def _process_entry(
         errors += failed
 
     if not entry["devto"]:
-        payload = convert_to_devto(article, canonical_url=canonical)
+        def _devto_upsert() -> PublishResult:
+            payload = convert_to_devto(article, canonical_url=canonical)
+            existing_id = find_devto_article_by_title(article.title, creds.devto_key)
+            if existing_id:
+                logger.info("  Dev.to: existing article found (%s), updating", existing_id)
+                return update_on_devto(existing_id, payload, creds.devto_key)
+            return publish_to_devto(payload, creds.devto_key)
         url, failed = _try_publish(
-            "Dev.to", lambda: publish_to_devto(payload, creds.devto_key),
+            "Dev.to", _devto_upsert,
             dry_run=dry_run, title=article.title,
         )
         if url:
@@ -204,9 +222,17 @@ def _process_entry(
         errors += failed
 
     if not entry["hashnode"]:
-        payload = convert_to_hashnode(article, creds.hashnode_pub_id, canonical_url=canonical)
+        def _hashnode_upsert() -> PublishResult:
+            existing_id = find_hashnode_post_by_title(
+                article.title, creds.hashnode_pub_id, creds.hashnode_token,
+            )
+            if existing_id:
+                logger.info("  Hashnode: existing post found (%s), updating", existing_id)
+                return update_on_hashnode(existing_id, article, creds.hashnode_token)
+            payload = convert_to_hashnode(article, creds.hashnode_pub_id, canonical_url=canonical)
+            return publish_to_hashnode(payload, creds.hashnode_token)
         url, failed = _try_publish(
-            "Hashnode", lambda: publish_to_hashnode(payload, creds.hashnode_token),
+            "Hashnode", _hashnode_upsert,
             dry_run=dry_run, title=article.title,
         )
         if url:
@@ -226,7 +252,8 @@ def publish_due(schedule: dict[str, Any], *, dry_run: bool = False) -> int:
     errors = 0
     updated_articles: list[dict[str, Any]] = []
 
-    for entry in schedule["articles"]:
+    remaining = list(schedule["articles"])
+    for i, entry in enumerate(remaining):
         entry_date = date.fromisoformat(entry["date"])
         if entry_date > today or _is_entry_done(entry):
             updated_articles.append(entry)
@@ -236,6 +263,12 @@ def publish_due(schedule: dict[str, Any], *, dry_run: bool = False) -> int:
         updated_articles.append(updated_entry)
         errors += entry_errors
         posted_count += 1
+
+        # Persist immediately after each entry so a mid-run process kill
+        # does not lose progress for already-completed entries.
+        if updated_entry is not entry and not dry_run:
+            all_articles = updated_articles + remaining[i + 1:]
+            save_schedule({**schedule, "articles": all_articles})
 
     if posted_count == 0:
         logger.info("Nothing due today.")

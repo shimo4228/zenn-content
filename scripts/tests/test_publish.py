@@ -50,8 +50,6 @@ def _make_article(**overrides: object) -> Article:
         "title": "テスト記事",
         "body": "本文テスト",
         "topics": ("python", "testing", "ci"),
-        "emoji": "🧪",
-        "article_type": "tech",
     }
     defaults.update(overrides)
     return Article(**defaults)
@@ -168,8 +166,6 @@ class TestParseZennArticle:
     def test_parse_sample_article(self) -> None:
         article = parse_zenn_article(SAMPLE_ARTICLE)
         assert article.title == "テスト用記事タイトル"
-        assert article.emoji == "🧪"
-        assert article.article_type == "tech"
         assert article.topics == ("python", "testing", "pytest", "ci", "automation")
         assert "テスト用の記事" in article.body
 

@@ -48,8 +48,6 @@ class Article:
     title: str
     body: str
     topics: tuple[str, ...]
-    emoji: str
-    article_type: str
 
 
 @dataclass(frozen=True)
@@ -72,8 +70,6 @@ def parse_zenn_article(path: Path) -> Article:
         title=post.metadata.get("title", ""),
         body=post.content,
         topics=tuple(post.metadata.get("topics", [])),
-        emoji=post.metadata.get("emoji", ""),
-        article_type=post.metadata.get("type", "tech"),
     )
 
 
@@ -379,6 +375,57 @@ def update_on_hashnode(post_id: str, article: Article, token: str) -> PublishRes
         return PublishResult("hashnode", False, None, json.dumps(data["errors"]))
     post = data.get("data", {}).get("updatePost", {}).get("post", {})
     return PublishResult("hashnode", True, post.get("url"), None)
+
+
+_HASHNODE_FIND_POSTS_QUERY = """\
+query GetPublicationPosts($publicationId: ObjectId!, $first: Int!, $after: String) {
+  publication(id: $publicationId) {
+    posts(first: $first, after: $after) {
+      edges {
+        node {
+          id
+          title
+        }
+      }
+      pageInfo {
+        hasNextPage
+        endCursor
+      }
+    }
+  }
+}"""
+
+
+def find_hashnode_post_by_title(
+    title: str, publication_id: str, token: str,
+) -> str | None:
+    """Search publication's posts for a matching title. Returns post ID."""
+    after: str | None = None
+    for _ in range(3):  # max 3 pages (150 posts)
+        variables: dict = {"publicationId": publication_id, "first": 50}
+        if after:
+            variables["after"] = after
+        resp = httpx.post(
+            HASHNODE_API_URL,
+            headers={"Authorization": token, "Content-Type": "application/json"},
+            json={"query": _HASHNODE_FIND_POSTS_QUERY, "variables": variables},
+            timeout=30,
+        )
+        if resp.status_code != 200:
+            return None
+        data = resp.json()
+        if "errors" in data:
+            return None
+        posts_data = data.get("data", {}).get("publication", {}).get("posts", {})
+        for edge in posts_data.get("edges", []):
+            node = edge.get("node", {})
+            if node.get("title") == title:
+                return node["id"]
+        page_info = posts_data.get("pageInfo", {})
+        if not page_info.get("hasNextPage"):
+            break
+        after = page_info.get("endCursor")
+    return None
 
 
 # ---------------------------------------------------------------------------
