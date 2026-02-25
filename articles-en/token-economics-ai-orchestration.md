@@ -1,5 +1,5 @@
 ---
-title: "I Asked Gemini How Its Own Deep Research Works — Half of It Was Inaccurate"
+title: "I Had Gemini Explain Its Own Deep Research — Half Was Self-Justification"
 emoji: "🔍"
 type: "tech"
 topics: ["ai", "gemini", "chatgpt", "claude", "llm"]

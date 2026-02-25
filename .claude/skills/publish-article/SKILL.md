@@ -93,16 +93,25 @@ npm run preview
 
 ユーザーに `http://localhost:8000` でのプレビュー確認を促す。
 
-### Step 7: 公開
+### Step 7: スケジュール登録
 
-ユーザーの確認後:
+バズ最適タイミング: **火〜水曜 7:00-9:00 JST**
+
+1. `scripts/schedule.json` に JP + EN エントリを追加（`"pending"` ステータス）
+2. notes に実行コマンドを記載
+3. 即時公開でない場合は `published: false` のまま git push し、公開日朝に Step 8 を実行
+
+### Step 8: 公開
+
+ユーザーの確認後（またはスケジュール当日朝）:
 
 1. `published: false` → `published: true` に変更
 2. `git add {article_path}`
 3. `git commit -m "feat: {article_title} を公開"`
 4. `git push`
+5. `scripts/schedule.json` の `zenn_published` を `true` に更新
 
-### Step 8: Qiita クロスポスト（オプション）
+### Step 9: Qiita クロスポスト（オプション）
 
 ユーザーに Qiita にもクロスポストするか確認する。
 
@@ -133,7 +142,7 @@ cd scripts && .venv/bin/python publish.py ../{article_path} --platform qiita
 
 **クロスリンクの注意:** 前回記事リンクは公開済みプラットフォームの URL を使う。Zenn 側が `published: false` なら Qiita URL にフォールバック。
 
-### Step 9: 英訳記事の作成（Dev.to / Hashnode 用）
+### Step 10: 英訳記事の作成（Dev.to / Hashnode 用）
 
 ユーザーに英訳してクロスポストするか確認する。
 
@@ -144,7 +153,7 @@ cd scripts && .venv/bin/python publish.py ../{article_path} --platform qiita
 
 英訳は `articles-en/` に同名で保存される。
 
-### Step 10: Dev.to / Hashnode クロスポスト（オプション）
+### Step 11: Dev.to / Hashnode クロスポスト（オプション）
 
 英訳記事が存在する場合、Dev.to と Hashnode にクロスポストする。
 
@@ -159,6 +168,17 @@ cd scripts && uv run python publish.py ../articles-en/{filename} --platform hash
 ```
 
 > **Note:** `publish.py` は日本語記事（`articles/`）で Dev.to / Hashnode を指定するとガードが発動します。`--force` で回避可能。
+
+---
+
+### Step 12: schedule.json の最終更新
+
+全クロスポスト完了後、`scripts/schedule.json` の `"pending"` を実 URL に更新する。
+
+```bash
+# schedule.json の pending エントリを実 URL に置換
+# qiita, devto, hashnode の各 URL を記録
+```
 
 ---
 

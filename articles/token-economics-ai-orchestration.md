@@ -1,5 +1,5 @@
 ---
-title: "Geminiに自社のDeep Researchの仕組みを聞いたら、半分が不正確だった"
+title: "Geminiに自社Deep Researchを語らせたら、半分が自己弁護だった"
 emoji: "🔍"
 type: "tech"
 topics: ["ai", "gemini", "chatgpt", "claude", "llm"]

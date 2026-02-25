@@ -210,16 +210,17 @@
       "canonical_url": "https://zenn.dev/shimo4228/articles/token-economics-ai-orchestration",
       "zenn_date": "2026-02-25",
       "date": "2026-02-25",
-      "qiita": null,
+      "qiita": "https://qiita.com/shimo4228/items/61e2da7c7a2df251ebf3",
       "devto": "n/a",
-      "hashnode": "n/a"
+      "hashnode": "n/a",
+      "zenn_published": true
     },
     {
       "file": "articles-en/token-economics-ai-orchestration.md",
       "canonical_url": "https://zenn.dev/shimo4228/articles/token-economics-ai-orchestration",
       "date": "2026-02-25",
-      "devto": null,
-      "hashnode": null
+      "devto": "https://dev.to/shimo4228/i-asked-gemini-how-its-own-deep-research-works-half-of-it-was-inaccurate-1ki1",
+      "hashnode": "https://shimo4228.hashnode.dev/i-asked-gemini-how-its-own-deep-research-works-half-of-it-was-inaccurate"
     },
     {
       "file": "articles/base-model-experience.md",
@@ -254,6 +255,25 @@
       "date": "2026-02-24",
       "devto": "https://dev.to/shimo4228/building-a-claude-code-x-kimi-k25-hybrid-environment-opus-designs-k25-implements-1ic",
       "hashnode": "https://shimo4228.hashnode.dev/building-a-claude-code-kimi-k25-hybrid-environment-opus-designs-k25-implements"
+    },
+    {
+      "file": "articles/ai-peer-review-methodology.md",
+      "canonical_url": "https://zenn.dev/shimo4228/articles/ai-peer-review-methodology",
+      "zenn_date": "2026-02-26",
+      "date": "2026-02-26",
+      "qiita": "pending",
+      "devto": "n/a",
+      "hashnode": "n/a",
+      "zenn_published": false,
+      "notes": "Publish at 7:00 AM JST (Wed). Steps: 1) set published:true 2) git push 3) python scripts/publish.py articles/ai-peer-review-methodology.md --platform qiita"
+    },
+    {
+      "file": "articles-en/ai-peer-review-methodology.md",
+      "canonical_url": "https://zenn.dev/shimo4228/articles/ai-peer-review-methodology",
+      "date": "2026-02-26",
+      "devto": "pending",
+      "hashnode": "pending",
+      "notes": "After Zenn publish: python scripts/publish.py articles-en/ai-peer-review-methodology.md --platform devto --canonical-url https://zenn.dev/shimo4228/articles/ai-peer-review-methodology && sleep 30 && python scripts/publish.py articles-en/ai-peer-review-methodology.md --platform hashnode --canonical-url https://zenn.dev/shimo4228/articles/ai-peer-review-methodology"
     }
   ]
 }
