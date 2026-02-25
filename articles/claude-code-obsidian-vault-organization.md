@@ -1,5 +1,5 @@
 ---
-title: "Claude Code で Obsidian Vault 3,674ファイルを一括整理した"
+title: "3,674ファイルのObsidian地獄をClaude Codeに1日で片付けさせた"
 emoji: "🗄️"
 type: "tech"
 topics: ["obsidian", "claudecode", "claude", "python"]

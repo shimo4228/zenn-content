@@ -1,5 +1,5 @@
 ---
-title: "Claude Code の真価はコード生成ではない ── コンテキスト自律操作という本質"
+title: "Claude Code の真価はコード生成ではない"
 emoji: "🧠"
 type: "idea"
 topics: ["claudecode", "ai", "開発環境", "生産性"]

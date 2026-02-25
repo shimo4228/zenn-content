@@ -1,5 +1,5 @@
 ---
-title: "AI自動化パイプラインを2日間壊し続けて学んだこと"
+title: "2日間壊し続けたAIパイプライン ── Claudeの認知バイアスと人間の介入"
 emoji: "🔥"
 type: "tech"
 topics: ["claudecode", "claude", "ai", "debugging"]

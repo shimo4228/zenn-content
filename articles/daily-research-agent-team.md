@@ -1,5 +1,5 @@
 ---
-title: "Opusオーケストレーターを試して棄却した話 — マルチエージェントの費用対効果"
+title: "最強モデルで司令塔を組んだら9倍遅くなった ── なぜマルチエージェントを棄却したか"
 emoji: "🤖"
 type: "tech"
 topics: ["claudecode", "claude", "ai", "automation"]

@@ -1,5 +1,5 @@
 ---
-title: "Claude Code と Zenn 執筆環境を一から育てた記録"
+title: "Claude Codeで育てたZenn執筆環境 ── lint28件からエージェントレビューまで"
 emoji: "🛠️"
 type: "tech"
 topics: ["claudecode", "zenn", "textlint", "python"]
