@@ -59,6 +59,8 @@ def generate_schedule(
     publish_days: list[int] | None = None,
     crosspost_delay: int = 1,
     scores: dict[str, dict] | None = None,
+    include_en_translation: bool = False,
+    en_same_day: bool = True,
 ) -> list[dict]:
     """Generate schedule entries for a list of article slugs.
 
@@ -68,6 +70,8 @@ def generate_schedule(
         publish_days: Weekday numbers (0=Mon, 6=Sun). Default: [1, 3] (Tue/Thu).
         crosspost_delay: Days between Zenn publish and cross-post. Default: 1.
         scores: Optional dict mapping slug to score dict for traceability.
+        include_en_translation: Whether to include English translation entries.
+        en_same_day: If True, EN translation posts on same day as Zenn (for Dev.to/Hashnode).
 
     Returns:
         List of schedule entry dicts.
@@ -82,6 +86,7 @@ def generate_schedule(
         zenn_date = next_publish_date(current, publish_days)
         crosspost_date = zenn_date + timedelta(days=crosspost_delay)
 
+        # Japanese article entry
         entry: dict = {
             "file": f"articles/{slug}.md",
             "canonical_url": f"{ZENN_BASE_URL}/{slug}",
@@ -96,6 +101,21 @@ def generate_schedule(
             entry["score"] = scores[slug]
 
         entries.append(entry)
+
+        # English translation entry (Dev.to/Hashnode only)
+        if include_en_translation:
+            en_entry: dict = {
+                "file": f"articles-en/{slug}.md",
+                "canonical_url": f"{ZENN_BASE_URL}/{slug}",
+                "date": zenn_date.isoformat() if en_same_day else crosspost_date.isoformat(),
+                "devto": "pending",
+                "hashnode": "pending",
+                "depends_on": f"articles/{slug}.md",
+            }
+            if scores and slug in scores:
+                en_entry["score"] = scores[slug]
+            entries.append(en_entry)
+
         # Next article starts searching from the day after this publish date
         current = zenn_date + timedelta(days=1)
 
@@ -173,6 +193,14 @@ def main() -> int:
         help="Days between Zenn publish and cross-post (default: 1).",
     )
     parser.add_argument(
+        "--include-en", action="store_true",
+        help="Include English translation entries for Dev.to/Hashnode.",
+    )
+    parser.add_argument(
+        "--en-same-day", action="store_true", default=True,
+        help="Schedule EN translation on same day as Zenn (default: True).",
+    )
+    parser.add_argument(
         "--merge", action="store_true",
         help="Merge into existing schedule.json instead of just printing.",
     )
@@ -196,14 +224,18 @@ def main() -> int:
         publish_days=publish_days,
         crosspost_delay=args.crosspost_delay,
         scores=scores,
+        include_en_translation=args.include_en,
+        en_same_day=args.en_same_day,
     )
 
     # Display schedule
-    print(f"\n{'Date':<14} {'Cross-post':<14} {'Slug':<40} {'Score':>5}")
-    print("-" * 78)
+    print(f"\n{'Type':<5} {'Date':<14} {'Cross-post':<14} {'Slug':<40} {'Score':>5}")
+    print("-" * 85)
     for e in entries:
         score_str = str(e["score"]["total"]) if "score" in e else "-"
-        print(f"{e['zenn_date']:<14} {e['date']:<14} {e['file']:<40} {score_str:>5}")
+        entry_type = "EN" if "articles-en/" in e["file"] else "JP"
+        zenn_date = e.get("zenn_date", "-" * 10)
+        print(f"{entry_type:<5} {zenn_date:<14} {e['date']:<14} {e['file']:<40} {score_str:>5}")
     print()
 
     if args.merge and not args.dry_run:

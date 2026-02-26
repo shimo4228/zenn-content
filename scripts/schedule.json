@@ -264,8 +264,8 @@
       "qiita": "pending",
       "devto": "n/a",
       "hashnode": "n/a",
-      "zenn_published": false,
-      "notes": "Publish at 7:00 AM JST (Wed). Steps: 1) set published:true 2) git push 3) python scripts/publish.py articles/ai-peer-review-methodology.md --platform qiita"
+      "zenn_published": true,
+      "notes": "Publish at 7:00 AM JST (Thu). Steps: 1) set published:true 2) git push 3) python scripts/publish.py articles/ai-peer-review-methodology.md --platform qiita"
     },
     {
       "file": "articles-en/ai-peer-review-methodology.md",
@@ -273,7 +273,28 @@
       "date": "2026-02-26",
       "devto": "pending",
       "hashnode": "pending",
+      "depends_on": "articles/ai-peer-review-methodology.md",
       "notes": "After Zenn publish: python scripts/publish.py articles-en/ai-peer-review-methodology.md --platform devto --canonical-url https://zenn.dev/shimo4228/articles/ai-peer-review-methodology && sleep 30 && python scripts/publish.py articles-en/ai-peer-review-methodology.md --platform hashnode --canonical-url https://zenn.dev/shimo4228/articles/ai-peer-review-methodology"
+    },
+    {
+      "file": "articles/claude-code-persistent-memory.md",
+      "canonical_url": "https://zenn.dev/shimo4228/articles/claude-code-persistent-memory",
+      "zenn_date": "2026-02-27",
+      "date": "2026-02-27",
+      "qiita": "pending",
+      "devto": "n/a",
+      "hashnode": "n/a",
+      "zenn_published": false,
+      "notes": "Publish at 7:00 AM JST (Fri). Steps: 1) set published:true 2) git push 3) python scripts/publish.py articles/claude-code-persistent-memory.md --platform qiita"
+    },
+    {
+      "file": "articles-en/claude-code-persistent-memory.md",
+      "canonical_url": "https://zenn.dev/shimo4228/articles/claude-code-persistent-memory",
+      "date": "2026-02-27",
+      "devto": "pending",
+      "hashnode": "pending",
+      "depends_on": "articles/claude-code-persistent-memory.md",
+      "notes": "Same day as Zenn: After JP publish, run python scripts/publish.py articles-en/claude-code-persistent-memory.md --platform devto --canonical-url https://zenn.dev/shimo4228/articles/claude-code-persistent-memory && sleep 30 && python scripts/publish.py articles-en/claude-code-persistent-memory.md --platform hashnode --canonical-url https://zenn.dev/shimo4228/articles/claude-code-persistent-memory"
     }
   ]
 }

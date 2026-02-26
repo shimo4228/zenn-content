@@ -75,10 +75,25 @@ def save_schedule(schedule: dict[str, Any]) -> None:
 
 
 def _is_entry_done(entry: dict[str, Any]) -> bool:
-    """Check if all configured platforms for an entry are done."""
-    devto_done = bool(entry["devto"])
-    hashnode_done = bool(entry["hashnode"])
-    qiita_done = "qiita" not in entry or bool(entry["qiita"])
+    """Check if all configured platforms for an entry are done.
+    
+    Platform value semantics:
+    - None / "" / "pending" -> not done (needs processing)
+    - "n/a" -> not applicable (treated as done)
+    - URL string -> done (successfully posted)
+    """
+    def _is_platform_done(value: str | None) -> bool:
+        if value is None or value == "":
+            return False  # Not posted yet
+        if value == "n/a":
+            return True   # Platform not applicable for this entry
+        if value == "pending":
+            return False  # Scheduled but not executed
+        return True  # Has URL or other truthy value = done
+    
+    devto_done = _is_platform_done(entry.get("devto"))
+    hashnode_done = _is_platform_done(entry.get("hashnode"))
+    qiita_done = _is_platform_done(entry.get("qiita")) if "qiita" in entry else True
     return devto_done and hashnode_done and qiita_done
 
 
@@ -93,9 +108,21 @@ def show_status(schedule: dict[str, Any]) -> None:
     for entry in schedule["articles"]:
         d = entry["date"]
         f = entry["file"]
-        qiita = "done" if entry.get("qiita") else ("-" if "qiita" in entry else "n/a")
-        devto = "n/a" if entry["devto"] == "n/a" else ("done" if entry["devto"] else "-")
-        hashnode = "n/a" if entry["hashnode"] == "n/a" else ("done" if entry["hashnode"] else "-")
+        
+        # Helper to format platform status for display
+        def _fmt_platform(value: str | None, has_field: bool) -> str:
+            if not has_field:
+                return "n/a"
+            if value == "n/a":
+                return "n/a"
+            if value in (None, "", "pending"):
+                return "-"
+            return "done"
+        
+        qiita = _fmt_platform(entry.get("qiita"), "qiita" in entry)
+        devto = _fmt_platform(entry.get("devto"), "devto" in entry)
+        hashnode = _fmt_platform(entry.get("hashnode"), "hashnode" in entry)
+        
         entry_date = date.fromisoformat(d)
         if _is_entry_done(entry):
             status = "posted"
@@ -242,6 +269,28 @@ def _process_entry(
     return {**entry, **updates} if updates else entry, errors
 
 
+def _is_dependency_satisfied(entry: dict[str, Any], all_entries: list[dict[str, Any]]) -> tuple[bool, str]:
+    """Check if entry's dependency (e.g., JP article for EN translation) is satisfied.
+    
+    Returns (is_satisfied, reason_message).
+    """
+    depends_on = entry.get("depends_on")
+    if not depends_on:
+        return True, ""
+    
+    # Find the dependency entry
+    for dep_entry in all_entries:
+        if dep_entry["file"] == depends_on:
+            if _is_entry_done(dep_entry):
+                return True, ""
+            else:
+                return False, f"Waiting for dependency: {depends_on}"
+    
+    # Dependency not found in schedule - assume external/satisfied
+    logger.warning("Dependency %s not found in schedule for %s", depends_on, entry["file"])
+    return True, ""
+
+
 def publish_due(schedule: dict[str, Any], *, dry_run: bool = False) -> int:
     creds = _load_credentials()
     if creds is None:
@@ -250,6 +299,7 @@ def publish_due(schedule: dict[str, Any], *, dry_run: bool = False) -> int:
     today = date.today()
     posted_count = 0
     errors = 0
+    skipped_count = 0
     updated_articles: list[dict[str, Any]] = []
 
     remaining = list(schedule["articles"])
@@ -257,6 +307,14 @@ def publish_due(schedule: dict[str, Any], *, dry_run: bool = False) -> int:
         entry_date = date.fromisoformat(entry["date"])
         if entry_date > today or _is_entry_done(entry):
             updated_articles.append(entry)
+            continue
+        
+        # Check dependency satisfaction (e.g., EN article needs JP article done first)
+        dep_satisfied, dep_reason = _is_dependency_satisfied(entry, schedule["articles"])
+        if not dep_satisfied:
+            logger.info("Skipping %s: %s", entry["file"], dep_reason)
+            updated_articles.append(entry)
+            skipped_count += 1
             continue
 
         updated_entry, entry_errors = _process_entry(entry, creds, dry_run=dry_run)
@@ -270,16 +328,17 @@ def publish_due(schedule: dict[str, Any], *, dry_run: bool = False) -> int:
             all_articles = updated_articles + remaining[i + 1:]
             save_schedule({**schedule, "articles": all_articles})
 
-    if posted_count == 0:
+    if posted_count == 0 and skipped_count == 0:
         logger.info("Nothing due today.")
     elif not dry_run:
         save_schedule({**schedule, "articles": updated_articles})
         logger.info(
-            "Schedule updated. %d article(s) processed, %d error(s).",
-            posted_count, errors,
+            "Schedule updated. %d article(s) processed, %d skipped (dependencies), %d error(s).",
+            posted_count, skipped_count, errors,
         )
     else:
-        logger.info("[DRY-RUN] %d article(s) would be posted.", posted_count)
+        logger.info("[DRY-RUN] %d article(s) would be posted, %d skipped (dependencies).", 
+                    posted_count, skipped_count)
 
     return 1 if errors > 0 else 0
 

@@ -78,7 +78,7 @@ lint・レビューの完了状態。
 | 時刻 | 8:00-9:00 JST | 通勤時間帯の閲覧、Qiita 9:00 トレンド更新前 |
 | 間隔 | 最低2日空ける | 各記事の「新着」フィード露出時間を確保 |
 | 上限 | 週2本まで | 品質シグナルを維持、フィード占有を回避 |
-| クロスポスト | Zenn 公開の翌日以降 | Zenn に初期エンゲージメントを集中させる |
+| クロスポスト | Zenn 公開当日または翌日 | 同日: Dev.to/Hashnode(EN), 翌日: Qiita |
 
 ---
 
@@ -138,8 +138,22 @@ python scripts/plan_schedule.py --start YYYY-MM-DD --slugs "slug1,slug2,slug3"
 ```
 
 - `zenn_date`: Zenn で `published: true` にして push する日
-- `date`: クロスポスト実行日（`zenn_date` + 1日）
+- `date`: クロスポスト実行日（`zenn_date` または +1日）
 - `score`: 評価スコア（トレーサビリティ用）
+
+**英訳記事の場合:**
+```json
+{
+  "file": "articles-en/example-article.md",
+  "canonical_url": "https://zenn.dev/shimo4228/articles/example-article",
+  "date": "2026-03-04",
+  "devto": "pending",
+  "hashnode": "pending",
+  "depends_on": "articles/example-article.md"
+}
+```
+- `depends_on`: この記事が依存する親記事（日本語記事）のパス
+- `devto`/`hashnode`: `"pending"` = 未投稿, `"n/a"` = 対象外, URL = 完了
 
 ---
 
@@ -147,9 +161,12 @@ python scripts/plan_schedule.py --start YYYY-MM-DD --slugs "slug1,slug2,slug3"
 
 ```
 Day 0 (Tue/Thu 8:00 JST):  Zenn 公開（published: true → git push）
+Day 0 (同日):               Dev.to / Hashnode 英訳クロスポスト（depends_onで順序制御）
 Day 1 (Wed/Fri):            Qiita クロスポスト（scheduled_publish.py が自動実行）
-Day 2+:                     Dev.to / Hashnode（英訳がある場合）
 ```
+
+**同日クロスポストの依存関係:**
+英訳記事は `depends_on` フィールドで日本語記事を参照し、日本語記事のクロスポスト完了後に自動実行される。
 
 ---
 

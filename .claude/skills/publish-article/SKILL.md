@@ -97,9 +97,35 @@ npm run preview
 
 バズ最適タイミング: **火〜水曜 7:00-9:00 JST**
 
-1. `scripts/schedule.json` に JP + EN エントリを追加（`"pending"` ステータス）
-2. notes に実行コマンドを記載
-3. 即時公開でない場合は `published: false` のまま git push し、公開日朝に Step 8 を実行
+**日本語記事エントリ:**
+```json
+{
+  "file": "articles/xxx.md",
+  "canonical_url": "https://zenn.dev/shimo4228/articles/xxx",
+  "zenn_date": "2026-03-04",
+  "date": "2026-03-05",
+  "qiita": null,
+  "devto": "n/a",
+  "hashnode": "n/a",
+  "zenn_published": false
+}
+```
+
+**英訳記事エントリ（同日クロスポスト用）:**
+```json
+{
+  "file": "articles-en/xxx.md",
+  "canonical_url": "https://zenn.dev/shimo4228/articles/xxx",
+  "date": "2026-03-04",
+  "devto": "pending",
+  "hashnode": "pending",
+  "depends_on": "articles/xxx.md"
+}
+```
+
+- `depends_on`: 日本語記事のパス（scheduled_publish.py が依存関係を解決）
+- `qiita` は英訳記事では不要
+- 即時公開でない場合は `published: false` のまま git push し、公開日朝に Step 8 を実行
 
 ### Step 8: 公開
 
@@ -157,6 +183,7 @@ cd scripts && .venv/bin/python publish.py ../{article_path} --platform qiita
 
 英訳記事が存在する場合、Dev.to と Hashnode にクロスポストする。
 
+**手動実行の場合:**
 ```bash
 CANONICAL="https://zenn.dev/shimo4228/articles/{slug}"
 
@@ -166,6 +193,10 @@ cd scripts && uv run python publish.py ../articles-en/{filename} --platform devt
 # Hashnode
 cd scripts && uv run python publish.py ../articles-en/{filename} --platform hashnode --canonical-url "$CANONICAL"
 ```
+
+**自動実行（scheduled_publish.py）:**
+- `depends_on` フィールドがある場合、親記事（日本語）のクロスポスト完了後に自動実行
+- 同じ `date` を持つエントリでも、依存関係により順序が保証される
 
 > **Note:** `publish.py` は日本語記事（`articles/`）で Dev.to / Hashnode を指定するとガードが発動します。`--force` で回避可能。
 
