@@ -3,7 +3,7 @@ title: "ClaudeのプランをKimiに実行させたら丸投げだとキレら�
 emoji: "🥊"
 type: "idea"
 topics: ["claudecode", "kimi", "ai", "個人開発"]
-published: false
+published: true
 ---
 
 Kimi K2.5 に 8 タスクを丸投げしたら、8,500 行のコードが生まれた。翌朝レビューしたら 61% がゴミだった。修正を依頼したら「Kimiに丸投げした結果がこの状態なので、Claude（私）が修正すべき」と叱られた。
