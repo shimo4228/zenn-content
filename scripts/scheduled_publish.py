@@ -74,6 +74,15 @@ def save_schedule(schedule: dict[str, Any]) -> None:
     SCHEDULE_PATH.write_text(json.dumps(schedule, indent=2, ensure_ascii=False) + "\n")
 
 
+def _needs_posting(value: str | None) -> bool:
+    """Check if a platform value indicates posting is needed.
+
+    This is the logical complement of _is_platform_done() used in _is_entry_done().
+    A platform needs posting when the value is absent, empty, or "pending".
+    """
+    return value is None or value == "" or value == "pending"
+
+
 def _is_entry_done(entry: dict[str, Any]) -> bool:
     """Check if all configured platforms for an entry are done.
     
@@ -216,7 +225,7 @@ def _process_entry(
     updates: dict[str, Any] = {}
     errors = 0
 
-    if "qiita" in entry and not entry["qiita"]:
+    if "qiita" in entry and _needs_posting(entry.get("qiita")):
         def _qiita_upsert() -> PublishResult:
             payload = convert_to_qiita(article)
             existing_id = find_qiita_item_by_title(article.title, creds.qiita_token)
@@ -232,7 +241,7 @@ def _process_entry(
             updates["qiita"] = url
         errors += failed
 
-    if not entry["devto"]:
+    if _needs_posting(entry.get("devto")):
         def _devto_upsert() -> PublishResult:
             payload = convert_to_devto(article, canonical_url=canonical)
             existing_id = find_devto_article_by_title(article.title, creds.devto_key)
@@ -248,7 +257,7 @@ def _process_entry(
             updates["devto"] = url
         errors += failed
 
-    if not entry["hashnode"]:
+    if _needs_posting(entry.get("hashnode")):
         def _hashnode_upsert() -> PublishResult:
             existing_id = find_hashnode_post_by_title(
                 article.title, creds.hashnode_pub_id, creds.hashnode_token,

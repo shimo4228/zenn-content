@@ -29,6 +29,7 @@ articles/_archive/
 .reports/
 
 # Python (scripts/)
+.venv/
 scripts/.venv/
 scripts/__pycache__/
 scripts/.env
