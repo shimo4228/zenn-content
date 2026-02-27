@@ -261,40 +261,52 @@
       "canonical_url": "https://zenn.dev/shimo4228/articles/ai-peer-review-methodology",
       "zenn_date": "2026-02-26",
       "date": "2026-02-26",
-      "qiita": "pending",
+      "qiita": "https://qiita.com/shimo4228/items/e6831b76f942709433ba",
       "devto": "n/a",
       "hashnode": "n/a",
-      "zenn_published": true,
-      "notes": "Publish at 7:00 AM JST (Thu). Steps: 1) set published:true 2) git push 3) python scripts/publish.py articles/ai-peer-review-methodology.md --platform qiita"
+      "zenn_published": true
     },
     {
       "file": "articles-en/ai-peer-review-methodology.md",
       "canonical_url": "https://zenn.dev/shimo4228/articles/ai-peer-review-methodology",
       "date": "2026-02-26",
-      "devto": "pending",
-      "hashnode": "pending",
-      "depends_on": "articles/ai-peer-review-methodology.md",
-      "notes": "After Zenn publish: python scripts/publish.py articles-en/ai-peer-review-methodology.md --platform devto --canonical-url https://zenn.dev/shimo4228/articles/ai-peer-review-methodology && sleep 30 && python scripts/publish.py articles-en/ai-peer-review-methodology.md --platform hashnode --canonical-url https://zenn.dev/shimo4228/articles/ai-peer-review-methodology"
+      "devto": "https://dev.to/shimo4228/kimi-killed-4-of-claudes-best-ideas-an-ai-peer-review-in-practice-29bo",
+      "hashnode": "https://shimo4228.hashnode.dev/kimi-killed-4-of-claudes-best-ideas-an-ai-peer-review-in-practice"
     },
     {
       "file": "articles/claude-code-persistent-memory.md",
       "canonical_url": "https://zenn.dev/shimo4228/articles/claude-code-persistent-memory",
       "zenn_date": "2026-02-27",
       "date": "2026-02-27",
-      "qiita": "pending",
+      "qiita": "https://qiita.com/shimo4228/items/a146908a1c66743feca9",
       "devto": "n/a",
       "hashnode": "n/a",
-      "zenn_published": false,
-      "notes": "Publish at 7:00 AM JST (Fri). Steps: 1) set published:true 2) git push 3) python scripts/publish.py articles/claude-code-persistent-memory.md --platform qiita"
+      "zenn_published": true
     },
     {
       "file": "articles-en/claude-code-persistent-memory.md",
       "canonical_url": "https://zenn.dev/shimo4228/articles/claude-code-persistent-memory",
       "date": "2026-02-27",
+      "devto": "https://dev.to/shimo4228/embedding-memory-into-claude-code-from-session-loss-to-persistent-context-54d8",
+      "hashnode": "https://shimo4228.hashnode.dev/embedding-memory-into-claude-code-from-session-loss-to-persistent-context"
+    },
+    {
+      "file": "articles/kimi-delegation-failure-lessons.md",
+      "canonical_url": "https://zenn.dev/shimo4228/articles/kimi-delegation-failure-lessons",
+      "zenn_date": "2026-02-28",
+      "date": "2026-02-28",
+      "qiita": "pending",
+      "devto": "n/a",
+      "hashnode": "n/a",
+      "zenn_published": false,
+      "notes": "Kimi × Claude 三部作完結"
+    },
+    {
+      "file": "articles-en/kimi-delegation-failure-lessons.md",
+      "canonical_url": "https://zenn.dev/shimo4228/articles/kimi-delegation-failure-lessons",
+      "date": "2026-02-28",
       "devto": "pending",
-      "hashnode": "pending",
-      "depends_on": "articles/claude-code-persistent-memory.md",
-      "notes": "Same day as Zenn: After JP publish, run python scripts/publish.py articles-en/claude-code-persistent-memory.md --platform devto --canonical-url https://zenn.dev/shimo4228/articles/claude-code-persistent-memory && sleep 30 && python scripts/publish.py articles-en/claude-code-persistent-memory.md --platform hashnode --canonical-url https://zenn.dev/shimo4228/articles/claude-code-persistent-memory"
+      "hashnode": "pending"
     }
   ]
 }
