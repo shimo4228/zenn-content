@@ -198,7 +198,7 @@ def _publish_zenn_article(article_path: Path, *, dry_run: bool) -> bool:
 
     Returns True on success, False on error.
     """
-    post = frontmatter.load(article_path)
+    post = frontmatter.load(str(article_path))
     if post.metadata.get("published") is True:
         logger.info("  Zenn: already published (frontmatter)")
         return True
