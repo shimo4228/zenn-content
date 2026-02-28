@@ -6,12 +6,15 @@ from pathlib import Path
 from typing import Any
 from unittest.mock import MagicMock, patch
 
+import frontmatter
 import pytest
 
 from scheduled_publish import (
     _is_entry_done,
     _needs_posting,
     _process_entry,
+    _process_zenn_entries,
+    _publish_zenn_article,
     _Credentials,
 )
 
@@ -229,3 +232,159 @@ class TestProcessEntryPending:
 
         mock_try_publish.assert_called_once()
         assert updated["devto"] == "https://dev.to/new"
+
+
+# ---------------------------------------------------------------------------
+# Zenn publishing tests
+# ---------------------------------------------------------------------------
+
+
+class TestPublishZennArticle:
+    """_publish_zenn_article frontmatter and git operations."""
+
+    def test_already_published_skips(self, tmp_path: Path) -> None:
+        """If frontmatter already has published: true, skip everything."""
+        article = tmp_path / "test.md"
+        article.write_text("---\ntitle: Test\npublished: true\n---\nBody\n")
+        result = _publish_zenn_article(article, dry_run=False)
+        assert result is True
+
+    def test_dry_run_does_not_modify_file(self, tmp_path: Path) -> None:
+        article = tmp_path / "test.md"
+        article.write_text("---\ntitle: Test\npublished: false\n---\nBody\n")
+        result = _publish_zenn_article(article, dry_run=True)
+        assert result is True
+        # File should remain unchanged
+        post = frontmatter.load(article)
+        assert post.metadata["published"] is False
+
+    @patch("scheduled_publish.subprocess.run")
+    def test_success_sets_published_true(
+        self, mock_run: MagicMock, tmp_path: Path,
+    ) -> None:
+        article = tmp_path / "test.md"
+        article.write_text("---\ntitle: Test\npublished: false\n---\nBody\n")
+
+        with patch("scheduled_publish.REPO_ROOT", tmp_path):
+            result = _publish_zenn_article(article, dry_run=False)
+
+        assert result is True
+        post = frontmatter.load(article)
+        assert post.metadata["published"] is True
+        assert mock_run.call_count == 3  # git add, commit, push
+
+    @patch("scheduled_publish.subprocess.run")
+    def test_git_failure_returns_false(
+        self, mock_run: MagicMock, tmp_path: Path,
+    ) -> None:
+        import subprocess
+
+        article = tmp_path / "test.md"
+        article.write_text("---\ntitle: Test\npublished: false\n---\nBody\n")
+        mock_run.side_effect = subprocess.CalledProcessError(1, "git", stderr=b"error")
+
+        with patch("scheduled_publish.REPO_ROOT", tmp_path):
+            result = _publish_zenn_article(article, dry_run=False)
+
+        assert result is False
+
+
+class TestProcessZennEntries:
+    """_process_zenn_entries filters and processes due Zenn articles."""
+
+    @patch("scheduled_publish.save_schedule")
+    @patch("scheduled_publish._publish_zenn_article", return_value=True)
+    @patch("scheduled_publish._validate_article_path")
+    def test_publishes_due_entry(
+        self, mock_validate: MagicMock, mock_publish: MagicMock,
+        mock_save: MagicMock,
+    ) -> None:
+        mock_validate.return_value = Path("/fake/article.md")
+        schedule = {
+            "articles": [
+                {
+                    "file": "articles/test.md",
+                    "date": "2026-02-01",
+                    "zenn_date": "2026-02-01",
+                    "zenn_published": False,
+                    "devto": "n/a",
+                    "hashnode": "n/a",
+                },
+            ],
+        }
+        with patch("scheduled_publish.date") as mock_date:
+            mock_date.today.return_value = __import__("datetime").date(2026, 2, 28)
+            mock_date.fromisoformat = __import__("datetime").date.fromisoformat
+            updated, count, errors = _process_zenn_entries(schedule, dry_run=False)
+
+        assert count == 1
+        assert errors == 0
+        assert updated["articles"][0]["zenn_published"] is True
+        mock_publish.assert_called_once()
+        mock_save.assert_called_once()
+
+    @patch("scheduled_publish._publish_zenn_article")
+    @patch("scheduled_publish._validate_article_path")
+    def test_skips_already_published(
+        self, mock_validate: MagicMock, mock_publish: MagicMock,
+    ) -> None:
+        schedule = {
+            "articles": [
+                {
+                    "file": "articles/test.md",
+                    "date": "2026-02-01",
+                    "zenn_date": "2026-02-01",
+                    "zenn_published": True,
+                    "devto": "n/a",
+                    "hashnode": "n/a",
+                },
+            ],
+        }
+        _, count, errors = _process_zenn_entries(schedule, dry_run=False)
+        assert count == 0
+        assert errors == 0
+        mock_publish.assert_not_called()
+
+    @patch("scheduled_publish._publish_zenn_article")
+    @patch("scheduled_publish._validate_article_path")
+    def test_skips_future_date(
+        self, mock_validate: MagicMock, mock_publish: MagicMock,
+    ) -> None:
+        schedule = {
+            "articles": [
+                {
+                    "file": "articles/test.md",
+                    "date": "2026-12-31",
+                    "zenn_date": "2026-12-31",
+                    "zenn_published": False,
+                    "devto": "n/a",
+                    "hashnode": "n/a",
+                },
+            ],
+        }
+        with patch("scheduled_publish.date") as mock_date:
+            mock_date.today.return_value = __import__("datetime").date(2026, 2, 28)
+            mock_date.fromisoformat = __import__("datetime").date.fromisoformat
+            _, count, errors = _process_zenn_entries(schedule, dry_run=False)
+
+        assert count == 0
+        mock_publish.assert_not_called()
+
+    @patch("scheduled_publish._publish_zenn_article")
+    @patch("scheduled_publish._validate_article_path")
+    def test_skips_entries_without_zenn_date(
+        self, mock_validate: MagicMock, mock_publish: MagicMock,
+    ) -> None:
+        schedule = {
+            "articles": [
+                {
+                    "file": "articles-en/test.md",
+                    "date": "2026-02-01",
+                    "devto": "pending",
+                    "hashnode": "pending",
+                },
+            ],
+        }
+        _, count, errors = _process_zenn_entries(schedule, dry_run=False)
+        assert count == 0
+        mock_publish.assert_not_called()

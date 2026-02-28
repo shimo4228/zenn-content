@@ -295,18 +295,18 @@
       "canonical_url": "https://zenn.dev/shimo4228/articles/kimi-delegation-failure-lessons",
       "zenn_date": "2026-02-28",
       "date": "2026-02-28",
-      "qiita": "pending",
+      "qiita": "https://qiita.com/shimo4228/items/1e501807c41b4f25a7ae",
       "devto": "n/a",
       "hashnode": "n/a",
-      "zenn_published": false,
+      "zenn_published": true,
       "notes": "Kimi × Claude 三部作完結"
     },
     {
       "file": "articles-en/kimi-delegation-failure-lessons.md",
       "canonical_url": "https://zenn.dev/shimo4228/articles/kimi-delegation-failure-lessons",
       "date": "2026-02-28",
-      "devto": "pending",
-      "hashnode": "pending"
+      "devto": "https://dev.to/shimo4228/kimi-wrote-8500-lines-blamed-me-for-delegating-then-claimed-to-be-claude-3991",
+      "hashnode": "https://shimo4228.hashnode.dev/kimi-wrote-8500-lines-blamed-me-for-delegating-then-claimed-to-be-claude"
     }
   ]
 }

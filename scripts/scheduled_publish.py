@@ -1,7 +1,8 @@
 """Scheduled cross-post publisher — reads schedule.json, posts due articles.
 
-Run daily via launchd at 18:00 JST (09:00 UTC).
-Only publishes articles whose date <= today and haven't been posted yet.
+Run daily via launchd at 09:00 JST (00:00 UTC).
+Publishes articles whose date <= today and haven't been posted yet.
+Zenn articles are published first (frontmatter + git push), then cross-posted.
 
 Usage:
     python scheduled_publish.py              # Post due articles
@@ -15,10 +16,13 @@ import argparse
 import json
 import logging
 import os
+import subprocess
 from collections.abc import Callable
 from datetime import date
 from pathlib import Path
 from typing import Any, NamedTuple
+
+import frontmatter
 
 from publish import (
     PublishResult,
@@ -110,14 +114,14 @@ def show_status(schedule: dict[str, Any]) -> None:
     today = date.today()
     logger.info("Today: %s", today)
     logger.info(
-        "%-12s %-45s %-10s %-10s %-10s %s",
-        "Date", "File", "Qiita", "Dev.to", "Hashnode", "Status",
+        "%-12s %-45s %-6s %-10s %-10s %-10s %s",
+        "Date", "File", "Zenn", "Qiita", "Dev.to", "Hashnode", "Status",
     )
-    logger.info("-" * 105)
+    logger.info("-" * 115)
     for entry in schedule["articles"]:
         d = entry["date"]
         f = entry["file"]
-        
+
         # Helper to format platform status for display
         def _fmt_platform(value: str | None, has_field: bool) -> str:
             if not has_field:
@@ -127,11 +131,19 @@ def show_status(schedule: dict[str, Any]) -> None:
             if value in (None, "", "pending"):
                 return "-"
             return "done"
-        
+
+        # Zenn status: based on zenn_published field
+        if "zenn_published" not in entry:
+            zenn = "n/a"
+        elif entry["zenn_published"] is True:
+            zenn = "done"
+        else:
+            zenn = "-"
+
         qiita = _fmt_platform(entry.get("qiita"), "qiita" in entry)
         devto = _fmt_platform(entry.get("devto"), "devto" in entry)
         hashnode = _fmt_platform(entry.get("hashnode"), "hashnode" in entry)
-        
+
         entry_date = date.fromisoformat(d)
         if _is_entry_done(entry):
             status = "posted"
@@ -140,8 +152,8 @@ def show_status(schedule: dict[str, Any]) -> None:
         else:
             status = "scheduled"
         logger.info(
-            "%-12s %-45s %-10s %-10s %-10s %s",
-            d, f, qiita, devto, hashnode, status,
+            "%-12s %-45s %-6s %-10s %-10s %-10s %s",
+            d, f, zenn, qiita, devto, hashnode, status,
         )
 
 
@@ -174,6 +186,92 @@ def _validate_article_path(file_path: str) -> Path | None:
         logger.warning("File not found: %s", file_path)
         return None
     return article_path
+
+
+# ---------------------------------------------------------------------------
+# Zenn publishing (frontmatter + git push)
+# ---------------------------------------------------------------------------
+
+
+def _publish_zenn_article(article_path: Path, *, dry_run: bool) -> bool:
+    """Set published: true in frontmatter and git push.
+
+    Returns True on success, False on error.
+    """
+    post = frontmatter.load(article_path)
+    if post.metadata.get("published") is True:
+        logger.info("  Zenn: already published (frontmatter)")
+        return True
+
+    if dry_run:
+        logger.info("  [DRY-RUN] Would set published: true in %s", article_path.name)
+        return True
+
+    post.metadata["published"] = True
+    article_path.write_text(frontmatter.dumps(post) + "\n")
+    logger.info("  Zenn: set published: true in %s", article_path.name)
+
+    # Git add only this specific file, commit, and push
+    rel_path = article_path.relative_to(REPO_ROOT)
+    try:
+        subprocess.run(
+            ["git", "add", str(rel_path)],
+            cwd=REPO_ROOT, check=True, capture_output=True,
+        )
+        subprocess.run(
+            ["git", "commit", "-m", f"feat: Zenn 自動公開 ({date.today()})"],
+            cwd=REPO_ROOT, check=True, capture_output=True,
+        )
+        subprocess.run(
+            ["git", "push"],
+            cwd=REPO_ROOT, check=True, capture_output=True, timeout=60,
+        )
+        logger.info("  Zenn: git push completed")
+        return True
+    except subprocess.CalledProcessError as e:
+        logger.error("  Zenn: git operation failed: %s", e.stderr.decode().strip())
+        return False
+    except subprocess.TimeoutExpired:
+        logger.error("  Zenn: git push timed out")
+        return False
+
+
+def _process_zenn_entries(
+    schedule: dict[str, Any], *, dry_run: bool,
+) -> tuple[dict[str, Any], int, int]:
+    """Publish due Zenn articles. Returns (updated_schedule, publish_count, error_count)."""
+    today = date.today()
+    updated_articles = list(schedule["articles"])
+    published = 0
+    errors = 0
+
+    for i, entry in enumerate(updated_articles):
+        # Only process entries with zenn_date and zenn_published == false
+        zenn_date_str = entry.get("zenn_date")
+        if not zenn_date_str:
+            continue
+        if entry.get("zenn_published") is not False:
+            continue
+        if date.fromisoformat(zenn_date_str) > today:
+            continue
+
+        article_path = _validate_article_path(entry["file"])
+        if article_path is None:
+            errors += 1
+            continue
+
+        logger.info("Zenn publishing: %s", entry["file"])
+        if _publish_zenn_article(article_path, dry_run=dry_run):
+            if not dry_run:
+                updated_articles[i] = {**entry, "zenn_published": True}
+            published += 1
+        else:
+            errors += 1
+
+    updated_schedule = {**schedule, "articles": updated_articles}
+    if published > 0 and not dry_run:
+        save_schedule(updated_schedule)
+    return updated_schedule, published, errors
 
 
 class _Credentials(NamedTuple):
@@ -301,13 +399,21 @@ def _is_dependency_satisfied(entry: dict[str, Any], all_entries: list[dict[str, 
 
 
 def publish_due(schedule: dict[str, Any], *, dry_run: bool = False) -> int:
+    # Phase 1: Publish due Zenn articles first (git push)
+    schedule, zenn_count, zenn_errors = _process_zenn_entries(
+        schedule, dry_run=dry_run,
+    )
+    if zenn_count > 0:
+        logger.info("Zenn: %d article(s) published, %d error(s)", zenn_count, zenn_errors)
+
+    # Phase 2: Cross-post to other platforms (API calls)
     creds = _load_credentials()
     if creds is None:
         return 1
 
     today = date.today()
     posted_count = 0
-    errors = 0
+    errors = zenn_errors
     skipped_count = 0
     updated_articles: list[dict[str, Any]] = []
 
