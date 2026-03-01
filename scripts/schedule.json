@@ -307,6 +307,23 @@
       "date": "2026-02-28",
       "devto": "https://dev.to/shimo4228/kimi-wrote-8500-lines-blamed-me-for-delegating-then-claimed-to-be-claude-3991",
       "hashnode": "https://shimo4228.hashnode.dev/kimi-wrote-8500-lines-blamed-me-for-delegating-then-claimed-to-be-claude"
+    },
+    {
+      "file": "articles/xcodebuildmcp-ios-verification.md",
+      "zenn_date": "2026-03-03",
+      "date": "2026-03-03",
+      "qiita": "pending",
+      "devto": "n/a",
+      "hashnode": "n/a",
+      "zenn_published": false,
+      "notes": "XcodeBuildMCP + Claude Code iOS自律検証"
+    },
+    {
+      "file": "articles-en/xcodebuildmcp-ios-verification.md",
+      "canonical_url": "pending",
+      "date": "2026-03-03",
+      "devto": "pending",
+      "hashnode": "pending"
     }
   ]
 }
