@@ -3,7 +3,7 @@ title: "Claude Codeにシミュレータを渡したら自分でタップして�
 emoji: "📱"
 type: "tech"
 topics: ["claudecode", "ios", "xcode", "mcp"]
-published: false
+published: true
 ---
 
 Claude Code がシミュレータ上のアプリをタップして、スクリーンショットで結果を確認して、バグがないか自分で検証する。SF ではない。XcodeBuildMCP という MCP サーバーを入れたら、実際にそうなった。
