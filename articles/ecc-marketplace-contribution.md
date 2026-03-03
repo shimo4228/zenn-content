@@ -3,7 +3,7 @@ title: "個人スキルを5万人に届ける最短経路が見つかった"
 emoji: "🌐"
 type: "tech"
 topics: ["claudecode", "oss", "skill", "agentskills"]
-published: false
+published: true
 ---
 
 2月に送った PR 8件が全部マージされた。それだけなら普通の話だ。
