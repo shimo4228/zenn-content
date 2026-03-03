@@ -18,7 +18,7 @@ import logging
 import os
 import subprocess
 from collections.abc import Callable
-from datetime import date, datetime, timedelta
+from datetime import date, datetime, timedelta  # noqa: F401
 from pathlib import Path
 from typing import Any, NamedTuple
 
