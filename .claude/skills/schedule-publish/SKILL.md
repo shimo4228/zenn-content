@@ -129,17 +129,28 @@ python scripts/plan_schedule.py --start YYYY-MM-DD --slugs "slug1,slug2,slug3"
   "file": "articles/example-article.md",
   "canonical_url": "https://zenn.dev/shimo4228/articles/example-article",
   "zenn_date": "2026-03-04",
-  "date": "2026-03-05",
+  "date": "2026-03-04",
   "qiita": null,
   "devto": "n/a",
   "hashnode": "n/a",
+  "zenn_published": false,
   "score": { "search": 2, "anchor": 1, "ready": 3, "fresh": 1, "total": 7 }
 }
 ```
 
 - `zenn_date`: Zenn で `published: true` にして push する日
-- `date`: クロスポスト実行日（`zenn_date` または +1日）
+- `date`: クロスポスト実行日（通常 `zenn_date` と同日）
+- `zenn_published`: Zenn 公開済みフラグ（`zenn_publish.py` が自動設定）
 - `score`: 評価スコア（トレーサビリティ用）
+
+**自動設定フィールド（システムが管理）:**
+```json
+{
+  "zenn_published": true,
+  "zenn_published_at": "2026-03-04T07:00:00"
+}
+```
+- `zenn_published_at`: Zenn公開時刻（ISO 8601形式）。15分遅延計算に使用
 
 **英訳記事の場合:**
 ```json
@@ -160,13 +171,22 @@ python scripts/plan_schedule.py --start YYYY-MM-DD --slugs "slug1,slug2,slug3"
 ## Cross-Post Timing
 
 ```
-Day 0 (Tue/Thu 8:00 JST):  Zenn 公開（published: true → git push）
-Day 0 (同日):               Dev.to / Hashnode 英訳クロスポスト（depends_onで順序制御）
-Day 1 (Wed/Fri):            Qiita クロスポスト（scheduled_publish.py が自動実行）
+Day 0 (7:00 JST):   Zenn 自動公開（zenn_publish.py）
+Day 0 (7:15 JST):   クロスポスト自動実行（15分遅延、atコマンド経由）
+Day 0 (9:00 JST):   フォールバック実行（scheduled_publish.py、失敗時のみ）
 ```
+
+**自動化されたフロー:**
+1. **7:00 JST**: `zenn_publish.py` が Zenn 公開と同時に15分後のクロスポストを `at` コマンドでスケジュール
+2. **7:15 JST**: Zennデプロイ完了（15分経過）→ `scheduled_publish.py` が自動実行されクロスポスト
+3. **9:00 JST**: 定期実行（`dev.shimo4228.crosspost`）がフォールバックとして動作
 
 **同日クロスポストの依存関係:**
 英訳記事は `depends_on` フィールドで日本語記事を参照し、日本語記事のクロスポスト完了後に自動実行される。
+
+**遅延時間の根拠:**
+- Zennのデプロイに5-30分かかることがあるため、15分の安全マージンを確保
+- 15分未満のエントリーは `_should_skip_due_to_recent_zenn_publish()` により自動スキップ
 
 ---
 

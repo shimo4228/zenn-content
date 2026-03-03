@@ -103,13 +103,16 @@ npm run preview
   "file": "articles/xxx.md",
   "canonical_url": "https://zenn.dev/shimo4228/articles/xxx",
   "zenn_date": "2026-03-04",
-  "date": "2026-03-05",
+  "date": "2026-03-04",
   "qiita": null,
   "devto": "n/a",
   "hashnode": "n/a",
   "zenn_published": false
 }
 ```
+
+- `zenn_date`: Zenn公開日（7:00 JSTに自動公開）
+- `date`: クロスポスト実行日（`zenn_date` と同日。15分遅延で7:15 JSTに自動実行）
 
 **英訳記事エントリ（同日クロスポスト用）:**
 ```json
@@ -127,28 +130,41 @@ npm run preview
 - `qiita` は英訳記事では不要
 - 即時公開でない場合は `published: false` のまま git push し、公開日朝に Step 8 を実行
 
-### Step 8: 公開
+### Step 8: 公開（自動化）
 
-ユーザーの確認後（またはスケジュール当日朝）:
+スケジュールされた日の **7:00 JST** に自動実行されます (`zenn_publish.py`):
 
 1. `published: false` → `published: true` に変更
 2. `git add {article_path}`
-3. `git commit -m "feat: {article_title} を公開"`
-4. `git push`
-5. `scripts/schedule.json` の `zenn_published` を `true` に更新
+3. `git commit -m "feat: Zenn 自動公開 (YYYY-MM-DD)"`
+4. `git push`（Zenn公開）
+5. `schedule.json` の `zenn_published` を `true` に更新
+6. `zenn_published_at` にタイムスタンプを記録
+7. **15分後**のクロスポストを `at` コマンドでスケジュール
 
-### Step 9: Qiita クロスポスト（オプション）
-
-ユーザーに Qiita にもクロスポストするか確認する。
-
+**手動実行が必要な場合（緊急時のみ）:**
 ```bash
-cd scripts && .venv/bin/python publish.py ../{article_path} --platform qiita --dry-run
+cd scripts && .venv/bin/python zenn_publish.py --dry-run  # 確認
+cd scripts && .venv/bin/python zenn_publish.py            # 実行
 ```
 
-dry-run の結果を確認後:
+### Step 9: クロスポスト（自動化）
 
+Zenn公開から**15分後**に自動実行されます:
+
+**タイミング:**
+- **7:15 JST** (7:00にZenn公開された場合): Qiita, Dev.to, Hashnode に自動クロスポスト
+- 9:00 JSTの `scheduled_publish.py` はフォールバックとして動作（7:15の実行が失敗した場合）
+
+**自動化の仕組み:**
+- `zenn_publish.py` が Zenn公開成功後、15分後のクロスポストを `at` コマンドでスケジュール
+- `scheduled_publish.py` が実行され、Zennデプロイ完了を待ってからクロスポスト
+- Zenn公開から15分未満のエントリーはスキップ（デプロイ待ち）
+
+**手動実行が必要な場合（緊急時のみ）:**
 ```bash
-cd scripts && .venv/bin/python publish.py ../{article_path} --platform qiita
+cd scripts && .venv/bin/python scheduled_publish.py --dry-run  # 確認
+cd scripts && .venv/bin/python scheduled_publish.py            # 実行
 ```
 
 **publish.py が自動変換する差異:**
@@ -179,11 +195,27 @@ cd scripts && .venv/bin/python publish.py ../{article_path} --platform qiita
 
 英訳は `articles-en/` に同名で保存される。
 
-### Step 11: Dev.to / Hashnode クロスポスト（オプション）
+### Step 10: 英訳記事の作成（Dev.to / Hashnode 用）
 
-英訳記事が存在する場合、Dev.to と Hashnode にクロスポストする。
+ユーザーに英訳してクロスポストするか確認する。
 
-**手動実行の場合:**
+```bash
+# /translate-article スキルで英訳を作成
+/translate-article {article_path}
+```
+
+英訳は `articles-en/` に同名で保存される。
+
+### Step 11: Dev.to / Hashnode クロスポスト（自動化）
+
+英訳記事が存在する場合、**7:15 JST**に自動的に Dev.to と Hashnode にクロスポストされます。
+
+**自動化の仕組み:**
+- 日本語記事のクロスポスト完了後、英訳記事が自動的に処理される
+- `depends_on` フィールドにより、日本語記事のクロスポスト完了を保証
+- 同じ `date` を持つエントリでも、依存関係により順序が保証される
+
+**手動実行の場合（緊急時のみ）:**
 ```bash
 CANONICAL="https://zenn.dev/shimo4228/articles/{slug}"
 
@@ -193,10 +225,6 @@ cd scripts && uv run python publish.py ../articles-en/{filename} --platform devt
 # Hashnode
 cd scripts && uv run python publish.py ../articles-en/{filename} --platform hashnode --canonical-url "$CANONICAL"
 ```
-
-**自動実行（scheduled_publish.py）:**
-- `depends_on` フィールドがある場合、親記事（日本語）のクロスポスト完了後に自動実行
-- 同じ `date` を持つエントリでも、依存関係により順序が保証される
 
 > **Note:** `publish.py` は日本語記事（`articles/`）で Dev.to / Hashnode を指定するとガードが発動します。`--force` で回避可能。
 
