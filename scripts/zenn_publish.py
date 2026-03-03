@@ -16,7 +16,7 @@ import json
 import logging
 import re
 import subprocess
-from datetime import date
+from datetime import date, datetime, timedelta
 from pathlib import Path
 from typing import Any
 
@@ -178,7 +178,12 @@ def publish_due(schedule: dict[str, Any], *, dry_run: bool = False) -> int:
         if changed:
             files_to_push.append(entry["file"])
             published_count += 1
-            updated_articles.append({**entry, "zenn_published": True})
+            # Record timestamp for cross-post delay calculation
+            updated_articles.append({
+                **entry,
+                "zenn_published": True,
+                "zenn_published_at": datetime.now().isoformat(),
+            })
         else:
             logger.warning("Could not set published: true in %s", entry["file"])
             updated_articles.append(entry)
@@ -203,22 +208,67 @@ def publish_due(schedule: dict[str, Any], *, dry_run: bool = False) -> int:
     if published_count or errors:
         logger.info("%d article(s) published, %d error(s).", published_count, errors)
 
-    # Run cross-post for articles due today (after Zenn publish)
-    try:
-        import scheduled_publish as _sp
-        _sp._setup_logging()
-        logger.info("=== Cross-post ===")
-        updated_schedule = load_schedule()
-        crosspost_result = _sp.publish_due(updated_schedule, dry_run=dry_run)
-        if crosspost_result != 0:
-            errors += 1
-    except ImportError as e:
-        logger.warning("scheduled_publish not available (venv required): %s", e)
-    except Exception as e:
-        logger.error("Cross-post failed with unexpected error: %s", e)
-        errors += 1
+    # Schedule delayed cross-post (15 minutes later) instead of immediate execution
+    # This allows time for Zenn deployment to complete
+    if published_count > 0:
+        schedule_crosspost_after_delay(delay_minutes=15, dry_run=dry_run)
 
     return 1 if errors > 0 else 0
+
+
+def schedule_crosspost_after_delay(delay_minutes: int = 15, *, dry_run: bool = False) -> None:
+    """Schedule cross-post to run after specified delay using macOS `at` command.
+    
+    This creates a one-time delayed job that will run scheduled_publish.py
+    after Zenn deployment has had time to complete.
+    
+    Args:
+        delay_minutes: Minutes to delay before running cross-post (default: 15)
+        dry_run: If True, only log what would be done without actually scheduling
+    """
+    future_time = datetime.now() + timedelta(minutes=delay_minutes)
+    
+    # Build the command script to run cross-post
+    # Change to repo root first, then run the scheduled publish script
+    cmd_script = f"cd '{REPO_ROOT}' && '{SCRIPT_DIR}/.venv/bin/python' '{SCRIPT_DIR}/scheduled_publish.py'"
+    
+    if dry_run:
+        logger.info(
+            "[DRY-RUN] Would schedule cross-post at %s (in %d minutes)",
+            future_time.strftime("%H:%M"),
+            delay_minutes,
+        )
+        return
+    
+    try:
+        # Use macOS `at` command to schedule one-time execution
+        # Safer approach: pass command via stdin instead of shell string
+        at_time = f"now + {delay_minutes} minutes"
+        result = subprocess.run(
+            ["at", at_time],
+            input=cmd_script,
+            capture_output=True,
+            text=True,
+        )
+        
+        if result.returncode == 0:
+            logger.info(
+                "Scheduled cross-post for %s (in %d minutes)",
+                future_time.strftime("%H:%M"),
+                delay_minutes,
+            )
+            logger.debug("at command output: %s", result.stderr or result.stdout)
+        else:
+            logger.error(
+                "Failed to schedule cross-post: %s",
+                result.stderr or "Unknown error",
+            )
+    except FileNotFoundError:
+        logger.error(
+            "`at` command not found. Please install it: brew install at"
+        )
+    except Exception as e:
+        logger.error("Failed to schedule delayed cross-post: %s", e)
 
 
 def main() -> int:

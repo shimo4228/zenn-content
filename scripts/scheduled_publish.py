@@ -18,7 +18,7 @@ import logging
 import os
 import subprocess
 from collections.abc import Callable
-from datetime import date
+from datetime import date, datetime, timedelta
 from pathlib import Path
 from typing import Any, NamedTuple
 
@@ -108,6 +108,57 @@ def _is_entry_done(entry: dict[str, Any]) -> bool:
     hashnode_done = _is_platform_done(entry.get("hashnode"))
     qiita_done = _is_platform_done(entry.get("qiita")) if "qiita" in entry else True
     return devto_done and hashnode_done and qiita_done
+
+
+# Minimum delay (in minutes) before cross-posting after Zenn publish
+MIN_CROSSPOST_DELAY_MINUTES = 15
+
+
+def _should_skip_due_to_recent_zenn_publish(entry: dict[str, Any]) -> bool:
+    """Check if entry should be skipped because it was published to Zenn too recently.
+    
+    This prevents cross-posting before Zenn deployment is complete.
+    Zenn deployment can take 5-30 minutes after git push.
+    
+    Args:
+        entry: Schedule entry with potential 'zenn_published_at' timestamp
+        
+    Returns:
+        True if entry was published to Zenn within MIN_CROSSPOST_DELAY_MINUTES
+    """
+    # Not published to Zenn yet - don't skip (will be handled by _process_zenn_entries)
+    if not entry.get("zenn_published"):
+        return False
+    
+    # No timestamp - backward compatibility, don't skip
+    # (assume it's safe to cross-post or was published manually)
+    zenn_published_at = entry.get("zenn_published_at")
+    if not zenn_published_at:
+        return False
+    
+    try:
+        publish_time = datetime.fromisoformat(zenn_published_at)
+        elapsed = datetime.now() - publish_time
+        elapsed_minutes = elapsed.total_seconds() / 60
+        
+        if elapsed_minutes < MIN_CROSSPOST_DELAY_MINUTES:
+            logger.info(
+                "Skipping %s: Zenn published %d minutes ago (need %d min delay)",
+                entry.get("file", "unknown"),
+                int(elapsed_minutes),
+                MIN_CROSSPOST_DELAY_MINUTES,
+            )
+            return True
+        
+        return False
+    except (ValueError, TypeError):
+        # Invalid timestamp format - don't skip to be safe
+        logger.warning(
+            "Invalid zenn_published_at format for %s: %s",
+            entry.get("file", "unknown"),
+            zenn_published_at,
+        )
+        return False
 
 
 def show_status(schedule: dict[str, Any]) -> None:
@@ -422,6 +473,12 @@ def publish_due(schedule: dict[str, Any], *, dry_run: bool = False) -> int:
         entry_date = date.fromisoformat(entry["date"])
         if entry_date > today or _is_entry_done(entry):
             updated_articles.append(entry)
+            continue
+        
+        # Check if Zenn was published too recently (need delay for deployment)
+        if _should_skip_due_to_recent_zenn_publish(entry):
+            updated_articles.append(entry)
+            skipped_count += 1
             continue
         
         # Check dependency satisfaction (e.g., EN article needs JP article done first)
