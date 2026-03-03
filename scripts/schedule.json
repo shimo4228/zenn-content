@@ -310,20 +310,40 @@
     },
     {
       "file": "articles/xcodebuildmcp-ios-verification.md",
+      "canonical_url": "https://zenn.dev/shimo4228/articles/xcodebuildmcp-ios-verification",
       "zenn_date": "2026-03-03",
       "date": "2026-03-03",
-      "qiita": "pending",
+      "qiita": "https://qiita.com/shimo4228/items/3c6106d5407deea0cbf4",
       "devto": "n/a",
       "hashnode": "n/a",
-      "zenn_published": false,
+      "zenn_published": true,
       "notes": "XcodeBuildMCP + Claude Code iOS自律検証"
     },
     {
       "file": "articles-en/xcodebuildmcp-ios-verification.md",
-      "canonical_url": "pending",
+      "canonical_url": "https://zenn.dev/shimo4228/articles/xcodebuildmcp-ios-verification",
       "date": "2026-03-03",
+      "devto": "https://dev.to/shimo4228/i-gave-claude-code-a-simulator-and-it-started-tapping-and-taking-screenshots-on-its-own-57bj",
+      "hashnode": "https://shimo4228.hashnode.dev/i-gave-claude-code-a-simulator-and-it-started-tapping-and-taking-screenshots-on-its-own"
+    },
+    {
+      "file": "articles/ecc-marketplace-contribution.md",
+      "canonical_url": "https://zenn.dev/shimo4228/articles/ecc-marketplace-contribution",
+      "zenn_date": "2026-03-04",
+      "date": "2026-03-04",
+      "qiita": "pending",
+      "devto": "n/a",
+      "hashnode": "n/a",
+      "zenn_published": false,
+      "notes": "ECC マーケットプレイスへの貢献記事"
+    },
+    {
+      "file": "articles-en/ecc-marketplace-contribution.md",
+      "canonical_url": "https://zenn.dev/shimo4228/articles/ecc-marketplace-contribution",
+      "date": "2026-03-04",
       "devto": "pending",
-      "hashnode": "pending"
+      "hashnode": "pending",
+      "depends_on": "articles/ecc-marketplace-contribution.md"
     }
   ]
 }
