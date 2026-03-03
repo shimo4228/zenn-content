@@ -169,7 +169,12 @@ def publish_due(schedule: dict[str, Any], *, dry_run: bool = False) -> int:
         if _is_published(article_path):
             # Already published in file — just sync the tracking flag
             logger.info("Already published (marking tracked): %s", entry["file"])
-            updated_articles.append({**entry, "zenn_published": True})
+            # Record timestamp if missing (for manual publish scenario)
+            updates: dict[str, Any] = {"zenn_published": True}
+            if not entry.get("zenn_published_at"):
+                updates["zenn_published_at"] = datetime.now().isoformat()
+                logger.info("  Recorded zenn_published_at: %s", updates["zenn_published_at"])
+            updated_articles.append({**entry, **updates})
             tracking_updated = True
             continue
 
