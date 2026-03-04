@@ -18,7 +18,7 @@ published: false
 
 ## 前提
 
-- **用途**: Python CLI 開発、Zenn 記事執筆、iOS アプリ開発
+- **用途**: Python 自動化スクリプト、Zenn 記事執筆、iOS アプリ開発
 - **ポリシー**: コードは Claude が書く。人間は設計と判断に集中する
 
 設定ファイルの全体構造は [設定ファイルを全棚卸しして分かった5つのこと](https://zenn.dev/shimo4228/articles/claude-code-context-audit) で書いた。本記事はさらに踏み込んだ「実運用で事故を防いだ具体的な設定」だ。
