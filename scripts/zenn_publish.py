@@ -16,7 +16,7 @@ import json
 import logging
 import re
 import subprocess
-from datetime import date, datetime, timedelta
+from datetime import date, datetime
 from pathlib import Path
 from typing import Any
 
@@ -24,6 +24,9 @@ SCRIPT_DIR = Path(__file__).parent
 REPO_ROOT = SCRIPT_DIR.parent
 SCHEDULE_PATH = SCRIPT_DIR / "schedule.json"
 LOG_PATH = SCRIPT_DIR / "zenn_publish.log"
+
+ZENN_USER = "shimo4228"
+DEFAULT_PUBLISH_HOUR = 7  # launchd scheduled publish time (JST)
 
 logger = logging.getLogger(__name__)
 
@@ -98,22 +101,56 @@ def _git_add_commit_push(file_paths: list[str], commit_msg: str, *, dry_run: boo
     try:
         for fp in file_paths:
             subprocess.run(
-                ["git", "-C", str(REPO_ROOT), "add", fp],
-                check=True, capture_output=True, text=True,
+                ["git", "add", fp],
+                cwd=REPO_ROOT, check=True, capture_output=True, text=True,
             )
         subprocess.run(
-            ["git", "-C", str(REPO_ROOT), "commit", "-m", commit_msg],
-            check=True, capture_output=True, text=True,
+            ["git", "commit", "-m", commit_msg],
+            cwd=REPO_ROOT, check=True, capture_output=True, text=True,
         )
         subprocess.run(
-            ["git", "-C", str(REPO_ROOT), "push", "origin", "main"],
-            check=True, capture_output=True, text=True,
+            ["git", "pull", "--rebase", "origin", "main"],
+            cwd=REPO_ROOT, check=True, capture_output=True, text=True, timeout=60,
+        )
+        subprocess.run(
+            ["git", "push", "origin", "main"],
+            cwd=REPO_ROOT, check=True, capture_output=True, text=True, timeout=60,
         )
         logger.info("  git push OK")
         return True
     except subprocess.CalledProcessError as e:
         logger.error("Git error: %s", (e.stderr or e.stdout or "").strip())
         return False
+    except subprocess.TimeoutExpired:
+        logger.error("Git operation timed out")
+        return False
+
+
+def _get_actual_publish_time(file_path: str, zenn_date: str | None = None) -> str:
+    """Get the actual Zenn publish time via fallback chain.
+
+    1. git log: commit time when 'published: true' was set
+    2. zenn_date at 07:00 (scheduled publish time)
+    3. datetime.now() (last resort)
+    """
+    try:
+        result = subprocess.run(
+            [
+                "git", "log", "-1", "--format=%aI",
+                "-S", "published: true", "--", file_path,
+            ],
+            cwd=REPO_ROOT, capture_output=True, text=True, timeout=10,
+        )
+        timestamp = result.stdout.strip()
+        if timestamp:
+            return timestamp
+    except (subprocess.CalledProcessError, subprocess.TimeoutExpired):
+        pass
+
+    if zenn_date:
+        return f"{zenn_date}T{DEFAULT_PUBLISH_HOUR:02d}:00:00"
+
+    return datetime.now().isoformat()
 
 
 def show_status(schedule: dict[str, Any]) -> None:
@@ -172,7 +209,9 @@ def publish_due(schedule: dict[str, Any], *, dry_run: bool = False) -> int:
             # Record timestamp if missing (for manual publish scenario)
             updates: dict[str, Any] = {"zenn_published": True}
             if not entry.get("zenn_published_at"):
-                updates["zenn_published_at"] = datetime.now().isoformat()
+                updates["zenn_published_at"] = _get_actual_publish_time(
+                    entry["file"], entry.get("zenn_date"),
+                )
                 logger.info("  Recorded zenn_published_at: %s", updates["zenn_published_at"])
             updated_articles.append({**entry, **updates})
             tracking_updated = True
@@ -197,14 +236,14 @@ def publish_due(schedule: dict[str, Any], *, dry_run: bool = False) -> int:
     # Commit + push all changed files in a single git operation
     if files_to_push:
         commit_msg = f"feat: Zenn 自動公開 ({today})"
-        success = _git_add_commit_push(files_to_push, commit_msg, dry_run=dry_run)
-        if not success:
+        push_success = _git_add_commit_push(files_to_push, commit_msg, dry_run=dry_run)
+        if not push_success:
             errors += 1
-            published_count = 0  # Don't count as published if push failed
-        elif not dry_run:
-            save_schedule({**schedule, "articles": updated_articles})
-    elif tracking_updated and not dry_run:
-        # No new files to push, but tracking flags need saving
+            logger.warning("Git push failed. Frontmatter changed locally but not deployed.")
+
+    # Save tracking state regardless of push success —
+    # schedule.json records *what happened*, not *what was deployed*.
+    if (files_to_push or tracking_updated) and not dry_run:
         save_schedule({**schedule, "articles": updated_articles})
 
     if not files_to_push and not tracking_updated and not errors:
@@ -213,67 +252,7 @@ def publish_due(schedule: dict[str, Any], *, dry_run: bool = False) -> int:
     if published_count or errors:
         logger.info("%d article(s) published, %d error(s).", published_count, errors)
 
-    # Schedule delayed cross-post (15 minutes later) instead of immediate execution
-    # This allows time for Zenn deployment to complete
-    if published_count > 0:
-        schedule_crosspost_after_delay(delay_minutes=15, dry_run=dry_run)
-
     return 1 if errors > 0 else 0
-
-
-def schedule_crosspost_after_delay(delay_minutes: int = 15, *, dry_run: bool = False) -> None:
-    """Schedule cross-post to run after specified delay using macOS `at` command.
-    
-    This creates a one-time delayed job that will run scheduled_publish.py
-    after Zenn deployment has had time to complete.
-    
-    Args:
-        delay_minutes: Minutes to delay before running cross-post (default: 15)
-        dry_run: If True, only log what would be done without actually scheduling
-    """
-    future_time = datetime.now() + timedelta(minutes=delay_minutes)
-    
-    # Build the command script to run cross-post
-    # Change to repo root first, then run the scheduled publish script
-    cmd_script = f"cd '{REPO_ROOT}' && '{SCRIPT_DIR}/.venv/bin/python' '{SCRIPT_DIR}/scheduled_publish.py'"
-    
-    if dry_run:
-        logger.info(
-            "[DRY-RUN] Would schedule cross-post at %s (in %d minutes)",
-            future_time.strftime("%H:%M"),
-            delay_minutes,
-        )
-        return
-    
-    try:
-        # Use macOS `at` command to schedule one-time execution
-        # Safer approach: pass command via stdin instead of shell string
-        at_time = f"now + {delay_minutes} minutes"
-        result = subprocess.run(
-            ["at", at_time],
-            input=cmd_script,
-            capture_output=True,
-            text=True,
-        )
-        
-        if result.returncode == 0:
-            logger.info(
-                "Scheduled cross-post for %s (in %d minutes)",
-                future_time.strftime("%H:%M"),
-                delay_minutes,
-            )
-            logger.debug("at command output: %s", result.stderr or result.stdout)
-        else:
-            logger.error(
-                "Failed to schedule cross-post: %s",
-                result.stderr or "Unknown error",
-            )
-    except FileNotFoundError:
-        logger.error(
-            "`at` command not found. Please install it: brew install at"
-        )
-    except Exception as e:
-        logger.error("Failed to schedule delayed cross-post: %s", e)
 
 
 def main() -> int:

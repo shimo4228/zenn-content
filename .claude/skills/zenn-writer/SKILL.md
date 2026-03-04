@@ -126,30 +126,9 @@
 
 ---
 
-## SEO Best Practices
+## SEO
 
-### Title Optimization
-
-- Include primary keyword (Claude, Anki, TDD, etc.)
-- Use natural Japanese phrasing
-- 50-60 characters optimal for search results display
-
-### Topic Selection
-
-- Use 3-5 topics (tags)
-- Include at least one high-traffic tag (`python`, `ai`, `claude`)
-- Include specific tags for targeting (`anki`, `tdd`)
-
-### Introduction (First 200 characters)
-
-- Hook reader with a specific problem or insight
-- Include main keywords naturally
-- Set clear expectations for the article
-
-### Internal Linking
-
-- Link to related articles when publishing multiple articles
-- Use descriptive anchor text (not "こちら")
+SEO の詳細は [seo-optimizer](../seo-optimizer/SKILL.md) を参照。
 
 ---
 

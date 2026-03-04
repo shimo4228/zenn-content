@@ -8,9 +8,7 @@ This module tests:
 from __future__ import annotations
 
 from datetime import datetime, timedelta
-from pathlib import Path
 from typing import Any
-from unittest.mock import MagicMock, patch
 
 import pytest
 
@@ -109,44 +107,6 @@ class TestSkipRecentlyPublished:
         result = _should_skip_due_to_recent_zenn_publish(entry)
         
         assert result is False
-
-
-# ---------------------------------------------------------------------------
-# Phase 2: Tests for "schedule delayed cross-post" feature
-# These require importing from zenn_publish
-# ---------------------------------------------------------------------------
-
-
-class TestScheduleDelayedCrosspost:
-    """Tests for scheduling cross-post after delay from zenn_publish.py."""
-
-    @patch("zenn_publish.subprocess.run")
-    def test_schedule_delayed_crosspost_creates_job(self, mock_run: MagicMock) -> None:
-        """schedule_delayed_crosspost should create a delayed job using `at` command."""
-        from zenn_publish import schedule_crosspost_after_delay
-        
-        mock_run.return_value = MagicMock(returncode=0, stderr="", stdout="")
-        
-        schedule_crosspost_after_delay(delay_minutes=15, dry_run=False)
-        
-        mock_run.assert_called_once()
-        call_args = mock_run.call_args
-        # Check that 'at' command is called with correct arguments
-        assert call_args[0][0] == ["at", "now + 15 minutes"]
-        # Check that the command script is passed via input
-        assert "scheduled_publish.py" in call_args[1].get("input", "")
-
-    def test_schedule_delayed_crosspost_respects_dry_run(self) -> None:
-        """schedule_delayed_crosspost in dry-run mode should not actually schedule."""
-        from zenn_publish import schedule_crosspost_after_delay
-        
-        with patch("zenn_publish.subprocess.run") as mock_run:
-            with patch("zenn_publish.logger") as mock_logger:
-                schedule_crosspost_after_delay(delay_minutes=15, dry_run=True)
-                
-                mock_run.assert_not_called()
-                mock_logger.info.assert_called_once()
-                assert "DRY-RUN" in mock_logger.info.call_args[0][0]
 
 
 # ---------------------------------------------------------------------------

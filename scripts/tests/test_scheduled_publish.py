@@ -258,9 +258,9 @@ class TestPublishZennArticle:
         post = frontmatter.load(article)
         assert post.metadata["published"] is False
 
-    @patch("scheduled_publish.subprocess.run")
+    @patch("scheduled_publish._git_add_commit_push", return_value=True)
     def test_success_sets_published_true(
-        self, mock_run: MagicMock, tmp_path: Path,
+        self, mock_git: MagicMock, tmp_path: Path,
     ) -> None:
         article = tmp_path / "test.md"
         article.write_text("---\ntitle: Test\npublished: false\n---\nBody\n")
@@ -271,17 +271,14 @@ class TestPublishZennArticle:
         assert result is True
         post = frontmatter.load(article)
         assert post.metadata["published"] is True
-        assert mock_run.call_count == 3  # git add, commit, push
+        mock_git.assert_called_once()
 
-    @patch("scheduled_publish.subprocess.run")
+    @patch("scheduled_publish._git_add_commit_push", return_value=False)
     def test_git_failure_returns_false(
-        self, mock_run: MagicMock, tmp_path: Path,
+        self, mock_git: MagicMock, tmp_path: Path,
     ) -> None:
-        import subprocess
-
         article = tmp_path / "test.md"
         article.write_text("---\ntitle: Test\npublished: false\n---\nBody\n")
-        mock_run.side_effect = subprocess.CalledProcessError(1, "git", stderr=b"error")
 
         with patch("scheduled_publish.REPO_ROOT", tmp_path):
             result = _publish_zenn_article(article, dry_run=False)

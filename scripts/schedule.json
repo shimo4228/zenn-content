@@ -331,19 +331,39 @@
       "canonical_url": "https://zenn.dev/shimo4228/articles/ecc-marketplace-contribution",
       "zenn_date": "2026-03-04",
       "date": "2026-03-04",
-      "qiita": "pending",
+      "qiita": "https://qiita.com/shimo4228/items/9b0cba94e6adf3452f68",
       "devto": "n/a",
       "hashnode": "n/a",
-      "zenn_published": false,
-      "notes": "ECC マーケットプレイスへの貢献記事"
+      "zenn_published": true,
+      "notes": "ECC マーケットプレイスへの貢献記事",
+      "zenn_published_at": "2026-03-04T07:00:00.000000"
     },
     {
       "file": "articles-en/ecc-marketplace-contribution.md",
       "canonical_url": "https://zenn.dev/shimo4228/articles/ecc-marketplace-contribution",
       "date": "2026-03-04",
+      "devto": "https://dev.to/shimo4228/i-found-the-shortest-route-to-ship-my-claude-code-skills-to-57000-developers-4g43",
+      "hashnode": "https://shimo4228.hashnode.dev/i-found-the-shortest-route-to-ship-my-claude-code-skills-to-57000-developers",
+      "depends_on": "articles/ecc-marketplace-contribution.md"
+    },
+    {
+      "file": "articles/claude-code-effective-settings-10.md",
+      "canonical_url": "pending",
+      "zenn_date": "2026-03-05",
+      "date": "2026-03-05",
+      "qiita": "pending",
+      "devto": "n/a",
+      "hashnode": "n/a",
+      "zenn_published": false,
+      "notes": "網羅型ハブ記事: Claude Code 設定10選"
+    },
+    {
+      "file": "articles-en/claude-code-effective-settings-10.md",
+      "canonical_url": "pending",
+      "date": "2026-03-05",
       "devto": "pending",
       "hashnode": "pending",
-      "depends_on": "articles/ecc-marketplace-contribution.md"
+      "depends_on": "articles/claude-code-effective-settings-10.md"
     }
   ]
 }

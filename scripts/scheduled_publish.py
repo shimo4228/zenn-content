@@ -16,14 +16,17 @@ import argparse
 import json
 import logging
 import os
-import subprocess
 from collections.abc import Callable
-from datetime import date, datetime, timedelta  # noqa: F401
+from datetime import date, datetime
 from pathlib import Path
 from typing import Any, NamedTuple
 
 import frontmatter
 
+from zenn_publish import (
+    ZENN_USER,
+    _git_add_commit_push,
+)
 from publish import (
     PublishResult,
     _load_env,
@@ -262,29 +265,9 @@ def _publish_zenn_article(article_path: Path, *, dry_run: bool) -> bool:
     article_path.write_text(frontmatter.dumps(post) + "\n")
     logger.info("  Zenn: set published: true in %s", article_path.name)
 
-    # Git add only this specific file, commit, and push
-    rel_path = article_path.relative_to(REPO_ROOT)
-    try:
-        subprocess.run(
-            ["git", "add", str(rel_path)],
-            cwd=REPO_ROOT, check=True, capture_output=True,
-        )
-        subprocess.run(
-            ["git", "commit", "-m", f"feat: Zenn 自動公開 ({date.today()})"],
-            cwd=REPO_ROOT, check=True, capture_output=True,
-        )
-        subprocess.run(
-            ["git", "push"],
-            cwd=REPO_ROOT, check=True, capture_output=True, timeout=60,
-        )
-        logger.info("  Zenn: git push completed")
-        return True
-    except subprocess.CalledProcessError as e:
-        logger.error("  Zenn: git operation failed: %s", e.stderr.decode().strip())
-        return False
-    except subprocess.TimeoutExpired:
-        logger.error("  Zenn: git push timed out")
-        return False
+    rel_path = str(article_path.relative_to(REPO_ROOT))
+    commit_msg = f"feat: Zenn 自動公開 ({date.today()})"
+    return _git_add_commit_push([rel_path], commit_msg, dry_run=False)
 
 
 def _process_zenn_entries(
@@ -314,7 +297,11 @@ def _process_zenn_entries(
         logger.info("Zenn publishing: %s", entry["file"])
         if _publish_zenn_article(article_path, dry_run=dry_run):
             if not dry_run:
-                updated_articles[i] = {**entry, "zenn_published": True}
+                updated_articles[i] = {
+                    **entry,
+                    "zenn_published": True,
+                    "zenn_published_at": datetime.now().isoformat(),
+                }
             published += 1
         else:
             errors += 1
@@ -369,7 +356,11 @@ def _process_entry(
         return entry, 1
 
     article = parse_zenn_article(article_path)
-    canonical = entry["canonical_url"]
+    canonical = entry.get("canonical_url")
+    if not canonical:
+        slug = Path(entry["file"]).stem
+        canonical = f"https://zenn.dev/{ZENN_USER}/articles/{slug}"
+        logger.warning("canonical_url missing, derived: %s", canonical)
     logger.info("Processing: %s (date=%s)", article.title, entry["date"])
     updates: dict[str, Any] = {}
     errors = 0

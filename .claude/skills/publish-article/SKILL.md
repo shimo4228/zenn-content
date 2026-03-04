@@ -195,17 +195,6 @@ cd scripts && .venv/bin/python scheduled_publish.py            # 実行
 
 英訳は `articles-en/` に同名で保存される。
 
-### Step 10: 英訳記事の作成（Dev.to / Hashnode 用）
-
-ユーザーに英訳してクロスポストするか確認する。
-
-```bash
-# /translate-article スキルで英訳を作成
-/translate-article {article_path}
-```
-
-英訳は `articles-en/` に同名で保存される。
-
 ### Step 11: Dev.to / Hashnode クロスポスト（自動化）
 
 英訳記事が存在する場合、**7:15 JST**に自動的に Dev.to と Hashnode にクロスポストされます。

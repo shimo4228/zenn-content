@@ -21,19 +21,17 @@ class TestManualPublishTimestampRecording:
     """Tests that zenn_published_at is recorded even for manually published articles."""
 
     @patch("zenn_publish._is_published")
-    @patch("zenn_publish.datetime")
+    @patch("zenn_publish._get_actual_publish_time")
     def test_manual_publish_records_timestamp_when_missing(
-        self, mock_datetime: MagicMock, mock_is_published: MagicMock
+        self, mock_get_time: MagicMock, mock_is_published: MagicMock
     ) -> None:
         """When article is already published in file but has no timestamp, record now."""
         from zenn_publish import publish_due
-        
+
         # Setup: Article already published in file (manual publish)
         mock_is_published.return_value = True
-        mock_now = MagicMock()
-        mock_now.isoformat.return_value = "2026-03-03T10:00:00"
-        mock_datetime.now.return_value = mock_now
-        
+        mock_get_time.return_value = "2026-03-03T07:00:00"
+
         # Entry with zenn_published=False but file already has published: true
         schedule = {
             "articles": [
@@ -45,19 +43,22 @@ class TestManualPublishTimestampRecording:
                 }
             ]
         }
-        
+
         with patch("zenn_publish._validate_article_path") as mock_validate:
             with patch("zenn_publish.save_schedule") as mock_save:
                 mock_validate.return_value = Path("/fake/test.md")
-                
+
                 publish_due(schedule, dry_run=False)
-                
+
+                # Verify _get_actual_publish_time was called with correct args
+                mock_get_time.assert_called_once_with("articles/test.md", "2026-03-03")
+
                 # Verify save_schedule was called with zenn_published_at
                 mock_save.assert_called_once()
                 saved_schedule = mock_save.call_args[0][0]
-                
+
                 assert "zenn_published_at" in saved_schedule["articles"][0]
-                assert saved_schedule["articles"][0]["zenn_published_at"] == "2026-03-03T10:00:00"
+                assert saved_schedule["articles"][0]["zenn_published_at"] == "2026-03-03T07:00:00"
                 assert saved_schedule["articles"][0]["zenn_published"] is True
 
     @patch("zenn_publish._is_published")
