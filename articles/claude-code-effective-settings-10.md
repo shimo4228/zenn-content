@@ -3,7 +3,7 @@ title: "デフォルトのまま使うな ── Claude Code で本当に効い�
 emoji: "⚙️"
 type: "tech"
 topics: ["claudecode", "ai", "cli", "devtools"]
-published: false
+published: true
 ---
 
 承認ダイアログを 1 日 200 回叩いた。作業が乗ってきた瞬間にコンテキストが飛んで「さっきの話、覚えてないんですけど」と言われた。Claude が勝手に `git add .` して `.env` をステージングした。
