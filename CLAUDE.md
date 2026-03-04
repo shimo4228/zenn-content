@@ -110,22 +110,22 @@ This skill provides:
    npm run preview
    ```
 
-2. **Run linter**
-   ```bash
-   npm run lint
-   ```
-
-3. **Validate frontmatter**
+2. **Validate frontmatter**
    ```bash
    npx zenn list:articles
    ```
 
-4. **Review with editor agent**
+3. **Review with editor agent** (内容に大幅な変更が入るため、lint はこの後)
    ```bash
    claude task --agent=editor --prompt="Review articles/NEW_ARTICLE.md"
    ```
 
-5. **Human review** - Add personal insights and final polish
+4. **Human review** - Add personal insights and final polish
+
+5. **Run linter** (editor の修正が完了した最終版に対して実行)
+   ```bash
+   npm run lint
+   ```
 
 ## Publishing Checklist
 
