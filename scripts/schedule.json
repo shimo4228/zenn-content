@@ -364,6 +364,44 @@
       "devto": "pending",
       "hashnode": "pending",
       "depends_on": "articles/claude-code-effective-settings-10.md"
+    },
+    {
+      "file": "articles/obsidian-cli-claude-code-vault-management.md",
+      "canonical_url": "pending",
+      "zenn_date": "2026-03-06",
+      "date": "2026-03-06",
+      "qiita": "pending",
+      "devto": "n/a",
+      "hashnode": "n/a",
+      "zenn_published": false,
+      "notes": "Obsidian公式CLI解説 + Claude Code連携"
+    },
+    {
+      "file": "articles-en/obsidian-cli-claude-code-vault-management.md",
+      "canonical_url": "pending",
+      "date": "2026-03-06",
+      "devto": "pending",
+      "hashnode": "pending",
+      "depends_on": "articles/obsidian-cli-claude-code-vault-management.md"
+    },
+    {
+      "file": "articles/active-inference-viz-dev-story.md",
+      "canonical_url": "pending",
+      "zenn_date": "2026-03-07",
+      "date": "2026-03-07",
+      "qiita": "pending",
+      "devto": "n/a",
+      "hashnode": "n/a",
+      "zenn_published": false,
+      "notes": "能動的推論の可視化ツール再実装記 — 偏愛×Claude Code"
+    },
+    {
+      "file": "articles-en/active-inference-viz-dev-story.md",
+      "canonical_url": "pending",
+      "date": "2026-03-07",
+      "devto": "pending",
+      "hashnode": "pending",
+      "depends_on": "articles/active-inference-viz-dev-story.md"
     }
   ]
 }
