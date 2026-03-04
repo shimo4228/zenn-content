@@ -348,18 +348,19 @@
     },
     {
       "file": "articles/claude-code-effective-settings-10.md",
-      "canonical_url": "pending",
+      "canonical_url": "https://zenn.dev/shimo4228/articles/claude-code-effective-settings-10",
       "zenn_date": "2026-03-05",
       "date": "2026-03-05",
       "qiita": "pending",
       "devto": "n/a",
       "hashnode": "n/a",
-      "zenn_published": false,
-      "notes": "網羅型ハブ記事: Claude Code 設定10選"
+      "zenn_published": true,
+      "notes": "網羅型ハブ記事: Claude Code 設定10選",
+      "zenn_published_at": "2026-03-05T07:00:00.675720"
     },
     {
       "file": "articles-en/claude-code-effective-settings-10.md",
-      "canonical_url": "pending",
+      "canonical_url": "https://zenn.dev/shimo4228/articles/claude-code-effective-settings-10",
       "date": "2026-03-05",
       "devto": "pending",
       "hashnode": "pending",
