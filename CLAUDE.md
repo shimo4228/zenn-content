@@ -4,6 +4,10 @@
 
 This repository contains **Zenn articles and books** for the pdf2anki ecosystem. All content follows the **"Build in Public"** principle, documenting real development sessions and design decisions.
 
+## Git Push Reminder (CRITICAL)
+
+記事の作成・編集・schedule.json の更新をコミットしたら、**必ずユーザーに push を促すこと**。未 push のコミットがあると、翌朝の自動公開スクリプト（`zenn_publish.py`）が `git pull --rebase` に失敗し、Zenn へのデプロイが止まる。
+
 ## Writing Guidelines
 
 ### Zenn Article Format
