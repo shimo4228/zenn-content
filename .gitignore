@@ -18,6 +18,9 @@ Thumbs.db
 # Zenn CLI
 .zenn/
 
+# Playwright MCP (auto-generated)
+.playwright-mcp/
+
 # Internal docs and planning (not for publication)
 docs/
 planning/
