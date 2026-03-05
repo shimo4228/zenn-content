@@ -10,7 +10,7 @@ In a corner of the AI research report that arrives at 5 AM every morning, there 
 
 The moment I read it, something snagged.
 
-That same day, I cloned the original paper's code, and from planning to completion in about 2 hours, I stripped out all the PyTorch and reimplemented it in pure NumPy, then made it runnable in the browser with Streamlit. 1,550 lines. 98% test coverage.
+That same day, I cloned the original paper's code, and from planning to completion in about 2 hours, I stripped out all the PyTorch and rewrote it in pure NumPy, then built an **interactive visualization UI that didn't exist in the original** using Streamlit so anyone could run it in the browser. 1,550 lines. 98% test coverage.
 
 **At the mathematical level, I do not understand the theory.**
 
@@ -30,13 +30,13 @@ If you asked me why, I couldn't answer. I was vaguely aware I'd lost my mind whi
 
 I want to pause here and think about something.
 
-**A computational neuroscience paper was reimplemented by someone who doesn't understand the theory.** I read the PyTorch code, rewrote it in NumPy, derived the Jacobian analytically, and wrote tests. It took about 2 hours.
+**A computational neuroscience paper was turned into a browser-based visualization tool by someone who doesn't understand the theory.** I rewrote the PyTorch code in NumPy, derived the Jacobian analytically, wrote tests, and built an interactive UI where you can tweak parameters and watch the behavior in real time. It took about 2 hours.
 
 This speaks to the power of Claude Code, and simultaneously to the terror of the era.
 
 "In the age of AI, the only thing that survives is obsession" — you hear this a lot. Skills and knowledge can be replaced by AI, but the irrational fixation of "for some reason, this pulls me in" cannot be replicated. After using Claude Code continuously, I've come to realize this isn't just positioning talk.
 
-With Claude Code, there could be countless people who can build an Active Inference tool. But "someone who snags on a single term buried in their morning research report and starts reimplementing it without understanding the theory" — there probably aren't that many. In a world where implementation ability has been democratized, the only remaining differentiator is **the obsession that decides what to build.**
+With Claude Code, there could be countless people who can build an Active Inference tool. But "someone who snags on a single term buried in their morning research report and starts building without understanding the theory" — there probably aren't that many. In a world where implementation ability has been democratized, the only remaining differentiator is **the obsession that decides what to build.**
 
 This article is a record of that obsession.
 
@@ -44,7 +44,7 @@ This article is a record of that obsession.
 
 ## The Original Paper and Code — According to Claude Code
 
-The reimplementation target was Priorelli et al. (2025) "[Embodied decisions as active inference](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1012745)." Published in PLOS Computational Biology, the paper models "embodied decision-making" using Active Inference.
+The source paper was Priorelli et al. (2025) "[Embodied decisions as active inference](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1012745)." Published in PLOS Computational Biology, the paper models "embodied decision-making" using Active Inference.
 
 According to Claude Code, the model has four interlocking processes:
 
@@ -53,9 +53,9 @@ According to Claude Code, the model has four interlocking processes:
 3. **Kinematics** — forward kinematics for a 3-joint arm (angles → hand position)
 4. **Body** — a physical model that moves the hand according to the brain's beliefs
 
-The original code is written in [PyTorch + Pymunk + Pyglet](https://github.com/priorelli/embodied-decisions). It requires a GPU environment and can't run in the browser.
+The original code is written in [PyTorch + Pymunk + Pyglet](https://github.com/priorelli/embodied-decisions). It requires a GPU environment and can't run in the browser. It was research code meant for local experiments — **there was no UI that anyone could just try in a browser.**
 
-## Design Decisions: Why Rewrite Everything — Says Claude Code
+## Design Decisions: Why Rewrite It and Put It in the Browser — Says Claude Code
 
 Normally, I don't take Claude Code's proposals at face value. "Why that design?" "What alternatives did you consider?" "What are the trade-offs?" — I ask these every time. I dig into Claude Code's reasoning relentlessly and don't start implementing until I'm convinced. Anyone who's read my previous articles knows this stance.
 
@@ -74,12 +74,12 @@ The design decision table below is a record of what Claude Code decided. The onl
 | uv | Fast. Self-contained in `pyproject.toml`. `uv run` auto-manages venv | poetry → slow |
 
 <!-- textlint-disable ja-technical-writing/no-doubled-joshi -->
-There was exactly one motivation I added on my own. **"If I watch the reimplementation process, maybe I'll understand a little."** If I watch Claude Code rewriting from PyTorch to NumPy, I should at least be able to see "what it's computing." In the end, this expectation was half right and half wrong. I could see "what is being computed." But "why it computes that" remains a mystery.
+There was exactly one motivation I added on my own. **"If I watch the rewriting process, maybe I'll understand a little."** If I watch Claude Code rewriting from PyTorch to NumPy, I should at least be able to see "what it's computing." In the end, this expectation was half right and half wrong. I could see "what is being computed." But "why it computes that" remains a mystery.
 <!-- textlint-enable ja-technical-writing/no-doubled-joshi -->
 
 ## The Biggest Stumbling Block: The VJP Sign Was Wrong — Apparently
 
-About 80% of the reimplementation went smoothly. I gave Claude Code the paper-notation-to-code-variable mapping table and the original code's structural map as documentation, and it rewrote file by file. I just sat next to it watching. Thinking "huh, so that's how it's structured."
+About 80% of the rewriting went smoothly. I gave Claude Code the paper-notation-to-code-variable mapping table and the original code's structural map as documentation, and it rewrote file by file. I just sat next to it watching. Thinking "huh, so that's how it's structured."
 
 Suddenly, **the simulation values exploded.**
 
@@ -135,11 +135,11 @@ actual_angles_norm += (believed_angles_norm - actual_angles_norm) * gain * dt
 # → The lag between brain beliefs and body generates prediction error, driving the inference loop
 ```
 
-250MB of PyTorch + Pymunk + Pyglet was replaced by 50MB of NumPy + SciPy + Streamlit. Whether this decision is theoretically sound, I don't know. But I can see something moving in the browser as I change parameters in real time. Values labeled "beliefs" change, and the arm moves toward the target. Whether this is the correct behavior for Active Inference — I can't judge.
+250MB of PyTorch + Pymunk + Pyglet was replaced by 50MB of NumPy + SciPy + Streamlit. What had been a local-only research script became **a visualization tool you can play with in the browser, tweaking parameters and watching behavior in real time.** Whether this decision is theoretically sound, I don't know. But values labeled "beliefs" change, and the arm moves toward the target. Whether this is the correct behavior for Active Inference — I can't judge.
 
 ## Project Structure
 
-Here's the structure of the 1,550 lines Claude Code wrote in 2 hours.
+Here's the structure of the 1,550 lines Claude Code wrote in 2 hours. In addition to rewriting the computation core, the `viz/` directory and `app.py` are entirely new — they didn't exist in the original code.
 
 ```text
 src/active_inference_viz/        # 1550 lines
@@ -199,7 +199,7 @@ Whether that counts as learning, I don't know.
 
 I'm thinking about this again as I write.
 
-Claude Code is a terrifying tool. A layperson reimplemented a computational neuroscience paper in 2 hours. 98% test coverage, full type checking. Would a professional researcher point out fatal errors? Or would they say "formally, it's well done"? I don't have the ability to judge which.
+Claude Code is a terrifying tool. A layperson turned a computational neuroscience paper into a browser-based visualization tool in 2 hours. Not just rewriting the computation engine, but building an interactive UI that didn't exist in the original — with 98% test coverage and full type checking. Would a professional researcher point out fatal errors? Or would they say "formally, it's well done"? I don't have the ability to judge which.
 
 But "why Active Inference" is something Claude Code can't answer. Among the dozens of topics lined up in the morning research report, why did my hand reach for **this one** of all things? There's no rational explanation. If pressed, I'd say the picture of "the brain holding a model of the world and minimizing the gap between prediction and reality" seemed to suggest something about the relationship between AI and humans — that's about all I can say.
 
