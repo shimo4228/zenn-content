@@ -1,5 +1,5 @@
 ---
-title: "I Reimplemented a Paper I Don't Understand — Active Inference × Claude Code"
+title: "I Made a Paper I Don't Understand Run in the Browser — Active Inference × Claude Code"
 emoji: "🧠"
 type: "idea"
 topics: ["claudecode", "numpy", "streamlit", "python", "ai"]
