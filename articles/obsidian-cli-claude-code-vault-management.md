@@ -3,7 +3,7 @@ title: "Obsidian公式CLIが来た——もうVaultを裏口から触らなく�
 emoji: "⌨️"
 type: "tech"
 topics: ["obsidian", "cli", "claudecode", "claude", "自動化"]
-published: false
+published: true
 ---
 
 `mv` した瞬間、ウィキリンクが 47 本切れた。
