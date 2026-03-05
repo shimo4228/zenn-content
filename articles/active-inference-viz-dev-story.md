@@ -1,5 +1,5 @@
 ---
-title: "理論が分からない論文を実装してしまった ── 能動的推論 × Claude Code"
+title: "理論が分からない論文を再実装してしまった ── 能動的推論 × Claude Code"
 emoji: "🧠"
 type: "idea"
 topics: ["claudecode", "numpy", "streamlit", "python", "ai"]
