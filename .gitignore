@@ -21,8 +21,7 @@ Thumbs.db
 # Playwright MCP (auto-generated)
 .playwright-mcp/
 
-# Internal docs and planning (not for publication)
-docs/
+# Internal planning (not for publication)
 planning/
 drafts/
 articles/_context/
