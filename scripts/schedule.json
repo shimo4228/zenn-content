@@ -351,7 +351,7 @@
       "canonical_url": "https://zenn.dev/shimo4228/articles/claude-code-effective-settings-10",
       "zenn_date": "2026-03-05",
       "date": "2026-03-05",
-      "qiita": "pending",
+      "qiita": "https://qiita.com/shimo4228/items/f80a6716a91eac35deb3",
       "devto": "n/a",
       "hashnode": "n/a",
       "zenn_published": true,
@@ -362,8 +362,8 @@
       "file": "articles-en/claude-code-effective-settings-10.md",
       "canonical_url": "https://zenn.dev/shimo4228/articles/claude-code-effective-settings-10",
       "date": "2026-03-05",
-      "devto": "pending",
-      "hashnode": "pending",
+      "devto": "https://dev.to/shimo4228/stop-using-default-settings-10-claude-code-configs-that-actually-work-243l",
+      "hashnode": "https://shimo4228.hashnode.dev/stop-using-default-settings-10-claude-code-configs-that-actually-work",
       "depends_on": "articles/claude-code-effective-settings-10.md"
     },
     {
@@ -374,8 +374,9 @@
       "qiita": "pending",
       "devto": "n/a",
       "hashnode": "n/a",
-      "zenn_published": false,
-      "notes": "Obsidian公式CLI解説 + Claude Code連携"
+      "zenn_published": true,
+      "notes": "Obsidian公式CLI解説 + Claude Code連携",
+      "zenn_published_at": "2026-03-06T07:00:00.621106"
     },
     {
       "file": "articles-en/obsidian-cli-claude-code-vault-management.md",

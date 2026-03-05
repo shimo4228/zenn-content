@@ -1,5 +1,5 @@
 ---
-title: "理論が分からない論文を再実装してしまった ── 能動的推論 × Claude Code"
+title: "理論が分からない論文を実装してしまった ── 能動的推論 × Claude Code"
 emoji: "🧠"
 type: "idea"
 topics: ["claudecode", "numpy", "streamlit", "python", "ai"]
@@ -65,16 +65,18 @@ Claude Code によると、モデルは 4 つのプロセスが連動する。
 
 以下の設計判断表は、Claude Code がそう判断した記録だ。私が理解できたのは「Streamlit Cloud で動かしたい」という動機と、「uv は速い」くらいのものだった。
 
-| 判断 | Claude Code の理由 | 却下した代替案 |
-|------|------|---------------|
-| PyTorch → 純 NumPy | Streamlit Cloud で動かすため。3 関節なら Jacobian は閉形式で書ける | PyTorch 維持 → デプロイ不可 |
-| Pymunk → Spring tracking | Streamlit Cloud に C バインディングが入らない。8 行で代替できた | MuJoCo → 過剰 |
-| frozen dataclass | hashable → `@st.cache_data` が直接使える。精度パラメータの事故変更も防げる | dict → hashable でない |
-| Plotly > Matplotlib | インタラクティブ操作（ホバー、ズーム）と Streamlit の相性 | Matplotlib → 静的 |
-| uv | 高速。`pyproject.toml` 完結。`uv run` で venv 自動管理 | poetry → 遅い |
+| 判断                     | Claude Code の理由                                                         | 却下した代替案              |
+| ------------------------ | -------------------------------------------------------------------------- | --------------------------- |
+| PyTorch → 純 NumPy       | Streamlit Cloud で動かすため。3 関節なら Jacobian は閉形式で書ける         | PyTorch 維持 → デプロイ不可 |
+| Pymunk → Spring tracking | Streamlit Cloud に C バインディングが入らない。8 行で代替できた            | MuJoCo → 過剰               |
+| frozen dataclass         | hashable → `@st.cache_data` が直接使える。精度パラメータの事故変更も防げる | dict → hashable でない      |
+| Plotly > Matplotlib      | インタラクティブ操作（ホバー、ズーム）と Streamlit の相性                  | Matplotlib → 静的           |
+| uv                       | 高速。`pyproject.toml` 完結。`uv run` で venv 自動管理                     | poetry → 遅い               |
 
 <!-- textlint-disable ja-technical-writing/no-doubled-joshi -->
+
 唯一、自分の意思で加えた動機がある。**「再実装の過程を見ていれば少しは理解できるのではないか」** という期待だ。Claude Code が PyTorch から NumPy へ書き換えていく様子を隣で眺めれば、「何を計算しているか」くらい見えるだろう、と。結果的にこの期待は半分当たって半分外れた。「何を計算しているか」は見えるようになった。ただ「なぜそれを計算するのか」は、依然として分からない。
+
 <!-- textlint-enable ja-technical-writing/no-doubled-joshi -->
 
 ## 最大のハマりポイント: VJP の符号が違う——らしい
@@ -103,7 +105,9 @@ parent_grad = -self.pi_eta_x * (J.T @ eps_eta_x)  # VJP with -π factor
 ```
 
 <!-- textlint-disable ja-technical-writing/no-doubled-joshi -->
+
 `WRONG` と `CORRECT` の違いは見れば分かる。マイナスが付くか付かないかだ。しかしマイナスが必要な理由は理解できない。
+
 <!-- textlint-enable ja-technical-writing/no-doubled-joshi -->Claude Code は「予測符号化では精度行列の負号が VJP に含まれる」と説明した。予測符号化を理解していない以上、この説明の正しさを判断できない。
 
 この修正が数値的に正しいことだけは検証できた。Claude Code が SciPy の数値微分と解析的 Jacobian を比較するテストを書き、`atol=1e-5` で一致することを確認した。
@@ -210,10 +214,12 @@ Claude Code は恐ろしいツールだ。計算論的な神経科学の論文�
 ---
 
 <!-- textlint-disable -->
+
 :::message
 **リポジトリ:** https://github.com/shimo4228/active-inference-viz
 Streamlit でブラウザからインタラクティブに動かせます。能動的推論に詳しい方、フィードバックをいただけると嬉しいです。
 :::
+
 <!-- textlint-enable -->
 
 ## 参考文献

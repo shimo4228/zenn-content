@@ -65,11 +65,12 @@ class PublishResult:
 
 def parse_zenn_article(path: Path) -> Article:
     """Parse a Zenn article markdown file into an Article object."""
-    post = frontmatter.load(path)
+    post = frontmatter.load(str(path))
+    metadata: dict[str, object] = post.metadata  # type: ignore[assignment]
     return Article(
-        title=post.metadata.get("title", ""),
+        title=str(metadata.get("title", "")),
         body=post.content,
-        topics=tuple(post.metadata.get("topics", [])),
+        topics=tuple(str(t) for t in metadata.get("topics", [])),  # type: ignore[union-attr]
     )
 
 
