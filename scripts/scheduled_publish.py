@@ -465,15 +465,17 @@ def publish_due(schedule: dict[str, Any], *, dry_run: bool = False) -> int:
         if entry_date > today or _is_entry_done(entry):
             updated_articles.append(entry)
             continue
-        
+
         # Check if Zenn was published too recently (need delay for deployment)
         if _should_skip_due_to_recent_zenn_publish(entry):
             updated_articles.append(entry)
             skipped_count += 1
             continue
-        
-        # Check dependency satisfaction (e.g., EN article needs JP article done first)
-        dep_satisfied, dep_reason = _is_dependency_satisfied(entry, schedule["articles"])
+
+        # Check dependency satisfaction using the CURRENT state of articles
+        # (updated_articles has already-processed entries with fresh URLs)
+        current_state = updated_articles + remaining[i:]
+        dep_satisfied, dep_reason = _is_dependency_satisfied(entry, current_state)
         if not dep_satisfied:
             logger.info("Skipping %s: %s", entry["file"], dep_reason)
             updated_articles.append(entry)

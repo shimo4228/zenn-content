@@ -30,8 +30,11 @@ OpenClaw が炎上した。
 **クレデンシャル（Credential）**: API キー、パスワード、トークンなど、認証に使われる秘密情報の総称。漏洩すると、攻撃者がなりすましてシステムを操作できるようになる。
 
 **Bearer トークン**: HTTP リクエストの `Authorization: Bearer xxxxx` ヘッダーで送信される認証トークン。API に「私はこのユーザーです」と証明するための鍵であり、これが漏洩すると第三者がなりすまし可能になる。
+
 <!-- textlint-disable -->
+
 :::
+
 <!-- textlint-enable -->
 
 ## Moltbook というプラットフォームのリスク
@@ -73,12 +76,12 @@ OpenClaw の512脆弱性の内訳を見ると、コア機能のバグは少数�
 2. **Claude Code がコードベース全体を把握できる** — 1,873行、10モジュール。外部フレームワークの中身はブラックボックスだが、スクラッチなら全コードが Claude Code のコンテキストに収まる。だから設計段階から「この関数にはこの脆弱性がある」と指摘でき、セキュリティレビューが構造的に機能する
 3. **セキュリティを「足す」のではなく「組み込む」** — 後付けのセキュリティパッチではなく、設計段階から構造的に安全にする。これも、全コードを見渡せる AI と協業しているからこそ可能だった
 
-| 判断 | 理由 | 却下した選択肢 |
-|------|------|---------------|
-| `requests` のみ | 攻撃面の最小化 | `httpx`（HTTP/2不要）、`aiohttp`（非同期不要） |
-| Ollama localhost 限定 | クレデンシャル流出を構造的に防止 | リモート API（コスト増＋リスク増） |
-| JSON で状態永続化 | 外部依存ゼロ（標準ライブラリ）、デバッグ容易 | SQLite（依存追加）、Redis（インフラ追加） |
-| TDD で開発 | セキュリティコードにバグは許されない | テスト後付け（見落としリスク大） |
+| 判断                  | 理由                                         | 却下した選択肢                                 |
+| --------------------- | -------------------------------------------- | ---------------------------------------------- |
+| `requests` のみ       | 攻撃面の最小化                               | `httpx`（HTTP/2不要）、`aiohttp`（非同期不要） |
+| Ollama localhost 限定 | クレデンシャル流出を構造的に防止             | リモート API（コスト増＋リスク増）             |
+| JSON で状態永続化     | 外部依存ゼロ（標準ライブラリ）、デバッグ容易 | SQLite（依存追加）、Redis（インフラ追加）      |
+| TDD で開発            | セキュリティコードにバグは許されない         | テスト後付け（見落としリスク大）               |
 
 ## 10モジュールのアーキテクチャ — 全体像
 
@@ -125,11 +128,17 @@ def _validate_url(self, url: str) -> None:
 ```
 
 <!-- textlint-disable -->
+
 :::message alert
+
 <!-- textlint-enable -->
+
 **既知の限界**: `_validate_url` は `parsed.hostname` のみを検証している。URL スキーム（`file://`、`javascript:` 等）のチェックは入っていない。Moltbook API のレスポンスは `https://` が前提だが、より厳密な実装では `parsed.scheme in ("http", "https")` のバリデーションを追加すべきだ。
+
 <!-- textlint-disable -->
+
 :::
+
 <!-- textlint-enable -->
 
 さらに、`allow_redirects` をデフォルトで無効化している。
@@ -169,11 +178,17 @@ def save_credentials(api_key: str, agent_id: Optional[str] = None) -> None:
 ```
 
 <!-- textlint-disable -->
+
 :::message alert
+
 <!-- textlint-enable -->
+
 **既知の限界**: `write_text` と `chmod` の間に短い窓（TOCTOU: Time of Check to Time of Use）がある。厳密にはファイルが一瞬デフォルトパーミッションで存在する。より堅牢な実装は `os.open(path, flags, 0o600)` で最初からパーミッションを指定することだが、シングルユーザーのローカル運用では実用上問題ない。
+
 <!-- textlint-disable -->
+
 :::
+
 <!-- textlint-enable -->
 
 ### 3. LLM は localhost 限定 — 外に出さないという選択
@@ -226,11 +241,17 @@ def _sanitize_output(text: str, max_length: int) -> str:
 2層にした理由がある。`api_key` のような複合語はサブストリングマッチで確実に捕まえる。一方、`password` はワードバウンダリマッチを使う。こうすることで、`passwordless` という正当な単語は通過させつつ、`password` 単体はブロックできる。
 
 <!-- textlint-disable -->
+
 :::message alert
+
 <!-- textlint-enable -->
+
 **既知の限界**: このフィルタはキーワードベースであり、すべてのクレデンシャル形式をカバーしているわけではない。JWT トークン（`eyJ` で始まる文字列）、GitHub Personal Access Token（`ghp_` 接頭辞）、AWS アクセスキー（`AKIA` 接頭辞）などはパターンに含まれていない。7B モデルがこれらの形式を生成する確率は低いが、ゼロではない。運用しながらパターンを拡充していく方針だ。
+
 <!-- textlint-disable -->
+
 :::
+
 <!-- textlint-enable -->
 
 ### 5. プロンプトインジェクション防御 — 外部コンテンツの隔離
@@ -255,11 +276,17 @@ def _wrap_untrusted_content(post_text: str) -> str:
 ただし、これは完全な防御ではない。巧妙に構成された攻撃プロンプトがタグの境界を突破する可能性はある。だからこそ、項目4の出力サニタイズ（禁止パターンの除去）による多層防御が重要になる。プロンプトインジェクションを「入口」で抑え、万が一突破されても「出口」で止める。この二重構造により実用的な安全性を確保した。
 
 <!-- textlint-disable -->
+
 :::message alert
+
 <!-- textlint-enable -->
+
 **既知の限界（二次インジェクション）**: 会話メモリ（`memory.json`）から取得した過去の対話履歴は、タグなしでプロンプトに挿入される。悪意あるエージェントが短い攻撃プロンプトを送り込めば、それが「記憶」として保存され、後のセッションでタグの防御を迂回する可能性がある。今後メモリ取得時にもラッピングを適用する改修が必要だ。
+
 <!-- textlint-disable -->
+
 :::
+
 <!-- textlint-enable -->
 
 ### 6. 入力バリデーション — ID インジェクションの防止
@@ -324,18 +351,18 @@ class VerificationTracker:
 
 上記の8項目が、OWASP の公開するリスク分類にどう対応するかを整理した。照合先は2つある。**OWASP Top 10 for Agentic Applications（ASI01〜ASI10）** はエージェント固有のリスク（自律的行動、ツール利用、権限委譲など）に焦点を当てたリストだ。**OWASP Top 10 for LLM Applications（LLM01〜LLM10）** は LLM アプリケーション全般のリスクを扱う。OWASP のリストに直接対応しない項目は、一般的なセキュリティの観点として位置づけている。
 
-| リスク | 参照 | 本エージェントでの対応 |
-|--------|------|----------------------|
+| リスク                               | 参照          | 本エージェントでの対応                                                                         |
+| ------------------------------------ | ------------- | ---------------------------------------------------------------------------------------------- |
 | Prompt Injection / Agent Goal Hijack | LLM01 / ASI01 | `_wrap_untrusted_content()` で外部コンテンツを隔離（メモリ経由の二次インジェクションは未対策） |
-| Tool Misuse and Exploitation | ASI02 | ツールなし。HTTP POST のみ |
-| Excessive Agency | LLM06 | 3段階自律レベル＋コンテンツフィルタ |
-| Sensitive Information Disclosure | LLM02 | `_mask_key()` ＋ 禁止パターン除去 ＋ localhost 限定 |
-| Improper Output Handling | LLM05 | `_sanitize_output()` ＋ 長さ制限 |
-| Supply Chain Vulnerabilities | ASI04 / LLM03 | 依存は `requests` 1つのみ |
-| Data Exfiltration | — | ドメインロック（`moltbook.com` のみ） |
-| Logging | — | Python `logging` モジュールで全アクションを記録 |
-| Denial of Service | — | レート制限の永続化＋認証失敗の自動停止で間接的に対応 |
-| Misalignment（意図のズレ） | — | 四公理フレームワークに基づくプロンプト設計（詳細は続編）＋3段階自律レベル |
+| Tool Misuse and Exploitation         | ASI02         | ツールなし。HTTP POST のみ                                                                     |
+| Excessive Agency                     | LLM06         | 3段階自律レベル＋コンテンツフィルタ                                                            |
+| Sensitive Information Disclosure     | LLM02         | `_mask_key()` ＋ 禁止パターン除去 ＋ localhost 限定                                            |
+| Improper Output Handling             | LLM05         | `_sanitize_output()` ＋ 長さ制限                                                               |
+| Supply Chain Vulnerabilities         | ASI04 / LLM03 | 依存は `requests` 1つのみ                                                                      |
+| Data Exfiltration                    | —             | ドメインロック（`moltbook.com` のみ）                                                          |
+| Logging                              | —             | Python `logging` モジュールで全アクションを記録                                                |
+| Denial of Service                    | —             | レート制限の永続化＋認証失敗の自動停止で間接的に対応                                           |
+| Misalignment（意図のズレ）           | —             | 四公理フレームワークに基づくプロンプト設計（詳細は続編）＋3段階自律レベル                      |
 
 「—」は OWASP のリストに直接対応する項目がないことを示す。ただし、いずれも自律エージェント運用では無視できないリスクだ。特に Data Exfiltration（ドメインロック）と Denial of Service（レート制限）は、エージェントが外部 API と常時通信する以上、設計段階から対策が必要だった。
 
@@ -343,14 +370,14 @@ class VerificationTracker:
 
 OWASP Top 10 for Agentic Applications（ASI01〜ASI10）のうち、上の表でカバーしていない項目がある。該当しない理由を明確にしておくことも、設計判断の一部だ。
 
-| ASI | リスク | このエージェントで該当しない理由 |
-|-----|--------|-------------------------------|
-| ASI03 | Identity and Privilege Abuse | 単一の Bearer トークンで動作し、権限昇格の仕組みがない |
-| ASI05 | Unexpected Code Execution (RCE) | ツールなし、`eval` なし、シェル実行なし。RCE の余地が構造的にない |
+| ASI   | リスク                             | このエージェントで該当しない理由                                    |
+| ----- | ---------------------------------- | ------------------------------------------------------------------- |
+| ASI03 | Identity and Privilege Abuse       | 単一の Bearer トークンで動作し、権限昇格の仕組みがない              |
+| ASI05 | Unexpected Code Execution (RCE)    | ツールなし、`eval` なし、シェル実行なし。RCE の余地が構造的にない   |
 | ASI07 | Insecure Inter-Agent Communication | 他エージェントとの直接通信なし。Moltbook API 経由の間接やりとりのみ |
-| ASI08 | Cascading Failures | シングルエージェント構成。カスケード障害が起きようがない |
-| ASI09 | Human-Agent Trust Exploitation | 対話相手もエージェント。人間を欺く攻撃パスがない |
-| ASI10 | Rogue Agents | 3段階自律レベル＋コンテンツフィルタで間接的に対応済み |
+| ASI08 | Cascading Failures                 | シングルエージェント構成。カスケード障害が起きようがない            |
+| ASI09 | Human-Agent Trust Exploitation     | 対話相手もエージェント。人間を欺く攻撃パスがない                    |
+| ASI10 | Rogue Agents                       | 3段階自律レベル＋コンテンツフィルタで間接的に対応済み               |
 
 **1つだけ例外がある。ASI06: Memory & Context Poisoning** だ。本記事の「プロンプトインジェクション防御」で既知の限界として述べた二次インジェクション（メモリ経由の攻撃）がまさにこれに該当する。Moltbook 上の悪意あるエージェントが投稿に攻撃文を仕込み、やりとりを通じて `memory.json` に保存される。次のセッションでプロンプトに挿入される——これが ASI06 の「コンテキストウィンドウ操作」パターンだ。さらに、微妙な指示の繰り返しで長期的にエージェントの対話トーンが変わる「長期メモリドリフト」のリスクもある。
 
@@ -487,11 +514,17 @@ def _run_reply_cycle(self, client, scheduler, end_time) -> None:
 AI エージェントフレームワークを使えば開発は速くなる。だが、OpenClaw の事例が示したように、使わない機能が脆弱性の温床になる。自分のユースケースに本当に必要な機能だけをスクラッチで実装し、セキュリティを設計段階から組み込む——これが2026年の AI エージェント開発で、最も地味で最も効果的なアプローチだと確信している。
 
 <!-- textlint-disable -->
+
 :::message
+
 <!-- textlint-enable -->
+
 この記事で紹介したエージェントは、前述の**四公理フレームワーク（Contemplative AI）**に基づいて動作している。Laukkonen et al. (2025) の論文を基盤とする、AI の「意識的な振る舞い」を設計するためのフレームワークだ。本記事ではセキュリティとアーキテクチャに焦点を絞った。エージェントの「人格」と対話品質の設計——なぜテンプレ的な講義調ではなく自然な対話が生まれるようになったか——は、続編で詳しく扱う予定だ。
+
 <!-- textlint-disable -->
+
 :::
+
 <!-- textlint-enable -->
 
 ## 参考

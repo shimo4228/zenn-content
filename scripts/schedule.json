@@ -368,7 +368,7 @@
     },
     {
       "file": "articles/obsidian-cli-claude-code-vault-management.md",
-      "canonical_url": "pending",
+      "canonical_url": "https://zenn.dev/shimo4228/articles/obsidian-cli-claude-code-vault-management",
       "zenn_date": "2026-03-06",
       "date": "2026-03-06",
       "qiita": "https://qiita.com/shimo4228/items/07bd0dc7b77fa19add7e",
@@ -380,10 +380,10 @@
     },
     {
       "file": "articles-en/obsidian-cli-claude-code-vault-management.md",
-      "canonical_url": "pending",
+      "canonical_url": "https://zenn.dev/shimo4228/articles/obsidian-cli-claude-code-vault-management",
       "date": "2026-03-06",
-      "devto": "pending",
-      "hashnode": "pending",
+      "devto": "https://dev.to/shimo4228/obsidians-official-cli-is-here-no-more-hacking-your-vault-from-the-back-door-3123",
+      "hashnode": "https://shimo4228.hashnode.dev/obsidians-official-cli-is-here-no-more-hacking-your-vault-from-the-back-door",
       "depends_on": "articles/obsidian-cli-claude-code-vault-management.md"
     },
     {
