@@ -3,7 +3,7 @@ title: "理論が分からない論文をブラウザで動かしてしまった
 emoji: "🧠"
 type: "idea"
 topics: ["claudecode", "numpy", "streamlit", "python", "ai"]
-published: false
+published: true
 ---
 
 毎朝5時に届く AI リサーチレポートの片隅に、「能動的推論（Active Inference）」という単語があった。脳が世界の内部モデルを持ち、予測と現実のズレを最小化するように行動を選ぶ。生物の知覚・行動・意思決定を統一的に説明するフレームワーク——。
