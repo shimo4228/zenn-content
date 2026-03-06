@@ -371,7 +371,7 @@
       "canonical_url": "pending",
       "zenn_date": "2026-03-06",
       "date": "2026-03-06",
-      "qiita": "pending",
+      "qiita": "https://qiita.com/shimo4228/items/07bd0dc7b77fa19add7e",
       "devto": "n/a",
       "hashnode": "n/a",
       "zenn_published": true,
@@ -404,6 +404,17 @@
       "devto": "pending",
       "hashnode": "pending",
       "depends_on": "articles/active-inference-viz-dev-story.md"
+    },
+    {
+      "file": "articles/moltbook-agent-scratch-build.md",
+      "canonical_url": "pending",
+      "zenn_date": "2026-03-08",
+      "date": "2026-03-08",
+      "qiita": "pending",
+      "devto": "n/a",
+      "hashnode": "n/a",
+      "zenn_published": false,
+      "notes": "Moltbookエージェント構築記 — セキュリティファースト + OWASP照合"
     }
   ]
 }
