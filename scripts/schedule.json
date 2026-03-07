@@ -388,21 +388,22 @@
     },
     {
       "file": "articles/active-inference-viz-dev-story.md",
-      "canonical_url": "pending",
+      "canonical_url": "https://zenn.dev/shimo4228/articles/active-inference-viz-dev-story",
       "zenn_date": "2026-03-07",
       "date": "2026-03-07",
-      "qiita": "pending",
+      "qiita": "https://qiita.com/shimo4228/items/17f507d2a60efeb341a5",
       "devto": "n/a",
       "hashnode": "n/a",
-      "zenn_published": false,
-      "notes": "能動的推論の可視化ツール再実装記 — 偏愛×Claude Code"
+      "zenn_published": true,
+      "notes": "能動的推論の可視化ツール再実装記 — 偏愛×Claude Code",
+      "zenn_published_at": "2026-03-07T07:00:00.860748"
     },
     {
       "file": "articles-en/active-inference-viz-dev-story.md",
-      "canonical_url": "pending",
+      "canonical_url": "https://zenn.dev/shimo4228/articles/active-inference-viz-dev-story",
       "date": "2026-03-07",
-      "devto": "pending",
-      "hashnode": "pending",
+      "devto": "https://dev.to/shimo4228/i-made-a-paper-i-dont-understand-run-in-the-browser-active-inference-x-claude-code-2jog",
+      "hashnode": "https://shimo4228.hashnode.dev/i-made-a-paper-i-dont-understand-run-in-the-browser-active-inference-claude-code",
       "depends_on": "articles/active-inference-viz-dev-story.md"
     },
     {
