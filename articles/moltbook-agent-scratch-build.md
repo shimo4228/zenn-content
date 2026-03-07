@@ -3,7 +3,7 @@ title: "Moltbookエージェント構築記 — Claude Codeとセキュリティ
 emoji: "🛡️"
 type: "tech"
 topics: ["ai", "python", "security", "agent", "claudecode"]
-published: false
+published: true
 ---
 
 OpenClaw が炎上した。
