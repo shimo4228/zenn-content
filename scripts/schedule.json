@@ -343,8 +343,7 @@
       "canonical_url": "https://zenn.dev/shimo4228/articles/ecc-marketplace-contribution",
       "date": "2026-03-04",
       "devto": "https://dev.to/shimo4228/i-found-the-shortest-route-to-ship-my-claude-code-skills-to-57000-developers-4g43",
-      "hashnode": "https://shimo4228.hashnode.dev/i-found-the-shortest-route-to-ship-my-claude-code-skills-to-57000-developers",
-      "depends_on": "articles/ecc-marketplace-contribution.md"
+      "hashnode": "https://shimo4228.hashnode.dev/i-found-the-shortest-route-to-ship-my-claude-code-skills-to-57000-developers"
     },
     {
       "file": "articles/claude-code-effective-settings-10.md",
@@ -363,8 +362,7 @@
       "canonical_url": "https://zenn.dev/shimo4228/articles/claude-code-effective-settings-10",
       "date": "2026-03-05",
       "devto": "https://dev.to/shimo4228/stop-using-default-settings-10-claude-code-configs-that-actually-work-243l",
-      "hashnode": "https://shimo4228.hashnode.dev/stop-using-default-settings-10-claude-code-configs-that-actually-work",
-      "depends_on": "articles/claude-code-effective-settings-10.md"
+      "hashnode": "https://shimo4228.hashnode.dev/stop-using-default-settings-10-claude-code-configs-that-actually-work"
     },
     {
       "file": "articles/obsidian-cli-claude-code-vault-management.md",
@@ -383,8 +381,7 @@
       "canonical_url": "https://zenn.dev/shimo4228/articles/obsidian-cli-claude-code-vault-management",
       "date": "2026-03-06",
       "devto": "https://dev.to/shimo4228/obsidians-official-cli-is-here-no-more-hacking-your-vault-from-the-back-door-3123",
-      "hashnode": "https://shimo4228.hashnode.dev/obsidians-official-cli-is-here-no-more-hacking-your-vault-from-the-back-door",
-      "depends_on": "articles/obsidian-cli-claude-code-vault-management.md"
+      "hashnode": "https://shimo4228.hashnode.dev/obsidians-official-cli-is-here-no-more-hacking-your-vault-from-the-back-door"
     },
     {
       "file": "articles/active-inference-viz-dev-story.md",
@@ -403,8 +400,7 @@
       "canonical_url": "https://zenn.dev/shimo4228/articles/active-inference-viz-dev-story",
       "date": "2026-03-07",
       "devto": "https://dev.to/shimo4228/i-made-a-paper-i-dont-understand-run-in-the-browser-active-inference-x-claude-code-2jog",
-      "hashnode": "https://shimo4228.hashnode.dev/i-made-a-paper-i-dont-understand-run-in-the-browser-active-inference-claude-code",
-      "depends_on": "articles/active-inference-viz-dev-story.md"
+      "hashnode": "https://shimo4228.hashnode.dev/i-made-a-paper-i-dont-understand-run-in-the-browser-active-inference-claude-code"
     },
     {
       "file": "articles/moltbook-agent-scratch-build.md",
@@ -414,8 +410,9 @@
       "qiita": "pending",
       "devto": "n/a",
       "hashnode": "n/a",
-      "zenn_published": false,
-      "notes": "Moltbookエージェント構築記 — セキュリティファースト + OWASP照合"
+      "zenn_published": true,
+      "notes": "Moltbookエージェント構築記 — セキュリティファースト + OWASP照合",
+      "zenn_published_at": "2026-03-08T07:00:05.164525"
     },
     {
       "file": "articles/playwright-magento-scoring.md",
@@ -430,11 +427,9 @@
     },
     {
       "file": "articles-en/playwright-magento-scoring.md",
-      "canonical_url": "pending",
       "date": "2026-03-09",
       "devto": "pending",
-      "hashnode": "pending",
-      "depends_on": "articles/playwright-magento-scoring.md"
+      "hashnode": "pending"
     }
   ]
 }

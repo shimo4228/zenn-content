@@ -24,7 +24,6 @@ from typing import Any, NamedTuple
 import frontmatter
 
 from zenn_publish import (
-    ZENN_USER,
     _git_add_commit_push,
 )
 from publish import (
@@ -358,9 +357,7 @@ def _process_entry(
     article = parse_zenn_article(article_path)
     canonical = entry.get("canonical_url")
     if not canonical or canonical == "pending":
-        slug = Path(entry["file"]).stem
-        canonical = f"https://zenn.dev/{ZENN_USER}/articles/{slug}"
-        logger.warning("canonical_url missing/pending, derived: %s", canonical)
+        canonical = None
     logger.info("Processing: %s (date=%s)", article.title, entry["date"])
     updates: dict[str, Any] = {}
     errors = 0
@@ -418,36 +415,6 @@ def _process_entry(
     return {**entry, **updates} if updates else entry, errors
 
 
-def _is_dependency_satisfied(entry: dict[str, Any], all_entries: list[dict[str, Any]]) -> tuple[bool, str]:
-    """Check if entry's dependency (e.g., JP article for EN translation) is satisfied.
-
-    For EN cross-posts, the real dependency is that the JP article is live on Zenn
-    (so the canonical URL is valid). We do NOT require all JP platforms (Qiita etc.)
-    to be done — otherwise the 15-min Zenn deploy delay causes Qiita to be skipped,
-    which blocks EN cross-posting indefinitely when the script runs only once per day.
-
-    Returns (is_satisfied, reason_message).
-    """
-    depends_on = entry.get("depends_on")
-    if not depends_on:
-        return True, ""
-
-    # Find the dependency entry
-    for dep_entry in all_entries:
-        if dep_entry["file"] == depends_on:
-            # Only require Zenn publication, not all platforms
-            if dep_entry.get("zenn_published") is True:
-                return True, ""
-            # Fallback for entries without zenn_published (legacy)
-            if _is_entry_done(dep_entry):
-                return True, ""
-            return False, f"Waiting for Zenn publication of: {depends_on}"
-
-    # Dependency not found in schedule - assume external/satisfied
-    logger.warning("Dependency %s not found in schedule for %s", depends_on, entry["file"])
-    return True, ""
-
-
 def publish_due(schedule: dict[str, Any], *, dry_run: bool = False) -> int:
     # Phase 1: Publish due Zenn articles first (git push)
     schedule, zenn_count, zenn_errors = _process_zenn_entries(
@@ -480,16 +447,6 @@ def publish_due(schedule: dict[str, Any], *, dry_run: bool = False) -> int:
             skipped_count += 1
             continue
 
-        # Check dependency satisfaction using the CURRENT state of articles
-        # (updated_articles has already-processed entries with fresh URLs)
-        current_state = updated_articles + remaining[i:]
-        dep_satisfied, dep_reason = _is_dependency_satisfied(entry, current_state)
-        if not dep_satisfied:
-            logger.info("Skipping %s: %s", entry["file"], dep_reason)
-            updated_articles.append(entry)
-            skipped_count += 1
-            continue
-
         updated_entry, entry_errors = _process_entry(entry, creds, dry_run=dry_run)
         updated_articles.append(updated_entry)
         errors += entry_errors
@@ -506,11 +463,11 @@ def publish_due(schedule: dict[str, Any], *, dry_run: bool = False) -> int:
     elif not dry_run:
         save_schedule({**schedule, "articles": updated_articles})
         logger.info(
-            "Schedule updated. %d article(s) processed, %d skipped (dependencies), %d error(s).",
+            "Schedule updated. %d article(s) processed, %d skipped (recent Zenn publish), %d error(s).",
             posted_count, skipped_count, errors,
         )
     else:
-        logger.info("[DRY-RUN] %d article(s) would be posted, %d skipped (dependencies).", 
+        logger.info("[DRY-RUN] %d article(s) would be posted, %d skipped (recent Zenn publish).",
                     posted_count, skipped_count)
 
     return 1 if errors > 0 else 0
