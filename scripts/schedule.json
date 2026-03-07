@@ -416,6 +416,25 @@
       "hashnode": "n/a",
       "zenn_published": false,
       "notes": "Moltbookエージェント構築記 — セキュリティファースト + OWASP照合"
+    },
+    {
+      "file": "articles/playwright-magento-scoring.md",
+      "canonical_url": "pending",
+      "zenn_date": "2026-03-09",
+      "date": "2026-03-09",
+      "qiita": "pending",
+      "devto": "n/a",
+      "hashnode": "n/a",
+      "zenn_published": false,
+      "notes": "Playwright × Magento 実戦パターン + 時間減衰スコアリング"
+    },
+    {
+      "file": "articles-en/playwright-magento-scoring.md",
+      "canonical_url": "pending",
+      "date": "2026-03-09",
+      "devto": "pending",
+      "hashnode": "pending",
+      "depends_on": "articles/playwright-magento-scoring.md"
     }
   ]
 }
