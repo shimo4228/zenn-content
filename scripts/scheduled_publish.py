@@ -357,10 +357,10 @@ def _process_entry(
 
     article = parse_zenn_article(article_path)
     canonical = entry.get("canonical_url")
-    if not canonical:
+    if not canonical or canonical == "pending":
         slug = Path(entry["file"]).stem
         canonical = f"https://zenn.dev/{ZENN_USER}/articles/{slug}"
-        logger.warning("canonical_url missing, derived: %s", canonical)
+        logger.warning("canonical_url missing/pending, derived: %s", canonical)
     logger.info("Processing: %s (date=%s)", article.title, entry["date"])
     updates: dict[str, Any] = {}
     errors = 0
@@ -420,21 +420,29 @@ def _process_entry(
 
 def _is_dependency_satisfied(entry: dict[str, Any], all_entries: list[dict[str, Any]]) -> tuple[bool, str]:
     """Check if entry's dependency (e.g., JP article for EN translation) is satisfied.
-    
+
+    For EN cross-posts, the real dependency is that the JP article is live on Zenn
+    (so the canonical URL is valid). We do NOT require all JP platforms (Qiita etc.)
+    to be done — otherwise the 15-min Zenn deploy delay causes Qiita to be skipped,
+    which blocks EN cross-posting indefinitely when the script runs only once per day.
+
     Returns (is_satisfied, reason_message).
     """
     depends_on = entry.get("depends_on")
     if not depends_on:
         return True, ""
-    
+
     # Find the dependency entry
     for dep_entry in all_entries:
         if dep_entry["file"] == depends_on:
+            # Only require Zenn publication, not all platforms
+            if dep_entry.get("zenn_published") is True:
+                return True, ""
+            # Fallback for entries without zenn_published (legacy)
             if _is_entry_done(dep_entry):
                 return True, ""
-            else:
-                return False, f"Waiting for dependency: {depends_on}"
-    
+            return False, f"Waiting for Zenn publication of: {depends_on}"
+
     # Dependency not found in schedule - assume external/satisfied
     logger.warning("Dependency %s not found in schedule for %s", depends_on, entry["file"])
     return True, ""

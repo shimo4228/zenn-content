@@ -10,6 +10,7 @@ import frontmatter
 import pytest
 
 from scheduled_publish import (
+    _is_dependency_satisfied,
     _is_entry_done,
     _needs_posting,
     _process_entry,
@@ -385,3 +386,91 @@ class TestProcessZennEntries:
         _, count, errors = _process_zenn_entries(schedule, dry_run=False)
         assert count == 0
         mock_publish.assert_not_called()
+
+
+# ---------------------------------------------------------------------------
+# _is_dependency_satisfied
+# ---------------------------------------------------------------------------
+
+
+class TestIsDependencySatisfied:
+    """Dependency check for EN cross-posts should only require Zenn publication."""
+
+    def test_no_depends_on_always_satisfied(self) -> None:
+        entry = _make_entry()
+        satisfied, _ = _is_dependency_satisfied(entry, [])
+        assert satisfied is True
+
+    def test_zenn_published_satisfies_dependency(self) -> None:
+        """EN entry should proceed when JP article is published on Zenn,
+        even if JP's Qiita is still pending."""
+        jp_entry = _make_entry(
+            file="articles/test.md",
+            zenn_published=True,
+            qiita="pending",  # Qiita not done yet
+            devto="n/a",
+            hashnode="n/a",
+        )
+        en_entry = _make_entry(
+            file="articles-en/test.md",
+            depends_on="articles/test.md",
+            devto="pending",
+            hashnode="pending",
+        )
+        del en_entry["qiita"]
+
+        satisfied, reason = _is_dependency_satisfied(en_entry, [jp_entry, en_entry])
+        assert satisfied is True
+        assert reason == ""
+
+    def test_zenn_not_published_blocks_dependency(self) -> None:
+        """EN entry should NOT proceed when JP article is not yet on Zenn."""
+        jp_entry = _make_entry(
+            file="articles/test.md",
+            zenn_published=False,
+            qiita="pending",
+            devto="n/a",
+            hashnode="n/a",
+        )
+        en_entry = _make_entry(
+            file="articles-en/test.md",
+            depends_on="articles/test.md",
+            devto="pending",
+            hashnode="pending",
+        )
+        del en_entry["qiita"]
+
+        satisfied, reason = _is_dependency_satisfied(en_entry, [jp_entry, en_entry])
+        assert satisfied is False
+        assert "articles/test.md" in reason
+
+    def test_all_platforms_done_satisfies_legacy(self) -> None:
+        """Legacy entries without zenn_published should still work
+        if all platforms are done."""
+        jp_entry = _make_entry(
+            file="articles/test.md",
+            qiita="https://qiita.com/items/abc",
+            devto="https://dev.to/user/abc",
+            hashnode="https://hashnode.dev/abc",
+        )
+        # No zenn_published field
+        en_entry = _make_entry(
+            file="articles-en/test.md",
+            depends_on="articles/test.md",
+            devto="pending",
+            hashnode="pending",
+        )
+        del en_entry["qiita"]
+
+        satisfied, _ = _is_dependency_satisfied(en_entry, [jp_entry, en_entry])
+        assert satisfied is True
+
+    def test_dependency_not_found_warns_and_proceeds(self) -> None:
+        """If dependency file is not in schedule, assume satisfied."""
+        en_entry = _make_entry(
+            file="articles-en/test.md",
+            depends_on="articles/nonexistent.md",
+        )
+
+        satisfied, _ = _is_dependency_satisfied(en_entry, [en_entry])
+        assert satisfied is True
