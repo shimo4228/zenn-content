@@ -3,7 +3,7 @@ title: "click() は3回裏切る — Playwright × Magento 実戦パターン集
 emoji: "🎭"
 type: "tech"
 topics: ["playwright", "python", "magento", "automation"]
-published: false
+published: true
 ---
 
 ## はじめに
