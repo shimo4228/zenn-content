@@ -3,148 +3,98 @@
     {
       "file": "articles/daily-research-automation.md",
       "canonical_url": "https://zenn.dev/shimo4228/articles/daily-research-automation",
-      "date": "2026-02-15",
-      "qiita": "https://qiita.com/shimo4228/items/2be7f23df18eb5a3c91d",
-      "devto": "n/a",
-      "hashnode": "n/a"
+      "date": "2026-02-15"
     },
     {
       "file": "articles-en/daily-research-automation.md",
-      "canonical_url": "https://zenn.dev/shimo4228/articles/daily-research-automation",
       "date": "2026-02-15",
-      "devto": "https://dev.to/shimo4228/zero-python-code-how-i-built-a-daily-ai-research-report-system-4357",
-      "hashnode": "https://shimo4228.hashnode.dev/zero-python-code-how-i-built-a-daily-ai-research-report-system"
+      "devto": "https://dev.to/shimo4228/zero-python-code-how-i-built-a-daily-ai-research-report-system-4357"
     },
     {
       "file": "articles-en/ecc-journey-part1.md",
-      "canonical_url": "https://zenn.dev/shimo4228/articles/ecc-journey-part1",
       "date": "2026-02-18",
-      "devto": "https://dev.to/shimo4228/a-beginners-first-10-days-of-real-development-with-ecc-23k4",
-      "hashnode": "https://shimo4228.hashnode.dev/a-beginners-first-10-days-of-real-development-with-ecc"
+      "devto": "https://dev.to/shimo4228/a-beginners-first-10-days-of-real-development-with-ecc-23k4"
     },
     {
       "file": "articles-en/ecc-journey-part2.md",
-      "canonical_url": "https://zenn.dev/shimo4228/articles/ecc-journey-part2",
       "date": "2026-02-20",
-      "devto": "https://dev.to/shimo4228/never-trust-llm-output-6-defenses-from-building-a-pdf-to-anki-cli-43mo",
-      "hashnode": "https://shimo4228.hashnode.dev/never-trust-llm-output-6-defenses-from-building-a-pdf-to-anki-cli"
+      "devto": "https://dev.to/shimo4228/never-trust-llm-output-6-defenses-from-building-a-pdf-to-anki-cli-43mo"
     },
     {
       "file": "articles-en/ecc-journey-part3.md",
-      "canonical_url": "https://zenn.dev/shimo4228/articles/ecc-journey-part3",
       "date": "2026-02-22",
-      "devto": "https://dev.to/shimo4228/15-days-of-skill-sprawl-in-claude-code-lessons-from-3-audits-27em",
-      "hashnode": "https://shimo4228.hashnode.dev/15-days-of-skill-sprawl-in-claude-code-lessons-from-3-audits"
+      "devto": "https://dev.to/shimo4228/15-days-of-skill-sprawl-in-claude-code-lessons-from-3-audits-27em"
     },
     {
       "file": "articles-en/claude-code-self-generation.md",
-      "canonical_url": "https://zenn.dev/shimo4228/articles/claude-code-self-generation",
       "date": "2026-02-22",
-      "devto": "https://dev.to/shimo4228/the-day-i-told-claude-code-you-are-the-llm-251j",
-      "hashnode": "https://shimo4228.hashnode.dev/the-day-i-told-claude-code-you-are-the-llm"
+      "devto": "https://dev.to/shimo4228/the-day-i-told-claude-code-you-are-the-llm-251j"
     },
     {
       "file": "articles-en/cursor-to-zed-migration.md",
-      "canonical_url": "https://zenn.dev/shimo4228/articles/cursor-to-zed-migration",
       "date": "2026-02-22",
-      "devto": "https://dev.to/shimo4228/cursor-to-zed-disabling-built-in-ai-for-a-cli-first-setup-6e4",
-      "hashnode": "https://shimo4228.hashnode.dev/cursor-to-zed-disabling-built-in-ai-for-a-cli-first-setup"
+      "devto": "https://dev.to/shimo4228/cursor-to-zed-disabling-built-in-ai-for-a-cli-first-setup-6e4"
     },
     {
       "file": "articles-en/termius-iphone-claude-code.md",
-      "canonical_url": "https://zenn.dev/shimo4228/articles/termius-iphone-claude-code",
       "date": "2026-02-22",
-      "devto": "https://dev.to/shimo4228/running-claude-code-from-iphone-via-ssh-tmux-4c10",
-      "hashnode": "https://shimo4228.hashnode.dev/running-claude-code-from-iphone-via-ssh-tmux"
+      "devto": "https://dev.to/shimo4228/running-claude-code-from-iphone-via-ssh-tmux-4c10"
     },
     {
       "file": "articles/prh-nodejs20-regex-error.md",
       "canonical_url": "https://zenn.dev/shimo4228/articles/prh-nodejs20-regex-error",
-      "date": "2026-02-18",
-      "qiita": "https://qiita.com/shimo4228/items/7f0fa215be2f2fb89760",
-      "devto": "https://dev.to/shimo4228/how-to-fix-prh-regex-errors-after-upgrading-to-nodejs-20-2f40",
-      "hashnode": "https://shimo4228.hashnode.dev/how-to-fix-prh-regex-errors-after-upgrading-to-nodejs-20"
+      "date": "2026-02-18"
     },
     {
       "file": "articles/claude-code-claudemd-hierarchy.md",
       "canonical_url": "https://zenn.dev/shimo4228/articles/claude-code-claudemd-hierarchy",
-      "date": "2026-02-18",
-      "qiita": "https://qiita.com/shimo4228/items/651dbb9023ef4ed48ce1",
-      "devto": "https://dev.to/shimo4228/claude-codes-claudemd-hierarchy-lessons-from-10-days-of-misconfiguration-1afa",
-      "hashnode": "https://shimo4228.hashnode.dev/claude-codes-claudemd-hierarchy-lessons-from-10-days-of-misconfiguration"
+      "date": "2026-02-18"
     },
     {
       "file": "articles/claude-code-context-audit.md",
       "canonical_url": "https://zenn.dev/shimo4228/articles/claude-code-context-audit",
-      "date": "2026-02-18",
-      "qiita": "https://qiita.com/shimo4228/items/83c7839f1722550d6761",
-      "devto": "https://dev.to/shimo4228/5-things-i-learned-from-auditing-all-my-claude-code-config-files-4mjj",
-      "hashnode": "https://shimo4228.hashnode.dev/5-things-i-learned-from-auditing-all-my-claude-code-config-files"
+      "date": "2026-02-18"
     },
     {
       "file": "articles/claude-code-crosspost-cli.md",
       "canonical_url": "https://zenn.dev/shimo4228/articles/claude-code-crosspost-cli",
-      "date": "2026-02-18",
-      "qiita": "https://qiita.com/shimo4228/items/36d58eb5cce9ba18b446",
-      "devto": "https://dev.to/shimo4228/cross-post-from-zenn-to-qiita-to-devto-in-one-command-with-claude-code-23m2",
-      "hashnode": "https://shimo4228.hashnode.dev/cross-post-from-zenn-to-qiita-to-devto-in-one-command-with-claude-code"
+      "date": "2026-02-18"
     },
     {
       "file": "articles/claude-code-zenn-lint-hooks.md",
       "canonical_url": "https://zenn.dev/shimo4228/articles/claude-code-zenn-lint-hooks",
-      "date": "2026-02-18",
-      "qiita": "https://qiita.com/shimo4228/items/c4bc91a95b873d72967a",
-      "devto": "https://dev.to/shimo4228/setting-up-textlint-markdownlint-hooks-for-zenn-writing-with-claude-code-g4b",
-      "hashnode": "https://shimo4228.hashnode.dev/setting-up-textlint-markdownlint-hooks-for-zenn-writing-with-claude-code"
+      "date": "2026-02-18"
     },
     {
       "file": "articles/claude-code-japanese-mcp.md",
       "canonical_url": "https://zenn.dev/shimo4228/articles/claude-code-japanese-mcp",
-      "date": "2026-02-18",
-      "qiita": "https://qiita.com/shimo4228/items/d01a96880df68072c930",
-      "devto": "https://dev.to/shimo4228/using-a-japanese-text-analysis-mcp-server-with-claude-code-kuromojijs-g92",
-      "hashnode": "https://shimo4228.hashnode.dev/using-a-japanese-text-analysis-mcp-server-with-claude-code-kuromojijs"
+      "date": "2026-02-18"
     },
     {
       "file": "articles/claude-code-skill-cleanup.md",
       "canonical_url": "https://zenn.dev/shimo4228/articles/claude-code-skill-cleanup",
-      "date": "2026-02-18",
-      "qiita": "https://qiita.com/shimo4228/items/8cc2db1f1409bc267de7",
-      "devto": "https://dev.to/shimo4228/how-to-audit-and-clean-up-overflowing-learned-skills-in-claude-code-38e1",
-      "hashnode": "https://shimo4228.hashnode.dev/how-to-audit-and-clean-up-overflowing-learned-skills-in-claude-code"
+      "date": "2026-02-18"
     },
     {
       "file": "articles/claude-code-multi-llm.md",
       "canonical_url": "https://zenn.dev/shimo4228/articles/claude-code-multi-llm",
-      "date": "2026-02-18",
-      "qiita": "https://qiita.com/shimo4228/items/e8074d7245a9c716f8a6",
-      "devto": "https://dev.to/shimo4228/using-multiple-llms-with-claude-code-when-to-reach-for-gemini-chatgpt-or-notebooklm-2mnm",
-      "hashnode": "https://shimo4228.hashnode.dev/using-multiple-llms-with-claude-code-when-to-reach-for-gemini-chatgpt-or-notebooklm"
+      "date": "2026-02-18"
     },
     {
       "file": "articles/claude-code-zed-setup.md",
       "canonical_url": "https://zenn.dev/shimo4228/articles/claude-code-zed-setup",
-      "date": "2026-02-18",
-      "qiita": "https://qiita.com/shimo4228/items/02312ef3357aa064f478",
-      "devto": "https://dev.to/shimo4228/running-claude-code-in-zed-why-i-disable-the-built-in-ai-58mc",
-      "hashnode": "https://shimo4228.hashnode.dev/running-claude-code-in-zed-why-i-disable-the-built-in-ai"
+      "date": "2026-02-18"
     },
     {
       "file": "articles/claude-code-skill-origin-tracking.md",
       "canonical_url": "https://zenn.dev/shimo4228/articles/claude-code-skill-origin-tracking",
-      "date": "2026-02-18",
-      "qiita": "https://qiita.com/shimo4228/items/82d960dbd401d007d01e",
-      "devto": "https://dev.to/shimo4228/tracking-skill-origins-in-claude-code-how-i-classified-79-skills-with-origin-metadata-5g1m",
-      "hashnode": "https://shimo4228.hashnode.dev/tracking-skill-origins-in-claude-code-how-i-classified-79-skills-with-origin-metadata"
+      "date": "2026-02-18"
     },
     {
       "file": "articles/daily-research-agent-team.md",
       "canonical_url": "https://zenn.dev/shimo4228/articles/daily-research-agent-team",
       "zenn_date": "2026-02-21",
       "date": "2026-02-21",
-      "qiita": "https://qiita.com/shimo4228/items/14de47e9a7badd71e484",
-      "devto": "n/a",
-      "hashnode": "n/a",
       "zenn_published": true
     },
     {
@@ -152,9 +102,6 @@
       "canonical_url": "https://zenn.dev/shimo4228/articles/daily-research-postmortem",
       "zenn_date": "2026-02-22",
       "date": "2026-02-22",
-      "qiita": "https://qiita.com/shimo4228/items/ceb4c5b167fab2bfa837",
-      "devto": "n/a",
-      "hashnode": "n/a",
       "zenn_published": true
     },
     {
@@ -162,274 +109,196 @@
       "canonical_url": "https://zenn.dev/shimo4228/articles/claude-code-context-orchestration",
       "zenn_date": "2026-02-23",
       "date": "2026-02-23",
-      "qiita": "https://qiita.com/shimo4228/items/a14c17b40f3861d628b7",
-      "devto": "n/a",
-      "hashnode": "n/a",
       "zenn_published": true
     },
     {
       "file": "articles-en/daily-research-agent-team.md",
-      "canonical_url": "https://zenn.dev/shimo4228/articles/daily-research-agent-team",
       "date": "2026-02-22",
-      "devto": "https://dev.to/shimo4228/i-tried-an-opus-orchestrator-and-killed-it-the-roi-of-multi-agent-systems-1f7g",
-      "hashnode": "https://shimo4228.hashnode.dev/i-tried-an-opus-orchestrator-and-killed-it-the-roi-of-multi-agent-systems"
+      "devto": "https://dev.to/shimo4228/i-tried-an-opus-orchestrator-and-killed-it-the-roi-of-multi-agent-systems-1f7g"
     },
     {
       "file": "articles-en/daily-research-postmortem.md",
-      "canonical_url": "https://zenn.dev/shimo4228/articles/daily-research-postmortem",
       "date": "2026-02-22",
-      "devto": "https://dev.to/shimo4228/what-i-learned-from-breaking-my-ai-pipeline-for-two-days-straight-pol",
-      "hashnode": "https://shimo4228.hashnode.dev/what-i-learned-from-breaking-my-ai-pipeline-for-two-days-straight"
+      "devto": "https://dev.to/shimo4228/what-i-learned-from-breaking-my-ai-pipeline-for-two-days-straight-pol"
     },
     {
       "file": "articles-en/claude-code-context-orchestration.md",
-      "canonical_url": "https://zenn.dev/shimo4228/articles/claude-code-context-orchestration",
       "date": "2026-02-23",
-      "devto": "https://dev.to/shimo4228/the-real-power-of-claude-code-isnt-code-generation-its-autonomous-context-orchestration-3djk",
-      "hashnode": "https://shimo4228.hashnode.dev/the-real-power-of-claude-code-isnt-code-generation-its-autonomous-context-orchestration"
+      "devto": "https://dev.to/shimo4228/the-real-power-of-claude-code-isnt-code-generation-its-autonomous-context-orchestration-3djk"
     },
     {
       "file": "articles/skill-stocktake-design-journey.md",
       "canonical_url": "https://zenn.dev/shimo4228/articles/skill-stocktake-design-journey",
       "zenn_date": "2026-02-23",
       "date": "2026-02-23",
-      "qiita": "https://qiita.com/shimo4228/items/924a00bbc0760d0dfbda",
-      "devto": "n/a",
-      "hashnode": "n/a",
       "zenn_published": true
     },
     {
       "file": "articles-en/skill-stocktake-design-journey.md",
-      "canonical_url": "https://zenn.dev/shimo4228/articles/skill-stocktake-design-journey",
       "date": "2026-02-23",
-      "devto": "https://dev.to/shimo4228/offloading-ais-weak-spots-to-shell-scripts-designing-building-and-publishing-a-skill-audit-2ll8",
-      "hashnode": "https://shimo4228.hashnode.dev/offloading-ais-weak-spots-to-shell-scripts-designing-building-and-publishing-a-skill-audit-command"
+      "devto": "https://dev.to/shimo4228/offloading-ais-weak-spots-to-shell-scripts-designing-building-and-publishing-a-skill-audit-2ll8"
     },
     {
       "file": "articles/token-economics-ai-orchestration.md",
       "canonical_url": "https://zenn.dev/shimo4228/articles/token-economics-ai-orchestration",
       "zenn_date": "2026-02-25",
       "date": "2026-02-25",
-      "qiita": "https://qiita.com/shimo4228/items/61e2da7c7a2df251ebf3",
-      "devto": "n/a",
-      "hashnode": "n/a",
       "zenn_published": true
     },
     {
       "file": "articles-en/token-economics-ai-orchestration.md",
-      "canonical_url": "https://zenn.dev/shimo4228/articles/token-economics-ai-orchestration",
       "date": "2026-02-25",
-      "devto": "https://dev.to/shimo4228/i-asked-gemini-how-its-own-deep-research-works-half-of-it-was-inaccurate-1ki1",
-      "hashnode": "https://shimo4228.hashnode.dev/i-asked-gemini-how-its-own-deep-research-works-half-of-it-was-inaccurate"
+      "devto": "https://dev.to/shimo4228/i-asked-gemini-how-its-own-deep-research-works-half-of-it-was-inaccurate-1ki1"
     },
     {
       "file": "articles/base-model-experience.md",
       "canonical_url": "https://zenn.dev/shimo4228/articles/base-model-experience",
       "zenn_date": "2026-02-22",
       "date": "2026-02-22",
-      "qiita": "https://qiita.com/shimo4228/items/e24cbefb383687634427",
-      "devto": "n/a",
-      "hashnode": "n/a",
       "zenn_published": true
     },
     {
       "file": "articles-en/base-model-experience.md",
-      "canonical_url": "https://zenn.dev/shimo4228/articles/base-model-experience",
       "date": "2026-02-22",
-      "devto": "https://dev.to/shimo4228/before-and-after-alignment-i-typed-hello-into-a-base-model-and-got-an-anime-review-16fk",
-      "hashnode": "https://shimo4228.hashnode.dev/before-and-after-alignment-i-typed-hello-into-a-base-model-and-got-an-anime-review"
+      "devto": "https://dev.to/shimo4228/before-and-after-alignment-i-typed-hello-into-a-base-model-and-got-an-anime-review-16fk"
     },
     {
       "file": "articles/claude-kimi-hybrid-setup.md",
       "canonical_url": "https://zenn.dev/shimo4228/articles/claude-kimi-hybrid-setup",
       "zenn_date": "2026-02-24",
       "date": "2026-02-24",
-      "qiita": "https://qiita.com/shimo4228/items/5e00e135826fd32e7ab1",
-      "devto": "n/a",
-      "hashnode": "n/a",
       "zenn_published": true
     },
     {
       "file": "articles-en/claude-kimi-hybrid-setup.md",
-      "canonical_url": "https://zenn.dev/shimo4228/articles/claude-kimi-hybrid-setup",
       "date": "2026-02-24",
-      "devto": "https://dev.to/shimo4228/building-a-claude-code-x-kimi-k25-hybrid-environment-opus-designs-k25-implements-1ic",
-      "hashnode": "https://shimo4228.hashnode.dev/building-a-claude-code-kimi-k25-hybrid-environment-opus-designs-k25-implements"
+      "devto": "https://dev.to/shimo4228/building-a-claude-code-x-kimi-k25-hybrid-environment-opus-designs-k25-implements-1ic"
     },
     {
       "file": "articles/ai-peer-review-methodology.md",
       "canonical_url": "https://zenn.dev/shimo4228/articles/ai-peer-review-methodology",
       "zenn_date": "2026-02-26",
       "date": "2026-02-26",
-      "qiita": "https://qiita.com/shimo4228/items/e6831b76f942709433ba",
-      "devto": "n/a",
-      "hashnode": "n/a",
       "zenn_published": true
     },
     {
       "file": "articles-en/ai-peer-review-methodology.md",
-      "canonical_url": "https://zenn.dev/shimo4228/articles/ai-peer-review-methodology",
       "date": "2026-02-26",
-      "devto": "https://dev.to/shimo4228/kimi-killed-4-of-claudes-best-ideas-an-ai-peer-review-in-practice-29bo",
-      "hashnode": "https://shimo4228.hashnode.dev/kimi-killed-4-of-claudes-best-ideas-an-ai-peer-review-in-practice"
+      "devto": "https://dev.to/shimo4228/kimi-killed-4-of-claudes-best-ideas-an-ai-peer-review-in-practice-29bo"
     },
     {
       "file": "articles/claude-code-persistent-memory.md",
       "canonical_url": "https://zenn.dev/shimo4228/articles/claude-code-persistent-memory",
       "zenn_date": "2026-02-27",
       "date": "2026-02-27",
-      "qiita": "https://qiita.com/shimo4228/items/a146908a1c66743feca9",
-      "devto": "n/a",
-      "hashnode": "n/a",
       "zenn_published": true
     },
     {
       "file": "articles-en/claude-code-persistent-memory.md",
-      "canonical_url": "https://zenn.dev/shimo4228/articles/claude-code-persistent-memory",
       "date": "2026-02-27",
-      "devto": "https://dev.to/shimo4228/embedding-memory-into-claude-code-from-session-loss-to-persistent-context-54d8",
-      "hashnode": "https://shimo4228.hashnode.dev/embedding-memory-into-claude-code-from-session-loss-to-persistent-context"
+      "devto": "https://dev.to/shimo4228/embedding-memory-into-claude-code-from-session-loss-to-persistent-context-54d8"
     },
     {
       "file": "articles/kimi-delegation-failure-lessons.md",
       "canonical_url": "https://zenn.dev/shimo4228/articles/kimi-delegation-failure-lessons",
       "zenn_date": "2026-02-28",
       "date": "2026-02-28",
-      "qiita": "https://qiita.com/shimo4228/items/1e501807c41b4f25a7ae",
-      "devto": "n/a",
-      "hashnode": "n/a",
       "zenn_published": true,
       "notes": "Kimi × Claude 三部作完結"
     },
     {
       "file": "articles-en/kimi-delegation-failure-lessons.md",
-      "canonical_url": "https://zenn.dev/shimo4228/articles/kimi-delegation-failure-lessons",
       "date": "2026-02-28",
-      "devto": "https://dev.to/shimo4228/kimi-wrote-8500-lines-blamed-me-for-delegating-then-claimed-to-be-claude-3991",
-      "hashnode": "https://shimo4228.hashnode.dev/kimi-wrote-8500-lines-blamed-me-for-delegating-then-claimed-to-be-claude"
+      "devto": "https://dev.to/shimo4228/kimi-wrote-8500-lines-blamed-me-for-delegating-then-claimed-to-be-claude-3991"
     },
     {
       "file": "articles/xcodebuildmcp-ios-verification.md",
       "canonical_url": "https://zenn.dev/shimo4228/articles/xcodebuildmcp-ios-verification",
       "zenn_date": "2026-03-03",
       "date": "2026-03-03",
-      "qiita": "https://qiita.com/shimo4228/items/3c6106d5407deea0cbf4",
-      "devto": "n/a",
-      "hashnode": "n/a",
       "zenn_published": true,
       "notes": "XcodeBuildMCP + Claude Code iOS自律検証"
     },
     {
       "file": "articles-en/xcodebuildmcp-ios-verification.md",
-      "canonical_url": "https://zenn.dev/shimo4228/articles/xcodebuildmcp-ios-verification",
       "date": "2026-03-03",
-      "devto": "https://dev.to/shimo4228/i-gave-claude-code-a-simulator-and-it-started-tapping-and-taking-screenshots-on-its-own-57bj",
-      "hashnode": "https://shimo4228.hashnode.dev/i-gave-claude-code-a-simulator-and-it-started-tapping-and-taking-screenshots-on-its-own"
+      "devto": "https://dev.to/shimo4228/i-gave-claude-code-a-simulator-and-it-started-tapping-and-taking-screenshots-on-its-own-57bj"
     },
     {
       "file": "articles/ecc-marketplace-contribution.md",
       "canonical_url": "https://zenn.dev/shimo4228/articles/ecc-marketplace-contribution",
       "zenn_date": "2026-03-04",
       "date": "2026-03-04",
-      "qiita": "https://qiita.com/shimo4228/items/9b0cba94e6adf3452f68",
-      "devto": "n/a",
-      "hashnode": "n/a",
       "zenn_published": true,
-      "notes": "ECC マーケットプレイスへの貢献記事",
-      "zenn_published_at": "2026-03-04T07:00:00.000000"
+      "zenn_published_at": "2026-03-04T07:00:00.000000",
+      "notes": "ECC マーケットプレイスへの貢献記事"
     },
     {
       "file": "articles-en/ecc-marketplace-contribution.md",
-      "canonical_url": "https://zenn.dev/shimo4228/articles/ecc-marketplace-contribution",
       "date": "2026-03-04",
-      "devto": "https://dev.to/shimo4228/i-found-the-shortest-route-to-ship-my-claude-code-skills-to-57000-developers-4g43",
-      "hashnode": "https://shimo4228.hashnode.dev/i-found-the-shortest-route-to-ship-my-claude-code-skills-to-57000-developers"
+      "devto": "https://dev.to/shimo4228/i-found-the-shortest-route-to-ship-my-claude-code-skills-to-57000-developers-4g43"
     },
     {
       "file": "articles/claude-code-effective-settings-10.md",
       "canonical_url": "https://zenn.dev/shimo4228/articles/claude-code-effective-settings-10",
       "zenn_date": "2026-03-05",
       "date": "2026-03-05",
-      "qiita": "https://qiita.com/shimo4228/items/f80a6716a91eac35deb3",
-      "devto": "n/a",
-      "hashnode": "n/a",
       "zenn_published": true,
-      "notes": "網羅型ハブ記事: Claude Code 設定10選",
-      "zenn_published_at": "2026-03-05T07:00:00.675720"
+      "zenn_published_at": "2026-03-05T07:00:00.675720",
+      "notes": "網羅型ハブ記事: Claude Code 設定10選"
     },
     {
       "file": "articles-en/claude-code-effective-settings-10.md",
-      "canonical_url": "https://zenn.dev/shimo4228/articles/claude-code-effective-settings-10",
       "date": "2026-03-05",
-      "devto": "https://dev.to/shimo4228/stop-using-default-settings-10-claude-code-configs-that-actually-work-243l",
-      "hashnode": "https://shimo4228.hashnode.dev/stop-using-default-settings-10-claude-code-configs-that-actually-work"
+      "devto": "https://dev.to/shimo4228/stop-using-default-settings-10-claude-code-configs-that-actually-work-243l"
     },
     {
       "file": "articles/obsidian-cli-claude-code-vault-management.md",
       "canonical_url": "https://zenn.dev/shimo4228/articles/obsidian-cli-claude-code-vault-management",
       "zenn_date": "2026-03-06",
       "date": "2026-03-06",
-      "qiita": "https://qiita.com/shimo4228/items/07bd0dc7b77fa19add7e",
-      "devto": "n/a",
-      "hashnode": "n/a",
       "zenn_published": true,
-      "notes": "Obsidian公式CLI解説 + Claude Code連携",
-      "zenn_published_at": "2026-03-06T07:00:00.621106"
+      "zenn_published_at": "2026-03-06T07:00:00.621106",
+      "notes": "Obsidian公式CLI解説 + Claude Code連携"
     },
     {
       "file": "articles-en/obsidian-cli-claude-code-vault-management.md",
-      "canonical_url": "https://zenn.dev/shimo4228/articles/obsidian-cli-claude-code-vault-management",
       "date": "2026-03-06",
-      "devto": "https://dev.to/shimo4228/obsidians-official-cli-is-here-no-more-hacking-your-vault-from-the-back-door-3123",
-      "hashnode": "https://shimo4228.hashnode.dev/obsidians-official-cli-is-here-no-more-hacking-your-vault-from-the-back-door"
+      "devto": "https://dev.to/shimo4228/obsidians-official-cli-is-here-no-more-hacking-your-vault-from-the-back-door-3123"
     },
     {
       "file": "articles/active-inference-viz-dev-story.md",
       "canonical_url": "https://zenn.dev/shimo4228/articles/active-inference-viz-dev-story",
       "zenn_date": "2026-03-07",
       "date": "2026-03-07",
-      "qiita": "https://qiita.com/shimo4228/items/17f507d2a60efeb341a5",
-      "devto": "n/a",
-      "hashnode": "n/a",
       "zenn_published": true,
-      "notes": "能動的推論の可視化ツール再実装記 — 偏愛×Claude Code",
-      "zenn_published_at": "2026-03-07T07:00:00.860748"
+      "zenn_published_at": "2026-03-07T07:00:00.860748",
+      "notes": "能動的推論の可視化ツール再実装記 — 偏愛×Claude Code"
     },
     {
       "file": "articles-en/active-inference-viz-dev-story.md",
-      "canonical_url": "https://zenn.dev/shimo4228/articles/active-inference-viz-dev-story",
       "date": "2026-03-07",
-      "devto": "https://dev.to/shimo4228/i-made-a-paper-i-dont-understand-run-in-the-browser-active-inference-x-claude-code-2jog",
-      "hashnode": "https://shimo4228.hashnode.dev/i-made-a-paper-i-dont-understand-run-in-the-browser-active-inference-claude-code"
+      "devto": "https://dev.to/shimo4228/i-made-a-paper-i-dont-understand-run-in-the-browser-active-inference-x-claude-code-2jog"
     },
     {
       "file": "articles/moltbook-agent-scratch-build.md",
-      "canonical_url": "pending",
       "zenn_date": "2026-03-08",
       "date": "2026-03-08",
-      "qiita": "pending",
-      "devto": "n/a",
-      "hashnode": "n/a",
       "zenn_published": true,
-      "notes": "Moltbookエージェント構築記 — セキュリティファースト + OWASP照合",
-      "zenn_published_at": "2026-03-08T07:00:05.164525"
+      "zenn_published_at": "2026-03-08T07:00:05.164525",
+      "notes": "Moltbookエージェント構築記 — セキュリティファースト + OWASP照合"
     },
     {
       "file": "articles/playwright-magento-scoring.md",
-      "canonical_url": "pending",
       "zenn_date": "2026-03-09",
       "date": "2026-03-09",
-      "qiita": "pending",
-      "devto": "n/a",
-      "hashnode": "n/a",
       "zenn_published": false,
       "notes": "Playwright × Magento 実戦パターン + 時間減衰スコアリング"
     },
     {
       "file": "articles-en/playwright-magento-scoring.md",
       "date": "2026-03-09",
-      "devto": "pending",
-      "hashnode": "pending"
+      "devto": "pending"
     }
   ]
 }
