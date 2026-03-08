@@ -289,6 +289,11 @@
       "notes": "Moltbookエージェント構築記 — セキュリティファースト + OWASP照合"
     },
     {
+      "file": "articles-en/moltbook-agent-scratch-build.md",
+      "date": "2026-03-08",
+      "devto": "https://dev.to/shimo4228/i-built-an-ai-agent-from-scratch-because-frameworks-are-the-vulnerability-elm"
+    },
+    {
       "file": "articles/playwright-magento-scoring.md",
       "zenn_date": "2026-03-09",
       "date": "2026-03-09",
