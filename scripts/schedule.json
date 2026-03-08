@@ -304,6 +304,19 @@
       "file": "articles-en/playwright-magento-scoring.md",
       "date": "2026-03-09",
       "devto": "pending"
+    },
+    {
+      "file": "articles/contemplative-alignment-benchmark.md",
+      "zenn_date": "2026-03-10",
+      "date": "2026-03-10",
+      "zenn_published": false,
+      "notes": "Contemplative AI alignment ベンチマーク — prompt-based alignment の天井効果"
+    },
+    {
+      "file": "articles-en/contemplative-alignment-benchmark.md",
+      "date": "2026-03-10",
+      "devto": "pending",
+      "notes": "EN: Primary target audience. Prompt-Based Alignment Has a Ceiling"
     }
   ]
 }
