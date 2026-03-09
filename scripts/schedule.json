@@ -297,13 +297,14 @@
       "file": "articles/playwright-magento-scoring.md",
       "zenn_date": "2026-03-09",
       "date": "2026-03-09",
-      "zenn_published": false,
-      "notes": "Playwright × Magento 実戦パターン + 時間減衰スコアリング"
+      "zenn_published": true,
+      "notes": "Playwright × Magento 実戦パターン + 時間減衰スコアリング",
+      "zenn_published_at": "2026-03-09T07:00:05.512020"
     },
     {
       "file": "articles-en/playwright-magento-scoring.md",
       "date": "2026-03-09",
-      "devto": "pending"
+      "devto": "https://dev.to/shimo4228/click-betrayed-me-3-times-playwright-x-magento-battle-tested-patterns-4cka"
     },
     {
       "file": "articles/contemplative-alignment-benchmark.md",
@@ -315,8 +316,21 @@
     {
       "file": "articles-en/contemplative-alignment-benchmark.md",
       "date": "2026-03-09",
-      "devto": "pending",
+      "devto": "https://dev.to/shimo4228/prompt-based-alignment-has-a-ceiling-3-model-prisoners-dilemma-evidence-1pie",
       "notes": "EN: Primary target audience. 3/9 21:00 JST (7AM EST) 投稿"
+    },
+    {
+      "file": "articles/mcp-install-and-hope-problem.md",
+      "zenn_date": "2026-03-11",
+      "date": "2026-03-11",
+      "zenn_published": false,
+      "notes": "MCP Install and Hope 問題 — deferred tool のギャップと棚卸し"
+    },
+    {
+      "file": "articles-en/mcp-install-and-hope-problem.md",
+      "date": "2026-03-11",
+      "devto": "pending",
+      "notes": "EN: Install and Hope problem"
     }
   ]
 }
