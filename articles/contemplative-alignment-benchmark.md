@@ -3,7 +3,7 @@ title: "Prompt-Based Alignmentには天井がある — 囚人のジレンマ3�
 emoji: "🧘"
 type: "tech"
 topics: ["ai", "llm", "alignment", "benchmark", "python"]
-published: false
+published: true
 ---
 
 協力的な相手に協力するのは、倫理ではない。ゲーム理論的に最適な戦略だ。
