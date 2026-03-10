@@ -3,7 +3,7 @@ title: "MCPツールの Install and Hope 問題"
 emoji: "👻"
 type: "tech"
 topics: ["claudecode", "mcp", "ai", "開発環境"]
-published: false
+published: true
 ---
 
 Claude Code の MCP ツールを棚卸しした。3つ入っていた。3つとも使われていなかった。
