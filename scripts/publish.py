@@ -48,6 +48,8 @@ class Article:
     title: str
     body: str
     topics: tuple[str, ...]
+    article_type: str = "tech"
+    description: str = ""
 
 
 @dataclass(frozen=True)
@@ -71,6 +73,8 @@ def parse_zenn_article(path: Path) -> Article:
         title=str(metadata.get("title", "")),
         body=post.content,
         topics=tuple(str(t) for t in metadata.get("topics", [])),  # type: ignore[union-attr]
+        article_type=str(metadata.get("type", "tech")),
+        description=str(metadata.get("description", "")),
     )
 
 
@@ -142,17 +146,86 @@ def convert_to_qiita(article: Article) -> dict:
 # ---------------------------------------------------------------------------
 
 
-def convert_to_devto(article: Article, canonical_url: str | None = None) -> dict:
+def map_devto_tags(
+    topics: tuple[str, ...],
+    article_type: str,
+    devto_tags_override: list[str] | None = None,
+) -> list[str]:
+    """Map Zenn topics to Dev.to tags (max 4).
+
+    Args:
+        topics: Zenn article topics (e.g., ("claudecode", "ai", "個人開発"))
+        article_type: Zenn article type ("tech" or "idea")
+        devto_tags_override: If provided in schedule.json, use these instead.
+
+    Returns:
+        List of up to 4 Dev.to-appropriate tags.
+    """
+    if devto_tags_override:
+        return [t.lower() for t in devto_tags_override[:4]]
+
+    # Zenn topic → Dev.to tag mapping
+    tag_map: dict[str, str] = {
+        "claudecode": "ai",
+        "claude": "ai",
+        "gemini": "ai",
+        "chatgpt": "ai",
+        "llm": "ai",
+        "機械学習": "machinelearning",
+        "個人開発": "programming",
+        "開発環境": "productivity",
+        "生産性": "productivity",
+        "テスト": "testing",
+        "shellscript": "programming",
+        "automation": "productivity",
+        "debugging": "programming",
+        "agent": "ai",
+        "architecture": "programming",
+        "alignment": "ai",
+        "benchmark": "ai",
+        "rlhf": "ai",
+        "ollama": "ai",
+    }
+
+    # Convert topics, dedup while preserving order
+    seen: set[str] = set()
+    tags: list[str] = []
+    for topic in topics:
+        mapped = tag_map.get(topic, topic).lower()
+        # Strip non-alphanumeric (Dev.to requirement)
+        mapped = re.sub(r"[^a-z0-9]", "", mapped)
+        if mapped and mapped not in seen:
+            seen.add(mapped)
+            tags.append(mapped)
+
+    # "idea" articles get "discuss" as first tag
+    if article_type == "idea" and "discuss" not in seen:
+        tags.insert(0, "discuss")
+
+    return tags[:4]
+
+
+def convert_to_devto(
+    article: Article,
+    canonical_url: str | None = None,
+    devto_tags_override: list[str] | None = None,
+    cover_image_url: str | None = None,
+) -> dict:
     """Convert an Article to a Dev.to API request body."""
     body = _strip_zenn_syntax(article.body)
+    tags = map_devto_tags(article.topics, article.article_type, devto_tags_override)
     payload: dict = {
         "article": {
             "title": article.title,
             "body_markdown": body,
             "published": True,
-            "tags": list(article.topics[:4]),
+            "tags": tags,
         }
     }
+    if article.description:
+        payload["article"]["description"] = article.description
+    if cover_image_url:
+        payload["article"]["main_image"] = cover_image_url
     if canonical_url:
         payload["article"]["canonical_url"] = canonical_url
     return payload

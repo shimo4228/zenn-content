@@ -295,8 +295,14 @@ def _process_entry(
     errors = 0
 
     if _needs_posting(entry.get("devto")):
+        devto_tags = entry.get("devto_tags")
+        cover_image = entry.get("cover_image")
         def _devto_upsert() -> PublishResult:
-            payload = convert_to_devto(article)
+            payload = convert_to_devto(
+                article,
+                devto_tags_override=devto_tags,
+                cover_image_url=cover_image,
+            )
             existing_id = find_devto_article_by_title(article.title, devto_key)
             if existing_id:
                 logger.info("  Dev.to: existing article found (%s), updating", existing_id)
