@@ -537,6 +537,11 @@ def build_parser() -> argparse.ArgumentParser:
         help="Canonical URL of the original article (e.g. Zenn URL)",
     )
     parser.add_argument(
+        "--cover-image",
+        dest="cover_image",
+        help="Cover image URL for Dev.to (auto-detected from images/covers/ if omitted)",
+    )
+    parser.add_argument(
         "--force",
         action="store_true",
         help="Skip English translation check for devto/hashnode",
@@ -604,7 +609,18 @@ def _run_qiita(article: Article, args: argparse.Namespace) -> int:
 
 
 def _run_devto(article: Article, args: argparse.Namespace) -> int:
-    payload = convert_to_devto(article, canonical_url=args.canonical_url)
+    cover_url = getattr(args, "cover_image", None)
+    if not cover_url:
+        # Auto-generate cover URL from slug
+        slug = args.article.stem
+        cover_path = args.article.parent.parent / "images" / "covers" / f"{slug}.png"
+        if cover_path.exists():
+            cover_url = f"https://raw.githubusercontent.com/shimo4228/zenn-content/main/images/covers/{slug}.png"
+    payload = convert_to_devto(
+        article,
+        canonical_url=args.canonical_url,
+        cover_image_url=cover_url,
+    )
     if args.dry_run:
         _print_dry_run("devto", payload)
         return 0
