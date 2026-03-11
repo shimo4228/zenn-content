@@ -314,12 +314,15 @@ def _process_entry(
 
 
 def publish_due(schedule: dict[str, Any], *, dry_run: bool = False) -> int:
-    # Phase 1: Publish due Zenn articles first (git push)
-    schedule, zenn_count, zenn_errors = _process_zenn_entries(
-        schedule, dry_run=dry_run,
-    )
-    if zenn_count > 0:
-        logger.info("Zenn: %d article(s) published, %d error(s)", zenn_count, zenn_errors)
+    # Phase 1: Zenn auto-publish — DISABLED (2026-03-11)
+    # Zenn の投稿上限により自動公開が反映されなくなったため一時停止。
+    # 手動で published: true にして git push する運用に切り替え。
+    # schedule, zenn_count, zenn_errors = _process_zenn_entries(
+    #     schedule, dry_run=dry_run,
+    # )
+    # if zenn_count > 0:
+    #     logger.info("Zenn: %d article(s) published, %d error(s)", zenn_count, zenn_errors)
+    zenn_errors = 0
 
     # Phase 2: Cross-post EN articles to Dev.to
     devto_key = _load_devto_key()
