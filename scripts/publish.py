@@ -69,10 +69,16 @@ def parse_zenn_article(path: Path) -> Article:
     """Parse a Zenn article markdown file into an Article object."""
     post = frontmatter.load(str(path))
     metadata: dict[str, object] = post.metadata  # type: ignore[assignment]
+    # Zenn uses "topics" (list), Dev.to-style uses "tags" (comma-separated string or list)
+    raw_topics = metadata.get("topics") or metadata.get("tags") or []
+    if isinstance(raw_topics, str):
+        topics = tuple(t.strip() for t in raw_topics.split(",") if t.strip())
+    else:
+        topics = tuple(str(t) for t in raw_topics)
     return Article(
         title=str(metadata.get("title", "")),
         body=post.content,
-        topics=tuple(str(t) for t in metadata.get("topics", [])),  # type: ignore[union-attr]
+        topics=topics,
         article_type=str(metadata.get("type", "tech")),
         description=str(metadata.get("description", "")),
     )
@@ -181,8 +187,8 @@ def map_devto_tags(
         "debugging": "programming",
         "agent": "ai",
         "architecture": "programming",
-        "alignment": "ai",
-        "benchmark": "ai",
+        "alignment": "alignment",
+        "benchmark": "benchmark",
         "rlhf": "ai",
         "ollama": "ai",
     }
