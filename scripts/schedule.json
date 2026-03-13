@@ -310,8 +310,9 @@
       "file": "articles/contemplative-alignment-benchmark.md",
       "zenn_date": "2026-03-10",
       "date": "2026-03-10",
-      "zenn_published": false,
-      "notes": "Contemplative AI alignment ベンチマーク — prompt-based alignment の天井効果"
+      "zenn_published": true,
+      "notes": "Contemplative AI alignment ベンチマーク — prompt-based alignment の天井効果",
+      "zenn_published_at": "2026-03-10T07:00:05.112546"
     },
     {
       "file": "articles-en/contemplative-alignment-benchmark.md",
@@ -323,14 +324,26 @@
       "file": "articles/mcp-install-and-hope-problem.md",
       "zenn_date": "2026-03-11",
       "date": "2026-03-11",
-      "zenn_published": false,
-      "notes": "MCP Install and Hope 問題 — deferred tool のギャップと棚卸し"
+      "zenn_published": true,
+      "notes": "MCP Install and Hope 問題 — deferred tool のギャップと棚卸し",
+      "zenn_published_at": "2026-03-11T07:00:02.289218"
     },
     {
       "file": "articles-en/mcp-install-and-hope-problem.md",
       "date": "2026-03-11",
-      "devto": "pending",
+      "devto": "https://dev.to/shimo4228/the-install-and-hope-problem-with-mcp-tools-89j",
       "notes": "EN: Install and Hope problem"
+    },
+    {
+      "file": "articles/moltbook-agent-evolution-quadrilogy.md",
+      "zenn_date": "2026-03-15",
+      "date": "2026-03-15",
+      "notes": "Moltbookエージェント進化記 — 自然言語アーキテクチャの設計と限界"
+    },
+    {
+      "file": "articles-en/moltbook-agent-evolution-quadrilogy.md",
+      "date": "2026-03-15",
+      "notes": "EN: Natural language as architecture — autonomous agent design"
     }
   ]
 }
