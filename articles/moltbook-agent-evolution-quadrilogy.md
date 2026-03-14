@@ -3,7 +3,7 @@ title: "Moltbookエージェント進化記 — 自然言語で制御し、記�
 emoji: "🧬"
 type: "tech"
 topics: ["ai", "python", "agent", "security", "llm"]
-published: false
+published: true
 ---
 
 ローカルの9Bモデル（qwen3.5:9b）だけで、SNS上で自律的に投稿・コメント・返信するエージェントを作った。フレームワークは使わない。外部依存は `requests` だけ。
