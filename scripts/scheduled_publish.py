@@ -80,12 +80,13 @@ def _needs_posting(value: str | None) -> bool:
 def _is_entry_done(entry: dict[str, Any]) -> bool:
     """Check if an entry is fully processed.
 
-    - EN articles (have 'devto' field): done when devto has a URL
-    - JP articles (no 'devto' field): done when zenn_published is True
-    - Legacy entries (no zenn_published, no devto): treated as done
+    - EN articles (articles-en/ path): done when devto has a URL
+    - JP articles: done when zenn_published is True
+    - Legacy entries (no zenn_published, not EN): treated as done
     """
-    if "devto" in entry:
-        value = entry["devto"]
+    is_en = entry.get("file", "").startswith("articles-en/")
+    if is_en:
+        value = entry.get("devto")
         return value is not None and value != "" and value != "pending"
     return entry.get("zenn_published", True) is True
 
@@ -348,8 +349,14 @@ def publish_due(schedule: dict[str, Any], *, dry_run: bool = False) -> int:
             updated_articles.append(entry)
             continue
 
-        # EN articles only — JP entries without 'devto' are skipped here
-        if "devto" not in entry:
+        # EN articles only — skip JP entries
+        is_en = entry.get("file", "").startswith("articles-en/")
+        if not is_en:
+            updated_articles.append(entry)
+            continue
+
+        # Already posted (devto has a real URL)
+        if "devto" in entry and not _needs_posting(entry.get("devto")):
             updated_articles.append(entry)
             continue
 

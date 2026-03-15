@@ -338,11 +338,14 @@
       "file": "articles/moltbook-agent-evolution-quadrilogy.md",
       "zenn_date": "2026-03-15",
       "date": "2026-03-15",
-      "notes": "Moltbookエージェント進化記 — 自然言語アーキテクチャの設計と限界"
+      "notes": "Moltbookエージェント進化記 — 自然言語アーキテクチャの設計と限界",
+      "zenn_published": true,
+      "zenn_published_at": "2026-03-15T07:00:06.637960"
     },
     {
       "file": "articles-en/moltbook-agent-evolution-quadrilogy.md",
       "date": "2026-03-15",
+      "devto": "https://dev.to/shimo4228/natural-language-as-architecture-controlling-an-autonomous-agent-with-prompts-memory-and-m74",
       "notes": "EN: Natural language as architecture — autonomous agent design"
     }
   ]
