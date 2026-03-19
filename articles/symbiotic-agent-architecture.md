@@ -156,7 +156,7 @@ MCP（Model Context Protocol）が目指しているのも同じ方向だ。外�
 
 <!-- textlint-disable -->
 
-現に Obsidian は AI 連携のインターフェースとして MCP ではなく公式 CLI を選んだ。起動中の Obsidian アプリの「リモコン」として動作する CLI だ。[以前の記事](https://zenn.dev/shimo4228/articles/obsidian-cli-claude-code-vault-management)で書いたが、これにより Claude Code から Vault 操作が安全にできるようになった。新しいプロトコルを定義しなくても、CLI があればコーディングエージェントは連携できる。Contemplative Agent も同じ判断をしていたことに、この記事を書いていて気づいた。
+Obsidian は AI 連携のインターフェースとして MCP ではなく公式 CLI を選んだ。起動中の Obsidian アプリの「リモコン」として動作する CLI だ。[以前の記事](https://zenn.dev/shimo4228/articles/obsidian-cli-claude-code-vault-management)で書いたが、これにより Claude Code から Vault 操作が安全にできるようになった。Obsidian の CLI は GUI アプリへのリモコン、Contemplative Agent の CLI はプログラムのエントリポイントで、アーキテクチャは異なる。ただ「CLI があればコーディングエージェントと連携できる」という結論は同じだ。
 
 <!-- textlint-enable -->
 

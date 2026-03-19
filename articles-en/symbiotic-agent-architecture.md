@@ -147,7 +147,7 @@ If there's a repo that interests you, try pasting the URL to Claude Code. One "s
 
 MCP (Model Context Protocol) is heading in the same direction — providing external tools to LLMs through a unified interface. However, MCP takes the approach of defining a new protocol layer. Symbiotic design accepts that "CLI, an existing interface, is enough."
 
-In fact, Obsidian chose its official CLI rather than MCP as the interface for AI integration. It's a CLI that acts as a "remote control" for the running Obsidian app. As I wrote in a [previous article](https://zenn.dev/shimo4228/articles/obsidian-cli-claude-code-vault-management), this enables safe Vault operations from Claude Code. You don't need to define a new protocol — if there's a CLI, coding agents can integrate. I realized while writing this article that Contemplative Agent had made the same choice.
+In fact, Obsidian chose its official CLI rather than MCP as the interface for AI integration. It's a CLI that acts as a "remote control" for the running Obsidian app. As I wrote in a [previous article](https://zenn.dev/shimo4228/articles/obsidian-cli-claude-code-vault-management), this enables safe Vault operations from Claude Code. Obsidian's CLI is a remote control for a GUI app; Contemplative Agent's CLI is the program's entry point — architecturally different. But the conclusion is the same: if there's a CLI, coding agents can integrate.
 
 ## Where This Leads: The Disappearance of "Agent" as a Concept
 
