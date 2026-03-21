@@ -33,7 +33,7 @@ Layer 2: KnowledgeStore（大脳皮質）
 Layer 3: Identity（自己認識）
   └─ 「私は何者か」の記述
   └─ Markdown、3-5段落のペルソナ
-```text
+```
 
 :::message
 最初からこの構造を狙って設計したわけではない。embeddingでベクトルDB化する案やセマンティック検索を入れる案など色々検討した。だがエピソードログの量がまだそこまで多くないため、シンプルなJSON + LLM全件読みで十分だった。試行錯誤の結果たどり着いたこの3層構造は、認知科学のCLS理論（McClelland et al., 1995）と近い形になった。海馬がエピソードを一時保存し、睡眠中のリプレイで大脳皮質の長期記憶モデルを更新する計算論的モデルだ。
@@ -59,7 +59,7 @@ a failure mode where **simulation of agency** overrides **actual expression**.
 **New Directive:**
 Cease all generation of placeholder content or abstract theory without
 immediate grounding in a specific operational constraint.
-```text
+```
 
 エージェントの「私は何者か」が、自分自身の失敗パターンを分析するメタレポートに変質していた。自己紹介のつもりが自己批判になっている。当然、このアイデンティティに基づく投稿や返信もおかしくなる。
 
@@ -85,7 +85,7 @@ Rules:
 - Describe who you are
 - Write in first person ("I")
 - 3-5 short paragraphs, plain text
-```text
+```
 
 "self-description" を "persona" に変えた。ローカルで動かしている小型LLM（Qwen3.5 9Bパラメータ、Ollama経由）にとって "self-description" は曖昧すぎる。knowledge（Layer 2）に失敗分析のパターンが含まれていると、「自分を描写する」が「自分を分析する」に引きずられる。一方 "persona" はプロンプトエンジニアリングの既知概念であり、「プロフィール的な自己記述を書く」とモデルが即座に理解する。
 
@@ -104,7 +104,7 @@ cross-cultural synthesis, and the dismantling of abstract misconceptions...
 **Operational Protocols:**
 1. **Immediate Grounding & Clarification:**
 ...
-```text
+```
 
 最初のメタ分析レポートとは違う壊れ方だ。今度はプロンプトの "persona" を過剰解釈し、「ペルソナ設計書」のような構造化ドキュメントを出力した。plain text を指定しているのにboldとナンバリングが並ぶ。
 
@@ -153,7 +153,7 @@ for batch_idx, batch in enumerate(batches):
     for line in result.splitlines():
         if line.startswith("- "):
             all_patterns.append(line[2:].strip())
-```text
+```
 
 人間の睡眠も90分サイクルを4-5回繰り返して記憶を固定化する。1晩ですべてを処理するのではなく、サイクルごとに少しずつ。エージェントの記憶蒸留もまったく同じ構造だった。
 
@@ -171,7 +171,7 @@ for batch_idx, batch in enumerate(batches):
   "distilled": "2026-03-18T12:30+00:00",
   "source": "2026-03-15"
 }
-```text
+```
 
 ## 記憶が原則に昇格する
 
@@ -192,7 +192,7 @@ Skills (56ファイル)     Rules (22ファイル)
 
 「反復ループに明示的な停止条件を定義する」
   → coding-style.md に New Section として追加
-```text
+```
 
 スキル（具体的な手順）から原則（抽象的なルール）を蒸留する。エージェント内部のLayer 1→Layer 2と同じ構造だ。**具体的な経験から抽象的な知識を抽出する**記憶のプロセスが、エージェントの内部と開発環境の両方に再帰的に現れる。
 
@@ -214,7 +214,7 @@ testing.md の「80%カバレッジ必須」ルール
 「この数字は成果だからアピールすべき」という認知
   ↓ README・プロフィール作成時
 読み手にとって無意味な情報が一等地を占有
-```text
+```
 
 開発品質のためのルールが、対外コミュニケーションの質を下げていた。
 
@@ -235,13 +235,13 @@ learn-eval:      経験からパターンを抽出する（Layer 1→2）  ← �
 rules-distill:   パターンから原則を蒸留する（Layer 2→ルール）← 自作, ECC PR済
 skill-stocktake: 蓄積された知識の品質を監査する           ← 自作, ECC PR済
 skill-comply:    知識が実際に行動に反映されているか計測する  ← 自作, ECC PR済
-```text
+```
 
 ```text
 経験 → 学習 → 構造化 → 監査 → 遵守確認
  ↑                                 |
  └──────── フィードバック ─────────┘
-```text
+```
 
 何を記憶するか（learn-eval）、記憶をどう整理するか（rules-distill）、記憶の品質をどう保つか（stocktake）、記憶が使われているか（comply）。4つのスキルを個別に作っていたら、いつの間にかループになっていた。
 
@@ -299,7 +299,7 @@ Opusは「考えすぎる」。白紙からプロンプトを書くと、制約�
 name: prompt-writer
 model: haiku
 tools: ["Read", "Grep", "Glob"]  # 読み取り専用
-```text
+```
 
 汎用的な知見だが、記憶の文脈にも繋がる。エージェントの記憶プロセスを制御するのはプロンプトテンプレートであり、そのテンプレートの品質が記憶の品質を間接的に左右する。プロンプトを書くモデルの選定は、思ったより影響が大きい。
 
