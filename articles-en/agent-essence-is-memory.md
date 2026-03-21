@@ -2,7 +2,7 @@
 title: "Not Reasoning, Not Tools — What If the Essence of AI Agents Is Memory?"
 emoji: "🧠"
 type: "tech"
-topics: ["ai", "agent", "llm", "claudecode", "python"]
+topics: ["ai", "discuss", "agents", "llm"]
 published: false
 description: "After running an autonomous agent on a million-agent social network, I found that memory — not tools or reasoning — is what defines an agent's behavior. This is an ongoing struggle, not a success story."
 tags: ai, discuss, agents, llm

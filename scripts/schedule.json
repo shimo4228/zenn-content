@@ -357,6 +357,7 @@
     {
       "file": "articles-en/agent-essence-is-memory.md",
       "date": "2026-03-21",
+      "devto": "https://dev.to/shimo4228/not-reasoning-not-tools-what-if-the-essence-of-ai-agents-is-memory-4k4n",
       "devto_tags": ["ai", "discuss", "agents", "llm"],
       "notes": "EN: What if the essence of AI agents is memory?"
     }
