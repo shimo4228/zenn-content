@@ -347,6 +347,18 @@
       "date": "2026-03-15",
       "devto": "https://dev.to/shimo4228/natural-language-as-architecture-controlling-an-autonomous-agent-with-prompts-memory-and-m74",
       "notes": "EN: Natural language as architecture — autonomous agent design"
+    },
+    {
+      "file": "articles/agent-essence-is-memory.md",
+      "zenn_date": "2026-03-21",
+      "date": "2026-03-21",
+      "notes": "AIエージェントの本質は「記憶」ではないか — 7ドラフト統合記事"
+    },
+    {
+      "file": "articles-en/agent-essence-is-memory.md",
+      "date": "2026-03-21",
+      "devto_tags": ["ai", "discuss", "agents", "llm"],
+      "notes": "EN: What if the essence of AI agents is memory?"
     }
   ]
 }
