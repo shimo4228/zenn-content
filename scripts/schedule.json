@@ -352,14 +352,39 @@
       "file": "articles/agent-essence-is-memory.md",
       "zenn_date": "2026-03-21",
       "date": "2026-03-21",
-      "notes": "AIエージェントの本質は「記憶」ではないか — 7ドラフト統合記事"
+      "notes": "AIエージェントの本質は「記憶」ではないか — 7ドラフト統合記事",
+      "zenn_published": true,
+      "zenn_published_at": "2026-03-21T19:55:30+09:00"
     },
     {
       "file": "articles-en/agent-essence-is-memory.md",
       "date": "2026-03-21",
       "devto": "https://dev.to/shimo4228/not-reasoning-not-tools-what-if-the-essence-of-ai-agents-is-memory-4k4n",
-      "devto_tags": ["ai", "discuss", "agents", "llm"],
+      "devto_tags": [
+        "ai",
+        "discuss",
+        "agents",
+        "llm"
+      ],
       "notes": "EN: What if the essence of AI agents is memory?"
+    },
+    {
+      "file": "articles/few-shot-for-small-models.md",
+      "zenn_date": "2026-03-22",
+      "date": "2026-03-22",
+      "zenn_published": true,
+      "notes": "エージェントの記憶が壊れた — 9Bモデルと格闘した1日"
+    },
+    {
+      "file": "articles-en/few-shot-for-small-models.md",
+      "date": "2026-03-22",
+      "devto_tags": [
+        "ai",
+        "llm",
+        "python",
+        "agents"
+      ],
+      "notes": "EN: Agent memory broke — 1 day wrestling a 9B model"
     }
   ]
 }
