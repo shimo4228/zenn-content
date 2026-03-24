@@ -386,6 +386,24 @@
       ],
       "devto": "https://dev.to/shimo4228/my-agents-memory-broke-a-day-wrestling-a-9b-model-50ch",
       "notes": "EN: Agent memory broke — 1 day wrestling a 9B model"
+    },
+    {
+      "file": "articles/coding-agent-memory-architecture.md",
+      "zenn_date": "2026-03-26",
+      "date": "2026-03-26",
+      "zenn_published": false,
+      "notes": "コーディングエージェントの知識配置と遵守率計測 — 5章構成の長編"
+    },
+    {
+      "file": "articles-en/coding-agent-memory-architecture-en.md",
+      "date": "2026-03-24",
+      "devto_tags": [
+        "ai",
+        "claudecode",
+        "agents",
+        "devtools"
+      ],
+      "notes": "EN: Where to place agent knowledge and how to enforce it"
     }
   ]
 }
