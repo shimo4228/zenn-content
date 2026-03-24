@@ -403,7 +403,8 @@
         "agents",
         "devtools"
       ],
-      "notes": "EN: Where to place agent knowledge and how to enforce it"
+      "notes": "EN: Where to place agent knowledge and how to enforce it",
+      "devto": "https://dev.to/shimo4228/where-to-put-a-coding-agents-knowledge-and-how-to-make-it-stick-161g"
     }
   ]
 }
