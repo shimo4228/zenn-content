@@ -1,8 +1,9 @@
 # zenn-content
 
-Claude Code を中心とした開発体験の記録。技術記事の執筆から、クロスポスト、品質管理まで、Claude Code との協業で運用しています。
+AI エージェント開発、Claude Code、LLM エンジニアリングに関する技術記事リポジトリ。執筆・レビュー・翻訳・クロスポストまで Claude Code との協業で運用しています。
 
 ## Published Articles
+<!-- Note: This list may not include the latest articles. Run `npx zenn list:articles` for the current list. -->
 
 ### Claude Code Series
 - [Cursor から Zed + Claude Code に移行した話](https://zenn.dev/shimo4228/articles/cursor-to-zed-migration)
@@ -23,7 +24,7 @@ Claude Code を中心とした開発体験の記録。技術記事の執筆か�
 
 ## Cross-Posting
 
-記事は日本語（Zenn + Qiita）と英訳（Dev.to + Hashnode）でクロスポストしています。
+記事は日本語（Zenn）と英訳（Dev.to）でクロスポストしています。
 
 - `articles/` — 日本語原稿
 - `articles-en/` — 英訳
@@ -76,7 +77,7 @@ zenn-content/
 │   └── .env           # API トークン（gitignore）
 ├── .claude/
 │   ├── agents/        # エディターエージェント
-│   └── skills/        # プロジェクトスキル（8個）
+│   └── skills/        # プロジェクトスキル（9個）
 └── .github/
     └── workflows/     # CI（lint）
 ```

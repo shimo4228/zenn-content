@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-This repository contains **Zenn articles and books** for the pdf2anki ecosystem. All content follows the **"Build in Public"** principle, documenting real development sessions and design decisions.
+This repository contains **Zenn articles and books** for AI agent development, Claude Code workflows, and LLM engineering experiments. All content follows the **"Build in Public"** principle, documenting real development sessions and design decisions.
 
 ## Git Push Reminder (CRITICAL)
 
@@ -30,9 +30,8 @@ published: true  # or false for draft
 
 1. **Technical Depth**
    - Explain **"why"** decisions were made, not just **"what"** was implemented
-   - Include real code examples from pdf2anki repository
+   - Include real code examples from the repository
    - Discuss trade-offs and alternatives considered
-   - Reference SpecStory sessions when applicable
 
 2. **Code Examples**
    - All code snippets MUST be executable and tested
@@ -67,15 +66,6 @@ published: true  # or false for draft
 - Embed with Zenn syntax: `![Alt text](/images/filename.png)`
 - Sanitize screenshots: no file paths like `/Users/username/`, no API keys
 
-### SpecStory Integration
-
-When writing articles based on SpecStory sessions:
-
-1. **Extract narrative** - Transform development log into engaging story
-2. **Anonymize** - Remove personal file paths and credentials
-3. **Add context** - Explain decisions that may not be obvious from logs
-4. **Include code** - Show actual implementation, not just logs
-
 ## Editor Agent Usage
 
 Before publishing, run the `editor` agent for rigorous review:
@@ -109,35 +99,14 @@ This skill provides:
 
 ## Testing Workflow
 
-1. **Preview locally**
-   ```bash
-   npm run preview
-   ```
-
-2. **Validate frontmatter**
-   ```bash
-   npx zenn list:articles
-   ```
-
-3. **Review with editor agent** (内容に大幅な変更が入るため、lint はこの後)
-   ```bash
-   claude task --agent=editor --prompt="Review articles/NEW_ARTICLE.md"
-   ```
-
-4. **Human review** - Add personal insights and final polish
-
-5. **Run linter** (editor の修正が完了した最終版に対して実行)
-   ```bash
-   npm run lint
-   ```
+See `docs/RUNBOOK.md` for the full testing and publishing workflow.
 
 ## Publishing Checklist
 
-Before publishing (see `docs/security-checklist.md` in Anki-QA):
+Full procedure: `docs/RUNBOOK.md`
 
 - [ ] Code snippets have no API keys
 - [ ] Screenshots have no sensitive information (file paths, usernames)
-- [ ] SpecStory logs are sanitized
 - [ ] File paths are anonymized
 - [ ] All code examples are tested and executable
 - [ ] Editor agent review completed
@@ -145,13 +114,7 @@ Before publishing (see `docs/security-checklist.md` in Anki-QA):
 - [ ] Preview looks good (`npm run preview`)
 - [ ] English translation created in `articles-en/`
 - [ ] `schedule.json` updated with both Japanese and English entries (including cross-post dates)
-- [ ] Cross-post targets scheduled: Qiita (Japanese), Dev.to + Hashnode (English)
-
-## Related Documentation
-
-- [Anki-QA CLAUDE.md](../Anki-QA/CLAUDE.md) - pdf2anki development guidelines
-- [Security Checklist](../Anki-QA/docs/security-checklist.md) - Pre-publication security checks
-- [Architecture Docs](../docs/architecture/) - pdf2anki ecosystem design decisions
+- [ ] Cross-post target scheduled: Dev.to (English)
 
 ---
 
@@ -159,4 +122,3 @@ Before publishing (see `docs/security-checklist.md` in Anki-QA):
 - Personal file paths (`/Users/username/`)
 - API keys or credentials
 - Sensitive screenshots
-- Unsanitized SpecStory logs
