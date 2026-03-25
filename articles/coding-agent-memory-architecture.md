@@ -3,7 +3,7 @@ title: "コーディングエージェントの知識をどこに置き、どう
 emoji: "🗄️"
 type: "tech"
 topics: ["claudecode", "ai", "mcp", "開発環境"]
-published: false
+published: true
 ---
 
 Claude Code に[記憶を埋め込もうとした](https://zenn.dev/shimo4228/articles/claude-code-persistent-memory)のが2月末。2週間使って、[Install and Hope 問題](https://zenn.dev/shimo4228/articles/mcp-install-and-hope-problem)に気づいてアンインストールしたのが3月頭。そこから今日までの間に考えたことを書く。
