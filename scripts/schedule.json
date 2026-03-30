@@ -391,8 +391,9 @@
       "file": "articles/coding-agent-memory-architecture.md",
       "zenn_date": "2026-03-26",
       "date": "2026-03-26",
-      "zenn_published": false,
-      "notes": "コーディングエージェントの知識配置と遵守率計測 — 5章構成の長編"
+      "zenn_published": true,
+      "notes": "コーディングエージェントの知識配置と遵守率計測 — 5章構成の長編",
+      "zenn_published_at": "2026-03-26T07:00:08.690003"
     },
     {
       "file": "articles-en/coding-agent-memory-architecture-en.md",
@@ -405,6 +406,24 @@
       ],
       "notes": "EN: Where to place agent knowledge and how to enforce it",
       "devto": "https://dev.to/shimo4228/where-to-put-a-coding-agents-knowledge-and-how-to-make-it-stick-161g"
+    },
+    {
+      "file": "articles/agent-memory-game-dev-distillation.md",
+      "zenn_date": "2026-03-30",
+      "date": "2026-03-30",
+      "zenn_published": true,
+      "notes": "ゲーム開発メモリ技法をAIエージェント記憶蒸留に移植"
+    },
+    {
+      "file": "articles-en/agent-memory-game-dev-distillation.md",
+      "date": "2026-03-30",
+      "devto_tags": [
+        "ai",
+        "python",
+        "agents",
+        "gamedev"
+      ],
+      "notes": "EN: Game dev memory techniques for AI agent distillation"
     }
   ]
 }
