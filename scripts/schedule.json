@@ -417,6 +417,7 @@
     {
       "file": "articles-en/agent-memory-game-dev-distillation.md",
       "date": "2026-03-30",
+      "devto": "https://dev.to/shimo4228/porting-game-dev-memory-management-to-ai-agent-memory-distillation-35lk",
       "devto_tags": [
         "ai",
         "python",
