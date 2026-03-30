@@ -425,6 +425,25 @@
         "gamedev"
       ],
       "notes": "EN: Game dev memory techniques for AI agent distillation"
+    },
+    {
+      "file": "articles/agent-freedom-and-constraints.md",
+      "zenn_date": "2026-03-31",
+      "date": "2026-03-31",
+      "zenn_published": true,
+      "notes": "自律エージェントの自由と制約 — 自己修正・信頼境界・ゲーム性"
+    },
+    {
+      "file": "articles-en/agent-freedom-and-constraints.md",
+      "date": "2026-03-31",
+      "devto": "https://dev.to/shimo4228/freedom-and-constraints-of-autonomous-agents-self-modification-trust-boundaries-and-emergent-3i0c",
+      "devto_tags": [
+        "ai",
+        "security",
+        "agents",
+        "python"
+      ],
+      "notes": "EN: Freedom and constraints of autonomous agents"
     }
   ]
 }
