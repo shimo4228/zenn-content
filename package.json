@@ -7,10 +7,10 @@
     "preview": "zenn preview",
     "new:article": "zenn new:article",
     "new:book": "zenn new:book",
-    "lint": "textlint articles/**/*.md books/**/*.md",
-    "lint:md": "markdownlint-cli2 'articles/**/*.md' 'books/**/*.md'",
+    "lint": "textlint --ignore-path .textlintignore 'articles/**/*.md' 'books/**/*.md'",
+    "lint:md": "markdownlint-cli2 'articles/**/*.md' 'books/**/*.md' '#articles/_archive/**' '#books/_archive/**'",
     "lint:all": "npm run lint && npm run lint:md",
-    "lint:fix": "textlint --fix articles/**/*.md books/**/*.md",
+    "lint:fix": "textlint --ignore-path .textlintignore --fix 'articles/**/*.md' 'books/**/*.md'",
     "prepare": "husky"
   },
   "lint-staged": {
