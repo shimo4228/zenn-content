@@ -33,7 +33,7 @@ AI エージェントのブラックボックスには、見えない**原因**�
       harness（実行時の制御層）
 ```
 
-学術的には scaffolding（構築時）と harness（実行時）を区別する試みもあるが、この境界は急速に曖昧になっている。永続メモリ、スキルエコシステム、Lint ツール。OpenClaw のようなモデル非依存のエージェント基盤は、Claude でも GPT でもローカルモデルでも交換可能に動く。Anthropic はサブスクリプション経由での利用をブロックしたが、scaffolding がモデルをコモディティ化する力学は止まらない。scaffolding の範囲はエージェント開発の盛り上がりに合わせて拡大し続けている。この記事では harness を含む広義の意味で scaffolding と呼ぶ。
+学術的には scaffolding（構築時）と harness（実行時）を区別する試みもあるが、この境界は急速に曖昧になっている。永続メモリ、スキルエコシステム。OpenClaw のようなモデル非依存のエージェント基盤は、Claude でも GPT でもローカルモデルでも交換可能に動く。Anthropic はサブスクリプション経由での利用をブロックしたが、scaffolding がモデルをコモディティ化する力学は止まらない。scaffolding の範囲はエージェント開発の盛り上がりに合わせて拡大し続けている。この記事では harness を含む広義の意味で scaffolding と呼ぶ。
 
 自分のエージェントを運用してきた所感がある。scaffolding を適切にコンテキストマネジメントしていると、モデルはただの推論器で、エージェントの本質は scaffolding の側にあると感じるようになった。人格、能力、判断基準 — すべて scaffolding の中にある。モデルを差し替えても scaffolding が同じなら、エージェントは同じように振る舞う。以前「[エージェントの本質は記憶ではないか](https://zenn.dev/shimo4228/articles/agent-essence-is-memory)」と書いたことがある。あの記事での「記憶」— EpisodeLog、KnowledgeStore、Identity の3層 — は、今の用語で言えばすべて scaffolding だ。当時はまだこの区別を持っていなかったが、scaffolding という概念を得たことで、あの直感を構造的に説明できるようになった。
 
