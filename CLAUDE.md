@@ -6,7 +6,7 @@ This repository contains **Zenn articles and books** for AI agent development, C
 
 ## Git Push Reminder (CRITICAL)
 
-記事の作成・編集・schedule.json の更新をコミットしたら、**必ずユーザーに push を促すこと**。未 push のコミットがあると、翌朝の自動公開スクリプト（`zenn_publish.py`）が `git pull --rebase` に失敗し、Zenn へのデプロイが止まる。
+記事の作成・編集・schedule.json の更新をコミットしたら、**必ずユーザーに push を促すこと**。未 push のコミットがあると、Zenn の `published_at` 予約投稿が反映されず、Dev.to のクロスポストスクリプトも動かない。
 
 ## Writing Guidelines
 
@@ -21,6 +21,7 @@ emoji: "📚"
 type: "tech"  # or "idea"
 topics: ["claude", "anki", "ai"]  # 1-5 tags
 published: true  # or false for draft
+published_at: 2026-04-15 07:00  # 予約投稿（JST、省略で即公開）
 ---
 
 # Article content starts here
@@ -68,19 +69,23 @@ published: true  # or false for draft
 
 ## Editor Agent Usage
 
-Before publishing, run the `editor` agent for rigorous review:
+Before publishing, run review agents. For tech articles use `editor`, for idea articles use `essay-reviewer`. Run `fact-checker` in parallel to verify factual claims.
 
 ```bash
-claude task --agent=editor --prompt="Review this Zenn article draft: articles/ARTICLE_NAME.md"
+# tech 記事
+claude --agent=editor --prompt="Review: articles/ARTICLE_NAME.md"
+# idea 記事
+claude --agent=essay-reviewer --prompt="Review: articles/ARTICLE_NAME.md"
+# ファクトチェック（並列実行可）
+claude --agent=fact-checker --prompt="Fact-check: articles/ARTICLE_NAME.md"
 ```
 
-The editor agent will check:
-- Technical accuracy
-- Code snippet correctness
-- Narrative flow and engagement
-- Terminology consistency
-- AI slop detection
-- Audience appropriateness
+Available agents:
+- `editor` — tech 記事の構造・品質・AI slop 検出（4段階評価）
+- `essay-reviewer` — idea 記事の論理・トーン・過積載検出
+- `fact-checker` — 事実主張の Web 検索検証（ACCURATE/PARTIALLY/INACCURATE/UNVERIFIABLE）
+- `devto-translator` — JP→EN 翻訳 + Dev.to タグ付け + 投稿
+- `zenn-drafter` — 記事執筆（分析→執筆→セルフレビュー）
 
 ## zenn-writer Skill
 
@@ -109,11 +114,13 @@ Full procedure: `docs/RUNBOOK.md`
 - [ ] Screenshots have no sensitive information (file paths, usernames)
 - [ ] File paths are anonymized
 - [ ] All code examples are tested and executable
-- [ ] Editor agent review completed
+- [ ] Editor/essay-reviewer レビュー完了
+- [ ] fact-checker でファクトチェック完了（idea 記事は必須）
 - [ ] Lint passes (`npm run lint`)
 - [ ] Preview looks good (`npm run preview`)
+- [ ] `published_at` を設定（`YYYY-MM-DD HH:MM` 形式、JST）
 - [ ] English translation created in `articles-en/`
-- [ ] `schedule.json` updated with both Japanese and English entries (including cross-post dates)
+- [ ] `schedule.json` updated with both Japanese and English entries
 - [ ] Cross-post target scheduled: Dev.to (English)
 
 ---
