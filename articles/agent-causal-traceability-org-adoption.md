@@ -4,7 +4,7 @@ emoji: "🪜"
 type: "idea"
 topics: ["ai", "agent", "claude", "architecture", "sre"]
 published: true
-published_at: 2026-04-12 21:00
+published_at: 2026-04-13 07:00
 ---
 
 ## 事故のあとで因果を辿れるか

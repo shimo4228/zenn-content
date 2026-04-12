@@ -4,7 +4,7 @@ emoji: "🔮"
 type: "idea"
 topics: ["ai", "agent", "governance", "capitalism"]
 published: true
-published_at: 2026-04-13 21:00
+published_at: 2026-04-14 07:00
 ---
 
 ## 元はただのプロンプトだった
