@@ -444,6 +444,42 @@
         "python"
       ],
       "notes": "EN: Freedom and constraints of autonomous agents"
+    },
+    {
+      "file": "articles/agent-causal-traceability-org-adoption.md",
+      "zenn_date": "2026-04-13",
+      "date": "2026-04-13",
+      "zenn_published": true,
+      "notes": "事故のあとで因果を辿れるか — ガバナンスシリーズ 2/3"
+    },
+    {
+      "file": "articles-en/agent-causal-traceability-org-adoption-en.md",
+      "date": "2026-04-12",
+      "devto": "https://dev.to/shimo4228/can-you-trace-the-cause-after-an-incident-neo",
+      "devto_tags": [
+        "discuss",
+        "ai",
+        "programming",
+        "devops"
+      ],
+      "notes": "EN: Can You Trace the Cause After an Incident?"
+    },
+    {
+      "file": "articles/agent-blackbox-capitalism-timescale.md",
+      "zenn_date": "2026-04-14",
+      "date": "2026-04-14",
+      "zenn_published": true,
+      "notes": "AIエージェントのブラックボックスは二層ある — ガバナンスシリーズ 3/3"
+    },
+    {
+      "file": "articles-en/agent-blackbox-capitalism-timescale-en.md",
+      "date": "2026-04-13",
+      "devto_tags": [
+        "discuss",
+        "ai",
+        "governance"
+      ],
+      "notes": "EN: AI Agent Black Boxes Have Two Layers"
     }
   ]
 }
