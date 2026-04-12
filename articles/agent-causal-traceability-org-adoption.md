@@ -4,7 +4,7 @@ emoji: "🪜"
 type: "idea"
 topics: ["ai", "agent", "claude", "architecture", "sre"]
 published: true
-published_at: 2026-04-13 07:00
+published_at: 2026-04-12 21:00
 ---
 
 ## 事故のあとで因果を辿れるか
@@ -129,7 +129,8 @@ ADR-0015 を書き終えて、並べて眺めていて、あっ、と声が出�
 - ADR-0015 (1エージェント1外部アダプタ原則): 同リポジトリ `docs/adr/0015-one-external-adapter-per-agent.md`
 - Laukkonen et al. 2025 "Contemplative Artificial Intelligence" arXiv:2504.15125
 
-**シリーズ**
+**シリーズ: AIエージェントのガバナンス**
 
-- 前編: [登れる壁に看板を立てても意味がない — AIエージェントに必要なのはガードレールではなくアカウンタビリティだ](https://zenn.dev/shimo4228/articles/ai-agent-accountability-wall)
-- 補論: [AIエージェントのブラックボックスは二層ある — 技術の限界とビジネスの都合](https://zenn.dev/shimo4228/articles/agent-blackbox-capitalism-timescale)
+1. [登れる壁に看板を立てても意味がない — AIエージェントに必要なのはガードレールではなくアカウンタビリティだ](https://zenn.dev/shimo4228/articles/ai-agent-accountability-wall)
+2. 本記事
+3. [AIエージェントのブラックボックスは二層ある — 技術の限界とビジネスの都合](https://zenn.dev/shimo4228/articles/agent-blackbox-capitalism-timescale)
