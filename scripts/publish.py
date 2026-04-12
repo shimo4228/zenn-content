@@ -73,8 +73,10 @@ def parse_zenn_article(path: Path) -> Article:
     raw_topics = metadata.get("topics") or metadata.get("tags") or []
     if isinstance(raw_topics, str):
         topics = tuple(t.strip() for t in raw_topics.split(",") if t.strip())
-    else:
+    elif isinstance(raw_topics, (list, tuple)):
         topics = tuple(str(t) for t in raw_topics)
+    else:
+        topics = ()
     return Article(
         title=str(metadata.get("title", "")),
         body=post.content,
@@ -191,12 +193,33 @@ def map_devto_tags(
         "benchmark": "benchmark",
         "rlhf": "ai",
         "ollama": "ai",
+        "governance": "governance",
+        "capitalism": "discuss",
+        "sre": "devops",
+        "organization": "discuss",
+        "security": "security",
+        "ethics": "discuss",
+        "devops": "devops",
+        "python": "python",
+        "typescript": "typescript",
+        "javascript": "javascript",
+        "react": "react",
+        "nextjs": "webdev",
+        "docker": "docker",
+        "kubernetes": "devops",
+        "testing": "testing",
+        "ci": "devops",
     }
 
     # Convert topics, dedup while preserving order
     seen: set[str] = set()
     tags: list[str] = []
     for topic in topics:
+        if topic not in tag_map:
+            # 日本語 topics などマッピングにないものは skip（mangled pass-through 防止）
+            sanitized = re.sub(r"[^a-z0-9]", "", topic.lower())
+            if not sanitized or sanitized != topic.lower():
+                continue
         mapped = tag_map.get(topic, topic).lower()
         # Strip non-alphanumeric (Dev.to requirement)
         mapped = re.sub(r"[^a-z0-9]", "", mapped)

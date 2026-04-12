@@ -178,6 +178,15 @@ def show_status(schedule: dict[str, Any]) -> None:
         )
 
 
+def _already_published_today(articles: list[dict[str, Any]]) -> bool:
+    """Check if any article was already published today (via zenn_published_at)."""
+    today_str = date.today().isoformat()
+    return any(
+        entry.get("zenn_published_at", "").startswith(today_str)
+        for entry in articles
+    )
+
+
 def publish_due(schedule: dict[str, Any], *, dry_run: bool = False) -> int:
     today = date.today()
     updated_articles: list[dict[str, Any]] = []
@@ -186,7 +195,38 @@ def publish_due(schedule: dict[str, Any], *, dry_run: bool = False) -> int:
     published_count = 0
     errors = 0
 
-    for entry in schedule["articles"]:
+    # --- 1-article-per-day guard ---
+    # Check if we already published an article today
+    if _already_published_today(schedule["articles"]):
+        logger.info("今日は既に1記事公開済み。残りは翌日以降に繰り越し。")
+        # Still sync tracking flags for manually-published articles
+        # (fall through to the loop below, but skip actual publishing)
+
+    # Collect due entries (zenn_date <= today, not yet published) for sorting
+    due_indices: list[int] = []
+    for i, entry in enumerate(schedule["articles"]):
+        zenn_date_str = entry.get("zenn_date")
+        if not zenn_date_str or entry.get("zenn_published"):
+            continue
+        if date.fromisoformat(zenn_date_str) > today:
+            continue
+        due_indices.append(i)
+
+    # Sort due entries by zenn_date (oldest first) to pick the one to publish
+    due_indices.sort(key=lambda i: schedule["articles"][i]["zenn_date"])
+
+    # Determine which single entry (if any) is eligible for publishing today
+    publish_target_index: int | None = None
+    if not _already_published_today(schedule["articles"]) and due_indices:
+        publish_target_index = due_indices[0]
+        deferred_count = len(due_indices) - 1
+        if deferred_count > 0:
+            logger.info(
+                "1日1記事制限: 最も古い1件を公開、残り%d件は翌日以降に繰り越し",
+                deferred_count,
+            )
+
+    for i, entry in enumerate(schedule["articles"]):
         zenn_date_str = entry.get("zenn_date")
         if not zenn_date_str or entry.get("zenn_published"):
             updated_articles.append(entry)
@@ -215,6 +255,11 @@ def publish_due(schedule: dict[str, Any], *, dry_run: bool = False) -> int:
                 logger.info("  Recorded zenn_published_at: %s", updates["zenn_published_at"])
             updated_articles.append({**entry, **updates})
             tracking_updated = True
+            continue
+
+        # Only publish the single target entry per day
+        if i != publish_target_index:
+            updated_articles.append(entry)
             continue
 
         logger.info("Publishing: %s (zenn_date=%s)", entry["file"], zenn_date_str)

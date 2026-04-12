@@ -235,12 +235,24 @@ def _publish_zenn_article(article_path: Path, *, dry_run: bool) -> bool:
 def _process_zenn_entries(
     schedule: dict[str, Any], *, dry_run: bool,
 ) -> tuple[dict[str, Any], int, int]:
-    """Publish due Zenn articles. Returns (updated_schedule, publish_count, error_count)."""
+    """Publish due Zenn articles (max 1 per day). Returns (updated_schedule, publish_count, error_count)."""
     today = date.today()
+    today_str = today.isoformat()
     updated_articles = list(schedule["articles"])
     published = 0
     errors = 0
 
+    # 1-article-per-day guard: check if already published today
+    already_published_today = any(
+        entry.get("zenn_published_at", "").startswith(today_str)
+        for entry in updated_articles
+    )
+    if already_published_today:
+        logger.info("今日は既に1記事公開済み。残りは翌日以降に繰り越し。")
+        return {**schedule, "articles": updated_articles}, 0, 0
+
+    # Collect due entries and sort by zenn_date (oldest first)
+    due_indices: list[int] = []
     for i, entry in enumerate(updated_articles):
         zenn_date_str = entry.get("zenn_date")
         if not zenn_date_str:
@@ -249,16 +261,31 @@ def _process_zenn_entries(
             continue
         if date.fromisoformat(zenn_date_str) > today:
             continue
+        due_indices.append(i)
 
-        article_path = _validate_article_path(entry["file"])
-        if article_path is None:
-            errors += 1
-            continue
+    if not due_indices:
+        return {**schedule, "articles": updated_articles}, 0, 0
 
+    due_indices.sort(key=lambda idx: updated_articles[idx]["zenn_date"])
+    deferred_count = len(due_indices) - 1
+    if deferred_count > 0:
+        logger.info(
+            "1日1記事制限: 最も古い1件を公開、残り%d件は翌日以降に繰り越し",
+            deferred_count,
+        )
+
+    # Publish only the oldest due entry
+    target_i = due_indices[0]
+    entry = updated_articles[target_i]
+
+    article_path = _validate_article_path(entry["file"])
+    if article_path is None:
+        errors += 1
+    else:
         logger.info("Zenn publishing: %s", entry["file"])
         if _publish_zenn_article(article_path, dry_run=dry_run):
             if not dry_run:
-                updated_articles[i] = {
+                updated_articles[target_i] = {
                     **entry,
                     "zenn_published": True,
                     "zenn_published_at": datetime.now().isoformat(),
@@ -321,17 +348,19 @@ def _process_entry(
 
 
 def publish_due(schedule: dict[str, Any], *, dry_run: bool = False) -> int:
-    # Phase 1: Zenn auto-publish — DISABLED (2026-03-11)
-    # Zenn の投稿上限により自動公開が反映されなくなったため一時停止。
-    # 手動で published: true にして git push する運用に切り替え。
-    # schedule, zenn_count, zenn_errors = _process_zenn_entries(
-    #     schedule, dry_run=dry_run,
-    # )
-    # if zenn_count > 0:
-    #     logger.info("Zenn: %d article(s) published, %d error(s)", zenn_count, zenn_errors)
-    zenn_errors = 0
+    # Phase 1: Zenn auto-publish (re-enabled 2026-04-12)
+    # 1日1記事ガード付きで再有効化。zenn_publish.py 側で制限を実施。
+    logger.info("=== Phase 1: Zenn auto-publish ===")
+    schedule, zenn_count, zenn_errors = _process_zenn_entries(
+        schedule, dry_run=dry_run,
+    )
+    if zenn_count > 0:
+        logger.info("Zenn: %d article(s) published, %d error(s)", zenn_count, zenn_errors)
+    else:
+        logger.info("Zenn: nothing to publish today.")
 
     # Phase 2: Cross-post EN articles to Dev.to
+    logger.info("=== Phase 2: Dev.to cross-post ===")
     devto_key = _load_devto_key()
     if devto_key is None:
         return 1
