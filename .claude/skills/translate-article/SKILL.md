@@ -1,7 +1,9 @@
 <!-- origin: original -->
 # Translate Article Skill
 
-**Purpose:** Zenn 記事を高品質な英語に翻訳し、Dev.to / Hashnode への投稿準備を行う。
+**Purpose:** Zenn 記事を高品質な英語に翻訳し、Dev.to への投稿準備を行う。
+
+> **Note:** 翻訳→タグ付け→投稿を一気通貫で行う場合は `devto-translator` エージェントが推奨。このスキルは手動翻訳やカスタマイズが必要な場合に使う。
 
 ---
 
@@ -90,23 +92,18 @@ mkdir -p articles-en
 articles-en/ARTICLE_NAME.md
 ```
 
-### Step 6: クロスポスト提案
+### Step 6: Dev.to クロスポスト提案
 
-翻訳完了後、ユーザーに Dev.to / Hashnode への投稿を提案する:
+翻訳完了後、ユーザーに Dev.to への投稿を提案する:
 
 ```bash
 # Dev.to dry-run
-cd scripts && .venv/bin/python publish.py ../articles-en/ARTICLE_NAME.md \
+cd scripts && uv run python publish.py ../articles-en/ARTICLE_NAME.md \
   --platform devto \
-  --canonical-url "https://zenn.dev/shimomoto/articles/SLUG" \
-  --dry-run
-
-# Hashnode dry-run
-cd scripts && .venv/bin/python publish.py ../articles-en/ARTICLE_NAME.md \
-  --platform hashnode \
-  --canonical-url "https://zenn.dev/shimomoto/articles/SLUG" \
   --dry-run
 ```
+
+> **Note:** EN 記事には canonical_url を設定しない（言語が異なるため Zenn canonical は無意味）。
 
 ---
 
@@ -118,7 +115,7 @@ cd scripts && .venv/bin/python publish.py ../articles-en/ARTICLE_NAME.md \
 You are a professional technical translator specializing in Japanese→English
 translation for software engineering articles.
 
-Target audience: Software engineers who read Dev.to and Hashnode.
+Target audience: Software engineers who read Dev.to.
 
 ## Glossary
 {glossary_json}

@@ -78,7 +78,7 @@ lint・レビューの完了状態。
 | 時刻 | 8:00-9:00 JST | 通勤時間帯の閲覧、Qiita 9:00 トレンド更新前 |
 | 間隔 | 最低2日空ける | 各記事の「新着」フィード露出時間を確保 |
 | 上限 | 週2本まで | 品質シグナルを維持、フィード占有を回避 |
-| クロスポスト | Zenn 公開当日または翌日 | 同日: Dev.to/Hashnode(EN), 翌日: Qiita |
+| クロスポスト | Zenn 公開当日または翌日 | Dev.to(EN) のみ |
 
 ---
 
@@ -128,65 +128,41 @@ python scripts/plan_schedule.py --start YYYY-MM-DD --slugs "slug1,slug2,slug3"
 {
   "file": "articles/example-article.md",
   "canonical_url": "https://zenn.dev/shimo4228/articles/example-article",
-  "zenn_date": "2026-03-04",
-  "date": "2026-03-04",
-  "qiita": null,
+  "date": "2026-04-15",
   "devto": "n/a",
-  "hashnode": "n/a",
-  "zenn_published": false,
   "score": { "search": 2, "anchor": 1, "ready": 3, "fresh": 1, "total": 7 }
 }
 ```
 
-- `zenn_date`: Zenn で `published: true` にして push する日
-- `date`: クロスポスト実行日（通常 `zenn_date` と同日）
-- `zenn_published`: Zenn 公開済みフラグ（`zenn_publish.py` が自動設定）
+- `date`: 公開日（frontmatter の `published_at` と合わせる）
+- `devto`: `"n/a"` = 日本語記事（対象外）, `"pending"` = EN未投稿, URL = 完了
 - `score`: 評価スコア（トレーサビリティ用）
 
-**自動設定フィールド（システムが管理）:**
-```json
-{
-  "zenn_published": true,
-  "zenn_published_at": "2026-03-04T07:00:00"
-}
-```
-- `zenn_published_at`: Zenn公開時刻（ISO 8601形式）。15分遅延計算に使用
+**Zenn 公開は `published_at` 予約投稿方式:**
+- frontmatter に `published: true` + `published_at: YYYY-MM-DD HH:MM` (JST) を設定
+- `git push` すれば指定時刻に自動公開。レートリミットにカウントされない
 
 **英訳記事の場合:**
 ```json
 {
   "file": "articles-en/example-article.md",
   "canonical_url": "https://zenn.dev/shimo4228/articles/example-article",
-  "date": "2026-03-04",
-  "devto": "pending",
-  "hashnode": "pending",
-  "depends_on": "articles/example-article.md"
+  "date": "2026-04-15",
+  "devto": "pending"
 }
 ```
-- `depends_on`: この記事が依存する親記事（日本語記事）のパス
-- `devto`/`hashnode`: `"pending"` = 未投稿, `"n/a"` = 対象外, URL = 完了
+- `devto`: `"pending"` = 未投稿, URL = 完了
 
 ---
 
 ## Cross-Post Timing
 
-```
-Day 0 (7:00 JST):   Zenn 自動公開（zenn_publish.py）
-Day 0 (7:15 JST):   クロスポスト自動実行（15分遅延、atコマンド経由）
-Day 0 (9:00 JST):   フォールバック実行（scheduled_publish.py、失敗時のみ）
-```
+**Zenn 公開:** `published_at` 予約投稿（push 時点で予約、指定時刻に自動公開）
 
-**自動化されたフロー:**
-1. **7:00 JST**: `zenn_publish.py` が Zenn 公開と同時に15分後のクロスポストを `at` コマンドでスケジュール
-2. **7:15 JST**: Zennデプロイ完了（15分経過）→ `scheduled_publish.py` が自動実行されクロスポスト
-3. **9:00 JST**: 定期実行（`dev.shimo4228.crosspost`）がフォールバックとして動作
-
-**同日クロスポストの依存関係:**
-英訳記事は `depends_on` フィールドで日本語記事を参照し、日本語記事のクロスポスト完了後に自動実行される。
-
-**遅延時間の根拠:**
-- Zennのデプロイに5-30分かかることがあるため、15分の安全マージンを確保
-- 15分未満のエントリーは `_should_skip_due_to_recent_zenn_publish()` により自動スキップ
+**Dev.to クロスポスト:**
+- `scheduled_publish.py` で Dev.to API 経由の自動投稿
+- `devto-translator` エージェントで翻訳→投稿を一気通貫も可
+- Dev.to API レートリミット: 30秒間隔
 
 ---
 

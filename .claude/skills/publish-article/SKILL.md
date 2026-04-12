@@ -93,140 +93,78 @@ npm run preview
 
 ユーザーに `http://localhost:8000` でのプレビュー確認を促す。
 
-### Step 7: スケジュール登録
+### Step 7: published_at 設定
 
-バズ最適タイミング: **火〜水曜 7:00-9:00 JST**
+**Zenn 公開は `published_at` 予約投稿方式を使う。**
+
+frontmatter に以下を設定:
+```yaml
+published: true
+published_at: 2026-04-15 07:00  # JST、ハイフン区切り必須
+```
+
+- `published_at` を指定して `git push` すれば、指定時刻に自動公開される
+- レートリミットにカウントされない
+- 何本でも事前 push OK（`published_at` まで公開されない）
+
+**バズ最適タイミング:** 火〜水曜 7:00-9:00 JST
+
+### Step 8: スケジュール登録
+
+`scripts/schedule.json` にエントリを追加する。
 
 **日本語記事エントリ:**
 ```json
 {
   "file": "articles/xxx.md",
   "canonical_url": "https://zenn.dev/shimo4228/articles/xxx",
-  "zenn_date": "2026-03-04",
-  "date": "2026-03-04",
-  "qiita": null,
-  "devto": "n/a",
-  "hashnode": "n/a",
-  "zenn_published": false
+  "date": "2026-04-15",
+  "devto": "n/a"
 }
 ```
 
-- `zenn_date`: Zenn公開日（7:00 JSTに自動公開）
-- `date`: クロスポスト実行日（`zenn_date` と同日。15分遅延で7:15 JSTに自動実行）
-
-**英訳記事エントリ（同日クロスポスト用）:**
+**英訳記事エントリ（Dev.to クロスポスト用）:**
 ```json
 {
   "file": "articles-en/xxx.md",
   "canonical_url": "https://zenn.dev/shimo4228/articles/xxx",
-  "date": "2026-03-04",
-  "devto": "pending",
-  "hashnode": "pending",
-  "depends_on": "articles/xxx.md"
+  "date": "2026-04-15",
+  "devto": "pending"
 }
 ```
 
-- `depends_on`: 日本語記事のパス（scheduled_publish.py が依存関係を解決）
-- `qiita` は英訳記事では不要
-- 即時公開でない場合は `published: false` のまま git push し、公開日朝に Step 8 を実行
-
-### Step 8: 公開（自動化）
-
-スケジュールされた日の **7:00 JST** に自動実行されます (`zenn_publish.py`):
-
-1. `published: false` → `published: true` に変更
-2. `git add {article_path}`
-3. `git commit -m "feat: Zenn 自動公開 (YYYY-MM-DD)"`
-4. `git push`（Zenn公開）
-5. `schedule.json` の `zenn_published` を `true` に更新
-6. `zenn_published_at` にタイムスタンプを記録
-7. **15分後**のクロスポストを `at` コマンドでスケジュール
-
-**手動実行が必要な場合（緊急時のみ）:**
-```bash
-cd scripts && .venv/bin/python zenn_publish.py --dry-run  # 確認
-cd scripts && .venv/bin/python zenn_publish.py            # 実行
-```
-
-### Step 9: クロスポスト（自動化）
-
-Zenn公開から**15分後**に自動実行されます:
-
-**タイミング:**
-- **7:15 JST** (7:00にZenn公開された場合): Qiita, Dev.to, Hashnode に自動クロスポスト
-- 9:00 JSTの `scheduled_publish.py` はフォールバックとして動作（7:15の実行が失敗した場合）
-
-**自動化の仕組み:**
-- `zenn_publish.py` が Zenn公開成功後、15分後のクロスポストを `at` コマンドでスケジュール
-- `scheduled_publish.py` が実行され、Zennデプロイ完了を待ってからクロスポスト
-- Zenn公開から15分未満のエントリーはスキップ（デプロイ待ち）
-
-**手動実行が必要な場合（緊急時のみ）:**
-```bash
-cd scripts && .venv/bin/python scheduled_publish.py --dry-run  # 確認
-cd scripts && .venv/bin/python scheduled_publish.py            # 実行
-```
-
-**publish.py が自動変換する差異:**
-
-| Zenn | Qiita |
-|------|-------|
-| `:::message ... :::` | `> blockquote` |
-| `:::details title ... :::` | `<details><summary>` |
-| `topics` (frontmatter) | `tags` (API、最大5個) |
-
-**手動対応が必要な差異:**
-
-| 項目 | Zenn | Qiita |
-|------|------|-------|
-| CTA | 「いいね」のみ | 「いいね」+「ストック」 |
-| 前回記事リンク | Zenn URL | Qiita URL に差し替え |
-
-**クロスリンクの注意:** 前回記事リンクは公開済みプラットフォームの URL を使う。Zenn 側が `published: false` なら Qiita URL にフォールバック。
-
-### Step 10: 英訳記事の作成（Dev.to / Hashnode 用）
+### Step 9: 英訳記事の作成（Dev.to 用）
 
 ユーザーに英訳してクロスポストするか確認する。
 
+**推奨:** `devto-translator` エージェントで一気通貫（翻訳→タグ→投稿）。
+
 ```bash
-# /translate-article スキルで英訳を作成
+# または手動翻訳
 /translate-article {article_path}
 ```
 
 英訳は `articles-en/` に同名で保存される。
 
-### Step 11: Dev.to / Hashnode クロスポスト（自動化）
-
-英訳記事が存在する場合、**7:15 JST**に自動的に Dev.to と Hashnode にクロスポストされます。
-
-**自動化の仕組み:**
-- 日本語記事のクロスポスト完了後、英訳記事が自動的に処理される
-- `depends_on` フィールドにより、日本語記事のクロスポスト完了を保証
-- 同じ `date` を持つエントリでも、依存関係により順序が保証される
-
-**手動実行の場合（緊急時のみ）:**
-```bash
-CANONICAL="https://zenn.dev/shimo4228/articles/{slug}"
-
-# Dev.to
-cd scripts && uv run python publish.py ../articles-en/{filename} --platform devto --canonical-url "$CANONICAL"
-
-# Hashnode
-cd scripts && uv run python publish.py ../articles-en/{filename} --platform hashnode --canonical-url "$CANONICAL"
-```
-
-> **Note:** `publish.py` は日本語記事（`articles/`）で Dev.to / Hashnode を指定するとガードが発動します。`--force` で回避可能。
-
----
-
-### Step 12: schedule.json の最終更新
-
-全クロスポスト完了後、`scripts/schedule.json` の `"pending"` を実 URL に更新する。
+### Step 10: Dev.to クロスポスト
 
 ```bash
-# schedule.json の pending エントリを実 URL に置換
-# qiita, devto, hashnode の各 URL を記録
+# 手動実行
+cd scripts && uv run python publish.py ../articles-en/{filename} --platform devto --dry-run
+
+# 自動実行（scheduled_publish.py）
+cd scripts && uv run python scheduled_publish.py --dry-run
 ```
+
+### Step 11: schedule.json の最終更新
+
+Dev.to クロスポスト完了後、`scripts/schedule.json` の `"pending"` を実 URL に更新する。
+
+### Step 12: git push 確認（CRITICAL）
+
+全コミット完了後、**必ず `git push` を確認する**。未 push だと:
+- Zenn の `published_at` 予約投稿が反映されない
+- Dev.to のクロスポストスクリプトも動かない
 
 ---
 
@@ -239,7 +177,7 @@ cd scripts && uv run python publish.py ../articles-en/{filename} --platform hash
 | editor review | 指摘事項を修正して再レビュー |
 | セキュリティ | 該当箇所を即座に削除/マスク |
 | frontmatter | フィールドを修正 |
-| Qiita投稿 | dry-run で原因確認 → 変換ロジック修正 |
+| Dev.to投稿 | dry-run で原因確認 → API エラー対応 |
 
 ---
 
