@@ -43,15 +43,15 @@ AUTHOR_FONT_SIZE = 16
 
 
 def _make_gradient(width: int, height: int) -> Image.Image:
-    """Create a vertical gradient background."""
+    """Create a vertical gradient background using row-wise rectangle fills."""
     img = Image.new("RGB", (width, height))
+    draw = ImageDraw.Draw(img)
     for y in range(height):
         ratio = y / height
         r = int(BG_COLOR_TOP[0] + (BG_COLOR_BOTTOM[0] - BG_COLOR_TOP[0]) * ratio)
         g = int(BG_COLOR_TOP[1] + (BG_COLOR_BOTTOM[1] - BG_COLOR_TOP[1]) * ratio)
         b = int(BG_COLOR_TOP[2] + (BG_COLOR_BOTTOM[2] - BG_COLOR_TOP[2]) * ratio)
-        for x in range(width):
-            img.putpixel((x, y), (r, g, b))
+        draw.rectangle([(0, y), (width, y)], fill=(r, g, b))
     return img
 
 

@@ -13,7 +13,6 @@ Usage:
 from __future__ import annotations
 
 import argparse
-import json
 import logging
 import os
 from collections.abc import Callable
@@ -23,6 +22,15 @@ from typing import Any
 
 import frontmatter
 
+from _schedule_utils import (
+    REPO_ROOT,
+    SCHEDULE_PATH,
+    load_schedule,
+    now_jst,
+    save_schedule,
+    setup_logging,
+    validate_article_path,
+)
 from zenn_publish import (
     _git_add_commit_push,
 )
@@ -37,39 +45,9 @@ from publish import (
 )
 
 SCRIPT_DIR = Path(__file__).parent
-REPO_ROOT = SCRIPT_DIR.parent
-SCHEDULE_PATH = SCRIPT_DIR / "schedule.json"
 LOG_PATH = SCRIPT_DIR / "publish.log"
 
 logger = logging.getLogger(__name__)
-
-
-def _setup_logging() -> None:
-    if logger.handlers:
-        return
-    fmt = logging.Formatter("[%(asctime)s] %(message)s", datefmt="%Y-%m-%d %H:%M:%S")
-    file_handler = logging.FileHandler(LOG_PATH)
-    file_handler.setFormatter(fmt)
-    stream_handler = logging.StreamHandler()
-    stream_handler.setFormatter(fmt)
-    logger.addHandler(file_handler)
-    logger.addHandler(stream_handler)
-    logger.setLevel(logging.INFO)
-
-
-def load_schedule() -> dict[str, Any]:
-    try:
-        return json.loads(SCHEDULE_PATH.read_text())
-    except FileNotFoundError:
-        logger.error("Schedule file not found: %s", SCHEDULE_PATH)
-        raise SystemExit(1)
-    except json.JSONDecodeError as e:
-        logger.error("Invalid JSON in schedule file: %s", e)
-        raise SystemExit(1)
-
-
-def save_schedule(schedule: dict[str, Any]) -> None:
-    SCHEDULE_PATH.write_text(json.dumps(schedule, indent=2, ensure_ascii=False) + "\n")
 
 
 def _needs_posting(value: str | None) -> bool:
@@ -110,7 +88,11 @@ def _should_skip_due_to_recent_zenn_publish(entry: dict[str, Any]) -> bool:
 
     try:
         publish_time = datetime.fromisoformat(zenn_published_at)
-        elapsed = datetime.now() - publish_time
+        # Legacy entries may have naive timestamps — assume JST
+        if publish_time.tzinfo is None:
+            from _schedule_utils import JST
+            publish_time = publish_time.replace(tzinfo=JST)
+        elapsed = now_jst() - publish_time
         elapsed_minutes = elapsed.total_seconds() / 60
 
         if elapsed_minutes < MIN_CROSSPOST_DELAY_MINUTES:
@@ -192,18 +174,6 @@ def _try_publish(
     return None, True
 
 
-def _validate_article_path(file_path: str) -> Path | None:
-    """Resolve article path and validate it stays within REPO_ROOT."""
-    article_path = (REPO_ROOT / file_path).resolve()
-    if not article_path.is_relative_to(REPO_ROOT.resolve()):
-        logger.error("Path traversal detected: %s", file_path)
-        return None
-    if not article_path.exists():
-        logger.warning("File not found: %s", file_path)
-        return None
-    return article_path
-
-
 # ---------------------------------------------------------------------------
 # Zenn publishing (frontmatter + git push)
 # ---------------------------------------------------------------------------
@@ -278,7 +248,7 @@ def _process_zenn_entries(
     target_i = due_indices[0]
     entry = updated_articles[target_i]
 
-    article_path = _validate_article_path(entry["file"])
+    article_path = validate_article_path(entry["file"])
     if article_path is None:
         errors += 1
     else:
@@ -288,7 +258,7 @@ def _process_zenn_entries(
                 updated_articles[target_i] = {
                     **entry,
                     "zenn_published": True,
-                    "zenn_published_at": datetime.now().isoformat(),
+                    "zenn_published_at": now_jst().isoformat(),
                 }
             published += 1
         else:
@@ -314,7 +284,7 @@ def _process_entry(
     entry: dict[str, Any], devto_key: str, *, dry_run: bool,
 ) -> tuple[dict[str, Any], int]:
     """Process a single EN schedule entry for Dev.to. Returns (updated_entry, error_count)."""
-    article_path = _validate_article_path(entry["file"])
+    article_path = validate_article_path(entry["file"])
     if article_path is None:
         return entry, 1
 
@@ -420,7 +390,7 @@ def publish_due(schedule: dict[str, Any], *, dry_run: bool = False) -> int:
 
 
 def main() -> int:
-    _setup_logging()
+    setup_logging(logger, LOG_PATH)
     parser = argparse.ArgumentParser(description="Scheduled publisher")
     parser.add_argument(
         "--dry-run", action="store_true", help="Preview without posting",

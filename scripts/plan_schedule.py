@@ -92,9 +92,7 @@ def generate_schedule(
             "canonical_url": f"{ZENN_BASE_URL}/{slug}",
             "zenn_date": zenn_date.isoformat(),
             "date": crosspost_date.isoformat(),
-            "qiita": None,
-            "devto": "n/a",
-            "hashnode": "n/a",
+            "zenn_published": False,
         }
 
         if scores and slug in scores:
@@ -102,15 +100,13 @@ def generate_schedule(
 
         entries.append(entry)
 
-        # English translation entry (Dev.to/Hashnode only)
+        # English translation entry (Dev.to only)
         if include_en_translation:
             en_entry: dict = {
                 "file": f"articles-en/{slug}.md",
                 "canonical_url": f"{ZENN_BASE_URL}/{slug}",
                 "date": zenn_date.isoformat() if en_same_day else crosspost_date.isoformat(),
                 "devto": "pending",
-                "hashnode": "pending",
-                "depends_on": f"articles/{slug}.md",
             }
             if scores and slug in scores:
                 en_entry["score"] = scores[slug]
@@ -194,7 +190,7 @@ def main() -> int:
     )
     parser.add_argument(
         "--include-en", action="store_true",
-        help="Include English translation entries for Dev.to/Hashnode.",
+        help="Include English translation entries for Dev.to.",
     )
     parser.add_argument(
         "--en-same-day", action="store_true", default=True,

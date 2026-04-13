@@ -20,7 +20,8 @@ dev = [
 testpaths = ["tests"]
 
 [tool.coverage.run]
-source = ["publish"]
+source = ["."]
+omit = [".venv/*", "tests/*"]
 
 [tool.coverage.report]
 fail_under = 80

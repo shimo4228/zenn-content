@@ -44,7 +44,7 @@ class TestManualPublishTimestampRecording:
             ]
         }
 
-        with patch("zenn_publish._validate_article_path") as mock_validate:
+        with patch("zenn_publish.validate_article_path") as mock_validate:
             with patch("zenn_publish.save_schedule") as mock_save:
                 mock_validate.return_value = Path("/fake/test.md")
 
@@ -82,7 +82,7 @@ class TestManualPublishTimestampRecording:
             ]
         }
         
-        with patch("zenn_publish._validate_article_path") as mock_validate:
+        with patch("zenn_publish.validate_article_path") as mock_validate:
             with patch("zenn_publish.save_schedule") as mock_save:
                 mock_validate.return_value = Path("/fake/test.md")
                 
@@ -112,20 +112,20 @@ class TestManualPublishTimestampRecording:
             ]
         }
         
-        with patch("zenn_publish._validate_article_path") as mock_validate:
+        with patch("zenn_publish.validate_article_path") as mock_validate:
             with patch("zenn_publish._set_published") as mock_set:
                 with patch("zenn_publish._git_add_commit_push") as mock_git:
                     with patch("zenn_publish.save_schedule") as mock_save:
-                        with patch("zenn_publish.datetime") as mock_datetime:
+                        with patch("zenn_publish.now_jst") as mock_now_jst:
                             mock_validate.return_value = Path("/fake/test.md")
                             mock_set.return_value = True
                             mock_git.return_value = True
                             mock_now = MagicMock()
-                            mock_now.isoformat.return_value = "2026-03-03T07:00:00"
-                            mock_datetime.now.return_value = mock_now
-                            
+                            mock_now.isoformat.return_value = "2026-03-03T07:00:00+09:00"
+                            mock_now_jst.return_value = mock_now
+
                             publish_due(schedule, dry_run=False)
-                            
+
                             saved_schedule = mock_save.call_args[0][0]
                             assert "zenn_published_at" in saved_schedule["articles"][0]
 

@@ -1,4 +1,4 @@
-"""Tests for publish.py — Zenn cross-post CLI."""
+"""Tests for publish.py — Zenn cross-post CLI (Dev.to only)."""
 
 from __future__ import annotations
 
@@ -18,21 +18,12 @@ from publish import (
     _strip_zenn_syntax,
     build_parser,
     convert_to_devto,
-    convert_to_hashnode,
-    convert_to_qiita,
     find_devto_article_by_title,
-    find_qiita_item_by_title,
     main,
     parse_zenn_article,
     publish_to_devto,
-    publish_to_hashnode,
-    publish_to_qiita,
     update_on_devto,
-    update_on_hashnode,
-    update_on_qiita,
-    _run_qiita,
     _run_devto,
-    _run_hashnode,
     GITHUB_RAW_BASE,
 )
 
@@ -58,7 +49,7 @@ def _make_article(**overrides: object) -> Article:
 def _make_args(**overrides: object) -> argparse.Namespace:
     defaults = {
         "article": SAMPLE_ARTICLE,
-        "platform": "qiita",
+        "platform": "devto",
         "dry_run": False,
         "update": None,
         "canonical_url": None,
@@ -98,26 +89,6 @@ class TestStripZennSyntax:
         assert _strip_zenn_syntax(md) == md
 
 
-class TestConvertToQiita:
-    def test_basic_conversion(self) -> None:
-        article = _make_article(topics=("python", "testing", "ci"))
-        payload = convert_to_qiita(article)
-        assert payload["title"] == "テスト記事"
-        assert payload["tags"] == [
-            {"name": "python"},
-            {"name": "testing"},
-            {"name": "ci"},
-        ]
-        assert payload["private"] is False
-
-    def test_tags_limited_to_5(self) -> None:
-        article = _make_article(
-            topics=("a", "b", "c", "d", "e", "f", "g"),
-        )
-        payload = convert_to_qiita(article)
-        assert len(payload["tags"]) == 5
-
-
 class TestConvertToDevto:
     def test_with_canonical_url(self) -> None:
         article = _make_article()
@@ -137,24 +108,15 @@ class TestConvertToDevto:
         payload = convert_to_devto(article)
         assert len(payload["article"]["tags"]) == 4
 
+    def test_description_included(self) -> None:
+        article = _make_article(description="Test description")
+        payload = convert_to_devto(article)
+        assert payload["article"]["description"] == "Test description"
 
-class TestConvertToHashnode:
-    def test_with_canonical_url(self) -> None:
+    def test_cover_image_included(self) -> None:
         article = _make_article()
-        payload = convert_to_hashnode(
-            article, "pub-123", canonical_url="https://zenn.dev/x"
-        )
-        inp = payload["variables"]["input"]
-        assert inp["title"] == "テスト記事"
-        assert inp["publicationId"] == "pub-123"
-        assert inp["originalArticleURL"] == "https://zenn.dev/x"
-        assert "query" in payload
-        assert "PublishPost" in payload["query"]
-
-    def test_without_canonical_url(self) -> None:
-        article = _make_article()
-        payload = convert_to_hashnode(article, "pub-123")
-        assert "originalArticleURL" not in payload["variables"]["input"]
+        payload = convert_to_devto(article, cover_image_url="https://example.com/img.png")
+        assert payload["article"]["main_image"] == "https://example.com/img.png"
 
 
 # ===========================================================================
@@ -173,68 +135,6 @@ class TestParseZennArticle:
 # ===========================================================================
 # 3. Publisher tests (respx mocked HTTP)
 # ===========================================================================
-
-
-class TestPublishToQiita:
-    @respx.mock
-    def test_success(self) -> None:
-        respx.post("https://qiita.com/api/v2/items").mock(
-            return_value=httpx.Response(
-                201, json={"url": "https://qiita.com/items/abc123"}
-            )
-        )
-        result = publish_to_qiita({"title": "t", "body": "b", "tags": []}, "token")
-        assert result == PublishResult("qiita", True, "https://qiita.com/items/abc123", None)
-
-    @respx.mock
-    def test_failure(self) -> None:
-        respx.post("https://qiita.com/api/v2/items").mock(
-            return_value=httpx.Response(422, text="Validation Error")
-        )
-        result = publish_to_qiita({"title": "t", "body": "b", "tags": []}, "token")
-        assert result.success is False
-        assert "422" in result.error
-
-
-class TestUpdateOnQiita:
-    @respx.mock
-    def test_success(self) -> None:
-        respx.patch("https://qiita.com/api/v2/items/abc123").mock(
-            return_value=httpx.Response(
-                200, json={"url": "https://qiita.com/items/abc123"}
-            )
-        )
-        result = update_on_qiita("abc123", {"title": "t"}, "token")
-        assert result.success is True
-
-
-class TestFindQiitaItemByTitle:
-    @respx.mock
-    def test_found(self) -> None:
-        respx.get("https://qiita.com/api/v2/authenticated_user/items").mock(
-            return_value=httpx.Response(
-                200,
-                json=[
-                    {"id": "item1", "title": "Other"},
-                    {"id": "item2", "title": "Target Title"},
-                ],
-            )
-        )
-        assert find_qiita_item_by_title("Target Title", "token") == "item2"
-
-    @respx.mock
-    def test_not_found(self) -> None:
-        respx.get("https://qiita.com/api/v2/authenticated_user/items").mock(
-            return_value=httpx.Response(200, json=[])
-        )
-        assert find_qiita_item_by_title("Missing", "token") is None
-
-    @respx.mock
-    def test_api_error(self) -> None:
-        respx.get("https://qiita.com/api/v2/authenticated_user/items").mock(
-            return_value=httpx.Response(500)
-        )
-        assert find_qiita_item_by_title("Any", "token") is None
 
 
 class TestPublishToDevto:
@@ -288,137 +188,9 @@ class TestFindDevtoArticleByTitle:
         assert find_devto_article_by_title("Missing", "key") is None
 
 
-class TestPublishToHashnode:
-    @respx.mock
-    def test_success(self) -> None:
-        respx.post("https://gql.hashnode.com").mock(
-            return_value=httpx.Response(
-                200,
-                json={
-                    "data": {
-                        "publishPost": {
-                            "post": {
-                                "id": "p1",
-                                "slug": "slug",
-                                "title": "t",
-                                "url": "https://hashnode.dev/slug",
-                            }
-                        }
-                    }
-                },
-            )
-        )
-        result = publish_to_hashnode({"query": "...", "variables": {}}, "token")
-        assert result == PublishResult(
-            "hashnode", True, "https://hashnode.dev/slug", None
-        )
-
-    @respx.mock
-    def test_graphql_error(self) -> None:
-        respx.post("https://gql.hashnode.com").mock(
-            return_value=httpx.Response(
-                200,
-                json={"errors": [{"message": "bad input"}]},
-            )
-        )
-        result = publish_to_hashnode({"query": "...", "variables": {}}, "token")
-        assert result.success is False
-        assert "bad input" in result.error
-
-    @respx.mock
-    def test_http_error(self) -> None:
-        respx.post("https://gql.hashnode.com").mock(
-            return_value=httpx.Response(500, text="Internal Server Error")
-        )
-        result = publish_to_hashnode({"query": "...", "variables": {}}, "token")
-        assert result.success is False
-        assert "500" in result.error
-
-
-class TestUpdateOnHashnode:
-    @respx.mock
-    def test_success(self) -> None:
-        article = _make_article()
-        respx.post("https://gql.hashnode.com").mock(
-            return_value=httpx.Response(
-                200,
-                json={
-                    "data": {
-                        "updatePost": {
-                            "post": {
-                                "id": "p1",
-                                "slug": "s",
-                                "title": "t",
-                                "url": "https://hashnode.dev/s",
-                            }
-                        }
-                    }
-                },
-            )
-        )
-        result = update_on_hashnode("p1", article, "token")
-        assert result.success is True
-
-    @respx.mock
-    def test_http_error(self) -> None:
-        article = _make_article()
-        respx.post("https://gql.hashnode.com").mock(
-            return_value=httpx.Response(502, text="Bad Gateway")
-        )
-        result = update_on_hashnode("p1", article, "token")
-        assert result.success is False
-        assert "502" in result.error
-
-
 # ===========================================================================
 # 4. CLI Runner tests
 # ===========================================================================
-
-
-class TestRunQiita:
-    def test_dry_run(self, capsys: pytest.CaptureFixture[str]) -> None:
-        article = _make_article()
-        args = _make_args(platform="qiita", dry_run=True)
-        ret = _run_qiita(article, args)
-        assert ret == 0
-        captured = capsys.readouterr()
-        assert "dry-run" in captured.out
-
-    @patch.dict(os.environ, {}, clear=True)
-    def test_missing_token(self, capsys: pytest.CaptureFixture[str]) -> None:
-        article = _make_article()
-        args = _make_args(platform="qiita")
-        ret = _run_qiita(article, args)
-        assert ret == 1
-        assert "QIITA_ACCESS_TOKEN" in capsys.readouterr().err
-
-    @respx.mock
-    @patch.dict(os.environ, {"QIITA_ACCESS_TOKEN": "test-token"}, clear=True)
-    def test_publish_success(self) -> None:
-        respx.post("https://qiita.com/api/v2/items").mock(
-            return_value=httpx.Response(201, json={"url": "https://qiita.com/items/x"})
-        )
-        article = _make_article()
-        args = _make_args(platform="qiita")
-        assert _run_qiita(article, args) == 0
-
-    @respx.mock
-    @patch.dict(os.environ, {"QIITA_ACCESS_TOKEN": "test-token"}, clear=True)
-    def test_update_auto(self, capsys: pytest.CaptureFixture[str]) -> None:
-        respx.get("https://qiita.com/api/v2/authenticated_user/items").mock(
-            return_value=httpx.Response(
-                200, json=[{"id": "found-id", "title": "テスト記事"}]
-            )
-        )
-        respx.patch("https://qiita.com/api/v2/items/found-id").mock(
-            return_value=httpx.Response(
-                200, json={"url": "https://qiita.com/items/found-id"}
-            )
-        )
-        article = _make_article()
-        args = _make_args(platform="qiita", update="auto")
-        assert _run_qiita(article, args) == 0
-        assert "Updated" in capsys.readouterr().out
 
 
 class TestRunDevto:
@@ -447,51 +219,33 @@ class TestRunDevto:
         assert "dry-run" in out
         assert "https://z.dev" in out
 
-
-class TestRunHashnode:
-    @patch.dict(os.environ, {}, clear=True)
-    def test_missing_token(self, capsys: pytest.CaptureFixture[str]) -> None:
+    @respx.mock
+    @patch.dict(os.environ, {"DEVTO_API_KEY": "test-key"}, clear=True)
+    def test_publish_success(self) -> None:
+        respx.post("https://dev.to/api/articles").mock(
+            return_value=httpx.Response(201, json={"url": "https://dev.to/user/x"})
+        )
         article = _make_article()
-        args = _make_args(platform="hashnode")
-        ret = _run_hashnode(article, args)
-        assert ret == 1
-        assert "HASHNODE_API_TOKEN" in capsys.readouterr().err
+        args = _make_args(platform="devto")
+        assert _run_devto(article, args) == 0
 
-    @patch.dict(
-        os.environ,
-        {"HASHNODE_API_TOKEN": "tok", "HASHNODE_PUBLICATION_ID": "PLACEHOLDER"},
-        clear=True,
-    )
-    def test_placeholder_publication_id(
-        self, capsys: pytest.CaptureFixture[str]
-    ) -> None:
+    @respx.mock
+    @patch.dict(os.environ, {"DEVTO_API_KEY": "test-key"}, clear=True)
+    def test_update_auto(self, capsys: pytest.CaptureFixture[str]) -> None:
+        respx.get("https://dev.to/api/articles/me/published").mock(
+            return_value=httpx.Response(
+                200, json=[{"id": 42, "title": "テスト記事"}]
+            )
+        )
+        respx.put("https://dev.to/api/articles/42").mock(
+            return_value=httpx.Response(
+                200, json={"url": "https://dev.to/user/article"}
+            )
+        )
         article = _make_article()
-        args = _make_args(platform="hashnode")
-        ret = _run_hashnode(article, args)
-        assert ret == 1
-        assert "HASHNODE_PUBLICATION_ID" in capsys.readouterr().err
-
-    @patch.dict(
-        os.environ,
-        {"HASHNODE_API_TOKEN": "tok", "HASHNODE_PUBLICATION_ID": "pub-id"},
-        clear=True,
-    )
-    def test_auto_update_not_supported(
-        self, capsys: pytest.CaptureFixture[str]
-    ) -> None:
-        article = _make_article()
-        args = _make_args(platform="hashnode", update="auto")
-        ret = _run_hashnode(article, args)
-        assert ret == 1
-        assert "auto-search not supported" in capsys.readouterr().err
-
-    def test_dry_run(self, capsys: pytest.CaptureFixture[str]) -> None:
-        article = _make_article()
-        args = _make_args(platform="hashnode", dry_run=True)
-        with patch.dict(os.environ, {"HASHNODE_PUBLICATION_ID": "pub-id"}, clear=True):
-            ret = _run_hashnode(article, args)
-        assert ret == 0
-        assert "dry-run" in capsys.readouterr().out
+        args = _make_args(platform="devto", update="auto")
+        assert _run_devto(article, args) == 0
+        assert "Updated" in capsys.readouterr().out
 
 
 # ===========================================================================
@@ -522,14 +276,8 @@ class TestLoadEnv:
 class TestBuildParser:
     def test_platform_choices(self) -> None:
         parser = build_parser()
-        args = parser.parse_args(["article.md", "--platform", "qiita"])
-        assert args.platform == "qiita"
-
-    def test_all_platforms(self) -> None:
-        parser = build_parser()
-        for platform in ("qiita", "devto", "hashnode"):
-            args = parser.parse_args(["a.md", "--platform", platform])
-            assert args.platform == platform
+        args = parser.parse_args(["article.md", "--platform", "devto"])
+        assert args.platform == "devto"
 
     def test_canonical_url(self) -> None:
         parser = build_parser()
@@ -541,7 +289,7 @@ class TestBuildParser:
 
 class TestMain:
     def test_file_not_found(self, capsys: pytest.CaptureFixture[str]) -> None:
-        with patch("sys.argv", ["publish.py", "/nonexistent.md", "--platform", "qiita"]):
+        with patch("sys.argv", ["publish.py", "/nonexistent.md", "--platform", "devto"]):
             ret = main()
         assert ret == 1
         assert "not found" in capsys.readouterr().err

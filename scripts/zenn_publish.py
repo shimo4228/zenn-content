@@ -12,62 +12,28 @@ Usage:
 from __future__ import annotations
 
 import argparse
-import json
 import logging
 import re
 import subprocess
-from datetime import date, datetime
+from datetime import date
 from pathlib import Path
 from typing import Any
 
+from _schedule_utils import (
+    REPO_ROOT,
+    load_schedule,
+    now_jst,
+    save_schedule,
+    setup_logging,
+    validate_article_path,
+)
+
 SCRIPT_DIR = Path(__file__).parent
-REPO_ROOT = SCRIPT_DIR.parent
-SCHEDULE_PATH = SCRIPT_DIR / "schedule.json"
 LOG_PATH = SCRIPT_DIR / "zenn_publish.log"
 
-ZENN_USER = "shimo4228"
 DEFAULT_PUBLISH_HOUR = 7  # launchd scheduled publish time (JST)
 
 logger = logging.getLogger(__name__)
-
-
-def _setup_logging() -> None:
-    if logger.handlers:
-        return
-    fmt = logging.Formatter("[%(asctime)s] %(message)s", datefmt="%Y-%m-%d %H:%M:%S")
-    file_handler = logging.FileHandler(LOG_PATH)
-    file_handler.setFormatter(fmt)
-    stream_handler = logging.StreamHandler()
-    stream_handler.setFormatter(fmt)
-    logger.addHandler(file_handler)
-    logger.addHandler(stream_handler)
-    logger.setLevel(logging.INFO)
-
-
-def load_schedule() -> dict[str, Any]:
-    try:
-        return json.loads(SCHEDULE_PATH.read_text())
-    except FileNotFoundError:
-        logger.error("Schedule file not found: %s", SCHEDULE_PATH)
-        raise SystemExit(1)
-    except json.JSONDecodeError as e:
-        logger.error("Invalid JSON in schedule file: %s", e)
-        raise SystemExit(1)
-
-
-def save_schedule(schedule: dict[str, Any]) -> None:
-    SCHEDULE_PATH.write_text(json.dumps(schedule, indent=2, ensure_ascii=False) + "\n")
-
-
-def _validate_article_path(file_path: str) -> Path | None:
-    article_path = (REPO_ROOT / file_path).resolve()
-    if not article_path.is_relative_to(REPO_ROOT.resolve()):
-        logger.error("Path traversal detected: %s", file_path)
-        return None
-    if not article_path.exists():
-        logger.warning("File not found: %s", file_path)
-        return None
-    return article_path
 
 
 def _is_published(article_path: Path) -> bool:
@@ -131,7 +97,7 @@ def _get_actual_publish_time(file_path: str, zenn_date: str | None = None) -> st
 
     1. git log: commit time when 'published: true' was set
     2. zenn_date at 07:00 (scheduled publish time)
-    3. datetime.now() (last resort)
+    3. now_jst() (last resort)
     """
     try:
         result = subprocess.run(
@@ -150,7 +116,7 @@ def _get_actual_publish_time(file_path: str, zenn_date: str | None = None) -> st
     if zenn_date:
         return f"{zenn_date}T{DEFAULT_PUBLISH_HOUR:02d}:00:00"
 
-    return datetime.now().isoformat()
+    return now_jst().isoformat()
 
 
 def show_status(schedule: dict[str, Any]) -> None:
@@ -162,7 +128,7 @@ def show_status(schedule: dict[str, Any]) -> None:
         zenn_date_str = entry.get("zenn_date")
         if not zenn_date_str:
             continue
-        article_path = _validate_article_path(entry["file"])
+        article_path = validate_article_path(entry["file"])
         published_in_file = _is_published(article_path) if article_path else False
         tracked = entry.get("zenn_published", False)
         zenn_date = date.fromisoformat(zenn_date_str)
@@ -237,7 +203,7 @@ def publish_due(schedule: dict[str, Any], *, dry_run: bool = False) -> int:
             updated_articles.append(entry)
             continue
 
-        article_path = _validate_article_path(entry["file"])
+        article_path = validate_article_path(entry["file"])
         if article_path is None:
             updated_articles.append(entry)
             errors += 1
@@ -271,7 +237,7 @@ def publish_due(schedule: dict[str, Any], *, dry_run: bool = False) -> int:
             updated_articles.append({
                 **entry,
                 "zenn_published": True,
-                "zenn_published_at": datetime.now().isoformat(),
+                "zenn_published_at": now_jst().isoformat(),
             })
         else:
             logger.warning("Could not set published: true in %s", entry["file"])
@@ -301,7 +267,7 @@ def publish_due(schedule: dict[str, Any], *, dry_run: bool = False) -> int:
 
 
 def main() -> int:
-    _setup_logging()
+    setup_logging(logger, LOG_PATH)
     parser = argparse.ArgumentParser(description="Zenn auto-publisher")
     parser.add_argument("--dry-run", action="store_true", help="Preview without changing files")
     parser.add_argument("--status", action="store_true", help="Show Zenn publish status")
