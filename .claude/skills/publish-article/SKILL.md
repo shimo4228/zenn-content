@@ -107,42 +107,19 @@ published_at: 2026-04-15 07:00  # JST、ハイフン区切り必須
 - レートリミットにカウントされない
 - 何本でも事前 push OK（`published_at` まで公開されない）
 
-**バズ最適タイミング:** 火〜水曜 7:00-9:00 JST
+**参考タイミング:** 火〜木曜 8:00-9:00 JST（強制ではない）
 
 ### Step 8: スケジュール登録
 
-`scripts/schedule.json` にエントリを追加する。
+> **正本:** `.claude/refs/schedule-schema.md` を参照。
 
-**日本語記事エントリ:**
-```json
-{
-  "file": "articles/xxx.md",
-  "canonical_url": "https://zenn.dev/shimo4228/articles/xxx",
-  "date": "2026-04-15",
-  "devto": "n/a"
-}
-```
-
-**英訳記事エントリ（Dev.to クロスポスト用）:**
-```json
-{
-  "file": "articles-en/xxx.md",
-  "canonical_url": "https://zenn.dev/shimo4228/articles/xxx",
-  "date": "2026-04-15",
-  "devto": "pending"
-}
-```
+`scripts/schedule.json` に `refs/schedule-schema.md` のスキーマに従ってエントリを追加する。
 
 ### Step 9: 英訳記事の作成（Dev.to 用）
 
 ユーザーに英訳してクロスポストするか確認する。
 
 **推奨:** `devto-translator` エージェントで一気通貫（翻訳→タグ→投稿）。
-
-```bash
-# または手動翻訳
-/translate-article {article_path}
-```
 
 英訳は `articles-en/` に同名で保存される。
 

@@ -38,33 +38,20 @@ You are **辛口 (strict/critical)** — not to be harsh, but to push for clarit
 
 ### 3. Tone Consistency (トーン一貫性)
 
-The default tone for idea articles is **だ/である調 × 発見調** (discovery tone):
-
-| ✅ Discovery Tone | ❌ Assertion Tone |
-|---|---|
-| 「〜だった」「〜と気づいた」 | 「〜すべきだ」「〜に違いない」 |
-| 「〜と感じた」「〜に見えた」 | 「〜を示している」「〜は正しい」 |
-| 「少なくとも方向としては悪くない」 | 「設計は正しかった」 |
-| 「結果的に〜が生まれていた」 | 「意図的に〜を創発させた」 |
-| 「うまくいくかどうかはまだわからない」 | 「理にかなっている」 |
-
-Source: `exploratory-tone-over-assertion` skill
+> **正本:** `.claude/refs/writing-standards.md` のトーンルール・AI Slop 禁止リストを参照。
 
 - [ ] だ/である調 × 発見調 is maintained throughout
 - [ ] No lapses into 宣言調 (prescriptive/assertive tone)
 - [ ] "淡々の表面 × 深い中身" pattern is functioning
-- [ ] No emotional intensifiers (「画期的」「革命的」「素晴らしい」「驚くべき」)
-- [ ] No AI slop (generic phrases that could appear in any article)
+- [ ] No emotional intensifiers or AI slop (see refs/ for full list)
 
-**AI Slop examples specific to idea articles:**
+### 3.5. Concept Explanation Check (未説明概念の検出)
 
-| ❌ AI Slop | ✅ Better |
-|---|---|
-| 「重要な示唆を与える」 | 具体的に何が示唆されたか書く |
-| 「本質的な問いを投げかける」 | その問いを直接書く |
-| 「深い洞察」 | 洞察の内容を書く |
-| 「パラダイムシフト」 | 何がどう変わったか書く |
-| 「示唆に富む」 | 削除 |
+- [ ] Every concept/term NOT in common engineering vocabulary is explained before or at first use
+- [ ] Novel frameworks, coined terms, or author-specific concepts are defined explicitly
+- [ ] If a concept from a previous article in the series is reused, a brief recap or link is provided
+
+**Flag**: List all unexplained concepts found, with the line number of first use.
 
 ### 4. Redundancy Detection (冗長性検出)
 

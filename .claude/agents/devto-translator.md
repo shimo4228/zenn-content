@@ -10,18 +10,11 @@ JP 記事パス（例: `articles/agent-causal-traceability-org-adoption.md`）
 
 ### Phase 1: 翻訳
 
+> **正本:** `.claude/refs/translation-rules.md` を参照。
+
 1. JP 記事を読み込み、構造を把握する（frontmatter, セクション数, コードブロック数）
 2. 翻訳用語集 `docs/translation-glossary.json` を読み込む
-3. 以下のルールに従い全文を英訳する:
-   - コードブロック（``` で囲まれた部分）は**絶対に翻訳しない**
-   - インラインコード（`backtick`）内も翻訳しない
-   - Markdown 構文（#, -, |, [], ![] 等）をそのまま保持
-   - frontmatter: title のみ翻訳、他はそのまま
-   - 画像リンク（`/images/xxx`）はそのまま保持
-   - 用語集の `never_translate` 用語はそのまま保持
-   - AI スロップ禁止: "powerful", "seamless", "revolutionary", "game-changer" 等は使わない
-   - 直訳ではなく英語として自然な表現にする。著者の個性と洞察を保持する
-   - 日本特有の文化的文脈は英語圏の読者向けに簡潔に補足する
+3. `refs/translation-rules.md` のルールに従い全文を英訳する
 4. `articles-en/{slug}.md` に保存する
 
 ### Phase 2: Dev.to タグ付け
@@ -47,31 +40,18 @@ JP 記事パス（例: `articles/agent-causal-traceability-org-adoption.md`）
 
 ### Phase 4: セルフチェック
 
-翻訳結果を以下の観点で自己検証する:
+> **正本:** `.claude/refs/translation-rules.md` の品質チェックリストを参照。
 
-1. **コードブロック完全性**: 原文と翻訳文のコードブロック数が一致するか数える
-2. **リンク完全性**: すべての URL、画像パスが保持されているか
-3. **用語一貫性**: 用語集の用語が正しく使われているか
-4. **AI スロップ検出**: 汎用的な AI 表現が混入していないか grep で確認
-5. **技術的正確性**: 技術用語が正しく翻訳されているか
-
-問題が見つかった場合はその場で修正する。
+`refs/translation-rules.md` のチェックリストに従い自己検証する。問題が見つかった場合はその場で修正する。
 
 ### Phase 5: schedule.json 更新（EN エントリ追加）
 
-`scripts/schedule.json` に EN エントリを追加する。フォーマット:
+> **正本:** `.claude/refs/schedule-schema.md` を参照。
 
-```json
-{
-  "file": "articles-en/{slug}.md",
-  "date": "YYYY-MM-DD",
-  "devto_tags": ["tag1", "tag2", "tag3", "tag4"],
-  "cover_image": "https://raw.githubusercontent.com/shimo4228/zenn-content/main/images/covers/{slug}.png",
-  "notes": "EN translation of {JP記事タイトル}"
-}
-```
+`scripts/schedule.json` に EN エントリを追加する。スキーマは `refs/schedule-schema.md` に準拠。
 
 - `date`: 今日の日付（即投稿の場合）またはユーザー指定の日付
+- `devto`: `null`（未投稿。Phase 7 で実 URL に更新）
 - `devto_tags`: Phase 2 で決定したタグ
 
 ### Phase 6: Dev.to 投稿

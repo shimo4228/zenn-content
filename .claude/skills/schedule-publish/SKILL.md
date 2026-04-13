@@ -20,16 +20,16 @@
 
 各記事を以下の基準で評価する。**高スコア = 先に公開**。
 
-#### A. 検索磁力（Search Magnet）: 0-3
+#### A. 発見可能性（Discoverability）: 0-3
 
-検索エンジンから読者を引き寄せる力。
+関心のある読者がこの記事を見つけられるか。
 
 | Score | 基準 | 例 |
 |-------|------|-----|
-| 3 | 特定のエラーメッセージ・問題を狙える | 「Invalid regular expression: invalid escape」 |
-| 2 | 具体的な How-to クエリに対応 | 「Zenn Qiita クロスポスト」 |
-| 1 | 一般的なトピック | 「Claude Code の使い方」 |
-| 0 | 意見・メタ記事（検索流入は期待薄） | 「マルチLLM戦略」 |
+| 3 | 特定の問題を抱えた読者が検索で到達できる | 「Invalid regular expression: invalid escape」 |
+| 2 | 具体的なテーマで探している読者が見つけられる | 「Zenn Qiita クロスポスト」 |
+| 1 | 一般的なトピック（関心層は広いが特定しにくい） | 「Claude Code の使い方」 |
+| 0 | 著者の思索（見つけた人が読む、検索到達は期待しない） | 「マルチLLM戦略」 |
 
 #### B. アンカー度（Anchor）: 0-3
 
@@ -74,8 +74,8 @@ lint・レビューの完了状態。
 
 | 項目 | ルール | 根拠 |
 |------|--------|------|
-| 曜日 | 火曜・木曜 | Zenn のビュー数が火水にピーク（220記事データセット） |
-| 時刻 | 8:00-9:00 JST | 通勤時間帯の閲覧、Qiita 9:00 トレンド更新前 |
+| 曜日 | 火曜・木曜（参考） | Zenn のビュー数が火水にピーク（220記事データセット）。強制ではない |
+| 時刻 | 8:00-9:00 JST（参考） | 通勤時間帯の閲覧。強制ではない |
 | 間隔 | 最低2日空ける | 各記事の「新着」フィード露出時間を確保 |
 | 上限 | 週2本まで | 品質シグナルを維持、フィード占有を回避 |
 | クロスポスト | Zenn 公開当日または翌日 | Dev.to(EN) のみ |
@@ -97,7 +97,7 @@ grep -rl 'published: false' articles/*.md
 各記事を4軸で評価し、テーブルで出力する。
 
 ```markdown
-| # | slug | Search | Anchor | Ready | Fresh | Total | Order |
+| # | slug | Discover | Anchor | Ready | Fresh | Total | Order |
 |---|------|--------|--------|-------|-------|-------|-------|
 ```
 
@@ -124,34 +124,21 @@ python scripts/plan_schedule.py --start YYYY-MM-DD --slugs "slug1,slug2,slug3"
 
 ## Output Format（schedule.json エントリ）
 
+> **正本:** `.claude/refs/schedule-schema.md` を参照。
+
+`refs/schedule-schema.md` のスキーマに準拠してエントリを追加する。スコアリング結果は `score` フィールドにトレーサビリティ用に記録:
+
 ```json
 {
   "file": "articles/example-article.md",
-  "canonical_url": "https://zenn.dev/shimo4228/articles/example-article",
   "date": "2026-04-15",
-  "devto": "n/a",
-  "score": { "search": 2, "anchor": 1, "ready": 3, "fresh": 1, "total": 7 }
+  "score": { "discover": 2, "anchor": 1, "ready": 3, "fresh": 1, "total": 7 }
 }
 ```
-
-- `date`: 公開日（frontmatter の `published_at` と合わせる）
-- `devto`: `"n/a"` = 日本語記事（対象外）, `"pending"` = EN未投稿, URL = 完了
-- `score`: 評価スコア（トレーサビリティ用）
 
 **Zenn 公開は `published_at` 予約投稿方式:**
 - frontmatter に `published: true` + `published_at: YYYY-MM-DD HH:MM` (JST) を設定
 - `git push` すれば指定時刻に自動公開。レートリミットにカウントされない
-
-**英訳記事の場合:**
-```json
-{
-  "file": "articles-en/example-article.md",
-  "canonical_url": "https://zenn.dev/shimo4228/articles/example-article",
-  "date": "2026-04-15",
-  "devto": "pending"
-}
-```
-- `devto`: `"pending"` = 未投稿, URL = 完了
 
 ---
 

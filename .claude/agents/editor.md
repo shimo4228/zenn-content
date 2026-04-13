@@ -88,20 +88,11 @@ Use these terms consistently across all articles:
 
 ### 5. AI Slop Detection
 
-Flag and suggest replacements for **generic AI-generated phrases**:
+> **正本:** `.claude/refs/writing-standards.md` の AI Slop 禁止リストを参照。
 
-| ❌ AI Slop | ✅ Better Alternative |
-|-----------|---------------------|
-| "powerful tool" | "reduces PDF processing time by 70%" (specific) |
-| "revolutionize" | "significantly improves" or "changes how..." |
-| "seamless" | "works without manual intervention" (specific) |
-| "cutting-edge" | "uses Claude 4.5's latest features" (specific) |
-| "game-changer" | Explain the actual impact with data/examples |
-| "leverage" | "use", "apply", "utilize" |
-| "robust" | "handles edge cases like..." (specific) |
-| "effortlessly" | Remove or explain the actual effort required |
+Flag and suggest replacements for **generic AI-generated phrases**. The canonical banned list is in `refs/writing-standards.md`. The core principle:
 
-**If a phrase sounds like it could be in any tech article**, it's probably AI slop. Push for **specificity** and **concrete examples**.
+**If a phrase sounds like it could be in any tech article without modification**, it's AI slop. Push for **specificity** and **concrete examples**.
 
 ### 6. Audience Appropriateness
 
