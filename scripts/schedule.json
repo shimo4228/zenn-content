@@ -481,6 +481,19 @@
       ],
       "notes": "EN: AI Agent Black Boxes Have Two Layers",
       "devto": "https://dev.to/shimo4228/ai-agent-black-boxes-have-two-layers-technical-limits-and-business-incentives-jhi"
+    },
+    {
+      "file": "articles-en/zed-observation-window-japanese-typography.md",
+      "date": "2026-04-16",
+      "devto": null,
+      "devto_tags": [
+        "zed",
+        "ai",
+        "font",
+        "typography"
+      ],
+      "cover_image": "https://raw.githubusercontent.com/shimo4228/zenn-content/main/images/covers/zed-observation-window-japanese-typography.png",
+      "notes": "EN translation of Zed を観測窓として構築する — IBM Plex 日本語タイポグラフィ"
     }
   ]
 }
