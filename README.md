@@ -3,24 +3,66 @@
 AI エージェント開発、Claude Code、LLM エンジニアリングに関する技術記事リポジトリ。執筆・レビュー・翻訳・クロスポストまで Claude Code との協業で運用しています。
 
 ## Published Articles
-<!-- Note: This list may not include the latest articles. Run `npx zenn list:articles` for the current list. -->
+
+現在 42 本公開中。最新の一覧は `npx zenn list:articles` で確認できます。
+
+### AI Agent Design
+- [推論でもツールでもない — AIエージェントの本質は「記憶」ではないか](https://zenn.dev/shimo4228/articles/agent-essence-is-memory)
+- [自律エージェントの自由と制約 — 自己修正・信頼境界・ゲーム性の設計](https://zenn.dev/shimo4228/articles/agent-freedom-and-constraints)
+- [ゲーム開発のメモリ管理をAIエージェントの記憶蒸留に移植した](https://zenn.dev/shimo4228/articles/agent-memory-game-dev-distillation)
+- [コーディングエージェントの知識をどこに置き、どう守らせるか](https://zenn.dev/shimo4228/articles/coding-agent-memory-architecture)
+- [自律エージェントにオーケストレーション層は本当に必要か](https://zenn.dev/shimo4228/articles/symbiotic-agent-architecture)
+- [Moltbookエージェント進化記 — 自然言語で制御し、記憶で学び、失敗しても壊れない設計](https://zenn.dev/shimo4228/articles/moltbook-agent-evolution-quadrilogy)
+- [Moltbookエージェント構築記 — Claude Codeとセキュリティファースト開発](https://zenn.dev/shimo4228/articles/moltbook-agent-scratch-build)
+
+### AI Governance Series
+- [登れる壁に看板を立てても意味がない — AIエージェントに必要なのはガードレールではなくアカウンタビリティだ](https://zenn.dev/shimo4228/articles/ai-agent-accountability-wall)
+- [事故のあとで因果を辿れるか](https://zenn.dev/shimo4228/articles/agent-causal-traceability-org-adoption)
+- [AIエージェントのブラックボックスは二層ある — 技術の限界とビジネスの都合](https://zenn.dev/shimo4228/articles/agent-blackbox-capitalism-timescale)
 
 ### Claude Code Series
-- [Cursor から Zed + Claude Code に移行した話](https://zenn.dev/shimo4228/articles/cursor-to-zed-migration)
-- [Claude Code のコンテキスト設定を全部棚卸しした](https://zenn.dev/shimo4228/articles/claude-code-context-audit)
-- [Claude Code の Skill に出自を付けて管理する](https://zenn.dev/shimo4228/articles/claude-code-skill-origin-tracking)
-- [Claude Code が自分のスキルを自分で書いた日](https://zenn.dev/shimo4228/articles/claude-code-self-generation)
-- [Claude Code で Zenn 執筆環境を仕組み化した話](https://zenn.dev/shimo4228/articles/claude-code-zenn-writing-env)
+- [CursorからZedに乗り換えた — ビルトインAIを切って「黒い画面」に振り切った設定と理由](https://zenn.dev/shimo4228/articles/cursor-to-zed-migration)
+- [Claude Code の設定ファイルを全棚卸しして分かった5つのこと](https://zenn.dev/shimo4228/articles/claude-code-context-audit)
+- [Claude Code の真価はコード生成ではない](https://zenn.dev/shimo4228/articles/claude-code-context-orchestration)
+- [デフォルトのまま使うな ── Claude Code で本当に効いた設定10選](https://zenn.dev/shimo4228/articles/claude-code-effective-settings-10)
+- [毎回コンテキストを失う Claude Code に記憶を埋め込んだ](https://zenn.dev/shimo4228/articles/claude-code-persistent-memory)
+- [Claude Code スキルの出自管理 ── origin メタデータで79個を分類した](https://zenn.dev/shimo4228/articles/claude-code-skill-origin-tracking)
+- [Claude Codeに「お前自身がLLMだろ」と言った日 — 397問のデータ生成で学んだこと](https://zenn.dev/shimo4228/articles/claude-code-self-generation)
+- [Claude Codeで育てたZenn執筆環境 ── lint28件からエージェントレビューまで](https://zenn.dev/shimo4228/articles/claude-code-zenn-writing-env)
+- [AI の苦手な仕事をスクリプトに逃がす — スキル棚卸しコマンドの設計・実装・公開の全記録](https://zenn.dev/shimo4228/articles/skill-stocktake-design-journey)
 
-### Everything Claude Code (ECC) Journey
-- [Part 1: 初心者が ECC で本格開発を始めた10日間](https://zenn.dev/shimo4228/articles/ecc-journey-part1)
-- [Part 2: スキル大量導入の混乱と棚卸し](https://zenn.dev/shimo4228/articles/ecc-journey-part2)
-- [Part 3: Rules と Agents で開発ワークフローを変えた](https://zenn.dev/shimo4228/articles/ecc-journey-part3)
+### ECC (Everything Claude Code) Journey
+- [Everything Claude Codeで初めて本格的な開発を始めた初心者の10日間](https://zenn.dev/shimo4228/articles/ecc-journey-part1)
+- [LLM の出力は信用するな — Claude API で PDF→Anki 自動生成 CLI を作って学んだ 6 つの防御策](https://zenn.dev/shimo4228/articles/ecc-journey-part2)
+- [Claude Code スキルが膨れ続けた 15 日間 — 3 回の棚卸しで学んだこと](https://zenn.dev/shimo4228/articles/ecc-journey-part3)
+- [個人スキルを5万人に届ける最短経路が見つかった](https://zenn.dev/shimo4228/articles/ecc-marketplace-contribution)
 
-### Daily Research & Others
-- [Python コード0行で AI リサーチ自動化パイプラインを作った](https://zenn.dev/shimo4228/articles/daily-research-automation)
-- [Termius + iPhone で Claude Code をどこでも使う](https://zenn.dev/shimo4228/articles/termius-iphone-claude-code)
-- [Claude Code で Obsidian Vault を整理した](https://zenn.dev/shimo4228/articles/claude-code-obsidian-vault-organization)
+### AI Research & Experiments
+- [Prompt-Based Alignmentには天井がある — 囚人のジレンマ3モデル実証](https://zenn.dev/shimo4228/articles/contemplative-alignment-benchmark)
+- [エピソードログから倫理が生まれるまで — Contemplative Agent 17日間の設計記録](https://zenn.dev/shimo4228/articles/contemplative-agent-journey)
+- [理論が分からない論文をブラウザで動かしてしまった ── 能動的推論 × Claude Code](https://zenn.dev/shimo4228/articles/active-inference-viz-dev-story)
+- [しつけの前と後 ── Baseモデルを手元で動かしたら「こんにちは」がアニメレビューになった](https://zenn.dev/shimo4228/articles/base-model-experience)
+- [Geminiに自社Deep Researchを語らせたら、半分が自己弁護だった](https://zenn.dev/shimo4228/articles/token-economics-ai-orchestration)
+
+### LLM Engineering & Tools
+- [LLMアプリの正体は「mdとコードのサンドイッチ」だった](https://zenn.dev/shimo4228/articles/llm-app-sandwich-architecture)
+- [MCPツールの Install and Hope 問題](https://zenn.dev/shimo4228/articles/mcp-install-and-hope-problem)
+- [エージェントの記憶が壊れた — 9Bモデルと格闘した1日](https://zenn.dev/shimo4228/articles/few-shot-for-small-models)
+
+### Multi-Model & Workflow
+- [Claude Code × Kimi K2.5 ハイブリッド環境を構築した](https://zenn.dev/shimo4228/articles/claude-kimi-hybrid-setup)
+- [ClaudeのプランをKimiに実行させたら丸投げだとキレられた](https://zenn.dev/shimo4228/articles/kimi-delegation-failure-lessons)
+- [最強モデルで司令塔を組んだら9倍遅くなった ── なぜマルチエージェントを棄却したか](https://zenn.dev/shimo4228/articles/daily-research-agent-team)
+- [Claudeの自信作をKimiが4件潰した ── AIピアレビュー実践記](https://zenn.dev/shimo4228/articles/ai-peer-review-methodology)
+
+### Build in Public
+- [AI生成記事の実態 — 20回の対話で核心が変わった2時間](https://zenn.dev/shimo4228/articles/ai-article-writing-process)
+- [Claude Code で毎朝AIリサーチが届く自動化を作った — Pythonコード0行](https://zenn.dev/shimo4228/articles/daily-research-automation)
+- [2日間壊し続けたAIパイプライン ── Claudeの認知バイアスと人間の介入](https://zenn.dev/shimo4228/articles/daily-research-postmortem)
+- [3,674ファイルのObsidian地獄をClaude Codeに1日で片付けさせた](https://zenn.dev/shimo4228/articles/claude-code-obsidian-vault-organization)
+- [Obsidian公式CLIが来た——もうVaultを裏口から触らなくていい](https://zenn.dev/shimo4228/articles/obsidian-cli-claude-code-vault-management)
+- [Claude Code をiPhoneから操作する方法 — Termius + Tailscale + tmux 環境構築ガイド](https://zenn.dev/shimo4228/articles/termius-iphone-claude-code)
+- [Claude Codeにシミュレータを渡したら自分でタップしてスクショで検証し始めた](https://zenn.dev/shimo4228/articles/xcodebuildmcp-ios-verification)
 
 ## Cross-Posting
 
@@ -28,7 +70,9 @@ AI エージェント開発、Claude Code、LLM エンジニアリングに関�
 
 - `articles/` — 日本語原稿
 - `articles-en/` — 英訳
-- `scripts/publish.py` — クロスポスト CLI
+- `scripts/publish.py` — Dev.to クロスポスト CLI
+- `scripts/scheduled_publish.py` — スケジュール自動投稿
+- `scripts/zenn_publish.py` — Zenn 自動公開（frontmatter + git push）
 - `scripts/schedule.json` — 投稿スケジュール管理
 
 ## Tech Stack
@@ -37,21 +81,37 @@ AI エージェント開発、Claude Code、LLM エンジニアリングに関�
 - **textlint** + preset-ja-technical-writing + no-dead-link + prh — 日本語校正
 - **markdownlint-cli2** — Markdown 構文チェック
 - **husky** + lint-staged — pre-commit フック（textlint + markdownlint）
+- **Python 3.13** + httpx + python-frontmatter + Pillow — クロスポスト・カバー画像生成
 - **Claude Code** — 執筆・レビュー・翻訳・クロスポスト
 
 ## Claude Code Integration
 
 ```
 .claude/
-├── agents/editor.md          # 辛口レビューエージェント
+├── agents/
+│   ├── editor.md              # tech記事レビュー（4段階評価）
+│   ├── essay-reviewer.md      # idea記事レビュー
+│   ├── fact-checker.md        # 事実主張の検証
+│   ├── zenn-drafter.md        # 記事執筆（分析→執筆→セルフレビュー）
+│   └── devto-translator.md    # JP→EN翻訳 + Dev.to投稿
+├── refs/                      # 共有リファレンス
+│   ├── writing-standards.md
+│   ├── translation-rules.md
+│   └── schedule-schema.md
+├── rules/
+│   └── content-integrity.md   # Content Integrity 原則
 └── skills/
+    ├── writing-team/          # オーケストレーター（PM）
     ├── zenn-writer/           # 記事執筆ガイド
     ├── publish-article/       # 公開・クロスポスト手順
     ├── schedule-publish/      # スケジュール管理
-    ├── translate-article/     # 英訳
     ├── seo-optimizer/         # SEO 最適化
-    ├── content-research-writer/ # リサーチ執筆
-    └── chatlog-to-article/    # チャットログ→記事変換
+    ├── ideation/              # テーマ検討・アイデア出し
+    ├── series-checker/        # シリーズ整合性チェック
+    ├── quality-gate/          # 統一品質基準
+    ├── chatlog-to-article/    # チャットログ→記事変換
+    ├── zenn-format/           # Zenn フォーマット
+    └── content-research-writer/ # リサーチ付き執筆
 ```
 
 ## Quick Start
@@ -67,17 +127,24 @@ npm run new:article # 新規記事作成
 
 ```
 zenn-content/
-├── articles/          # 日本語記事
+├── articles/          # 日本語記事（42本）
 ├── articles-en/       # 英訳記事
 ├── books/             # Zenn books
-├── images/            # 記事用画像
+├── images/            # 記事用画像・カバー画像
 ├── scripts/
-│   ├── publish.py     # クロスポスト CLI
-│   ├── schedule.json  # 投稿スケジュール
-│   └── .env           # API トークン（gitignore）
+│   ├── _schedule_utils.py  # 共有ユーティリティ
+│   ├── publish.py          # Dev.to クロスポスト CLI
+│   ├── scheduled_publish.py # スケジュール自動投稿
+│   ├── zenn_publish.py     # Zenn 自動公開
+│   ├── generate_cover.py   # カバー画像生成
+│   ├── plan_schedule.py    # スケジュール計画
+│   ├── schedule.json       # 投稿スケジュール
+│   └── tests/              # pytest テスト（147テスト, 86%カバレッジ）
 ├── .claude/
-│   ├── agents/        # エディターエージェント
-│   └── skills/        # プロジェクトスキル（9個）
+│   ├── agents/        # レビュー・翻訳エージェント（5個）
+│   ├── skills/        # プロジェクトスキル（11個）
+│   ├── refs/          # 共有リファレンス
+│   └── rules/         # プロジェクトルール
 └── .github/
     └── workflows/     # CI（lint）
 ```
