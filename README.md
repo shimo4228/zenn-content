@@ -90,18 +90,15 @@ Articles are cross-posted in Japanese (Zenn) and English (Dev.to).
 
 ```
 .claude/
-├── agents/
-│   ├── editor.md              # Tech article reviewer (4-tier rating)
-│   ├── essay-reviewer.md      # Idea article reviewer
-│   ├── fact-checker.md        # Factual claim verification
+├── agents/                    # Zenn-specific agents (see global agents for editor/essay-reviewer/fact-checker)
 │   ├── zenn-drafter.md        # Article writer (analyze → write → self-review)
 │   └── devto-translator.md    # JP→EN translation + Dev.to publishing
 ├── refs/                      # Shared references
-│   ├── writing-standards.md
 │   ├── translation-rules.md
 │   └── schedule-schema.md
 ├── rules/
-│   └── content-integrity.md   # Content Integrity principle
+│   ├── content-integrity.md   # Content Integrity principle
+│   └── zenn-writing.md        # Zenn overlay for the global writing-ecosystem skill
 └── skills/
     ├── writing-team/          # Orchestrator (PM)
     ├── zenn-writer/           # Article writing guide

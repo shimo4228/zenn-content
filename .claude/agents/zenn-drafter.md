@@ -66,8 +66,9 @@ While writing, run this internal checklist continuously:
 
 #### Standards Reference
 
-> **正本:** `.claude/refs/writing-standards.md`
+> **正本:** `~/.claude/skills/writing-ecosystem/SKILL.md`
 > トーンルール、AI slop 禁止リスト、タイトル規約、セクション長ガイドラインはすべて上記を参照。
+> Zenn 固有ルール（文字数 50-60、frontmatter 規約）は `.claude/rules/zenn-writing.md` を参照。
 > Voice Pattern（毒の効いたユーモア）、刃牙リファレンスは `zenn-writer` スキルを参照。
 
 #### While Writing
@@ -83,7 +84,7 @@ While writing, run this internal checklist continuously:
 After completing the draft, self-check:
 
 1. **Overload count**: List every independent argument. If > 4, flag and propose cuts
-2. **AI slop scan**: Search for banned patterns (see refs/writing-standards.md). List any found with suggested replacements
+2. **AI slop scan**: Search for banned patterns (see `~/.claude/skills/writing-ecosystem/SKILL.md`). List any found with suggested replacements
 3. **Title check**: Does it meet the title rules? (50文字以内、概念が伝わるか)
 4. **Tone check** (idea articles): Any lapses into assertion tone?
 5. **Reader-first check**: Any terms used before explanation? Any missing prerequisites?

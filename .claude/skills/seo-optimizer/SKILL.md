@@ -4,7 +4,7 @@
 **Purpose:** Zenn 記事のタイトル・topics・emoji を最適化し、関心のある読者に記事が届くようにする。
 内容の改変は行わない（[ADR-0001](../../.claude/docs/adr/0001-content-integrity-principle.md) Content Integrity 原則）。
 
-> **タイトル規約・AI slop の正本:** `.claude/refs/writing-standards.md`
+> **タイトル規約・AI slop の正本:** `~/.claude/skills/writing-ecosystem/SKILL.md`（Zenn 固有ルールは `.claude/rules/zenn-writing.md`）
 
 ---
 

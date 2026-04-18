@@ -21,7 +21,7 @@
 - 直訳ではなく、英語として自然な表現にする
 - 著者の個性と洞察を保持する
 - 日本特有の文化的文脈は、英語圏の読者向けに簡潔に補足する
-- AI slop 禁止（詳細は [writing-standards.md](./writing-standards.md) の English セクション）
+- AI slop 禁止（詳細は `~/.claude/skills/writing-ecosystem/SKILL.md` の English セクション）
 - 謙遜表現は英語の技術文書の慣習に合わせて調整する
 - EN 記事には `canonical_url` を設定しない（言語が異なるため Zenn canonical は無意味）
 

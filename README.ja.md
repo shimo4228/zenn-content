@@ -90,18 +90,15 @@ AI エージェント開発、Claude Code、LLM エンジニアリングに関�
 
 ```
 .claude/
-├── agents/
-│   ├── editor.md              # tech記事レビュー（4段階評価）
-│   ├── essay-reviewer.md      # idea記事レビュー
-│   ├── fact-checker.md        # 事実主張の検証
+├── agents/                    # Zenn 固有エージェント（editor/essay-reviewer/fact-checker は global へ移行）
 │   ├── zenn-drafter.md        # 記事執筆（分析→執筆→セルフレビュー）
 │   └── devto-translator.md    # JP→EN翻訳 + Dev.to投稿
 ├── refs/                      # 共有リファレンス
-│   ├── writing-standards.md
 │   ├── translation-rules.md
 │   └── schedule-schema.md
 ├── rules/
-│   └── content-integrity.md   # Content Integrity 原則
+│   ├── content-integrity.md   # Content Integrity 原則
+│   └── zenn-writing.md        # global writing-ecosystem skill の Zenn overlay
 └── skills/
     ├── writing-team/          # オーケストレーター（PM）
     ├── zenn-writer/           # 記事執筆ガイド

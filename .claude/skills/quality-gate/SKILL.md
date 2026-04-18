@@ -26,7 +26,7 @@ origin: original
 ### 必須（全記事）
 
 - [ ] **editor/essay-reviewer の CRITICAL が 0**: レビュー済みで CRITICAL 指摘がすべて解決済み
-- [ ] **AI slop なし**: `refs/writing-standards.md` の禁止リストに該当する表現がない
+- [ ] **AI slop なし**: `writing-ecosystem` skill の禁止リストに該当する表現がない
 - [ ] **未説明概念なし**: 専門用語・自作概念が初出時に説明されている
 - [ ] **セキュリティ**: API キー、個人パス（`/Users/`）、機密情報が含まれていない
 - [ ] **frontmatter 完備**: title, emoji, type, topics, published が正しく設定されている
