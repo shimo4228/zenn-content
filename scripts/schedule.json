@@ -485,7 +485,7 @@
     {
       "file": "articles-en/zed-observation-window-japanese-typography.md",
       "date": "2026-04-16",
-      "devto": null,
+      "devto": "https://dev.to/shimo4228/building-zed-as-an-observation-window-for-claude-code-japanese-typography-with-ibm-plex-6l9",
       "devto_tags": [
         "zed",
         "ai",
@@ -494,6 +494,24 @@
       ],
       "cover_image": "https://raw.githubusercontent.com/shimo4228/zenn-content/main/images/covers/zed-observation-window-japanese-typography.png",
       "notes": "EN translation of Zed を観測窓として構築する — IBM Plex 日本語タイポグラフィ"
+    },
+    {
+      "file": "articles/organic-growth-content-integrity.md",
+      "canonical_url": "https://zenn.dev/shimo4228/articles/organic-growth-content-integrity",
+      "date": "2026-04-18",
+      "notes": "AI 執筆チームの有機的成長と Content Integrity"
+    },
+    {
+      "file": "articles-en/organic-growth-content-integrity.md",
+      "date": "2026-04-18",
+      "devto": "https://dev.to/shimo4228/organic-growth-and-content-integrity-in-an-ai-writing-team-1h67",
+      "devto_tags": [
+        "discuss",
+        "ai",
+        "claudecode",
+        "writing"
+      ],
+      "notes": "EN: Organic Growth and Content Integrity in an AI Writing Team"
     }
   ]
 }
