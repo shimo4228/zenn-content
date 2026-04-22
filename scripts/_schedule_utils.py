@@ -1,7 +1,7 @@
 """Shared utilities for scheduled publishing scripts.
 
-Extracted from scheduled_publish.py and zenn_publish.py to eliminate
-duplication of schedule I/O, path validation, and logging setup.
+Provides schedule.json I/O, path validation, JST helpers, and logging
+setup used by devto_crosspost.py and plan_schedule.py.
 """
 
 from __future__ import annotations

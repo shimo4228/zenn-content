@@ -70,12 +70,11 @@ AI エージェント開発、Claude Code、LLM エンジニアリングに関�
 
 記事は日本語（Zenn）と英訳（Dev.to）でクロスポストしています。
 
-- `articles/` — 日本語原稿
+- `articles/` — 日本語原稿（Zenn は frontmatter `published_at` で native 予約投稿）
 - `articles-en/` — 英訳
-- `scripts/publish.py` — Dev.to クロスポスト CLI
-- `scripts/scheduled_publish.py` — スケジュール自動投稿
-- `scripts/zenn_publish.py` — Zenn 自動公開（frontmatter + git push）
-- `scripts/schedule.json` — 投稿スケジュール管理
+- `scripts/publish.py` — Dev.to クロスポスト CLI（手動）
+- `scripts/devto_crosspost.py` — 日次 cron 駆動の Dev.to クロスポスター
+- `scripts/schedule.json` — Dev.to 投稿スケジュール
 
 ## 技術スタック
 
@@ -131,14 +130,13 @@ zenn-content/
 ├── books/             # Zenn books
 ├── images/            # 記事用画像・カバー画像
 ├── scripts/
-│   ├── _schedule_utils.py  # 共有ユーティリティ
-│   ├── publish.py          # Dev.to クロスポスト CLI
-│   ├── scheduled_publish.py # スケジュール自動投稿
-│   ├── zenn_publish.py     # Zenn 自動公開
-│   ├── generate_cover.py   # カバー画像生成
-│   ├── plan_schedule.py    # スケジュール計画
-│   ├── schedule.json       # 投稿スケジュール
-│   └── tests/              # pytest テスト（147テスト, 86%カバレッジ）
+│   ├── _schedule_utils.py    # 共有ユーティリティ
+│   ├── publish.py            # Dev.to クロスポスト CLI（手動）
+│   ├── devto_crosspost.py    # 日次 Dev.to クロスポスター（cron）
+│   ├── generate_cover.py     # カバー画像生成
+│   ├── plan_schedule.py      # スケジュール計画
+│   ├── schedule.json         # Dev.to 投稿スケジュール
+│   └── tests/                # pytest テスト（112テスト）
 ├── .claude/
 │   ├── agents/        # レビュー・翻訳エージェント（5個）
 │   ├── skills/        # プロジェクトスキル（11個）

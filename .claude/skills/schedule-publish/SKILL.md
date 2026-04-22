@@ -147,7 +147,7 @@ python scripts/plan_schedule.py --start YYYY-MM-DD --slugs "slug1,slug2,slug3"
 **Zenn 公開:** `published_at` 予約投稿（push 時点で予約、指定時刻に自動公開）
 
 **Dev.to クロスポスト:**
-- `scheduled_publish.py` で Dev.to API 経由の自動投稿
+- `devto_crosspost.py` で Dev.to API 経由の自動投稿（GitHub Actions cron 07:00 JST）
 - `devto-translator` エージェントで翻訳→投稿を一気通貫も可
 - Dev.to API レートリミット: 30秒間隔
 

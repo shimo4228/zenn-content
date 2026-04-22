@@ -94,9 +94,11 @@ class TestGenerateSchedule:
         assert len(entries) == 1
         entry = entries[0]
         assert entry["file"] == "articles/my-article.md"
-        assert "zenn_date" in entry
         assert "date" in entry
-        assert entry["zenn_published"] is False
+        assert "canonical_url" in entry
+        # New schema: no zenn_date / zenn_published — Zenn handles via published_at
+        assert "zenn_date" not in entry
+        assert "zenn_published" not in entry
 
     def test_multiple_slugs_get_different_dates(self) -> None:
         entries = generate_schedule(
@@ -104,18 +106,20 @@ class TestGenerateSchedule:
             start=date(2026, 2, 25),
         )
         assert len(entries) == 3
-        dates = [e["zenn_date"] for e in entries]
+        dates = [e["date"] for e in entries]
         assert len(set(dates)) == 3  # All different
 
-    def test_crosspost_delay(self) -> None:
+    def test_crosspost_delay_applies_to_en_entry(self) -> None:
         entries = generate_schedule(
             slugs=["test"],
             start=date(2026, 2, 25),
             crosspost_delay=2,
+            include_en_translation=True,
+            en_same_day=False,
         )
-        zenn_date = date.fromisoformat(entries[0]["zenn_date"])
-        cross_date = date.fromisoformat(entries[0]["date"])
-        assert (cross_date - zenn_date).days == 2
+        jp_date = date.fromisoformat(entries[0]["date"])
+        en_date = date.fromisoformat(entries[1]["date"])
+        assert (en_date - jp_date).days == 2
 
     def test_custom_publish_days(self) -> None:
         entries = generate_schedule(
@@ -123,8 +127,8 @@ class TestGenerateSchedule:
             start=date(2026, 2, 24),  # Tuesday
             publish_days=[0],  # Mondays only
         )
-        zenn_date = date.fromisoformat(entries[0]["zenn_date"])
-        assert zenn_date.weekday() == 0
+        publish_date = date.fromisoformat(entries[0]["date"])
+        assert publish_date.weekday() == 0
 
     def test_with_scores(self) -> None:
         scores = {"slug1": {"total": 7, "search": 3}}
@@ -158,6 +162,9 @@ class TestGenerateSchedule:
         assert "qiita" not in entry
         assert "hashnode" not in entry
         assert "devto" not in entry  # JP entries don't have devto
+        assert "zenn_date" not in entry  # Zenn handles via published_at frontmatter
+        assert "zenn_published" not in entry
+        assert "zenn_published_at" not in entry
 
 
 # ---------------------------------------------------------------------------

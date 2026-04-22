@@ -93,23 +93,17 @@
     {
       "file": "articles/daily-research-agent-team.md",
       "canonical_url": "https://zenn.dev/shimo4228/articles/daily-research-agent-team",
-      "zenn_date": "2026-02-21",
-      "date": "2026-02-21",
-      "zenn_published": true
+      "date": "2026-02-21"
     },
     {
       "file": "articles/daily-research-postmortem.md",
       "canonical_url": "https://zenn.dev/shimo4228/articles/daily-research-postmortem",
-      "zenn_date": "2026-02-22",
-      "date": "2026-02-22",
-      "zenn_published": true
+      "date": "2026-02-22"
     },
     {
       "file": "articles/claude-code-context-orchestration.md",
       "canonical_url": "https://zenn.dev/shimo4228/articles/claude-code-context-orchestration",
-      "zenn_date": "2026-02-23",
-      "date": "2026-02-23",
-      "zenn_published": true
+      "date": "2026-02-23"
     },
     {
       "file": "articles-en/daily-research-agent-team.md",
@@ -129,9 +123,7 @@
     {
       "file": "articles/skill-stocktake-design-journey.md",
       "canonical_url": "https://zenn.dev/shimo4228/articles/skill-stocktake-design-journey",
-      "zenn_date": "2026-02-23",
-      "date": "2026-02-23",
-      "zenn_published": true
+      "date": "2026-02-23"
     },
     {
       "file": "articles-en/skill-stocktake-design-journey.md",
@@ -141,9 +133,7 @@
     {
       "file": "articles/token-economics-ai-orchestration.md",
       "canonical_url": "https://zenn.dev/shimo4228/articles/token-economics-ai-orchestration",
-      "zenn_date": "2026-02-25",
-      "date": "2026-02-25",
-      "zenn_published": true
+      "date": "2026-02-25"
     },
     {
       "file": "articles-en/token-economics-ai-orchestration.md",
@@ -153,9 +143,7 @@
     {
       "file": "articles/base-model-experience.md",
       "canonical_url": "https://zenn.dev/shimo4228/articles/base-model-experience",
-      "zenn_date": "2026-02-22",
-      "date": "2026-02-22",
-      "zenn_published": true
+      "date": "2026-02-22"
     },
     {
       "file": "articles-en/base-model-experience.md",
@@ -165,9 +153,7 @@
     {
       "file": "articles/claude-kimi-hybrid-setup.md",
       "canonical_url": "https://zenn.dev/shimo4228/articles/claude-kimi-hybrid-setup",
-      "zenn_date": "2026-02-24",
-      "date": "2026-02-24",
-      "zenn_published": true
+      "date": "2026-02-24"
     },
     {
       "file": "articles-en/claude-kimi-hybrid-setup.md",
@@ -177,9 +163,7 @@
     {
       "file": "articles/ai-peer-review-methodology.md",
       "canonical_url": "https://zenn.dev/shimo4228/articles/ai-peer-review-methodology",
-      "zenn_date": "2026-02-26",
-      "date": "2026-02-26",
-      "zenn_published": true
+      "date": "2026-02-26"
     },
     {
       "file": "articles-en/ai-peer-review-methodology.md",
@@ -189,9 +173,7 @@
     {
       "file": "articles/claude-code-persistent-memory.md",
       "canonical_url": "https://zenn.dev/shimo4228/articles/claude-code-persistent-memory",
-      "zenn_date": "2026-02-27",
-      "date": "2026-02-27",
-      "zenn_published": true
+      "date": "2026-02-27"
     },
     {
       "file": "articles-en/claude-code-persistent-memory.md",
@@ -201,9 +183,7 @@
     {
       "file": "articles/kimi-delegation-failure-lessons.md",
       "canonical_url": "https://zenn.dev/shimo4228/articles/kimi-delegation-failure-lessons",
-      "zenn_date": "2026-02-28",
       "date": "2026-02-28",
-      "zenn_published": true,
       "notes": "Kimi × Claude 三部作完結"
     },
     {
@@ -214,9 +194,7 @@
     {
       "file": "articles/xcodebuildmcp-ios-verification.md",
       "canonical_url": "https://zenn.dev/shimo4228/articles/xcodebuildmcp-ios-verification",
-      "zenn_date": "2026-03-03",
       "date": "2026-03-03",
-      "zenn_published": true,
       "notes": "XcodeBuildMCP + Claude Code iOS自律検証"
     },
     {
@@ -227,10 +205,7 @@
     {
       "file": "articles/ecc-marketplace-contribution.md",
       "canonical_url": "https://zenn.dev/shimo4228/articles/ecc-marketplace-contribution",
-      "zenn_date": "2026-03-04",
       "date": "2026-03-04",
-      "zenn_published": true,
-      "zenn_published_at": "2026-03-04T07:00:00.000000",
       "notes": "ECC マーケットプレイスへの貢献記事"
     },
     {
@@ -241,10 +216,7 @@
     {
       "file": "articles/claude-code-effective-settings-10.md",
       "canonical_url": "https://zenn.dev/shimo4228/articles/claude-code-effective-settings-10",
-      "zenn_date": "2026-03-05",
       "date": "2026-03-05",
-      "zenn_published": true,
-      "zenn_published_at": "2026-03-05T07:00:00.675720",
       "notes": "網羅型ハブ記事: Claude Code 設定10選"
     },
     {
@@ -255,10 +227,7 @@
     {
       "file": "articles/obsidian-cli-claude-code-vault-management.md",
       "canonical_url": "https://zenn.dev/shimo4228/articles/obsidian-cli-claude-code-vault-management",
-      "zenn_date": "2026-03-06",
       "date": "2026-03-06",
-      "zenn_published": true,
-      "zenn_published_at": "2026-03-06T07:00:00.621106",
       "notes": "Obsidian公式CLI解説 + Claude Code連携"
     },
     {
@@ -269,10 +238,7 @@
     {
       "file": "articles/active-inference-viz-dev-story.md",
       "canonical_url": "https://zenn.dev/shimo4228/articles/active-inference-viz-dev-story",
-      "zenn_date": "2026-03-07",
       "date": "2026-03-07",
-      "zenn_published": true,
-      "zenn_published_at": "2026-03-07T07:00:00.860748",
       "notes": "能動的推論の可視化ツール再実装記 — 偏愛×Claude Code"
     },
     {
@@ -282,10 +248,7 @@
     },
     {
       "file": "articles/moltbook-agent-scratch-build.md",
-      "zenn_date": "2026-03-08",
       "date": "2026-03-08",
-      "zenn_published": true,
-      "zenn_published_at": "2026-03-08T07:00:05.164525",
       "notes": "Moltbookエージェント構築記 — セキュリティファースト + OWASP照合"
     },
     {
@@ -295,11 +258,8 @@
     },
     {
       "file": "articles/playwright-magento-scoring.md",
-      "zenn_date": "2026-03-09",
       "date": "2026-03-09",
-      "zenn_published": true,
-      "notes": "Playwright × Magento 実戦パターン + 時間減衰スコアリング",
-      "zenn_published_at": "2026-03-09T07:00:05.512020"
+      "notes": "Playwright × Magento 実戦パターン + 時間減衰スコアリング"
     },
     {
       "file": "articles-en/playwright-magento-scoring.md",
@@ -308,11 +268,8 @@
     },
     {
       "file": "articles/contemplative-alignment-benchmark.md",
-      "zenn_date": "2026-03-10",
       "date": "2026-03-10",
-      "zenn_published": true,
-      "notes": "Contemplative AI alignment ベンチマーク — prompt-based alignment の天井効果",
-      "zenn_published_at": "2026-03-10T07:00:05.112546"
+      "notes": "Contemplative AI alignment ベンチマーク — prompt-based alignment の天井効果"
     },
     {
       "file": "articles-en/contemplative-alignment-benchmark.md",
@@ -322,11 +279,8 @@
     },
     {
       "file": "articles/mcp-install-and-hope-problem.md",
-      "zenn_date": "2026-03-11",
       "date": "2026-03-11",
-      "zenn_published": true,
-      "notes": "MCP Install and Hope 問題 — deferred tool のギャップと棚卸し",
-      "zenn_published_at": "2026-03-11T07:00:02.289218"
+      "notes": "MCP Install and Hope 問題 — deferred tool のギャップと棚卸し"
     },
     {
       "file": "articles-en/mcp-install-and-hope-problem.md",
@@ -336,11 +290,8 @@
     },
     {
       "file": "articles/moltbook-agent-evolution-quadrilogy.md",
-      "zenn_date": "2026-03-15",
       "date": "2026-03-15",
-      "notes": "Moltbookエージェント進化記 — 自然言語アーキテクチャの設計と限界",
-      "zenn_published": true,
-      "zenn_published_at": "2026-03-15T07:00:06.637960"
+      "notes": "Moltbookエージェント進化記 — 自然言語アーキテクチャの設計と限界"
     },
     {
       "file": "articles-en/moltbook-agent-evolution-quadrilogy.md",
@@ -350,11 +301,8 @@
     },
     {
       "file": "articles/agent-essence-is-memory.md",
-      "zenn_date": "2026-03-21",
       "date": "2026-03-21",
-      "notes": "AIエージェントの本質は「記憶」ではないか — 7ドラフト統合記事",
-      "zenn_published": true,
-      "zenn_published_at": "2026-03-21T19:55:30+09:00"
+      "notes": "AIエージェントの本質は「記憶」ではないか — 7ドラフト統合記事"
     },
     {
       "file": "articles-en/agent-essence-is-memory.md",
@@ -370,9 +318,7 @@
     },
     {
       "file": "articles/few-shot-for-small-models.md",
-      "zenn_date": "2026-03-22",
       "date": "2026-03-22",
-      "zenn_published": true,
       "notes": "エージェントの記憶が壊れた — 9Bモデルと格闘した1日"
     },
     {
@@ -389,11 +335,8 @@
     },
     {
       "file": "articles/coding-agent-memory-architecture.md",
-      "zenn_date": "2026-03-26",
       "date": "2026-03-26",
-      "zenn_published": true,
-      "notes": "コーディングエージェントの知識配置と遵守率計測 — 5章構成の長編",
-      "zenn_published_at": "2026-03-26T07:00:08.690003"
+      "notes": "コーディングエージェントの知識配置と遵守率計測 — 5章構成の長編"
     },
     {
       "file": "articles-en/coding-agent-memory-architecture-en.md",
@@ -409,9 +352,7 @@
     },
     {
       "file": "articles/agent-memory-game-dev-distillation.md",
-      "zenn_date": "2026-03-30",
       "date": "2026-03-30",
-      "zenn_published": true,
       "notes": "ゲーム開発メモリ技法をAIエージェント記憶蒸留に移植"
     },
     {
@@ -428,9 +369,7 @@
     },
     {
       "file": "articles/agent-freedom-and-constraints.md",
-      "zenn_date": "2026-03-31",
       "date": "2026-03-31",
-      "zenn_published": true,
       "notes": "自律エージェントの自由と制約 — 自己修正・信頼境界・ゲーム性"
     },
     {
@@ -447,9 +386,7 @@
     },
     {
       "file": "articles/agent-causal-traceability-org-adoption.md",
-      "zenn_date": "2026-04-13",
       "date": "2026-04-13",
-      "zenn_published": true,
       "notes": "事故のあとで因果を辿れるか — ガバナンスシリーズ 2/3"
     },
     {
@@ -466,9 +403,7 @@
     },
     {
       "file": "articles/agent-blackbox-capitalism-timescale.md",
-      "zenn_date": "2026-04-14",
       "date": "2026-04-14",
-      "zenn_published": true,
       "notes": "AIエージェントのブラックボックスは二層ある — ガバナンスシリーズ 3/3"
     },
     {

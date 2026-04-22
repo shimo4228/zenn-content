@@ -7,15 +7,11 @@ Zenn content repository — articles (JP/EN) + automated publishing pipeline.
 ## Data Flow
 
 ```
-articles/*.md (JP)  ──┐
-                      ├→ git push → Zenn CDN (auto-deploy)
-articles-en/*.md (EN) ┘
-                          │
-                          ├→ published_at (Zenn native)
-                          │    予約投稿。指定時刻に自動公開
-                          │
-                          └→ scheduled_publish.py (09:00 JST, launchd)
-                               Dev.to API (EN cross-post)
+articles/*.md (JP)  ──→ git push → Zenn (published_at native scheduling)
+
+articles-en/*.md (EN) ─→ git push → devto_crosspost.py
+                                     (07:00 JST daily, GitHub Actions)
+                                     → Dev.to API
 ```
 
 ## Directory Layout
@@ -28,12 +24,13 @@ zenn-content/
 ├── images/            article images
 ├── drafts/            unpublished WIP
 ├── scripts/           publishing automation (Python)
-│   ├── zenn_publish.py        Zenn auto-publish (legacy, published_at に移行)
-│   ├── scheduled_publish.py   cross-post orchestrator (launchd 09:00)
-│   ├── publish.py             cross-post API client (Dev.to)
+│   ├── devto_crosspost.py     Dev.to cross-poster (GitHub Actions 07:00 JST)
+│   ├── publish.py             Dev.to API client (format conversion, tagging)
 │   ├── plan_schedule.py       schedule.json generator
-│   ├── schedule.json          publication schedule (source of truth)
-│   └── tests/                 test files
+│   ├── _schedule_utils.py     shared helpers (I/O, JST, path validation)
+│   ├── generate_cover.py      cover image generator
+│   ├── schedule.json          Dev.to publication schedule
+│   └── tests/                 pytest (112 tests)
 ├── docs/              runbook, glossary, contribution guide
 ├── .claude/           project skills (10), agents (5), learned (9)
 └── .github/workflows/ lint CI (textlint + markdownlint + zenn validate)

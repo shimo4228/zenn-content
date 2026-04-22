@@ -129,8 +129,8 @@ published_at: 2026-04-15 07:00  # JST、ハイフン区切り必須
 # 手動実行
 cd scripts && uv run python publish.py ../articles-en/{filename} --platform devto --dry-run
 
-# 自動実行（scheduled_publish.py）
-cd scripts && uv run python scheduled_publish.py --dry-run
+# 自動実行（devto_crosspost.py）
+cd scripts && uv run python devto_crosspost.py --dry-run
 ```
 
 ### Step 11: schedule.json の最終更新

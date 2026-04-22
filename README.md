@@ -70,12 +70,11 @@ A repository of technical articles on AI agent development, Claude Code workflow
 
 Articles are cross-posted in Japanese (Zenn) and English (Dev.to).
 
-- `articles/` — Japanese originals
+- `articles/` — Japanese originals (Zenn schedules natively via `published_at` frontmatter)
 - `articles-en/` — English translations
-- `scripts/publish.py` — Dev.to cross-post CLI
-- `scripts/scheduled_publish.py` — Scheduled auto-publishing
-- `scripts/zenn_publish.py` — Zenn auto-publish (frontmatter + git push)
-- `scripts/schedule.json` — Publishing schedule
+- `scripts/publish.py` — Dev.to cross-post CLI (manual)
+- `scripts/devto_crosspost.py` — Daily cron-driven Dev.to cross-poster
+- `scripts/schedule.json` — Dev.to publishing schedule
 
 ## Tech Stack
 
@@ -131,14 +130,13 @@ zenn-content/
 ├── books/             # Zenn books
 ├── images/            # Article images & cover images
 ├── scripts/
-│   ├── _schedule_utils.py  # Shared utilities
-│   ├── publish.py          # Dev.to cross-post CLI
-│   ├── scheduled_publish.py # Scheduled auto-publishing
-│   ├── zenn_publish.py     # Zenn auto-publish
-│   ├── generate_cover.py   # Cover image generator
-│   ├── plan_schedule.py    # Schedule planner
-│   ├── schedule.json       # Publishing schedule
-│   └── tests/              # pytest (147 tests, 86% coverage)
+│   ├── _schedule_utils.py    # Shared utilities
+│   ├── publish.py            # Dev.to cross-post CLI (manual)
+│   ├── devto_crosspost.py    # Daily Dev.to cross-poster (cron)
+│   ├── generate_cover.py     # Cover image generator
+│   ├── plan_schedule.py      # Schedule planner
+│   ├── schedule.json         # Dev.to publishing schedule
+│   └── tests/                # pytest (112 tests)
 ├── .claude/
 │   ├── agents/        # Review & translation agents (5)
 │   ├── skills/        # Project skills (11)

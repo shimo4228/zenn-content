@@ -86,13 +86,12 @@ def generate_schedule(
         zenn_date = next_publish_date(current, publish_days)
         crosspost_date = zenn_date + timedelta(days=crosspost_delay)
 
-        # Japanese article entry
+        # Japanese article entry — Zenn handles scheduling via published_at frontmatter,
+        # so this entry is a record-keeping placeholder only.
         entry: dict = {
             "file": f"articles/{slug}.md",
             "canonical_url": f"{ZENN_BASE_URL}/{slug}",
-            "zenn_date": zenn_date.isoformat(),
-            "date": crosspost_date.isoformat(),
-            "zenn_published": False,
+            "date": zenn_date.isoformat(),
         }
 
         if scores and slug in scores:
@@ -100,7 +99,7 @@ def generate_schedule(
 
         entries.append(entry)
 
-        # English translation entry (Dev.to only)
+        # English translation entry (Dev.to cross-post)
         if include_en_translation:
             en_entry: dict = {
                 "file": f"articles-en/{slug}.md",
@@ -225,13 +224,12 @@ def main() -> int:
     )
 
     # Display schedule
-    print(f"\n{'Type':<5} {'Date':<14} {'Cross-post':<14} {'Slug':<40} {'Score':>5}")
-    print("-" * 85)
+    print(f"\n{'Type':<5} {'Date':<14} {'Slug':<40} {'Score':>5}")
+    print("-" * 70)
     for e in entries:
         score_str = str(e["score"]["total"]) if "score" in e else "-"
         entry_type = "EN" if "articles-en/" in e["file"] else "JP"
-        zenn_date = e.get("zenn_date", "-" * 10)
-        print(f"{entry_type:<5} {zenn_date:<14} {e['date']:<14} {e['file']:<40} {score_str:>5}")
+        print(f"{entry_type:<5} {e['date']:<14} {e['file']:<40} {score_str:>5}")
     print()
 
     if args.merge and not args.dry_run:
