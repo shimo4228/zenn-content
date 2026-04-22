@@ -6,40 +6,16 @@ on:
     - cron: '0 22 * * *'
   workflow_dispatch:  # Manual trigger
 
+permissions:
+  contents: write
+
 jobs:
-  zenn-publish:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          token: ${{ secrets.GH_PAT }}
-          fetch-depth: 0
-
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
-
-      - name: Install dependencies
-        run: pip install python-frontmatter python-dotenv httpx
-
-      - name: Zenn publish (max 1 article/day)
-        run: python scripts/zenn_publish.py
-
-      - name: Commit & Push
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add -A
-          git diff --cached --quiet || git commit -m "chore: scheduled Zenn publish"
-          git push
-
   devto-crosspost:
-    needs: zenn-publish
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: main  # Pull latest after zenn-publish pushed
+          fetch-depth: 0
 
       - uses: actions/setup-python@v5
         with:
