@@ -25,7 +25,7 @@ jobs:
         run: pip install python-frontmatter python-dotenv httpx
 
       - name: Dev.to crosspost
-        run: python scripts/scheduled_publish.py
+        run: python scripts/devto_crosspost.py
         env:
           DEVTO_API_KEY: ${{ secrets.DEVTO_API_KEY }}
 
