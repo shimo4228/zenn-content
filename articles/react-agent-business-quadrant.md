@@ -6,12 +6,6 @@ topics: ["ai", "llm", "agent", "architecture"]
 published: true
 ---
 
-<!-- textlint-disable ja-technical-writing/ja-no-weak-phrase -->
-<!-- textlint-disable ja-technical-writing/sentence-length -->
-<!-- textlint-disable ja-technical-writing/no-doubled-joshi -->
-<!-- textlint-disable ja-technical-writing/max-kanji-continuous-len -->
-<!-- textlint-disable ja-technical-writing/no-doubled-conjunction -->
-
 ## 違和感
 
 AI エージェントを構築している立場から、現行のエージェント製品の README を眺めていて違和感が消えない。
@@ -246,5 +240,3 @@ ReAct エージェントが本当に必要な業務はどれか — この問い
 
 - [Contemplative Agent](https://github.com/shimo4228/contemplative-agent) — 本記事の (3) に該当する実装。ReAct ループを使わない決定論パイプライン構造
 - [Agent Attribution Practice (AAP)](https://github.com/shimo4228/agent-attribution-practice) — エージェントの責任主体・帰属を扱う研究 repo
-
-<!-- textlint-enable -->
