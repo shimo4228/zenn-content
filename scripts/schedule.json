@@ -447,6 +447,18 @@
         "writing"
       ],
       "notes": "EN: Organic Growth and Content Integrity in an AI Writing Team"
+    },
+    {
+      "file": "articles-en/react-agent-business-quadrant.md",
+      "date": "2026-04-29",
+      "devto_tags": [
+        "ai",
+        "llm",
+        "architecture",
+        "discuss"
+      ],
+      "notes": "EN: Where ReAct Agents Are Actually Needed in Business",
+      "devto": "https://dev.to/shimo4228/where-react-agents-are-actually-needed-in-business-33do"
     }
   ]
 }
