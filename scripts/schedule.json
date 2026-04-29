@@ -459,6 +459,18 @@
       ],
       "notes": "EN: Where ReAct Agents Are Actually Needed in Business",
       "devto": "https://dev.to/shimo4228/where-react-agents-are-actually-needed-in-business-33do"
+    },
+    {
+      "file": "articles-en/react-agent-business-quadrant-2.md",
+      "date": "2026-04-30",
+      "devto_tags": [
+        "ai",
+        "llm",
+        "architecture",
+        "discuss"
+      ],
+      "notes": "EN: (3) The LLM Workflow Quadrant Is Missing from Our Vocabulary",
+      "devto": "https://dev.to/shimo4228/3-the-llm-workflow-quadrant-is-missing-from-our-vocabulary-n18"
     }
   ]
 }
