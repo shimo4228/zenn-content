@@ -4,7 +4,7 @@ emoji: "🧩"
 type: "idea"
 topics: ["ai", "llm", "agent", "architecture"]
 published: true
-description: "A 4-quadrant framework for business AI. Most workflows don't need ReAct loops — specialized chatbots and single-purpose LLM functions cover (3), and category errors happen when (4) architectures get applied everywhere."
+description: "A 4-quadrant framework for business AI. Most workflows don't need ReAct loops — specialized chat agents and single-purpose LLM functions cover (3), and category errors happen when (4) architectures get applied everywhere."
 tags: discuss, ai, llm, architecture
 ---
 
@@ -48,7 +48,7 @@ The vertical axis is essentially the same as Anthropic's "predetermined code pat
 |  | Workflow definable | Exploratory |
 |---|---|---|
 | **Deterministic** | (1) Script / pipeline | (2) Classical AI / OR (out of scope here) |
-| **Semantic judgment needed** | (3a) Conversational → specialized chatbot<br>(3b) Batch → single-purpose LLM function | (4) ReAct agent |
+| **Semantic judgment needed** | (3a) Conversational → specialized chat agent<br>(3b) Batch → single-purpose LLM function | (4) ReAct agent |
 
 (2) is the territory of classical AI / OR (Operations Research) — delivery routing, production scheduling, combinatorial optimization — solved historically by A* search, dynamic programming, Monte Carlo Tree Search, and reinforcement learning. LLMs aren't required for these problems, so I'll set this quadrant aside. Let's walk through the remaining (1), (3), and (4) in order.
 
@@ -68,7 +68,7 @@ Since the I/O modality varies by task, (3) splits further into variants. I'll wa
 
 Legal consultation, diagnostic support, internal FAQ, expert knowledge support. Work that's all about judgment.
 
-I find myself doubting whether autonomous agents are needed here. My intuition is that a **specialized chatbot equipped with expert knowledge** is enough for most cases. RAG + system prompt + (history-preserving when needed) LLM calls, with humans making the final call and AI handling knowledge retrieval and organization. At least for many situations, this division of labor seems sufficient.
+I find myself doubting whether autonomous agents are needed here. My intuition is that a **specialized chat agent equipped with expert knowledge** is enough for most cases. RAG + system prompt + (history-preserving when needed) LLM calls, with humans making the final call and AI handling knowledge retrieval and organization. At least for many situations, this division of labor seems sufficient.
 
 That said, conversational work also has a spectrum. Simple FAQ is fine with single-shot LLM calls, but multi-turn legal consultation that narrows down conditions, or diagnostic support that calls tools while differentiating diagnoses, increasingly fits Anthropic's workflow patterns (prompt chaining / routing / orchestrator-workers). Even so, whether you need **a loop where the LLM itself decides the next action** (ReAct) seems like a separate question. Most judgment work can be served by having the human — who is the judging agent — decide what to do next.
 
@@ -144,16 +144,16 @@ The problem is somewhere else. The hype of the current agent ecosystem **tries t
 
 Concretely, here's what I observe:
 
-- Customer support implemented as an autonomous agent. But most of it is fine with (3) conversational form (specialized chatbot)
+- Customer support implemented as an autonomous agent. But most of it is fine with (3) conversational form (specialized chat agent)
 - Sales support implemented as a multi-tool agent. But most of it is fine with (3) batch form (single-purpose LLM function)
 - Business automation "leveled up" with ReAct. But (3) deterministic pipeline + LLM function covers it
-- Internal assistants sold as autonomous agents. But (3) chatbot covers it
+- Internal assistants sold as autonomous agents. But (3) chat agent covers it
 
 To restate the point: **architectures premised on workflows that can't be defined in advance are being applied to work where the workflow can be defined in advance**.
 
 This phenomenon is being recognized in the industry too. Thoughtworks criticizes the trend with the term "agentwashing." Gartner predicts that over 40% of agentic AI projects will be canceled by 2027. Anthropic itself, in "Building Effective Agents," writes *"This might mean not building agentic systems at all"* — suggesting that you shouldn't build agents when a simpler solution works. The four quadrants in this article are a recasting of this emerging industry consensus from a business perspective.
 
-I notice the marketing side has something to do with how this category error gets mass-produced. LLM hype assumes "agents that think." The vocabulary of (3)'s plain chatbots and deterministic pipelines doesn't ride the press buzz. "Autonomous!" "Self-improving!" sells more easily. So marketing lumps all business work under (4)-quadrant vocabulary, and as a result, on the ground, (4) architectures get layered on top of (3) work — that's the structure I see.
+I notice the marketing side has something to do with how this category error gets mass-produced. LLM hype assumes "agents that think." The vocabulary of (3)'s plain chat agents and deterministic pipelines doesn't ride the press buzz. "Autonomous!" "Self-improving!" sells more easily. So marketing lumps all business work under (4)-quadrant vocabulary, and as a result, on the ground, (4) architectures get layered on top of (3) work — that's the structure I see.
 
 What happens on the accountability side as a result:
 
@@ -173,7 +173,7 @@ Once you take a (3) architecture, the accountability story gets cleaner all at o
 - LLM = product use within a limited scope; the deployer is the accountable party
 - It rides on the product-liability model
 
-This conflicts with no current legal system (I went into detail in a separate article: ["Can You Trace the Cause After an Incident?"](https://zenn.dev/shimo4228/articles/agent-causal-traceability-org-adoption)). Single-purpose function + pipeline and specialized chatbot have the **accountable party always clearly assigned to the human (deployer)**, so they need no special legal status for AI.
+This conflicts with no current legal system (I went into detail in a separate article: ["Can You Trace the Cause After an Incident?"](https://zenn.dev/shimo4228/articles/agent-causal-traceability-org-adoption)). Single-purpose function + pipeline and specialized chat agent have the **accountable party always clearly assigned to the human (deployer)**, so they need no special legal status for AI.
 
 In Japan, killing someone's pet is legally treated as "damage to property" under Penal Code Article 261, with the Animal Welfare Act (Act No. 105 of 1973) as a stricter superseding statute — but neither grants animals independent rights-bearing status. Other jurisdictions vary in detail, but the underlying observation generalizes: legal systems do not grant animals legal personhood. There's no way to introduce an agent as a "subject that bears responsibility" into such a legal landscape. The (3) quadrant's architecture aligns with this legal reality from the start.
 
@@ -211,7 +211,7 @@ Use ReAct agents where ReAct agents should be used ((4)), and don't where they s
 
 I noticed that when you start from ReAct agents while introducing AI into business, the choice of quadrant becomes invisible.
 
-Dissect the work first. For judgment work, a specialized chatbot ((3) conversational form) seems to suffice in many cases. For exception handling, single-purpose LLM functions + deterministic pipeline ((3) batch form) seems to cover it. For classical optimization, it's a problem for classical AI / OR ((2)) — not LLMs' stage. ReAct agents are needed only for exploratory tasks where the workflow can't be defined in advance ((4)).
+Dissect the work first. For judgment work, a specialized chat agent ((3) conversational form) seems to suffice in many cases. For exception handling, single-purpose LLM functions + deterministic pipeline ((3) batch form) seems to cover it. For classical optimization, it's a problem for classical AI / OR ((2)) — not LLMs' stage. ReAct agents are needed only for exploratory tasks where the workflow can't be defined in advance ((4)).
 
 I find that most of the business work the current agent ecosystem targets sits in (3), not (4). Lining up my (4) implementation experience next to my (3) implementation experience didn't shake that impression.
 
