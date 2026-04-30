@@ -471,6 +471,18 @@
       ],
       "notes": "EN: (3) The LLM Workflow Quadrant Is Missing from Our Vocabulary",
       "devto": "https://dev.to/shimo4228/3-the-llm-workflow-quadrant-is-missing-from-our-vocabulary-n18"
+    },
+    {
+      "file": "articles-en/react-agent-business-quadrant-3.md",
+      "date": "2026-04-30",
+      "devto": "https://dev.to/shimo4228/is-react-needed-in-production-separating-design-and-operation-phases-4ll0",
+      "devto_tags": [
+        "discuss",
+        "ai",
+        "llm",
+        "architecture"
+      ],
+      "notes": "EN: Is ReAct Needed in Production? — Separating Design and Operation Phases"
     }
   ]
 }
