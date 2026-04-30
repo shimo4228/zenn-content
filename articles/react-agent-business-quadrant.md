@@ -6,6 +6,8 @@ topics: ["ai", "llm", "agent", "architecture"]
 published: true
 ---
 
+> **用語の更新 (2026-04-30):** [AAP repository](https://github.com/shimo4228/agent-attribution-practice) 側との整合のため、4 象限名のうち 2 つを改名した。(2) 古典 AI 象限 → (2) Algorithmic Search 象限、(4) ReAct 象限 → (4) Autonomous Agentic Loop 象限。スクリプト象限と LLM ワークフロー象限は維持。本文中で象限名として使われていた表記は新名前に置換しているが、ReAct パターン (Yao et al. 2022) や ReAct ループへの言及はそのまま。
+
 ## 違和感
 
 AI エージェントを構築している立場から、現行のエージェント製品の README を眺めていて違和感が消えない。
@@ -45,10 +47,10 @@ ReAct は 2022 年に Yao らが提案した LLM エージェントの動かし�
 
 |  | ワークフロー定義可 | 探索的 |
 |---|---|---|
-| **決定論で書ける** | (1) スクリプト / pipeline | (2) 古典 AI / OR (本記事の射程外) |
-| **意味判断が必要** | (3a) 対話 → 専門 chat agent<br>(3b) バッチ → 単機能 LLM 関数 | (4) ReAct エージェント |
+| **決定論で書ける** | (1) スクリプト象限 / pipeline | (2) Algorithmic Search 象限 (本記事の射程外) |
+| **意味判断が必要** | (3) LLM ワークフロー象限<br>(3a) 対話 → 専門 chat agent<br>(3b) バッチ → 単機能 LLM 関数 | (4) Autonomous Agentic Loop 象限 (= ReAct エージェント) |
 
-(2) は古典 AI / OR (Operations Research) の領域だ。配送ルート最適化、生産スケジューリング、組合せ最適化などが該当する。これらは A* 探索、動的計画法、Monte Carlo Tree Search、強化学習で解かれてきた。LLM が必要な問題ではないので、本記事の射程からは外す。残る (1) (3) (4) を順に見ていく。
+(2) は Algorithmic Search / OR (Operations Research) の領域だ。配送ルート最適化、生産スケジューリング、組合せ最適化などが該当する。これらは A* 探索、動的計画法、Monte Carlo Tree Search、強化学習で解かれてきた。LLM が必要な問題ではないので、本記事の射程からは外す。残る (1) (3) (4) を順に見ていく。
 
 ### (1) 決定論 × 事前定義可 — スクリプトで足りる
 
@@ -124,7 +126,7 @@ LLM 関数が果たすのも、まさに同じ役割だ。確率的に揺らぐ�
 
 その上で重要なのは、**「汎用エージェント」 が要らない** ことだ。1 カテゴリにつき単機能の関数が 1 つあればいい。50 カテゴリなら関数 50 個だ。汎用に何でもできる必要はない。
 
-### (4) 意味判断 × 探索的 — ReAct エージェントの正当領域
+### (4) 意味判断 × 探索的 — Autonomous Agentic Loop 象限 (= ReAct エージェントの正当領域)
 
 冒頭で説明した ReAct ループ (Thought → Action → Observation) が必要になるのは、ワークフローが事前に決められず、次の行動をエージェント自身が判断しなければならないタスクだ。
 
