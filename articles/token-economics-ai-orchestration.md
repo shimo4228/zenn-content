@@ -164,7 +164,7 @@ Gemini は「制約」ではなく「最適化」だと主張しました。
 - **リアルタイムの進捗追跡**と中断・修正が可能に
 - MCP 連携で Google Drive や SharePoint から認証済みファイルを直接取得
 
-ただし「スクラッチパッド」という表現は Gemini 独自の比喩です。[OpenAI の公式ドキュメント](https://developers.openai.com/api/docs/guides/deep-research/)が示すアーキテクチャは、もう少し構造的です。
+ただし「スクラッチパッド」という表現は Gemini 独自の比喩です。[OpenAI の公式ドキュメント](https://developers.openai.com/api/docs/guides/deep-research)が示すアーキテクチャは、もう少し構造的です。
 
 1. 中間モデル（gpt-4.1等）がユーザーの意図を確認
 2. プロンプトを書き換え

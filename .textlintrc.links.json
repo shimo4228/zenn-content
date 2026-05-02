@@ -14,7 +14,11 @@
         "https://zenn.dev/**",
         "https://dev.to/**",
         "https://docs.anthropic.com/**",
-        "https://developer.apple.com/**"
+        "https://developer.apple.com/**",
+        "https://www.perplexity.ai/**",
+        "https://www.gartner.com/**",
+        "https://www.lesswrong.com/**",
+        "https://openai.com/**"
       ],
       "preferGET": [],
       "retry": 1,

@@ -175,4 +175,4 @@ AI が広く浅く分析しようとするとき、人間が焦点を絞る。AI
 
 この記事で紹介したシステムの全コードは GitHub で公開しています。
 
-https://github.com/shimo4228/daily-research
+https://github.com/shimo4228/claude-skill-daily-research

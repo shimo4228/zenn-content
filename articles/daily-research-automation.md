@@ -281,4 +281,4 @@ Max プランを持っていて、`claude -p` を使ったことがない方は�
 
 この記事で紹介したシステムの全コードは GitHub で公開しています。`git clone` してすぐに試せます。
 
-https://github.com/shimo4228/daily-research
+https://github.com/shimo4228/claude-skill-daily-research
