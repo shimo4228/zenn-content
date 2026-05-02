@@ -117,6 +117,7 @@ Full procedure: `docs/RUNBOOK.md`
 - [ ] Editor/essay-reviewer レビュー完了
 - [ ] fact-checker でファクトチェック完了（idea 記事は必須）
 - [ ] Lint passes (`npm run lint`)
+- [ ] Dead-link チェック (`npm run lint:links`) — 公開前のみ。CI では走らない（外部 URL の rate limit / redirect 偽陽性で止まらないようにするため）
 - [ ] Preview looks good (`npm run preview`)
 - [ ] `published_at` を設定（`YYYY-MM-DD HH:MM` 形式、JST）
 - [ ] English translation created in `articles-en/`

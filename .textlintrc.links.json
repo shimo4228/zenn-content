@@ -1,0 +1,24 @@
+{
+  "filters": {
+    "comments": true
+  },
+  "rules": {
+    "no-dead-link": {
+      "checkRelative": true,
+      "baseURI": null,
+      "ignore": [
+        "https://localhost*",
+        "https://qiita.com/shimo4228/items/743f2b43f63b2bbe2dba",
+        "https://blog.devgenius.io/**",
+        "https://medium.com/**",
+        "https://zenn.dev/**",
+        "https://dev.to/**",
+        "https://docs.anthropic.com/**",
+        "https://developer.apple.com/**"
+      ],
+      "preferGET": [],
+      "retry": 1,
+      "userAgent": "textlint-rule-no-dead-link/1.0"
+    }
+  }
+}

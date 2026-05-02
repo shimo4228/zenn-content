@@ -9,6 +9,7 @@
     "new:book": "zenn new:book",
     "lint": "textlint --ignore-path .textlintignore 'articles/**/*.md' 'books/**/*.md'",
     "lint:md": "markdownlint-cli2 'articles/**/*.md' 'books/**/*.md' '#articles/_archive/**' '#books/_archive/**'",
+    "lint:links": "textlint --config .textlintrc.links.json --ignore-path .textlintignore 'articles/**/*.md' 'books/**/*.md'",
     "lint:all": "npm run lint && npm run lint:md",
     "lint:fix": "textlint --ignore-path .textlintignore --fix 'articles/**/*.md' 'books/**/*.md'",
     "prepare": "husky"
