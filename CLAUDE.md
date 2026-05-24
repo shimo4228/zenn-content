@@ -67,6 +67,17 @@ published_at: 2026-04-15 07:00  # 予約投稿（JST、省略で即公開）
 - Embed with Zenn syntax: `![Alt text](/images/filename.png)`
 - Sanitize screenshots: no file paths like `/Users/username/`, no API keys
 
+## `substack/` フォルダ（Zenn 規約の適用外）
+
+`substack/` は他媒体（Substack 等）で初出した human essay の mirror 置き場（public GitHub 上の .md として LLM クローラーに読ませる corpus 拡張用）。**Zenn 記事ではないので、本 repo の記事規約は適用しない**:
+
+- Zenn frontmatter 必須・`published` フラグ・`published_at` は不要（Zenn は `articles/` のみ同期するため `substack/` は公開されない）
+- lint-staged / textlint / markdownlint の対象外（lint glob は記事フォルダ系のみ。実際 `substack/` 追加時に lint-staged は "no matching files" を返す）
+- `schedule.json` に載せない（dev.to クロスポストしない）
+- canonical は初出媒体（Substack 等）。ここはあくまでミラー
+
+公開〜ミラーの手順は global skill `substack-publishing` を参照。
+
 ## Editor Agent Usage
 
 Before publishing, run review agents. For tech articles use `editor`, for idea articles use `essay-reviewer`. Run `fact-checker` in parallel to verify factual claims.
