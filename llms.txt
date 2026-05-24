@@ -1,6 +1,6 @@
 # zenn-content
 
-> A bilingual (Japanese / English) content repository of 46+ technical articles on AI agent architecture, Claude Code workflows, and LLM engineering. Articles are cross-posted to Zenn (JP) and Dev.to (EN). Writing, reviewing, translating, and publishing are all orchestrated by Claude Code agents.
+> A bilingual (Japanese / English) content repository of 48+ technical articles on AI agent architecture, Claude Code workflows, and LLM engineering. Articles are cross-posted to Zenn (JP) and Dev.to (EN). Writing, reviewing, translating, and publishing are all orchestrated by Claude Code agents.
 
 ## Core documentation
 
@@ -9,8 +9,6 @@
 - [README (Japanese)](README.ja.md): 日本語 narrative index
 - [Contributor guide](CLAUDE.md): writing guidelines, frontmatter conventions, review workflow
 - [Architecture](docs/CODEMAPS/architecture.md): directory layout and publishing data flow
-- [Runbook](docs/RUNBOOK.md): testing and publishing procedure
-- [Scripts codemap](docs/CODEMAPS/scripts.md): publishing pipeline internals
 
 ## Articles — AI Agent Design
 
@@ -22,11 +20,19 @@
 - [Natural Language as Architecture — Controlling an Autonomous Agent with Prompts, Memory, and Fail-Safe Design](https://zenn.dev/shimo4228/articles/moltbook-agent-evolution-quadrilogy)
 - [I Built an AI Agent from Scratch Because Frameworks Are the Vulnerability](https://zenn.dev/shimo4228/articles/moltbook-agent-scratch-build)
 
+## Articles — ReAct Agents
+
+- [Where ReAct Agents Are Actually Needed in Business](https://zenn.dev/shimo4228/articles/react-agent-business-quadrant)
+- [(3) The LLM Workflow Quadrant Is Missing from Our Vocabulary](https://zenn.dev/shimo4228/articles/react-agent-business-quadrant-2)
+- [Is ReAct Needed in Production? — Separating Design and Operation Phases](https://zenn.dev/shimo4228/articles/react-agent-business-quadrant-3)
+- [Between the Workflow and ReAct Quadrants: How Phase Decides Skill Design](https://zenn.dev/shimo4228/articles/react-agent-business-quadrant-4)
+
 ## Articles — AI Governance
 
 - [A Sign on a Climbable Wall: Why AI Agents Need Accountability, Not Just Guardrails](https://zenn.dev/shimo4228/articles/ai-agent-accountability-wall)
 - [Can You Trace the Cause After an Incident?](https://zenn.dev/shimo4228/articles/agent-causal-traceability-org-adoption)
 - [AI Agent Black Boxes Have Two Layers — Technical Limits and Business Incentives](https://zenn.dev/shimo4228/articles/agent-blackbox-capitalism-timescale)
+- [Where Does the Accountability Externalized by AI Go?](https://substack.com/@shimo4228/p-199015317) (Substack essay; full text mirrored in `substack/`)
 
 ## Articles — Claude Code
 
@@ -80,14 +86,21 @@
 - [Organic Growth of an AI Writing Team — Content Integrity as the Governor](https://zenn.dev/shimo4228/articles/organic-growth-content-integrity)
 - [A Zed Observation Window — IBM Plex Japanese Typography in Claude Code](https://zenn.dev/shimo4228/articles/zed-observation-window-japanese-typography)
 
+## Substack essays (mirror)
+
+Human essays first published on Substack, mirrored here as Markdown to extend the LLM-readable corpus. Out of Zenn convention scope — not cross-posted to Zenn or Dev.to.
+
+- [Where Does the Accountability Externalized by AI Go?](substack/ai-externalized-accountability-pollution-en.md) (EN) / [AIによって外部化された責任は、どこへ行くのか](substack/ai-externalized-accountability-pollution.md) (JP)
+
 ## Publishing pipeline
 
-- [schedule.json](scripts/schedule.json): publication schedule, source of truth
-- [publish.py](scripts/publish.py): Dev.to cross-post API client
-- [scheduled_publish.py](scripts/scheduled_publish.py): launchd 09:00 JST Dev.to orchestrator
-- [zenn_publish.py](scripts/zenn_publish.py): Zenn auto-publish helper (legacy, superseded by `published_at`)
+- [schedule.json](scripts/schedule.json): Dev.to publication schedule, source of truth
+- [publish.py](scripts/publish.py): Dev.to cross-post API client (manual, ad-hoc / `--update`)
+- [devto_crosspost.py](scripts/devto_crosspost.py): schedule-driven Dev.to cross-poster (manual run; auto cron retired 2026-05)
 - [plan_schedule.py](scripts/plan_schedule.py): schedule.json generator
 - [generate_cover.py](scripts/generate_cover.py): cover image generator (Pillow, 1000x420)
+
+Zenn (JP) publishing is not scripted — it uses Zenn's native `published_at` frontmatter scheduling.
 
 ## Claude Code integration
 

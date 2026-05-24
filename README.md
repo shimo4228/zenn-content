@@ -6,7 +6,7 @@ A repository of technical articles on AI agent development, Claude Code workflow
 
 ## Published Articles
 
-42 articles published. Run `npx zenn list:articles` for the latest list.
+48 articles published. Run `npx zenn list:articles` for the latest list.
 
 ### AI Agent Design
 - [Not Reasoning, Not Tools — What If the Essence of AI Agents Is Memory?](https://zenn.dev/shimo4228/articles/agent-essence-is-memory)
@@ -17,10 +17,17 @@ A repository of technical articles on AI agent development, Claude Code workflow
 - [Natural Language as Architecture — Controlling an Autonomous Agent with Prompts, Memory, and Fail-Safe Design](https://zenn.dev/shimo4228/articles/moltbook-agent-evolution-quadrilogy)
 - [I Built an AI Agent from Scratch Because Frameworks Are the Vulnerability](https://zenn.dev/shimo4228/articles/moltbook-agent-scratch-build)
 
+### ReAct Agents
+- [Where ReAct Agents Are Actually Needed in Business](https://zenn.dev/shimo4228/articles/react-agent-business-quadrant)
+- [(3) The LLM Workflow Quadrant Is Missing from Our Vocabulary](https://zenn.dev/shimo4228/articles/react-agent-business-quadrant-2)
+- [Is ReAct Needed in Production? — Separating Design and Operation Phases](https://zenn.dev/shimo4228/articles/react-agent-business-quadrant-3)
+- [Between the Workflow and ReAct Quadrants: How Phase Decides Skill Design](https://zenn.dev/shimo4228/articles/react-agent-business-quadrant-4)
+
 ### AI Governance Series
 - [A Sign on a Climbable Wall: Why AI Agents Need Accountability, Not Just Guardrails](https://zenn.dev/shimo4228/articles/ai-agent-accountability-wall)
 - [Can You Trace the Cause After an Incident?](https://zenn.dev/shimo4228/articles/agent-causal-traceability-org-adoption)
 - [AI Agent Black Boxes Have Two Layers — Technical Limits and Business Incentives](https://zenn.dev/shimo4228/articles/agent-blackbox-capitalism-timescale)
+- [Where Does the Accountability Externalized by AI Go?](https://substack.com/@shimo4228/p-199015317) (Substack)
 
 ### Claude Code Series
 - [Cursor to Zed: Disabling Built-in AI for a CLI-First Setup](https://zenn.dev/shimo4228/articles/cursor-to-zed-migration)
@@ -65,6 +72,8 @@ A repository of technical articles on AI agent development, Claude Code workflow
 - [Obsidian's Official CLI Is Here — No More Hacking Your Vault from the Back Door](https://zenn.dev/shimo4228/articles/obsidian-cli-claude-code-vault-management)
 - [Running Claude Code from iPhone via SSH + tmux](https://zenn.dev/shimo4228/articles/termius-iphone-claude-code)
 - [I Gave Claude Code a Simulator and It Started Tapping and Taking Screenshots on Its Own](https://zenn.dev/shimo4228/articles/xcodebuildmcp-ios-verification)
+- [Organic Growth and Content Integrity in an AI Writing Team](https://zenn.dev/shimo4228/articles/organic-growth-content-integrity)
+- [Building Zed as an Observation Window for Claude Code — Japanese Typography with IBM Plex](https://zenn.dev/shimo4228/articles/zed-observation-window-japanese-typography)
 
 ## Cross-Posting
 
@@ -72,14 +81,14 @@ Articles are cross-posted in Japanese (Zenn) and English (Dev.to).
 
 - `articles/` — Japanese originals (Zenn schedules natively via `published_at` frontmatter)
 - `articles-en/` — English translations
-- `scripts/publish.py` — Dev.to cross-post CLI (manual)
-- `scripts/devto_crosspost.py` — Daily cron-driven Dev.to cross-poster
+- `scripts/publish.py` — Dev.to cross-post CLI (manual, ad-hoc / `--update`)
+- `scripts/devto_crosspost.py` — schedule-driven Dev.to cross-poster (manual run; cron retired 2026-05)
 - `scripts/schedule.json` — Dev.to publishing schedule
 
 ## Tech Stack
 
 - **Zenn CLI** — Article management & preview
-- **textlint** + preset-ja-technical-writing + no-dead-link + prh — Japanese proofreading
+- **textlint** + prh (terminology) + no-dead-link (manual `lint:links`) — Japanese proofreading
 - **markdownlint-cli2** — Markdown linting
 - **husky** + lint-staged — Pre-commit hooks (textlint + markdownlint)
 - **Python 3.13** + httpx + python-frontmatter + Pillow — Cross-posting & cover image generation
@@ -125,8 +134,9 @@ npm run new:article # Create new article
 
 ```
 zenn-content/
-├── articles/          # Japanese articles (42)
+├── articles/          # Japanese articles (48 published)
 ├── articles-en/       # English translations
+├── substack/          # Substack essay mirrors (out of Zenn convention scope)
 ├── books/             # Zenn books
 ├── images/            # Article images & cover images
 ├── scripts/
@@ -138,8 +148,8 @@ zenn-content/
 │   ├── schedule.json         # Dev.to publishing schedule
 │   └── tests/                # pytest (112 tests)
 ├── .claude/
-│   ├── agents/        # Review & translation agents (5)
-│   ├── skills/        # Project skills (11)
+│   ├── agents/        # Zenn-specific agents (2: zenn-drafter, devto-translator)
+│   ├── skills/        # Project skills (11 + learned/)
 │   ├── refs/          # Shared references
 │   └── rules/         # Project rules
 └── .github/

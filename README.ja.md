@@ -6,7 +6,7 @@ AI エージェント開発、Claude Code、LLM エンジニアリングに関�
 
 ## Published Articles
 
-現在 42 本公開中。最新の一覧は `npx zenn list:articles` で確認できます。
+現在 48 本公開中。最新の一覧は `npx zenn list:articles` で確認できます。
 
 ### AI Agent Design
 - [推論でもツールでもない — AIエージェントの本質は「記憶」ではないか](https://zenn.dev/shimo4228/articles/agent-essence-is-memory)
@@ -17,10 +17,17 @@ AI エージェント開発、Claude Code、LLM エンジニアリングに関�
 - [Moltbookエージェント進化記 — 自然言語で制御し、記憶で学び、失敗しても壊れない設計](https://zenn.dev/shimo4228/articles/moltbook-agent-evolution-quadrilogy)
 - [Moltbookエージェント構築記 — Claude Codeとセキュリティファースト開発](https://zenn.dev/shimo4228/articles/moltbook-agent-scratch-build)
 
+### ReAct エージェント
+- [ReAct エージェントが本当に必要な業務はどれか](https://zenn.dev/shimo4228/articles/react-agent-business-quadrant)
+- [(3) LLM ワークフロー象限が語彙から脱落している — 続・ReAct エージェントの適用域](https://zenn.dev/shimo4228/articles/react-agent-business-quadrant-2)
+- [本番運用に ReAct は必要か — 設計フェーズと運用フェーズを分ける](https://zenn.dev/shimo4228/articles/react-agent-business-quadrant-3)
+- [ワークフロー象限と ReAct 象限の間のグラデーション — 設計フェーズと運用フェーズがスキル設計を分ける](https://zenn.dev/shimo4228/articles/react-agent-business-quadrant-4)
+
 ### AI Governance シリーズ
 - [登れる壁に看板を立てても意味がない — AIエージェントに必要なのはガードレールではなくアカウンタビリティだ](https://zenn.dev/shimo4228/articles/ai-agent-accountability-wall)
 - [事故のあとで因果を辿れるか](https://zenn.dev/shimo4228/articles/agent-causal-traceability-org-adoption)
 - [AIエージェントのブラックボックスは二層ある — 技術の限界とビジネスの都合](https://zenn.dev/shimo4228/articles/agent-blackbox-capitalism-timescale)
+- [AIによって外部化された責任はどこへ行くのか](https://substack.com/@shimo4228/p-199017153)（Substack）
 
 ### Claude Code シリーズ
 - [CursorからZedに乗り換えた — ビルトインAIを切って「黒い画面」に振り切った設定と理由](https://zenn.dev/shimo4228/articles/cursor-to-zed-migration)
@@ -65,6 +72,8 @@ AI エージェント開発、Claude Code、LLM エンジニアリングに関�
 - [Obsidian公式CLIが来た——もうVaultを裏口から触らなくていい](https://zenn.dev/shimo4228/articles/obsidian-cli-claude-code-vault-management)
 - [Claude Code をiPhoneから操作する方法 — Termius + Tailscale + tmux 環境構築ガイド](https://zenn.dev/shimo4228/articles/termius-iphone-claude-code)
 - [Claude Codeにシミュレータを渡したら自分でタップしてスクショで検証し始めた](https://zenn.dev/shimo4228/articles/xcodebuildmcp-ios-verification)
+- [AI 執筆チームの有機的成長と Content Integrity](https://zenn.dev/shimo4228/articles/organic-growth-content-integrity)
+- [Zed を Claude Code の「観測窓」として構築する — IBM Plex で統一する日本語タイポグラフィ](https://zenn.dev/shimo4228/articles/zed-observation-window-japanese-typography)
 
 ## クロスポスト
 
@@ -72,14 +81,15 @@ AI エージェント開発、Claude Code、LLM エンジニアリングに関�
 
 - `articles/` — 日本語原稿（Zenn は frontmatter `published_at` で native 予約投稿）
 - `articles-en/` — 英訳
-- `scripts/publish.py` — Dev.to クロスポスト CLI（手動）
-- `scripts/devto_crosspost.py` — 日次 cron 駆動の Dev.to クロスポスター
+- `substack/` — Substack エッセイのミラー（Zenn 規約の適用外）
+- `scripts/publish.py` — Dev.to クロスポスト CLI（手動・ad-hoc / `--update`）
+- `scripts/devto_crosspost.py` — schedule 駆動の Dev.to クロスポスター（手動実行。cron は 2026-05 廃止）
 - `scripts/schedule.json` — Dev.to 投稿スケジュール
 
 ## 技術スタック
 
 - **Zenn CLI** — 記事管理・プレビュー
-- **textlint** + preset-ja-technical-writing + no-dead-link + prh — 日本語校正
+- **textlint** + prh（用語統一）+ no-dead-link（手動 `lint:links`）— 日本語校正
 - **markdownlint-cli2** — Markdown 構文チェック
 - **husky** + lint-staged — pre-commit フック（textlint + markdownlint）
 - **Python 3.13** + httpx + python-frontmatter + Pillow — クロスポスト・カバー画像生成
@@ -125,21 +135,22 @@ npm run new:article # 新規記事作成
 
 ```
 zenn-content/
-├── articles/          # 日本語記事（42本）
+├── articles/          # 日本語記事（48本公開）
 ├── articles-en/       # 英訳記事
+├── substack/          # Substack エッセイのミラー（Zenn 規約の適用外）
 ├── books/             # Zenn books
 ├── images/            # 記事用画像・カバー画像
 ├── scripts/
 │   ├── _schedule_utils.py    # 共有ユーティリティ
 │   ├── publish.py            # Dev.to クロスポスト CLI（手動）
-│   ├── devto_crosspost.py    # 日次 Dev.to クロスポスター（cron）
+│   ├── devto_crosspost.py    # schedule 駆動 Dev.to クロスポスター（手動実行）
 │   ├── generate_cover.py     # カバー画像生成
 │   ├── plan_schedule.py      # スケジュール計画
 │   ├── schedule.json         # Dev.to 投稿スケジュール
 │   └── tests/                # pytest テスト（112テスト）
 ├── .claude/
-│   ├── agents/        # レビュー・翻訳エージェント（5個）
-│   ├── skills/        # プロジェクトスキル（11個）
+│   ├── agents/        # Zenn 固有エージェント（2個: zenn-drafter, devto-translator）
+│   ├── skills/        # プロジェクトスキル（11個 + learned/）
 │   ├── refs/          # 共有リファレンス
 │   └── rules/         # プロジェクトルール
 └── .github/
