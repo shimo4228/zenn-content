@@ -282,3 +282,12 @@ Max プランを持っていて、`claude -p` を使ったことがない方は�
 この記事で紹介したシステムの全コードは GitHub で公開しています。`git clone` してすぐに試せます。
 
 https://github.com/shimo4228/claude-skill-daily-research
+
+## 関連記事
+
+道具の話はここまで。一段奥の、エージェント設計そのものの話:
+
+- [エピソードログから倫理が生まれるまで — Contemplative Agent 17日間の設計記録](https://zenn.dev/shimo4228/articles/contemplative-agent-journey)
+- [推論でもツールでもない — AIエージェントの本質は「記憶」ではないか](https://zenn.dev/shimo4228/articles/agent-essence-is-memory)
+
+研究としての成果物（DOI 付き）は [github.com/shimo4228](https://github.com/shimo4228) に。

@@ -493,3 +493,12 @@ Obsidian に CLI が入ったことの本質は、コマンドが増えたこと
 ただし、3,000 件超の一括処理は依然として Python スクリプトが速い。CLI は万能ではない。「安全な操作は CLI で、力仕事はスクリプトで」——これが現実的な使い分けだ。
 
 `obsidian orphans` を 1 回叩いてみてほしい。自分の Vault がどれだけ散らかっているか、数字で突きつけられる。
+
+## 関連記事
+
+道具の話はここまで。一段奥の、エージェント設計そのものの話:
+
+- [コーディングエージェントの知識をどこに置き、どう守らせるか](https://zenn.dev/shimo4228/articles/coding-agent-memory-architecture)
+- [推論でもツールでもない — AIエージェントの本質は「記憶」ではないか](https://zenn.dev/shimo4228/articles/agent-essence-is-memory)
+
+研究としての成果物（DOI 付き）は [github.com/shimo4228](https://github.com/shimo4228) に。

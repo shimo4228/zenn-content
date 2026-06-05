@@ -400,3 +400,12 @@ AIがAIの環境構築を助ける。2026年の開発風景です。
 外出先でiPhoneの黒い画面を開いてClaude Codeに指示を出す。電車の中でプロジェクトが進む。
 
 GUIの飾りを全部捨てた先にあったのは、最も軽くて、最も速い開発環境でした。
+
+## 関連記事
+
+道具の話はここまで。一段奥の、エージェント設計そのものの話:
+
+- [Claude Code の真価はコード生成ではない](https://zenn.dev/shimo4228/articles/claude-code-context-orchestration)
+- [推論でもツールでもない — AIエージェントの本質は「記憶」ではないか](https://zenn.dev/shimo4228/articles/agent-essence-is-memory)
+
+研究としての成果物（DOI 付き）は [github.com/shimo4228](https://github.com/shimo4228) に。

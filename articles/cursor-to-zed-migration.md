@@ -381,3 +381,12 @@ Zedは1.0前の今が試し始めるのにちょうどいいタイミングで�
 - `autosave: "on_focus_change"` — 保存操作を意識しない
 - `format_on_save: "on"` — 保存時にコードを自動整形
 :::
+
+## 関連記事
+
+道具の話はここまで。一段奥の、エージェント設計そのものの話:
+
+- [Claude Code の真価はコード生成ではない](https://zenn.dev/shimo4228/articles/claude-code-context-orchestration)
+- [推論でもツールでもない — AIエージェントの本質は「記憶」ではないか](https://zenn.dev/shimo4228/articles/agent-essence-is-memory)
+
+研究としての成果物（DOI 付き）は [github.com/shimo4228](https://github.com/shimo4228) に。

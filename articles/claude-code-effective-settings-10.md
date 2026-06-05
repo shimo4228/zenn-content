@@ -503,3 +503,12 @@ Claude Code にはプラグインシステム（`enabledPlugins`）がある。�
 デフォルトのまま Claude Code を使うのは、シートベルトなしで高速道路を走るようなものだ。270 セッションの事故記録が、この 10 個に結晶した。
 
 設定ファイルの全体構造は [設定ファイルを全棚卸しして分かった5つのこと](https://zenn.dev/shimo4228/articles/claude-code-context-audit) も参考にしてほしい。
+
+## 関連記事
+
+道具の話はここまで。一段奥の、エージェント設計そのものの話:
+
+- [Claude Code の真価はコード生成ではない](https://zenn.dev/shimo4228/articles/claude-code-context-orchestration)
+- [推論でもツールでもない — AIエージェントの本質は「記憶」ではないか](https://zenn.dev/shimo4228/articles/agent-essence-is-memory)
+
+研究としての成果物（DOI 付き）は [github.com/shimo4228](https://github.com/shimo4228) に。

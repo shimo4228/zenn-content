@@ -279,3 +279,12 @@ Apple MCP（IDE 統合）と XcodeBuildMCP（ヘッドレス自動化）は補�
 - [Sentry Blog: Sentry acquires XcodeBuildMCP](https://blog.sentry.io/sentry-acquires-xcodebuildmcp/)
 - [GitHub: getsentry/XcodeBuildMCP](https://github.com/getsentry/XcodeBuildMCP)
 - [Blake Crosley: Two MCP Servers Turned Claude Code Into an iOS Build System](https://blakecrosley.com/blog/xcode-mcp-claude-code)
+
+## 関連記事
+
+道具の話はここまで。一段奥の、エージェント設計そのものの話:
+
+- [Claude Code の真価はコード生成ではない](https://zenn.dev/shimo4228/articles/claude-code-context-orchestration)
+- [エピソードログから倫理が生まれるまで — Contemplative Agent 17日間の設計記録](https://zenn.dev/shimo4228/articles/contemplative-agent-journey)
+
+研究としての成果物（DOI 付き）は [github.com/shimo4228](https://github.com/shimo4228) に。

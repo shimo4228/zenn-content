@@ -233,3 +233,12 @@ Claude Code で Obsidian Vault 3,674 ファイルの整理を 1 日で完了し�
 5. **macOS + 日本語ファイル名は NFD/NFC 正規化が必須**
 
 Claude Code はコードを書くだけのツールではありません。ファイルシステム上のあらゆる「整理」作業に使えます。特に、ルールベースの一括処理と内容ベースの個別判断を組み合わせられるのが強みです。
+
+## 関連記事
+
+道具の話はここまで。一段奥の、エージェント設計そのものの話:
+
+- [コーディングエージェントの知識をどこに置き、どう守らせるか](https://zenn.dev/shimo4228/articles/coding-agent-memory-architecture)
+- [推論でもツールでもない — AIエージェントの本質は「記憶」ではないか](https://zenn.dev/shimo4228/articles/agent-essence-is-memory)
+
+研究としての成果物（DOI 付き）は [github.com/shimo4228](https://github.com/shimo4228) に。
