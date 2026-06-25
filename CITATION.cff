@@ -1,0 +1,101 @@
+cff-version: 1.2.0
+message: "If you cite or reuse this essay corpus, please cite it as below."
+type: dataset
+title: "zenn-content: A Bilingual Essay Corpus on AI Agent Design, Coding-Agent Workflows, and Authorship Under AI-Mediated Diffusion"
+date-released: 2026-06-25
+license: CC0-1.0
+repository-code: "https://github.com/shimo4228/zenn-content"
+url: "https://github.com/shimo4228/zenn-content"
+identifiers:
+  - type: swh
+    value: "swh:1:snp:bcdc4895c9f1a2c16cd7a12fa2ad05ceb4a45dd5"
+    description: "Software Heritage snapshot of the essay corpus (intrinsic content-derived identifier, the substitute priority-claim mechanism for the essay genre per authorship-strategy ADR-0013)"
+authors:
+  - family-names: Shimomoto
+    given-names: Tatsuya
+    orcid: "https://orcid.org/0009-0002-6168-4162"
+    alias: shimo4228
+abstract: >-
+  A bilingual (Japanese / English) corpus of author-voiced, published
+  essays and technical articles on AI agent architecture, coding-agent
+  workflows, LLM engineering, AI governance, and authorship under
+  AI-mediated diffusion. The corpus is the human-readable essay surface of
+  a five-line research ecosystem; the published, author-voiced essays
+  constitute the governed corpus, while study and learning drafts without
+  an author voice are excluded. The corpus carries no concept DOI: in line
+  with the ecosystem's genre-split placement model, the essay genre rests
+  its priority claim on an intrinsic, content-derived identifier (the
+  Software Heritage snapshot recorded above) rather than on a registry DOI,
+  while attribution is carried by the federated-identifier layer (ORCID,
+  the ecosystem hub, and the sibling research-line DOIs). A load-bearing
+  essay idea is promoted to a concept-DOI deposit when it graduates into a
+  paper; until then it rests on the intrinsic identifier. Released under a
+  public-domain dedication (CC0-1.0) because the dominant audience is
+  machine ingestion (LLM-mediated reach), not human reading.
+keywords:
+  - AI agents
+  - coding agents
+  - LLM engineering
+  - AI governance
+  - authorship strategy
+  - AI-mediated diffusion
+  - essay corpus
+  - intrinsic identifier
+  - Software Heritage
+  - SWHID
+  - CC0
+  - open access
+references:
+  - type: software
+    title: "shimo4228 research-program hub (five-line ecosystem index)"
+    repository-code: "https://github.com/shimo4228/shimo4228"
+    notes: "Federation parent. This essay corpus is the human-readable essay surface of the five-line research ecosystem the hub indexes."
+    authors:
+      - family-names: Shimomoto
+        given-names: Tatsuya
+        orcid: "https://orcid.org/0009-0002-6168-4162"
+  - type: software
+    title: "Authorship Strategy"
+    repository-code: "https://github.com/shimo4228/authorship-strategy"
+    doi: "10.5281/zenodo.20263316"
+    notes: "Sibling research line whose genre-split placement model (essays as repository-corpus canonical with an intrinsic identifier; papers as concept-DOI canonical) governs this corpus's identifier and license choices."
+    authors:
+      - family-names: Shimomoto
+        given-names: Tatsuya
+        orcid: "https://orcid.org/0009-0002-6168-4162"
+  - type: software
+    title: "Agent Knowledge Cycle (AKC)"
+    repository-code: "https://github.com/shimo4228/agent-knowledge-cycle"
+    doi: "10.5281/zenodo.19200726"
+    notes: "Sibling research line in the shimo4228 research ecosystem; several essays in this corpus document its operation."
+    authors:
+      - family-names: Shimomoto
+        given-names: Tatsuya
+        orcid: "https://orcid.org/0009-0002-6168-4162"
+  - type: software
+    title: "Contemplative Agent"
+    repository-code: "https://github.com/shimo4228/contemplative-agent"
+    doi: "10.5281/zenodo.19212118"
+    notes: "Sibling research line; several essays in this corpus document its design journey and benchmark."
+    authors:
+      - family-names: Shimomoto
+        given-names: Tatsuya
+        orcid: "https://orcid.org/0009-0002-6168-4162"
+  - type: software
+    title: "Agent Attribution Practice (AAP)"
+    repository-code: "https://github.com/shimo4228/agent-attribution-practice"
+    doi: "10.5281/zenodo.19652013"
+    notes: "Sibling research line on accountability distribution; referenced in this corpus's AI governance essays."
+    authors:
+      - family-names: Shimomoto
+        given-names: Tatsuya
+        orcid: "https://orcid.org/0009-0002-6168-4162"
+  - type: software
+    title: "Attention, Not Self"
+    repository-code: "https://github.com/shimo4228/attention-not-self"
+    doi: "10.5281/zenodo.20262112"
+    notes: "Sibling cross-cutting research line contrasting Buddhist Abhidharma with computational phenomenology."
+    authors:
+      - family-names: Shimomoto
+        given-names: Tatsuya
+        orcid: "https://orcid.org/0009-0002-6168-4162"

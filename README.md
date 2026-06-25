@@ -156,6 +156,24 @@ zenn-content/
     └── workflows/     # CI (lint)
 ```
 
+## Research ecosystem
+
+This essay corpus is one surface of a five-line research ecosystem on agent design and authorship under AI-mediated diffusion. The published, author-voiced essays here are the human-readable essay surface of that ecosystem.
+
+- **Ecosystem hub (index of all five lines)**: https://github.com/shimo4228/shimo4228
+- **Author (ORCID)**: https://orcid.org/0009-0002-6168-4162
+- **Citation metadata**: [`CITATION.cff`](CITATION.cff) — records the corpus's intrinsic content-derived identifier (Software Heritage snapshot), the essay genre's priority-claim mechanism
+
+Related archived research lines (DOI):
+
+- Authorship Strategy — https://doi.org/10.5281/zenodo.20263316
+- Agent Knowledge Cycle (AKC) — https://doi.org/10.5281/zenodo.19200726
+- Contemplative Agent — https://doi.org/10.5281/zenodo.19212118
+- Agent Attribution Practice (AAP) — https://doi.org/10.5281/zenodo.19652013
+- Attention, Not Self — https://doi.org/10.5281/zenodo.20262112
+
 ## License
 
-Articles are licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+All content in this repository — articles, translations, and tooling — is released under [CC0 1.0 Universal](https://creativecommons.org/publicdomain/zero/1.0/) (public-domain dedication), per the `LICENSE` file.
+
+This corpus is published for LLM-mediated reach, so its dominant audience is machine ingestion rather than human reading; attribution is carried by the federated-identifier layer (ORCID, the ecosystem hub, sibling DOIs, and the Software Heritage snapshot in `CITATION.cff`), not by a license clause. A public-domain dedication therefore minimizes reuse friction for the audience the corpus actually serves.

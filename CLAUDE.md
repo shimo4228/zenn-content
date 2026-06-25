@@ -4,6 +4,12 @@
 
 This repository contains **Zenn articles and books** for AI agent development, Claude Code workflows, and LLM engineering experiments. All content follows the **"Build in Public"** principle, documenting real development sessions and design decisions.
 
+## Governed essay corpus (membership)
+
+This repository is governed as the **essay-corpus artifact** of a five-line research ecosystem (see `CITATION.cff` and the README "Research ecosystem" section). The governed corpus is **author-voiced + published** essays: pieces written in the author's own voice and actually published (Zenn / Dev.to / Substack mirror). Study or learning drafts without an author voice — for example Claude-written study drafts that were never published — are **not** part of the governed corpus and are kept out of this repository. This is a membership criterion, not a churn rule: it describes what belongs, and is not enforced by reshuffling files.
+
+The corpus rests its priority claim on the **intrinsic content-derived identifier** (the Software Heritage snapshot in `CITATION.cff`), not a registry DOI — this is the essay genre's substitute priority-claim mechanism under the ecosystem's genre-split placement model (authorship-strategy ADR-0016 / ADR-0013). A load-bearing essay idea is promoted to a concept-DOI deposit only when it graduates into a paper.
+
 ## Git Push Reminder (CRITICAL)
 
 記事の作成・編集・schedule.json の更新をコミットしたら、**必ずユーザーに push を促すこと**。未 push のコミットがあると、Zenn の `published_at` 予約投稿が反映されず、Dev.to のクロスポストスクリプトも動かない。

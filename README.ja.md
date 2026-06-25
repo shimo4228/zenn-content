@@ -157,6 +157,24 @@ zenn-content/
     └── workflows/     # CI（lint）
 ```
 
+## リサーチエコシステム
+
+このエッセイコーパスは、agent design と AI 媒介拡散下の著者性を扱う 5 つのリサーチラインからなるエコシステムの 1 surface である。ここにある公開済み・著者の声を持つエッセイ群が、そのエコシステムの人間可読なエッセイ surface にあたる。
+
+- **エコシステム hub（5 ラインの索引）**: https://github.com/shimo4228/shimo4228
+- **著者（ORCID）**: https://orcid.org/0009-0002-6168-4162
+- **引用メタデータ**: [`CITATION.cff`](CITATION.cff) —— コーパスの intrinsic content-derived identifier（Software Heritage snapshot）を記録。エッセイ genre の priority-claim 機構
+
+関連するアーカイブ済みリサーチライン（DOI）:
+
+- Authorship Strategy — https://doi.org/10.5281/zenodo.20263316
+- Agent Knowledge Cycle (AKC) — https://doi.org/10.5281/zenodo.19200726
+- Contemplative Agent — https://doi.org/10.5281/zenodo.19212118
+- Agent Attribution Practice (AAP) — https://doi.org/10.5281/zenodo.19652013
+- Attention, Not Self — https://doi.org/10.5281/zenodo.20262112
+
 ## ライセンス
 
-記事は [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) でライセンスされています。
+本リポジトリのすべてのコンテンツ（記事・翻訳・ツール）は [CC0 1.0 Universal](https://creativecommons.org/publicdomain/zero/1.0/)（パブリックドメイン献呈）で公開されています（`LICENSE` ファイル参照）。
+
+このコーパスは LLM 媒介での到達を目的に公開されており、主たる audience は人間の閲覧ではなく機械の取り込みである。attribution は license 条項ではなく連邦識別子層（ORCID・エコシステム hub・sibling DOI・`CITATION.cff` の Software Heritage snapshot）が担う。ゆえにパブリックドメイン献呈が、コーパスが実際に対象とする audience の再利用摩擦を最小化する。

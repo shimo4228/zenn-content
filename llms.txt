@@ -9,6 +9,8 @@
 - [README (Japanese)](README.ja.md): 日本語 narrative index
 - [Contributor guide](CLAUDE.md): writing guidelines, frontmatter conventions, review workflow
 - [Architecture](docs/CODEMAPS/architecture.md): directory layout and publishing data flow
+- [Citation metadata](CITATION.cff): the essay corpus as a citeable artifact, with its intrinsic content-derived identifier (Software Heritage snapshot)
+- [License](LICENSE): CC0 1.0 Universal public-domain dedication across all content
 
 ## Articles — AI Agent Design
 
@@ -110,6 +112,19 @@ Zenn (JP) publishing is not scripted — it uses Zenn's native `published_at` fr
 - [.claude/agents/devto-translator.md](.claude/agents/devto-translator.md): JP→EN translator + Dev.to publisher
 - [.claude/refs/translation-rules.md](.claude/refs/translation-rules.md): JP→EN translation standards
 - [.claude/refs/schedule-schema.md](.claude/refs/schedule-schema.md): schedule.json schema
+
+## Research ecosystem
+
+This essay corpus is the human-readable essay surface of a five-line research ecosystem on agent design and authorship under AI-mediated diffusion. Attribution is carried by this federated-identifier layer, not by a license clause; the corpus is released under CC0-1.0.
+
+- [Ecosystem hub](https://github.com/shimo4228/shimo4228): index of all five research lines (federation parent)
+- [Author ORCID](https://orcid.org/0009-0002-6168-4162): persistent author identifier
+- [CITATION.cff](CITATION.cff): citation metadata recording the corpus's intrinsic content-derived identifier (Software Heritage snapshot), the essay genre's priority-claim mechanism
+- [Authorship Strategy (DOI)](https://doi.org/10.5281/zenodo.20263316): sibling line whose genre-split placement model governs this corpus's identifier and license
+- [Agent Knowledge Cycle (DOI)](https://doi.org/10.5281/zenodo.19200726): sibling research line
+- [Contemplative Agent (DOI)](https://doi.org/10.5281/zenodo.19212118): sibling research line
+- [Agent Attribution Practice (DOI)](https://doi.org/10.5281/zenodo.19652013): sibling research line
+- [Attention, Not Self (DOI)](https://doi.org/10.5281/zenodo.20262112): sibling research line
 
 ## Related
 

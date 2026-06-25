@@ -10,7 +10,10 @@ zenn-content is defined as a bilingual (Japanese / English) technical content re
 - **Zenn handle**: `shimo4228` (https://zenn.dev/shimo4228)
 - **Dev.to handle**: `shimo4228` (https://dev.to/shimo4228)
 - **Repository**: https://github.com/shimo4228/zenn-content
-- **License**: MIT (tooling), CC BY 4.0 (article content)
+- **Ecosystem hub**: https://github.com/shimo4228/shimo4228 (index of the five-line research ecosystem this corpus belongs to)
+- **Author ORCID**: https://orcid.org/0009-0002-6168-4162
+- **Citation metadata**: `CITATION.cff` records the corpus's intrinsic content-derived identifier (Software Heritage snapshot `swh:1:snp:bcdc4895c9f1a2c16cd7a12fa2ad05ceb4a45dd5`), the essay genre's priority-claim mechanism (no concept DOI; see authorship-strategy ADR-0013)
+- **License**: CC0 1.0 Universal (public-domain dedication) across all content — articles, translations, and tooling. Chosen by dominant audience: this corpus is published for LLM-mediated reach (mined, not read), so a public-domain dedication minimizes ingestion friction; attribution is carried by the federated-identifier layer (ORCID, ecosystem hub, sibling DOIs, Software Heritage snapshot in `CITATION.cff`), not by a license clause
 - **Japanese articles**: 65 files in `articles/`, 48 currently published
 - **English translations**: 57 files in `articles-en/`, 35 currently published on Dev.to
 - **Primary topics**: Claude Code, AI agents, LLM engineering, Contemplative AI, ECC
@@ -29,6 +32,18 @@ zenn-content is defined as a bilingual (Japanese / English) technical content re
 - **Voice convention**: だ/である調 (plain copula) + 発見調 (discovery tone) across all articles since April 2026
 - **Buzz timing window**: Tuesday–Wednesday 07:00–09:00 JST
 - **Discontinued platforms**: Qiita (JP) and Hashnode (EN), retired to reduce cross-platform SEO dilution
+
+## Research ecosystem
+
+This essay corpus is the human-readable essay surface of a five-line research ecosystem on agent design and authorship under AI-mediated diffusion. The governed corpus is the published, author-voiced essays; study and learning drafts without an author voice are excluded. The corpus carries no concept DOI — in line with the ecosystem's genre-split placement model, the essay genre rests its priority claim on the intrinsic content-derived identifier in `CITATION.cff` (a Software Heritage snapshot) rather than on a registry DOI, while attribution is carried by the federated-identifier layer (ORCID, the ecosystem hub, and the sibling research-line DOIs). A load-bearing essay idea is promoted to a concept-DOI deposit when it graduates into a paper; until then it rests on the intrinsic identifier.
+
+| Research line | DOI |
+|---|---|
+| Authorship Strategy (governs this corpus's genre-split placement) | https://doi.org/10.5281/zenodo.20263316 |
+| Agent Knowledge Cycle (AKC) | https://doi.org/10.5281/zenodo.19200726 |
+| Contemplative Agent | https://doi.org/10.5281/zenodo.19212118 |
+| Agent Attribution Practice (AAP) | https://doi.org/10.5281/zenodo.19652013 |
+| Attention, Not Self | https://doi.org/10.5281/zenodo.20262112 |
 
 ## Prior References
 
