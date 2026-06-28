@@ -2,7 +2,7 @@ Language: English | [日本語](README.ja.md)
 
 # zenn-content
 
-[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/shimo4228/zenn-content) [![GitMCP](https://img.shields.io/endpoint?url=https://gitmcp.io/badge/shimo4228/zenn-content)](https://gitmcp.io/shimo4228/zenn-content) [![View Code Wiki](https://assets.codewiki.google/readme-badge/static.svg)](https://codewiki.google/github.com/shimo4228/zenn-content)
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/shimo4228/zenn-content) [![GitMCP](https://img.shields.io/endpoint?url=https://gitmcp.io/badge/shimo4228/zenn-content)](https://gitmcp.io/shimo4228/zenn-content)
 
 A repository of technical articles on AI agent development, Claude Code workflows, and LLM engineering experiments. Writing, reviewing, translating, and cross-posting are all done in collaboration with Claude Code.
 
