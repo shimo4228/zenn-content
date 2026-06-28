@@ -2,6 +2,8 @@ Language: [English](README.md) | 日本語
 
 # zenn-content
 
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/shimo4228/zenn-content)
+
 AI エージェント開発、Claude Code、LLM エンジニアリングに関する技術記事リポジトリ。執筆・レビュー・翻訳・クロスポストまで Claude Code との協業で運用しています。
 
 ## Published Articles
