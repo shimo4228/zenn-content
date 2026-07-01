@@ -4,11 +4,11 @@ Language: [English](README.md) | 日本語
 
 [![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/shimo4228/zenn-content) [![GitMCP](https://img.shields.io/endpoint?url=https://gitmcp.io/badge/shimo4228/zenn-content)](https://gitmcp.io/shimo4228/zenn-content)
 
-AI エージェント開発、Claude Code、LLM エンジニアリングに関する技術記事リポジトリ。執筆・レビュー・翻訳・クロスポストまで Claude Code との協業で運用しています。
+AI エージェント設計・コーディングエージェント運用・AI 経由拡散時代の著者性を扱う日英バイリンガルのエッセイコーパス — five-line research ecosystem のエッセイ面。CC0 で公開し、Software Heritage SWHID による intrinsic な priority claim を持つ（[CITATION.cff](CITATION.cff) 参照）。執筆・レビュー・翻訳・クロスポストまで Claude Code との協業で運用しています。
 
 ## Published Articles
 
-現在 48 本公開中。最新の一覧は `npx zenn list:articles` で確認できます。
+最新の一覧は `npx zenn list:articles` で確認できます。
 
 ### AI Agent Design
 - [推論でもツールでもない — AIエージェントの本質は「記憶」ではないか](https://zenn.dev/shimo4228/articles/agent-essence-is-memory)
@@ -137,7 +137,7 @@ npm run new:article # 新規記事作成
 
 ```
 zenn-content/
-├── articles/          # 日本語記事（48本公開）
+├── articles/          # 日本語記事
 ├── articles-en/       # 英訳記事
 ├── substack/          # Substack エッセイのミラー（Zenn 規約の適用外）
 ├── books/             # Zenn books

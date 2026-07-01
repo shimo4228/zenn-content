@@ -4,11 +4,11 @@ Language: English | [日本語](README.ja.md)
 
 [![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/shimo4228/zenn-content) [![GitMCP](https://img.shields.io/endpoint?url=https://gitmcp.io/badge/shimo4228/zenn-content)](https://gitmcp.io/shimo4228/zenn-content)
 
-A repository of technical articles on AI agent development, Claude Code workflows, and LLM engineering experiments. Writing, reviewing, translating, and cross-posting are all done in collaboration with Claude Code.
+Bilingual (JA/EN) essay corpus on AI agent design, coding-agent workflows, and authorship under AI-mediated diffusion — the essay surface of a five-line research ecosystem. Published CC0, with an intrinsic priority claim via Software Heritage SWHID (see [CITATION.cff](CITATION.cff)). Writing, reviewing, translating, and cross-posting are all done in collaboration with Claude Code.
 
 ## Published Articles
 
-48 articles published. Run `npx zenn list:articles` for the latest list.
+Run `npx zenn list:articles` for the current list.
 
 ### AI Agent Design
 - [Not Reasoning, Not Tools — What If the Essence of AI Agents Is Memory?](https://zenn.dev/shimo4228/articles/agent-essence-is-memory)
@@ -136,7 +136,7 @@ npm run new:article # Create new article
 
 ```
 zenn-content/
-├── articles/          # Japanese articles (48 published)
+├── articles/          # Japanese articles
 ├── articles-en/       # English translations
 ├── substack/          # Substack essay mirrors (out of Zenn convention scope)
 ├── books/             # Zenn books
