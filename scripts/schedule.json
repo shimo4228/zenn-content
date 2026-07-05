@@ -483,6 +483,19 @@
         "architecture"
       ],
       "notes": "EN: Is ReAct Needed in Production? — Separating Design and Operation Phases"
+    },
+    {
+      "file": "articles-en/codex-review-cross-model-decorrelation.md",
+      "date": "2026-07-07",
+      "devto": null,
+      "devto_tags": [
+        "codereview",
+        "codex",
+        "claudecode",
+        "skills"
+      ],
+      "cover_image": "https://raw.githubusercontent.com/shimo4228/zenn-content/main/images/covers/codex-review-cross-model-decorrelation.png",
+      "notes": "EN translation of Claude Codeから簡単にCodexレビューさせるスキルを作った"
     }
   ]
 }
