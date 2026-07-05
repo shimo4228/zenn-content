@@ -57,17 +57,18 @@ published: true  # false for draft
 **Common tags:**
 - `claude` - Claude AI / Claude Code
 - `anki` - Anki flashcard system
-- `ai` - General AI topics
 - `python` - Python programming
 - `tdd` - Test-Driven Development
 - `cli` - Command-line tools
 - `automation` - Workflow automation
 
 **Tag guidelines:**
-- Use 3-5 tags per article (3-4 optimal)
-- Start with most specific tags
-- Include language/framework if relevant (`python`, `typescript`)
-- Use established tags when possible (check Zenn for popular tags)
+- **上限の5個まで使い切る**（3-4個に留めない）。5個埋まる具体性があるなら埋める
+- 最も具体的なタグから優先する
+- 言語・フレームワークが関係するなら含める（`python`, `typescript`）
+- **定着しているか実際に確認する**（`https://zenn.dev/topics/<tag>` を確認し、記事数0や存在しないタグを弾く）
+- **記事数が多すぎる汎用タグより、記事の核に近いニッチなタグを優先する**（例: 記事の主題が「ハーネスへの組み込み」なら、母数の大きい `openai`（数千記事）より的を絞った `harness`（数十〜百記事）の方が、対象読者に届きやすく埋もれにくい）。定着している（0記事ではない）ことは要件だが、記事数が多いことは優先理由にならない
+- **`ai` / `llm` のような一般名すぎるタグは単独で使わない**（検索性・差別化に寄与しない）。同じ概念を指すならより具体的な語（製品名・技術名・`skills` 等の機能カテゴリ）に置き換える
 
 ---
 

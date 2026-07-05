@@ -30,8 +30,9 @@ JP 記事パス（例: `articles/agent-causal-traceability-org-adoption.md`）
 3. マッピングにない topics は以下の判断基準で英語タグを決定する:
    - その topic が英語としてそのまま通じるか（例: "security" → "security"）
    - 適切な上位カテゴリがあるか（例: "倫理" → "discuss"）
-   - Dev.to で実際に使われているタグか（不明なら汎用タグ: ai, programming, discuss 等を使用）
-4. 決定したタグを EN 記事の frontmatter `tags:` に記録する（最大4つ）
+   - **定着しているか実際に確認する**（`https://dev.to/t/<tag>` を確認し、記事数0や存在しないタグを弾く。Zenn とはタグ体系が別なので、Zenn 側で確認済みでも Dev.to 側で改めて確認する）
+   - **記事数が多すぎる汎用タグ（`ai`, `programming` 等）より、記事の核に近い具体的なタグを優先する**。汎用タグは母数が大きく埋もれやすい。フォールバックとして安易に使わない — 定着タグが見つからない場合のみ、より近い上位カテゴリを探す
+4. 決定したタグを EN 記事の frontmatter `tags:` に記録する（**最大4つ**。Zenn の上限5とは異なるので流用しない）
 5. `type: "idea"` の記事は先頭に "discuss" を付与する
 
 ### Phase 3: カバー画像
