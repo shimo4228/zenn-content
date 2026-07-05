@@ -496,6 +496,19 @@
       ],
       "cover_image": "https://raw.githubusercontent.com/shimo4228/zenn-content/main/images/covers/codex-review-cross-model-decorrelation.png",
       "notes": "EN translation of Claude Codeから簡単にCodexレビューさせるスキルを作った"
+    },
+    {
+      "file": "articles-en/non-code-asset-value-stocktake.md",
+      "date": "2026-07-08",
+      "devto": null,
+      "devto_tags": [
+        "claudecode",
+        "ai",
+        "devtools",
+        "githubactions"
+      ],
+      "cover_image": "https://raw.githubusercontent.com/shimo4228/zenn-content/main/images/covers/non-code-asset-value-stocktake.png",
+      "notes": "EN translation of 非コード資産の「価値」は linter では測れない — LLM で棚卸しするスキルを作った"
     }
   ]
 }
