@@ -1,8 +1,14 @@
-<!-- origin: original -->
+---
+name: seo-optimizer
+description: Zenn 記事のタイトル・topics・emoji を Distribution レイヤーで最適化する（内容は変えない、ADR-0001）。タイトル原則・AI slop は writing-ecosystem、文字数は zenn-writing.md が正本。
+user-invocable: true
+origin: original
+---
+
 # SEO Optimizer Skill
 
 **Purpose:** Zenn 記事のタイトル・topics・emoji を最適化し、関心のある読者に記事が届くようにする。
-内容の改変は行わない（[ADR-0001](../../.claude/docs/adr/0001-content-integrity-principle.md) Content Integrity 原則）。
+内容の改変は行わない（[ADR-0001](../../docs/adr/0001-content-integrity-principle.md) Content Integrity 原則）。
 
 > **タイトル規約・AI slop の正本:** `~/.claude/skills/writing-ecosystem/SKILL.md`（Zenn 固有ルールは `.claude/rules/zenn-writing.md`）
 
@@ -29,22 +35,15 @@
 | **Emoji** | 記事テーマとの関連性 |
 | **冒頭文** | フック力、キーワード自然含有 |
 
-### Step 2: タイトル最適化
+### Step 2: タイトル最適化（Distribution レイヤーのみ）
 
-**方針（2026-03-24 改訂 — zenn-writer と整合）:**
+タイトルの**原則・誠実さ・煽り禁止・問いの形**は `~/.claude/skills/writing-ecosystem/SKILL.md` の Title Conventions が正本、**文字数上限（50-60）**は `.claude/rules/zenn-writing.md` が正本。ここでは再掲しない。
 
-タイトルの目的は**概念の誠実な呼びかけ**。読み手がタイトルだけで「何の概念を提案しているか」理解できること。
+このスキルが担うのは Distribution レイヤーの調整だけ（内容は変えない、[ADR-0001](../../docs/adr/0001-content-integrity-principle.md)）:
 
-**原則:**
-- **50文字以内**。概念を正確に伝えることが最優先
-- **主要キーワード**を含める（SEO 観点）
-- **問いの形を活用** — 「どう〜するか」「なぜ〜か」は知的関心に訴える
-- **クリックベイトは厳禁** — 煽り語（「壊れている」「地獄」「最強」）、数字だけの訴求（「N選」「N倍」）は使わない
-
-**提案時のルール:**
-- 3 つの候補を提示
-- 各候補に「この概念がどう伝わるか」の理由を添える
-- 現在のタイトルとの比較を示す
+- **主要キーワードの自然な含有**（SEO 観点。語の選び直しは可、意味は変えない）
+- **3 候補を提示**し、各候補に「概念がどう伝わるか」の理由を添え、現タイトルと比較
+- 最終判断はユーザーに委ねる
 
 ### Step 3: Topics 最適化
 

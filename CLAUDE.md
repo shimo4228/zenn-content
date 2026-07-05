@@ -18,20 +18,9 @@ The corpus rests its priority claim on the **intrinsic content-derived identifie
 
 ### Zenn Article Format
 
-All articles MUST use Zenn frontmatter:
+All articles MUST use Zenn frontmatter. Field-by-field spec is canonical in `.claude/skills/zenn-format/SKILL.md`; the `published_at` scheduling field is documented in `.claude/rules/zenn-writing.md`.
 
-```markdown
----
-title: "Article Title (50-60 characters)"
-emoji: "📚"
-type: "tech"  # or "idea"
-topics: ["claude", "anki", "ai"]  # 1-5 tags
-published: true  # or false for draft
-published_at: 2026-04-15 07:00  # 予約投稿（JST、省略で即公開）
----
-
-# Article content starts here
-```
+> **執筆スタイルの既定は実用軸**（読者が数秒で何かわかり、すぐ使える）。tech は `zenn-practical-writing`、frontmatter・記法は `zenn-format`、Zenn 固有ルールは `.claude/rules/zenn-writing.md` が正本。以下の Technical Depth は「why を冗長に語る」ではなく、必要な深さを低認知負荷で（詳細は `:::details` に）という意味。
 
 ### Content Standards
 
@@ -57,7 +46,7 @@ published_at: 2026-04-15 07:00  # 予約投稿（JST、省略で即公開）
    - **Technical but approachable** - Assume readers are engineers
    - **Honest** - Discuss failures and challenges, not just successes
    - **Human insights** - AI-assisted writing, but human perspective
-   - **No AI slop** - Avoid generic phrases like "powerful tool", "revolutionize", "seamless"
+   - **No AI slop** - Avoid generic phrases like "powerful tool", "revolutionize", "seamless"（禁止リストの正本は global `writing-ecosystem` skill）
 
 5. **Structure**
    - **Introduction** - Hook reader with a problem or insight
@@ -86,38 +75,32 @@ published_at: 2026-04-15 07:00  # 予約投稿（JST、省略で即公開）
 
 ## Editor Agent Usage
 
-Before publishing, run review agents. For tech articles use `editor`, for idea articles use `essay-reviewer`. Run `fact-checker` in parallel to verify factual claims.
+記事の執筆はサブエージェントに委譲せず、Claude Code 本体が `zenn-practical-writing` に従って直接執筆する。Before publishing, run review agents in parallel: `editor`（全 Zenn/Dev.to 記事共通）+ `fact-checker`（事実主張の検証）+ codex-review（公開記事の cross-model レビュー、prompt-driven）。
 
 ```bash
-# tech 記事
 claude --agent=editor --prompt="Review: articles/ARTICLE_NAME.md"
-# idea 記事
-claude --agent=essay-reviewer --prompt="Review: articles/ARTICLE_NAME.md"
 # ファクトチェック（並列実行可）
 claude --agent=fact-checker --prompt="Fact-check: articles/ARTICLE_NAME.md"
 ```
 
 Available agents:
-- `editor` — tech 記事の構造・品質・AI slop 検出（4段階評価）
-- `essay-reviewer` — idea 記事の論理・トーン・過積載検出
+- `editor` — Zenn/Dev.to 記事の構造・品質・AI slop 検出（4段階評価）。type 分岐なしで全記事に使用
+- `essay-reviewer` — Substack essay corpus 専用（Zenn/Dev.to のミッションでは使わない）
 - `fact-checker` — 事実主張の Web 検索検証（ACCURATE/PARTIALLY/INACCURATE/UNVERIFIABLE）
 - `devto-translator` — JP→EN 翻訳 + Dev.to タグ付け + 投稿
-- `zenn-drafter` — 記事執筆（分析→執筆→セルフレビュー）
 
-## zenn-writer Skill
+## Writing skills
 
-Use the `zenn-writer` skill for article-specific guidance:
+Zenn/Dev.to の記事執筆は**チャンネル独自の実用軸**が既定 —「読者が数秒で何かわかり、そのまま手を動かして再現できる」。**tech/idea の type で声を分けない**（frontmatter の `type` は platform 要件として残るが、voice は分岐しない）。
 
-```bash
-claude skill zenn-writer
-```
+| 用途 | 使うスキル |
+|---|---|
+| **Zenn/Dev.to の記事執筆（既定・全記事）** | `zenn-practical-writing` — 実用軸（ですます・即実用・実コード/図・低認知負荷・用途が瞬時にわかる） |
+| **記法・frontmatter** | `zenn-format`（正本） |
+| **任意の personality flavor** | `zenn-idea-voice`（毒humor / 刃牙。type 非依存の opt-in） |
+| **genuine な思索エッセイ** | `~/.claude/skills/writing-ecosystem/SKILL.md`（だ/である × 発見調）。Substack corpus 専用、Zenn には出さない |
 
-This skill provides:
-- Zenn frontmatter templates
-- Article structure patterns
-- SEO best practices
-- Code embedding formats
-- Image embedding formats
+`zenn-writer` skill は歴史的パス維持のための**声のルーター**（上表へ振り分けるだけ）。genre 中立 canon（AI slop 禁止・タイトル原則・ネタ 3 軸）は global `writing-ecosystem` が正本。根拠: `.claude/docs/adr/0003-zenn-practical-channel-axis.md`。
 
 ## Testing Workflow
 
@@ -131,8 +114,8 @@ Full procedure: `docs/RUNBOOK.md`
 - [ ] Screenshots have no sensitive information (file paths, usernames)
 - [ ] File paths are anonymized
 - [ ] All code examples are tested and executable
-- [ ] Editor/essay-reviewer レビュー完了
-- [ ] fact-checker でファクトチェック完了（idea 記事は必須）
+- [ ] Editor レビュー完了（Zenn/Dev.to は type 分岐なく editor に一本化。essay-reviewer は Substack 専用）
+- [ ] fact-checker でファクトチェック完了（事実主張を含む記事は必須）
 - [ ] Lint passes (`npm run lint`)
 - [ ] Dead-link チェック (`npm run lint:links`) — 公開前のみ。CI では走らない（外部 URL の rate limit / redirect 偽陽性で止まらないようにするため）
 - [ ] Preview looks good (`npm run preview`)

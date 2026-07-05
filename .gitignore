@@ -22,7 +22,7 @@ Thumbs.db
 .playwright-mcp/
 
 # Internal docs and planning (not for publication)
-docs/
+/docs/
 planning/
 drafts/
 articles/_context/

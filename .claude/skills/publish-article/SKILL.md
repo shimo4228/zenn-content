@@ -1,4 +1,10 @@
-<!-- origin: original -->
+---
+name: publish-article
+description: 記事公開前の全チェック（lint→レビュー→セキュリティ→frontmatter→published_at→スケジュール→Dev.to クロスポスト→push）を順に実行する。
+user-invocable: true
+origin: original
+---
+
 # Publish Article Skill
 
 **Purpose:** 記事公開前の全チェックを一連のフローで実行し、抜け漏れを防止する。
@@ -26,7 +32,6 @@ npx textlint {article_path}
 ```
 
 **チェック内容:**
-- 日本語技術文書のルール（preset-ja-technical-writing）
 - リンク切れ検出（no-dead-link）
 - 用語統一（prh: pdf2anki, Claude-Native, CLI-First 等）
 
@@ -45,6 +50,8 @@ npx markdownlint-cli2 {article_path}
 - HTML 要素の妥当性
 
 ### Step 3: Editor エージェントによるレビュー
+
+**`writing-team` Mission A/B から到達した場合はスキップ**（editor/fact-checker/codex-review は writing-team 側で既に並列実行済み）。`/publish-article` を単独で直接呼んだ場合のみ、このステップで editor エージェントを起動する。
 
 editor エージェントを起動して記事を包括的にレビューする。
 
@@ -73,6 +80,8 @@ grep -n 'sk-proj-\|api_key\|password\|secret\|token' {article_path}
 ```
 
 ### Step 5: Frontmatter 検証
+
+> frontmatter 仕様の正本は `zenn-format` skill。ここでは公開前の検証のみ。
 
 ```bash
 npx zenn list:articles
@@ -107,7 +116,7 @@ published_at: 2026-04-15 07:00  # JST、ハイフン区切り必須
 - レートリミットにカウントされない
 - 何本でも事前 push OK（`published_at` まで公開されない）
 
-**参考タイミング:** 火〜木曜 8:00-9:00 JST（強制ではない）
+**参考タイミング:** `.claude/rules/zenn-writing.md`「投稿ペース方針」を参照（バズタイム：火〜水 7:00-9:00 JST）。
 
 ### Step 8: スケジュール登録
 

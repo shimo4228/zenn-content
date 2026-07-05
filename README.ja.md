@@ -102,8 +102,9 @@ AI エージェント設計・コーディングエージェント運用・AI �
 ```
 .claude/
 ├── agents/                    # Zenn 固有エージェント（editor/essay-reviewer/fact-checker は global へ移行）
-│   ├── zenn-drafter.md        # 記事執筆（分析→執筆→セルフレビュー）
 │   └── devto-translator.md    # JP→EN翻訳 + Dev.to投稿
+│                              # 注: 記事執筆はサブエージェントに委譲しない
+│                              # （オーケストレーター本体が zenn-practical-writing に従って直接執筆）
 ├── refs/                      # 共有リファレンス
 │   ├── translation-rules.md
 │   └── schedule-schema.md
@@ -111,17 +112,17 @@ AI エージェント設計・コーディングエージェント運用・AI �
 │   ├── content-integrity.md   # Content Integrity 原則
 │   └── zenn-writing.md        # global writing-ecosystem skill の Zenn overlay
 └── skills/
-    ├── writing-team/          # オーケストレーター（PM）
-    ├── zenn-writer/           # 記事執筆ガイド
-    ├── publish-article/       # 公開・クロスポスト手順
-    ├── schedule-publish/      # スケジュール管理
-    ├── seo-optimizer/         # SEO 最適化
-    ├── ideation/              # テーマ検討・アイデア出し
-    ├── series-checker/        # シリーズ整合性チェック
-    ├── quality-gate/          # 統一品質基準
-    ├── chatlog-to-article/    # チャットログ→記事変換
-    ├── zenn-format/           # Zenn フォーマット
-    └── content-research-writer/ # リサーチ付き執筆
+    ├── writing-team/           # オーケストレーター（PM）
+    ├── zenn-practical-writing/ # 全 Zenn/Dev.to 記事の既定の声（実用軸。tech/idea で分けない）
+    ├── zenn-idea-voice/        # 任意の personality flavor（毒humor / 刃牙）。type 非依存
+    ├── zenn-writer/            # 声のルーター（互換のため path 維持。全て zenn-practical-writing へ）
+    ├── zenn-format/            # Zenn フォーマット・frontmatter（正本）
+    ├── publish-article/        # 公開・クロスポスト手順
+    ├── schedule-publish/       # スケジュール管理
+    ├── seo-optimizer/          # SEO 最適化（タイトル・タグ・emoji のみ）
+    ├── ideation/               # テーマ検討・アイデア出し
+    ├── series-checker/         # シリーズ整合性チェック
+    └── quality-gate/           # 統一品質基準
 ```
 
 ## クイックスタート
@@ -151,7 +152,7 @@ zenn-content/
 │   ├── schedule.json         # Dev.to 投稿スケジュール
 │   └── tests/                # pytest テスト（112テスト）
 ├── .claude/
-│   ├── agents/        # Zenn 固有エージェント（2個: zenn-drafter, devto-translator）
+│   ├── agents/        # Zenn 固有エージェント（1個: devto-translator）
 │   ├── skills/        # プロジェクトスキル（11個 + learned/）
 │   ├── refs/          # 共有リファレンス
 │   └── rules/         # プロジェクトルール

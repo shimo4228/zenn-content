@@ -101,8 +101,9 @@ Articles are cross-posted in Japanese (Zenn) and English (Dev.to).
 ```
 .claude/
 ├── agents/                    # Zenn-specific agents (see global agents for editor/essay-reviewer/fact-checker)
-│   ├── zenn-drafter.md        # Article writer (analyze → write → self-review)
 │   └── devto-translator.md    # JP→EN translation + Dev.to publishing
+│                              # Note: article drafting is NOT delegated to a subagent —
+│                              # the orchestrator writes directly per zenn-practical-writing
 ├── refs/                      # Shared references
 │   ├── translation-rules.md
 │   └── schedule-schema.md
@@ -110,17 +111,17 @@ Articles are cross-posted in Japanese (Zenn) and English (Dev.to).
 │   ├── content-integrity.md   # Content Integrity principle
 │   └── zenn-writing.md        # Zenn overlay for the global writing-ecosystem skill
 └── skills/
-    ├── writing-team/          # Orchestrator (PM)
-    ├── zenn-writer/           # Article writing guide
-    ├── publish-article/       # Publishing & cross-post workflow
-    ├── schedule-publish/      # Schedule management
-    ├── seo-optimizer/         # SEO optimization
-    ├── ideation/              # Theme exploration & ideation
-    ├── series-checker/        # Series consistency checker
-    ├── quality-gate/          # Unified quality standards
-    ├── chatlog-to-article/    # Chat log → article conversion
-    ├── zenn-format/           # Zenn formatting
-    └── content-research-writer/ # Research-driven writing
+    ├── writing-team/           # Orchestrator (PM)
+    ├── zenn-practical-writing/ # Default voice for ALL Zenn/Dev.to articles (practical axis, not split by tech/idea)
+    ├── zenn-idea-voice/        # Optional personality flavor (cynical humor / Baki), type-independent
+    ├── zenn-writer/            # Voice router (path kept for compat; routes everything to practical-writing)
+    ├── zenn-format/            # Zenn formatting & frontmatter (canonical)
+    ├── publish-article/        # Publishing & cross-post workflow
+    ├── schedule-publish/       # Schedule management
+    ├── seo-optimizer/          # SEO optimization (title/tag/emoji only)
+    ├── ideation/               # Theme exploration & ideation
+    ├── series-checker/         # Series consistency checker
+    └── quality-gate/           # Unified quality standards
 ```
 
 ## Quick Start
@@ -150,7 +151,7 @@ zenn-content/
 │   ├── schedule.json         # Dev.to publishing schedule
 │   └── tests/                # pytest (112 tests)
 ├── .claude/
-│   ├── agents/        # Zenn-specific agents (2: zenn-drafter, devto-translator)
+│   ├── agents/        # Zenn-specific agents (1: devto-translator)
 │   ├── skills/        # Project skills (11 + learned/)
 │   ├── refs/          # Shared references
 │   └── rules/         # Project rules

@@ -41,6 +41,7 @@
 | `devto_tags` | string[] | EN のみ | Dev.to タグ（最大4つ） |
 | `cover_image` | string | No | カバー画像 URL（GitHub raw URL） |
 | `notes` | string | No | メモ |
+| `score` | object | No | `schedule-publish` skill が記録する4軸スコア（`discover`/`anchor`/`ready`/`fresh`/`total`）。トレーサビリティ用、公開処理では未使用 |
 
 ## `devto` フィールドの状態遷移
 
@@ -59,6 +60,4 @@ null  →  "https://dev.to/shimo4228/actual-url"
 
 ## 投稿ペースガイドライン
 
-- 週 2-3 本ペース
-- 最低 2 日間隔
-- 火〜木の 8:00-9:00 JST は参考情報（強制ではない）
+投稿頻度・曜日・時間帯の正本は `.claude/rules/zenn-writing.md`「投稿ペース方針」。値の二重管理を避けるためここでは再掲しない。

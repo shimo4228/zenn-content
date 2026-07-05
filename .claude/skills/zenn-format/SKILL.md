@@ -1,8 +1,14 @@
-<!-- origin: original -->
+---
+name: zenn-format
+description: Zenn 記事の frontmatter・記法・テンプレートの正本。emoji/topics 選定、Markdown 記法、コード埋め込みのベストプラクティスを扱う。文体・執筆プロセスは扱わない（zenn-practical-writing / zenn-idea-voice を参照）。
+user-invocable: true
+origin: original
+---
+
 # Zenn Format Skill
 
 **Purpose:** Zenn 記事の形式・記法・テンプレートのリファレンス。
-文体・タイトル設計は [zenn-writer](../zenn-writer/SKILL.md) を参照。
+文体・執筆プロセスは [zenn-practical-writing](../zenn-practical-writing/SKILL.md) が正本（任意の personality flavor は [zenn-idea-voice](../zenn-idea-voice/SKILL.md)）。
 
 ---
 
@@ -33,6 +39,7 @@ published: true  # false for draft
 | `type` | ✅ | Article type | `"tech"` (technical) or `"idea"` (opinion/essay) |
 | `topics` | ✅ | 1-5 tags (lowercase, no spaces) | `["claude", "anki", "python", "tdd"]` |
 | `published` | ✅ | Publication status | `true` (public) or `false` (draft) |
+| `published_at` | Optional | Scheduled publish time (Zenn-specific). Format spec and gotchas: `.claude/rules/zenn-writing.md` | `2026-04-15 07:00` (JST) |
 
 ### Emoji Selection
 
@@ -230,19 +237,12 @@ For refactoring or improvements, show both versions side by side.
 
 ## Publishing Workflow
 
-1. **Draft** article in `articles/` directory
-2. **Preview** locally: `npm run preview`
-3. **Lint** for style: `npm run lint`
-4. **Review** with editor agent
-5. **Human polish** - Add personal insights
-6. **Security check** - No API keys, no personal paths
-7. **Publish** - Set `published: true` and push to GitHub
-8. **Sync** with Zenn (automatic via GitHub integration)
+公開前チェック（lint→レビュー→セキュリティ→frontmatter→published_at→スケジュール→クロスポスト→push）の正本は [publish-article](../publish-article/SKILL.md)。ここでは再掲しない。
 
 ---
 
 ## Related Resources
 
-- [CLAUDE.md](../../CLAUDE.md) - Writing guidelines and content standards
-- [Editor Agent](../../.claude/agents/editor.md) - Technical review criteria
+- [CLAUDE.md](../../../CLAUDE.md) - Writing guidelines and content standards
+- `~/.claude/agents/editor.md` - Technical review criteria（グローバル agent。プロジェクト外のため相対リンク不可）
 - [Zenn公式ドキュメント](https://zenn.dev/zenn/articles/markdown-guide) - Markdown syntax guide

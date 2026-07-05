@@ -108,7 +108,7 @@ Zenn (JP) publishing is not scripted — it uses Zenn's native `published_at` fr
 
 - [.claude/rules/content-integrity.md](.claude/rules/content-integrity.md): Content Integrity principle (content decided by author, distribution optimized without changing content)
 - [.claude/rules/zenn-writing.md](.claude/rules/zenn-writing.md): Zenn platform overlay (title length, frontmatter, :::message conventions)
-- [.claude/agents/zenn-drafter.md](.claude/agents/zenn-drafter.md): article writer agent (analyze → write → self-review)
+- [.claude/skills/zenn-practical-writing/SKILL.md](.claude/skills/zenn-practical-writing/SKILL.md): default voice for all Zenn/Dev.to articles (practical axis, not split by tech/idea); drafting is done directly by the orchestrator, not delegated to a subagent
 - [.claude/agents/devto-translator.md](.claude/agents/devto-translator.md): JP→EN translator + Dev.to publisher
 - [.claude/refs/translation-rules.md](.claude/refs/translation-rules.md): JP→EN translation standards
 - [.claude/refs/schedule-schema.md](.claude/refs/schedule-schema.md): schedule.json schema

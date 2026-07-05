@@ -1,4 +1,10 @@
-<!-- origin: original -->
+---
+name: schedule-publish
+description: 記事バッチの公開順序と日程を 4 軸スコアリングで決定し schedule.json に反映する。投稿タイミングの値は zenn-writing.md が正本。
+user-invocable: true
+origin: original
+---
+
 # Schedule Publish Skill
 
 **Purpose:** 記事バッチの公開順序と日程を、データに基づくスコアリングで決定し、`schedule.json` に反映する。
@@ -74,10 +80,9 @@ lint・レビューの完了状態。
 
 | 項目 | ルール | 根拠 |
 |------|--------|------|
-| 曜日 | 火曜・木曜（参考） | Zenn のビュー数が火水にピーク（220記事データセット）。強制ではない |
-| 時刻 | 8:00-9:00 JST（参考） | 通勤時間帯の閲覧。強制ではない |
+| 曜日・時刻 | `.claude/rules/zenn-writing.md`「投稿ペース方針」が正本（バズタイム：火〜水 7:00-9:00 JST）。ここでは再掲しない | 値の二重管理を避ける |
 | 間隔 | 最低2日空ける | 各記事の「新着」フィード露出時間を確保 |
-| 上限 | 週2本まで | 品質シグナルを維持、フィード占有を回避 |
+| 上限 | `.claude/rules/zenn-writing.md`「投稿ペース方針」が正本（週2-3本）。ここでは再掲しない | 値の二重管理を避ける |
 | クロスポスト | Zenn 公開当日または翌日 | Dev.to(EN) のみ |
 
 ---
@@ -108,7 +113,7 @@ grep -rl 'published: false' articles/*.md
 スコア順に `scripts/plan_schedule.py` で日程を割り当てる。
 
 ```bash
-cd /Users/shimomoto_tatsuya/MyAI_Lab/zenn-content
+# repo ルートで実行
 python scripts/plan_schedule.py --start YYYY-MM-DD --slugs "slug1,slug2,slug3"
 ```
 

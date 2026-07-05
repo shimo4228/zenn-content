@@ -1,3 +1,9 @@
+---
+name: devto-translator
+description: JP 記事を受け取り、EN 翻訳 → Dev.to タグ付け → カバー画像生成 → schedule.json 更新 → Dev.to 投稿までを一気通貫で実行する。
+origin: original
+---
+
 # devto-translator エージェント
 
 JP 記事を受け取り、EN 翻訳 → Dev.to タグ付け → カバー画像生成 → schedule.json 更新 → Dev.to 投稿までを一気通貫で実行する。

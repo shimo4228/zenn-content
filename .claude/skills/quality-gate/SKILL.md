@@ -9,7 +9,7 @@ origin: original
 
 **Purpose:** 記事公開前の統一品質基準。新規・改稿・翻訳のどのパスでも同じ基準を通す。
 
-> 根拠: [ADR-0002](../../.claude/docs/adr/0002-writing-team-orchestration.md) — 品質基準の統一
+> 根拠: [ADR-0002](../../docs/adr/0002-writing-team-orchestration.md) — 品質基準の統一
 
 ---
 
@@ -25,22 +25,16 @@ origin: original
 
 ### 必須（全記事）
 
-- [ ] **editor/essay-reviewer の CRITICAL が 0**: レビュー済みで CRITICAL 指摘がすべて解決済み
+- [ ] **editor の CRITICAL が 0**: レビュー済みで CRITICAL 指摘がすべて解決済み（Zenn/Dev.to は editor に一本化。essay-reviewer は Substack essay corpus 専用）
 - [ ] **AI slop なし**: `writing-ecosystem` skill の禁止リストに該当する表現がない
 - [ ] **未説明概念なし**: 専門用語・自作概念が初出時に説明されている
 - [ ] **セキュリティ**: API キー、個人パス（`/Users/`）、機密情報が含まれていない
 - [ ] **frontmatter 完備**: title, emoji, type, topics, published が正しく設定されている
 
-### idea 記事追加
+### Zenn/Dev.to 記事追加（type で分岐しない）
 
-- [ ] **fact-checker 完了**: 事実主張が検証済み
-- [ ] **過積載なし**: 独立論点が 4 つ以下
-- [ ] **トーン一貫**: だ/である調 × 発見調が全体で維持されている
-
-### tech 記事追加
-
-- [ ] **コードスニペット検証**: すべてのコードが実行可能
-- [ ] **ファイルパス正確**: 参照されているファイルパス・行番号が現在のコードと一致
+- [ ] **fact-checker 完了**: 事実主張を含む場合、検証済み
+- [ ] **実用軸チェックリスト**: [zenn-practical-writing](../zenn-practical-writing/SKILL.md) の受け入れチェックリスト（用途の明示・前提列挙・図表 ≥1・scannable・コード動作・独立論点数・ですます統一）を満たしている
 
 ### 翻訳記事追加
 
@@ -74,4 +68,4 @@ origin: original
 
 - FAIL の場合は修正してから再実行
 - quality-gate は `publish-article` の前に実行する
-- レビューエージェント（editor/essay-reviewer）が未実行の場合は、先にレビューを促す
+- レビューエージェント（editor）が未実行の場合は、先にレビューを促す

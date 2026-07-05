@@ -65,7 +65,7 @@ origin: original
 
 ### 次のステップ
 - [ ] 素材を集める（コード、ログ、スクリーンショット）
-- [ ] zenn-drafter で構成案を作る
+- [ ] `zenn-practical-writing` の Phase 1 に従って構成案を立てる（オーケストレーター本体が直接執筆）
 ```
 
 ---
