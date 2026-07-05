@@ -18,7 +18,7 @@ published_at: 2026-07-07 07:00
 
 `codex-review` は `codex review`（OpenAI Codex CLI）を薄くラップした読み取り専用のスキルです。Claude Code とは別のモデル系統に、今の diff を見せてレビューさせます。
 
-`/codex-review` は Zenn や Claude Code に最初から入っているコマンドではなく、自分の Claude Code ハーネスに置いた小さなラッパースクリプトです。
+`/codex-review` は Claude Code に最初から入っているコマンドではなく、自分の Claude Code ハーネスに置いた小さなラッパースクリプトです。
 
 スキル本体は [shimo4228/codex-review](https://github.com/shimo4228/codex-review) として公開しているので、リポジトリ内の `skills/codex-review/` を `~/.claude/skills/codex-review/` にコピーすれば同じ形を再現できます。
 

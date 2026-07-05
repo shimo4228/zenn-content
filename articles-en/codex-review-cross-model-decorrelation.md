@@ -19,7 +19,7 @@ tags: codereview, codex, claudecode, skills
 
 `codex-review` is a read-only skill that thinly wraps `codex review` (the OpenAI Codex CLI). It shows the current diff to a model from a different lineage than Claude Code and has it review the work.
 
-`/codex-review` isn't a command that ships with Zenn or Claude Code out of the box — it's a small wrapper script I placed in my own Claude Code harness.
+`/codex-review` isn't a command that ships with Claude Code out of the box — it's a small wrapper script I placed in my own Claude Code harness.
 
 The skill itself is published as [shimo4228/codex-review](https://github.com/shimo4228/codex-review), so you can reproduce the same setup by copying `skills/codex-review/` from that repository into `~/.claude/skills/codex-review/`.
 
