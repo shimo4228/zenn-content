@@ -87,4 +87,4 @@ origin: shimo4228
 
 - `~/.claude/skills/writing-ecosystem/SKILL.md`（global）— essay 基本声（発見調・問い化・弱化）の正本
 - [zenn-practical-writing](../zenn-practical-writing/SKILL.md) — 実用技術記事の既定（この personality は使わない）
-- `.claude/rules/zenn-writing.md` — `:::message` の textlint 回避（刃牙注記で使う）
+- `.claude/rules/zenn-writing.md` — `:::message` でのドメイン置換・ダミーデータ明示（刃牙注記で使う）

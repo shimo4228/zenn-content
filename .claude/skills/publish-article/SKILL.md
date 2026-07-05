@@ -1,6 +1,6 @@
 ---
 name: publish-article
-description: 記事公開前の全チェック（lint→レビュー→セキュリティ→frontmatter→published_at→スケジュール→Dev.to クロスポスト→push）を順に実行する。
+description: 記事公開前の全チェック（レビュー→セキュリティ→frontmatter→published_at→スケジュール→Dev.to クロスポスト→push）を順に実行する。
 user-invocable: true
 origin: original
 ---
@@ -25,31 +25,9 @@ origin: original
 
 以下のステップを**順番に**実行する。各ステップで問題が見つかった場合は修正してから次へ進む。
 
-### Step 1: textlint（日本語品質チェック）
+> **注:** 日本語品質チェック（textlint）・Markdown 構造チェック（markdownlint）は 2026-07 に撤去済み。frontmatter 検証（Step 3 の `npx zenn list:articles`）が唯一残る機械チェック。表記・文体統一は執筆時に守る（`zenn-practical-writing` / `.claude/rules/zenn-writing.md`）。
 
-```bash
-npx textlint {article_path}
-```
-
-**チェック内容:**
-- リンク切れ検出（no-dead-link）
-- 用語統一（prh: pdf2anki, Claude-Native, CLI-First 等）
-
-**エラーがある場合:** 自動修正可能なものは `npx textlint --fix {article_path}` で修正。残りは手動対応。
-
-### Step 2: markdownlint（Markdown 構造チェック）
-
-```bash
-npx markdownlint-cli2 {article_path}
-```
-
-**チェック内容:**
-- 見出しレベルの整合性
-- リスト記法の統一
-- 空行の適切な配置
-- HTML 要素の妥当性
-
-### Step 3: Editor エージェントによるレビュー
+### Step 1: Editor エージェントによるレビュー
 
 **`writing-team` Mission A/B から到達した場合はスキップ**（editor/fact-checker/codex-review は writing-team 側で既に並列実行済み）。`/publish-article` を単独で直接呼んだ場合のみ、このステップで editor エージェントを起動する。
 
@@ -62,9 +40,9 @@ editor エージェントを起動して記事を包括的にレビューする�
 4. AI スロップ検出
 5. 対象読者の適切性
 
-**結果が「MAJOR ISSUES」の場合:** 修正してから Step 3 を再実行。
+**結果が「MAJOR ISSUES」の場合:** 修正してから Step 1 を再実行。
 
-### Step 4: セキュリティチェック
+### Step 2: セキュリティチェック
 
 以下を**手動で**確認する:
 
@@ -79,7 +57,7 @@ grep -n '/Users/' {article_path}
 grep -n 'sk-proj-\|api_key\|password\|secret\|token' {article_path}
 ```
 
-### Step 5: Frontmatter 検証
+### Step 3: Frontmatter 検証
 
 > frontmatter 仕様の正本は `zenn-format` skill。ここでは公開前の検証のみ。
 
@@ -94,7 +72,7 @@ npx zenn list:articles
 - topics が 1-5 個
 - slug（ファイル名）が Zenn の規約に準拠
 
-### Step 6: プレビュー確認
+### Step 4: プレビュー確認
 
 ```bash
 npm run preview
@@ -102,7 +80,7 @@ npm run preview
 
 ユーザーに `http://localhost:8000` でのプレビュー確認を促す。
 
-### Step 7: published_at 設定
+### Step 5: published_at 設定
 
 **Zenn 公開は `published_at` 予約投稿方式を使う。**
 
@@ -118,13 +96,13 @@ published_at: 2026-04-15 07:00  # JST、ハイフン区切り必須
 
 **参考タイミング:** `.claude/rules/zenn-writing.md`「投稿ペース方針」を参照（バズタイム：火〜水 7:00-9:00 JST）。
 
-### Step 8: スケジュール登録
+### Step 6: スケジュール登録
 
 > **正本:** `.claude/refs/schedule-schema.md` を参照。
 
 `scripts/schedule.json` に `refs/schedule-schema.md` のスキーマに従ってエントリを追加する。
 
-### Step 9: 英訳記事の作成（Dev.to 用）
+### Step 7: 英訳記事の作成（Dev.to 用）
 
 ユーザーに英訳してクロスポストするか確認する。
 
@@ -132,7 +110,7 @@ published_at: 2026-04-15 07:00  # JST、ハイフン区切り必須
 
 英訳は `articles-en/` に同名で保存される。
 
-### Step 10: Dev.to クロスポスト（予約 or 即時）
+### Step 8: Dev.to クロスポスト（予約 or 即時）
 
 `{slug}` は `articles-en/{slug}.md` のベース名。投稿日時は `--at` 引数で渡す（tz 付き推奨。schedule.json には保存しない）。
 
@@ -147,11 +125,11 @@ cd scripts && uv run python devto_crosspost.py schedule {slug} --at "2026-07-07 
 cd scripts && uv run python devto_crosspost.py post {slug}
 ```
 
-### Step 11: schedule.json の最終更新（自動）
+### Step 9: schedule.json の最終更新（自動）
 
 `post`（launchd 発火 or 即時）成功時に `devto` へ実 URL が自動書き戻しされ、one-shot ジョブは自己削除される。手動更新は不要。
 
-### Step 12: git push 確認（CRITICAL）
+### Step 10: git push 確認（CRITICAL）
 
 全コミット完了後、**必ず `git push` を確認する**。未 push だと:
 - Zenn の `published_at` 予約投稿が反映されない
@@ -163,8 +141,6 @@ cd scripts && uv run python devto_crosspost.py post {slug}
 
 | ステップ | 失敗時の対応 |
 |----------|-------------|
-| textlint | `--fix` で自動修正 → 残りを手動修正 |
-| markdownlint | エラーメッセージに従い手動修正 |
 | editor review | 指摘事項を修正して再レビュー |
 | セキュリティ | 該当箇所を即座に削除/マスク |
 | frontmatter | フィールドを修正 |
@@ -178,8 +154,8 @@ cd scripts && uv run python devto_crosspost.py post {slug}
 全ステップ実行:
   /publish-article articles/my-article.md
 
-lint のみ:
-  npm run lint:all
+frontmatter 検証のみ:
+  npm run validate
 
 editor レビューのみ:
   claude task --agent=editor --prompt="Review articles/my-article.md"

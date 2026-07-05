@@ -152,7 +152,7 @@ cd scripts && uv run python devto_crosspost.py schedule {slug} --at "2026-07-07 
 **Zenn 公開:** `published_at` 予約投稿（push 時点で予約、指定時刻に自動公開）
 
 **Dev.to クロスポスト:**
-- `devto_crosspost.py` で Dev.to API 経由の自動投稿（GitHub Actions cron 07:00 JST）
+- `devto_crosspost.py schedule {slug} --at "<日時 IANA/Tz>"` で記事ごとの one-shot launchd ジョブを仕込む。指定時刻に発火 → Dev.to へ POST → schedule.json に実 URL を書き戻し → plist 自己削除（GitHub Actions cron / 毎日ポーリングは廃止済み）
 - `devto-translator` エージェントで翻訳→投稿を一気通貫も可
 - Dev.to API レートリミット: 30秒間隔
 
