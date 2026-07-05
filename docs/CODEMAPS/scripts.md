@@ -70,7 +70,7 @@ URL = posted (auto-recorded), else pending. Schema source of truth:
 
 ## Tests
 
-- `tests/test_devto_crosspost.py` — 56 tests (respx-mocked Dev.to API, launchctl
+- `tests/test_devto_crosspost.py` — 59 tests (respx-mocked Dev.to API, launchctl
   stubbed): `--at` tz conversion, conversion rules, tag resolution, POST
   success/failure/no-url, idempotency skip, one-shot self-cleanup, plist render,
   agent lifecycle, schedule/env/path helpers, command dispatch.

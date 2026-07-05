@@ -89,8 +89,7 @@ AI エージェント設計・コーディングエージェント運用・AI �
 
 ## 技術スタック
 
-- **Zenn CLI** — 記事管理・プレビュー
-- **Zenn CLI** `zenn list:articles` — frontmatter 検証（`npm run validate`、CI でも実行）
+- **Zenn CLI** — 記事管理・プレビュー・frontmatter 検証（`npm run validate` = `zenn list:articles`、CI でも実行）
 - **Python 3.13** + httpx + python-frontmatter — Dev.to クロスポスト
 - **Claude Code** — 執筆・レビュー・翻訳・クロスポスト
 
@@ -143,7 +142,7 @@ zenn-content/
 ├── scripts/
 │   ├── devto_crosspost.py    # 記事ごとの Dev.to クロスポスター（one-shot launchd）
 │   ├── schedule.json         # 記事ごとの Dev.to 投稿日時
-│   └── tests/                # pytest テスト（56テスト）
+│   └── tests/                # pytest テスト（59テスト）
 ├── .claude/
 │   ├── agents/        # Zenn 固有エージェント（1個: devto-translator）
 │   ├── skills/        # プロジェクトスキル（11個 + learned/）

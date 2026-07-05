@@ -88,8 +88,7 @@ Articles are cross-posted in Japanese (Zenn) and English (Dev.to).
 
 ## Tech Stack
 
-- **Zenn CLI** — Article management & preview
-- **Zenn CLI** `zenn list:articles` — frontmatter validation (`npm run validate`, also in CI)
+- **Zenn CLI** — Article management, preview & frontmatter validation (`npm run validate` = `zenn list:articles`, also in CI)
 - **Python 3.13** + httpx + python-frontmatter — Dev.to cross-posting
 - **Claude Code** — Writing, reviewing, translating, cross-posting
 
@@ -142,7 +141,7 @@ zenn-content/
 ├── scripts/
 │   ├── devto_crosspost.py    # Per-article Dev.to cross-poster (one-shot launchd)
 │   ├── schedule.json         # Per-article Dev.to publish times
-│   └── tests/                # pytest (56 tests)
+│   └── tests/                # pytest (59 tests)
 ├── .claude/
 │   ├── agents/        # Zenn-specific agents (1: devto-translator)
 │   ├── skills/        # Project skills (11 + learned/)

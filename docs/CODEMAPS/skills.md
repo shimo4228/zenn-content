@@ -1,4 +1,4 @@
-<!-- Generated: 2026-05-24 | Skills: 11 + learned/, Project agents: 2 | Token estimate: ~430 -->
+<!-- Generated: 2026-07-05 | Skills: 11 + learned/, Project agents: 1 | Token estimate: ~430 -->
 # Claude Code Skills & Agents
 
 ## Project Skills (.claude/skills/)

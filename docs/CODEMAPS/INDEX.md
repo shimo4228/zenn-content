@@ -1,4 +1,4 @@
-<!-- Generated: 2026-05-24 | Codemaps: 4 | Token estimate: ~250 -->
+<!-- Generated: 2026-07-05 | Codemaps: 4 | Token estimate: ~250 -->
 # CODEMAPS Index
 
 Token-lean architecture documentation for `zenn-content` — a bilingual (JP/EN)
@@ -14,7 +14,7 @@ the role-specific map you need.
 
 ## Quick facts
 
-- **Content**: 65 JP articles in `articles/` (48 published), 57 EN in `articles-en/` (35 published)
+- **Content**: 50 JP articles in `articles/` (49 published), 58 EN in `articles-en/` (36 published)
 - **Substack mirror**: `substack/` (out of Zenn convention scope)
 - **JP publishing**: Zenn native `published_at` scheduling (no script)
 - **EN publishing**: Dev.to cross-post via `devto_crosspost.py` — `schedule <slug> --at "<datetime>"` arms a per-article one-shot launchd job that fires at that datetime, posts, and self-removes — GitHub Actions cron retired 2026-05

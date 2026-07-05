@@ -1,4 +1,4 @@
-<!-- Generated: 2026-05-24 | Files scanned: 122 articles (65 JP / 57 EN) + scripts | Token estimate: ~640 -->
+<!-- Generated: 2026-07-05 | Files scanned: 108 articles (50 JP / 58 EN) + scripts | Token estimate: ~640 -->
 # Architecture
 
 ## Project Type
@@ -27,7 +27,7 @@ zenn-content/
 ├── scripts/           publishing automation (Python)
 │   ├── devto_crosspost.py     per-article Dev.to cross-poster (one-shot launchd)
 │   ├── schedule.json          posted-URL ledger (post time is a --at argument)
-│   └── tests/                 pytest (56 tests)
+│   └── tests/                 pytest (59 tests)
 ├── docs/              CODEMAPS, adr/ (design decisions), translation-glossary
 ├── .claude/           project skills (11 + learned/), agents (2), rules, refs
 └── .github/workflows/ validate.yml (zenn frontmatter check, push/PR to main)

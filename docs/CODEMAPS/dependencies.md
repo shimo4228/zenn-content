@@ -1,4 +1,4 @@
-<!-- Generated: 2026-05-24 | Token estimate: ~320 -->
+<!-- Generated: 2026-07-05 | Token estimate: ~300 -->
 # Dependencies
 
 ## Node.js (preview & validation)

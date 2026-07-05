@@ -96,11 +96,8 @@ Human essays first published on Substack, mirrored here as Markdown to extend th
 
 ## Publishing pipeline
 
-- [schedule.json](scripts/schedule.json): Dev.to publication schedule, source of truth
-- [publish.py](scripts/publish.py): Dev.to cross-post API client (manual, ad-hoc / `--update`)
-- [devto_crosspost.py](scripts/devto_crosspost.py): schedule-driven Dev.to cross-poster (manual run; auto cron retired 2026-05)
-- [plan_schedule.py](scripts/plan_schedule.py): schedule.json generator
-- [generate_cover.py](scripts/generate_cover.py): cover image generator (Pillow, 1000x420)
+- [devto_crosspost.py](scripts/devto_crosspost.py): single-file per-article Dev.to cross-poster. `schedule <slug> --at "<datetime [Tz]>"` arms a one-shot launchd job at that time; it posts, records the URL, and self-removes. Subcommands: schedule / post / list / unschedule
+- [schedule.json](scripts/schedule.json): posted-URL ledger for EN articles (the post time is a `--at` argument, not stored here)
 
 Zenn (JP) publishing is not scripted — it uses Zenn's native `published_at` frontmatter scheduling.
 
