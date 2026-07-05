@@ -82,6 +82,14 @@ published_at: 2026-04-15 07:00  # JST、予約投稿
 - カバー画像: `images/covers/{slug}.png` → GitHub raw URL で自動参照
 - canonical_url は設定しない（JP と EN で言語が異なるため Zenn canonical は無意味）
 
+### 投稿予約タイミング（日米ペアの既定・正本）
+
+JP と EN は **JST でペア予約**する。EN を前夜に、JP を翌朝に出す。
+
+- **JP (Zenn `published_at`)**: 当日 **09:00 JST**（バズタイム。上の「Zenn 投稿ペース方針」に従う）
+- **EN (Dev.to `--at`)**: その **前日 22:00 JST**（例: JP `2026-07-08 09:00` → EN は `2026-07-07 22:00`）。22:00 JST ≈ 米国 **09:00 ET** で、Dev.to の US 午前ピークにも当たる
+- コマンド: `devto_crosspost.py schedule <slug> --at "<前日> 22:00 Asia/Tokyo"`（tz→JST 換算されるので JST を明示して渡す）
+
 詳細: `.claude/refs/translation-rules.md` を参照（クロスポスト・公開パイプラインの手順）。
 
 ---
