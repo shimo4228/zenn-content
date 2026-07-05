@@ -83,17 +83,14 @@ Articles are cross-posted in Japanese (Zenn) and English (Dev.to).
 
 - `articles/` — Japanese originals (Zenn schedules natively via `published_at` frontmatter)
 - `articles-en/` — English translations
-- `scripts/publish.py` — Dev.to cross-post CLI (manual, ad-hoc / `--update`)
-- `scripts/devto_crosspost.py` — schedule-driven Dev.to cross-poster (manual run; cron retired 2026-05)
-- `scripts/schedule.json` — Dev.to publishing schedule
+- `scripts/devto_crosspost.py` — per-article Dev.to cross-poster; `schedule <slug> --at "<datetime>"` arms a one-shot launchd job that fires at that datetime, posts the article, and self-removes
+- `scripts/schedule.json` — posted-URL ledger (records each EN article's Dev.to URL; the post time is a `--at` argument, not stored here)
 
 ## Tech Stack
 
 - **Zenn CLI** — Article management & preview
-- **textlint** + prh (terminology) + no-dead-link (manual `lint:links`) — Japanese proofreading
-- **markdownlint-cli2** — Markdown linting
-- **husky** + lint-staged — Pre-commit hooks (textlint + markdownlint)
-- **Python 3.13** + httpx + python-frontmatter + Pillow — Cross-posting & cover image generation
+- **Zenn CLI** `zenn list:articles` — frontmatter validation (`npm run validate`, also in CI)
+- **Python 3.13** + httpx + python-frontmatter — Dev.to cross-posting
 - **Claude Code** — Writing, reviewing, translating, cross-posting
 
 ## Claude Code Integration
@@ -129,7 +126,7 @@ Articles are cross-posted in Japanese (Zenn) and English (Dev.to).
 ```bash
 npm install         # Install dependencies
 npm run preview     # Local preview
-npm run lint        # textlint + markdownlint
+npm run validate    # Validate Zenn frontmatter
 npm run new:article # Create new article
 ```
 
@@ -143,13 +140,9 @@ zenn-content/
 ├── books/             # Zenn books
 ├── images/            # Article images & cover images
 ├── scripts/
-│   ├── _schedule_utils.py    # Shared utilities
-│   ├── publish.py            # Dev.to cross-post CLI (manual)
-│   ├── devto_crosspost.py    # Daily Dev.to cross-poster (cron)
-│   ├── generate_cover.py     # Cover image generator
-│   ├── plan_schedule.py      # Schedule planner
-│   ├── schedule.json         # Dev.to publishing schedule
-│   └── tests/                # pytest (112 tests)
+│   ├── devto_crosspost.py    # Per-article Dev.to cross-poster (one-shot launchd)
+│   ├── schedule.json         # Per-article Dev.to publish times
+│   └── tests/                # pytest (56 tests)
 ├── .claude/
 │   ├── agents/        # Zenn-specific agents (1: devto-translator)
 │   ├── skills/        # Project skills (11 + learned/)

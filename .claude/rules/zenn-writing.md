@@ -34,13 +34,11 @@ published_at: 2026-04-15 07:00  # JST、予約投稿
 
 ### `:::message` ブロック
 
-- textlint が `:::` 閉じタグを「句点なし文」として誤検出
-- 回避: 該当箇所を `<!-- textlint-disable -->` ... `<!-- textlint-enable -->` で囲む
-- 刃牙リファレンス・ダミーデータの明示にも使う（`zenn-idea-voice` skill 参照）
+- 刃牙リファレンス・ダミーデータの明示に使う（`zenn-idea-voice` skill 参照）
 
 ### 内部リンク
 
-- **誤**: `/articles/xxx`（textlint の no-dead-link がローカルファイル扱いしてエラー）
+- **誤**: `/articles/xxx`（相対パスは Zenn 上で正しく解決されない）
 - **正**: フル URL `https://zenn.dev/shimo4228/articles/xxx`
 
 ### 文体（channel で分ける。type では分けない）
@@ -48,7 +46,7 @@ published_at: 2026-04-15 07:00  # JST、予約投稿
 - **Zenn/Dev.to の全記事**: ですます調（正本 `zenn-practical-writing`。tech/idea で分岐しない）
 - **Substack essay corpus**: だ/である × 発見調（正本 `writing-ecosystem`。Zenn には出さない別 channel）
 - **1 記事内で文体を混在させない**
-- 注: textlint の `no-mix-dearu-desumasu` は preset-ja-technical-writing 廃止（2026-04-29）で無効。文体統一は機械検出でなく執筆時に守る
+- 注: prose lint（textlint/markdownlint）は 2026-07 に全撤去。文体統一・表記・書式は機械検出でなく執筆時に守る（残る機械チェックは `zenn list:articles` の frontmatter 検証のみ）
 
 ## 生ログ・素材の置き場所
 

@@ -8,7 +8,7 @@ origin: original
 # SEO Optimizer Skill
 
 **Purpose:** Zenn 記事のタイトル・topics・emoji を最適化し、関心のある読者に記事が届くようにする。
-内容の改変は行わない（[ADR-0001](../../docs/adr/0001-content-integrity-principle.md) Content Integrity 原則）。
+内容の改変は行わない（[ADR-0001](../../../docs/adr/0001-content-integrity-principle.md) Content Integrity 原則）。
 
 > **タイトル規約・AI slop の正本:** `~/.claude/skills/writing-ecosystem/SKILL.md`（Zenn 固有ルールは `.claude/rules/zenn-writing.md`）
 
@@ -39,7 +39,7 @@ origin: original
 
 タイトルの**原則・誠実さ・煽り禁止・問いの形**は `~/.claude/skills/writing-ecosystem/SKILL.md` の Title Conventions が正本、**文字数上限（50-60）**は `.claude/rules/zenn-writing.md` が正本。ここでは再掲しない。
 
-このスキルが担うのは Distribution レイヤーの調整だけ（内容は変えない、[ADR-0001](../../docs/adr/0001-content-integrity-principle.md)）:
+このスキルが担うのは Distribution レイヤーの調整だけ（内容は変えない、[ADR-0001](../../../docs/adr/0001-content-integrity-principle.md)）:
 
 - **主要キーワードの自然な含有**（SEO 観点。語の選び直しは可、意味は変えない）
 - **3 候補を提示**し、各候補に「概念がどう伝わるか」の理由を添え、現タイトルと比較

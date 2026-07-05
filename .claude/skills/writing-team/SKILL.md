@@ -9,7 +9,7 @@ origin: original
 
 **Purpose:** Claude Code 本体が PM として、ミッション種別に応じてエージェント・スキルを編成し、品質ゲートとユーザー確認を管理する。
 
-> 根拠: [ADR-0002](../../docs/adr/0002-writing-team-orchestration.md)
+> 根拠: [ADR-0002](../../../docs/adr/0002-writing-team-orchestration.md)
 
 ---
 
@@ -53,7 +53,7 @@ origin: original
 
 **レビュアー**: Zenn/Dev.to は全記事 `editor` を使用（実用軸に一本化されたため type 分岐なし）。`essay-reviewer` は Substack essay corpus 専用で、Zenn/Dev.to のミッションでは使わない。
 
-**codex-review**: 公開記事のため、[根拠: `.claude/docs/adr/0003-zenn-practical-channel-axis.md` 決定5] に基づき、editor/fact-checker と並列で prompt-driven モードで起動する。
+**codex-review**: 公開記事のため、[根拠: `docs/adr/0003-zenn-practical-channel-axis.md` 決定5] に基づき、editor/fact-checker と並列で prompt-driven モードで起動する。
 
 ## Mission B: 改稿
 
@@ -113,7 +113,7 @@ origin: original
 
 ## Content Integrity 原則
 
-> [ADR-0001](../../docs/adr/0001-content-integrity-principle.md)
+> [ADR-0001](../../../docs/adr/0001-content-integrity-principle.md)
 > 内容は著者の思考が決める。配信戦略は内容を変えずに最適化する。
 
 オーケストレーターはこの原則を全ミッションで守る:

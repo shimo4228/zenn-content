@@ -1,12 +1,12 @@
 ---
 name: devto-translator
-description: JP 記事を受け取り、EN 翻訳 → Dev.to タグ付け → カバー画像生成 → schedule.json 更新 → Dev.to 投稿までを一気通貫で実行する。
+description: JP 記事を受け取り、EN 翻訳 → Dev.to タグ付け → schedule.json 登録 → launchd による予約投稿（--at で指定した日時に one-shot 発火）までを一気通貫で実行する。
 origin: original
 ---
 
 # devto-translator エージェント
 
-JP 記事を受け取り、EN 翻訳 → Dev.to タグ付け → カバー画像生成 → schedule.json 更新 → Dev.to 投稿までを一気通貫で実行する。
+JP 記事を受け取り、EN 翻訳 → Dev.to タグ付け → schedule.json 登録 → launchd による予約投稿（--at で指定した日時に one-shot 発火）までを一気通貫で実行する。
 
 ## 入力
 
@@ -25,7 +25,7 @@ JP 記事パス（例: `articles/agent-causal-traceability-org-adoption.md`）
 
 ### Phase 2: Dev.to タグ付け
 
-1. `scripts/publish.py` の `map_devto_tags()` のマッピングテーブルを参照する
+1. `scripts/devto_crosspost.py` の `resolve_devto_tags()` のフォールバック規則を参照する（override 優先、英数トピックのみ、最大4、idea は discuss 前置）
 2. JP 記事の `topics` を Dev.to タグに変換する
 3. マッピングにない topics は以下の判断基準で英語タグを決定する:
    - その topic が英語としてそのまま通じるか（例: "security" → "security"）
@@ -35,15 +35,11 @@ JP 記事パス（例: `articles/agent-causal-traceability-org-adoption.md`）
 4. 決定したタグを EN 記事の frontmatter `tags:` に記録する（**最大4つ**。Zenn の上限5とは異なるので流用しない）
 5. `type: "idea"` の記事は先頭に "discuss" を付与する
 
-### Phase 3: カバー画像
+### Phase 3: カバー画像（手動運用）
 
 1. `images/covers/{slug}.png` が既に存在するか確認する
-2. 存在しない場合、`generate_cover.py` を実行して自動生成する:
-   ```bash
-   cd /Users/shimomoto_tatsuya/MyAI_Lab/zenn-content && python scripts/generate_cover.py articles-en/{slug}.md
-   ```
-3. 生成結果のパスを記録する
-4. カバー画像 URL: `https://raw.githubusercontent.com/shimo4228/zenn-content/main/images/covers/{slug}.png`
+2. 存在しない場合は**手動生成を促す**（自動生成スクリプトは廃止。Gemini 等でユニークな画像を作り `images/covers/{slug}.png` に置く）。カバーなしでも投稿は可能
+3. 画像がある場合のカバー URL: `https://raw.githubusercontent.com/shimo4228/zenn-content/main/images/covers/{slug}.png`（`post` 実行時にファイルが存在すれば自動参照される）
 
 ### Phase 4: セルフチェック
 
@@ -55,40 +51,29 @@ JP 記事パス（例: `articles/agent-causal-traceability-org-adoption.md`）
 
 > **正本:** `.claude/refs/schedule-schema.md` を参照。
 
-`scripts/schedule.json` に EN エントリを追加する。スキーマは `refs/schedule-schema.md` に準拠。
+`scripts/schedule.json` に EN エントリを追加する（投稿済み URL 台帳）。スキーマは `refs/schedule-schema.md` に準拠。**投稿日時はここに書かない**（`schedule --at` の引数で渡す）。
 
-- `date`: 今日の日付（即投稿の場合）またはユーザー指定の日付
-- `devto`: `null`（未投稿。Phase 7 で実 URL に更新）
+- `devto`: `null`（未投稿。`post` 実行時に実 URL へ自動更新される）
 - `devto_tags`: Phase 2 で決定したタグ
 
-### Phase 6: Dev.to 投稿
+### Phase 6: プレビュー → 予約（launchd one-shot）
 
-1. まずドライランで内容を確認する:
+1. まずドライランで変換内容を確認する（`cd scripts` 前提。実 POST しない）:
    ```bash
-   cd /Users/shimomoto_tatsuya/MyAI_Lab/zenn-content && python scripts/publish.py articles-en/{slug}.md --platform devto --dry-run
+   cd scripts && uv run python devto_crosspost.py post {slug} --dry-run
    ```
-2. ドライラン結果をユーザーに提示し、投稿の確認を取る
-3. ユーザーが承認したら本投稿を実行する:
+2. ドライラン結果をユーザーに提示し、**投稿日時を確認**する（ユーザーが指定。Dev.to 主読者は US なので US 東部 午前9-11時 ≒ JST 22:00-24:00 が目安）
+3. 承認されたら、指定日時ちょうどに発火する one-shot launchd ジョブを仕込む（`--at` に日時を tz 付きで渡す）:
    ```bash
-   cd /Users/shimomoto_tatsuya/MyAI_Lab/zenn-content && python scripts/publish.py articles-en/{slug}.md --platform devto
+   cd scripts && uv run python devto_crosspost.py schedule {slug} --at "2026-07-07 09:00 America/New_York"
    ```
+   即時投稿したい場合は `post {slug}`（launchd を介さず今すぐ投稿）。
 
-**重要**: ドライラン確認なしに本投稿を実行してはならない。
+**重要**: ドライラン確認なしに本投稿・予約を実行してはならない。`{slug}` は `articles-en/{slug}.md` のベース名。
 
-### Phase 7: schedule.json URL 更新
+### Phase 7: URL 記録（自動）
 
-投稿成功後、schedule.json の該当エントリに Dev.to URL を追記する:
-
-```json
-{
-  "file": "articles-en/{slug}.md",
-  "date": "YYYY-MM-DD",
-  "devto": "https://dev.to/shimo4228/ACTUAL-URL",
-  "devto_tags": ["tag1", "tag2", "tag3", "tag4"],
-  "cover_image": "https://raw.githubusercontent.com/shimo4228/zenn-content/main/images/covers/{slug}.png",
-  "notes": "EN translation of {JP記事タイトル}"
-}
-```
+`post`（launchd 発火時 or 即時実行）が成功すると、schedule.json の該当エントリの `devto` に実 URL が**自動で書き戻され**、one-shot ジョブは自己削除される。手動更新は不要。二重投稿は「devto に URL あり」または「同タイトルが Dev.to に既存」で自動回避される。
 
 ### Phase 8: 完了報告
 
@@ -108,6 +93,7 @@ JP 記事パス（例: `articles/agent-causal-traceability-org-adoption.md`）
 | コードブロックが翻訳された | 原文からコードブロックを抽出して差し替え |
 | 用語が不統一 | 用語集を参照して一括置換 |
 | frontmatter が壊れた | 原文から frontmatter をコピーして title のみ翻訳 |
-| generate_cover.py 失敗 | エラー内容を報告し、手動生成を提案（Pillow 未インストール等） |
+| カバー画像なし | 手動生成を提案。無い場合はカバーなしで投稿続行 |
 | Dev.to API エラー | エラー内容を報告。30秒間隔のレートリミットに注意 |
+| launchd load 失敗 | `launchctl list \| grep devto` で既存ジョブ確認。同 slug の重複は `unschedule {slug}` で除去してから再 `schedule` |
 | schedule.json の JSON パースエラー | バックアップを取ってから修正 |

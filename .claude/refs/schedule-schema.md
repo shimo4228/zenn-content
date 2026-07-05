@@ -2,7 +2,7 @@
 
 > このファイルは `scripts/schedule.json` のスキーマの **唯一の正本**。
 > `schedule-publish`, `publish-article`, `devto-translator` はここを参照する。
-> 根拠: [ADR-0002](../docs/adr/0002-writing-team-orchestration.md)
+> 根拠: [ADR-0002](../../docs/adr/0002-writing-team-orchestration.md)
 
 ---
 
@@ -23,7 +23,6 @@
 ```json
 {
   "file": "articles-en/example-article.md",
-  "date": "2026-04-16",
   "devto": null,
   "devto_tags": ["ai", "programming", "discuss"],
   "cover_image": "https://raw.githubusercontent.com/shimo4228/zenn-content/main/images/covers/example-article.png",
@@ -31,13 +30,15 @@
 }
 ```
 
+> **投稿日時はここに書かない。** Dev.to の投稿タイミングは `devto_crosspost.py schedule <slug> --at "<日時>"` の引数で渡す（launchd ジョブに変換）。schedule.json は投稿済み URL の台帳。
+
 ## フィールド定義
 
 | フィールド | 型 | 必須 | 説明 |
 |-----------|-----|------|------|
 | `file` | string | Yes | 記事ファイルパス（`articles/` or `articles-en/`） |
-| `date` | string | Yes | 公開日 `YYYY-MM-DD` |
-| `devto` | string \| null | EN のみ | Dev.to URL。未投稿は `null`、投稿済みは実 URL |
+| `date` | string | JP | JP 記事の公開日 `YYYY-MM-DD`（Zenn native、記録用） |
+| `devto` | string \| null | EN のみ | Dev.to URL。未投稿は `null`、投稿済みは実 URL（`post` が自動書き戻し） |
 | `devto_tags` | string[] | EN のみ | Dev.to タグ（最大4つ） |
 | `cover_image` | string | No | カバー画像 URL（GitHub raw URL） |
 | `notes` | string | No | メモ |

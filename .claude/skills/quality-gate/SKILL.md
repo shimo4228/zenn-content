@@ -9,7 +9,7 @@ origin: original
 
 **Purpose:** 記事公開前の統一品質基準。新規・改稿・翻訳のどのパスでも同じ基準を通す。
 
-> 根拠: [ADR-0002](../../docs/adr/0002-writing-team-orchestration.md) — 品質基準の統一
+> 根拠: [ADR-0002](../../../docs/adr/0002-writing-team-orchestration.md) — 品質基準の統一
 
 ---
 

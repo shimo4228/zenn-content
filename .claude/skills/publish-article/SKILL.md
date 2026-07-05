@@ -132,19 +132,24 @@ published_at: 2026-04-15 07:00  # JST、ハイフン区切り必須
 
 英訳は `articles-en/` に同名で保存される。
 
-### Step 10: Dev.to クロスポスト
+### Step 10: Dev.to クロスポスト（予約 or 即時）
+
+`{slug}` は `articles-en/{slug}.md` のベース名。投稿日時は `--at` 引数で渡す（tz 付き推奨。schedule.json には保存しない）。
 
 ```bash
-# 手動実行
-cd scripts && uv run python publish.py ../articles-en/{filename} --platform devto --dry-run
+# 変換プレビュー（実 POST しない）
+cd scripts && uv run python devto_crosspost.py post {slug} --dry-run
 
-# 自動実行（devto_crosspost.py）
-cd scripts && uv run python devto_crosspost.py --dry-run
+# 予約: 指定日時に one-shot launchd 発火（US 東部 午前9時 = JST 22:00）
+cd scripts && uv run python devto_crosspost.py schedule {slug} --at "2026-07-07 09:00 America/New_York"
+
+# 即時投稿したい場合
+cd scripts && uv run python devto_crosspost.py post {slug}
 ```
 
-### Step 11: schedule.json の最終更新
+### Step 11: schedule.json の最終更新（自動）
 
-Dev.to クロスポスト完了後、`scripts/schedule.json` の `"pending"` を実 URL に更新する。
+`post`（launchd 発火 or 即時）成功時に `devto` へ実 URL が自動書き戻しされ、one-shot ジョブは自己削除される。手動更新は不要。
 
 ### Step 12: git push 確認（CRITICAL）
 

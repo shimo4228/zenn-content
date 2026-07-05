@@ -210,4 +210,4 @@ AI 対話などの**生ログ**は `articles/_context/{slug}-{source}-log.md` �
 - [zenn-idea-voice](../zenn-idea-voice/SKILL.md) — 毒humor / 刃牙リファレンス（type 非依存の opt-in personality flavor）
 - [quality-gate](../quality-gate/SKILL.md) — Zenn/Dev.to 全記事の受け入れ gate
 - `.claude/rules/zenn-writing.md` — Zenn プラットフォーム固有ルール（frontmatter 上限・:::message・投稿ペース）
-- 根拠: `.claude/docs/adr/0003-*.md`（channel 軸 + genre-split）
+- 根拠: `docs/adr/0003-*.md`（channel 軸 + genre-split）

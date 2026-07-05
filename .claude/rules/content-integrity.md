@@ -1,6 +1,6 @@
 # Content Integrity 原則
 
-> 根拠: [ADR-0001](../docs/adr/0001-content-integrity-principle.md)
+> 根拠: [ADR-0001](../../docs/adr/0001-content-integrity-principle.md)
 
 ## ルール
 

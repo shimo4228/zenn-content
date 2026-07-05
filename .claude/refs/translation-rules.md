@@ -2,7 +2,7 @@
 
 > このファイルは JP→EN 翻訳の **唯一の正本**。
 > `devto-translator` エージェントはここを参照する。
-> 根拠: [ADR-0002](../docs/adr/0002-writing-team-orchestration.md)
+> 根拠: [ADR-0002](../../docs/adr/0002-writing-team-orchestration.md)
 
 ---
 
@@ -44,7 +44,7 @@ topics の変換例:
 
 ## Dev.to タグ付け
 
-1. `scripts/publish.py` の `map_devto_tags()` マッピングを参照
+1. `scripts/devto_crosspost.py` の `resolve_devto_tags()` フォールバック規則を参照
 2. JP 記事の `topics` を Dev.to タグに変換（最大4つ）
 3. マッピングにない topics: 英語としてそのまま通じるか → 上位カテゴリ → 汎用タグ（ai, programming, discuss）
 4. `type: "idea"` の記事は先頭に "discuss" を付与
@@ -69,6 +69,6 @@ topics の変換例:
 | 用語が不統一 | 用語集を参照して一括置換 |
 | frontmatter が壊れた | 原文から frontmatter をコピーして title のみ翻訳 |
 | 文体が硬すぎる | 「技術ブログ」のトーンで書き直し |
-| generate_cover.py 失敗 | エラー内容を報告し、手動生成を提案 |
+| カバー画像なし | 手動生成を提案。無い場合はカバーなしで投稿続行 |
 | Dev.to API エラー | エラー内容を報告。30秒間隔のレートリミットに注意 |
 | schedule.json パースエラー | バックアップを取ってから修正 |

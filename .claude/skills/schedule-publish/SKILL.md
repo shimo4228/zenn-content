@@ -108,13 +108,13 @@ grep -rl 'published: false' articles/*.md
 
 **重要:** スコアの根拠を1行ずつ明記する。根拠なしのスコアは不可。
 
-### Step 3: 日程生成
+### Step 3: 日程割り当て（launchd 予約）
 
-スコア順に `scripts/plan_schedule.py` で日程を割り当てる。
+スコア順に投稿日時を決め、各記事を one-shot launchd ジョブとして仕込む（旧 `plan_schedule.py` は廃止）。バズタイム（火水）に寄せ、Dev.to は US 読者向けに tz 付きで指定する。**日時は `--at` 引数で渡す**（schedule.json には保存しない）。
 
 ```bash
-# repo ルートで実行
-python scripts/plan_schedule.py --start YYYY-MM-DD --slugs "slug1,slug2,slug3"
+# US 東部 午前9時 = JST 22:00
+cd scripts && uv run python devto_crosspost.py schedule {slug} --at "2026-07-07 09:00 America/New_York"
 ```
 
 ### Step 4: ユーザー確認

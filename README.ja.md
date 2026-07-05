@@ -84,17 +84,14 @@ AI エージェント設計・コーディングエージェント運用・AI �
 - `articles/` — 日本語原稿（Zenn は frontmatter `published_at` で native 予約投稿）
 - `articles-en/` — 英訳
 - `substack/` — Substack エッセイのミラー（Zenn 規約の適用外）
-- `scripts/publish.py` — Dev.to クロスポスト CLI（手動・ad-hoc / `--update`）
-- `scripts/devto_crosspost.py` — schedule 駆動の Dev.to クロスポスター（手動実行。cron は 2026-05 廃止）
-- `scripts/schedule.json` — Dev.to 投稿スケジュール
+- `scripts/devto_crosspost.py` — 記事ごとの Dev.to クロスポスター。`schedule <slug> --at "<日時>"` が指定日時に発火する one-shot launchd ジョブを仕込み、投稿後に自己削除
+- `scripts/schedule.json` — 投稿済み URL 台帳（各 EN 記事の Dev.to URL を記録。投稿日時は `--at` 引数で渡し、ここには保存しない）
 
 ## 技術スタック
 
 - **Zenn CLI** — 記事管理・プレビュー
-- **textlint** + prh（用語統一）+ no-dead-link（手動 `lint:links`）— 日本語校正
-- **markdownlint-cli2** — Markdown 構文チェック
-- **husky** + lint-staged — pre-commit フック（textlint + markdownlint）
-- **Python 3.13** + httpx + python-frontmatter + Pillow — クロスポスト・カバー画像生成
+- **Zenn CLI** `zenn list:articles` — frontmatter 検証（`npm run validate`、CI でも実行）
+- **Python 3.13** + httpx + python-frontmatter — Dev.to クロスポスト
 - **Claude Code** — 執筆・レビュー・翻訳・クロスポスト
 
 ## Claude Code 連携
@@ -130,7 +127,7 @@ AI エージェント設計・コーディングエージェント運用・AI �
 ```bash
 npm install         # 依存インストール
 npm run preview     # ローカルプレビュー
-npm run lint        # textlint + markdownlint
+npm run validate    # Zenn frontmatter 検証
 npm run new:article # 新規記事作成
 ```
 
@@ -144,13 +141,9 @@ zenn-content/
 ├── books/             # Zenn books
 ├── images/            # 記事用画像・カバー画像
 ├── scripts/
-│   ├── _schedule_utils.py    # 共有ユーティリティ
-│   ├── publish.py            # Dev.to クロスポスト CLI（手動）
-│   ├── devto_crosspost.py    # schedule 駆動 Dev.to クロスポスター（手動実行）
-│   ├── generate_cover.py     # カバー画像生成
-│   ├── plan_schedule.py      # スケジュール計画
-│   ├── schedule.json         # Dev.to 投稿スケジュール
-│   └── tests/                # pytest テスト（112テスト）
+│   ├── devto_crosspost.py    # 記事ごとの Dev.to クロスポスター（one-shot launchd）
+│   ├── schedule.json         # 記事ごとの Dev.to 投稿日時
+│   └── tests/                # pytest テスト（56テスト）
 ├── .claude/
 │   ├── agents/        # Zenn 固有エージェント（1個: devto-translator）
 │   ├── skills/        # プロジェクトスキル（11個 + learned/）

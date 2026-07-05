@@ -22,11 +22,12 @@ Thumbs.db
 .playwright-mcp/
 
 # Internal docs and planning (not for publication)
-/docs/
 planning/
 drafts/
 articles/_context/
 articles/_archive/
+archive/
+.notes/
 
 # Reports (generated analysis, session-specific)
 .reports/

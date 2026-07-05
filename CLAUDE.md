@@ -67,7 +67,6 @@ All articles MUST use Zenn frontmatter. Field-by-field spec is canonical in `.cl
 `substack/` は他媒体（Substack 等）で初出した human essay の mirror 置き場（public GitHub 上の .md として LLM クローラーに読ませる corpus 拡張用）。**Zenn 記事ではないので、本 repo の記事規約は適用しない**:
 
 - Zenn frontmatter 必須・`published` フラグ・`published_at` は不要（Zenn は `articles/` のみ同期するため `substack/` は公開されない）
-- lint-staged / textlint / markdownlint の対象外（lint glob は記事フォルダ系のみ。実際 `substack/` 追加時に lint-staged は "no matching files" を返す）
 - `schedule.json` に載せない（dev.to クロスポストしない）
 - canonical は初出媒体（Substack 等）。ここはあくまでミラー
 
@@ -100,15 +99,15 @@ Zenn/Dev.to の記事執筆は**チャンネル独自の実用軸**が既定 —
 | **任意の personality flavor** | `zenn-idea-voice`（毒humor / 刃牙。type 非依存の opt-in） |
 | **genuine な思索エッセイ** | `~/.claude/skills/writing-ecosystem/SKILL.md`（だ/である × 発見調）。Substack corpus 専用、Zenn には出さない |
 
-`zenn-writer` skill は歴史的パス維持のための**声のルーター**（上表へ振り分けるだけ）。genre 中立 canon（AI slop 禁止・タイトル原則・ネタ 3 軸）は global `writing-ecosystem` が正本。根拠: `.claude/docs/adr/0003-zenn-practical-channel-axis.md`。
+`zenn-writer` skill は歴史的パス維持のための**声のルーター**（上表へ振り分けるだけ）。genre 中立 canon（AI slop 禁止・タイトル原則・ネタ 3 軸）は global `writing-ecosystem` が正本。根拠: `docs/adr/0003-zenn-practical-channel-axis.md`。
 
 ## Testing Workflow
 
-See `docs/RUNBOOK.md` for the full testing and publishing workflow.
+See `docs/CODEMAPS/scripts.md` for the publishing pipeline (single `devto_crosspost.py`, launchd agent, tests).
 
 ## Publishing Checklist
 
-Full procedure: `docs/RUNBOOK.md`
+Pipeline reference: `docs/CODEMAPS/scripts.md`
 
 - [ ] Code snippets have no API keys
 - [ ] Screenshots have no sensitive information (file paths, usernames)
@@ -116,8 +115,7 @@ Full procedure: `docs/RUNBOOK.md`
 - [ ] All code examples are tested and executable
 - [ ] Editor レビュー完了（Zenn/Dev.to は type 分岐なく editor に一本化。essay-reviewer は Substack 専用）
 - [ ] fact-checker でファクトチェック完了（事実主張を含む記事は必須）
-- [ ] Lint passes (`npm run lint`)
-- [ ] Dead-link チェック (`npm run lint:links`) — 公開前のみ。CI では走らない（外部 URL の rate limit / redirect 偽陽性で止まらないようにするため）
+- [ ] Zenn frontmatter validates (`npm run validate`)
 - [ ] Preview looks good (`npm run preview`)
 - [ ] `published_at` を設定（`YYYY-MM-DD HH:MM` 形式、JST）
 - [ ] English translation created in `articles-en/`

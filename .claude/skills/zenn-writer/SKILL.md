@@ -31,4 +31,4 @@ origin: original
 
 ## なぜ router に縮小したか
 
-根拠: `.claude/docs/adr/0003-zenn-practical-channel-axis.md`。Zenn/Dev.to は「読者が即座に何かわかり、すぐ手に取って使える」実用軸を独自の声として確立し、essay（Substack）や paper（`paper-ecosystem`）とチャンネル単位で分離した。
+根拠: `docs/adr/0003-zenn-practical-channel-axis.md`。Zenn/Dev.to は「読者が即座に何かわかり、すぐ手に取って使える」実用軸を独自の声として確立し、essay（Substack）や paper（`paper-ecosystem`）とチャンネル単位で分離した。

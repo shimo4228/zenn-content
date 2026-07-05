@@ -1,11 +1,10 @@
 [project]
-name = "publish-cli"
-version = "0.1.0"
-description = "Zenn articles cross-post CLI (Qiita, Dev.to, Hashnode)"
+name = "devto-crosspost"
+version = "0.2.0"
+description = "Schedule-driven Dev.to cross-poster for EN Zenn articles"
 requires-python = ">=3.13"
 dependencies = [
     "httpx>=0.28.1",
-    "pillow>=11.0",
     "python-frontmatter>=1.1.0",
 ]
 
