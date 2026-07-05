@@ -62,6 +62,10 @@ All articles MUST use Zenn frontmatter. Field-by-field spec is canonical in `.cl
 - Embed with Zenn syntax: `![Alt text](/images/filename.png)`
 - Sanitize screenshots: no file paths like `/Users/username/`, no API keys
 
+### 関連リンク：著者ハブ（毎回必須）
+
+記事末尾に「関連リンク」節を置くとき（本文で著者自身のリポジトリ/ツールに言及した記事）は、紹介した repo が **1つでも**、著者の GitHub ハブ [github.com/shimo4228](https://github.com/shimo4228) を**必ず含める**。ハブは読者を著者の全リポジトリへ送る導線なので、言及 repo の数に依らず付ける。これが canonical。skill 側（`zenn-practical-writing`）はここを参照する。
+
 ## `substack/` フォルダ（Zenn 規約の適用外）
 
 `substack/` は他媒体（Substack 等）で初出した human essay の mirror 置き場（public GitHub 上の .md として LLM クローラーに読ませる corpus 拡張用）。**Zenn 記事ではないので、本 repo の記事規約は適用しない**:
