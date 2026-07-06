@@ -509,6 +509,11 @@
       ],
       "cover_image": "https://raw.githubusercontent.com/shimo4228/zenn-content/main/images/covers/non-code-asset-value-stocktake.png",
       "notes": "EN translation of 非コード資産の「価値」は linter では測れない — LLM で棚卸しするスキルを作った"
+    },
+    {
+      "file": "articles/iphone-claude-code-remote-control.md",
+      "date": "2026-07-09",
+      "notes": "モバイル運用シリーズ第2弾（3つの穴: spawn / VNC再認証 / gh device flow）"
     }
   ]
 }
