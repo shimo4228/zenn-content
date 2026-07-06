@@ -514,6 +514,17 @@
       "file": "articles/iphone-claude-code-remote-control.md",
       "date": "2026-07-09",
       "notes": "モバイル運用シリーズ第2弾（3つの穴: spawn / VNC再認証 / gh device flow）"
+    },
+    {
+      "file": "articles-en/iphone-claude-code-remote-control.md",
+      "devto": null,
+      "devto_tags": [
+        "claudecode",
+        "tmux",
+        "mobile",
+        "github"
+      ],
+      "notes": "EN translation of iPhone公式アプリでClaude Codeを運用する — 新セッション・再認証・git push、3つの穴の塞ぎ方"
     }
   ]
 }
