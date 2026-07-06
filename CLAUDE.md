@@ -103,7 +103,7 @@ Zenn/Dev.to の記事執筆は**チャンネル独自の実用軸**が既定 —
 | **任意の personality flavor** | `zenn-idea-voice`（毒humor / 刃牙。type 非依存の opt-in） |
 | **genuine な思索エッセイ** | `~/.claude/skills/writing-ecosystem/SKILL.md`（だ/である × 発見調）。Substack corpus 専用、Zenn には出さない |
 
-`zenn-writer` skill は歴史的パス維持のための**声のルーター**（上表へ振り分けるだけ）。genre 中立 canon（AI slop 禁止・タイトル原則・ネタ 3 軸）は global `writing-ecosystem` が正本。根拠: `docs/adr/0003-zenn-practical-channel-axis.md`。
+genre 中立 canon（AI slop 禁止・タイトル原則・ネタ 3 軸）は global `writing-ecosystem` が正本。根拠: `docs/adr/0003-zenn-practical-channel-axis.md`。
 
 ## Testing Workflow
 

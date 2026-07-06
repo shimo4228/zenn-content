@@ -72,4 +72,4 @@ Be thorough and adversarial. This is for a public technical article.
 - セキュリティ対策を主張する技術記事を書くとき
 - 「N項目の対策」のようなリスト形式でセキュリティを語るとき
 - OWASP 等の標準との照合表を掲載するとき
-- publish-article フローの Step 4（セキュリティチェック）と併用
+- publish-article フローの Step 2（セキュリティチェック）と併用

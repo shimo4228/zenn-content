@@ -20,7 +20,7 @@ Every Zenn article MUST start with YAML frontmatter:
 
 ```markdown
 ---
-title: "Your Article Title (50-60 characters optimal)"
+title: "Your Article Title (50 chars preferred, 60 max)"
 emoji: "📚"
 type: "tech"  # "tech" or "idea"
 topics: ["claude", "anki", "ai", "python", "tdd"]  # 1-5 tags, lowercase
@@ -34,7 +34,7 @@ published: true  # false for draft
 
 | Field | Required | Description | Examples |
 |-------|----------|-------------|----------|
-| `title` | ✅ | Article title (50-60 chars optimal, 60 max) | "TDD で作る pdf2anki の品質保証パイプライン" |
+| `title` | ✅ | Article title (50 文字以内推奨、60 まで許容 — 正本: `.claude/rules/zenn-writing.md`) | "TDD で作る pdf2anki の品質保証パイプライン" |
 | `emoji` | ✅ | Single emoji representing the article | "📚", "🔬", "🤖", "⚡" |
 | `type` | ✅ | Article type | `"tech"` (technical) or `"idea"` (opinion/essay) |
 | `topics` | ✅ | 1-5 tags (lowercase, no spaces) | `["claude", "anki", "python", "tdd"]` |
@@ -42,6 +42,8 @@ published: true  # false for draft
 | `published_at` | Optional | Scheduled publish time (Zenn-specific). Format spec and gotchas: `.claude/rules/zenn-writing.md` | `2026-04-15 07:00` (JST) |
 
 ### Emoji Selection
+
+> emoji・topics の選定基準は**このスキルが正本**（`seo-optimizer` は提案フローのみ持ち、基準はここに defer する）。
 
 | Theme | Recommended Emojis |
 |-------|-------------------|
@@ -161,8 +163,9 @@ Store images in `/images/` directory:
 # External links
 [Anki公式サイト](https://apps.ankiweb.net/)
 
-# Internal links (within Zenn)
-[前回の記事](/articles/previous-article-slug)
+# Internal links (within Zenn) — フル URL 必須
+# 相対パス（/articles/xxx）は Zenn 上で正しく解決されない（.claude/rules/zenn-writing.md 参照）
+[前回の記事](https://zenn.dev/shimo4228/articles/previous-article-slug)
 
 # Footnotes
 テキスト[^1]
@@ -238,7 +241,7 @@ For refactoring or improvements, show both versions side by side.
 
 ## Publishing Workflow
 
-公開前チェック（lint→レビュー→セキュリティ→frontmatter→published_at→スケジュール→クロスポスト→push）の正本は [publish-article](../publish-article/SKILL.md)。ここでは再掲しない。
+公開前チェック（レビュー→セキュリティ→frontmatter→published_at→スケジュール→クロスポスト→push）の正本は [publish-article](../publish-article/SKILL.md)。ここでは再掲しない。
 
 ---
 

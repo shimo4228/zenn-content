@@ -73,9 +73,10 @@ origin: original
 
 ```
 1. [agent: devto-translator]  — 一気通貫（翻訳→タグ→画像→投稿）
+2. [skill: quality-gate]      — 「翻訳記事追加」チェック（コードブロック・リンク・用語一貫性）
    ⏸ ユーザー確認: ドライラン結果
-2. schedule.json 更新（refs/schedule-schema.md 準拠）
-3. git push
+3. schedule.json 更新（refs/schedule-schema.md 準拠）
+4. git push
 ```
 
 ## Mission D: バッチスケジューリング
@@ -99,7 +100,7 @@ origin: original
 
 ## 品質ゲート
 
-全ミッションで `/quality-gate` を通す。詳細は `quality-gate` スキルを参照。
+記事本文を生成・変更するミッション（A: 新規 / B: 改稿 / C: 翻訳）は `/quality-gate` を通す。D（スケジューリング）と E（アイデア出し）は本文を触らないため対象外。詳細は `quality-gate` スキルを参照。
 
 ---
 

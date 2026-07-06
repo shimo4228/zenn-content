@@ -118,8 +118,9 @@ published_at: 2026-04-15 07:00  # JST、ハイフン区切り必須
 # 変換プレビュー（実 POST しない）
 cd scripts && uv run python devto_crosspost.py post {slug} --dry-run
 
-# 予約: 指定日時に one-shot launchd 発火（US 東部 午前9時 = JST 22:00）
-cd scripts && uv run python devto_crosspost.py schedule {slug} --at "2026-07-07 09:00 America/New_York"
+# 予約: 指定日時に one-shot launchd 発火
+# 日米ペア既定（EN = JP 公開の前日 22:00 JST）の正本は .claude/rules/zenn-writing.md「投稿予約タイミング」
+cd scripts && uv run python devto_crosspost.py schedule {slug} --at "2026-07-07 22:00 Asia/Tokyo"
 
 # 即時投稿したい場合
 cd scripts && uv run python devto_crosspost.py post {slug}
@@ -158,5 +159,5 @@ frontmatter 検証のみ:
   npm run validate
 
 editor レビューのみ:
-  claude task --agent=editor --prompt="Review articles/my-article.md"
+  claude --agent=editor --prompt="Review: articles/my-article.md"
 ```

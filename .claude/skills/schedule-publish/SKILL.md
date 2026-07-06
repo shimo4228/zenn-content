@@ -50,13 +50,13 @@ origin: original
 
 #### C. 公開準備度（Readiness）: 0-3
 
-lint・レビューの完了状態。
+レビュー・品質ゲートの完了状態（prose lint は 2026-07 に全撤去済み。機械チェックは frontmatter 検証のみ）。
 
 | Score | 基準 |
 |-------|------|
-| 3 | lint クリア、CRITICAL なし |
-| 2 | 軽微な lint エラーのみ |
-| 1 | MEDIUM 修正が残る |
+| 3 | editor レビュー済み、CRITICAL・MEDIUM なし、frontmatter 検証パス |
+| 2 | レビュー済み、MEDIUM 修正が残る |
+| 1 | レビュー未実施 |
 | 0 | CRITICAL 未修正 |
 
 #### D. 話題性（Freshness）: 0-2
@@ -83,7 +83,7 @@ lint・レビューの完了状態。
 | 曜日・時刻 | `.claude/rules/zenn-writing.md`「投稿ペース方針」が正本（バズタイム：火〜水 7:00-9:00 JST）。ここでは再掲しない | 値の二重管理を避ける |
 | 間隔 | 最低2日空ける | 各記事の「新着」フィード露出時間を確保 |
 | 上限 | `.claude/rules/zenn-writing.md`「投稿ペース方針」が正本（週2-3本）。ここでは再掲しない | 値の二重管理を避ける |
-| クロスポスト | Zenn 公開当日または翌日 | Dev.to(EN) のみ |
+| クロスポスト | EN (Dev.to) は JP の**前日 22:00 JST**（日米ペア既定の正本: `.claude/rules/zenn-writing.md`「投稿予約タイミング」） | Dev.to(EN) のみ |
 
 ---
 
@@ -110,11 +110,11 @@ grep -rl 'published: false' articles/*.md
 
 ### Step 3: 日程割り当て（launchd 予約）
 
-スコア順に投稿日時を決め、各記事を one-shot launchd ジョブとして仕込む（旧 `plan_schedule.py` は廃止）。バズタイム（火水）に寄せ、Dev.to は US 読者向けに tz 付きで指定する。**日時は `--at` 引数で渡す**（schedule.json には保存しない）。
+スコア順に投稿日時を決め、各記事を one-shot launchd ジョブとして仕込む（旧 `plan_schedule.py` は廃止）。JP はバズタイム（火水 09:00 JST）に寄せ、EN はその**前日 22:00 JST**（≈ 米国 09:00 ET）。**日時は `--at` 引数で JST 明示で渡す**（schedule.json には保存しない。正本: `.claude/rules/zenn-writing.md`「投稿予約タイミング」）。
 
 ```bash
-# US 東部 午前9時 = JST 22:00
-cd scripts && uv run python devto_crosspost.py schedule {slug} --at "2026-07-07 09:00 America/New_York"
+# JP が 2026-07-08 09:00 JST なら、EN はその前日 22:00 JST
+cd scripts && uv run python devto_crosspost.py schedule {slug} --at "2026-07-07 22:00 Asia/Tokyo"
 ```
 
 ### Step 4: ユーザー確認

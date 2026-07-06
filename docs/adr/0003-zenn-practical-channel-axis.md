@@ -115,3 +115,7 @@ Zenn/Dev.to の全記事は `editor` agent でレビューする。`essay-review
 - **シリーズの声**: 継続シリーズ内で新記事が先行記事（旧文体）とトーン不整合になりうる。継続シリーズでは先行記事の声を優先するか、明示的に転換する（`series-checker` で確認）。
 - **Dev.to/EN の継承**: `devto-translator` の忠実翻訳で JP 実用軸を自動継承。EN 専用スキルは作らない。
 - 廃止コンポーネントは削除前に inbound link を repoint 済み。復元が必要な場合は git 履歴（`git log --follow` / `git show`）から参照する。
+
+## Addendum (2026-07-06): zenn-writer router の削除
+
+「参照パス維持のため router 化」とした `zenn-writer` は、skill-stocktake 監査で **router 経由の実導線が消滅している**ことを確認した（残存参照は CLAUDE.md / codemap の説明文のみで、いずれも振り分け先を直接指していた）。参照を repoint のうえディレクトリを削除。振り分け表の正本は CLAUDE.md「Writing skills」節。
