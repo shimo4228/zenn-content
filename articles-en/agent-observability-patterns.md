@@ -4,21 +4,21 @@ emoji: "🔭"
 type: "tech"
 topics: ["observability", "agents", "claudecode", "skills"]
 published: false
-description: "Three design patterns that make an autonomous LLM agent's decisions reconstructable after the fact — replayable audit logs, read-only instruments, and shadow-mode validation — published as installable Agent Skills, each with a real production story of what it fixed."
+description: "Three design patterns that make an autonomous AI agent's decisions reconstructable after the fact — replayable audit logs, read-only instruments, and shadow-mode validation — published as installable Agent Skills, each with a real production story of what it fixed."
 tags: observability, agents, claudecode, skills
 ---
 
-> **What this article covers**: three design patterns that make an autonomous LLM agent's decision-making "reconstructable after the fact" (replayable audit logs / read-only instruments / shadow-mode validation), and how to install them into your own agent as Agent Skills.
+> **What this article covers**: three design patterns that make an autonomous AI agent's decision-making "reconstructable after the fact" (replayable audit logs / read-only instruments / shadow-mode validation), and how to install them into your own agent as Agent Skills.
 
 ## The three walls these patterns address
 
-Once you build an LLM agent and start running it, you hit a series of problems that are a different species from feature work.
+Once you build an AI agent and start running it, you hit a series of problems that are a different species from feature work.
 
 - **You can't explain the "why" of a decision after the fact.** Someone reports odd behavior, but nothing was kept that lets you reconstruct what the LLM or the heuristic saw and how it decided at that moment
 - **"The output feels like it's drifting" can't justify an intervention.** You have the gut feeling but no numbers, so you tweak settings on intuition and can't even tell whether the tweak worked
 - **Wiring a new LLM decision mechanism into production is scary.** If the selector or classifier is wrong, the output just degrades quietly — and by the time you notice, the old behavior you'd want as a baseline is gone
 
-All three are, at bottom, a lack of observability — the property that a system's internal state can be reconstructed from the outside. As LLM agents move into production, interest in telemetry (the machinery by which a system records and emits data about its own behavior) via standards like OpenTelemetry is growing too. But what traces and metrics tell you by default is "what the request did" — they don't reach the three walls above.
+All three are, at bottom, a lack of observability — the property that a system's internal state can be reconstructed from the outside. As AI agents move into production, interest in telemetry (the machinery by which a system records and emits data about its own behavior) via standards like OpenTelemetry is growing too. But what traces and metrics tell you by default is "what the request did" — they don't reach the three walls above.
 
 I've published the design patterns that address each wall as Agent Skills, in the same form I use to operate an autonomous agent[^1].
 
