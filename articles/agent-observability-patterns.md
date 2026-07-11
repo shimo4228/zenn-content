@@ -1,5 +1,5 @@
 ---
-title: "ログは失敗より先に出荷する——LLMエージェント観測性設計の3パターン"
+title: "AIエージェントの「なぜその判断？」に答えるオブザーバビリティ設計3パターン"
 emoji: "🔭"
 type: "tech"
 topics: ["claudecode", "observability", "skills", "agentskills", "エージェント"]
