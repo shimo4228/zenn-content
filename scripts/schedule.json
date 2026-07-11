@@ -500,7 +500,7 @@
     {
       "file": "articles-en/non-code-asset-value-stocktake.md",
       "date": "2026-07-08",
-      "devto": null,
+      "devto": "https://dev.to/shimo4228/linters-cant-measure-a-non-code-assets-value-i-built-an-llm-stocktake-for-it-4ng7",
       "devto_tags": [
         "claudecode",
         "ai",
@@ -517,7 +517,7 @@
     },
     {
       "file": "articles-en/iphone-claude-code-remote-control.md",
-      "devto": null,
+      "devto": "https://dev.to/shimo4228/claude-code-from-iphone-plugging-3-holes-in-remote-control-17cf",
       "devto_tags": [
         "claudecode",
         "tmux",
@@ -525,6 +525,22 @@
         "github"
       ],
       "notes": "EN translation of iPhone公式アプリでClaude Codeを運用する — 新セッション・再認証・git push、3つの穴の塞ぎ方"
+    },
+    {
+      "file": "articles/agent-observability-patterns.md",
+      "date": "2026-07-13",
+      "notes": "AIエージェントの「なぜその判断？」に答えるオブザーバビリティ設計3パターン"
+    },
+    {
+      "file": "articles-en/agent-observability-patterns.md",
+      "devto": null,
+      "devto_tags": [
+        "observability",
+        "agents",
+        "claudecode",
+        "skills"
+      ],
+      "notes": "EN translation of AIエージェントの「なぜその判断？」に答えるオブザーバビリティ設計3パターン"
     }
   ]
 }

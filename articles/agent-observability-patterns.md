@@ -3,7 +3,8 @@ title: "AIエージェントの「なぜその判断？」に答えるオブザ�
 emoji: "🔭"
 type: "tech"
 topics: ["claudecode", "observability", "skills", "agentskills", "エージェント"]
-published: false
+published: true
+published_at: 2026-07-13 09:00
 ---
 
 > **この記事でわかること**: 自律的に動く LLM エージェントの意思決定を「後から再構成できる」ようにする 3 つの設計パターン（再生可能な監査ログ / 読み取り専用の計器 / シャドーモード検証）と、それを Agent Skills 形式で自分のエージェントに導入する方法
