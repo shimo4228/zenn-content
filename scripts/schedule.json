@@ -541,6 +541,22 @@
         "skills"
       ],
       "notes": "EN translation of AIエージェントの「なぜその判断？」に答えるオブザーバビリティ設計3パターン"
+    },
+    {
+      "file": "articles/small-llm-by-choice.md",
+      "date": "2026-07-14",
+      "notes": "小型LLMシリーズ #0 — マニフェスト + ハブ"
+    },
+    {
+      "file": "articles-en/small-llm-by-choice.md",
+      "devto": null,
+      "devto_tags": [
+        "discuss",
+        "ollama",
+        "llm",
+        "agents"
+      ],
+      "notes": "EN translation of 自律エージェントをあえて 16GB M1 で作る — 制約が設計を鍛えるという選択"
     }
   ]
 }
