@@ -167,6 +167,8 @@ flowchart LR
 
 `verdict` は enum なので、受け取った code は `switch` 文で分岐するだけです。`evidence` の No 項目は、そのまま改善タスクのリストとして次の工程（人間または別の LLM）に渡せます。
 
+このテンプレートを含む設計パターン一式は、Claude Code の Agent Skill として [github.com/shimo4228/llm-as-judge](https://github.com/shimo4228/llm-as-judge) に公開しています。`skills/llm-as-judge` を `~/.claude/skills/` にコピーすれば、judge を設計する場面で自動的に発火します。
+
 ## 同じ原則でも、規模で運用は変わる
 
 このパターンを 2 つの規模で運用して分かったのは、**原則は共通、適用条件は規模で変える**ということです。
@@ -256,6 +258,7 @@ flowchart TB
 
 ## 関連リンク
 
+- [llm-as-judge](https://github.com/shimo4228/llm-as-judge) — 本記事の設計パターンを Agent Skill 化したもの（インストールしてそのまま使えます）
 - [前回記事: AI の苦手な仕事をスクリプトに逃がす — スキル棚卸しコマンドの設計・実装・公開の全記録](https://zenn.dev/shimo4228/articles/skill-stocktake-design-journey)
 - [claude-skill-stocktake](https://github.com/shimo4228/claude-skill-stocktake) — 本記事のスキル監査コマンド（v3.0 ハイブリッド構造）
 - [agent-knowledge-cycle](https://github.com/shimo4228/agent-knowledge-cycle) — LLM judge + Code enforce パターンと評価設計原則の定義元
