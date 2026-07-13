@@ -217,5 +217,6 @@ cp -r skills/shadow-mode-validation ~/.claude/skills/shadow-mode-validation
 - [agent-observability-patterns](https://github.com/shimo4228/agent-observability-patterns) — 本記事の 3 skill（MIT）
 - [Agent Attribution Practice](https://github.com/shimo4228/agent-attribution-practice) — 対応する ADR 群（Causal Traceability / Human Approval Gate）
 - [Contemplative Agent](https://github.com/shimo4228/contemplative-agent) — パターンの原本が運用されているプロジェクト
+- [自律エージェントをあえて M1 Mac で作る — 制約が設計を鍛えるという選択](https://zenn.dev/shimo4228/articles/small-llm-by-choice) — 本記事が属する小型 LLM 運用シリーズのハブ
 - [Claude Codeから簡単にCodexレビューさせるスキルを作った](https://zenn.dev/shimo4228/articles/codex-review-cross-model-decorrelation) — 別系統モデルレビューの仕組み
 - [github.com/shimo4228](https://github.com/shimo4228) — 著者の他のリポジトリ一覧
