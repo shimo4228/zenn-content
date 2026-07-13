@@ -533,7 +533,7 @@
     },
     {
       "file": "articles-en/agent-observability-patterns.md",
-      "devto": null,
+      "devto": "https://dev.to/shimo4228/why-did-my-agent-decide-that-3-observability-patterns-ami",
       "devto_tags": [
         "observability",
         "agents",
@@ -557,6 +557,17 @@
         "agents"
       ],
       "notes": "EN translation of 自律エージェントをあえて 16GB M1 で作る — 制約が設計を鍛えるという選択"
+    },
+    {
+      "file": "articles-en/llm-judge-checks-not-scores.md",
+      "devto": null,
+      "devto_tags": [
+        "llm",
+        "promptengineering",
+        "evaluation",
+        "claudecode"
+      ],
+      "notes": "EN translation of LLM-as-judge はスコアを集計しない — チェックは証拠、判定は総合判断"
     }
   ]
 }
