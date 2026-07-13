@@ -3,7 +3,8 @@ title: "LLM-as-judge はスコアを集計しない — チェックは証拠、
 emoji: "⚖️"
 type: "tech"
 topics: ["llm", "ai", "claudecode", "promptengineering"]
-published: false
+published: true
+published_at: 2026-07-15 09:00
 ---
 
 > **この記事でわかること**: LLM に品質評価をさせるとき、数値スコアの代わりに「二値チェック + 名前付き判定」で設計する方法。評価対象を差し替えればすぐ使える judge プロンプト構造つき。
