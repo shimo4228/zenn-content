@@ -559,6 +559,22 @@
       "notes": "EN translation of 自律エージェントをあえて 16GB M1 で作る — 制約が設計を鍛えるという選択"
     },
     {
+      "file": "articles/chaos-tdd-fault-injection.md",
+      "date": "2026-07-16",
+      "notes": "LLM エージェントに fault injection TDD を入れたら silent failure が3件出た — 小型LLMシリーズ"
+    },
+    {
+      "file": "articles-en/chaos-tdd-fault-injection.md",
+      "devto": null,
+      "devto_tags": [
+        "testing",
+        "llm",
+        "pytest",
+        "agents"
+      ],
+      "notes": "EN translation of LLM エージェントに fault injection TDD を入れたら silent failure が3件出た"
+    },
+    {
       "file": "articles-en/llm-judge-checks-not-scores.md",
       "devto": null,
       "devto_tags": [
