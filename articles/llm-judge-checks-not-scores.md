@@ -250,4 +250,7 @@ flowchart TB
 - [前回記事: AI の苦手な仕事をスクリプトに逃がす — スキル棚卸しコマンドの設計・実装・公開の全記録](https://zenn.dev/shimo4228/articles/skill-stocktake-design-journey)
 - [claude-skill-stocktake](https://github.com/shimo4228/claude-skill-stocktake) — 本記事のスキル監査コマンド（v3.0 ハイブリッド構造）
 - [agent-knowledge-cycle](https://github.com/shimo4228/agent-knowledge-cycle) — 本文で触れた LLM judge + Code enforce パターンの定義元
+- 論文: [CheckEval](https://arxiv.org/abs/2403.18771)（arXiv:2403.18771、2024）— チェックリスト分解型 LLM 評価の先行研究
+- 論文: [TICK](https://arxiv.org/abs/2410.03608)（arXiv:2410.03608、2024）— 生成チェックリストによる評価・生成の改善
+- 論文: [BinEval「Ask, Don't Judge」](https://arxiv.org/abs/2606.27226)（arXiv:2606.27226、2026）— 一問一主張の Yes/No 分解と「No 回答 = 改善リスト」の提案元。limitations が本記事の境界線の根拠
 - [github.com/shimo4228](https://github.com/shimo4228) — 著者の他のリポジトリ一覧
