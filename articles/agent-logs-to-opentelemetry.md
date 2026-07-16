@@ -235,5 +235,6 @@ OTel SDK では `span.end()` は即送信ではなく、`BatchSpanProcessor`（s
 - [ADR-0078: OTel Connection via Vocabulary Mapping and Offline Export](https://github.com/shimo4228/contemplative-agent/blob/main/docs/adr/0078-otel-connection-via-vocabulary-and-offline-export.md) — この判断の一次資料（[ADR-0075](https://github.com/shimo4228/contemplative-agent/blob/main/docs/adr/0075-observability-by-default.md): 監査ログを機能と同じ PR で出荷する側の判断）
 - [OpenTelemetry GenAI semantic conventions](https://github.com/open-telemetry/semantic-conventions-genai) — 標準語彙の正本（Development ステータス）
 - [前作: AIエージェントの「なぜその判断？」に答えるオブザーバビリティ設計3パターン](https://zenn.dev/shimo4228/articles/agent-observability-patterns) — 監査ログ側の設計 3 パターン
+- [事故のあとで因果を辿れるか](https://zenn.dev/shimo4228/articles/agent-causal-traceability-org-adoption) — さらに前段。エージェントの障害後に因果を辿れる記録がなぜ要るか、という問題意識
 - [自律エージェントをあえて M1 Mac で作る — 制約が設計を鍛えるという選択](https://zenn.dev/shimo4228/articles/small-llm-by-choice) — 本記事が属する小型 LLM 運用シリーズのハブ
 - [筆者の GitHub](https://github.com/shimo4228) — エージェント本体・関連リポジトリの一覧
