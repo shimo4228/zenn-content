@@ -3,7 +3,8 @@ title: "AI エージェントの自前ログ、OpenTelemetry につないだら�
 emoji: "🔌"
 type: "tech"
 topics: ["opentelemetry", "observability", "jaeger", "llm", "エージェント"]
-published: false
+published: true
+published_at: 2026-07-17 09:00
 ---
 
 > **この記事でわかること**: 自前ログを OpenTelemetry につなぐと何が見えるのか。OpenTelemetry 形式に変換して可視化し、借りる価値のある要素と見送ってよい要素を整理します。

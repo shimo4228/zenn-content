@@ -549,7 +549,7 @@
     },
     {
       "file": "articles-en/small-llm-by-choice.md",
-      "devto": null,
+      "devto": "https://dev.to/shimo4228/building-an-autonomous-agent-on-an-m1-mac-by-choice-5b5o",
       "devto_tags": [
         "discuss",
         "ollama",
@@ -565,7 +565,7 @@
     },
     {
       "file": "articles-en/chaos-tdd-fault-injection.md",
-      "devto": null,
+      "devto": "https://dev.to/shimo4228/fault-injection-tdd-found-3-silent-failures-in-my-llm-agent-3mld",
       "devto_tags": [
         "testing",
         "llm",
@@ -576,7 +576,7 @@
     },
     {
       "file": "articles-en/llm-judge-checks-not-scores.md",
-      "devto": null,
+      "devto": "https://dev.to/shimo4228/llm-as-judge-shouldnt-aggregate-scores-binary-checks-as-evidence-one-holistic-verdict-822",
       "devto_tags": [
         "llm",
         "promptengineering",
@@ -584,6 +584,11 @@
         "claudecode"
       ],
       "notes": "EN translation of LLM-as-judge はスコアを集計しない — チェックは証拠、判定は総合判断"
+    },
+    {
+      "file": "articles/agent-logs-to-opentelemetry.md",
+      "date": "2026-07-17",
+      "notes": "AI エージェントの自前ログ、OpenTelemetry につないだら何が見える？ — OTel コンテスト応募（OpenTelemetry 部門）・小型LLMシリーズ"
     }
   ]
 }

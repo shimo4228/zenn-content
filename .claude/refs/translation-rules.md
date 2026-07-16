@@ -42,6 +42,13 @@ topics の変換例:
 - "チートシート" → "cheatsheet"
 - "自動化" → "automation"
 
+## Dev.to 内リンクの置換（必須）
+
+- **著者自身の Zenn 記事へのリンクは、本文・関連リンク節とも、必ず Dev.to 版記事の URL に置き換える**（Dev.to 読者を日本語の Zenn へ送らない）
+- 対応 URL の解決: `scripts/schedule.json` の該当 `articles-en/` エントリの `devto` フィールドを参照する
+- Dev.to 版が存在しない場合（エントリなし / `devto: null`）のみ、Zenn URL をそのまま残す
+- GitHub リポジトリ・ADR・公式ドキュメント等、記事以外のリンクはそのまま保持
+
 ## Dev.to タグ付け
 
 1. `scripts/devto_crosspost.py` の `resolve_devto_tags()` フォールバック規則を参照
