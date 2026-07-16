@@ -6,7 +6,7 @@ topics: ["opentelemetry", "observability", "jaeger", "llm", "エージェント"
 published: false
 ---
 
-> **この記事でわかること**: エージェント本体のコードを 1 行も変えずに、既存の JSONL ログを OpenTelemetry のトレースに変換して Jaeger で可視化する方法。あわせて、LLM 呼び出しログと GenAI semantic conventions（LLM 向けの標準属性名）の対応表と、変換で信頼できないテキスト（外部由来の本文）を持ち込まないための設計を共有します。
+> **この記事でわかること**: エージェント本体のコードを 1 行も変えずに、手元の JSONL ログを OpenTelemetry のトレースに変換して Jaeger で可視化する方法。
 
 AI エージェントに OpenTelemetry（テレメトリ = システムの動作データを記録・送出する仕組みの標準仕様。以下 OTel）を入れたい。でも、こんな壁はないでしょうか。
 
