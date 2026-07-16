@@ -589,6 +589,17 @@
       "file": "articles/agent-logs-to-opentelemetry.md",
       "date": "2026-07-17",
       "notes": "AI エージェントの自前ログ、OpenTelemetry につないだら何が見える？ — OTel コンテスト応募（OpenTelemetry 部門）・小型LLMシリーズ"
+    },
+    {
+      "file": "articles-en/agent-logs-to-opentelemetry.md",
+      "devto": null,
+      "devto_tags": [
+        "opentelemetry",
+        "observability",
+        "jaeger",
+        "llm"
+      ],
+      "notes": "EN translation of AI エージェントの自前ログ、OpenTelemetry につないだら何が見える？"
     }
   ]
 }
