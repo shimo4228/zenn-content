@@ -592,7 +592,7 @@
     },
     {
       "file": "articles-en/agent-logs-to-opentelemetry.md",
-      "devto": null,
+      "devto": "https://dev.to/shimo4228/what-do-my-ai-agents-logs-look-like-in-opentelemetry-27ic",
       "devto_tags": [
         "opentelemetry",
         "observability",
