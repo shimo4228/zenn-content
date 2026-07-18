@@ -600,6 +600,22 @@
         "llm"
       ],
       "notes": "EN translation of AI エージェントの自前ログ、OpenTelemetry につないだら何が見える？"
+    },
+    {
+      "file": "articles/herdr-agent-multiplexer.md",
+      "date": "2026-07-21",
+      "notes": "AI エージェント版 tmux「Herdr」— Zed に足りない並列エージェント管理を埋める"
+    },
+    {
+      "file": "articles-en/herdr-agent-multiplexer.md",
+      "devto": null,
+      "devto_tags": [
+        "claudecode",
+        "terminal",
+        "productivity",
+        "ai"
+      ],
+      "notes": "EN translation of AI エージェント版 tmux「Herdr」— Zed に足りない並列エージェント管理を埋める"
     }
   ]
 }
