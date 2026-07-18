@@ -152,10 +152,10 @@ The same "one room per branch, work in parallel" structure as Zed Parallel Agent
 `pane move` can return `changed: false` (reason: `"zoomed_tab"`) and do nothing. If the target tab is in zoomed view, layout changes are rejected by design. Run `herdr pane zoom <pane-id> --off` to unzoom first.
 :::
 
-:::details Gotcha: `--current` means the focused pane, not the caller
-When I had Claude Code run `herdr pane split`, the pane split in **a different workspace — the one I happened to be looking at** — not the intended one. The CLI's `--current` resolves to "the pane focused in the TUI," not "the pane the command was invoked from."
+:::details Gotcha: an omitted target means the focused pane, not the caller
+When I had Claude Code run `herdr pane split`, the pane split in **a different workspace — the one I happened to be looking at** — not the intended one. That's because when you omit the pane target, it resolves to "the pane focused in the TUI," not "the pane the command was invoked from" (stated in the official CLI reference; passing `--current` resolves to the calling pane).
 
-When agents drive the CLI, don't rely on `--current`; have them pass their own position explicitly via `HERDR_PANE_ID`.
+When agents drive the CLI, don't let them omit the target; have them pass their own position explicitly via `--current` or `HERDR_PANE_ID`.
 :::
 
 :::details Gotcha: server lifetime and startup directory
