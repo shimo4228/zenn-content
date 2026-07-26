@@ -16,7 +16,7 @@ If you've been using Claude Code for a while, you probably share these worries:
 - The official guidance now says "cut your rules," but you can't tell **which** of your rules are the ones to cut
 - Deleting everything at once and watching behavior degrade is scary, so you don't touch any of it
 
-On 2026-07-25 I ran this audit on my own `~/.claude` harness (5,789 words of resident rules) and cut the resident load down to 2,463 words (measurement details at the end). This article documents the cross-checking procedure I used, in a reproducible form. The takeaway is not the reduction itself but **the decision procedure: on what evidence, which rules, and how to dispose of them**.
+On 2026-07-25 I ran this audit on my own `~/.claude` harness (my set of custom configuration: CLAUDE.md, rules files, agent definitions) and cut the resident rules — the part auto-loaded into every session — from 5,789 down to 2,463 words (measurement details at the end). This article documents the cross-checking procedure I used, in a reproducible form. The takeaway is not the reduction itself but **the decision procedure: on what evidence, which rules, and how to dispose of them**.
 
 ## Background: the official guidance on rule-writing changed
 
@@ -155,7 +155,7 @@ This is not a load-time conflict, but with the official docs explicitly saying t
 
 ## Step 3: don't treat "conflict = bad" — run each item through a decision frame
 
-Once the three-way sort is done, decide dispositions. The important part: **do not mechanically mark conflicts and drift for deletion**. Some of your custom rules were written precisely to override product defaults on purpose. "Points the opposite way" alone cannot distinguish an accident from an intent.
+Once the three-way sort is done, decide dispositions. The important part: **do not mechanically mark conflicts and drift for deletion**. Some of your custom rules were written precisely to override product defaults on purpose. "Points the opposite way" alone cannot distinguish an accident from a deliberate choice.
 
 I judged each item on four axes.
 
@@ -174,9 +174,9 @@ Three example dispositions.
 
 **Keep (intent and evidence alive)**: On the other hand, I kept my rule "run review in a separate agent process from the implementer." The official guide contains the line "do not use subagents to verify or double-check your own work," which at first glance collides with this rule.
 
-But read in context, the nuance is quite different. That line is one phrase in an **example prompt developers can add to control subagent spawning**, in a section about cost containment. The official premise is that Opus 5 verifies its own work without being told — explicit verification instructions just cause over-verification and should be cut — and that the new generation, which also delegates more, would otherwise reflexively spawn "just in case" double-check subagents and burn cost. That's the brake being illustrated. The same doc also positively cites the writer–verifier pattern — separating the writer from the verifier — as a strength of Opus 5. It is not a rejection of division-of-labor review itself.
+But read in context, this is not a rejection of division-of-labor review. That line is one phrase in an **example prompt developers can add to control subagent spawning**, in a section about cost containment. The official premise is that Opus 5 verifies its own work without being told — explicit verification instructions just cause over-verification and should be cut — and that the new generation, which also delegates more, would otherwise reflexively spawn "just in case" double-check subagents and burn cost. That's the brake being illustrated. The same doc also positively cites the writer–verifier pattern — separating the writer from the verifier — as a strength of Opus 5.
 
-My rule has two tiers. The base: never let review happen in the same context as the implementation (same-context review inherits the implementer's blind spots). On top of that, for important changes, a **different model** (in my case, Codex CLI) does the review, decorrelating the blind spots. The latter was an easy keep — cross-model review is a capability the harness structurally cannot provide no matter how much it evolves, so there is nothing for the substrate to absorb it into. The design decision is recorded in an ADR.
+My rule has two tiers. The base: never let review happen in the same context as the implementation (same-context review inherits the implementer's blind spots). On top of that, for important changes, a **different model** (in my case, Codex CLI) does the review, decorrelating the blind spots. The latter was an easy keep — cross-model review is a capability Claude Code itself structurally cannot provide no matter how much it evolves, so there is nothing for the product to absorb it into. The design decision is recorded in an ADR.
 
 The former (separate-process review on the same model) may still overlap with the "added verification passes" the official guidance wants to suppress. This is the interpretive part: if Opus 5's self-verification turns out to solve even the blind-spot-inheritance problem, the base tier may become unnecessary. It stays — as a keep with an expiry condition: revisit when the premise changes.
 
@@ -213,11 +213,11 @@ Note that I am not claiming "resolving the conflicts improved performance." My e
 3. Don't treat "conflict = bad" — judge keep / invert / retire on the four axes of intent, evidence, freshness, and expiry condition
 4. Apply the official reduction advice with the distinction between **model self-verification** and **machine verification**
 
-And one lesson to add from this round: **when you write a rule, record its rationale and its expiry condition**. I'll confess I wasn't doing this systematically either. Rules with an ADR (design decision record) took minutes to judge; rules without one turned into git log archaeology; and for the ghost setting, I couldn't even pin down when it disappeared. A rule cannot detect that its own justification has vanished — so whether you'll be able to judge your rules at the next generation change is decided by the notes you leave now.
+And one lesson to add from this round: **when you write a rule, record its rationale and its expiry condition**. I'll confess I wasn't doing this systematically either. Rules with an ADR (design decision record) took minutes to judge; rules without one turned into git log archaeology; and for the ghost setting, I couldn't even pin down when it disappeared. A rule cannot detect that its own justification has vanished — so whether you'll be able to judge your rules at the next generation change will be decided by the notes you leave now.
 
 ## Postscript (2026-07-26)
 
-The lessons from this article flowed back into my harness before publication.
+The lessons from this article have already flowed back into my harness.
 
 - Every resident rule file now carries `rationale:` and `review-when:` metadata, and my rules-audit skill [rules-stocktake](https://github.com/shimo4228/rules-stocktake) reads these fields during audits
 - The procedure in this article (collect the runtime layer → cross-check → judge with the decision frame) has been generalized into a skill called [generation-audit](https://github.com/shimo4228/generation-audit), published as a standalone repo, so it can be re-run as-is at the next model generation change
