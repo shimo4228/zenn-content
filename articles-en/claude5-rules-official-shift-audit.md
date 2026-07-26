@@ -219,13 +219,13 @@ And one lesson to add from this round: **when you write a rule, record its ratio
 
 The lessons from this article flowed back into my harness before publication.
 
-- Every resident rule file now carries `rationale:` and `review-when:` metadata, and my rules-audit skill (rules-stocktake) reads these fields during audits
-- The procedure in this article (collect the runtime layer → cross-check → judge with the decision frame) has been generalized into a skill called `generation-audit`, so it can be re-run as-is at the next model generation change
-
-The design decisions are recorded as ADR-0021 / ADR-0022 on the harness side.
+- Every resident rule file now carries `rationale:` and `review-when:` metadata, and my rules-audit skill [rules-stocktake](https://github.com/shimo4228/rules-stocktake) reads these fields during audits
+- The procedure in this article (collect the runtime layer → cross-check → judge with the decision frame) has been generalized into a skill called [generation-audit](https://github.com/shimo4228/generation-audit), published as a standalone repo, so it can be re-run as-is at the next model generation change
 
 ## Related links
 
 - [The new rules of context engineering for Claude 5 generation models](https://claude.com/blog/the-new-rules-of-context-engineering-for-claude-5-generation-models) — Anthropic official blog (2026-07-24)
 - [Prompting Claude Opus 5 — Claude Platform Docs](https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-opus-5) — official recommendations on confidence thresholds, verification steps, and subagents
+- [generation-audit](https://github.com/shimo4228/generation-audit) — this article's procedure packaged as a skill (standalone repo)
+- [rules-stocktake](https://github.com/shimo4228/rules-stocktake) — resident-rules audit skill (now reads rationale / review-when metadata)
 - [github.com/shimo4228](https://github.com/shimo4228) — the author's GitHub (harness-related repositories)

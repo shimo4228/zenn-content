@@ -223,13 +223,13 @@ python3 -c "import json; print('\n'.join(sorted(json.load(open('settings.json'))
 
 この記事の教訓は、公開前にそのままハーネスへ還流しました。
 
-- 常駐ルール全ファイルに `rationale:`（根拠）と `review-when:`（失効条件）のメタデータを追加し、ルールの棚卸しスキル（rules-stocktake）がこのフィールドを読んで監査する形に改善しました
-- 本記事の手順（runtime 層の採取 → 突合 → 判定枠での処分）を `generation-audit` というスキルに一般化し、次のモデル世代交代でそのまま再実行できるようにしました
-
-設計判断はハーネス側の ADR-0021 / ADR-0022 として記録しています。
+- 常駐ルール全ファイルに `rationale:`（根拠）と `review-when:`（失効条件）のメタデータを追加し、ルールの棚卸しスキル [rules-stocktake](https://github.com/shimo4228/rules-stocktake) がこのフィールドを読んで監査する形に改善しました
+- 本記事の手順（runtime 層の採取 → 突合 → 判定枠での処分）を [generation-audit](https://github.com/shimo4228/generation-audit) というスキルに一般化し、次のモデル世代交代でそのまま再実行できるようにしました。単独リポとして公開しています
 
 ## 関連リンク
 
 - [The new rules of context engineering for Claude 5 generation models](https://claude.com/blog/the-new-rules-of-context-engineering-for-claude-5-generation-models) — Anthropic 公式ブログ（2026-07-24）
 - [Prompting Claude Opus 5 — Claude Platform Docs](https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-opus-5) — 確信度しきい値・検証ステップ・サブエージェントに関する公式推奨
+- [generation-audit](https://github.com/shimo4228/generation-audit) — 本記事の手順をスキル化した公開リポ
+- [rules-stocktake](https://github.com/shimo4228/rules-stocktake) — 常駐ルールの棚卸しスキル（rationale / review-when を読む改善済み）
 - [github.com/shimo4228](https://github.com/shimo4228) — 著者の GitHub（ハーネス関連リポジトリ一覧）
