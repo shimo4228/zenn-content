@@ -219,6 +219,15 @@ python3 -c "import json; print('\n'.join(sorted(json.load(open('settings.json'))
 
 そして今回の教訓を 1 つ足すなら: **ルールを書くときに根拠と失効条件を書き残しておく**ことです。白状すると、私も体系的にやれていたわけではありません。ADR（設計判断の記録）が残っていたルールは判定が数分で済み、残っていなかったルールは git log の考古学になり、幽霊設定にいたっては消えた時期の特定すらできませんでした。ルールは自分の根拠が消えたことを検知できないので、次の世代交代のときに判定できるかどうかは、いま残すメモで決まります。
 
+## 追記（2026-07-26）
+
+この記事の教訓は、公開前にそのままハーネスへ還流しました。
+
+- 常駐ルール全ファイルに `rationale:`（根拠）と `review-when:`（失効条件）のメタデータを追加し、ルールの棚卸しスキル（rules-stocktake）がこのフィールドを読んで監査する形に改善しました
+- 本記事の手順（runtime 層の採取 → 突合 → 判定枠での処分）を `generation-audit` というスキルに一般化し、次のモデル世代交代でそのまま再実行できるようにしました
+
+設計判断はハーネス側の ADR-0021 / ADR-0022 として記録しています。
+
 ## 関連リンク
 
 - [The new rules of context engineering for Claude 5 generation models](https://claude.com/blog/the-new-rules-of-context-engineering-for-claude-5-generation-models) — Anthropic 公式ブログ（2026-07-24）

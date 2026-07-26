@@ -215,6 +215,15 @@ Note that I am not claiming "resolving the conflicts improved performance." My e
 
 And one lesson to add from this round: **when you write a rule, record its rationale and its expiry condition**. I'll confess I wasn't doing this systematically either. Rules with an ADR (design decision record) took minutes to judge; rules without one turned into git log archaeology; and for the ghost setting, I couldn't even pin down when it disappeared. A rule cannot detect that its own justification has vanished — so whether you'll be able to judge your rules at the next generation change is decided by the notes you leave now.
 
+## Postscript (2026-07-26)
+
+The lessons from this article flowed back into my harness before publication.
+
+- Every resident rule file now carries `rationale:` and `review-when:` metadata, and my rules-audit skill (rules-stocktake) reads these fields during audits
+- The procedure in this article (collect the runtime layer → cross-check → judge with the decision frame) has been generalized into a skill called `generation-audit`, so it can be re-run as-is at the next model generation change
+
+The design decisions are recorded as ADR-0021 / ADR-0022 on the harness side.
+
 ## Related links
 
 - [The new rules of context engineering for Claude 5 generation models](https://claude.com/blog/the-new-rules-of-context-engineering-for-claude-5-generation-models) — Anthropic official blog (2026-07-24)
