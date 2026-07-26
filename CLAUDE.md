@@ -78,7 +78,7 @@ All articles MUST use Zenn frontmatter. Field-by-field spec is canonical in `.cl
 
 ## Editor Agent Usage
 
-記事の執筆はサブエージェントに委譲せず、Claude Code 本体が `zenn-practical-writing` に従って直接執筆する。Before publishing, run review agents in parallel: `editor`（全 Zenn/Dev.to 記事共通）+ `fact-checker`（事実主張の検証）+ codex-review（公開記事の cross-model レビュー、prompt-driven）。
+記事の執筆はサブエージェントに委譲せず、Claude Code 本体が `zenn-practical-writing` に従って直接執筆する。Before publishing, run review agents in parallel: `editor`（全 Zenn/Dev.to 記事共通）+ `fact-checker`（事実主張の検証）+ `zenn-clarity-reviewer`（初見読者の明瞭性、project agent）+ codex-review（公開記事の cross-model レビュー、prompt-driven）。
 
 ```bash
 claude --agent=editor --prompt="Review: articles/ARTICLE_NAME.md"
@@ -90,6 +90,7 @@ Available agents:
 - `editor` — Zenn/Dev.to 記事の構造・品質・AI slop 検出（4段階評価）。type 分岐なしで全記事に使用
 - `essay-reviewer` — Substack essay corpus 専用（Zenn/Dev.to のミッションでは使わない）
 - `fact-checker` — 事実主張の Web 検索検証（ACCURATE/PARTIALLY/INACCURATE/UNVERIFIABLE）
+- `zenn-clarity-reviewer` — 初見読者の明瞭性（造語予算・タイトル軸・内部文脈依存。project agent、JP/EN 両対応。FAIL は公開ブロック）
 - `devto-translator` — JP→EN 翻訳 + Dev.to タグ付け + 投稿
 
 ## Writing skills
@@ -101,6 +102,7 @@ Zenn/Dev.to の記事執筆は**チャンネル独自の実用軸**が既定 —
 | **Zenn/Dev.to の記事執筆（既定・全記事）** | `zenn-practical-writing` — 実用軸（ですます・即実用・実コード/図・低認知負荷・用途が瞬時にわかる） |
 | **記法・frontmatter** | `zenn-format`（正本） |
 | **任意の personality flavor** | `zenn-idea-voice`（毒humor / 刃牙。type 非依存の opt-in） |
+| **公開後の実測 Eval ループ** | `article-stocktake` — 実測メトリクス × 品質ランクの乖離棚卸し（月次目安、ADR-0005） |
 | **genuine な思索エッセイ** | `~/.claude/skills/writing-ecosystem/SKILL.md`（だ/である × 発見調）。Substack corpus 専用、Zenn には出さない |
 
 genre 中立 canon（AI slop 禁止・タイトル原則・ネタ 3 軸）は global `writing-ecosystem` が正本。根拠: `docs/adr/0003-zenn-practical-channel-axis.md`。
@@ -119,6 +121,7 @@ Pipeline reference: `docs/CODEMAPS/scripts.md`
 - [ ] All code examples are tested and executable
 - [ ] Editor レビュー完了（Zenn/Dev.to は type 分岐なく editor に一本化。essay-reviewer は Substack 専用）
 - [ ] fact-checker でファクトチェック完了（事実主張を含む記事は必須）
+- [ ] zenn-clarity-reviewer の verdict が PASS（初見読者の明瞭性。FAIL のままなら公開不可）
 - [ ] Zenn frontmatter validates (`npm run validate`)
 - [ ] Preview looks good (`npm run preview`)
 - [ ] `published_at` を設定（`YYYY-MM-DD HH:MM` 形式、JST）

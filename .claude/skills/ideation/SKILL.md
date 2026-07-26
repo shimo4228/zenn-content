@@ -2,7 +2,7 @@
 name: ideation
 description: 記事のアイデア出し・テーマ検討を支援する
 user-invocable: true
-origin: original
+origin: shimo4228
 ---
 
 # Ideation Skill
@@ -30,6 +30,7 @@ origin: original
 2. **未公開ドラフト**: `drafts/` や `published: false` の記事
 3. **ユーザーの関心**: 対話で「最近何を考えているか」を聞く
 4. **既存記事の隙間**: 公開済み記事を一覧し、カバーされていないテーマを探す
+5. **実測フィードバック**: `article-stocktake` の最新サマリ（memory: article-quality.md 冒頭）— 過去に読者へ届いたテーマ・構造の**事実**。推薦理由・優劣づけには使わない（下記 Notes の禁止条項は維持）
 
 ### Step 2: テーマの深掘り
 

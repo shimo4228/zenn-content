@@ -1,4 +1,4 @@
-<!-- Generated: 2026-07-06 | Skills: 10 + learned/, Project agents: 1 | Token estimate: ~430 -->
+<!-- Generated: 2026-07-27 | Skills: 11 + learned/, Project agents: 2 | Token estimate: ~470 -->
 # Claude Code Skills & Agents
 
 ## Project Skills (.claude/skills/)
@@ -15,6 +15,7 @@
 | `seo-optimizer` | Title / tag / emoji optimization (Content Integrity: no intro rewrites) |
 | `series-checker` | Cross-article series consistency |
 | `quality-gate` | Unified quality standard across all paths |
+| `article-stocktake` | Post-publication eval loop: real metrics (Zenn/Dev.to) × quality rank divergence (ADR-0005) |
 | `learned/` | Auto-extracted patterns (e.g. `concept-before-use-rule`) |
 
 > `zenn-writer` (voice router), `chatlog-to-article`, `content-research-writer` were retired — see ADR-0003 and its 2026-07-06 addendum.
@@ -24,6 +25,7 @@
 | Agent | Purpose |
 |-------|---------|
 | `devto-translator` | JP→EN translation + Dev.to publishing (one-shot launchd scheduling) |
+| `zenn-clarity-reviewer` | First-contact reader clarity review (coined-term budget / title-axis / insider-context). Blocking gate — FAIL blocks publish (ADR-0004) |
 
 > `editor`, `essay-reviewer`, `fact-checker` were **promoted to global** (`~/.claude/agents/`) on 2026-04-18. `zenn-drafter` was retired (ADR-0003 — writing is done by the orchestrator itself). Shared writing standards live in the global `writing-ecosystem` skill.
 
@@ -31,7 +33,11 @@
 
 ```
 Draft (orchestrator writes directly, per zenn-practical-writing)
-  → editor + fact-checker + codex-review (parallel review)
+  → editor + fact-checker + zenn-clarity-reviewer + codex-review (parallel review)
   → human approval → published_at → git push (Zenn native schedule)
   → devto-translator (EN) → devto_crosspost.py schedule (one-shot launchd)
+
+Post-publication (monthly, human-driven):
+  metrics_snapshot.py → article-stocktake (rank × tier divergence)
+  → memory article-quality.md → ideation (fact source) / seo-optimizer (distribution)
 ```
