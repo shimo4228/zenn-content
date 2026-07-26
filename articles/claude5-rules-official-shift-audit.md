@@ -1,8 +1,8 @@
 ---
-title: "Claude 5 世代でルールの書き方は公式に変わった——自作ルールの棚卸し手順"
+title: "Opus 5 世代でルールの書き方は公式に変わった——自作ルールの棚卸し手順"
 emoji: "🧹"
 type: "tech"
-topics: ["claudecode", "anthropic", "contextengineering", "開発環境", "生産性"]
+topics: ["claudecode", "anthropic", "opus5", "contextengineering", "開発環境"]
 published: true
 published_at: 2026-07-27 09:00
 ---

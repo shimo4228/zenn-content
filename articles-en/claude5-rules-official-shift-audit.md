@@ -1,5 +1,5 @@
 ---
-title: "Claude 5 Changed How Rules Should Be Written — Audit Yours"
+title: "Opus 5 Changed How Rules Should Be Written — Audit Yours"
 emoji: "🧹"
 type: "tech"
 topics: ["claudecode", "contextengineering", "promptengineering", "anthropic"]
