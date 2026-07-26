@@ -608,7 +608,7 @@
     },
     {
       "file": "articles-en/herdr-agent-multiplexer.md",
-      "devto": null,
+      "devto": "https://dev.to/shimo4228/herdr-a-tmux-for-ai-agents-until-the-editor-disappeared-3hnn",
       "devto_tags": [
         "claudecode",
         "terminal",
@@ -616,6 +616,22 @@
         "ai"
       ],
       "notes": "EN translation of AI エージェント版 tmux「Herdr」— Zed に足りない並列エージェント管理を埋める"
+    },
+    {
+      "file": "articles/claude5-rules-official-shift-audit.md",
+      "date": "2026-07-27",
+      "notes": "Claude 5 世代でルールの書き方は公式に変わった——自作ルールの棚卸し手順"
+    },
+    {
+      "file": "articles-en/claude5-rules-official-shift-audit.md",
+      "devto": null,
+      "devto_tags": [
+        "claudecode",
+        "contextengineering",
+        "promptengineering",
+        "anthropic"
+      ],
+      "notes": "EN translation of Claude 5 世代でルールの書き方は公式に変わった——自作ルールの棚卸し手順"
     }
   ]
 }
