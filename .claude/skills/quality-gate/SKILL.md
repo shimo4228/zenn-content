@@ -2,7 +2,7 @@
 name: quality-gate
 description: 全パス（新規・改稿・翻訳）に統一品質基準を適用する
 user-invocable: true
-origin: original
+origin: shimo4228
 ---
 
 # Quality Gate Skill
@@ -26,6 +26,7 @@ origin: original
 ### 必須（全記事）
 
 - [ ] **editor の CRITICAL が 0**: レビュー済みで CRITICAL 指摘がすべて解決済み（Zenn/Dev.to は editor に一本化。essay-reviewer は Substack essay corpus 専用）
+- [ ] **zenn-clarity-reviewer の verdict が PASS**: 初見読者の明瞭性レビュー済みで FAIL が解消されている（FAIL のままなら公開不可。editor CRITICAL 0 と同格のブロッキング条件）
 - [ ] **AI slop なし**: `writing-ecosystem` skill の禁止リストに該当する表現がない
 - [ ] **未説明概念なし**: 専門用語・自作概念が初出時に説明されている
 - [ ] **セキュリティ**: API キー、個人パス（`/Users/`）、機密情報が含まれていない
@@ -68,4 +69,4 @@ origin: original
 
 - FAIL の場合は修正してから再実行
 - quality-gate は `publish-article` の前に実行する
-- レビューエージェント（editor）が未実行の場合は、先にレビューを促す
+- レビューエージェント（editor / zenn-clarity-reviewer）が未実行の場合は、先にレビューを促す

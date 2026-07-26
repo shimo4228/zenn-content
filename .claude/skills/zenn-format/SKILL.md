@@ -2,7 +2,7 @@
 name: zenn-format
 description: Zenn 記事の frontmatter・記法・テンプレートの正本。emoji/topics 選定、Markdown 記法、コード埋め込みのベストプラクティスを扱う。文体・執筆プロセスは扱わない（zenn-practical-writing / zenn-idea-voice を参照）。
 user-invocable: true
-origin: original
+origin: shimo4228
 ---
 
 # Zenn Format Skill

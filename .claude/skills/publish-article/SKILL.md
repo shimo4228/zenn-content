@@ -2,7 +2,7 @@
 name: publish-article
 description: 記事公開前の全チェック（レビュー→セキュリティ→frontmatter→published_at→スケジュール→Dev.to クロスポスト→push）を順に実行する。
 user-invocable: true
-origin: original
+origin: shimo4228
 ---
 
 # Publish Article Skill
@@ -29,9 +29,9 @@ origin: original
 
 ### Step 1: Editor エージェントによるレビュー
 
-**`writing-team` Mission A/B から到達した場合はスキップ**（editor/fact-checker/codex-review は writing-team 側で既に並列実行済み）。`/publish-article` を単独で直接呼んだ場合のみ、このステップで editor エージェントを起動する。
+**`writing-team` Mission A/B から到達した場合はスキップ**（editor/fact-checker/zenn-clarity-reviewer/codex-review は writing-team 側で既に並列実行済み）。`/publish-article` を単独で直接呼んだ場合のみ、このステップで editor / zenn-clarity-reviewer エージェントを並列起動する。
 
-editor エージェントを起動して記事を包括的にレビューする。
+editor エージェントを起動して記事を包括的にレビューする。並列で zenn-clarity-reviewer を起動し、初見読者の明瞭性（造語予算・タイトル軸の貫通・内部文脈依存）を検査する（verdict FAIL は公開ブロック — `quality-gate` の必須条件）。
 
 **レビュー観点:**
 1. 技術的正確性（コードスニペット、ファイルパス）

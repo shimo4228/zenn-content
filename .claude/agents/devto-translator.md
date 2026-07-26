@@ -1,7 +1,7 @@
 ---
 name: devto-translator
 description: JP 記事を受け取り、EN 翻訳 → Dev.to タグ付け → schedule.json 登録 → launchd による予約投稿（--at で指定した日時に one-shot 発火）までを一気通貫で実行する。
-origin: original
+origin: shimo4228
 ---
 
 # devto-translator エージェント

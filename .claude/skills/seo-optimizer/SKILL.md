@@ -2,7 +2,7 @@
 name: seo-optimizer
 description: Zenn 記事のタイトル・topics・emoji を Distribution レイヤーで最適化する（内容は変えない、ADR-0001）。タイトル原則・AI slop は writing-ecosystem、文字数は zenn-writing.md が正本。
 user-invocable: true
-origin: original
+origin: shimo4228
 ---
 
 # SEO Optimizer Skill

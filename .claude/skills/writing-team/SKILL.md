@@ -2,7 +2,7 @@
 name: writing-team
 description: Claude Code をオーケストレーター（PM）として、執筆チームを編成・指揮する
 user-invocable: true
-origin: original
+origin: shimo4228
 ---
 
 # Writing Team Skill（オーケストレーター）
@@ -40,9 +40,10 @@ origin: original
    ⏸ ユーザー確認: テーマ・方向性・構成案
 3. [skill: zenn-practical-writing] Phase 2-3 — 執筆 + 自己プリフライト
    （オーケストレーター本体が直接実行。サブエージェントに委譲しない）
-4. ┌ [agent: editor]                ─┐
-   ├ [agent: fact-checker]           ┤  並列実行
-   └ codex-review（prompt-driven）   ┘
+4. ┌ [agent: editor]                 ─┐
+   ├ [agent: fact-checker]            ┤  並列実行
+   ├ [agent: zenn-clarity-reviewer]   ┤
+   └ codex-review（prompt-driven）    ┘
 5. 修正
 6. [skill: quality-gate]     — 統一品質基準チェック
 7. [skill: seo-optimizer]    — タイトル・タグ最適化（内容は変えない）
@@ -53,6 +54,8 @@ origin: original
 
 **レビュアー**: Zenn/Dev.to は全記事 `editor` を使用（実用軸に一本化されたため type 分岐なし）。`essay-reviewer` は Substack essay corpus 専用で、Zenn/Dev.to のミッションでは使わない。
 
+**zenn-clarity-reviewer**: 初見読者（フィード・検索から来たエンジニア）の明瞭性レビュー。editor（構造・コード正確性・AI slop・用語一貫性）と観点が直交するため並列で起動する。verdict が FAIL のままの記事は公開できない（quality-gate のブロッキング条件）。根拠: [ADR-0004](../../../docs/adr/0004-zenn-clarity-reviewer-addition.md)
+
 **codex-review**: 公開記事のため、[根拠: `docs/adr/0003-zenn-practical-channel-axis.md` 決定5] に基づき、editor/fact-checker と並列で prompt-driven モードで起動する。
 
 ## Mission B: 改稿
@@ -61,9 +64,10 @@ origin: original
 1. 変更差分の分析（git diff または手動指定）
 2. [skill: series-checker]    — シリーズ整合性（シリーズ記事の場合）
 3. 改稿実行（オーケストレーター本体が直接編集）
-4. ┌ [agent: editor]                ─┐
-   ├ [agent: fact-checker]           ┤  並列実行
-   └ codex-review（prompt-driven）   ┘
+4. ┌ [agent: editor]                 ─┐
+   ├ [agent: fact-checker]            ┤  並列実行
+   ├ [agent: zenn-clarity-reviewer]   ┤
+   └ codex-review（prompt-driven）    ┘
 5. [skill: quality-gate]     — 統一品質基準
    ⏸ ユーザー確認: 改稿結果 + レビュー結果（一括確認）
 6. [skill: publish-article]  — 公開チェックリスト

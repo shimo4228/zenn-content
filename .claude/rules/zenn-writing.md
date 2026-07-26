@@ -104,6 +104,7 @@ JP と EN は **JST でペア予約**する。EN を前夜に、JP を翌朝に�
 - `~/.claude/agents/editor.md` — Zenn/Dev.to 全記事のレビュー（global、type 分岐なし）
 - `~/.claude/agents/essay-reviewer.md` — Substack essay corpus 専用（global。Zenn/Dev.to では使わない）
 - `~/.claude/agents/fact-checker.md` — 事実検証（global）
+- `.claude/agents/zenn-clarity-reviewer.md` — 初見読者の明瞭性レビュー（project。Zenn/Dev.to 専用、FAIL は公開ブロック。学術論文は global `clarity-reviewer`）
 - 記事執筆はサブエージェントに委譲せず、オーケストレーター本体が `zenn-practical-writing` に従って直接執筆する
 - `.claude/agents/devto-translator.md` — Dev.to 翻訳・投稿（project）
 - `.claude/rules/content-integrity.md` — Content Integrity 原則（project）

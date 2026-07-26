@@ -2,7 +2,7 @@
 name: schedule-publish
 description: 記事バッチの公開順序と日程を 4 軸スコアリングで決定し schedule.json に反映する。投稿タイミングの値は zenn-writing.md が正本。
 user-invocable: true
-origin: original
+origin: shimo4228
 ---
 
 # Schedule Publish Skill

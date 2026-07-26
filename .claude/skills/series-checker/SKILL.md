@@ -2,7 +2,7 @@
 name: series-checker
 description: シリーズ記事の整合性を確認する（用語、前提知識、トーン）
 user-invocable: true
-origin: original
+origin: shimo4228
 ---
 
 # Series Checker Skill

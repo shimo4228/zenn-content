@@ -69,6 +69,8 @@ Zenn/Dev.to の全記事は `editor` agent でレビューする。`essay-review
 
 新しいレビューエージェントは作らない（ADR-0002 §1 を維持）。実用軸の客観チェック項目（runnable code / 図表 ≥1 / 冒頭 utility 宣言 / 前提列挙 / scannable / ですます統一）は `quality-gate` の客観チェックリストに集約する。global `editor` は他 channel と共有のため改変しない。
 
+> **Superseded in part (2026-07-27)**: 「新しいレビューエージェントは作らない」は [ADR-0004](0004-zenn-clarity-reviewer-addition.md) により部分 supersede — 機械検査できない直交観点（初見読者明瞭性）に限り `zenn-clarity-reviewer` を追加した。客観チェック項目の quality-gate 集約は維持。
+
 ### 6. ユーザー確認点を 2 点に集約する
 
 `writing-team` Mission A/B のユーザー確認（⏸）は、テーマ・構成案・ドラフト・レビュー結果・published_at と 5 箇所に分散していた。以下の 2 点に集約する:
