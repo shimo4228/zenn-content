@@ -636,7 +636,7 @@
     {
       "file": "articles/claude-security-harness-self-scan.md",
       "date": "2026-07-28",
-      "notes": "ベータ版 claude-security を回してみた——189 エージェント・2 時間の実測"
+      "notes": "claude-security(ベータ)のコスト・出力・精度——189 エージェント 2 時間の実測"
     },
     {
       "file": "articles-en/claude-security-harness-self-scan.md",
@@ -647,7 +647,7 @@
         "security",
         "ai"
       ],
-      "notes": "EN translation of ベータ版 claude-security を回してみた——189 エージェント・2 時間の実測"
+      "notes": "EN translation of claude-security(ベータ)のコスト・出力・精度——189 エージェント 2 時間の実測"
     }
   ]
 }

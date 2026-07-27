@@ -1,5 +1,5 @@
 ---
-title: "ベータ版 claude-security を回してみた——189 エージェント・2 時間の実測"
+title: "claude-security(ベータ)のコスト・出力・精度——189 エージェント 2 時間の実測"
 emoji: "🔍"
 type: "tech"
 topics: ["claudecode", "anthropic", "security", "開発環境", "llm"]
