@@ -1,5 +1,5 @@
 ---
-title: "I Ran the Beta claude-security Plugin: 189 Agents, 2 Hours, 20 Findings"
+title: "claude-security Beta: Cost, Output, Accuracy — 189 Agents, 2 Hours, Measured"
 emoji: "🔍"
 type: "tech"
 topics: ["claudecode", "anthropic", "security", "ai"]
