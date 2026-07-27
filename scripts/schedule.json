@@ -632,6 +632,22 @@
         "anthropic"
       ],
       "notes": "EN translation of Claude 5 世代でルールの書き方は公式に変わった——自作ルールの棚卸し手順"
+    },
+    {
+      "file": "articles/claude-security-harness-self-scan.md",
+      "date": "2026-07-28",
+      "notes": "ベータ版 claude-security を回してみた——189 エージェント・2 時間の実測"
+    },
+    {
+      "file": "articles-en/claude-security-harness-self-scan.md",
+      "devto": null,
+      "devto_tags": [
+        "claudecode",
+        "anthropic",
+        "security",
+        "ai"
+      ],
+      "notes": "EN translation of ベータ版 claude-security を回してみた——189 エージェント・2 時間の実測"
     }
   ]
 }
