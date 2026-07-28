@@ -120,6 +120,7 @@ Pipeline reference: `docs/CODEMAPS/scripts.md`
 - [ ] File paths are anonymized
 - [ ] All code examples are tested and executable
 - [ ] Editor レビュー完了（Zenn/Dev.to は type 分岐なく editor に一本化。essay-reviewer は Substack 専用）
+- [ ] タイトル最適化済み（`/seo-optimizer` → global `headline-craft` 経由で候補提示・確定。英訳より前に確定させる）
 - [ ] fact-checker でファクトチェック完了（事実主張を含む記事は必須）
 - [ ] zenn-clarity-reviewer の verdict が PASS（初見読者の明瞭性。FAIL のままなら公開不可）
 - [ ] Zenn frontmatter validates (`npm run validate`)

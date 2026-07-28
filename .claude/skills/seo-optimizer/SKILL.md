@@ -38,11 +38,12 @@ origin: shimo4228
 
 タイトルの**原則・誠実さ・煽り禁止・問いの形**は `~/.claude/skills/writing-ecosystem/SKILL.md` の Title Conventions が正本、**文字数上限（50-60）**は `.claude/rules/zenn-writing.md` が正本。ここでは再掲しない。
 
-このスキルが担うのは Distribution レイヤーの調整だけ（内容は変えない、[ADR-0001](../../../docs/adr/0001-content-integrity-principle.md)）:
+**候補生成の技法は global skill `headline-craft` が正本** — 技法カタログ（具体性・ベネフィット前置・誠実な好奇心ギャップ）と流入経路 2 軸評価（検索/フィード）はあちらの手順に従う。本スキルはそこに Zenn 固有の入力を足すだけ:
 
 - **主要キーワードの自然な含有**（SEO 観点。語の選び直しは可、意味は変えない）
-- **3 候補を提示**し、各候補に「概念がどう伝わるか」の理由を添え、現タイトルと比較
-- 最終判断はユーザーに委ねる
+- **自チャンネル実測の参照**: memory の `article-quality.md`（品質ランク × 実測 tier、乖離パターン）を読み、候補の 2 軸判定（検索寄せ/フィード寄せ）の参考にする
+- **3 候補を提示**し、各候補に headline-craft の評価ラベル（技法・流入軸）を添え、現タイトルと比較
+- 最終判断はユーザーに委ねる（内容は変えない、[ADR-0001](../../../docs/adr/0001-content-integrity-principle.md)）
 
 ### Step 3: Topics 最適化
 

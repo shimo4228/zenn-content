@@ -42,6 +42,12 @@ editor エージェントを起動して記事を包括的にレビューする�
 
 **結果が「MAJOR ISSUES」の場合:** 修正してから Step 1 を再実行。
 
+### Step 1.5: タイトル最適化（seo-optimizer → headline-craft）
+
+`/seo-optimizer` を起動してタイトル・topics・emoji の候補を提示する（候補生成の技法は global skill `headline-craft` に defer）。**タイトルはこのステップで確定させる** — Step 7 の英訳が JP タイトルから派生するため、これ以降のタイトル変更は英訳・schedule 登録の手戻りになる。
+
+現行タイトルのままで良いとユーザーが判断した場合はそのまま次へ（提案は義務、採用は任意 — ADR-0001 の Distribution レイヤー）。
+
 ### Step 2: セキュリティチェック
 
 以下を**手動で**確認する:
