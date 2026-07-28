@@ -640,7 +640,7 @@
     },
     {
       "file": "articles-en/claude-security-harness-self-scan.md",
-      "devto": null,
+      "devto": "https://dev.to/shimo4228/claude-security-beta-cost-output-accuracy-189-agents-2-hours-measured-1eji",
       "devto_tags": [
         "claudecode",
         "anthropic",
@@ -648,6 +648,22 @@
         "ai"
       ],
       "notes": "EN translation of claude-security(ベータ)のコスト・出力・精度——189 エージェント 2 時間の実測"
+    },
+    {
+      "file": "articles/human-gate-intent-not-diff.md",
+      "date": "2026-07-29",
+      "notes": "人間が承認すべきなのは diff ではなく意図——エージェント承認ゲートの判定表"
+    },
+    {
+      "file": "articles-en/human-gate-intent-not-diff.md",
+      "devto": null,
+      "devto_tags": [
+        "claudecode",
+        "aiagents",
+        "devops",
+        "ai"
+      ],
+      "notes": "EN translation of 人間が承認すべきなのは diff ではなく意図——エージェント承認ゲートの判定表"
     }
   ]
 }
