@@ -624,7 +624,7 @@
     },
     {
       "file": "articles-en/claude5-rules-official-shift-audit.md",
-      "devto": null,
+      "devto": "https://dev.to/shimo4228/opus-5-changed-how-rules-should-be-written-audit-yours-4fb4",
       "devto_tags": [
         "claudecode",
         "contextengineering",
