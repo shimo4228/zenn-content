@@ -100,6 +100,8 @@ Zenn/Dev.to の記事執筆は**チャンネル独自の実用軸**が既定 —
 | 用途 | 使うスキル |
 |---|---|
 | **Zenn/Dev.to の記事執筆（既定・全記事）** | `zenn-practical-writing` — 実用軸（ですます・即実用・実コード/図・低認知負荷・用途が瞬時にわかる） |
+| **執筆前のタイプ判定・軸ずれ検出・改稿時の構造自己審問・レビュー採否** | `zenn-editorial-judgment` — 著者の編集判断ゲート集（構成案の前に Phase 0 タイプ判定、ADR-0006） |
+| **著者の価値観・ペルソナ規約・内容ランク A/B/C 基準** | `zenn-authorial-values` — 実セッション引用付き価値観リファレンス（ADR-0006） |
 | **記法・frontmatter** | `zenn-format`（正本） |
 | **任意の personality flavor** | `zenn-idea-voice`（毒humor / 刃牙。type 非依存の opt-in） |
 | **公開後の実測 Eval ループ** | `article-stocktake` — 実測メトリクス × 品質ランクの乖離棚卸し（月次目安、ADR-0005） |

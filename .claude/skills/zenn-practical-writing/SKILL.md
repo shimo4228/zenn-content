@@ -156,6 +156,10 @@ Zenn/Dev.to 実用記事は Diátaxis の **how-to（課題達成）** と **ref
 
 記事の執筆は Claude Code 本体が直接行う。専用の執筆エージェントには委譲しない。
 
+### Phase 0: 記事タイプ判定（Phase 1 より前）
+
+構成案の前に [zenn-editorial-judgment](../zenn-editorial-judgment/SKILL.md) の「記事タイプの事前判定」を通す。**立場表明・マニフェスト**と判定された記事では、本スキルの装置系チェック（「わかること」1 行・壁の箇条書き・判断表）は**免除**し、声（ですます・低認知負荷）だけ適用する。受け入れチェックリストの装置系項目も同様に免除される。
+
 ### Phase 1: 構成案（着手前に確認）
 
 1. **読者の問題文を 1 文で書く** — 「◯◯に困っている読者が、この記事を読むと◯◯できるようになる」。これが書けないネタは実用軸に乗らない（軸の再考 or essay チャンネルへ）。以降の構成・導入・タイトルはすべてこの 1 文に従属させる
@@ -191,7 +195,7 @@ AI 対話などの**生ログ**は `articles/_context/{slug}-{source}-log.md` �
 
 ## 受け入れチェックリスト（客観・全 Zenn/Dev.to 記事）
 
-公開前に機械的に確認できる項目。`quality-gate` skill がこれを gate する。
+公開前に機械的に確認できる項目。`quality-gate` skill がこれを gate する。**立場表明・マニフェスト**と判定された記事（Phase 0 参照）では、装置系項目（冒頭のわかること行・壁からの導入・前提列挙・図/表 ≥1）は免除。
 
 - [ ] 冒頭に「作れるもの/わかること」の 1 行がある
 - [ ] 導入が読者の問題（壁）から始まり、体験談は各論内で「解決の証拠」として圧縮されている（「体験談の置き場所」参照）
@@ -222,6 +226,8 @@ AI 対話などの**生ログ**は `articles/_context/{slug}-{source}-log.md` �
 ## Related
 
 - `~/.claude/skills/writing-ecosystem/SKILL.md`（global）— genre 中立 canon（AI-slop / タイトル / ネタ 3 軸）の正本 + essay 声
+- [zenn-editorial-judgment](../zenn-editorial-judgment/SKILL.md) — 執筆前のタイプ判定（Phase 0）・軸ずれ検出・改稿時の構造自己審問・レビュー採否
+- [zenn-authorial-values](../zenn-authorial-values/SKILL.md) — 著者の価値観 8 項・ペルソナ規約・内容ランク基準
 - [zenn-format](../zenn-format/SKILL.md) — frontmatter・記法・emoji・topics の正本
 - [zenn-idea-voice](../zenn-idea-voice/SKILL.md) — 毒humor / 刃牙リファレンス（type 非依存の opt-in personality flavor）
 - [quality-gate](../quality-gate/SKILL.md) — Zenn/Dev.to 全記事の受け入れ gate
