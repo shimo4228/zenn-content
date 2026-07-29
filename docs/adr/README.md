@@ -11,6 +11,7 @@ context, the decision, the alternatives considered, and the consequences.
 | [0004](0004-zenn-clarity-reviewer-addition.md) | zenn-clarity-reviewer の追加 — 「新レビューエージェント禁止」の部分 supersede | Accepted | 2026-07-27 |
 | [0005](0005-post-publication-eval-loop.md) | 実測ベースの事後 Eval ループ — 予測型エンゲージメントレビュアーの不採用 | Accepted | 2026-07-27 |
 | [0006](0006-authorial-values-and-editorial-judgment-skills.md) | 著者の判断・価値観の 2 スキル正本化（values / editorial-judgment） | Accepted | 2026-07-28 |
+| [0007](0007-kaguura-writing-principles-intake.md) | 外部ライティング原則（Kaguura 2026）の優先取り込み — 引き込み構成への統合 | Accepted | 2026-07-30 |
 
 ADR-0003 partially supersedes ADR-0001 (zenn-writer row) and ADR-0002 §2
 (`writing-standards.md` reference) — see its Consequences section.
