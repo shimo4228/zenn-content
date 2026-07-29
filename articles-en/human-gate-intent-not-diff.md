@@ -8,7 +8,7 @@ description: "A decision table that tells you what to put in front of a human wh
 tags: claudecode, aiagents, devops, ai
 ---
 
-> **What this article covers**: How to catch drift from your intent **while it's still cheap to undo** (just before commit or publish) without slowing your agent's autonomous execution down. You get a **decision table that mechanically determines, from the kind of thing being changed**, whether the gate should show a human the full diff text or just an intent summary. It ports directly into your own workflow or your team's code review conventions.
+> **What this article covers**: How to catch drift from your intent **while it's still cheap to undo** (just before commit or publish) without slowing your agent's autonomous execution down. You get a **decision table that mechanically determines, from the kind of thing being changed**, whether the gate should show a human the full diff text or just an intent summary — plus **the one required item that keeps the summary honest: a three-valued `Divergence from plan` declaration**. It ports directly into your own workflow or your team's code review conventions.
 
 As you extend how far an agent runs on its own, you eventually hit this fork.
 
@@ -66,21 +66,18 @@ Which is to say the first axis (reversibility) affects not only "when you stop" 
 
 There's one more principle you need alongside the decision table.
 
-**A review agent is an inspector, not an approver.** LLMs have a generator–verifier gap — if the side proposing and the side inspecting come from the same lineage, the inspection inherits the proposer's blind spots wholesale. So approval is composed of two things, "the deterministic gate PASSed" plus "the human's intent judgment," and **you never build a path where approval closes on an LLM alone**. Making review heavier does not mean approval can be delegated to an LLM.
+**A review agent is an inspector, not an approver.** If the side proposing and the side inspecting come from the same lineage, the inspection inherits the proposer's blind spots wholesale (this article calls that the generator–verifier gap). So approval is composed of two things, "the deterministic gate PASSed" plus "the human's intent judgment," and **you never build a path where approval closes on an LLM alone**. Making review heavier does not mean approval can be delegated to an LLM.
 
 Written into a conventions file, it looks like this (excerpted from the real thing; internal links and some references are omitted).
 
 ```markdown:~/.claude/rules/common/human-gate.md
 ## Artifacts are the machine's, intent is the human's
 
-Correctness of the artifact (build / types / lint / tests / secret scan) belongs to deterministic
-gates and review agents. **Do not put humans back on artifact inspection.** A thorough review
-setup is an investment in getting humans off that job — not a way of plating it up for them to read.
-
-**A review agent is an inspector, not an approver.** An LLM judge has a generator–verifier gap
-(if proposer and inspector are the same system, the inspection inherits the proposer's blind spots).
-Approval is composed of "the deterministic gate PASSed" plus "the human's intent judgment";
-**never create an approval path that closes on an LLM alone.**
+Correctness that mechanized checks can decide belongs to deterministic gates and review agents;
+**do not put humans back on artifact inspection** (an assignment of primary responsibility, not a
+guarantee — residual risk is caught by the escalation rule). A review agent is **an inspector, not
+an approver** (generator–verifier gap). Approval is composed of "the deterministic gate PASSed"
+plus "the human's intent judgment"; **never create an approval path that closes on an LLM alone.**
 ```
 
 ## Applying it: what was actually happening in five places
@@ -109,7 +106,7 @@ It doesn't say what the "final check" is **of**. Downstream, that sentence got r
 | `implementation-chain` | "diff approval just before commit" | Implementation code → changed to **intent summary** |
 | `readme-writer` | "a human approves the diff and applies it" | Public documentation → rewritten as **show full text** (same target, different reason) |
 | `release-doi` | "**visually confirm** the latest commit is newer than the previous release" | A predicate a machine can check → **hand it to the machine** |
-| `paper-deposit` | "Open the first page and **eyeball** it" | Same → replaced with machine verification of font embedding |
+| `paper-deposit` | Open the generated PDF's first page and **eyeball** it (paraphrased) | Same → replaced with machine verification of font embedding |
 | `harness-sync` | "`git diff` is the review gate" | What's being synced is rules / skills → **leave it as is** |
 
 Those five were written on different days, for different purposes. **All of them landed on the same default with no coordination**, so this isn't individual carelessness. Wherever there's a blank, "show the human everything" fills it. Which is why patching the individual wording wouldn't stop it — I needed one convention covering the second axis itself.
@@ -165,7 +162,16 @@ git diff --cached --name-only | grep -E \
   '^(tests?/|\.github/workflows/|\.claude/|hooks/)|(_test\.|\.test\.|pyproject\.toml|package\.json|ruff\.toml|codecov\.yml)'
 ```
 
-**This is not a complete classifier; it's a conservative candidate extractor.** It misses tests embedded in ordinary code, custom directories, lockfiles, and inline snapshots. Add the evidence-side files you know about in your own repo and grow it. Even so, having a hook pick them up mechanically is more reliable than making the agent remember every time.
+**This is not a complete classifier; it's a conservative candidate extractor.** It misses tests embedded in ordinary code, custom directories, lockfiles, and inline snapshots. Add the evidence-side files you know about in your own repo and grow it.
+
+In my environment, this extraction has moved out of the convention's prose and into a **PreToolUse hook** (`evidence-file-notice.sh`). When it detects a `git commit`, it scans the staged files against a pattern like the one above (the real list is a bit broader — it also covers `spec/`, `conftest.py`, pre-commit config, and so on), and if anything matches, it injects the instruction itself into the approval flow: show the human the diff of these files. The canonical home of the evidence-file enumeration is no longer the convention's text but that one regex in the hook; the convention keeps a single pointer line saying detection is canonical there.
+
+There are two reasons for this restructuring.
+
+- **A convention that exists only in a document is followed only probabilistically.** Write "evidence-side files get their text shown" into a convention and there's no guarantee the agent recalls it every time. "Which files are evidence-side," though, is a structural property decided purely by the shape of the path — a machine fires on it 100% of the time
+- **Keep the enumeration in two places — convention and hook — and they will drift apart.** Centralize it on the side that fires, and let the convention hold only the principle
+
+Semantic judgments like the decision table stay in the document; anything mechanically decidable gets lowered into a gate as soon as you spot it — this convention itself has been growing by exactly that process.
 
 The control plane (hooks / permissions / scheduled tasks) works the same way: summary plus the full text of the relevant files. **Anything producing the evidence a judgment rests on gets treated the same as the judgment itself.**
 
@@ -180,22 +186,17 @@ The reason this goes to a human isn't that a machine can't tell the difference. 
 There's a second reason: **a FAIL is a state absent from the approved plan.** An intent summary is meant to be read against the plan (see below), so a state that isn't in the plan has nothing to fold into.
 
 ```markdown:~/.claude/rules/common/human-gate.md
-**FAIL is the exception** — when a deterministic gate FAILs, **show the detection line itself**.
-Only a human can rule on a false positive (`*_BYPASS`); never make them decide a bypass
-without the evidence. Omitting the evidence is only for PASS.
+**FAIL is the exception** — a deterministic gate's FAIL presents **the detection line itself**.
+Mask the secret's actual value; the owner of the false-positive call (`*_BYPASS`) is the human
 ```
 
 PASS needs care. PASS only means "the checks you configured accepted this." **Whether it was implemented according to the plan is not something PASS can tell you.** That's exactly why you need a separate intent summary — you leave out the PASS list *because* you're looking at the summary instead.
 
 ### "Not shown" is not "not kept"
 
-This gets misread easily, so let me be explicit. Leaving out the PASS list means **moving it off the human's approval screen**, not throwing check results away.
+This gets misread easily, so let me be explicit. Leaving out the PASS list means **moving it off the human's approval screen**, not throwing check results away. Delete the trail and you lose any way to trace "what was passing back then" later. The idea in this article isn't to delete information; it's to **move unneeded information off the human's judgment surface**.
 
-- **Don't display it on the approval screen** — don't load the human's judgment surface with information it doesn't need
-- **Do store it in machine-readable logs** — needed for auditing, incident investigation, and reproducibility
-- **Expand it only when needed** — so you can trace "what was passing back then" later
-
-Delete the trail and you lose any way to trace drift from intent afterward. The idea in this article isn't to delete information; it's to **move unneeded information off the human's judgment surface**.
+I originally had this distinction written into the convention as its own clause; the current version drops it. Claude Code already persists the transcript and tool results in machine-readable form at all times, so writing it down merely restated a default the runtime already guarantees. **If your execution environment doesn't guarantee log retention, keep it as an explicit clause.** "Don't write into the convention what the substrate already guarantees" is itself one of the judgment calls you'll make when porting this.
 
 One more thing: on a true positive, dumping the detection line as-is duplicates the secret's actual value into the conversation, the approval screen, and the logs. That would spread the very leak the gate exists to prevent, so **show the file, the rule name, and the surrounding context, and mask only the value**. What a human needs to judge a false positive is not the value itself, but where it was and which rule it hit.
 
@@ -212,31 +213,38 @@ The countermeasure is to **fix what the summary is cross-checked against to some
 
 And the summary in 2 is **presented cross-checked against the plan the human approved in 1**. Because the referent is a human-approved object, the loop can't close on self-reporting alone.
 
-### Make it a fixed schema
+### Only one item is required: the `Divergence from plan` declaration
 
-But "write it against the plan" still leaves room to write it conveniently. In particular, **when something new is discovered during implementation and the work naturally diverges from the plan**, that divergence quietly disappears from the summary. So make the summary fixed fields rather than free-form.
+But "write it against the plan" still leaves room to write it conveniently. In particular, **when something new is discovered during implementation and the work naturally diverges from the plan**, that divergence quietly disappears from the summary.
+
+My first countermeasure was to make the intent summary itself a fixed form: five mandatory headings — approved intent, what changed, divergence from plan, impact on users and operations, evidence-side changes. But the day after that form went into the convention, an audit re-examining the whole convention clause by clause forced me to re-sort those five. **Only one of the fields was actually preventing the worst case — the silent disappearance of divergence.** This is all that's required now.
 
 ```text
-Approved intent:
-- Change the login-failure retry limit from 5 to 3
-
-What changed:
-- Changed the auth client's limit to 3
-- Changed the corresponding test expectation to 3
-
-Divergence from plan:
-- None
-
-Impact on users / operations:
-- Shorter wait after a failure
-
-Evidence-side changes:
-- tests/test_auth.py
+Intent summary: Changed the login-failure retry limit from 5 to 3 (plan step 2)
+Divergence from plan: None
 ```
 
-The point isn't to make it write "as planned" — it's to **make `Divergence from plan` a required field**. The values are `None` / `Yes` / `Needs re-approval`. Make it impossible to submit blank.
+`Divergence from plan` takes one of three values: `None` / `Yes` / `Needs re-approval`. The plan changing because of something you discovered mid-implementation isn't bad in itself. What's dangerous is the fact that it changed disappearing from the summary.
 
-The plan changing because of something you discovered mid-implementation isn't bad in itself. What's dangerous is **the fact that it changed disappearing from the summary**. Make it a required field and "don't write it" stops being an option.
+And making this declaration required **turns omission into falsehood**. In free-form text, a summary that doesn't mention the divergence isn't lying — it just didn't bring it up. With the declaration required, writing `None` when there is divergence is a falsehood, and writing `Yes` points the human's eyes exactly there. It closes the omission escape route structurally, without leaning on the writer's honesty. **This is the one thing only formal enforcement can protect.**
+
+So why drop the other four fields? Because they were the summary's **shape**, not its defense. What was intended, what changed, what's affected — summarizing without dropping those is exactly **the calibration a model should bring to any summary**: lead with the outcome, report results faithfully, match the response to the question. Impose a fixed form on the parts calibration already covers, and you're forcing five headings onto a one-line config change — the approval screen turns into template skimming.
+
+That would reproduce, on the summary side, the third case I called the worst at the start: a gate that survives as a form nobody reads.
+
+(As for the "evidence-side changes" field — the hook from Reinforcement 1 covers it structurally, so there was never a need to make a human write it.)
+
+Anthropic's context-engineering guidance for the Claude 5 generation ([The new rules of context engineering for Claude 5 models](https://x.com/trq212/status/2080710971228918066)) states this as a general rule: shift from binding with rules to delegating to judgment — **except in the regions where the worst case is unacceptable, which stay explicitly bound**. The 5→1 reduction is that rule applied. Delegate the summary's shape to the model's calibration; bind exactly one point with form — the disappearance of divergence, the worst case you can't accept.
+
+The whole point of this gate convention was to concentrate the human's cognitive budget on judging intent. **If the convention itself burns the writer's and reader's attention on enforcing a form, that defeats the purpose.**
+
+One more practical upside: the three values are an enumeration, machine-readable, so "does the declaration exist at all" can itself be lowered into a hook check later. Same as Reinforcement 1 — build the convention so it has an exit ramp down into a deterministic gate.
+
+### Cap the number of stops too: one gate per unit of work
+
+Paired with what to show, fix one rule about how often. The intent check happens **once, at the completion point of a unit of work**. If a commit, a push, a publish, and the accompanying doc updates all arrive together, bundle them into **one decision with the count and scope explicitly enumerated**. Ask for approval at every intermediate phase or intermediate commit and the approvals themselves become noise — the gate degrades into formality. There are exactly two exceptions: a deterministic gate FAILing, and `Divergence from plan: Needs re-approval`.
+
+But "bundling is allowed" is not "implicit is allowed." If one decision covers N items, say N at approval time. The moment an approval granted for one item gets silently reused for N, it has stopped being a gate.
 
 ### Raise the granularity and the bottleneck moves
 
@@ -250,13 +258,15 @@ On the conventions side, I also renamed the second intervention point from "Veri
 
 1. **Enumerate your existing approval steps and check what each one says to present.** Grep for wording like "approve the diff," "visually confirm," "review and apply"
 2. **Put the decision table and the escalation rule into a single conventions file, and have each place you found point at it.** If you only patch the individual wording, the next skill or document you write will fill the blank the same way again
-3. **Make the summary a fixed schema, with `Divergence from plan` required.** Without this, you can install the decision table and still be verifying the proposer's own self-report
+3. **Build the `Divergence from plan` declaration (`None` / `Yes` / `Needs re-approval`) into the summary as a required item.** The summary as a whole doesn't need a fixed form. Without this, you can install the decision table and still be verifying the proposer's own self-report
 
 :::message
 In step 1's grep, **watch out for missing word stems**. I searched for `eyeballed` and missed `eyeball` (the uninflected stem), so one place survived all the way to the external model's review. Search verbs by stem rather than inflected form, or run `grep -i` with several patterns.
 :::
 
 For reference, in my environment this change (one new conventions file plus re-pointing references across 13 related files) came to 14 files and 217 added lines. The decision table itself is short; what made the difference was **re-wiring everything that referenced it**.
+
+The convention's body has since been cut in half (the text auto-loaded into every session's context went from 265 to 125 words). What remains is only the principles — the decision table, the escalation rule, the divergence declaration. The "why" moved into the decision record (ADR), and the evidence-file enumeration into the hook. Left alone, a convention fattens on rationale and examples until nobody reads it. **Principles in the document, why in the record, anything machine-decidable in a gate** — splitting the storage that way is what keeps it maintainable.
 
 ## The limits of "the machine holds it"
 
@@ -266,7 +276,7 @@ So the third row of the decision table isn't "the machine guarantees correctness
 
 Which is exactly why you need the escalation rule. **Keep the human on the artifact side only in the regions you can't undo** — data migration, permissions and billing, external publishing, deletion. Put another way: if a human is reading diffs of reversible implementation code, that isn't a response to residual risk, it's just inertia.
 
-You also can't reduce the whole convention to a deterministic lint. Extracting the evidence-side files (the grep in Reinforcement 1) can be mechanized, but deciding "is this a behavior-shaping artifact" is semantic, and for edge cases like generated documents and config files you have to think each time. The decision table illustrates by enumeration; it doesn't exhaust the space.
+You also can't reduce the whole convention to a deterministic lint. Extracting the evidence-side files (the hook in Reinforcement 1) and checking that the divergence declaration exists can be mechanized, but deciding "is this a behavior-shaping artifact" is semantic, and for edge cases like generated documents and config files you have to think each time. The decision table illustrates by enumeration; it doesn't exhaust the space.
 
 ## Back to the opening question
 
