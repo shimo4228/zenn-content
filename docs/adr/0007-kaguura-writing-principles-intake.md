@@ -28,6 +28,7 @@ Kaguura Gichuru "How I Got 20,585 Substack Subscribers in 90 Days"（The Write P
 | 「個人的エピソード始まりは離脱要因」（zenn-practical-writing の一律禁止） | 撤回。全記事の既定構成を「一瞬でわかる → 引き込み（掴み = 具体的シーン）→ 緊張 → 解決 → Higher Ground」に統合。禁止対象は warm-up fluff（読者に接続しない前置き）に精密化。壁の箇条書きは掴みの一実装に降格 |
 | 「数字が主役のタイトル禁止」（writing-ecosystem Title Conventions） | 「空の listicle 数字禁止」に限定。実測の裏付けある具体的数字は scroll-stopper として推奨 |
 | Title Conventions に結果駆動の概念なし | 基本ルールに「結果駆動」を追加。詩的・教科書的タイトルの禁止を明文化 |
+| 「わかること」1 行 blockquote の必須化（zenn-practical-writing） | 同日の追加決定で撤回。機能要件「第一画面（タイトル + 掴み）で読後価値が伝わる」に降格し、装置は任意（結果駆動タイトルが主役。全記事同一の定型行は corpus レベルのテンプレ臭、掴みの前のメタ行は warm-up fluff） |
 
 ### 配置（正本の割り当て）
 
