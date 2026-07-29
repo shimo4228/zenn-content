@@ -656,7 +656,7 @@
     },
     {
       "file": "articles-en/human-gate-intent-not-diff.md",
-      "devto": null,
+      "devto": "https://dev.to/shimo4228/what-humans-should-approve-is-intent-not-the-diff-a-decision-table-for-agent-approval-gates-1a3j",
       "devto_tags": [
         "claudecode",
         "aiagents",
