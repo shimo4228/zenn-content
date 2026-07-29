@@ -664,6 +664,17 @@
         "ai"
       ],
       "notes": "EN translation of 人間が承認すべきなのは diff ではなく意図——エージェント承認ゲートの判定表"
+    },
+    {
+      "file": "articles-en/wikidata-ban-postmortem.md",
+      "devto": null,
+      "devto_tags": [
+        "wikidata",
+        "postmortem",
+        "geo",
+        "claudecode"
+      ],
+      "notes": "EN translation of Wikidataから一夜でBAN — 個別編集は規約準拠のつもりでも、109 itemは宣伝判定で全削除"
     }
   ]
 }
