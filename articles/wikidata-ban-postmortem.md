@@ -1,9 +1,9 @@
 ---
-title: "Wikidataに一夜でBANされた話 — 109 item 全削除から ADR を1本抽出するまで"
+title: "Wikidataから一夜でBAN — 個別編集は規約準拠のつもりでも、109 itemは宣伝判定で全削除"
 emoji: "🚫"
 type: "tech"
-topics: ["wikidata", "llm", "knowledgegraph", "geo", "postmortem"]
-published: false
+topics: ["wikidata", "llm", "claudecode", "geo", "postmortem"]
+published: true
 ---
 
 2026 年 7 月 16 日の朝、Wikidata からの通知に気づきました。開くと、アカウントは無期限 block。理由の欄には "Promotion-only account" とあります。最初の感想は「えっ、何もしていないのに」でした。
