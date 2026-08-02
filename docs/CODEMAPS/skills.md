@@ -1,4 +1,4 @@
-<!-- Generated: 2026-07-27 | Skills: 11 + learned/, Project agents: 2 | Token estimate: ~470 -->
+<!-- Generated: 2026-08-02 | Skills: 11 + learned/, Project agents: 2 | Token estimate: ~500 -->
 # Claude Code Skills & Agents
 
 ## Project Skills (.claude/skills/)
@@ -6,7 +6,7 @@
 | Skill | Purpose |
 |-------|---------|
 | `writing-team` | Orchestrator (PM): mission triage → team assembly → quality gate |
-| `zenn-practical-writing` | Default voice for all Zenn/Dev.to articles (実用軸, ですます, no tech/idea split) |
+| `zenn-practical-writing` | Default voice and structure for all Zenn/Dev.to articles (実用軸; environment-dependent changes use human narrative → agent handoff) |
 | `zenn-idea-voice` | Opt-in personality flavor (毒humor / 刃牙 references) |
 | `zenn-format` | Zenn frontmatter / markdown / emoji / topics — canonical reference |
 | `ideation` | Theme exploration & ideation |
@@ -32,7 +32,9 @@
 ## Workflow
 
 ```
-Draft (orchestrator writes directly, per zenn-practical-writing)
+zenn-editorial-judgment (type + human how-to / agent handoff decision)
+  → Draft (orchestrator writes directly, per zenn-practical-writing;
+       environment-dependent changes: human narrative → read-only agent plan)
   → editor + fact-checker + zenn-clarity-reviewer + codex-review (parallel review)
   → human approval → published_at → git push (Zenn native schedule)
   → devto-translator (EN) → devto_crosspost.py schedule (one-shot launchd)

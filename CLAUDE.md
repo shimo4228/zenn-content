@@ -54,6 +54,7 @@ All articles MUST use Zenn frontmatter. Field-by-field spec is canonical in `.cl
    - **Implementation** - Technical details with code examples
    - **Lessons Learned** - Reflections and takeaways
    - **Conclusion** - Summary and next steps
+   - **Environment-dependent changes** - When commands depend on local paths, existing settings, symlinks, or authentication, finish the human-facing narrative first, then provide a standalone read-only planning prompt for the reader's coding agent. The agent must stop for human approval before implementation. Canonical rules: `zenn-practical-writing`.
 
 ### Image Guidelines
 
@@ -99,7 +100,7 @@ Zenn/Dev.to の記事執筆は**チャンネル独自の実用軸**が既定 —
 
 | 用途 | 使うスキル |
 |---|---|
-| **Zenn/Dev.to の記事執筆（既定・全記事）** | `zenn-practical-writing` — 実用軸（ですます・即実用・実コード/図・低認知負荷・用途が瞬時にわかる） |
+| **Zenn/Dev.to の記事執筆（既定・全記事）** | `zenn-practical-writing` — 実用軸（ですます・即実用・実コード/図・低認知負荷）。環境依存の変更記事は「人間向けナラティブ → エージェント向け実装契約」の二層構成 |
 | **執筆前のタイプ判定・軸ずれ検出・改稿時の構造自己審問・レビュー採否** | `zenn-editorial-judgment` — 著者の編集判断ゲート集（構成案の前に Phase 0 タイプ判定、ADR-0006） |
 | **著者の価値観・ペルソナ規約・内容ランク A/B/C 基準** | `zenn-authorial-values` — 実セッション引用付き価値観リファレンス（ADR-0006） |
 | **記法・frontmatter** | `zenn-format`（正本） |

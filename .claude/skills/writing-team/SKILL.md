@@ -36,20 +36,21 @@ origin: shimo4228
 
 ```
 1. [skill: ideation]         — テーマ検討（任意、ユーザーがテーマ持ち込みなら省略）
-2. [skill: zenn-practical-writing] Phase 1 — 構成案の提示
+2. [skill: zenn-editorial-judgment] Phase 0 — 記事タイプ + 実装の渡し先（人間向け how-to / agent handoff）を判定
+3. [skill: zenn-practical-writing] Phase 1 — 構成案の提示
    ⏸ ユーザー確認: テーマ・方向性・構成案
-3. [skill: zenn-practical-writing] Phase 2-3 — 執筆 + 自己プリフライト
+4. [skill: zenn-practical-writing] Phase 2-3 — 執筆 + 自己プリフライト
    （オーケストレーター本体が直接実行。サブエージェントに委譲しない）
-4. ┌ [agent: editor]                 ─┐
+5. ┌ [agent: editor]                 ─┐
    ├ [agent: fact-checker]            ┤  並列実行
    ├ [agent: zenn-clarity-reviewer]   ┤
    └ codex-review（prompt-driven）    ┘
-5. 修正
-6. [skill: quality-gate]     — 統一品質基準チェック
-7. [skill: seo-optimizer]    — タイトル・タグ最適化（内容は変えない）
+6. 修正
+7. [skill: quality-gate]     — 統一品質基準チェック
+8. [skill: seo-optimizer]    — タイトル・タグ最適化（内容は変えない）
    ⏸ ユーザー確認: ドラフト全文 + レビュー結果 + SEO 提案（一括確認）
-8. [skill: publish-article]  — 公開チェックリスト（published_at 含む）
-9. git push
+9. [skill: publish-article]  — 公開チェックリスト（published_at 含む）
+10. git push
 ```
 
 **レビュアー**: Zenn/Dev.to は全記事 `editor` を使用（実用軸に一本化されたため type 分岐なし）。`essay-reviewer` は Substack essay corpus 専用で、Zenn/Dev.to のミッションでは使わない。
@@ -63,14 +64,15 @@ origin: shimo4228
 ```
 1. 変更差分の分析（git diff または手動指定）
 2. [skill: series-checker]    — シリーズ整合性（シリーズ記事の場合）
-3. 改稿実行（オーケストレーター本体が直接編集）
-4. ┌ [agent: editor]                 ─┐
+3. [skill: zenn-editorial-judgment] — 構造変更なら記事タイプ + 実装の渡し先を再判定
+4. 改稿実行（オーケストレーター本体が直接編集）
+5. ┌ [agent: editor]                 ─┐
    ├ [agent: fact-checker]            ┤  並列実行
    ├ [agent: zenn-clarity-reviewer]   ┤
    └ codex-review（prompt-driven）    ┘
-5. [skill: quality-gate]     — 統一品質基準
+6. [skill: quality-gate]     — 統一品質基準
    ⏸ ユーザー確認: 改稿結果 + レビュー結果（一括確認）
-6. [skill: publish-article]  — 公開チェックリスト
+7. [skill: publish-article]  — 公開チェックリスト
 ```
 
 ## Mission C: 翻訳 + クロスポスト
