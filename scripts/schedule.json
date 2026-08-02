@@ -667,7 +667,7 @@
     },
     {
       "file": "articles-en/wikidata-ban-postmortem.md",
-      "devto": null,
+      "devto": "https://dev.to/shimo4228/banned-from-wikidata-overnight-i-believed-every-edit-was-compliant-but-all-109-items-were-57nl",
       "devto_tags": [
         "wikidata",
         "postmortem",
@@ -675,6 +675,22 @@
         "claudecode"
       ],
       "notes": "EN translation of Wikidataから一夜でBAN — 個別編集は規約準拠のつもりでも、109 itemは宣伝判定で全削除"
+    },
+    {
+      "file": "articles/claude-code-claudemd-excludes.md",
+      "date": "2026-08-03",
+      "notes": "Claude Codeに2つ目のハーネスを持たせる"
+    },
+    {
+      "file": "articles-en/claude-code-claudemd-excludes.md",
+      "devto": "https://dev.to/shimo4228/give-claude-code-a-second-harness-27of",
+      "devto_tags": [
+        "claudecode",
+        "anthropic",
+        "contextengineering",
+        "aiagents"
+      ],
+      "notes": "EN translation of Claude Codeに2つ目のハーネスを持たせる"
     }
   ]
 }
