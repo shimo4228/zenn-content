@@ -5,7 +5,7 @@ type: "idea"
 topics: ["ai", "philosophy", "buddhism", "essay"]
 ---
 
-> **Context:** From [Attention, Not Self](https://github.com/shimo4228/attention-not-self) — a personal inquiry into Buddhist Abhidharma and the science of consciousness. Theme 9. The Japanese original is published on note; this English version is published on Substack.
+> **Context:** From [Attention, Not Self](https://github.com/shimo4228/attention-not-self) — a personal inquiry into Buddhist Abhidharma and the science of consciousness. Theme 9. **Published on Substack (2026-08-04)**: https://shimo4228.substack.com/p/on-embodiment-in-the-age-of-ai — the Japanese original is published on note: https://note.com/sakamaki4228/n/n90c26af4fd5f
 
 
 *Thinking it through while having an AI rewrite the handwritten essay I once published, then deleted*

@@ -5,7 +5,7 @@ type: "idea"
 topics: ["ai", "philosophy", "buddhism", "essay"]
 ---
 
-> **位置づけ:** [attention-not-self](https://github.com/shimo4228/attention-not-self) テーマ9 の日本語正本のミラー（note 投稿用 + LLM corpus。note には raw Markdown が残らないため）。英語版は Substack に公開する。正本: [AI時代の身体性について（日本語）.md](https://github.com/shimo4228/attention-not-self/blob/main/AI%E6%99%82%E4%BB%A3%E3%81%AE%E8%BA%AB%E4%BD%93%E6%80%A7%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%EF%BC%88%E6%97%A5%E6%9C%AC%E8%AA%9E%EF%BC%89.md)
+> **位置づけ:** [attention-not-self](https://github.com/shimo4228/attention-not-self) テーマ9 の日本語正本のミラー（LLM corpus。note には raw Markdown が残らないため）。**note で公開済み（2026-08-04）**: https://note.com/sakamaki4228/n/n90c26af4fd5f ／ 英語版は Substack で公開済み: https://shimo4228.substack.com/p/on-embodiment-in-the-age-of-ai 。正本: [AI時代の身体性について（日本語）.md](https://github.com/shimo4228/attention-not-self/blob/main/AI%E6%99%82%E4%BB%A3%E3%81%AE%E8%BA%AB%E4%BD%93%E6%80%A7%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%EF%BC%88%E6%97%A5%E6%9C%AC%E8%AA%9E%EF%BC%89.md)
 
 ---
 
