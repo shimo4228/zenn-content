@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>AIによって外部化された責任は、どこへ行くのか（note
+貼り付け用）</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      white-space: pre-wrap;
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+</head>
+<body>
+<blockquote>
+<p>能力ではなく、責任がどこへ行くかの話です。外部化された責任は消えません。問題は、それがどこへ向かうかです。</p>
+</blockquote>
+<p>AIはマネタイズできないのではないか、と最近よく思います。</p>
+<p>専門知識、制作、調査、コード —
+これまで課金の根拠だった希少性を、AIは順番に薄めていきます。囲い込んで売っていたものが、囲い込めなくなります。</p>
+<p>AIで儲けようとしている企業自身が、自分の足場を焼いている、とも言えます。</p>
+<p>ですが、私がここで気になるのは収益ではありません。囲い込めなくなっているのは、収益だけではないからです。</p>
+<p>もうひとつ、もっと静かに外へ漏れ出しているものがあります。責任です —
+誰の判断だったのかを、後から指させる力が。</p>
+<h2
+id="便益は内部化され被害は外部化される">便益は内部化され、被害は外部化される</h2>
+<p>ここで思い当たったのが、公害でした。</p>
+<p>公害の構造はいつも同じです。</p>
+<p>企業が新しい技術・新しい産業で便益を得ます。その便益は私企業の中に囲い込まれます。</p>
+<p>一方で、被害・健康・環境・将来世代へのコストは、企業の外へ、社会へ流し出されます。</p>
+<p>便益は内部化され、被害は外部化される。この非対称が公害の本体でした。</p>
+<p>AIエージェントを同じ目で見ると、構造がかなり似ています。</p>
+<p>便益 — 生産性、速度、人件費の圧縮 —
+は、提供企業と導入企業が取ります。一方で、誤った判断、説明できない挙動、雇用の毀損、回復のコストは、利用者と社会の側に積もります。</p>
+<p>さらにもうひとつ、公害にはなかった種類の外部化が加わります。説明不能性そのものの外部化です。</p>
+<p>もちろん、公害と完全に同じではありません。水俣の被害は身体と生命への、見える損傷でした。</p>
+<p>AIエージェントの被害の多くは、雇用の毀損や説明のつかない不利益のように、不可視で分散しています。因果の時間スケールも違います。</p>
+<p>ですが、この「不可視で分散している」という違いこそが、後で効いてきます。</p>
+<h2 id="排出記録の不在">排出記録の不在</h2>
+<p>私は以前、AIエージェントのブラックボックスは二層あると書きました。</p>
+<p>ひとつはモデルの重みに内在化された層で、これは今すぐには読めません。もうひとつは、その周りに人間が組んだ層
+— プロンプト、ルール、ツール定義、エージェントループ、安全ゲート —
+で、こちらは本来読めます。</p>
+<p>読めるのに、競争優位だからという理由で隠されます。技術的に見えないのではなく、見せないのです。</p>
+<p>公害の言葉に翻訳すると、後者は排出記録に当たります。何を、いつ、どれだけ流したか。</p>
+<p>水俣でも、後から最も問われたのはそこでした。工場排水に何が含まれていたのか、操業記録は残っているのか。</p>
+<p>記録がなければ、被害者は因果を立証できません。立証責任だけが被害者の側に積まれます。</p>
+<p>AIエージェントで事故が起きたとき、社会が問うのは同じことです。どの構成のエージェントが動いていたのか。どの入力が届いたのか。誰がその構成を承認したのか。</p>
+<p>この最低限の記録 —
+私が以前、事故後の追跡に必要な最小開示集合（minimum disclosure
+set）と呼んだもの —
+が残っていなければ、AIの「排水」が何だったのかは永遠に分かりません。</p>
+<h2
+id="責任の行き先は二つに分かれる">責任の行き先は、二つに分かれる</h2>
+<p>ここで、ひとつ分かれ道があります。</p>
+<p>外部化された責任は、消えるわけではありません。ですが、行き先が二つあります。</p>
+<p>責任が<strong>名指せる</strong>とき —
+加害が特定の主体の特定の行為に帰属でき、それを制度が受け止められるとき —
+怒りは制度へ流れます。訴訟、補償、規制。時間はかかりますが、暴力にはなりにくいのです。</p>
+<p>責任が<strong>名指せない</strong>とき —
+加害が拡散していて、誰の判断だったのか、そもそも何が起きたのかが追えないとき
+— 怒りは消えません。最も顔の見える個人へ、暴力的に収束します。</p>
+<p>名指せるかどうかは、二段で決まります。まず、何が起きたかの記録があるか。次に、その加害を引き受ける主体が制度の中に位置づけられるか。</p>
+<p>排出記録は最初の段の話です。そしてAIエージェントの二層ブラックボックスは、その最初の段
+— 何が起きたかの記録 — すら欠いています。</p>
+<p>先に、名指せない側で何が起きるかを見ます。</p>
+<h2 id="名指せないとき-暴力は顔へ収束する">名指せないとき —
+暴力は顔へ収束する</h2>
+<p>原因が特定できない危機に直面した共同体は、しばしば奇妙な振る舞いをします。被害の本当の原因
+— 拡散していて捉えどころがない —
+の代わりに、単一の、置き換え可能な犠牲者へ暴力を集中させるのです。</p>
+<p>その犠牲者を排除すると、一時的に秩序が回復したように感じられ、犠牲者は事後に神話化されます。René
+Girard がスケープゴート機構と呼んだ構造です。</p>
+<p>疫病の原因をユダヤ人や異邦人に帰責した歴史は、これで説明されます。魔女裁判に見られる天災や不作の帰責も、同じ構造として読めます。</p>
+<p>これは抽象的な昔話ではありません。</p>
+<p>2024年12月、アメリカの医療保険大手 UnitedHealthcare の
+CEO、ブライアン・トンプソンが、マンハッタンの路上で射殺されました。薬莢には
+“delay”、“deny”、“depose” とマーカーで書かれていました。</p>
+<p>支払いを遅らせ、拒否し、争う —
+保険金請求への常套手段とされる言葉です。</p>
+<p>注目すべきは、その後に起きたことです。容疑者には少なからぬ共感が集まり、半ば義賊のように語られました。</p>
+<p>なぜ一人のCEOに、これほどの暴力と、暴力への共感が集まったのでしょうか。</p>
+<p>彼が保険金拒否を一人で決めていたからではありません。保険という巨大で拡散したシステムの中で、彼が責任の所在として識別できる数少ない顔だったからです。</p>
+<p>保険金拒否の記録は残っています。ですが、一件の拒否が誰かの困窮や死に帰属できる制度の経路はありません。</p>
+<p>記録はあっても、責任は名指せない。すると怒りは、システムにではなく、顔のある一人に収束します。</p>
+<p>これはスケープゴート機構そのものに見えます。</p>
+<p>そして、ここにAIが入ってきます。</p>
+<p>2026年4月10日の未明、20歳の男がサム・アルトマンの自宅に火炎瓶を投げ、続いてOpenAIの本社のガラスドアを椅子で叩き、放火を予告して逮捕されました。男は反AIの文書を持ち、AI企業の経営者たちの名前を記し、人類滅亡のリスクを書いていました。</p>
+<p>気になるのは、この時点でAIエージェントはまだほとんど実務に投入されていないということです。</p>
+<p>誰かがAIに誤診で殺された事例も、AIの運転で大量に轢かれた事例も、まだ確定していません。実害の像はほとんどないのです。</p>
+<p>それでも、CEOの自宅に火炎瓶が投げられます。実害がまだ薄いのに暴力が起きるのは、これが個別の報復ではなく、宛先を持たない怒りだからです。</p>
+<p>怒りに宛先がないとき、それは消えるのではなく、最も見えやすい標的を構造的に探します。</p>
+<p>モデルの中は読めません。scaffolding
+は企業秘密です。事故時の記録は標準化されていません。</p>
+<p>保険にはまだ拒否の記録がありましたが、AIにはその記録さえありません。名指せなさの度合いは、むしろ深いのです。</p>
+<p>すると怒りの向かう先は、抽象的なシステムではなく、顔のある一人に絞られていきます。トンプソンと同じ構造が、実害が出る前から、AIで先取りされているように見えます。</p>
+<p>Elish はこれの工学版を moral crumple zone
+と呼びました。事故時に、構造の代わりに、ループの中にいる目の前の人間が潰れる、と。</p>
+<p>スケープゴート機構は、その人類学版として読めます。そしてAIでは、潰れる「目の前の人間」が、現場のオペレーターを飛び越えて、企業の顔まで一気に上がっています。</p>
+<h2 id="名指せるとき-怒りは制度へ流れる">名指せるとき —
+怒りは制度へ流れる</h2>
+<p>では、責任が名指せる側ではどうなるのでしょうか。ここで公害に戻ります。</p>
+<p>外部化の構造は同じでも、責任が名指せた場合には、逆のことが起きました。</p>
+<p>水俣病のチッソは、原因企業として断罪されました。ですが、社長の自宅に火炎瓶は投げられていません。</p>
+<p>怒りは裁判所へ流れました。なぜでしょうか。</p>
+<p>チッソという名指し可能な加害主体が確定し、工場排水という排出記録が残っていたからです。責任が
+attributable
+だったから、訴訟・補償・規制という制度の経路を通れたのです。</p>
+<p>しかもチッソは、すぐには潰れていません。補償の主体として生かされ続けました。</p>
+<p>倒産させると被害者への補償が止まるからです。国や県まで絡んで、「責任企業を生かしたまま払わせる」構造が組まれました。</p>
+<p>補償と裁判は数十年続き、2020年代に入っても未認定の被害者をめぐる訴訟は終わっていません。</p>
+<p>同じ機構は他の公害でも働きました。イタイイタイ病でも四日市ぜんそくでも、住民は企業を名指して裁判で勝ち、最終的に汚染者負担原則
+— 汚染による費用は汚染者が負う — が制度化されました。</p>
+<p>これが、名指せる側で起きることです。企業はすぐには潰れず、むしろ補償のために生かされ、訴訟・補償・規制・社会的な烙印を世代をまたいで背負います。</p>
+<p>重いですが、これは暴力ではありません。制度的な回収です。</p>
+<p>二つを並べると、分岐がはっきりします。</p>
+<p>名指せないトンプソンとアルトマンには、暴力が向かいました。名指せるチッソには、裁判が向かいました。</p>
+<p>違いは、加害が邪悪だったかではありません。責任を名指せたか、ではないでしょうか。</p>
+<h2 id="fail-fast-が美徳でいられた条件">fail fast
+が美徳でいられた条件</h2>
+<p>公害企業にも、当時のエートスがありました。成長が先、被害の処理は後。作って、出して、走りながら直す。</p>
+<p>シリコンバレーが「fail
+fast」と呼ぶものと、構造はそう変わりません。</p>
+<p>ただ、fail fast
+が美徳でいられたのは、これまで彼らの扱うプロダクトが「なくても困らないもの」ばかりだったからです。</p>
+<p>SNSもSaaSも検索も、失敗すれば解約され、炎上し、次のバージョンで直せました。被害はありましたが、「プロダクト改善」の文法で処理されることが多かったのです。</p>
+<p>AIエージェントは、その範囲を超えます。判断装置になり、やがて実行装置になります。</p>
+<p>採用を、与信を、医療支援を、行政の振り分けを、場合によっては軍事の補助を担い始めます。</p>
+<p>ここまで来ると、「失敗して学べばいい」では済まなくなっているように見えます。失敗が、UXの悪さではなく、誰かの生活・権利・身体に直接触れるからです。</p>
+<p>そして実際、いま起きているのはその方向です。2026年春、OpenAI は
+Symphony という仕組みを公開しました。</p>
+<p>きっかけは、エンジニア一人が同時に見られるコーディングエージェントのセッションは3〜5個が限界で、それ以上は人間の側の文脈切り替えが追いつかない、という詰まりでした。人間の注意こそがボトルネックだ、というわけです。</p>
+<p>Symphony
+は課題管理ボードを管制盤にして、開いているタスクすべてに一つずつエージェントを割り当て、終わるまで連続で走らせます。人間はもう各ステップを操舵しません。出てきた結果をレビューするだけです。</p>
+<p>同じ春、Anthropic も Google も、何時間も自律で走る managed agent
+を相次いで出しました。設計の主流は、人間を「ループの中の操舵手」から「束ねられた結果の検収者」へ動かす方向に振れています。</p>
+<p>この方向自体に、嘘はありません。人間の注意は本当に希少です。</p>
+<p>ですが、操舵手から検収者へ動かすとき、一緒に薄まるものがあります。承認、監査、記録、権限分離
+— 摩擦に見えるものは、加害を名指し可能にする装置でもありました。</p>
+<p>それを「人間というボトルネック」として外していくと、外れるのは遅延だけではありません。どの判断が誰のものだったかという帰属が、束ねられた結果の中に溶けていきます。</p>
+<p>fail fast は、記録を残す方向には働きません。それは、AIを名指せない側
+— スケープゴートの側 — に留め続ける選択かもしれません。</p>
+<h2 id="最初にリードを必要としたのは">最初にリードを必要としたのは</h2>
+<p>ここまで来て、自分の立場が少し意外な形に見えてきました。</p>
+<p>私はずっと、能力ではなく責任を分配せよ、と書いてきました。事故時に最低限の記録を残せ、と。運用フェーズで自律判断を使うなら責任者を名指しせよ、と。</p>
+<p>これは一見、AIに冷たい、推進派には邪魔なルールに見えます。</p>
+<p>ですが二つのレジームを重ねると、逆に見えてきます。</p>
+<p>これは、AIを止めるためのフレームではありません。AIを「名指せる側」へ移すためのフレームです。</p>
+<p>そしてそれは、AIを社会に入れたい人間が、社会に殺されないための条件でもあるのではないでしょうか。</p>
+<p>責任が制度的に分配されていれば、「これはこの構成の挙動で、この承認で動いていて、この部分は人間の判断だった」と切り分けられます。少なくとも、すべての責任が一人の顔に集中する状態
+— スケープゴートの状態 — からは抜けられます。</p>
+<p>王殺しは、diffuse
+な不正の「顔」を一人に押し付ける、もっとも古いスケープゴート機構でした。三権分立が権力者を縛る装置に見えて、実は権力者が暴君として殺されないための装置でもあったのは、その顔を分散させたからです。</p>
+<p>リードも同じです。犬を縛る道具に見えて、犬と飼い主の両方を守っていました。</p>
+<p>そして最初にリードを必要としたのは、たぶん、最も大きな犬を飼っていた人たちでした。</p>
+<p>だから、最初にこうしたフレームを切実に必要とするのは、AI懐疑派ではないのではないでしょうか。</p>
+<p>懐疑派は「止めろ」と言えば済みます。ですが推進派は、「止めずに、どう責任を名指し可能にするか」を示さなければなりません。</p>
+<p>汚染者負担原則を最初に必要としたのが、皮肉にも汚染を出していた産業の側だったように。</p>
+<h2 id="おわりに-何ができたかではなく">おわりに —
+何ができたか、ではなく</h2>
+<p>もちろん、これで解けたわけではありません。誰が、いつ、どの形式で、どの監査権限のもとで記録を開示するのか。</p>
+<p>「運用責任者」と書きましたが、社会的な怒りはたぶんそこで止まらず、トップまで上がります。名指せる側に移ったとしても、最初に名指される顔がトップになる可能性は残ります。</p>
+<p>そこはまだ詰まっていません。</p>
+<p>ただ、ひとつだけ、はっきりしていることがあります。</p>
+<p>名指せないシステムは、被害が出る前から、顔のある一人に暴力を引き寄せます。名指せるシステムは、被害が出た後で、制度に怒りを流します。</p>
+<p>前者から後者へ移す道は、能力を上げることではありません。どの構成で、どの入力で、誰の承認で動いていたかを、残すことです。</p>
+<p>そのとき問われるのは、「何ができたか」ではありません。「起きたことを、誰が説明できるのか」です。</p>
+<p>AIを社会に入れるとは、能力を配ることではなく、責任の流路を作ることだったのではないでしょうか。</p>
+<p>それがいつ広く共有される問いになるのか、私にはまだわかりません。</p>
+<hr />
+<h2 id="出典参考文献">出典・参考文献</h2>
+<p><strong>AI
+エージェントのオーケストレーション（2026年春）</strong></p>
+<ul>
+<li>OpenAI「An open-source spec for Codex orchestration: Symphony」
+https://openai.com/index/open-source-codex-orchestration-symphony/</li>
+<li>InfoQ「OpenAI Open-Sources Symphony, a SPEC.md for Autonomous Coding
+Agent Orchestration」
+https://www.infoq.com/news/2026/05/openai-symphony-agents/</li>
+<li>Anthropic Claude Managed Agents（2026年4月、SiliconANGLE）
+https://siliconangle.com/2026/04/08/anthropic-launches-claude-managed-agents-speed-ai-agent-development/</li>
+<li>Google Antigravity 2.0（Google I/O 2026、TechCrunch）
+https://techcrunch.com/2026/05/19/google-launches-antigravity-2-0-with-an-updated-desktop-app-and-cli-tool-at-io-2026/</li>
+</ul>
+<p><strong>AI 企業トップへの攻撃</strong></p>
+<ul>
+<li>サム・アルトマン宅への火炎瓶事件（2026年4月10日、CNBC）
+https://www.cnbc.com/2026/04/10/sam-altman-house-hit-with-molotov-cocktail-openai-office-threatened.html</li>
+<li>容疑者が所持していた反AI文書について（Fortune）
+https://fortune.com/2026/04/14/openai-molotov-cocktail-suspect-manifesto-wanted-to-kill-altman/</li>
+</ul>
+<p><strong>ブライアン・トンプソン射殺事件</strong></p>
+<ul>
+<li>UnitedHealthcare CEO 射殺事件（2024年12月4日、NPR）
+https://www.npr.org/2024/12/05/nx-s1-5217711/unitedhealthcare-ceo-brian-thompson-shooting-investigation</li>
+<li>薬莢の「delay / deny / depose」（CNBC）
+https://www.cnbc.com/2024/12/05/deny-defend-depose-unitedhealthcare-ceo-shooting-shell-casing-thompson.html</li>
+</ul>
+<p><strong>公害史</strong></p>
+<ul>
+<li>水俣病・チッソの補償と訴訟継続（日本弁護士連合会 会長声明 2024）
+https://www.nichibenren.or.jp/document/statement/year/2024/240509.html</li>
+<li>四大公害裁判（環境再生保全機構）
+https://www.erca.go.jp/fukakin/y_tebiki/situgi/q03.html</li>
+<li>四日市公害訴訟（環境再生保全機構）
+https://www.erca.go.jp/yobou/saiban/yokkaichi/saiban/index.html</li>
+<li>汚染者負担原則 / Polluter Pays Principle（OECD）
+https://www.oecd.org/en/publications/the-polluter-pays-principle_9789264044845-en.html</li>
+</ul>
+<p><strong>理論</strong></p>
+<ul>
+<li>René Girard, <em>The Scapegoat</em> (1986) / <em>Violence and the
+Sacred</em> (1972) — スケープゴート機構</li>
+<li>Madeleine Clare Elish, “Moral Crumple Zones: Cautionary Tales in
+Human-Robot Interaction,” <em>Engaging Science, Technology, and
+Society</em> 5 (2019): 40–60. DOI: 10.17351/ests2019.260</li>
+</ul>
+<p><strong>著者の関連プロジェクト・論文（本文で言及）</strong></p>
+<ul>
+<li>Agent Attribution Practice (AAP) —
+本稿の責任分配フレームの母体となるリポジトリ（GitHub）
+https://github.com/shimo4228/agent-attribution-practice</li>
+<li>“The Two-Layer Black Box: Operator Visibility, Commercial Secrecy,
+and a Minimum Disclosure Set for Accountable Autonomous AI
+Agents”（Zenodo） https://zenodo.org/records/20355908</li>
+<li>“Distributing Accountability, Not Capability: Phase Separation and
+the LLM Workflow Quadrant in Autonomous AI Agent
+Architectures”（Zenodo） https://zenodo.org/records/20353790</li>
+</ul>
+<hr />
+<h2 id="転載について関連リンク">転載について・関連リンク</h2>
+<p>本稿は Substack で公開したエッセイの転載です（文体は note 向けに
+ですます調へ調整しています）。</p>
+<p>本稿は AI
+メディエイト記事です。著者の構想と判断のもと、ふだん協働している Claude
+Code との対話を通じて執筆しています。</p>
+<ul>
+<li>初出（Substack）: https://substack.com/<span class="citation"
+data-cites="shimo4228/p-199017153">@shimo4228/p-199017153</span></li>
+<li>前提の accountability 論（Zenn）:
+<ul>
+<li>https://zenn.dev/shimo4228/articles/ai-agent-accountability-wall</li>
+<li>https://zenn.dev/shimo4228/articles/agent-blackbox-capitalism-timescale</li>
+</ul></li>
+<li>著者の GitHub: https://github.com/shimo4228</li>
+</ul>
+</body>
+</html>

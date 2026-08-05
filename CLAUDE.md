@@ -88,6 +88,7 @@ All articles MUST use Zenn frontmatter. Field-by-field spec is canonical in `.cl
 - **改行**: 1 段落 1〜2 文 + 段落間空行 1 行（正本: `writing-ecosystem` の段落密度の機械的閾値。全チャンネル共通化済み）
 - **末尾**: 「転載について・関連リンク」節を必須で置く — 初出 Substack URL・関連 repo/DOI・GitHub ハブ。note に canonical URL 設定機能はない（2026-08 検索確認。note 自身が self-canonical を自動付与）ため、この節が唯一の還流手段
 - **投稿は人間が手動**。`schedule.json` に載せない（dev.to クロスポスト対象外）
+- **貼り付けは HTML 経由**（Markdown 直貼りは note でプレーンテキスト化する）。`tail -n +2 <slug>.md | pandoc -f markdown -t html -s --metadata pagetitle="<タイトル>" -o <slug>.html` で貼り付け用 HTML を併置（先頭 h1 はタイトル欄別入力のため除外）。ブラウザで開いて全選択コピー → note エディタへペースト。substack/ の .html 併置と同じ慣例
 - **ペース: 週 1〜2 本**。burst しない（2026-07-16 rate limit = policy signal の教訓）
 - 公開後、冒頭 or 末尾に note URL を追記して commit（mirror 化）。既存の frontmatter 付き旧 mirror 2 本はそのまま
 
