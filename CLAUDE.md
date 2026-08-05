@@ -10,6 +10,8 @@ This repository is governed as the **essay-corpus artifact** of a five-line rese
 
 The corpus rests its priority claim on the **intrinsic content-derived identifier** (the Software Heritage snapshot in `CITATION.cff`), not a registry DOI — this is the essay genre's substitute priority-claim mechanism under the ecosystem's genre-split placement model (authorship-strategy ADR-0016 / ADR-0013). A load-bearing essay idea is promoted to a concept-DOI deposit only when it graduates into a paper.
 
+This corpus is also the **essay layer** of the ecosystem's audience-layer split (authorship-strategy ADR-0022, 2026-08-05): its primary audience is **contemporary human readers**, on a day-to-week time constant, and contemporaneous reception signals (reads / reactions / followers, collected in `scripts/metrics/snapshots.jsonl`) are legitimate **both to observe and to steer writing decisions by** (topics, cadence, language placement). Three bounds: ① reception numbers never steer the ecosystem's doctrine-layer decisions (releases, deposits, federation); ② content is never deformed for numbers — steer *what to write*, never *what the idea is* (ADR-0019); ③ the publishing platforms are third-party-governed, so nothing load-bearing rests on them — the corpus canonical and SWHID above survive platform loss. The production record (`scripts/schedule.json`) and the metrics snapshots are standing inputs to the strategy's next-move review.
+
 ## Git Push Reminder (CRITICAL)
 
 記事の作成・編集・schedule.json の更新をコミットしたら、**必ずユーザーに push を促すこと**。未 push のコミットがあると、Zenn の `published_at` 予約投稿が反映されず、Dev.to のクロスポストスクリプトも動かない。
