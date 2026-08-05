@@ -81,6 +81,7 @@ Mac Studio や新しい MacBook Pro の購入ページまで行ったことは�
 ここまでが「なぜ小型か」の話です。実際に 16GB で無人運用を成立させた技術は、続く技術記事で扱います。すでに読めるのはこの 2 本です。
 
 - **[AIエージェントの「なぜその判断？」に答えるオブザーバビリティ設計3パターン](https://zenn.dev/shimo4228/articles/agent-observability-patterns)** — 無人運用の土台になる「エージェントの判断を後から追える形で記録する」側の設計
+- **[Claude Code のメモリーにベクトルは 1 本もない — memory RAG の前に ADR を](https://zenn.dev/shimo4228/articles/rag-to-adr-agent-memory)** — 「読める規模 × LLM の強さ」でエージェントの記憶設計を判定する。小型モデル環境（本シリーズ）が RAG の正当領域、frontier 級が ADR の領域という整理
 - **LLM エージェントに fault injection TDD を入れたら silent failure が3件出た**（近日公開） — その記録チャネルを assert する側。運用障害の履歴からテストを起こし、黙って壊れる箇所を事前に露出させる
 
 この先の題目は、あえて決め切らないことにします。書いてみるとトピックも内容も変わるからです（実際、fault injection の記事は当初の構想には無く、書く過程でこのシリーズに接続されました）。公開のたびに、このハブへリンクを追加していきます。

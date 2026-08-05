@@ -691,6 +691,22 @@
         "aiagents"
       ],
       "notes": "EN translation of Claude Codeに2つ目のハーネスを持たせる"
+    },
+    {
+      "file": "articles/rag-to-adr-agent-memory.md",
+      "date": "2026-08-06",
+      "notes": "Claude Code のメモリーにベクトルは 1 本もない — memory RAG の前に ADR を"
+    },
+    {
+      "file": "articles-en/rag-to-adr-agent-memory.md",
+      "devto": null,
+      "devto_tags": [
+        "discuss",
+        "rag",
+        "claudecode",
+        "contextengineering"
+      ],
+      "notes": "EN translation of Claude Code のメモリーにベクトルは 1 本もない — memory RAG の前に ADR を"
     }
   ]
 }
