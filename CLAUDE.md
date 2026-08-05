@@ -79,6 +79,18 @@ All articles MUST use Zenn frontmatter. Field-by-field spec is canonical in `.cl
 
 公開〜ミラーの手順は global skill `substack-publishing` を参照。
 
+## `note/` フォルダ（note 転載原稿 + 公開後ミラー。Zenn 規約の適用外）
+
+`note/` は note.com への転載原稿の置き場。1 ファイル 2 役 — 公開前は「そのまま貼れる原稿」、公開後は note URL を追記して LLM corpus mirror を兼ねる。転載の目的は第三者ドメイン配信による AI 引用リフト（GEO）。
+
+- **形式**: frontmatter なし。タイトルは本文冒頭の `# 見出し`（note は frontmatter を解釈しない）
+- **文体**: ですます調（Substack 原文が だ/である でも note 向けに変換する。2026-08-06 著者指示）
+- **改行**: 1 段落 1〜2 文 + 段落間空行 1 行（正本: `writing-ecosystem` の段落密度の機械的閾値。全チャンネル共通化済み）
+- **末尾**: 「転載について・関連リンク」節を必須で置く — 初出 Substack URL・関連 repo/DOI・GitHub ハブ。note に canonical URL 設定機能はない（2026-08 検索確認。note 自身が self-canonical を自動付与）ため、この節が唯一の還流手段
+- **投稿は人間が手動**。`schedule.json` に載せない（dev.to クロスポスト対象外）
+- **ペース: 週 1〜2 本**。burst しない（2026-07-16 rate limit = policy signal の教訓）
+- 公開後、冒頭 or 末尾に note URL を追記して commit（mirror 化）。既存の frontmatter 付き旧 mirror 2 本はそのまま
+
 ## Editor Agent Usage
 
 記事の執筆はサブエージェントに委譲せず、Claude Code 本体が `zenn-practical-writing` に従って直接執筆する。Before publishing, run review agents in parallel: `editor`（全 Zenn/Dev.to 記事共通）+ `fact-checker`（事実主張の検証）+ `zenn-clarity-reviewer`（初見読者の明瞭性、project agent）+ codex-review（公開記事の cross-model レビュー、prompt-driven）。
