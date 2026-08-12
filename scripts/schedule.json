@@ -699,7 +699,7 @@
     },
     {
       "file": "articles-en/rag-to-adr-agent-memory.md",
-      "devto": null,
+      "devto": "https://dev.to/shimo4228/claude-codes-memory-has-no-vectors-try-adrs-before-memory-rag-4kik",
       "devto_tags": [
         "discuss",
         "rag",
