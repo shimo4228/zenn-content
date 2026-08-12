@@ -25,7 +25,8 @@ origin: shimo4228
 
 ### 必須（全記事）
 
-- [ ] **editor の CRITICAL が 0**: レビュー済みで CRITICAL 指摘がすべて解決済み（Zenn/Dev.to は editor に一本化。essay-reviewer は Substack essay corpus 専用）
+- [ ] **article-judge の verdict が Publishable**: 改稿ループ（writing-team「改稿ループ」節）を抜けている。Fix 残 / Rewrite のままなら公開不可（2026-08-12 追加、ADR-0008）
+- [ ] **editor の CRITICAL が 0**: レビュー済みで CRITICAL 指摘がすべて解決済み（Zenn/Dev.to は editor に一本化。アイデアエッセイ = note/Substack は essay-reviewer）
 - [ ] **zenn-clarity-reviewer の verdict が PASS**: 初見読者の明瞭性レビュー済みで FAIL が解消されている（FAIL のままなら公開不可。editor CRITICAL 0 と同格のブロッキング条件）
 - [ ] **AI slop なし**: `writing-ecosystem` skill の禁止リストに該当する表現がない
 - [ ] **未説明概念なし**: 専門用語・自作概念が初出時に説明されている

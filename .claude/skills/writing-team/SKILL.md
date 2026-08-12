@@ -36,24 +36,35 @@ origin: shimo4228
 
 ```
 1. [skill: ideation]         — テーマ検討（任意、ユーザーがテーマ持ち込みなら省略）
-2. [skill: zenn-editorial-judgment] Phase 0 — 記事タイプ + 実装の渡し先（人間向け how-to / agent handoff）を判定
-3. [skill: zenn-practical-writing] Phase 1 — 構成案の提示
+2. [skill: theme-eval]       — テーマ強度判定（執筆前）
+   Write-A/B見込み → 3 へ / Deepen → 深化プロンプトを著者と回して再判定（2 回まで。
+   上がらなければ見込みランク付きのまま執筆へ — 却下しない）
+   ⏸ Deepen の問いに答えるのは著者（人間の主戦場はテーマ層）
+3. [skill: zenn-editorial-judgment] Phase 0 — 記事タイプ + 実装の渡し先（人間向け how-to / agent handoff）を判定
+4. [skill: zenn-practical-writing] Phase 1 — 構成案の提示
    ⏸ ユーザー確認: テーマ・方向性・構成案
-4. [skill: zenn-practical-writing] Phase 2-3 — 執筆 + 自己プリフライト
+5. [skill: zenn-practical-writing] Phase 2-3 — 執筆 + 自己プリフライト
    （オーケストレーター本体が直接実行。サブエージェントに委譲しない）
-5. ┌ [agent: editor]                 ─┐
+6. 改稿ループ（下記「改稿ループ」節）— mechanical_checks + [agent: article-judge]
+   Publishable / 上限 2 ラウンド / Rewrite（著者差し戻し）で抜ける
+7. ┌ [agent: editor]                 ─┐
    ├ [agent: fact-checker]            ┤  並列実行
    ├ [agent: zenn-clarity-reviewer]   ┤
-   └ codex-review（prompt-driven）    ┘
-6. 修正
-7. [skill: quality-gate]     — 統一品質基準チェック
-8. [skill: seo-optimizer]    — タイトル・タグ最適化（内容は変えない）
-   ⏸ ユーザー確認: ドラフト全文 + レビュー結果 + SEO 提案（一括確認）
-9. [skill: publish-article]  — 公開チェックリスト（published_at 含む）
-10. git push
+   └ codex-review（prompt-driven）    ┘  ← cross-model 検証を兼ねる（ループ内では回さない）
+   article-judge と codex の verdict が割れたら ⏸ 人間 routing
+8. 修正（panel 指摘の反映。構成が変わったら 6 へ 1 回だけ戻る）
+9. [skill: theme-eval]       — 完成稿でテーマ再判定（writing-as-thinking で化けたか）
+   見込みランクを memory article-quality.md へ記録
+10. [skill: quality-gate]    — 統一品質基準チェック（article-judge = Publishable を含む）
+11. [skill: seo-optimizer]   — タイトル・タグ最適化（内容は変えない）
+   ⏸ ユーザー確認: ドラフト全文 + レビュー結果 + SEO 提案（一括確認 = publish 前の通読 GO）
+12. [skill: publish-article] — 公開チェックリスト（published_at 含む）
+13. git push
 ```
 
-**レビュアー**: Zenn/Dev.to は全記事 `editor` を使用（実用軸に一本化されたため type 分岐なし）。`essay-reviewer` は Substack essay corpus 専用で、Zenn/Dev.to のミッションでは使わない。
+**レビュアー**: Zenn/Dev.to は全記事 `editor` を使用（実用軸に一本化されたため type 分岐なし）。アイデアエッセイ（note 正本 / Substack 英訳）では step 7 の `editor` を `essay-reviewer` に差し替える（2026-08-12 規約 — 他は同じ厚さで回す）。
+
+**article-judge（改稿ループの判定器）**: fresh context の別 agent process で起動する（執筆セッションの文脈を渡さない — 履歴共有は判定を甘くする）。基準アンカーは `.claude/refs/kaguura-craft-checklist.md`。
 
 **zenn-clarity-reviewer**: 初見読者（フィード・検索から来たエンジニア）の明瞭性レビュー。editor（構造・コード正確性・AI slop・用語一貫性）と観点が直交するため並列で起動する。verdict が FAIL のままの記事は公開できない（quality-gate のブロッキング条件）。根拠: [ADR-0004](../../../docs/adr/0004-zenn-clarity-reviewer-addition.md)
 
@@ -65,15 +76,39 @@ origin: shimo4228
 1. 変更差分の分析（git diff または手動指定）
 2. [skill: series-checker]    — シリーズ整合性（シリーズ記事の場合）
 3. [skill: zenn-editorial-judgment] — 構造変更なら記事タイプ + 実装の渡し先を再判定
+   （テーマ自体が変わる改稿なら [skill: theme-eval] も再実行）
 4. 改稿実行（オーケストレーター本体が直接編集）
-5. ┌ [agent: editor]                 ─┐
+5. 改稿ループ（下記「改稿ループ」節）— mechanical_checks + [agent: article-judge]
+   ※ 公開済み記事の改稿では --baseline に公開版を渡して voice 回帰を必ず見る
+6. ┌ [agent: editor]                 ─┐
    ├ [agent: fact-checker]            ┤  並列実行
    ├ [agent: zenn-clarity-reviewer]   ┤
    └ codex-review（prompt-driven）    ┘
-6. [skill: quality-gate]     — 統一品質基準
+7. [skill: quality-gate]     — 統一品質基準
    ⏸ ユーザー確認: 改稿結果 + レビュー結果（一括確認）
-7. [skill: publish-article]  — 公開チェックリスト
+8. [skill: publish-article]  — 公開チェックリスト
 ```
+
+---
+
+## 改稿ループ（2026-08-12 追加。根拠: grill-me 設計 + 外部調査）
+
+```
+draft
+  → scripts: uv run python mechanical_checks.py <draft> [--baseline <初稿>]   … 決定論の証拠 JSON
+  → [agent: article-judge]（fresh context・機械 JSON を渡す）
+      ├ Publishable → ループ終了、次の step へ
+      ├ Fix         → 本体が span 単位指摘だけを修正（全文書き直し禁止・voice 保全）
+      │               → 同一チェックセットで再判定 1 回だけ（質問の再生成禁止）
+      └ Rewrite     → ループ中断、⏸ 著者へ差し戻し（構造 or テーマの欠陥）
+  上限 2 ラウンド。2 ラウンドで Publishable に達しなければ残指摘を添えて ⏸ 著者判断へ
+```
+
+設計制約（外部実証に基づく。as-of 2026-08-12）:
+- **自己批評は回さない** — 判定は必ず fresh context の article-judge（同一セッションの自己レビューは検出率が落ちる）
+- **上限 2 ラウンド** — 反復は 2〜3 回で頭打ち、以降は voice の正規化ドリフト（劣化）が始まる
+- **voice 回帰** — mechanical_checks の voice_delta warn は over-editing シグナル。warn が出たら磨きをやめる側に倒す
+- 人間ゲートは 2 箇所のみ: judge 間不一致（article-judge vs codex）と publish 直前の通読 GO
 
 ## Mission C: 翻訳 + クロスポスト
 
