@@ -707,6 +707,22 @@
         "contextengineering"
       ],
       "notes": "EN translation of Claude Code のメモリーにベクトルは 1 本もない — memory RAG の前に ADR を"
+    },
+    {
+      "file": "articles/ai-code-half-year-audit.md",
+      "date": "2026-08-14",
+      "notes": "半年前のAIコードは現世代レビューに耐えるか — 実測25件の仕分け（即時公開）"
+    },
+    {
+      "file": "articles-en/ai-code-half-year-audit.md",
+      "devto": null,
+      "devto_tags": [
+        "claudecode",
+        "codex",
+        "codereview",
+        "testing"
+      ],
+      "notes": "EN translation of 半年前のAIコードは現世代レビューに耐えるか — 実測25件の仕分け"
     }
   ]
 }
