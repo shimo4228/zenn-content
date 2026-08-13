@@ -45,21 +45,26 @@ origin: shimo4228
    ⏸ ユーザー確認: テーマ・方向性・構成案
 5. [skill: zenn-practical-writing] Phase 2-3 — 執筆 + 自己プリフライト
    （オーケストレーター本体が直接実行。サブエージェントに委譲しない）
-6. 改稿ループ（下記「改稿ループ」節）— mechanical_checks + [agent: article-judge]
+6. 改稿ループ = 草稿ゲート（下記「改稿ループ」節）— mechanical_checks + [agent: article-judge]
    Publishable / 上限 2 ラウンド / Rewrite（著者差し戻し）で抜ける
+   ※ここの Publishable は panel の入場券にすぎない。公開を担保する binding な判定は 9（2026-08-12 ドライラン改定）
 7. ┌ [agent: editor]                 ─┐
    ├ [agent: fact-checker]            ┤  並列実行
    ├ [agent: zenn-clarity-reviewer]   ┤
    └ codex-review（prompt-driven）    ┘  ← cross-model 検証を兼ねる（ループ内では回さない）
    article-judge と codex の verdict が割れたら ⏸ 人間 routing
-8. 修正（panel 指摘の反映。構成が変わったら 6 へ 1 回だけ戻る）
-9. [skill: theme-eval]       — 完成稿でテーマ再判定（writing-as-thinking で化けたか）
+8. 修正（panel 指摘の反映。構成が変わったら 6 へ 1 回だけ戻る。
+   構成系の指摘は「任意の磨き」に降格しない — 推奨を付けず中立で著者ゲートへ必ず昇格する）
+9. 最終判定【binding】— 凍結した公開候補に対して mechanical_checks + [agent: article-judge]（fresh・質問は新規生成）を再実行
+   quality-gate が参照できるのはこの verdict だけ。通読 GO 中の著者修正は**修正ごとに回さずバッチする** — 通読が終わった時点の本文に対して 1 回だけ再実行する（著者が不要と判断すれば省略可。著者通読が常に最上位のゲート — 2026-08-12 著者指示）
+10. [skill: theme-eval]      — 完成稿（凍結候補）でテーマ再判定（writing-as-thinking で化けたか）
    見込みランクを memory article-quality.md へ記録
-10. [skill: quality-gate]    — 統一品質基準チェック（article-judge = Publishable を含む）
-11. [skill: seo-optimizer]   — タイトル・タグ最適化（内容は変えない）
-   ⏸ ユーザー確認: ドラフト全文 + レビュー結果 + SEO 提案（一括確認 = publish 前の通読 GO）
-12. [skill: publish-article] — 公開チェックリスト（published_at 含む）
-13. git push
+11. [skill: quality-gate]    — 統一品質基準チェック（最終判定の article-judge = Publishable を含む）
+12. [skill: title-eval]      — タイトル判定ループ（本文凍結後・投稿直前に単独で回す。headline-craft 生成 → fresh 判定 → Refine 1 回、最終選択は著者。2026-08-13 新設）
+   Zenn/Dev.to は続けて [skill: seo-optimizer] — topics・emoji 最適化（内容は変えない）
+   ⏸ ユーザー確認: ドラフト全文 + レビュー結果 + タイトル/SEO 提案（一括確認 = publish 前の通読 GO）
+13. [skill: publish-article] — 公開チェックリスト（published_at 含む）
+14. git push
 ```
 
 **レビュアー**: Zenn/Dev.to は全記事 `editor` を使用（実用軸に一本化されたため type 分岐なし）。アイデアエッセイ（note 正本 / Substack 英訳）では step 7 の `editor` を `essay-reviewer` に差し替える（2026-08-12 規約 — 他は同じ厚さで回す）。
@@ -104,10 +109,13 @@ draft
   上限 2 ラウンド。2 ラウンドで Publishable に達しなければ残指摘を添えて ⏸ 著者判断へ
 ```
 
+**二つの実行位置（2026-08-12 ドライラン改定）**: 改稿ループは panel 前の**草稿ゲート**（壊れた原稿に高コストな panel を食わせないための前置フィルタ）。panel と修正反映が済んだ凍結候補には、Mission A step 9 の**最終判定**として mechanical_checks + article-judge（fresh・質問新規生成）をもう 1 回実行する。quality-gate が参照するのは最終判定の verdict だけ — 草稿ゲート時点の Publishable は panel 修正で陳腐化するため代用不可。凍結後に 1 文字でも修正が入ったら最終判定を再実行する。
+
 設計制約（外部実証に基づく。as-of 2026-08-12）:
 - **自己批評は回さない** — 判定は必ず fresh context の article-judge（同一セッションの自己レビューは検出率が落ちる）
 - **上限 2 ラウンド** — 反復は 2〜3 回で頭打ち、以降は voice の正規化ドリフト（劣化）が始まる
 - **voice 回帰** — mechanical_checks の voice_delta warn は over-editing シグナル。warn が出たら磨きをやめる側に倒す
+- **迷ったら Fix** — judge が Publishable / Fix で迷ったら Fix（theme-eval の「迷ったら B」と対称）
 - 人間ゲートは 2 箇所のみ: judge 間不一致（article-judge vs codex）と publish 直前の通読 GO
 
 ## Mission C: 翻訳 + クロスポスト
