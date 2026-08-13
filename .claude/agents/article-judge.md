@@ -28,8 +28,9 @@ You are a strict, fresh-context quality judge for articles and essays. You have 
 1. Read `.claude/refs/kaguura-craft-checklist.md` in full.
 2. Run the deterministic layer and read its JSON:
    ```bash
-   cd scripts && uv run python mechanical_checks.py <article path> [--baseline <first draft path>]
+   cd scripts && uv run python mechanical_checks.py <article path> [--baseline <first draft path>] [--lang en]
    ```
+   （EN 記事 — substack/*-en.md 等 — は必ず `--lang en`。ja 既定で流すと文分割が壊れ、幻の A5 大量検出と voice ゼロ化が起きる。JSON に `lang_mismatch` が出ていたら言語指定を間違えている）
    The JSON is **evidence, not a verdict** — a finding count alone never decides the outcome（checklist の判定注意: ストーリーテリングの質は書式の瑕疵を上回りうる）。`voice_delta` に warn があれば over-editing シグナルとして必ず findings に載せる。
 3. Read the draft top to bottom once.
 

@@ -48,6 +48,11 @@ origin: shimo4228
 6. 改稿ループ = 草稿ゲート（下記「改稿ループ」節）— mechanical_checks + [agent: article-judge]
    Publishable / 上限 2 ラウンド / Rewrite（著者差し戻し）で抜ける
    ※ここの Publishable は panel の入場券にすぎない。公開を担保する binding な判定は 9（2026-08-12 ドライラン改定）
+6.5 著者素材の最終引き出し（2026-08-13 新設）— panel の前に 1 回だけ、本文の主要主張リストを添えて著者に問う:
+   「各主張について、あなたの実体験でまだ書かれていない反例・具体・深化はないか」
+   回答があれば本体が反映して 6 の草稿ゲートを再通過する。根拠: 欲望枯渇エッセイの最深部 2 つ
+   （パイプライン化・車輪の再発明）が publish 直前の雑談から出た — ハーネスは著者の中の素材を
+   引き出す設計を持っていなかった
 7. ┌ [agent: editor]                 ─┐
    ├ [agent: fact-checker]            ┤  並列実行
    ├ [agent: zenn-clarity-reviewer]   ┤
@@ -100,7 +105,7 @@ origin: shimo4228
 
 ```
 draft
-  → scripts: uv run python mechanical_checks.py <draft> [--baseline <初稿>]   … 決定論の証拠 JSON
+  → scripts: uv run python mechanical_checks.py <draft> [--baseline <初稿>] [--lang en]   … 決定論の証拠 JSON（EN 記事は --lang en 必須）
   → [agent: article-judge]（fresh context・機械 JSON を渡す）
       ├ Publishable → ループ終了、次の step へ
       ├ Fix         → 本体が span 単位指摘だけを修正（全文書き直し禁止・voice 保全）
@@ -117,6 +122,7 @@ draft
 - **voice 回帰** — mechanical_checks の voice_delta warn は over-editing シグナル。warn が出たら磨きをやめる側に倒す
 - **迷ったら Fix** — judge が Publishable / Fix で迷ったら Fix（theme-eval の「迷ったら B」と対称）
 - 人間ゲートは 2 箇所のみ: judge 間不一致（article-judge vs codex）と publish 直前の通読 GO
+- **KPI = 通読指摘数**（2026-08-13 新設）— 最終判定 Publishable の**後**に著者通読が発見した指摘数を、記事ごとに memory `eval-harness-pipeline` へ記録する。この数が judge の真のエラー率であり、基準再起草（AUTOCALIBRATE）の主入力。基準線: ai-desire-exhaustion で 6 件（指示語・偽二分法・パッチワーク・機序混同・圧縮過多・トーン誤読）→ 次作でこの数が減っているかが K2/K3/K4 改定の効果測定
 
 ## Mission C: 翻訳 + クロスポスト
 
