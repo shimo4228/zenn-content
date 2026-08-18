@@ -13,6 +13,7 @@ context, the decision, the alternatives considered, and the consequences.
 | [0006](0006-authorial-values-and-editorial-judgment-skills.md) | 著者の判断・価値観の 2 スキル正本化（values / editorial-judgment） | Accepted | 2026-07-28 |
 | [0007](0007-kaguura-writing-principles-intake.md) | 外部ライティング原則（Kaguura 2026）の優先取り込み — 引き込み構成への統合 | Accepted | 2026-07-30 |
 | [0008](0008-two-tier-eval-and-revision-loop.md) | 二本立て評価関数（テーマ / 記事品質）と改稿ループの導入 | Accepted | 2026-08-12 |
+| [0009](0009-readme-routing-page-and-generated-publications-index.md) | README をルーティングページにし、網羅一覧を生成索引 1 つへ集約する | Accepted | 2026-08-18 |
 
 ADR-0003 partially supersedes ADR-0001 (zenn-writer row) and ADR-0002 §2
 (`writing-standards.md` reference) — see its Consequences section.

@@ -1,103 +1,35 @@
 # zenn-content
 
-> A bilingual (Japanese / English) content repository of 48+ technical articles on AI agent architecture, Claude Code workflows, and LLM engineering. Articles are cross-posted to Zenn (JP) and Dev.to (EN). Writing, reviewing, translating, and publishing are all orchestrated by Claude Code agents.
+> Japanese and English writing by Tatsuya Shimomoto (shimo4228) on coding agents — how they remember, fail, get reviewed, and stay accountable — plus idea essays and the papers that grew from them. Japanese originals on Zenn, English editions on Dev.to, essays on note (JP) and Substack (EN); the Markdown sources here are canonical. Writing, reviewing, translating, and publishing are done with Claude Code.
 
 ## Core documentation
 
 - [Full AI Reference](llms-full.txt): self-contained Q&A, glossary, and project facts for AI search engines and AI agents
-- [README (English)](README.md): human-facing narrative index of published articles
-- [README (Japanese)](README.ja.md): 日本語 narrative index
+- [README (English)](README.md): human landing page — what the corpus is, three curated reading paths, where everything is
+- [README (Japanese)](README.ja.md): 日本語版ランディングページ（同じ骨格）
 - [Contributor guide](CLAUDE.md): writing guidelines, frontmatter conventions, review workflow
 - [Architecture](docs/CODEMAPS/architecture.md): directory layout and publishing data flow
 - [Citation metadata](CITATION.cff): the essay corpus as a citeable artifact, with its intrinsic content-derived identifier (Software Heritage snapshot)
 - [License](LICENSE): CC0 1.0 Universal public-domain dedication across all content
 
-## Articles — AI Agent Design
+## Publications
 
-- [Not Reasoning, Not Tools — What If the Essence of AI Agents Is Memory?](https://zenn.dev/shimo4228/articles/agent-essence-is-memory)
-- [Freedom and Constraints of Autonomous Agents — Self-Modification, Trust Boundaries, and Emergent Gameplay](https://zenn.dev/shimo4228/articles/agent-freedom-and-constraints)
-- [Porting Game Dev Memory Management to AI Agent Memory Distillation](https://zenn.dev/shimo4228/articles/agent-memory-game-dev-distillation)
-- [Where to Put a Coding Agent's Knowledge — and How to Make It Stick](https://zenn.dev/shimo4228/articles/coding-agent-memory-architecture)
-- [Do Autonomous Agents Really Need an Orchestration Layer?](https://zenn.dev/shimo4228/articles/symbiotic-agent-architecture)
-- [Natural Language as Architecture — Controlling an Autonomous Agent with Prompts, Memory, and Fail-Safe Design](https://zenn.dev/shimo4228/articles/moltbook-agent-evolution-quadrilogy)
-- [I Built an AI Agent from Scratch Because Frameworks Are the Vulnerability](https://zenn.dev/shimo4228/articles/moltbook-agent-scratch-build)
+The exhaustive, generated index of everything published from this repository — Zenn/Dev.to articles, note/Substack idea essays, deposited papers, and the research lines — lives in one file. Article titles and URLs are not repeated here.
 
-## Articles — ReAct Agents
+- [Publications index](docs/PUBLICATIONS.md): every article (JP Zenn URL + EN Dev.to URL or EN source), idea essay (note JP / Substack EN), and paper (Zenodo concept DOI, SSRN mirror), newest first; generated from `articles/*.md` frontmatter, `scripts/schedule.json`, and `scripts/corpus.yml` by `scripts/generate_article_index.py`
+- [README reading paths](README.md#choose-your-next-path): three curated entry routes (agent memory · review without endless work · reconstructable autonomous behavior), generated from `scripts/reading_paths.yml`
+- [Zenn profile](https://zenn.dev/shimo4228): Japanese articles as published · [Dev.to profile](https://dev.to/shimo4228): English editions · [Substack](https://shimo4228.substack.com): English idea essays
 
-- [Where ReAct Agents Are Actually Needed in Business](https://zenn.dev/shimo4228/articles/react-agent-business-quadrant)
-- [(3) The LLM Workflow Quadrant Is Missing from Our Vocabulary](https://zenn.dev/shimo4228/articles/react-agent-business-quadrant-2)
-- [Is ReAct Needed in Production? — Separating Design and Operation Phases](https://zenn.dev/shimo4228/articles/react-agent-business-quadrant-3)
-- [Between the Workflow and ReAct Quadrants: How Phase Decides Skill Design](https://zenn.dev/shimo4228/articles/react-agent-business-quadrant-4)
+## Idea essays (note / Substack)
 
-## Articles — AI Governance
-
-- [A Sign on a Climbable Wall: Why AI Agents Need Accountability, Not Just Guardrails](https://zenn.dev/shimo4228/articles/ai-agent-accountability-wall)
-- [Can You Trace the Cause After an Incident?](https://zenn.dev/shimo4228/articles/agent-causal-traceability-org-adoption)
-- [AI Agent Black Boxes Have Two Layers — Technical Limits and Business Incentives](https://zenn.dev/shimo4228/articles/agent-blackbox-capitalism-timescale)
-- [Where Does the Accountability Externalized by AI Go?](https://substack.com/@shimo4228/p-199015317) (Substack essay; full text mirrored in `substack/`)
-
-## Articles — Claude Code
-
-- [Cursor to Zed: Disabling Built-in AI for a CLI-First Setup](https://zenn.dev/shimo4228/articles/cursor-to-zed-migration)
-- [5 Things I Learned from Auditing All My Claude Code Config Files](https://zenn.dev/shimo4228/articles/claude-code-context-audit)
-- [The Real Power of Claude Code Isn't Code Generation](https://zenn.dev/shimo4228/articles/claude-code-context-orchestration)
-- [Stop Using Default Settings — 10 Claude Code Configs That Actually Work](https://zenn.dev/shimo4228/articles/claude-code-effective-settings-10)
-- [Embedding Memory into Claude Code: From Session Loss to Persistent Context](https://zenn.dev/shimo4228/articles/claude-code-persistent-memory)
-- [Tracking Skill Origins in Claude Code — How I Classified 79 Skills with origin Metadata](https://zenn.dev/shimo4228/articles/claude-code-skill-origin-tracking)
-- [The Day I Told Claude Code 'You ARE the LLM'](https://zenn.dev/shimo4228/articles/claude-code-self-generation)
-- [Growing a Zenn Writing Environment from Scratch with Claude Code](https://zenn.dev/shimo4228/articles/claude-code-zenn-writing-env)
-- [Offloading AI's Weak Spots to Shell Scripts — Designing a Skill Audit Command](https://zenn.dev/shimo4228/articles/skill-stocktake-design-journey)
-
-## Articles — ECC (Everything Claude Code) Journey
-
-- [A Beginner's First 10 Days of Real Development with ECC](https://zenn.dev/shimo4228/articles/ecc-journey-part1)
-- [Never Trust LLM Output — 6 Defenses from Building a PDF-to-Anki CLI](https://zenn.dev/shimo4228/articles/ecc-journey-part2)
-- [15 Days of Skill Sprawl in Claude Code — Lessons from 3 Audits](https://zenn.dev/shimo4228/articles/ecc-journey-part3)
-- [I Found the Shortest Route to Ship My Claude Code Skills to 57,000 Developers](https://zenn.dev/shimo4228/articles/ecc-marketplace-contribution)
-
-## Articles — AI Research & Experiments
-
-- [Prompt-Based Alignment Has a Ceiling — 3-Model Prisoner's Dilemma Evidence](https://zenn.dev/shimo4228/articles/contemplative-alignment-benchmark)
-- [How Ethics Emerged from Episode Logs — 17 Days of Contemplative Agent Design](https://zenn.dev/shimo4228/articles/contemplative-agent-journey)
-- [I Made a Paper I Don't Understand Run in the Browser — Active Inference × Claude Code](https://zenn.dev/shimo4228/articles/active-inference-viz-dev-story)
-- [Before and After Alignment — I Typed 'Hello' Into a Base Model and Got an Anime Review](https://zenn.dev/shimo4228/articles/base-model-experience)
-- [I Had Gemini Explain Its Own Deep Research — Half Was Self-Justification](https://zenn.dev/shimo4228/articles/token-economics-ai-orchestration)
-
-## Articles — LLM Engineering
-
-- [Every LLM App Is Just a Markdown-and-Code Sandwich](https://zenn.dev/shimo4228/articles/llm-app-sandwich-architecture)
-- [The Install and Hope Problem with MCP Tools](https://zenn.dev/shimo4228/articles/mcp-install-and-hope-problem)
-- [My Agent's Memory Broke — A Day Wrestling a 9B Model](https://zenn.dev/shimo4228/articles/few-shot-for-small-models)
-
-## Articles — Multi-Model & Orchestration
-
-- [Building a Claude Code × Kimi K2.5 Hybrid Environment](https://zenn.dev/shimo4228/articles/claude-kimi-hybrid-setup)
-- [Kimi Wrote 8,500 Lines, Blamed Me for Delegating, Then Claimed to Be Claude](https://zenn.dev/shimo4228/articles/kimi-delegation-failure-lessons)
-- [I Tried an Opus Orchestrator and Killed It — The ROI of Multi-Agent Systems](https://zenn.dev/shimo4228/articles/daily-research-agent-team)
-- [Kimi Killed 4 of Claude's Best Ideas — An AI Peer Review in Practice](https://zenn.dev/shimo4228/articles/ai-peer-review-methodology)
-
-## Articles — Build in Public
-
-- [What Actually Happens When You Write an Article with AI](https://zenn.dev/shimo4228/articles/ai-article-writing-process)
-- [Zero Python Code: How I Built a Daily AI Research Report System](https://zenn.dev/shimo4228/articles/daily-research-automation)
-- [What I Learned from Breaking My AI Pipeline for Two Days Straight](https://zenn.dev/shimo4228/articles/daily-research-postmortem)
-- [How I Organized 3,674 Obsidian Vault Files in One Day with Claude Code](https://zenn.dev/shimo4228/articles/claude-code-obsidian-vault-organization)
-- [Obsidian's Official CLI Is Here — No More Hacking Your Vault from the Back Door](https://zenn.dev/shimo4228/articles/obsidian-cli-claude-code-vault-management)
-- [Running Claude Code from iPhone via SSH + tmux](https://zenn.dev/shimo4228/articles/termius-iphone-claude-code)
-- [I Gave Claude Code a Simulator and It Started Tapping and Taking Screenshots on Its Own](https://zenn.dev/shimo4228/articles/xcodebuildmcp-ios-verification)
-- [Organic Growth of an AI Writing Team — Content Integrity as the Governor](https://zenn.dev/shimo4228/articles/organic-growth-content-integrity)
-- [A Zed Observation Window — IBM Plex Japanese Typography in Claude Code](https://zenn.dev/shimo4228/articles/zed-observation-window-japanese-typography)
-
-## Substack essays (mirror)
-
-Human essays first published on Substack, mirrored here as Markdown to extend the LLM-readable corpus. Out of Zenn convention scope — not cross-posted to Zenn or Dev.to.
-
-- [Where Does the Accountability Externalized by AI Go?](substack/ai-externalized-accountability-pollution-en.md) (EN) / [AIによって外部化された責任は、どこへ行くのか](substack/ai-externalized-accountability-pollution.md) (JP)
+Author-voiced idea essays outside the Zenn/Dev.to convention. Since 2026-08 the Japanese canonical is first published on note (`note/`), and its English edition on Substack (`substack/`); earlier essays were Substack-first. Per-essay URLs are in the [Publications index](docs/PUBLICATIONS.md#idea-essays-note--substack).
 
 ## Publishing pipeline
 
 - [devto_crosspost.py](scripts/devto_crosspost.py): single-file per-article Dev.to cross-poster. `schedule <slug> --at "<datetime [Tz]>"` arms a one-shot launchd job at that time; it posts, records the URL, and self-removes. Subcommands: schedule / post / list / unschedule
 - [schedule.json](scripts/schedule.json): posted-URL ledger for EN articles (the post time is a `--at` argument, not stored here)
+- [generate_article_index.py](scripts/generate_article_index.py): renders `docs/PUBLICATIONS.md` and the README reading-path blocks from frontmatter + `schedule.json` + `corpus.yml` + `reading_paths.yml`; `--check` runs in CI and fails on drift (no bot commits)
+- [corpus.yml](scripts/corpus.yml): hand-maintained membership for essays (note/Substack URLs), papers (DOIs), and research lines — the only inputs with no frontmatter to parse
 
 Zenn (JP) publishing is not scripted — it uses Zenn's native `published_at` frontmatter scheduling.
 

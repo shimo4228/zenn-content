@@ -1,0 +1,36 @@
+# Curated README reading paths — the only hand-maintained part of the article
+# navigation. Titles and URLs are resolved from articles/ frontmatter and
+# schedule.json by scripts/generate_article_index.py; edit slugs/labels here,
+# then run `npm run generate:index`. Changes rarely (yearly), by author judgment.
+routes:
+  - id: memory
+    label:
+      en: Make coding agents remember
+      ja: コーディングエージェントに記憶を持たせる
+    reason:
+      en: Where an agent's knowledge should live, and when structured memory beats memory RAG.
+      ja: エージェントの知識をどこに置くか、RAG より構造化メモリが勝つのはいつかを扱います。
+    articles:
+      - coding-agent-memory-architecture
+      - rag-to-adr-agent-memory
+  - id: review
+    label:
+      en: Review agents without creating endless work
+      ja: レビューを増殖させずにエージェントを評価する
+    reason:
+      en: LLM-as-judge design, cross-model review, and the failure mode where every review spawns another task.
+      ja: LLM-as-judge の設計、別モデルによるレビュー、そして「レビューが仕事を増やし続ける」失敗パターンを取り上げます。
+    articles:
+      - llm-judge-checks-not-scores
+      - codex-review-cross-model-decorrelation
+      - ai-review-task-loop
+  - id: accountability
+    label:
+      en: Make autonomous behavior reconstructable
+      ja: 自律的な振る舞いを後から辿れるようにする
+    reason:
+      en: Accountability architecture and practical observability for agents that act on their own.
+      ja: 自律的に動くエージェントの説明責任をどう設計するか、実践的な可観測性とあわせて紹介します。
+    articles:
+      - ai-agent-accountability-wall
+      - agent-observability-patterns

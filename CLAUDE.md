@@ -6,11 +6,19 @@ This repository contains **Zenn articles and books** for AI agent development, C
 
 ## Governed essay corpus (membership)
 
-This repository is governed as the **essay-corpus artifact** of a five-line research ecosystem (see `CITATION.cff` and the README "Research ecosystem" section). The governed corpus is **author-voiced + published** essays: pieces written in the author's own voice and actually published (Zenn / Dev.to / note / Substack). Study or learning drafts without an author voice — for example Claude-written study drafts that were never published — are **not** part of the governed corpus and are kept out of this repository. This is a membership criterion, not a churn rule: it describes what belongs, and is not enforced by reshuffling files.
+This repository is governed as the **essay-corpus artifact** of a five-line research ecosystem (see `CITATION.cff` and the README "Provenance and reuse" section). The governed corpus is **author-voiced + published** essays: pieces written in the author's own voice and actually published (Zenn / Dev.to / note / Substack). Study or learning drafts without an author voice — for example Claude-written study drafts that were never published — are **not** part of the governed corpus and are kept out of this repository. This is a membership criterion, not a churn rule: it describes what belongs, and is not enforced by reshuffling files.
 
 The corpus rests its priority claim on the **intrinsic content-derived identifier** (the Software Heritage snapshot in `CITATION.cff`), not a registry DOI — this is the essay genre's substitute priority-claim mechanism under the ecosystem's genre-split placement model (authorship-strategy ADR-0016 / ADR-0013). A load-bearing essay idea is promoted to a concept-DOI deposit only when it graduates into a paper.
 
 This corpus is also the **essay layer** of the ecosystem's audience-layer split (authorship-strategy ADR-0022, 2026-08-05): its primary audience is **contemporary human readers**, on a day-to-week time constant, and contemporaneous reception signals (reads / reactions / followers, collected in `scripts/metrics/snapshots.jsonl`) are legitimate **both to observe and to steer writing decisions by** (topics, cadence, language placement). Three bounds: ① reception numbers never steer the ecosystem's doctrine-layer decisions (releases, deposits, federation); ② content is never deformed for numbers — steer *what to write*, never *what the idea is* (ADR-0019); ③ the publishing platforms are third-party-governed, so nothing load-bearing rests on them — the corpus canonical and SWHID above survive platform loss. The production record (`scripts/schedule.json`) and the metrics snapshots are standing inputs to the strategy's next-move review.
+
+## Publications index（README は一覧を持たない）
+
+README は「1 本の記事から来た読者に次の 1 本と全体像を渡すルーティングページ」で、記事一覧は持たない（ADR-0009、2026-08-18）。網羅一覧は生成物 `docs/PUBLICATIONS.md` の 1 つだけ:
+
+- **正本**: `articles/*.md` frontmatter（membership・title・topics・`published_at` — published なら必須）、`scripts/schedule.json`（Dev.to URL のエンリッチのみ。membership には使わない）、`scripts/corpus.yml`（note/Substack エッセイ・論文・研究ライン — frontmatter が無いものの手書き台帳）、`scripts/reading_paths.yml`（README の読書経路。著者判断、年単位）
+- **生成**: `npm run generate:index`（記事の追加・URL 書き戻し・エッセイ公開・論文寄託のあと、commit 前に実行）。`npm run check:index` が CI で走り drift を fail させる。bot commit はしない
+- README / README.ja.md / llms.txt / llms-full.txt に記事タイトルや本数を手書きしない（stale の再発源）
 
 ## Git Push Reminder (CRITICAL)
 
@@ -92,6 +100,7 @@ note/<slug>.md（JA 正本・初出）
 - **貼り付けは HTML 経由**（Markdown 直貼りは note でプレーンテキスト化する）。`tail -n +2 <slug>.md | pandoc -f markdown -t html -s --metadata pagetitle="<タイトル>" -o <slug>.html` で貼り付け用 HTML を併置（先頭 h1 はタイトル欄別入力のため除外）。ブラウザで開いて全選択コピー → note エディタへペースト。substack/ の .html 併置と同じ慣例
 - **ペース: 週 1〜2 本**。burst しない（2026-07-16 rate limit = policy signal の教訓）
 - 公開後、冒頭 or 末尾に note URL を追記して commit（mirror 化）。既存の frontmatter 付き旧 mirror 2 本はそのまま
+- 公開後、`scripts/corpus.yml` の `essays:` に 1 エントリ（slug / date / ja.title / ja.url / ja.file）を追記し `npm run generate:index`（EN 版を Substack に出したら同エントリに `en:` を足す）
 
 ## `substack/` フォルダ（EN アイデアエッセイ。Zenn 規約の適用外）
 
@@ -163,6 +172,7 @@ Pipeline reference: `docs/CODEMAPS/scripts.md`
 - [ ] English translation created in `articles-en/`
 - [ ] `schedule.json` updated with both Japanese and English entries
 - [ ] Cross-post target scheduled: Dev.to (English)
+- [ ] `npm run generate:index` 実行済み（`docs/PUBLICATIONS.md` と README 読書経路が最新。CI の `check:index` が赤にならない）
 
 ---
 

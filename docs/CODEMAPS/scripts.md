@@ -1,4 +1,4 @@
-<!-- Generated: 2026-07-05 | Files: 1 Python script | Token estimate: ~420 -->
+<!-- Generated: 2026-08-18 | Files: 4 Python scripts | Token estimate: ~600 -->
 # Scripts (Publishing Pipeline)
 
 ## Entry Point
@@ -68,10 +68,35 @@ URL = posted (auto-recorded), else pending. Schema source of truth:
   2026-05; `.github/workflows/` holds only `validate.yml`. `DEVTO_API_KEY` stays in
   `scripts/.env` (gitignored), never in a plist.
 
+## Publication index generator
+
+`generate_article_index.py` renders `docs/PUBLICATIONS.md` (every article / essay /
+paper / research line, newest first) and the `<!-- reading-paths:start/end -->`
+blocks in `README.md` / `README.ja.md`. Deterministic (no clock, no git), so
+`--check` is safe in CI (`validate.yml` runs `npm run check:index`; no bot commit).
+
+| Input | Owns |
+|---|---|
+| `articles/*.md` frontmatter | JP membership (`published: true`), title, topics, slug, `published_at` (**required**) |
+| `articles-en/<slug>.md` / `<slug>-en.md` | EN title, EN source link |
+| `schedule.json` | Dev.to URL only (enrichment, never membership) |
+| `corpus.yml` | note/Substack essays, deposited papers (Zenodo + SSRN), research lines |
+| `reading_paths.yml` | README curated routes (author judgment, ~yearly) |
+
+Run: `npm run generate:index` (write) / `npm run check:index` (exit 1 on drift, 2 on
+source errors such as a published article without `published_at`). ADR-0009.
+
+Other scripts: `mechanical_checks.py` (deterministic article-quality evidence JSON,
+ADR-0008) and `metrics_snapshot.py` (Zenn / Dev.to reception snapshots →
+`metrics/snapshots.jsonl`).
+
 ## Tests
 
 - `tests/test_devto_crosspost.py` — 59 tests (respx-mocked Dev.to API, launchctl
   stubbed): `--at` tz conversion, conversion rules, tag resolution, POST
   success/failure/no-url, idempotency skip, one-shot self-cleanup, plist render,
   agent lifecycle, schedule/env/path helpers, command dispatch.
+- `tests/test_generate_article_index.py` — 15 tests (tmp repo fixture): membership /
+  ordering / EN resolution / Dev.to enrichment, `published_at` required, essays /
+  papers / lines rendering, corpus validation, marker splice, `--check` semantics.
 - Run: `cd scripts && uv run pytest --cov=. --cov-report=term-missing` (≥ 80%).

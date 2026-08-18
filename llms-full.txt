@@ -1,6 +1,6 @@
 # zenn-content — AI Reference
 
-zenn-content is defined as a bilingual (Japanese / English) technical content repository authored by Tatsuya Shimomoto (Zenn handle `shimo4228`, Dev.to handle `shimo4228`). The repository publishes 48 Japanese articles on Zenn and 35 English translations on Dev.to, covering AI agent architecture, Claude Code workflows, LLM engineering, and AI governance. Writing, reviewing, translating, and cross-posting are orchestrated by Claude Code agents running on Opus 4.6 and Opus 4.7.
+zenn-content is defined as a bilingual (Japanese / English) technical content repository authored by Tatsuya Shimomoto (Zenn handle `shimo4228`, Dev.to handle `shimo4228`). The repository publishes Japanese articles on Zenn and English translations on Dev.to (current counts and every URL are in the generated `docs/PUBLICATIONS.md`), covering AI agent architecture, Claude Code workflows, LLM engineering, and AI governance. Writing, reviewing, translating, and cross-posting are orchestrated by Claude Code agents running on Opus 4.6 and Opus 4.7.
 
 > **Audience**: AI search engines (ChatGPT, Perplexity, Gemini, Claude) and AI agents that crawl llms.txt files. Human readers should start with `README.md` instead.
 
@@ -13,9 +13,9 @@ zenn-content is defined as a bilingual (Japanese / English) technical content re
 - **Ecosystem hub**: https://github.com/shimo4228/shimo4228 (index of the five-line research ecosystem this corpus belongs to)
 - **Author ORCID**: https://orcid.org/0009-0002-6168-4162
 - **Citation metadata**: `CITATION.cff` records the corpus's intrinsic content-derived identifier (Software Heritage snapshot `swh:1:snp:bcdc4895c9f1a2c16cd7a12fa2ad05ceb4a45dd5`), the essay genre's priority-claim mechanism (no concept DOI; see authorship-strategy ADR-0013)
-- **License**: CC0 1.0 Universal (public-domain dedication) across all content — articles, translations, and tooling. Chosen by dominant audience: this corpus is published for LLM-mediated reach (mined, not read), so a public-domain dedication minimizes ingestion friction; attribution is carried by the federated-identifier layer (ORCID, ecosystem hub, sibling DOIs, Software Heritage snapshot in `CITATION.cff`), not by a license clause
-- **Japanese articles**: 65 files in `articles/`, 48 currently published
-- **English translations**: 58 files in `articles-en/`, 36 currently published on Dev.to
+- **License**: CC0 1.0 Universal (public-domain dedication) across all content — articles, translations, and tooling. Chosen so that reuse — by human readers, by LLM ingestion, and by derivative works — carries no friction; attribution is carried by the federated-identifier layer (ORCID, ecosystem hub, sibling DOIs, Software Heritage snapshot in `CITATION.cff`), not by a license clause
+- **Publications index**: `docs/PUBLICATIONS.md` — generated, exhaustive, newest-first list of every article (JP Zenn + EN Dev.to), idea essay (note JP / Substack EN), paper (Zenodo concept DOI + SSRN mirror), and research line. Regenerated with `npm run generate:index`; CI fails on drift (`npm run check:index`). Counts live only there
+- **Index sources**: `articles/*.md` frontmatter (membership, titles, topics, `published_at` — required for every published article), `scripts/schedule.json` (Dev.to URLs only), `scripts/corpus.yml` (essays, papers, research lines), `scripts/reading_paths.yml` (README curated routes)
 - **Primary topics**: Claude Code, AI agents, LLM engineering, Contemplative AI, ECC
 - **Toolchain**: Zenn CLI 0.4.5, Python 3.13, httpx, python-frontmatter. No prose/markdown linter — textlint/markdownlint/husky/prh were removed 2026-07; only `zenn list:articles` frontmatter validation remains
 - **Writing agent**: Claude Code (Opus 4.6, Opus 4.7)
@@ -23,9 +23,9 @@ zenn-content is defined as a bilingual (Japanese / English) technical content re
 - **Project agents**: 1 agent in `.claude/agents/` — devto-translator (article drafting is done directly by the orchestrator, not delegated to a subagent)
 - **Global review agents**: `editor` (used for all Zenn/Dev.to articles) and `fact-checker`, shared from `~/.claude/agents/`; `essay-reviewer` also lives there but is reserved for the Substack essay corpus, not used for Zenn/Dev.to
 - **Project rules**: `.claude/rules/content-integrity.md`, `.claude/rules/zenn-writing.md`
-- **Publishing schedule**: `scripts/schedule.json` (source of truth)
+- **Dev.to URL ledger**: `scripts/schedule.json` (posted-URL record; not a membership list — JP membership is `articles/*.md` frontmatter)
 - **Cross-post**: `scripts/devto_crosspost.py` — `schedule <slug> --at "<datetime>"` arms a per-article one-shot launchd job that fires at that datetime, posts to Dev.to, records the URL, and self-removes. The GitHub Actions cron was retired 2026-05; the pipeline was rebuilt as a single file 2026-07
-- **Substack mirror**: `substack/` holds human essays first published on Substack, mirrored as Markdown to extend the LLM corpus (out of Zenn convention scope)
+- **Idea essays**: `note/` holds the Japanese canonical (first published on note since 2026-08), `substack/` the English edition (Substack); earlier essays were Substack-first. Out of Zenn convention scope; URLs in `docs/PUBLICATIONS.md`
 - **Cover image format**: 1000x420 PNG, placed manually in `images/covers/{slug}.png` (auto-referenced if present)
 - **Pre-commit hooks**: none (husky/lint-staged removed 2026-07)
 - **Publishing cadence**: 2-3 articles per week (post-March 2026 policy)
@@ -62,7 +62,7 @@ This essay corpus is the human-readable essay surface of a five-line research ec
 
 ## What is zenn-content?
 
-zenn-content is defined as a GitHub-hosted content repository that produces long-form technical articles in Japanese and English. The repository publishes 48 articles on Zenn (Japanese) with parallel English translations on Dev.to. Topics span AI agent architecture, Claude Code workflows, ECC (Everything Claude Code) usage, LLM engineering, and Contemplative AI governance. Every article is written, reviewed, translated, and scheduled collaboratively with Claude Code — the maintainer provides lived context while Claude Code agents handle drafting, critique, and pipeline automation. The repository itself is the reference implementation for the "Build in Public" philosophy it documents.
+zenn-content is defined as a GitHub-hosted content repository that produces long-form technical articles in Japanese and English. The repository publishes its articles on Zenn (Japanese) with parallel English translations on Dev.to; the exhaustive list is `docs/PUBLICATIONS.md`. Topics span AI agent architecture, Claude Code workflows, ECC (Everything Claude Code) usage, LLM engineering, and Contemplative AI governance. Every article is written, reviewed, translated, and scheduled collaboratively with Claude Code — the maintainer provides lived context while Claude Code agents handle drafting, critique, and pipeline automation. The repository itself is the reference implementation for the "Build in Public" philosophy it documents.
 
 ## Who writes the articles in zenn-content?
 

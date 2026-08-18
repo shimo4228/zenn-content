@@ -136,11 +136,25 @@ cd scripts && uv run python devto_crosspost.py post {slug}
 
 `post`（launchd 発火 or 即時）成功時に `devto` へ実 URL が自動書き戻しされ、one-shot ジョブは自己削除される。手動更新は不要。
 
+### Step 9.5: 公開索引の再生成（commit 前）
+
+`docs/PUBLICATIONS.md` と README の読書経路ブロックは `articles/*.md` frontmatter + `schedule.json` + `scripts/corpus.yml` から生成する。記事の追加・`published_at` 設定・Dev.to URL 書き戻しのあと、**commit に含める前に**再生成する（CI は `--check` で drift を fail させるだけで、bot commit はしない — ADR-0009）:
+
+```bash
+npm run generate:index   # docs/PUBLICATIONS.md + README.md/README.ja.md の marker ブロックを更新
+npm run check:index      # 生成物が最新か確認（CI と同じ）
+```
+
+- `published: true` の記事に `published_at` が無いと生成が止まる（日付は索引の正本。過去記事は 2026-08-18 に Zenn 実値でバックフィル済み）
+- README の読書経路（3 経路 × 2〜3 本）は `scripts/reading_paths.yml` の著者判断。新記事を自動で足さない — 年単位で見直す
+- note / Substack エッセイと論文は frontmatter が無いので `scripts/corpus.yml` に手で 1 エントリ追記してから再生成する
+
 ### Step 10: git push 確認（CRITICAL）
 
 全コミット完了後、**必ず `git push` を確認する**。未 push だと:
 - Zenn の `published_at` 予約投稿が反映されない
 - Dev.to のクロスポストスクリプトも動かない
+- CI の `check:index` は push 後に走るので、生成し忘れは push 後に赤で気づく
 
 ---
 

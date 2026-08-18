@@ -1,22 +1,25 @@
 {
   "name": "zenn-content",
   "version": "1.0.0",
-  "description": "Zenn articles and books for pdf2anki ecosystem",
+  "description": "Zenn/Dev.to articles, note/Substack essays, and the writing harness behind them",
   "private": true,
   "scripts": {
     "preview": "zenn preview",
     "new:article": "zenn new:article",
     "new:book": "zenn new:book",
-    "validate": "zenn list:articles"
+    "validate": "zenn list:articles",
+    "generate:index": "cd scripts && uv run python generate_article_index.py",
+    "check:index": "cd scripts && uv run python generate_article_index.py --check"
   },
   "keywords": [
     "zenn",
-    "pdf2anki",
-    "ai",
-    "anki"
+    "devto",
+    "ai-agents",
+    "claude-code",
+    "writing"
   ],
   "author": "shimomoto_tatsuya",
-  "license": "MIT",
+  "license": "CC0-1.0",
   "devDependencies": {
     "zenn-cli": "^0.4.5"
   }

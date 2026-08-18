@@ -1,0 +1,104 @@
+# Hand-maintained membership for publications that have no frontmatter to parse:
+# idea essays (note = JA canonical, Substack = EN edition) and deposited papers.
+# Add one entry after each manual publish, then run `npm run generate:index`.
+# Zenn/Dev.to articles are NOT listed here — their source of truth is articles/*.md.
+
+essays:
+  - slug: ai-desire-exhaustion
+    date: 2026-08-13
+    ja:
+      title: AI に頼みたいことが尽きたあと、ひとつだけ残った欲望
+      url: https://note.com/sakamaki4228/n/n2375bfc4d521
+      file: note/ai-desire-exhaustion.md
+    en:
+      title: After I Ran Out of Things to Ask AI, One Desire Remained
+      url: https://shimo4228.substack.com/p/after-i-ran-out-of-things-to-ask
+      file: substack/ai-desire-exhaustion-en.md
+  - slug: ideation-pharmacology
+    date: 2026-08-12
+    ja:
+      title: ひらめきの薬理学 — 発想には用量がある
+      url: https://note.com/shimo4228/n/n0eecbd0fb01e
+      file: note/ideation-pharmacology.md
+  - slug: ai-externalized-accountability-pollution
+    date: 2026-05-24
+    ja:
+      title: AIによって外部化された責任は、どこへ行くのか
+      url: https://note.com/shimo4228/n/ncd77818533f0
+      file: note/ai-externalized-accountability-pollution.md
+    en:
+      title: Where Does the Accountability Externalized by AI Go?
+      url: https://shimo4228.substack.com/p/where-does-the-accountability-externalized
+      file: substack/ai-externalized-accountability-pollution-en.md
+  - slug: on-embodiment-in-the-age-of-ai
+    date: 2026-08-04
+    ja:
+      title: AI時代の身体性について
+      url: https://note.com/sakamaki4228/n/n90c26af4fd5f
+      file: note/on-embodiment-in-the-age-of-ai.md
+    en:
+      title: On Embodiment in the Age of AI
+      url: https://shimo4228.substack.com/p/on-embodiment-in-the-age-of-ai
+      file: substack/on-embodiment-in-the-age-of-ai-en.md
+  - slug: you-got-it-right-but-you-didnt-know-it
+    date: 2026-07-02
+    en:
+      title: You Got It Right — But You Didn't Know It
+      url: https://shimo4228.substack.com/p/you-got-it-right-but-you-didnt-know
+      file: substack/you-got-it-right-but-you-didnt-know-it-en.md
+  - slug: how-the-mind-returns-after-cessation
+    date: 2026-06-14
+    en:
+      title: When Consciousness Fully Stops, How Does the Mind Return?
+      url: https://shimo4228.substack.com/p/when-consciousness-fully-stops-how
+      file: substack/how-the-mind-returns-after-cessation-en.md
+  - slug: non-engineer-no-name-yet
+    date: 2026-06-05
+    ja:
+      title: 「非エンジニアの私が」の先に、名前はまだなかった
+      url: https://note.com/shimo4228/n/nd6626c834ea5
+      file: note/non-engineer-no-name-yet.md
+
+# Papers deposited from the research lines. Zenodo concept DOI is canonical;
+# SSRN is a mirror. `from` lists the Zenn article slugs the paper grew out of.
+papers:
+  - title: "Harness Alignment and Harness Drift: Why Intent, Unlike Correctness, Resists Automation"
+    date: 2026-06-07
+    line: Agent Knowledge Cycle (AKC)
+    zenodo: 10.5281/zenodo.20578272
+    ssrn: 10.2139/ssrn.6892740
+  - title: "Distributing Accountability, Not Capability: Phase Separation and the LLM Workflow Quadrant in Autonomous AI Agent Architectures"
+    date: 2026-05-23
+    line: Agent Attribution Practice (AAP)
+    zenodo: 10.5281/zenodo.20353789
+    ssrn: 10.2139/ssrn.6817598
+    from:
+      - react-agent-business-quadrant
+      - react-agent-business-quadrant-2
+      - react-agent-business-quadrant-3
+      - react-agent-business-quadrant-4
+  - title: "The Two-Layer Black Box: Operator Visibility, Commercial Secrecy, and a Minimum Disclosure Set for Accountable Autonomous AI Agents"
+    date: 2026-05-23
+    line: Agent Attribution Practice (AAP)
+    zenodo: 10.5281/zenodo.20355907
+    ssrn: 10.2139/ssrn.6823878
+    from:
+      - agent-blackbox-capitalism-timescale
+
+# The five research lines (Zenodo concept DOIs, always resolve to latest version).
+research_lines:
+  - name: Contemplative Agent
+    repo: https://github.com/shimo4228/contemplative-agent
+    doi: 10.5281/zenodo.19212118
+  - name: Agent Knowledge Cycle (AKC)
+    repo: https://github.com/shimo4228/agent-knowledge-cycle
+    doi: 10.5281/zenodo.19200726
+  - name: Agent Attribution Practice (AAP)
+    repo: https://github.com/shimo4228/agent-attribution-practice
+    doi: 10.5281/zenodo.19652013
+  - name: Authorship Strategy
+    repo: https://github.com/shimo4228/authorship-strategy
+    doi: 10.5281/zenodo.20263316
+  - name: Attention, Not Self
+    repo: https://github.com/shimo4228/attention-not-self
+    doi: 10.5281/zenodo.20262112

@@ -24,3 +24,9 @@ jobs:
 
       - name: Validate Zenn articles
         run: npm run validate
+
+      - name: Setup uv
+        uses: astral-sh/setup-uv@v10
+
+      - name: Check generated publication index is current
+        run: npm run check:index
