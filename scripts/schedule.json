@@ -715,7 +715,7 @@
     },
     {
       "file": "articles-en/ai-code-half-year-audit.md",
-      "devto": null,
+      "devto": "https://dev.to/shimo4228/can-six-month-old-ai-code-survive-todays-review-a-25-bug-triage-4o6d",
       "devto_tags": [
         "claudecode",
         "codex",
