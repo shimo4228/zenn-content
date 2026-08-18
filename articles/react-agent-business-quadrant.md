@@ -4,6 +4,7 @@ emoji: "🧩"
 type: "idea"
 topics: ["ai", "llm", "agent", "architecture"]
 published: true
+published_at: 2026-04-29 13:12
 ---
 
 > **用語の更新 (2026-04-30):** [AAP repository](https://github.com/shimo4228/agent-attribution-practice) 側との整合のため、4 象限名のうち 2 つを改名した。(2) 古典 AI 象限 → (2) Algorithmic Search 象限、(4) ReAct 象限 → (4) Autonomous Agentic Loop 象限。スクリプト象限と LLM ワークフロー象限は維持。本文中で象限名として使われていた表記は新名前に置換しているが、ReAct パターン (Yao et al. 2022) や ReAct ループへの言及はそのまま。

@@ -4,6 +4,7 @@ emoji: "📜"
 type: "tech"
 topics: ["ai", "agent", "python", "ethics", "architecture"]
 published: true
+published_at: 2026-04-05 20:55
 ---
 
 :::message

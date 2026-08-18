@@ -4,6 +4,7 @@ emoji: "🛠️"
 type: "tech"
 topics: ["claudecode", "zenn", "textlint", "python"]
 published: true
+published_at: 2026-02-20 05:57
 ---
 
 Claude Code で Zenn の記事を書いています。自分の役割は方向性を決めて、書き上がった記事を全文読んでファクトチェックや指摘を入れることです。修正作業そのものは Claude Code がやります。

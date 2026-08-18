@@ -4,6 +4,7 @@ emoji: "🃏"
 type: "tech"
 topics: ["claude", "anki", "python", "cli", "llm"]
 published: true
+published_at: 2026-02-11 01:03
 ---
 
 ## はじめに

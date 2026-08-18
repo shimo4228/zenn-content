@@ -4,6 +4,7 @@ emoji: "⌨️"
 type: "tech"
 topics: ["obsidian", "cli", "claudecode", "claude", "自動化"]
 published: true
+published_at: 2026-03-06 07:40
 ---
 
 `mv` した瞬間、ウィキリンクが 47 本切れた。

@@ -4,6 +4,7 @@ emoji: "🤖"
 type: "tech"
 topics: ["claudecode", "claude", "ai", "automation"]
 published: true
+published_at: 2026-02-21 12:04
 ---
 
 毎朝5時に自動実行される AI リサーチパイプラインを[前回の記事](https://zenn.dev/shimo4228/articles/daily-research-automation)で紹介しました。Sonnet 単体で7分、Max プラン定額内でコスト0。十分に動いていました。

@@ -4,6 +4,7 @@ emoji: "🔧"
 type: "tech"
 topics: ["claudecode", "ai", "shellscript", "テスト"]
 published: true
+published_at: 2026-02-24 20:05
 ---
 
 ## はじめに

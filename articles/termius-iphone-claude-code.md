@@ -4,6 +4,7 @@ emoji: "📱"
 type: "tech"
 topics: ["claudecode", "termius", "ssh", "tailscale", "tmux"]
 published: true
+published_at: 2026-02-14 07:06
 ---
 
 # GUIを捨てた先にあったもの

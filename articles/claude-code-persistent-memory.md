@@ -4,6 +4,7 @@ emoji: "🧠"
 type: "idea"
 topics: ["claudecode", "ai", "mcp", "生産性"]
 published: true
+published_at: 2026-02-27 07:20
 ---
 
 Claude Code は強力だが、セッションをまたぐと記憶を失う。CLAUDE.md の auto memory で確定した知見は残せるが、手動で書かなければ記録されない。「前回どこまで調べた」「どのファイルを編集した」といったセッションの行動コンテキストは毎回消える。これが痛い。

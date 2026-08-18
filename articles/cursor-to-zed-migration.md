@@ -4,6 +4,7 @@ emoji: "⚡"
 type: "tech"
 topics: ["zed", "claudecode", "cursor", "ai", "エディタ"]
 published: true
+published_at: 2026-02-12 21:47
 ---
 
 # CursorからZedへ。迷走と発見の記録

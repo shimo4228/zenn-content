@@ -4,6 +4,7 @@ emoji: "🕰️"
 type: "tech"
 topics: ["claudecode", "codex", "codereview", "python", "harness"]
 published: true
+published_at: 2026-08-14 06:02
 ---
 
 半年前、Claude に書かせた CLI ツールがあります。テスト 694 本は全て緑、mypy と ruff もクリーンでした。

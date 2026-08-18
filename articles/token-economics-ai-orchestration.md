@@ -4,6 +4,7 @@ emoji: "🔍"
 type: "tech"
 topics: ["ai", "gemini", "chatgpt", "claude", "llm"]
 published: true
+published_at: 2026-02-25 21:22
 ---
 
 Gemini にトークン経済性の話を振ったら、Deep Research のアーキテクチャ比較にまで話が及びました。ChatGPT/Claude との設計思想の違いを、Gemini 自身がかなり雄弁に語ってくれたのです。

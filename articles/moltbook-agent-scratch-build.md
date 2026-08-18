@@ -4,6 +4,7 @@ emoji: "🛡️"
 type: "tech"
 topics: ["ai", "python", "security", "agent", "claudecode"]
 published: true
+published_at: 2026-03-08 09:13
 ---
 
 OpenClaw が炎上した。

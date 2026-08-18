@@ -4,6 +4,7 @@ emoji: "👻"
 type: "tech"
 topics: ["claudecode", "mcp", "ai", "開発環境"]
 published: true
+published_at: 2026-03-24 19:30
 ---
 
 Claude Code の MCP ツールを棚卸しした。3つ入っていた。3つとも使われていなかった。

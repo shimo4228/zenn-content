@@ -4,6 +4,7 @@ emoji: "🚀"
 type: "tech"
 topics: ["claude", "ai", "git", "初心者", "学習"]
 published: true
+published_at: 2026-02-09 16:58
 ---
 
 ## はじめに - Everything Claude Codeとは

@@ -4,6 +4,7 @@ emoji: "🧱"
 type: "idea"
 topics: ["ai", "agent", "security", "governance"]
 published: true
+published_at: 2026-04-07 18:12
 ---
 
 ## 登れる壁

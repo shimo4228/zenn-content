@@ -4,6 +4,7 @@ emoji: "🚫"
 type: "tech"
 topics: ["wikidata", "llm", "claudecode", "geo", "postmortem"]
 published: true
+published_at: 2026-07-30 08:32
 ---
 
 2026 年 7 月 16 日の朝、Wikidata からの通知に気づきました。開くと、アカウントは無期限 block。理由の欄には "Promotion-only account" とあります。最初の感想は「えっ、何もしていないのに」でした。

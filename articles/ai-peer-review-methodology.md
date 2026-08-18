@@ -4,6 +4,7 @@ emoji: "🔄"
 type: "idea"
 topics: ["claudecode", "ai", "kimi", "llm"]
 published: true
+published_at: 2026-02-26 07:00
 ---
 
 Claude（Opus 4.6）にコンテンツ戦略を立てさせた。リタイトル6本、新テーマ5本。データに裏付けられた、隙のない提案だった。それを Kimi K2.5 に渡したら、6本中4件に指摘が入り、うち1件は「逆効果だからやめろ」と却下された。

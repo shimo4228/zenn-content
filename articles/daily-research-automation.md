@@ -4,6 +4,7 @@ emoji: "🔬"
 type: "tech"
 topics: ["claude", "ai", "claudecode", "automation"]
 published: true
+published_at: 2026-02-15 07:00
 ---
 
 ## はじめに

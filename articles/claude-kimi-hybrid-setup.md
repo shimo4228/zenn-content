@@ -4,6 +4,7 @@ emoji: "🤝"
 type: "idea"
 topics: ["claudecode", "kimi", "ai", "エージェント", "開発環境"]
 published: true
+published_at: 2026-02-24 20:05
 ---
 
 Claude Code (Opus 4.6) は Claude ファミリーの最上位モデルで、複雑な設計判断に向いています。しかしトークン単価の高さが悩みどころです。定型的な実装タスクにも Opus を使うのはもったいない。

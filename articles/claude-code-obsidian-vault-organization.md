@@ -4,6 +4,7 @@ emoji: "🗄️"
 type: "tech"
 topics: ["obsidian", "claudecode", "claude", "python"]
 published: true
+published_at: 2026-02-16 22:59
 ---
 
 ## はじめに

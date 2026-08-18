@@ -4,6 +4,7 @@ emoji: "🌐"
 type: "tech"
 topics: ["claudecode", "oss", "skill", "agentskills"]
 published: true
+published_at: 2026-03-04 07:32
 ---
 
 2月に送った PR 8件が全部マージされた。それだけなら普通の話だ。

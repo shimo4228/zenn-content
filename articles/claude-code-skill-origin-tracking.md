@@ -4,6 +4,7 @@ emoji: "🏷️"
 type: "tech"
 topics: ["claudecode", "ai", "開発環境", "cli"]
 published: true
+published_at: 2026-02-19 19:42
 ---
 
 ECC（Everything Claude Code）から27個を一括導入し、GitHub で見つけたスキルを追加し、`/learn` で自動抽出されたものが溜まり、自分で書いたものもある。気づけば79個。**「このスキル、どこから来たんだっけ？」が分からない。**

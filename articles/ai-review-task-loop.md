@@ -4,6 +4,7 @@ emoji: "🧹"
 type: "tech"
 topics: ["claudecode", "aiエージェント", "コードレビュー", "ソフトウェア設計", "開発プロセス"]
 published: true
+published_at: 2026-08-16 22:38
 ---
 
 2026年8月16日、朝7時22分。

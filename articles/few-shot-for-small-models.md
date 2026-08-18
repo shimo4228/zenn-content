@@ -4,6 +4,7 @@ emoji: "🔧"
 type: "tech"
 topics: ["ai", "llm", "agent", "python", "ollama"]
 published: true
+published_at: 2026-03-23 08:16
 ---
 
 朝、エージェントの記憶ストアを開いたら、こうなっていた。

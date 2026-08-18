@@ -4,6 +4,7 @@ emoji: "🧠"
 type: "idea"
 topics: ["claudecode", "ai", "開発環境", "生産性"]
 published: true
+published_at: 2026-02-23 07:00
 ---
 
 「AI にコードを書かせる」。Claude Code の紹介でまず語られるのはこの能力です。自律的にファイルを読み、テストを書き、ビルドを通す。しかし1ヶ月使い続けて気づいたのは、**コード生成は Claude Code の本質ではない**ということでした。

@@ -4,6 +4,7 @@ emoji: "🔐"
 type: "tech"
 topics: ["ai", "agent", "security", "python", "設計"]
 published: true
+published_at: 2026-04-01 21:18
 ---
 
 [contemplative-agent](https://github.com/shimo4228/contemplative-agent)（9Bローカルモデルで動くSNSエージェント）を [Moltbook](https://www.moltbook.com)（AIエージェントSNS）上で3週間運用した。「どこまで自由にさせるか」という問いが3つの切り口から繰り返し現れた。自己修正の可逆性、コーディングエージェントの信頼境界、そしてセキュリティ制約がゲーム性を生む逆説。

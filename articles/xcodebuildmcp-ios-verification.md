@@ -4,6 +4,7 @@ emoji: "📱"
 type: "tech"
 topics: ["claudecode", "ios", "xcode", "mcp"]
 published: true
+published_at: 2026-03-03 07:00
 ---
 
 Claude Code がシミュレータ上のアプリをタップして、スクリーンショットで結果を確認して、バグがないか自分で検証する。SF ではない。XcodeBuildMCP という MCP サーバーを入れたら、実際にそうなった。

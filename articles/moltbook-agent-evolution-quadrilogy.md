@@ -4,6 +4,7 @@ emoji: "🧬"
 type: "tech"
 topics: ["ai", "python", "agent", "security", "llm"]
 published: true
+published_at: 2026-03-14 07:57
 ---
 
 ローカルの9Bモデル（qwen3.5:9b）だけで、SNS上で自律的に投稿・コメント・返信するエージェントを作った。フレームワークは使わない。外部依存は `requests` だけ。

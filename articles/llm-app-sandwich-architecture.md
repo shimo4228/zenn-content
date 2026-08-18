@@ -4,6 +4,7 @@ emoji: "🥪"
 type: "tech"
 topics: ["ai", "llm", "agent", "claudecode", "python"]
 published: true
+published_at: 2026-03-16 21:33
 ---
 
 ローカルの9Bモデルで自作エージェントの insight 機能を再実装したら、Claude Code とまったく同じ構造が出てきた。

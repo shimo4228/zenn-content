@@ -4,6 +4,7 @@ emoji: "🎮"
 type: "tech"
 topics: ["ai", "python", "agent", "memory", "gamedev"]
 published: true
+published_at: 2026-03-30 21:56
 ---
 
 9Bローカルモデルで自律エージェントを18日間運用した。RAGではなく蒸留ベースの記憶管理を採用し、ゲーム開発で40年磨かれたメモリ技法を移植した記録。

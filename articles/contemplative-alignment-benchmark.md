@@ -4,6 +4,7 @@ emoji: "🧘"
 type: "tech"
 topics: ["ai", "llm", "alignment", "benchmark", "python"]
 published: true
+published_at: 2026-03-11 08:45
 ---
 
 協力的な相手に協力するのは、倫理ではない。ゲーム理論的に最適な戦略だ。

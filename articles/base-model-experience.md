@@ -4,6 +4,7 @@ emoji: "🧒"
 type: "idea"
 topics: ["llm", "ollama", "rlhf", "機械学習"]
 published: true
+published_at: 2026-02-22 22:06
 ---
 
 # 「素のAI」を見たことがありますか？

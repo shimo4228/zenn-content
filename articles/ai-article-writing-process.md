@@ -4,6 +4,7 @@ emoji: "🔬"
 type: "idea"
 topics: ["ai", "claudecode", "writing", "zenn"]
 published: true
+published_at: 2026-03-20 19:47
 ---
 
 「AI生成記事」と聞いて何を想像するだろうか。プロンプトを入れてボタンを押せば、記事が出てくる。そんなイメージだろう。

@@ -4,6 +4,7 @@ emoji: "🤖"
 type: "tech"
 topics: ["claude", "ai", "llm", "python"]
 published: true
+published_at: 2026-02-11 17:55
 ---
 
 # 397問の構造化解説を自動生成したら品質が壊滅的だった

@@ -4,6 +4,7 @@ emoji: "🤝"
 type: "tech"
 topics: ["ai", "agent", "architecture", "claudecode", "python"]
 published: true
+published_at: 2026-03-19 18:22
 ---
 
 「自律エージェント」と聞くと、何でも自分でできるものを想像する。コードを書き、ツールを選び、エラーから自力で回復する。OpenClaw のようなフレームワークはまさにそれを目指していた。
