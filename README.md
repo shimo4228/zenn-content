@@ -76,6 +76,6 @@ All content — articles, translations, and tooling — is [CC0 1.0](LICENSE) (p
 
 ## For coding agents
 
-[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/shimo4228/zenn-content) [![GitMCP](https://img.shields.io/endpoint?url=https://gitmcp.io/badge/shimo4228/zenn-content)](https://gitmcp.io/shimo4228/zenn-content)
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/shimo4228/zenn-content)
 
 Start with [llms.txt](llms.txt) (navigator) and [llms-full.txt](llms-full.txt) (self-contained Q&A). The Markdown sources here are the canonical text; the platforms are copies.

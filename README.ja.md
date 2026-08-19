@@ -76,6 +76,6 @@ npm run generate:index             # docs/PUBLICATIONS.md と上の読書経路�
 
 ## コーディングエージェント向け
 
-[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/shimo4228/zenn-content) [![GitMCP](https://img.shields.io/endpoint?url=https://gitmcp.io/badge/shimo4228/zenn-content)](https://gitmcp.io/shimo4228/zenn-content)
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/shimo4228/zenn-content)
 
 [llms.txt](llms.txt)（ナビゲータ）と [llms-full.txt](llms-full.txt)（自己完結の Q&A）から読んでください。正本はここにある Markdown で、各プラットフォームはその写しです。
