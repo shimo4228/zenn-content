@@ -10,7 +10,7 @@ Japanese originals on Zenn; English editions on Dev.to, or as source in `article
 ### 2026-08
 
 - **2026-08-20** [タスク41件をAIループに任せたら、詰まっていたのは実装より判断だった](https://zenn.dev/shimo4228/articles/ai-task-loop-judge-bottleneck)
-  EN: — · `claudecode` `ai` `llm` `自動化`
+  EN: [I Handed 41 Tasks to an AI Loop. The Bottleneck Was Judgment, Not Code](https://dev.to/shimo4228/i-handed-41-tasks-to-an-ai-loop-the-bottleneck-was-judgment-not-code-23dp) · `claudecode` `ai` `llm` `自動化`
 - **2026-08-16** [AIレビューの指摘をタスクへ送り続けたら、修理が終わらなくなった——4,541行を捨てるまで](https://zenn.dev/shimo4228/articles/ai-review-task-loop)
   EN: [AI Review Kept Creating Work: Why I Deleted 4,541 Lines](https://dev.to/shimo4228/ai-review-kept-creating-work-why-i-deleted-4541-lines-22ec) · `claudecode` `aiエージェント` `コードレビュー` `ソフトウェア設計` `開発プロセス`
 - **2026-08-14** [半年前のAIコードは現世代レビューに耐えるか — 実測25件の仕分け](https://zenn.dev/shimo4228/articles/ai-code-half-year-audit)

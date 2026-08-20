@@ -739,6 +739,22 @@
         "agenticcoding"
       ],
       "notes": "EN translation of AIレビューの指摘をタスクへ送り続けたら、修理が終わらなくなった"
+    },
+    {
+      "file": "articles/ai-task-loop-judge-bottleneck.md",
+      "date": "2026-08-20",
+      "notes": "タスク41件をAIループに任せたら、詰まっていたのは実装より判断だった（19:25 公開）"
+    },
+    {
+      "file": "articles-en/ai-task-loop-judge-bottleneck.md",
+      "devto": "https://dev.to/shimo4228/i-handed-41-tasks-to-an-ai-loop-the-bottleneck-was-judgment-not-code-23dp",
+      "devto_tags": [
+        "claudecode",
+        "aiagents",
+        "automation",
+        "agenticcoding"
+      ],
+      "notes": "EN translation of タスク41件をAIループに任せたら、詰まっていたのは実装より判断だった（即時投稿）"
     }
   ]
 }
