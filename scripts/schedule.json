@@ -755,6 +755,11 @@
         "agenticcoding"
       ],
       "notes": "EN translation of タスク41件をAIループに任せたら、詰まっていたのは実装より判断だった（即時投稿）"
+    },
+    {
+      "file": "articles/transcript-not-ledger.md",
+      "date": "2026-08-21",
+      "notes": "評価を全部通った原稿が 2 本とも空疎だった。AI に渡す台帳には会話ログの原本を添える（22:20 即時公開）"
     }
   ]
 }
