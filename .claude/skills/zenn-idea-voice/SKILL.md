@@ -1,6 +1,6 @@
 ---
 name: zenn-idea-voice
-description: Zenn/Dev.to 記事の任意の personality flavor。毒の効いたユーモア（AI をツッコミ対象にするシニカルな語り）と刃牙リファレンス（ドメイン置換・ダミーデータ）を保持する。type（tech/idea）問わず、話題が合えば実用記事にも layer できる。essay の基本声（だ/である × 発見調）は writing-ecosystem に defer。
+description: Zenn/Dev.to 記事の任意の personality flavor。毒の効いたユーモア（AI をツッコミ対象にするシニカルな語り）と刃牙リファレンス（ドメイン置換・ダミーデータ）を保持する。type（tech/idea）問わず、話題が合えば実用記事にも layer できる。essay の基本声（発見調）は writing-ecosystem、文体は project rules のチャンネル表に defer。
 user-invocable: true
 origin: shimo4228
 ---
@@ -12,7 +12,7 @@ origin: shimo4228
 ## Scope — いつ使うか
 
 - **任意の flavor**: AI の失敗・珍挙動を報告する記事、比較記事、開発の失敗→教訓など、話題が合うとき
-- type（tech/idea）で分けない。実用記事（ですます・即実用）にも、笑いのアクセントとして足せる
+- type（tech/idea）で分けない。実用記事にも、笑いのアクセントとして足せる
 - **入れすぎない**: 毒humor/刃牙 は主役ではなくスパイス。実用軸の「すぐ使える」を邪魔しない範囲で
 
 ## 基本の essay 声は defer する
@@ -57,7 +57,7 @@ origin: shimo4228
 
 - 毒は AI に向ける。人間（読者や他の開発者）には向けない
 - 技術的な教訓は必ず残す。笑いだけで終わらない
-- Zenn/Dev.to では ですます調（`zenn-practical-writing`）と組み合わせる。だ/である × 発見調 との組み合わせは Substack essay corpus 専用
+- **実用記事の既定の声の上に、任意で layer する**（`zenn-practical-writing`）。文体はチャンネル表（`.claude/rules/zenn-writing.md`）が正本で、本 skill は文体を変えない
 
 ---
 
@@ -86,5 +86,5 @@ origin: shimo4228
 ## Related
 
 - `~/.claude/skills/writing-ecosystem/SKILL.md`（global）— essay 基本声（発見調・問い化・弱化）の正本
-- [zenn-practical-writing](../zenn-practical-writing/SKILL.md) — 実用技術記事の既定（この personality は使わない）
+- [zenn-practical-writing](../zenn-practical-writing/SKILL.md) — 実用記事の既定の声。この personality はその上に任意で layer する
 - `.claude/rules/zenn-writing.md` — `:::message` でのドメイン置換・ダミーデータ明示（刃牙注記で使う）

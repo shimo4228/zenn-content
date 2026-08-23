@@ -53,7 +53,7 @@ Accepted (2026-04-13)
 
 | リファレンス | 集約内容 |
 |------------|---------|
-| `writing-standards.md` | AI slop リスト、トーンルール、タイトル規約、数字・感情語の使用基準 |
+| ~~`writing-standards.md`~~ | ADR-0003 で無効化（ファイルは存在せず、canon は global `writing-ecosystem` skill へ移行済み） |
 | `translation-rules.md` | 翻訳ルール、品質チェックリスト、グロッサリー参照 |
 | `schedule-schema.md` | schedule.json の統一スキーマ、フィールド定義、状態遷移 |
 
@@ -77,12 +77,12 @@ catchify の廃止、seo-optimizer のスコープ縮小は ADR-0001 で決定�
 ### 新規作成
 
 - `docs/adr/` — ADR ディレクトリ（このプロジェクト初）
-- `.claude/refs/writing-standards.md`
+- ~~`.claude/refs/writing-standards.md`~~ — 存在しない。正本は global `writing-ecosystem` skill（ADR-0003 で無効化）
 - `.claude/refs/translation-rules.md`
 - `.claude/refs/schedule-schema.md`
 - `.claude/skills/writing-team/SKILL.md` — オーケストレーター
 - `.claude/skills/ideation/SKILL.md` — テーマ検討
-- `.claude/skills/series-checker/SKILL.md` — シリーズ整合性
+- ~~`.claude/skills/series-checker/SKILL.md`~~ — 2026-08-23 に `zenn-editorial-judgment`「シリーズ記事の整合」へ吸収・退役
 - `.claude/skills/quality-gate/SKILL.md` — 統一品質基準
 - `.claude/rules/content-integrity.md` — Content Integrity ルール
 

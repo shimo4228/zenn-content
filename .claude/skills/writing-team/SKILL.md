@@ -84,7 +84,7 @@ origin: shimo4228
 
 ```
 1. 変更差分の分析（git diff または手動指定）
-2. [skill: series-checker]    — シリーズ整合性（シリーズ記事の場合）
+2. [skill: zenn-editorial-judgment]「シリーズ記事の整合」— シリーズ記事の場合
 3. [skill: zenn-editorial-judgment] — 構造変更なら記事タイプ + 実装の渡し先を再判定
    （テーマ自体が変わる改稿なら [skill: theme-eval] も再実行）
 4. 改稿実行（オーケストレーター本体が直接編集）

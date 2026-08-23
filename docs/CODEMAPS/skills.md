@@ -13,7 +13,6 @@
 | `publish-article` | Pre-publish checklist + cross-post procedure |
 | `schedule-publish` | Discoverability scoring + schedule.json date assignment |
 | `seo-optimizer` | Title / tag / emoji optimization (Content Integrity: no intro rewrites) |
-| `series-checker` | Cross-article series consistency |
 | `quality-gate` | Unified quality standard across all paths |
 | `article-stocktake` | Post-publication eval loop: real metrics (Zenn/Dev.to) × quality rank divergence (ADR-0005) |
 | `learned/` | Auto-extracted patterns (e.g. `concept-before-use-rule`) |
