@@ -81,7 +81,6 @@ published: true  # false for draft
 > 旧 3 パターンは実用軸の既定構成（一瞬でわかる → 掴み → 緊張 → 解決 → Higher Ground）と
 > 整合せず、Pattern 1 の `## 背景` は warm-up fluff として禁止されている側だった。
 
-
 ---
 
 ## Zenn Markdown Syntax
