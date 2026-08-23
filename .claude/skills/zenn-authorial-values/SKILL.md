@@ -101,7 +101,7 @@ origin: shimo4228
 
 > 「変に記事を分割するより必要な情報が網羅された良質な記事を書く方がいい」（2026-07-18）
 
-投稿ペース（週 2-3 本・ストック型）の正本は `.claude/rules/zenn-writing.md`。シリーズ完結編が初作を supersede する実例は memory `article-quality.md` のシリーズ重複メモ。
+投稿ペースの正本は `.claude/rules/zenn-writing.md`。シリーズ完結編が初作を supersede する実例は memory `article-quality.md` のシリーズ重複メモ。
 
 ---
 

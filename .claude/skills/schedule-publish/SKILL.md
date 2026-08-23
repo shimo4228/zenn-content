@@ -83,7 +83,7 @@ origin: shimo4228
 | 曜日・時刻 | `.claude/rules/zenn-writing.md`「投稿ペース方針」が正本（バズタイム：火〜水 7:00-9:00 JST）。ここでは再掲しない | 値の二重管理を避ける |
 | 間隔 | 最低2日空ける | 各記事の「新着」フィード露出時間を確保 |
 | 上限 | `.claude/rules/zenn-writing.md`「投稿ペース方針」が正本（週2-3本）。ここでは再掲しない | 値の二重管理を避ける |
-| クロスポスト | EN (Dev.to) は JP の**前日 22:00 JST**（日米ペア既定の正本: `.claude/rules/zenn-writing.md`「投稿予約タイミング」） | Dev.to(EN) のみ |
+| クロスポスト | 日米ペアの既定は `.claude/rules/zenn-writing.md`「投稿予約タイミング」（ここでは再掲しない） | Dev.to(EN) のみ |
 
 ---
 
@@ -110,7 +110,7 @@ grep -rl 'published: false' articles/*.md
 
 ### Step 3: 日程割り当て（launchd 予約）
 
-スコア順に投稿日時を決め、各記事を one-shot launchd ジョブとして仕込む（旧 `plan_schedule.py` は廃止）。JP はバズタイム（火水 09:00 JST）に寄せ、EN はその**前日 22:00 JST**（≈ 米国 09:00 ET）。**日時は `--at` 引数で JST 明示で渡す**（schedule.json には保存しない。正本: `.claude/rules/zenn-writing.md`「投稿予約タイミング」）。
+スコア順に投稿日時を決め、各記事を one-shot launchd ジョブとして仕込む（旧 `plan_schedule.py` は廃止）。JP / EN の投稿時刻は rules「投稿予約タイミング」に従う。**日時は `--at` 引数で JST 明示で渡す**（schedule.json には保存しない。正本: `.claude/rules/zenn-writing.md`「投稿予約タイミング」）。
 
 ```bash
 # JP が 2026-07-08 09:00 JST なら、EN はその前日 22:00 JST

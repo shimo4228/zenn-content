@@ -89,7 +89,7 @@ note/<slug>.md（JA 正本・初出）
 
 - **形式**: frontmatter なし。タイトルは本文冒頭の `# 見出し`（note は frontmatter を解釈しない）
 - **文体**: `.claude/rules/zenn-writing.md`「チャンネル表」の note 行が正本（2026-08-06 著者指示で日本語公開チャンネルは統一済み）
-- **改行**: 1 段落 1〜2 文 + 段落間空行 1 行（正本: `writing-ecosystem` の段落密度の機械的閾値。全チャンネル共通化済み）
+- **改行**: 正本は `writing-ecosystem`「段落密度の機械的閾値」（全チャンネル共通。値はここに書かない）
 - **末尾**: 出典・参考文献（該当時）+「関連リンク」節 — 関連 repo/DOI・GitHub ハブ（著者ハブ規約を適用）・公開後の Substack 英語版 URL。note に canonical URL 設定機能はない（2026-08 検索確認）ため、この節が還流手段
 - **レビュー**: Zenn 記事と同じ厚さで公開前に回す（下記 Editor Agent Usage のアイデアエッセイ chain）
 - **投稿は人間が手動**。`schedule.json` に載せない（dev.to クロスポスト対象外）
@@ -111,7 +111,7 @@ note/<slug>.md（JA 正本・初出）
 
 ## Editor Agent Usage
 
-記事の執筆はサブエージェントに委譲せず、Claude Code 本体が `zenn-practical-writing` に従って直接執筆する。Before publishing, run review agents in parallel: `editor`（全 Zenn/Dev.to 記事共通）+ `fact-checker`（事実主張の検証）+ `zenn-clarity-reviewer`（初見読者の明瞭性、project agent）+ codex-review（公開記事の cross-model レビュー、prompt-driven）。
+記事の執筆はサブエージェントに委譲せず、Claude Code 本体が `zenn-practical-writing` に従って直接執筆する。Before publishing, run review agents in parallel: レビュー agent はチャンネル表（`.claude/rules/zenn-writing.md`）の当該行に従う + `fact-checker`（事実主張の検証）+ `zenn-clarity-reviewer`（初見読者の明瞭性、project agent）+ codex-review（公開記事の cross-model レビュー、prompt-driven）。
 
 **アイデアエッセイ（note/ 正本・substack/ 英訳）も同じ厚さでレビューする**（2026-08-12 著者指示）: `essay-reviewer`（論理構成・過積載・トーン）+ `fact-checker` + `zenn-clarity-reviewer`（初見読者の明瞭性。note/Substack エッセイも対象 — 読者シミュレーションを「note フィードから来た一般読者」に置き換える）+ codex-review。
 
@@ -124,8 +124,8 @@ claude --agent=fact-checker --prompt="Fact-check: articles/ARTICLE_NAME.md"
 ```
 
 Available agents:
-- `editor` — Zenn/Dev.to 記事の構造・品質・AI slop 検出（4段階評価）。type 分岐なしで全記事に使用
-- `essay-reviewer` — アイデアエッセイ（note 正本 / Substack 英訳）用。Zenn/Dev.to のミッションでは使わない
+- `editor` — 実用チャンネルの記事の構造・品質・AI slop 検出（4段階評価。担当チャンネルはチャンネル表）
+- `essay-reviewer` — エッセイチャンネル用（担当チャンネルはチャンネル表）
 - `fact-checker` — 事実主張の Web 検索検証（ACCURATE/PARTIALLY/INACCURATE/UNVERIFIABLE）
 - `zenn-clarity-reviewer` — 初見読者の明瞭性（造語予算・タイトル軸・内部文脈依存。project agent、JP/EN 両対応。Zenn/Dev.to 記事と note/Substack エッセイの両方が対象。FAIL は公開ブロック）
 - `devto-translator` — JP→EN 翻訳 + Dev.to タグ付け + 投稿
@@ -158,7 +158,7 @@ Pipeline reference: `docs/CODEMAPS/scripts.md`
 - [ ] Screenshots have no sensitive information (file paths, usernames)
 - [ ] File paths are anonymized
 - [ ] All code examples are tested and executable
-- [ ] Editor レビュー完了（Zenn/Dev.to は type 分岐なく editor に一本化。essay-reviewer はアイデアエッセイ = note/Substack 用）
+- [ ] レビュー完了（担当 agent はチャンネル表の「レビュー agent」列）
 - [ ] タイトル最適化済み（`/seo-optimizer` → global `headline-craft` 経由で候補提示・確定。英訳より前に確定させる）
 - [ ] fact-checker でファクトチェック完了（事実主張を含む記事は必須）
 - [ ] zenn-clarity-reviewer の verdict が PASS（初見読者の明瞭性。FAIL のままなら公開不可）

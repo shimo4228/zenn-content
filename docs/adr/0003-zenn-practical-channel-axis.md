@@ -119,7 +119,7 @@ Zenn/Dev.to の全記事は `editor` agent でレビューする。`essay-review
 ## Notes
 
 - **既存記事は遡及変更しない**（33 tech + 16 idea + 4 essay は legacy 資産）。本 ADR は今後の執筆の既定。
-- **シリーズの声**: 継続シリーズ内で新記事が先行記事（旧文体）とトーン不整合になりうる。継続シリーズでは先行記事の声を優先するか、明示的に転換する（`series-checker` で確認）。
+- **シリーズの声**: 継続シリーズ内で新記事が先行記事（旧文体）とトーン不整合になりうる。継続シリーズでは明示的に転換する（`zenn-editorial-judgment`「シリーズ記事の整合」で確認）。※ 2026-08-23 追記: `series-checker` skill は同節へ吸収・退役。「先行記事の声を優先する」選択肢も撤回し、チャンネル表の文体へ転換する。
 - **Dev.to/EN の継承**: `devto-translator` の忠実翻訳で JP 実用軸を自動継承。EN 専用スキルは作らない。
 - 廃止コンポーネントは削除前に inbound link を repoint 済み。復元が必要な場合は git 履歴（`git log --follow` / `git show`）から参照する。
 

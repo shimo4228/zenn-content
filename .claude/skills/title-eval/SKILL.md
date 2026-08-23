@@ -22,7 +22,7 @@ origin: shimo4228
 
 - 記事本文（凍結稿）と core claim 1 文
 - タイトル候補 3〜6 本（headline-craft の手順で生成。現行タイトルがあれば必ず含める）
-- チャンネル（note = フィード軸 / Zenn = 検索・フィード両軸 + 50–60 字制約 / Dev.to = EN フィード軸）
+- チャンネル（note = フィード軸 / Zenn = 検索・フィード両軸 + 文字数上限あり（値は project rules） / Dev.to = EN フィード軸）
 
 ## Step 1 — 候補ごとの二値チェック（各 1 行証拠必須）
 
@@ -35,7 +35,7 @@ origin: shimo4228
 | TT5 | **飾り語ゼロ**: ポジティブ形容詞・ヘッジ語尾（「〜の話」「〜について」「〜メモ」）がないか（Upworthy 実証: ポジティブ語は CTR を下げる） |
 | TT6 | **具体の検討痕**: 数字・期間・固有名を入れる余地を検討したか（入れない判断は可。未検討は No） |
 | TT7 | **チャンネル軸適合**: 対象チャンネルの流入経路（フィード/検索）で指が止まる形か |
-| TT8 | **字数帯**: 日本語 20〜36 字目安（platform overlay があればそちら優先。Zenn は 50–60 字上限） |
+| TT8 | **字数帯**: 日本語 20〜36 字目安（文字数上限は platform overlay = `.claude/rules/zenn-writing.md` に照合する） |
 
 ## Step 2 — 反証プレッシャーテスト（上位候補に必須）
 
@@ -52,7 +52,7 @@ origin: shimo4228
 
 ## 配線
 
-- writing-team Mission A の **step 12 が本 skill 自身**（本文凍結後・公開直前）。Zenn/Dev.to では title 確定後に、同 step の続きで `seo-optimizer` が topics・emoji を扱う。note エッセイは seo-optimizer を通らないので title-eval 単体で回す。note エッセイは seo-optimizer を使わないため title-eval 単体で回す
+- writing-team Mission A の **step 12 が本 skill 自身**（本文凍結後・公開直前）。Zenn/Dev.to では title 確定後に、同 step の続きで `seo-optimizer` が topics・emoji を扱う。note エッセイは seo-optimizer を通らないので title-eval 単体で回す
 - 判定は article-judge と同様 fresh agent で実行し、判定器の対抗タイトルも著者への提示に含める（判定器の生成物も候補プールに入れてよい — 選ぶのは著者）
 
 ## Related

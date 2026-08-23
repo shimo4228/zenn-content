@@ -70,7 +70,7 @@ origin: shimo4228
 14. git push
 ```
 
-**レビュアー**: Zenn/Dev.to は全記事 `editor` を使用（実用軸に一本化されたため type 分岐なし）。アイデアエッセイ（note 正本 / Substack 英訳）では step 7 の `editor` を `essay-reviewer` に差し替える（2026-08-12 規約 — 他は同じ厚さで回す）。
+**レビュアー**: step 7 の品質レビュー agent は、出力先チャンネルに対応する行をチャンネル表（`.claude/rules/zenn-writing.md`）で引く。厚さはどのチャンネルでも同じ。
 
 **article-judge（改稿ループの判定器）**: fresh context の別 agent process で起動する（執筆セッションの文脈を渡さない — 履歴共有は判定を甘くする）。基準アンカーは `.claude/refs/kaguura-craft-checklist.md`。
 

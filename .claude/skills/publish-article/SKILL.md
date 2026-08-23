@@ -63,7 +63,7 @@ npx zenn list:articles
 ```
 
 **チェック内容:**
-- title が 60 文字以内
+- title が上限内（正本: `.claude/rules/zenn-writing.md`）
 - emoji が単一の絵文字
 - type が "tech" または "idea"
 - topics が 1-5 個

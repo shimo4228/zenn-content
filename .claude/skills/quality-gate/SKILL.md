@@ -26,7 +26,7 @@ origin: shimo4228
 ### 必須（全記事）
 
 - [ ] **最終判定の article-judge verdict が Publishable**: panel 反映後の**凍結候補**に対する fresh 判定であること（writing-team Mission A step 9 / Mission B step 6.5）。草稿ゲート時点の Publishable では代用できない — panel・著者修正で判定対象が陳腐化するため。凍結後に修正が入ったら最終判定からやり直し。Fix 残 / Rewrite のままなら公開不可（2026-08-12 追加・同日ドライランで binding 位置を panel 後へ改定、ADR-0008）
-- [ ] **editor の CRITICAL が 0**: レビュー済みで CRITICAL 指摘がすべて解決済み（Zenn/Dev.to は editor に一本化。アイデアエッセイ = note/Substack は essay-reviewer）
+- [ ] **editor の CRITICAL が 0**: レビュー済みで CRITICAL 指摘がすべて解決済み（担当 agent はチャンネル表の「レビュー agent」列）
 - [ ] **zenn-clarity-reviewer の verdict が PASS**: 初見読者の明瞭性レビュー済みで FAIL が解消されている（FAIL のままなら公開不可。editor CRITICAL 0 と同格のブロッキング条件）
 - [ ] **AI slop なし**: `writing-ecosystem` skill の禁止リストに該当する表現がない
 - [ ] **未説明概念なし**: 専門用語・自作概念が初出時に説明されている

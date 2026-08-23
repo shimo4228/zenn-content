@@ -26,7 +26,7 @@ writing-ecosystem の review 通過後。**Substack は英語チャンネル**�
 - **MD→HTML→リッチテキスト貼り付け**（全文向け・推奨）:
 
   ```
-  pandoc essay.md -s -o essay.html
+  pandoc -f gfm essay.md -s -o essay.html   # -f gfm 必須（§下記の罠を参照）
   ```
 
   ブラウザで `essay.html` を開く → 本文を選択 → コピー → Substack 本文に貼ると整形保持（見出し / 太字 / 斜体 / リンク / 区切り線）。Substack は貼り付け時に独自スタイルを当てるので、保持されるのは構造であって見た目の細部ではない。
