@@ -62,8 +62,6 @@ origin: shimo4228
    構成系の指摘は「任意の磨き」に降格しない — 推奨を付けず中立で著者ゲートへ必ず昇格する）
 9. 最終判定【binding】— 凍結した公開候補に対して mechanical_checks + [agent: article-judge]（fresh・質問は新規生成）を再実行
    quality-gate が参照できるのはこの verdict だけ。通読 GO 中の著者修正は**修正ごとに回さずバッチする** — 通読が終わった時点の本文に対して 1 回だけ再実行する（著者が不要と判断すれば省略可。著者通読が常に最上位のゲート — 2026-08-12 著者指示）
-10. [skill: theme-eval]      — 完成稿（凍結候補）でテーマ再判定（writing-as-thinking で化けたか）
-   見込みランクを memory article-quality.md へ記録
 11. [skill: quality-gate]    — 統一品質基準チェック（最終判定の article-judge = Publishable を含む）
 12. [skill: title-eval]      — タイトル判定ループ（本文凍結後・投稿直前に単独で回す。headline-craft 生成 → fresh 判定 → Refine 1 回、最終選択は著者。2026-08-13 新設）
    Zenn/Dev.to は続けて [skill: seo-optimizer] — topics・emoji 最適化（内容は変えない）
@@ -94,6 +92,11 @@ origin: shimo4228
    ├ [agent: fact-checker]            ┤  並列実行
    ├ [agent: zenn-clarity-reviewer]   ┤
    └ codex-review（prompt-driven）    ┘
+6.5 最終判定【binding】— 凍結した公開候補に mechanical_checks + [agent: article-judge]
+   （fresh・質問は新規生成）を再実行。Mission A step 9 と同形。
+   quality-gate が参照できるのはこの verdict だけで、step 5 の草稿ゲートでは代用できない
+   （2026-08-23 追加 — 従来 Mission B にこの step が無く、改稿記事は quality-gate の
+   第 1 必須項目を構造的に満たせなかった）
 7. [skill: quality-gate]     — 統一品質基準
    ⏸ ユーザー確認: 改稿結果 + レビュー結果（一括確認）
 8. [skill: publish-article]  — 公開チェックリスト
@@ -121,7 +124,7 @@ draft
 - **上限 2 ラウンド** — 反復は 2〜3 回で頭打ち、以降は voice の正規化ドリフト（劣化）が始まる
 - **voice 回帰** — mechanical_checks の voice_delta warn は over-editing シグナル。warn が出たら磨きをやめる側に倒す
 - **迷ったら Fix** — judge が Publishable / Fix で迷ったら Fix（theme-eval の「迷ったら B」と対称）
-- 人間ゲートは 2 箇所のみ: judge 間不一致（article-judge vs codex）と publish 直前の通読 GO
+- **人間ゲートの正本は Mission 定義の ⏸ 印**（数をここに書かない — 実際の関与点は Mission A で 5 つある）。改稿ループ**内**で止まるのは judge 間不一致（article-judge vs codex）のときだけ
 - **KPI = 通読指摘数**（2026-08-13 新設）— 最終判定 Publishable の**後**に著者通読が発見した指摘数を、記事ごとに memory `eval-harness-pipeline` へ記録する。この数が judge の真のエラー率であり、基準再起草（AUTOCALIBRATE）の主入力。基準線: ai-desire-exhaustion で 6 件（指示語・偽二分法・パッチワーク・機序混同・圧縮過多・トーン誤読）→ 次作でこの数が減っているかが K2/K3/K4 改定の効果測定
 
 ## Mission C: 翻訳 + クロスポスト
@@ -173,6 +176,6 @@ draft
 > 内容は著者の思考が決める。配信戦略は内容を変えずに最適化する。
 
 オーケストレーターはこの原則を全ミッションで守る:
-- seo-optimizer はタイトル・タグ・emoji のみ（冒頭文は変えない）
+- title-eval / seo-optimizer は Distribution レイヤーのみ（冒頭文・本文は変えない）
 - レビュー指摘は品質向上のため（エンゲージメント最適化のためではない）
 - 構成変更の提案は著者の論旨をより正確に伝えるためのもの

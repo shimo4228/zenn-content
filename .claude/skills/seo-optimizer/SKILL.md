@@ -30,20 +30,23 @@ origin: shimo4228
 
 | 項目 | 評価基準 |
 |------|---------|
-| **タイトル** | 50 文字以内（60 まで許容）、キーワード含有、具体性 |
+| **タイトル** | 文字数は `.claude/rules/zenn-writing.md`「タイトル文字数上限」が正本。ここでは主要キーワードの含有だけを見る |
 | **Topics** | 5 個使い切り、ニッチ優先（基準は `zenn-format` の Tag guidelines） |
 | **Emoji** | 記事テーマとの関連性（基準は `zenn-format` の Emoji Selection） |
 
-### Step 2: タイトル最適化（Distribution レイヤーのみ）
+### Step 2: title-eval への Zenn 固有入力
 
-タイトルの**原則・誠実さ・煽り禁止・問いの形**は `~/.claude/skills/writing-ecosystem/SKILL.md` の Title Conventions が正本、**文字数上限（50-60）**は `.claude/rules/zenn-writing.md` が正本。ここでは再掲しない。
+**タイトル候補の生成・提示・確定は本スキルの仕事ではない**（2026-08-23 に `title-eval` へ委譲）。
+生成の技法は global `headline-craft`、判定は `title-eval`（TT1-TT8）、原則・誠実さは
+`writing-ecosystem` の Title Conventions、文字数は `.claude/rules/zenn-writing.md` が正本。
 
-**候補生成の技法は global skill `headline-craft` が正本** — 技法カタログ（具体性・ベネフィット前置・誠実な好奇心ギャップ）と流入経路 2 軸評価（検索/フィード）はあちらの手順に従う。本スキルはそこに Zenn 固有の入力を足すだけ:
+本スキルが足すのは Zenn 固有の入力 2 点だけ:
 
 - **主要キーワードの自然な含有**（SEO 観点。語の選び直しは可、意味は変えない）
-- **自チャンネル実測の参照**: memory の `article-quality.md`（品質ランク × 実測 tier、乖離パターン）を読み、候補の 2 軸判定（検索寄せ/フィード寄せ）の参考にする
-- **3 候補を提示**し、各候補に headline-craft の評価ラベル（技法・流入軸）を添え、現タイトルと比較
-- 最終判断はユーザーに委ねる（内容は変えない、[ADR-0001](../../../docs/adr/0001-content-integrity-principle.md)）
+- **自チャンネル実測の参照**: memory の `article-quality.md`（品質ランク × 実測 tier、乖離パターン）を
+  読み、候補の 2 軸判定（検索寄せ/フィード寄せ）の参考として title-eval に渡す
+
+内容は変えない（[ADR-0001](../../../docs/adr/0001-content-integrity-principle.md)）。
 
 ### Step 3: Topics 最適化
 
@@ -73,13 +76,9 @@ origin: shimo4228
 - Topics: {current_topics}
 - Emoji: {current_emoji}
 
-### タイトル候補
-1. **"{title_1}"** ({n}文字)
-   - 理由: {why}
-2. **"{title_2}"** ({n}文字)
-   - 理由: {why}
-3. **"{title_3}"** ({n}文字)
-   - 理由: {why}
+### title-eval へ渡す Zenn 固有所見
+- 主要キーワード: {keywords}（現タイトルに含まれているか: {yes_no}）
+- 実測 tier の参考: {article_quality_note}
 
 ### Topics 提案
 - 現在: {current} → 提案: {proposed}

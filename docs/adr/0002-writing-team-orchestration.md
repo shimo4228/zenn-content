@@ -54,7 +54,7 @@ Accepted (2026-04-13)
 | リファレンス | 集約内容 |
 |------------|---------|
 | ~~`writing-standards.md`~~ | ADR-0003 で無効化（ファイルは存在せず、canon は global `writing-ecosystem` skill へ移行済み） |
-| `translation-rules.md` | 翻訳ルール、品質チェックリスト、グロッサリー参照 |
+| ~~`translation-rules.md`~~ | 2026-08-23 に `devto-translator` agent へ吸収・退役（消費者が agent 1 つだけで、正本を外に置いたため逐語重複が発生していた）。汎用の JA→EN 手順は global `ja-to-en-translation` skill |
 | `schedule-schema.md` | schedule.json の統一スキーマ、フィールド定義、状態遷移 |
 
 **理由**: エージェントは自分の定義ファイルしか読まないため、参照先の内容をインライン展開する仕組みが要る。各エージェント・スキルには「詳細は refs/X を参照」と記載し、Claude Code（オーケストレーター）が必要に応じて refs/ を読んでエージェントに渡す。
@@ -78,7 +78,7 @@ catchify の廃止、seo-optimizer のスコープ縮小は ADR-0001 で決定�
 
 - `docs/adr/` — ADR ディレクトリ（このプロジェクト初）
 - ~~`.claude/refs/writing-standards.md`~~ — 存在しない。正本は global `writing-ecosystem` skill（ADR-0003 で無効化）
-- `.claude/refs/translation-rules.md`
+- ~~`.claude/refs/translation-rules.md`~~ — 2026-08-23 に `devto-translator` agent へ吸収・退役
 - `.claude/refs/schedule-schema.md`
 - `.claude/skills/writing-team/SKILL.md` — オーケストレーター
 - `.claude/skills/ideation/SKILL.md` — テーマ検討

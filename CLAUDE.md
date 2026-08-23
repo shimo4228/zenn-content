@@ -46,17 +46,13 @@ All articles MUST use Zenn frontmatter. Field-by-field spec is canonical in `.cl
    - Add comments for clarity
 
 3. **Terminology Consistency**
-   - Use consistent terms across articles:
-     - "pdf2anki" (not "PDF2Anki" or "pdf-to-anki")
-     - "Claude-Native" (design philosophy)
-     - "CLI-First" (architecture principle)
-     - "半自動 (Semi-automated)" (workflow approach)
+   - 書き換え禁止ワードの正本は `.claude/rules/zenn-writing.md`「プロジェクト固有用語」（7 語の完全版）。ここには再掲しない
 
 4. **Tone and Style**
    - **Technical but approachable** - Assume readers are engineers
    - **Honest** - Discuss failures and challenges, not just successes
    - **Human insights** - AI-assisted writing, but human perspective
-   - **No AI slop** - Avoid generic phrases like "powerful tool", "revolutionize", "seamless"（禁止リストの正本は global `writing-ecosystem` skill）
+   - **No AI slop** — 禁止リストの正本は global `writing-ecosystem` skill（語の実値はここに書かない）
 
 5. **Structure**
    - **Introduction** - Hook reader with a problem or insight
@@ -92,12 +88,12 @@ note/<slug>.md（JA 正本・初出）
 `note/` は日本語アイデアエッセイの**正本（初出）**置き場。1 ファイル 2 役 — 公開前は「そのまま貼れる原稿」、公開後は note URL を追記して LLM corpus mirror を兼ねる。第三者ドメイン配信による AI 引用リフト（GEO）も狙いに含む。
 
 - **形式**: frontmatter なし。タイトルは本文冒頭の `# 見出し`（note は frontmatter を解釈しない）
-- **文体**: ですます調（2026-08-06 著者指示。エッセイでも Zenn 実用記事でも、日本語公開チャンネルは ですます で統一）
+- **文体**: `.claude/rules/zenn-writing.md`「チャンネル表」の note 行が正本（2026-08-06 著者指示で日本語公開チャンネルは統一済み）
 - **改行**: 1 段落 1〜2 文 + 段落間空行 1 行（正本: `writing-ecosystem` の段落密度の機械的閾値。全チャンネル共通化済み）
 - **末尾**: 出典・参考文献（該当時）+「関連リンク」節 — 関連 repo/DOI・GitHub ハブ（著者ハブ規約を適用）・公開後の Substack 英語版 URL。note に canonical URL 設定機能はない（2026-08 検索確認）ため、この節が還流手段
 - **レビュー**: Zenn 記事と同じ厚さで公開前に回す（下記 Editor Agent Usage のアイデアエッセイ chain）
 - **投稿は人間が手動**。`schedule.json` に載せない（dev.to クロスポスト対象外）
-- **貼り付けは HTML 経由**（Markdown 直貼りは note でプレーンテキスト化する）。`tail -n +2 <slug>.md | pandoc -f markdown -t html -s --metadata pagetitle="<タイトル>" -o <slug>.html` で貼り付け用 HTML を併置（先頭 h1 はタイトル欄別入力のため除外）。ブラウザで開いて全選択コピー → note エディタへペースト。substack/ の .html 併置と同じ慣例
+- **貼り付けは HTML 経由**（Markdown 直貼りは note でプレーンテキスト化する）。`tail -n +2 <slug>.md | pandoc -f gfm -t html -s --metadata pagetitle="<タイトル>" -o <slug>.html`（**`-f gfm` 必須** — 既定方言はリストを段落に潰す。`substack-publishing` に実証あり） で貼り付け用 HTML を併置（先頭 h1 はタイトル欄別入力のため除外）。ブラウザで開いて全選択コピー → note エディタへペースト。substack/ の .html 併置と同じ慣例
 - **ペース: 週 1〜2 本**。burst しない（2026-07-16 rate limit = policy signal の教訓）
 - 公開後、冒頭 or 末尾に note URL を追記して commit（mirror 化）。既存の frontmatter 付き旧 mirror 2 本はそのまま
 - 公開後、`scripts/corpus.yml` の `essays:` に 1 エントリ（slug / date / ja.title / ja.url / ja.file）を追記し `npm run generate:index`（EN 版を Substack に出したら同エントリに `en:` を足す）
@@ -111,7 +107,7 @@ note/<slug>.md（JA 正本・初出）
 - 日本語の canonical は note 正本。EN 版の初出は Substack で、記事末に JA 正本（note URL）への参照を置く
 - 既存ファイル（旧モデルで Substack 初出だった JA/EN ミラー）はそのまま残す
 
-公開手順（MD→HTML 貼り付け・タグ・配信運用）は global skill `substack-publishing` を参照。
+公開手順（MD→HTML 貼り付け・タグ・配信運用）は project skill `substack-publishing` を参照（2026-08-23 に global から降格 — 対象原稿がこの repo にしかないため）。
 
 ## Editor Agent Usage
 
@@ -119,7 +115,7 @@ note/<slug>.md（JA 正本・初出）
 
 **アイデアエッセイ（note/ 正本・substack/ 英訳）も同じ厚さでレビューする**（2026-08-12 著者指示）: `essay-reviewer`（論理構成・過積載・トーン）+ `fact-checker` + `zenn-clarity-reviewer`（初見読者の明瞭性。note/Substack エッセイも対象 — 読者シミュレーションを「note フィードから来た一般読者」に置き換える）+ codex-review。
 
-**二本立て評価 + 改稿ループ**（2026-08-12、ADR-0008）: 全チャンネルの記事は **テーマ評価**（`.claude/skills/theme-eval` — 執筆前 + 完成稿の 2 時点。テーマランクが記事の上限を決める。Deepen 2 回まで、却下ゲートではない）と **記事品質評価**（`scripts/mechanical_checks.py` の決定論検出 + `article-judge` agent の二値チェック判定。基準アンカーは `.claude/refs/kaguura-craft-checklist.md`）の二本立てで評価する。改稿ループの正本は `writing-team` skill の「改稿ループ」節（fresh-context 判定・span 指摘のみ・上限 2 ラウンド・voice 回帰監視）。著者の関与はテーマ層（Deepen の問い）と publish 直前の通読 GO に集中する。
+**二本立て評価 + 改稿ループ**（2026-08-12、ADR-0008）: 全チャンネルの記事は **テーマ評価**（`.claude/skills/theme-eval` — 執筆前の 1 時点。テーマランクが記事の上限を決める。Deepen 2 回まで、却下ゲートではない。2026-08-23 に完成稿での再判定を廃止）と **記事品質評価**（`scripts/mechanical_checks.py` の決定論検出 + `article-judge` agent の二値チェック判定。基準アンカーは `.claude/refs/kaguura-craft-checklist.md`）の二本立てで評価する。改稿ループの正本は `writing-team` skill の「改稿ループ」節（fresh-context 判定・span 指摘のみ・上限 2 ラウンド・voice 回帰監視）。著者の関与はテーマ層（Deepen の問い）と publish 直前の通読 GO に集中する。
 
 ```bash
 claude --agent=editor --prompt="Review: articles/ARTICLE_NAME.md"
@@ -140,13 +136,13 @@ Zenn/Dev.to の記事執筆は**チャンネル独自の実用軸**が既定 —
 
 | 用途 | 使うスキル |
 |---|---|
-| **Zenn/Dev.to の記事執筆（既定・全記事）** | `zenn-practical-writing` — 実用軸（ですます・即実用・実コード/図・低認知負荷）。環境依存の変更記事は「人間向けナラティブ → エージェント向け実装契約」の二層構成 |
+| **Zenn/Dev.to の記事執筆（既定・全記事）** | `zenn-practical-writing` — 実用軸（即実用・実コード/図・低認知負荷。文体はチャンネル表）。環境依存の変更記事は「人間向けナラティブ → エージェント向け実装契約」の二層構成 |
 | **執筆前のタイプ判定・軸ずれ検出・改稿時の構造自己審問・レビュー採否** | `zenn-editorial-judgment` — 著者の編集判断ゲート集（構成案の前に Phase 0 タイプ判定、ADR-0006） |
 | **著者の価値観・ペルソナ規約・内容ランク A/B/C 基準** | `zenn-authorial-values` — 実セッション引用付き価値観リファレンス（ADR-0006） |
 | **記法・frontmatter** | `zenn-format`（正本） |
 | **任意の personality flavor** | `zenn-idea-voice`（毒humor / 刃牙。type 非依存の opt-in） |
 | **公開後の実測 Eval ループ** | `article-stocktake` — 実測メトリクス × 品質ランクの乖離棚卸し（月次目安、ADR-0005） |
-| **genuine な思索エッセイ** | `~/.claude/skills/writing-ecosystem/SKILL.md`（発見調。文体は公開チャンネル規約に従う — note = ですます）。JA 正本は `note/`、英訳を Substack へ。Zenn には出さない |
+| **genuine な思索エッセイ** | `~/.claude/skills/writing-ecosystem/SKILL.md`（発見調。文体はチャンネル表が正本）。JA 正本は `note/`、英訳を Substack へ。Zenn には出さない |
 
 genre 中立 canon（AI slop 禁止・タイトル原則・ネタ 3 軸）は global `writing-ecosystem` が正本。根拠: `docs/adr/0003-zenn-practical-channel-axis.md`。
 

@@ -20,7 +20,7 @@ Every Zenn article MUST start with YAML frontmatter:
 
 ```markdown
 ---
-title: "Your Article Title (50 chars preferred, 60 max)"
+title: "Your Article Title"  # 文字数は .claude/rules/zenn-writing.md が正本
 emoji: "📚"
 type: "tech"  # "tech" or "idea"
 topics: ["claude", "anki", "ai", "python", "tdd"]  # 1-5 tags, lowercase
@@ -34,12 +34,12 @@ published: true  # false for draft
 
 | Field | Required | Description | Examples |
 |-------|----------|-------------|----------|
-| `title` | ✅ | Article title (50 文字以内推奨、60 まで許容 — 正本: `.claude/rules/zenn-writing.md`) | "TDD で作る pdf2anki の品質保証パイプライン" |
+| `title` | ✅ | Article title（文字数上限の正本: `.claude/rules/zenn-writing.md`「タイトル文字数上限」） | "TDD で作る pdf2anki の品質保証パイプライン" |
 | `emoji` | ✅ | Single emoji representing the article | "📚", "🔬", "🤖", "⚡" |
 | `type` | ✅ | Article type | `"tech"` (technical) or `"idea"` (opinion/essay) |
 | `topics` | ✅ | 1-5 tags (lowercase, no spaces) | `["claude", "anki", "python", "tdd"]` |
 | `published` | ✅ | Publication status | `true` (public) or `false` (draft) |
-| `published_at` | Optional | Scheduled publish time (Zenn-specific). Format spec and gotchas: `.claude/rules/zenn-writing.md` | `2026-04-15 07:00` (JST) |
+| `published_at` | **Required when `published: true`** | Scheduled publish time (Zenn-specific)。公開記事で欠けていると `scripts/generate_article_index.py` が `ValueError` を投げ索引生成が止まる（ADR-0009）。フォーマットと罠: `.claude/rules/zenn-writing.md` | `2026-04-15 07:00` (JST) |
 
 ### Emoji Selection
 
@@ -76,10 +76,11 @@ published: true  # false for draft
 
 ## Article Structure Patterns
 
-### Pattern 1: Problem-Solution (Technical Deep Dive)
+> **2026-08-23 に削除。** 記事構成の正本は `zenn-practical-writing`「実用記事の構成テンプレート」。
+> 本スキルは記法・frontmatter だけを扱い、執筆プロセスには介入しない（冒頭の宣言どおり）。
+> 旧 3 パターンは実用軸の既定構成（一瞬でわかる → 掴み → 緊張 → 解決 → Higher Ground）と
+> 整合せず、Pattern 1 の `## 背景` は warm-up fluff として禁止されている側だった。
 
-```markdown
-# 問題: [具体的な問題]
 ## 背景: なぜこれが重要か
 ## 実装: [解決策]
 ### テストファースト (TDD)

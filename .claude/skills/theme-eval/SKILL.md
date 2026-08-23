@@ -1,6 +1,6 @@
 ---
 name: theme-eval
-description: 記事テーマ（問い）の強度を執筆前と完成稿の 2 時点で判定する評価器。テーマランクが記事の上限を決める（弱いテーマは磨いても上がらない）ため、execution の改稿ループより前に置く。測るのは「問いの性質」のみ — エビデンス強度・物語の質は execution 層（article-judge）の仕事で、ここには持ち込まない。チャンネル（Zenn 実用 / note・Substack エッセイ）は優劣でなく routing。verdict は Write-A見込み / Write-B見込み / Deepen の 3 値で、Deepen には深化プロンプトを必ず添える。却下ゲートではない — Deepen 2 回で上がらなければ「上限を認識したまま記事化」を著者に返す（Drop は著者のみが選ぶ）。Use when — ideation でテーマ候補を絞るとき、執筆に着手する直前、ドラフト完成時の再判定、/theme-eval <テーマ一行>。NOT for — 記事本文の execution 品質（→ article-judge）、公開可否の最終判断（→ 人間 GO）。
+description: 記事テーマ（問い）の強度を執筆前に判定する評価器。テーマランクが記事の上限を決める（弱いテーマは磨いても上がらない）ため、execution の改稿ループより前に置く。測るのは「問いの性質」のみ — エビデンス強度・物語の質は execution 層（article-judge）の仕事で、ここには持ち込まない。チャンネル（Zenn 実用 / note・Substack エッセイ）は優劣でなく routing。verdict は Write-A見込み / Write-B見込み / Deepen の 3 値で、Deepen には深化プロンプトを必ず添える。却下ゲートではない — Deepen 2 回で上がらなければ「上限を認識したまま記事化」を著者に返す（Drop は著者のみが選ぶ）。Use when — ideation でテーマ候補を絞るとき、執筆に着手する直前、/theme-eval <テーマ一行>。NOT for — 記事本文の execution 品質（→ article-judge）、公開可否の最終判断（→ 人間 GO）。
 origin: shimo4228
 ---
 

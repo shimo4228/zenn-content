@@ -40,7 +40,7 @@ zenn-content/
 │   ├── metrics_snapshot.py        Zenn / Dev.to reception snapshots → metrics/
 │   └── tests/                     pytest (104 tests)
 ├── docs/              PUBLICATIONS.md (generated index), CODEMAPS, adr/, translation-glossary
-├── .claude/           project skills (11 + learned/), agents (2), rules, refs
+├── .claude/           project skills (15), agents (3), rules, refs
 └── .github/workflows/ validate.yml (zenn frontmatter check, push/PR to main)
 ```
 

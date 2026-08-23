@@ -27,26 +27,17 @@ origin: shimo4228
 
 > **注:** 日本語品質チェック（textlint）・Markdown 構造チェック（markdownlint）は 2026-07 に撤去済み。frontmatter 検証（Step 3 の `npx zenn list:articles`）が唯一残る機械チェック。表記・文体統一は執筆時に守る（`zenn-practical-writing` / `.claude/rules/zenn-writing.md`）。
 
-### Step 1: Editor エージェントによるレビュー
+### Step 1: 品質保証は済んでいるか（このスキルは判定しない）
 
-**`writing-team` Mission A/B から到達した場合はスキップ**（editor/fact-checker/zenn-clarity-reviewer/codex-review は writing-team 側で既に並列実行済み）。`/publish-article` を単独で直接呼んだ場合のみ、このステップで editor / zenn-clarity-reviewer エージェントを並列起動する。
+**本スキルは公開作業の手順であって、品質ゲートではない。**レビュー panel（editor +
+fact-checker + zenn-clarity-reviewer + codex-review）とタイトル確定（title-eval →
+seo-optimizer）と最終判定（article-judge）は、すべて **`writing-team` の責務**。
 
-editor エージェントを起動して記事を包括的にレビューする。並列で zenn-clarity-reviewer を起動し、初見読者の明瞭性（造語予算・タイトル軸の貫通・内部文脈依存）を検査する（verdict FAIL は公開ブロック — `quality-gate` の必須条件）。
+- 正本: `writing-team` Mission A の step 7（panel）/ step 9（binding 最終判定）/ step 12（タイトル）
+- 公開可否の判定は `quality-gate` skill が行う。本スキルはその後に走る
 
-**レビュー観点:**
-1. 技術的正確性（コードスニペット、ファイルパス）
-2. ナラティブフロー（導入→文脈→実装→学び→まとめ）
-3. 用語の一貫性
-4. AI スロップ検出
-5. 対象読者の適切性
-
-**結果が「MAJOR ISSUES」の場合:** 修正してから Step 1 を再実行。
-
-### Step 1.5: タイトル最適化（seo-optimizer → headline-craft）
-
-`/seo-optimizer` を起動してタイトル・topics・emoji の候補を提示する（候補生成の技法は global skill `headline-craft` に defer）。**タイトルはこのステップで確定させる** — Step 7 の英訳が JP タイトルから派生するため、これ以降のタイトル変更は英訳・schedule 登録の手戻りになる。
-
-現行タイトルのままで良いとユーザーが判断した場合はそのまま次へ（提案は義務、採用は任意 — ADR-0001 の Distribution レイヤー）。
+`/publish-article` を単独で呼ぶ場合も、**品質は保証されない**。先に `writing-team` を
+通すか、少なくとも `quality-gate` を通すこと。
 
 ### Step 2: セキュリティチェック
 
@@ -97,8 +88,8 @@ published_at: 2026-04-15 07:00  # JST、ハイフン区切り必須
 ```
 
 - `published_at` を指定して `git push` すれば、指定時刻に自動公開される
-- レートリミットにカウントされない
-- 何本でも事前 push OK（`published_at` まで公開されない）
+- **⚠ 予約登録自体がレートリミットに計上される** — 詳細と対処は
+  `.claude/rules/zenn-writing.md`「`published_at` フォーマット注意」が正本
 
 **参考タイミング:** `.claude/rules/zenn-writing.md`「投稿ペース方針」を参照（バズタイム：火〜水 7:00-9:00 JST）。
 

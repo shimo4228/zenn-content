@@ -1,4 +1,4 @@
-<!-- Generated: 2026-08-02 | Skills: 11 + learned/, Project agents: 2 | Token estimate: ~500 -->
+<!-- Generated: 2026-08-02 | Skills: 15, Project agents: 3 | Token estimate: ~500 -->
 # Claude Code Skills & Agents
 
 ## Project Skills (.claude/skills/)
@@ -15,7 +15,6 @@
 | `seo-optimizer` | Title / tag / emoji optimization (Content Integrity: no intro rewrites) |
 | `quality-gate` | Unified quality standard across all paths |
 | `article-stocktake` | Post-publication eval loop: real metrics (Zenn/Dev.to) × quality rank divergence (ADR-0005) |
-| `learned/` | Auto-extracted patterns (e.g. `concept-before-use-rule`) |
 
 > `zenn-writer` (voice router), `chatlog-to-article`, `content-research-writer` were retired — see ADR-0003 and its 2026-07-06 addendum.
 

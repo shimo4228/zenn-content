@@ -10,7 +10,7 @@ the role-specific map you need.
 | [architecture.md](architecture.md) | Project shape | Directory layout, data flow, agents, toolchain |
 | [scripts.md](scripts.md) | Publishing pipeline | Entry points, key functions, schedule.json schema, tests |
 | [dependencies.md](dependencies.md) | Dependencies | Node lint stack, Python publishing deps, external services |
-| [skills.md](skills.md) | Claude Code config | Project skills (11 + learned/), project agents (2), workflow |
+| [skills.md](skills.md) | Claude Code config | Project skills (15), project agents (2), workflow |
 
 ## Quick facts
 

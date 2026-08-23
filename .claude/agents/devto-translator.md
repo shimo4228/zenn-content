@@ -16,12 +16,23 @@ JP 記事パス（例: `articles/agent-causal-traceability-org-adoption.md`）
 
 ### Phase 1: 翻訳
 
-> **正本:** `.claude/refs/translation-rules.md` を参照。
+> **JA→EN の訳出方法論の正本は `~/.claude/skills/ja-to-en-translation/SKILL.md`。
+> 翻訳を始める前に必ず読む**（term-lock → 2-pass → back-translation QA）。
+> 本 agent が持つのは、その上に載る **Dev.to 固有の変換規則**だけ。
 
-1. JP 記事を読み込み、構造を把握する（frontmatter, セクション数, コードブロック数）
-2. 翻訳用語集 `docs/translation-glossary.json` を読み込む
-3. `refs/translation-rules.md` のルールに従い全文を英訳する
-4. `articles-en/{slug}.md` に保存する
+1. `ja-to-en-translation` skill を読む
+2. JP 記事を読み込み、構造を把握する（frontmatter, セクション数, コードブロック数）
+3. 翻訳用語集 `docs/translation-glossary.json` を読み込む（`never_translate` は保持）
+4. skill の手順で全文を英訳する。以下は Dev.to 固有の上書き:
+   - **EN 記事には `canonical_url` を設定しない**（言語が異なるため Zenn canonical は無意味）
+   - frontmatter: `title` のみ翻訳。`emoji` / `type` / `published` はそのまま。`topics` は
+     Phase 2 で英語タグへ変換（例: 開発ツール → devtools、チートシート → cheatsheet）
+   - **著者自身の Zenn 記事へのリンクは、本文・関連リンク節とも必ず Dev.to 版の URL に置換する**
+     （Dev.to 読者を日本語の Zenn へ送らない）。URL は `scripts/schedule.json` の該当
+     `articles-en/` エントリの `devto` フィールドから解決する。Dev.to 版が無い
+     （エントリなし / `devto: null`）ときだけ Zenn URL を残す。GitHub / ADR / 公式ドキュメント等、
+     記事以外のリンクはそのまま
+5. `articles-en/{slug}.md` に保存する
 
 ### Phase 2: Dev.to タグ付け
 
@@ -43,13 +54,17 @@ JP 記事パス（例: `articles/agent-causal-traceability-org-adoption.md`）
 
 ### Phase 4: セルフチェック
 
-> **正本:** `.claude/refs/translation-rules.md` の品質チェックリストを参照。
+翻訳完了後、以下を自己検証する。問題が見つかったらその場で修正する:
 
-`refs/translation-rules.md` のチェックリストに従い自己検証する。問題が見つかった場合はその場で修正する。
+1. **コードブロック完全性**: 原文と翻訳文のコードブロック数が一致するか
+2. **リンク完全性**: すべての URL・画像パスが保持されているか（Zenn 内リンクは Dev.to 版へ置換済みか）
+3. **用語一貫性**: 用語集の用語が正しく使われているか
+4. **AI slop 検出**: `writing-ecosystem` の English 禁止リストに該当する表現が無いか grep で確認
+5. **技術的正確性**: 技術用語が正しく訳されているか
 
 ### Phase 5: schedule.json 更新（EN エントリ追加）
 
-> **正本:** `.claude/refs/schedule-schema.md` を参照。
+> **正本:** `.claude/refs/schedule-schema.md` を**先に必ず読む**。
 
 `scripts/schedule.json` に EN エントリを追加する（投稿済み URL 台帳）。スキーマは `refs/schedule-schema.md` に準拠。**投稿日時はここに書かない**（`schedule --at` の引数で渡す）。
 
@@ -92,6 +107,7 @@ JP 記事パス（例: `articles/agent-causal-traceability-org-adoption.md`）
 |------|------|
 | コードブロックが翻訳された | 原文からコードブロックを抽出して差し替え |
 | 用語が不統一 | 用語集を参照して一括置換 |
+| 文体が硬すぎる | 「技術ブログ」のトーンで書き直し |
 | frontmatter が壊れた | 原文から frontmatter をコピーして title のみ翻訳 |
 | カバー画像なし | 手動生成を提案。無い場合はカバーなしで投稿続行 |
 | Dev.to API エラー | エラー内容を報告。30秒間隔のレートリミットに注意 |

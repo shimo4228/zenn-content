@@ -52,7 +52,7 @@ origin: shimo4228
 
 ## 配線
 
-- writing-team Mission A: step 12（seo-optimizer / 公開直前）の中で本 skill を回す。note エッセイは seo-optimizer を使わないため title-eval 単体で回す
+- writing-team Mission A の **step 12 が本 skill 自身**（本文凍結後・公開直前）。Zenn/Dev.to では title 確定後に、同 step の続きで `seo-optimizer` が topics・emoji を扱う。note エッセイは seo-optimizer を通らないので title-eval 単体で回す。note エッセイは seo-optimizer を使わないため title-eval 単体で回す
 - 判定は article-judge と同様 fresh agent で実行し、判定器の対抗タイトルも著者への提示に含める（判定器の生成物も候補プールに入れてよい — 選ぶのは著者）
 
 ## Related

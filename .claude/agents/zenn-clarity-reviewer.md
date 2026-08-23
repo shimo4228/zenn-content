@@ -39,7 +39,7 @@ You read the article exactly once, top to bottom, the way a feed reader with lim
 Inventory every article-coined or article-specific named term with occurrence counts (例: 層の名前、分類名、判定枠の名前). For each:
 
 - [ ] Could this be said in one plain sentence with existing vocabulary? If yes, flag it.
-- [ ] Does the term do repeated work? A coined term used fewer than ~3 times should be a plain phrase instead.
+- [ ] Does the term do repeated work? A coined term used fewer than **3** times should be a plain phrase instead.（**この閾値は本 agent が持つ実値** — binding な verdict を出す側が持つ。`zenn-practical-writing`「専門用語の緩和策」は質的規則のみを持ち、数値を持たない）
 - [ ] Exempt: concepts the **title itself** promises, product names, field-standard vocabulary (system prompt, tool description 等).
 
 **Flag pattern:** a paragraph where the reader must hold ≥2 article-coined nouns at once to parse a single sentence.

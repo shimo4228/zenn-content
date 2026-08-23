@@ -46,7 +46,7 @@ Answer each with Yes/No + 1-line quoted evidence.
 
 ### Step 2 — 固定コア質問
 
-`.claude/refs/kaguura-craft-checklist.md` §B の B1〜B15 に加え、著者の実指摘から一般化した 4 問（2026-08-12 のギャップ事例 + 同日ドライラン由来）:
+`.claude/refs/kaguura-craft-checklist.md` §B の B1〜B9, B13〜B15（**B10-B12 のタイトル 3 問は `title-eval` skill が引き取ったので §B から除外**） に加え、著者の実指摘から一般化した 4 問（2026-08-12 のギャップ事例 + 同日ドライラン由来）:
 
 | # | 質問 |
 |---|---|
@@ -75,6 +75,7 @@ Draft verdict に対して 1〜3 個の atomic な反証質問を立て、1 行�
 
 - dominant No 1 つで verdict を決めてよい（希釈禁止）。逆に、A 層の違反件数が多くても dominant No がなければ Fix 止まり
 - **迷ったら Fix**（theme-eval の「迷ったら B」と対称。Publishable は earned な例外であって既定ではない — 2026-08-12 ドライラン改定）
+- **ループ制御（上限ラウンド数・実行位置・凍結後の再実行）の正本は `writing-team` skill「改稿ループ」節**。本 agent は呼ばれた 1 回分の判定だけを行う
 - **再判定は同一質問セットで 1 回だけ**（Step 1 の質問を再生成しない — 修正が効いたのか基準が動いたのかを判別可能に保つ）。ただし**構成変更後・最終判定は新規の fresh 実行**とし、質問を再生成する
 
 ## Output Format
@@ -85,7 +86,7 @@ Draft verdict に対して 1〜3 個の atomic な反証質問を立て、1 行�
 ## Evidence
 - mechanical_checks: <counts の要約 + voice_delta warn の有無>
 - 動的二値チェック: <n> 問中 No <m> 件（各 No: 質問 + 1 行証拠）
-- 固定コア（B1-B15, K1-K3）: No のみ列挙（質問 + 1 行証拠）
+- 固定コア（B1-B9, B13-B15, K1-K4）: No のみ列挙（質問 + 1 行証拠）
 
 ## Kaguura アンカー比較
 - <劣る点 1-3、各 1 行>

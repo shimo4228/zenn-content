@@ -131,19 +131,15 @@ cd scripts && uv run python devto_crosspost.py schedule {slug} --at "2026-07-07 
 
 > **正本:** `.claude/refs/schedule-schema.md` を参照。
 
-`refs/schedule-schema.md` のスキーマに準拠してエントリを追加する。スコアリング結果は `score` フィールドにトレーサビリティ用に記録:
+`refs/schedule-schema.md` のスキーマに準拠してエントリを追加する。
 
-```json
-{
-  "file": "articles/example-article.md",
-  "date": "2026-04-15",
-  "score": { "discover": 2, "anchor": 1, "ready": 3, "fresh": 1, "total": 7 }
-}
-```
+**スコアは台帳に書かない**（2026-08-23 に `score` フィールドを廃止 — 112 エントリに 1 件も
+書かれておらず、公開処理も読んでいなかった）。スコアリングは**会話で順序を提示するための
+判断材料**であって、永続化しない。
 
 **Zenn 公開は `published_at` 予約投稿方式:**
 - frontmatter に `published: true` + `published_at: YYYY-MM-DD HH:MM` (JST) を設定
-- `git push` すれば指定時刻に自動公開。レートリミットにカウントされない
+- `git push` すれば指定時刻に自動公開。**⚠ 予約登録自体がレートリミットに計上される**（正本: `.claude/rules/zenn-writing.md`）
 
 ---
 

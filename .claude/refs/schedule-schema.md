@@ -1,8 +1,11 @@
 # schedule.json Schema（正本）
 
-> このファイルは `scripts/schedule.json` のスキーマの **唯一の正本**。
+> このファイルは `scripts/schedule.json` の**スキーマ**の正本。
 > `schedule-publish`, `publish-article`, `devto-translator` はここを参照する。
-> 根拠: [ADR-0002](../../docs/adr/0002-writing-team-orchestration.md)
+>
+> **membership・日付・title の正本は `articles/*.md` frontmatter**（ADR-0009）。
+> schedule.json は Dev.to URL のエンリッチ専用で、記事一覧の正本ではない。
+> 根拠: [ADR-0002](../../docs/adr/0002-writing-team-orchestration.md) / [ADR-0009](../../docs/adr/0009-readme-routing-page-and-generated-publications-index.md)
 
 ---
 
@@ -37,12 +40,11 @@
 | フィールド | 型 | 必須 | 説明 |
 |-----------|-----|------|------|
 | `file` | string | Yes | 記事ファイルパス（`articles/` or `articles-en/`） |
-| `date` | string | JP | JP 記事の公開日 `YYYY-MM-DD`（Zenn native、記録用） |
+| `date` | string | Optional | **歴史的記録**。日付の正本は `articles/*.md` frontmatter の `published_at`（ADR-0009）。新規エントリでは付けなくてよい |
 | `devto` | string \| null | EN のみ | Dev.to URL。未投稿は `null`、投稿済みは実 URL（`post` が自動書き戻し） |
 | `devto_tags` | string[] | EN のみ | Dev.to タグ（最大4つ） |
 | `cover_image` | string | No | カバー画像 URL（GitHub raw URL） |
 | `notes` | string | No | メモ |
-| `score` | object | No | `schedule-publish` skill が記録する4軸スコア（`discover`/`anchor`/`ready`/`fresh`/`total`）。トレーサビリティ用、公開処理では未使用 |
 
 ## `devto` フィールドの状態遷移
 
@@ -56,6 +58,7 @@ null  →  "https://dev.to/shimo4228/actual-url"
 
 ## canonical_url について
 
+- **legacy フィールド**（表に定義が無いまま実データに 27 件、最終 2026-04-18）。**新規エントリでは付けない**
 - **JP 記事**: canonical_url は不要（Zenn が git push で自動公開するため）
 - **EN 記事**: canonical_url を設定しない（言語が異なるため Zenn canonical は無意味）
 
