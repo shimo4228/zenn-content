@@ -100,7 +100,7 @@ CLAUDE.md はここを指すだけで、値を再掲しない。rules は main l
 | AI slop 禁止語・craft・段落密度・専門用語の緩和策・タイトル原則・エッセイ 4 段構成 | global `writing-ecosystem` skill | 発火時 | ○ |
 | テーマ強度の質問セット | `theme-eval` skill | 発火時 | — |
 | タイトル判定の質問セット | `title-eval` skill | 発火時 | — |
-| 記事品質の質問セット | `refs/kaguura-craft-checklist.md` §A/§B | Read 要 | — |
+| 記事品質の質問セット（規約の写像であって正本ではない） | `refs/kaguura-craft-checklist.md` §B + §A 対応表 | Read 要 | — |
 | 改稿ループの制御（上限・実行位置・凍結後の再実行） | `writing-team` skill | 発火時 | — |
 | 公開ブロック条件と PASS/FAIL | `quality-gate` skill | 発火時 | — |
 | topics・emoji の選定基準と提案フロー | `zenn-format` skill | 発火時 | — |

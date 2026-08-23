@@ -111,7 +111,7 @@ note/<slug>.md（JA 正本・初出）
 
 **アイデアエッセイ（note/ 正本・substack/ 英訳）も同じ厚さでレビューする**（2026-08-12 著者指示）: チャンネル表のレビュー agent + `fact-checker` + `zenn-clarity-reviewer`（初見読者の明瞭性。note/Substack エッセイも対象 — 読者シミュレーションを「note フィードから来た一般読者」に置き換える）+ codex-review。
 
-**二本立て評価 + 改稿ループ**（2026-08-12、ADR-0008）: 全チャンネルの記事は **テーマ評価**（`.claude/skills/theme-eval` — 執筆前の 1 時点。テーマランクが記事の上限を決める。Deepen 2 回まで、却下ゲートではない。2026-08-23 に完成稿での再判定を廃止）と **記事品質評価**（`scripts/mechanical_checks.py` の決定論検出 + `article-judge` agent の二値チェック判定。基準アンカーは `.claude/refs/kaguura-craft-checklist.md`）の二本立てで評価する。改稿ループの正本は `writing-team` skill の「改稿ループ」節（fresh-context 判定・span 指摘のみ・上限 2 ラウンド・voice 回帰監視）。著者の関与はテーマ層（Deepen の問い）と publish 直前の通読 GO に集中する。
+**二本立て評価 + 改稿ループ**（2026-08-12、ADR-0008）: 全チャンネルの記事は **テーマ評価**（`.claude/skills/theme-eval` — 執筆前の 1 時点。テーマランクが記事の上限を決める。Deepen 2 回まで、却下ゲートではない。2026-08-23 に完成稿での再判定を廃止）と **記事品質評価**（`scripts/mechanical_checks.py` の決定論検出 + `article-judge` agent の二値チェック判定。判定の質問セットは `.claude/refs/kaguura-craft-checklist.md`（規約の正本ではなくその写像））の二本立てで評価する。改稿ループの正本は `writing-team` skill の「改稿ループ」節（fresh-context 判定・span 指摘のみ・上限 2 ラウンド・voice 回帰監視）。著者の関与はテーマ層（Deepen の問い）と publish 直前の通読 GO に集中する。
 
 ```bash
 claude --agent=editor --prompt="Review: articles/ARTICLE_NAME.md"

@@ -1,6 +1,8 @@
 """Deterministic prose checks for the article quality loop (evidence supplier).
 
-Canonical checklist: .claude/refs/kaguura-craft-checklist.md §A.
+Thresholds and word lists are canonical HERE (values map: .claude/rules/zenn-writing.md).
+.claude/refs/kaguura-craft-checklist.md §A only maps each check id to how
+article-judge should read the finding.
 Emits JSON findings for article-judge; never renders a verdict itself
 (llm-as-judge: deterministic checks feed evidence, judgment stays holistic).
 

@@ -21,6 +21,8 @@ Accepted
 1. **評価をテーマ層と execution 層に分離する（二本立て）**。テーマ評価は `theme-eval` skill が執筆前と完成稿の 2 時点で行い〔※ 2026-08-23 追記: 完成稿での再判定は著者判断で廃止。公開可否に効かず memory への記録だけのステップだった。現行は執筆前の 1 時点（ADR-0010）〕、テーマランクを記事品質の上限（ceiling）として扱う。verdict は `Write-A見込み / Write-B見込み / Deepen` の 3 値で、**却下ゲートにしない** — Deepen（深化プロンプト付き）は 2 回まで、上がらなければ見込みランク付きのまま記事化してよい。Drop を選べるのは著者のみ。
 2. **execution 層は「決定論の機械層 + fresh-context の LLM 層」の二段で判定する**。機械層は `scripts/mechanical_checks.py`（slop 語・決め構文・段落密度・voice 回帰等の証拠 JSON、判定はしない）。LLM 層は `article-judge` agent（動的二値チェック + 固定コア質問 + 反証プレッシャーテスト、集計しない named verdict `Publishable / Fix / Rewrite`）。判定形式は global `llm-as-judge` skill に準拠する。
 3. **品質バーの基準アンカーは Kaguura 記事から蒸留した完全版 craft チェックリスト**（`.claude/refs/kaguura-craft-checklist.md`、全文アーカイブは `.notes/refs/`）とする。**著者の過去記事は厳しさの基準に使わない**（著者明言）。
+
+   > **2026-08-23 注記**: 用語を整理した。チェックリストは article-judge の**質問セット**で、規約の正本は `writing-ecosystem` / `theme-eval` / `title-eval`、閾値・語リストの正本は `scripts/mechanical_checks.py`。本決定の実質（判定に固定の質問セットを使う・著者の過去記事を基準にしない）は変えていない。
 4. **改稿ループを `writing-team` に配線する**。Fix → span 単位修正 → 同一チェックセットで再判定 1 回、上限 2 ラウンド、voice_delta 警告で磨きを止める。人間ゲートは judge 間不一致（article-judge vs codex-review）と publish 直前の通読 GO の 2 箇所のみ。**著者の関与はテーマ層（Deepen の問い）に集中させる**。
 
 ## Alternatives Considered

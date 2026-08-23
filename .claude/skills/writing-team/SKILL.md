@@ -71,7 +71,7 @@ origin: shimo4228
 
 **レビュアー**: step 7 の品質レビュー agent は、出力先チャンネルに対応する行をチャンネル表（`.claude/rules/zenn-writing.md`）で引く。厚さはどのチャンネルでも同じ。
 
-**article-judge（改稿ループの判定器）**: fresh context の別 agent process で起動する（執筆セッションの文脈を渡さない — 履歴共有は判定を甘くする）。基準アンカーは `.claude/refs/kaguura-craft-checklist.md`。
+**article-judge（改稿ループの判定器）**: fresh context の別 agent process で起動する（執筆セッションの文脈を渡さない — 履歴共有は判定を甘くする）。判定の質問セットは `.claude/refs/kaguura-craft-checklist.md`（規約の正本ではなくその写像）。
 
 **zenn-clarity-reviewer**: 初見読者（フィード・検索から来たエンジニア）の明瞭性レビュー。editor（構造・コード正確性・AI slop・用語一貫性）と観点が直交するため並列で起動する。verdict が FAIL のままの記事は公開できない（quality-gate のブロッキング条件）。根拠: [ADR-0004](../../../docs/adr/0004-zenn-clarity-reviewer-addition.md)
 
