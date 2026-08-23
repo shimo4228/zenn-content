@@ -31,7 +31,7 @@ origin: shimo4228
 
 **本スキルは公開作業の手順であって、品質ゲートではない。**レビュー panel（editor +
 fact-checker + zenn-clarity-reviewer + codex-review）とタイトル確定（title-eval →
-zenn-format の提案フロー）と最終判定（article-judge）は、すべて **`writing-team` の責務**。
+zenn-format の提案フロー）は、すべて **`writing-team` の責務**。
 
 - 正本: `writing-team` Mission A の step 7（panel）/ step 9（binding 最終判定）/ step 11（タイトル）
 - 公開可否の判定は `quality-gate` skill が行う。本スキルはその後に走る

@@ -1,6 +1,6 @@
 ---
 name: title-eval
-description: タイトルの二値チェック判定器（ADR-0008 の第三の eval）。headline-craft が生成した候補群を、記事本文との軸一致・誠実さ・好奇心ギャップ充足・チャンネル軸適合で判定し、named verdict（Adopt 候補 / Refine / Keep-current）を返す。生成は headline-craft、規範は writing-ecosystem Title Conventions、判定形式は llm-as-judge に defer する。Use before publish, after the draft is frozen — タイトルは開封の大半を決めるため、theme-eval / article-judge と同格のループを回す。
+description: タイトルの二値チェック判定器。headline-craft が生成した候補群を、記事本文との軸一致・誠実さ・好奇心ギャップ充足・チャンネル軸適合で判定し、named verdict（Adopt 候補 / Refine / Keep-current）を返す。生成は headline-craft、規範は writing-ecosystem Title Conventions、判定形式は llm-as-judge に defer する。Use before publish, after the draft is frozen — タイトルは開封の大半を決めるため、本文と独立した判定ループを回す。
 origin: shimo4228
 ---
 
@@ -9,7 +9,7 @@ origin: shimo4228
 > 生成技法の正本: `~/.claude/skills/headline-craft/SKILL.md`
 > 規範（禁止事項）の正本: `~/.claude/skills/writing-ecosystem/SKILL.md` の Title Conventions
 > 判定形式の正本: `~/.claude/skills/llm-as-judge/SKILL.md`（二値チェック → 反証プレッシャー → 集計しない named verdict）
-> 根拠: Kaguura 2026「タイトルは戦いの 90%」。本文の eval（theme-eval / article-judge）だけ厳格でタイトルが無判定なのは、開封率のボトルネックを未計測のまま残すことになる（2026-08-13 著者指摘で新設）
+> 根拠: Kaguura 2026「タイトルは戦いの 90%」。本文には panel 4 本がつくのにタイトルだけ無判定なのは、開封率のボトルネックを未計測のまま残すことになる（2026-08-13 著者指摘で新設）。**本 skill は現在この repo で唯一の判定器**（テーマ層と記事層の判定器は 2026-08-23 に廃止され、レビュアーへ移行した — ADR-0011）
 
 ## 原則
 
@@ -57,11 +57,11 @@ origin: shimo4228
 ## 配線
 
 - writing-team Mission A の **step 11 が本 skill 自身**（本文凍結後・公開直前）。Zenn/Dev.to では title 確定後に、同 step の続きで `zenn-format`「Topics / Emoji の提案フロー」が topics・emoji を扱う。note エッセイは topics・emoji を持たないので title-eval 単体で回す
-- 判定は article-judge と同様 fresh agent で実行し、判定器の対抗タイトルも著者への提示に含める（判定器の生成物も候補プールに入れてよい — 選ぶのは著者）
+- 判定は fresh agent で実行し、判定器の対抗タイトルも著者への提示に含める（判定器の生成物も候補プールに入れてよい — 選ぶのは著者）
 
 ## Related
 
 - `~/.claude/skills/headline-craft/SKILL.md` — 候補生成（技法カタログ・流入 2 軸）
 - `~/.claude/skills/writing-ecosystem/SKILL.md` — Title Conventions（規範）
-- `.claude/skills/theme-eval/SKILL.md` / `.claude/agents/article-judge.md` — 同形式の既存 2 判定器
+- `.claude/agents/theme-reviewer.md` — 執筆前のテーマレビュー（判定はしない）
 - `.claude/skills/zenn-format/SKILL.md` — Zenn の topics/emoji の基準と提案フロー（本 skill はタイトル判定のみ）

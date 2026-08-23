@@ -36,7 +36,6 @@ zenn-content/
 │   ├── schedule.json              posted-URL ledger (post time is a --at argument)
 │   ├── corpus.yml                 essays / papers / research lines (no-frontmatter membership)
 │   ├── reading_paths.yml          README curated routes (author judgment)
-│   ├── mechanical_checks.py       article-quality evidence JSON (ADR-0008)
 │   ├── metrics_snapshot.py        Zenn / Dev.to reception snapshots → metrics/
 │   └── tests/                     pytest (104 tests)
 ├── docs/              PUBLICATIONS.md (generated index), CODEMAPS, adr/, translation-glossary
@@ -46,7 +45,7 @@ zenn-content/
 
 ## Agents
 
-Project agents (3): `devto-translator` (JP→EN + Dev.to), `zenn-clarity-reviewer` (first-contact clarity), `article-judge` (execution-quality verdict, ADR-0008). Drafting is done by the orchestrator, not a subagent.
+Project agents (3): `devto-translator` (JP→EN + Dev.to), `zenn-clarity-reviewer` (first-contact clarity), `theme-reviewer` (pre-writing theme review, no verdict — ADR-0011). Drafting is done by the orchestrator, not a subagent.
 Review agents are global (`~/.claude/agents/`): `editor`, `essay-reviewer`, `fact-checker`.
 
 ## Toolchain

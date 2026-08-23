@@ -86,9 +86,9 @@ blocks in `README.md` / `README.ja.md`. Deterministic (no clock, no git), so
 Run: `npm run generate:index` (write) / `npm run check:index` (exit 1 on drift, 2 on
 source errors such as a published article without `published_at`). ADR-0009.
 
-Other scripts: `mechanical_checks.py` (deterministic article-quality evidence JSON,
-ADR-0008) and `metrics_snapshot.py` (Zenn / Dev.to reception snapshots →
-`metrics/snapshots.jsonl`).
+Other scripts: `metrics_snapshot.py` (Zenn / Dev.to reception snapshots →
+`metrics/snapshots.jsonl`). `mechanical_checks.py` was removed 2026-08-23 with the
+eval subsystem (ADR-0011) — its only consumer was the retired `article-judge`.
 
 ## Tests
 

@@ -98,17 +98,14 @@ CLAUDE.md はここを指すだけで、値を再掲しない。rules は main l
 | チャンネル→文体・声・レビュー agent | 本ファイル「チャンネル表」 | **常駐** | ○（codex には呼び出し prompt で渡す） |
 | タイトル文字数・投稿ペース・レートリミット・固有用語 | 本ファイル | **常駐** | — |
 | AI slop 禁止語・craft・段落密度・専門用語の緩和策・タイトル原則・エッセイ 4 段構成 | global `writing-ecosystem` skill | 発火時 | ○ |
-| テーマ強度の質問セット | `theme-eval` skill | 発火時 | — |
+| テーマ（問い）のレビュー観点と深化の問い | `theme-reviewer` agent | **agent 常駐** | — |
 | タイトル判定の質問セット | `title-eval` skill | 発火時 | — |
-| 記事品質の質問セット（規約の写像であって正本ではない） | `refs/kaguura-craft-checklist.md` §B + §A 対応表 | Read 要 | — |
-| 改稿ループの制御（上限・実行位置・凍結後の再実行） | `writing-team` skill | 発火時 | — |
 | 公開ブロック条件と PASS/FAIL | `quality-gate` skill | 発火時 | — |
 | topics・emoji の選定基準と提案フロー | `zenn-format` skill | 発火時 | — |
 | 造語閾値 | `zenn-clarity-reviewer` agent | **agent 常駐** | — |
 | 出典ブロックの構成規則 | `fact-checker` agent | **agent 常駐** | — |
 | エッセイ 4 段の検査・論点数の上限 | `essay-reviewer` agent | **agent 常駐** | — |
 | Dev.to のタグ方針・エラーリカバリ・固有変換・翻訳セルフチェック | `devto-translator` agent | **agent 常駐** | — |
-| 決定論チェックの閾値・語リスト | `scripts/mechanical_checks.py` | コード | — |
 | `published_at` の必須性・索引生成契約 | `scripts/generate_article_index.py` | コード | — |
 | note/Substack の貼り付け HTML 生成 | `scripts/render_note_assets.sh` | コード | — |
 | 台帳スキーマ | `refs/schedule-schema.md` | Read 要 | — |

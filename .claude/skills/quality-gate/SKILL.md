@@ -1,6 +1,6 @@
 ---
 name: quality-gate
-description: 記事公開前の受け入れゲート。新規・改稿・翻訳のどのパスでも同じブロック条件を通し、PASS/FAIL を返す。判定は下さず、各レビュアー・判定器が出した verdict が揃って緑かを照合する層。Use when — 公開直前（writing-team Mission A step 10 / B step 7 / C step 2）、他人が書いた原稿を公開してよいか確かめたいとき、/quality-gate <file>。NOT for — 記事品質そのものの判定（→ article-judge）、初見読者の明瞭性（→ zenn-clarity-reviewer）、ループ制御と panel の起動条件（→ writing-team「改稿ループ」）、公開作業の手順（→ publish-article）、著者判断の再現（→ zenn-editorial-judgment。判断層を機械 gate 化しない — ADR-0006 Decision 3）
+description: 記事公開前の受け入れゲート。新規・改稿・翻訳のどのパスでも同じブロック条件を通し、PASS/FAIL を返す。判定は下さず、各レビュアーが出した verdict が揃って緑かを照合する層。Use when — 公開直前（writing-team Mission A step 9 / B step 6 / C step 2）、他人が書いた原稿を公開してよいか確かめたいとき、/quality-gate <file>。NOT for — 記事品質そのものの判定（→ editor / essay-reviewer）、初見読者の明瞭性（→ zenn-clarity-reviewer）、panel の起動条件と実行順（→ writing-team）、公開作業の手順（→ publish-article）、著者判断の再現（→ zenn-editorial-judgment。判断層を機械 gate 化しない — ADR-0006 Decision 3）
 user-invocable: true
 origin: shimo4228
 ---
@@ -25,7 +25,6 @@ origin: shimo4228
 
 ### 必須（全記事）
 
-- [ ] **最終判定の article-judge verdict が Publishable**: panel 反映後の**凍結候補**に対する fresh 判定であること（writing-team Mission A step 9 / Mission B step 6.5）。草稿ゲート時点の Publishable では代用できない — panel・著者修正で判定対象が陳腐化するため。凍結後に修正が入ったら最終判定からやり直し。Fix 残 / Rewrite のままなら公開不可（2026-08-12 追加・同日ドライランで binding 位置を panel 後へ改定、ADR-0008）
 - [ ] **editor の CRITICAL が 0**: レビュー済みで CRITICAL 指摘がすべて解決済み（担当 agent はチャンネル表の「レビュー agent」列）
 - [ ] **zenn-clarity-reviewer の verdict が PASS**: 初見読者の明瞭性レビュー済みで FAIL が解消されている（FAIL のままなら公開不可。editor CRITICAL 0 と同格のブロッキング条件）
 - [ ] **AI slop なし**: `writing-ecosystem` skill の禁止リストに該当する表現がない

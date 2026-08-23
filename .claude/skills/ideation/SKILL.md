@@ -1,6 +1,6 @@
 ---
 name: ideation
-description: 記事のネタの種を見つけ、チャンネル（Zenn 実用 / note エッセイ）へ routing して提案する。Use when 「記事のネタ出し」「何を書くか迷っている」「テーマ候補を出して」/ideation。NOT for — テーマ強度の判定（→ theme-eval）、構成案（→ zenn-practical-writing Phase 1）、タイトル生成（→ headline-craft）
+description: 記事のネタの種を見つけ、チャンネル（Zenn 実用 / note エッセイ）へ routing して提案する。Use when 「記事のネタ出し」「何を書くか迷っている」「テーマ候補を出して」/ideation。NOT for — テーマ（問い）のレビュー（→ theme-reviewer agent）、構成案（→ zenn-practical-writing Phase 1）、タイトル生成（→ headline-craft）
 user-invocable: true
 origin: shimo4228
 ---
@@ -37,14 +37,14 @@ origin: shimo4228
 本 skill の固有分は **Step 1 の 5 情報源だけ**。以下はポインタで、ここに手順を再掲しない:
 
 - **チャンネル routing**（Zenn 実用 / note→Substack エッセイ。記事 type では分けない — 2026-07 廃止）
-  → `theme-eval` Step 1.5 が判定と一緒に扱う
-- **テーマ強度の判定**（T1-T8 / Write-A・B見込み / Deepen）→ **`theme-eval` skill を読んで実行する**。
+  → `theme-reviewer` agent が findings の一部として扱う
+- **テーマ（問い）のレビュー**（T1-T8 と深化の問い）→ **`theme-reviewer` agent を起動する**。
   本 skill は判定しない（2026-08-23 に独自判定表を廃止 — T2 非自明性 / T3 言説の空白 /
-  T8 トレンド寄生を欠く弱いサブセットで、theme-eval が「厳しさの供給源」とする T3 を落としていた）
+  T8 トレンド寄生を欠く弱いサブセットで、厳しさの供給源である T3 を落としていた）
 - **構成案** → Zenn/Dev.to は `zenn-practical-writing` Phase 1、note は `writing-ecosystem`
 - **タイトル候補** → `headline-craft`（判定は `title-eval`）
 
-種ごとに一文でテーマを立て、`theme-eval` へ渡すところまでが本 skill の仕事。
+種ごとに一文でテーマを立て、`theme-reviewer` へ渡すところまでが本 skill の仕事。
 
 ---
 
