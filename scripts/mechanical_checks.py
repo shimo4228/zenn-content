@@ -84,6 +84,11 @@ BOLD_LIST_RUN = 3  # a run of exactly 3 is the triad tell; longer runs are lists
 # Report-only: whether the referent resolves nearby is the judge's call.
 # 「例の」 is excluded (substring-matches 事例の/実例の/具体例の).
 DEICTIC_MARKERS = ["あの", "さっきの", "先ほどの"]
+# A11 reader address — evidence for judge B6 (単数の読者の積極形, 2026-08-20).
+# Stats-only, never a finding: 発見調 essays legitimately score 0 (their
+# 「〜ではないか」 questions carry the address), so absence is judge evidence.
+# JA relies on sentence-final forms because Japanese drops the subject.
+READER_ADDRESS_MARKERS = ["ください", "ませんか", "でしょうか", "ましょう", "あなた"]
 VOICE_FIRST_PERSON = re.compile(r"私")
 VOICE_DELTA_WARN = {"first_person_rate": 0.30, "mean_sentence_len": 0.20}
 
@@ -139,6 +144,7 @@ EN_SENTENCE_END = re.compile(
 )
 EN_LONG_SENTENCE_CHARS = 220
 EN_VOICE_FIRST_PERSON = re.compile(r"\bI\b(?!/)")  # (?!/) keeps "I/O" out
+EN_READER_ADDRESS_RE = re.compile(r"(?i)\b(?:you|your|yours)\b")
 
 
 def _strip_noise(lines: list[str]) -> list[tuple[int, str]]:
@@ -394,6 +400,17 @@ def analyze(path: Path, lang: Lang = "ja") -> dict:
     if lang != "en":
         findings += _scan_words(numbered, DEICTIC_MARKERS, "A10_deictic")
 
+    # A11 reader address (evidence for judge B6; stats-only like A6 —
+    # a zero count is legitimate in 発見調 essays, so it is never a finding)
+    if lang == "en":
+        addr_counts = {
+            "you/your": sum(len(EN_READER_ADDRESS_RE.findall(t)) for _, t in numbered)
+        }
+    else:
+        addr_counts = {
+            m: sum(t.count(m) for _, t in numbered) for m in READER_ADDRESS_MARKERS
+        }
+
     # A9 title
     title = next(
         (t.lstrip("# ").strip() for _, t in numbered if t.startswith("# ")), ""
@@ -408,6 +425,8 @@ def analyze(path: Path, lang: Lang = "ja") -> dict:
     # "advisory" so downstream never treats them as a hard gate
     # (2026-08-13: the old name `in_range_2000_5000` induced exactly that).
     stats: dict[str, object] = {"paragraphs": len(paras), "body_chars": body_chars}
+    stats["reader_address_total"] = sum(addr_counts.values())
+    stats["reader_address_markers"] = {k: v for k, v in addr_counts.items() if v}
     if lang == "en":
         body_words = sum(len(p.split()) for _, p in paras)
         stats["body_words"] = body_words
@@ -423,6 +442,7 @@ def analyze(path: Path, lang: Lang = "ja") -> dict:
             "A7_not_x_but_y",
             "A7_triad",
             "A9",
+            "A11_reader_address",
         ]
     else:
         stats["density_range_advisory_2000_5000"] = 2000 <= body_chars <= 5000
@@ -438,6 +458,7 @@ def analyze(path: Path, lang: Lang = "ja") -> dict:
             "A7_triad",
             "A9",
             "A10_deictic",
+            "A11_reader_address",
             "lang_guard",
         ]
 

@@ -163,6 +163,27 @@ def test_clean_text_has_no_findings(tmp_path):
     assert result["voice"]["sentences"] == 4
 
 
+def test_reader_address_is_stats_only(tmp_path):
+    # A11: SLOPPY carries 「ませんか」「でしょうか」 → counted in stats;
+    # PLAIN has zero markers but that must NOT become a finding (発見調 essays
+    # legitimately score 0 — absence is judge evidence, not a violation).
+    sloppy = analyze(_write(tmp_path, "sloppy.md", SLOPPY))
+    assert sloppy["stats"]["reader_address_total"] >= 2
+    assert "ませんか" in sloppy["stats"]["reader_address_markers"]
+    plain = analyze(_write(tmp_path, "plain.md", PLAIN))
+    assert plain["stats"]["reader_address_total"] == 0
+    assert plain["stats"]["reader_address_markers"] == {}
+    assert all(f["check"] != "A11_no_reader_address" for f in plain["findings"])
+
+
+def test_reader_address_en_counts_you(tmp_path):
+    result = analyze(_write(tmp_path, "sloppy-en.md", EN_SLOPPY), lang="en")
+    # "your workflow" + "you should know"
+    assert result["stats"]["reader_address_total"] >= 2
+    plain = analyze(_write(tmp_path, "plain-en.md", EN_PLAIN), lang="en")
+    assert plain["stats"]["reader_address_total"] == 0
+
+
 def test_voice_delta_warns_on_flattening(tmp_path):
     baseline = analyze(_write(tmp_path, "plain.md", PLAIN))
     current = analyze(_write(tmp_path, "flat.md", FLATTENED))
