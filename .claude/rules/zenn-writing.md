@@ -1,13 +1,12 @@
 <!-- origin: original -->
 # Zenn Writing Rules (プロジェクト overlay)
 
-> このファイルは Zenn/Dev.to プラットフォーム固有ルールの overlay。記事の**声（voice）は type（tech/idea）で分岐しない**:
-> - **Zenn/Dev.to の全記事** → `.claude/skills/zenn-practical-writing/SKILL.md`（実用軸：ですます・即実用・実コード/図・低認知負荷）が既定
-> - 任意の personality flavor → `.claude/skills/zenn-idea-voice/SKILL.md`（毒humor / 刃牙。type 非依存の opt-in）
-> - genre 中立 canon（AI slop 禁止・タイトル原則・ネタ 3 軸）は `~/.claude/skills/writing-ecosystem/SKILL.md` が正本
-> - genuine な思索エッセイ（だ/である × 発見調）は Zenn ではなく Substack corpus へ（`writing-ecosystem` skill）
+> このファイルは publishing チャンネル固有ルールの overlay。**声（voice）は type（tech/idea）でなく
+> チャンネルで分岐する** — 分岐の実値は下の「チャンネル表」が唯一の正本。
 >
-> global base の AI slop 禁止リスト・タイトル原則は **再掲しない**。本ファイルは Zenn プラットフォーム固有ルールのみを定義する。
+> genre 中立 canon（AI slop 禁止・タイトル原則・ネタ 3 軸・craft 規約）は
+> `~/.claude/skills/writing-ecosystem/SKILL.md` が正本で、**ここには再掲しない**。
+> 本ファイルはチャンネル固有の事実・配線・罠のみを定義する。
 
 ## タイトル文字数上限
 
@@ -42,10 +41,22 @@ published_at: 2026-04-15 07:00  # JST、予約投稿
 - **誤**: `/articles/xxx`（相対パスは Zenn 上で正しく解決されない）
 - **正**: フル URL `https://zenn.dev/shimo4228/articles/xxx`
 
-### 文体（channel で分ける。type では分けない）
+## チャンネル表（チャンネルの値を持つ唯一の場所）
 
-- **Zenn/Dev.to の全記事**: ですます調（正本 `zenn-practical-writing`。tech/idea で分岐しない）
-- **Substack essay corpus**: だ/である × 発見調（正本 `writing-ecosystem`。Zenn には出さない別 channel）
+**このセクションが、文体・声・レビュー agent の実値を持つ唯一の場所。** skill / agent /
+CLAUDE.md はここを指すだけで、値を再掲しない。rules は main loop にも全 agent プロセスにも
+常駐するので、どの skill が発火してもこの表は context にある（配置根拠は ADR-0010）。
+
+| チャンネル | 置き場 | 文体 | 声 | 既定 skill | レビュー agent |
+|---|---|---|---|---|---|
+| **Zenn** | `articles/` | ですます | 実用軸（即実用・低認知負荷） | `zenn-practical-writing` | `editor` |
+| **Dev.to** | `articles-en/` | 英語（`ja-to-en-translation` の voice 規約） | 同上 | `zenn-practical-writing` → `devto-translator` | `editor` |
+| **note**（JA 正本・初出） | `note/` | **ですます** | 発見調 | `writing-ecosystem` | `essay-reviewer` |
+| **Substack**（EN 翻訳） | `substack/` | 英語 | 発見調 | `ja-to-en-translation` | `essay-reviewer` |
+
+- **日本語の公開チャンネルはすべて ですます**（2026-08-06 著者指示）。**だ/である で書く
+  日本語チャンネルは存在しない** — 規約のない場（研究 repo 内の下書き等）だけが例外
+- **type（tech/idea）でレビュアーを分けない**（2026-07 廃止）。分岐軸は上表のチャンネルのみ
 - **1 記事内で文体を混在させない**
 - 注: prose lint（textlint/markdownlint）は 2026-07 に全撤去。文体統一・表記・書式は機械検出でなく執筆時に守る（残る機械チェックは `zenn list:articles` の frontmatter 検証のみ）
 
@@ -97,12 +108,12 @@ JP と EN は **JST でペア予約**する。EN を前夜に、JP を翌朝に�
 
 ## Related
 
-- `~/.claude/skills/writing-ecosystem/SKILL.md` — global base（AI slop / essay Voice / タイトル原則）
-- `.claude/skills/zenn-practical-writing/SKILL.md` — Zenn/Dev.to 全記事の既定の声（実用軸。type で分岐しない）
-- `.claude/skills/zenn-idea-voice/SKILL.md` — idea/opinion の opt-in personality（毒humor / 刃牙）
+- `~/.claude/skills/writing-ecosystem/SKILL.md` — genre 中立 canon（AI slop / craft / タイトル原則 / エッセイ 4 段構成）
+- `.claude/skills/zenn-practical-writing/SKILL.md` — Zenn/Dev.to の実用軸（文体はチャンネル表が正本）
+- `.claude/skills/zenn-idea-voice/SKILL.md` — 任意の personality flavor（毒humor / 刃牙。type 非依存の opt-in）
 - `.claude/skills/zenn-format/SKILL.md` — frontmatter・記法の正本
-- `~/.claude/agents/editor.md` — Zenn/Dev.to 全記事のレビュー（global、type 分岐なし）
-- `~/.claude/agents/essay-reviewer.md` — Substack essay corpus 専用（global。Zenn/Dev.to では使わない）
+- `~/.claude/agents/editor.md` — Zenn/Dev.to のレビュー（global。担当チャンネルはチャンネル表）
+- `~/.claude/agents/essay-reviewer.md` — note/Substack エッセイのレビュー（global。同上）
 - `~/.claude/agents/fact-checker.md` — 事実検証（global）
 - `.claude/agents/zenn-clarity-reviewer.md` — 初見読者の明瞭性レビュー（project。Zenn/Dev.to 専用、FAIL は公開ブロック。学術論文は global `clarity-reviewer`）
 - 記事執筆はサブエージェントに委譲せず、オーケストレーター本体が `zenn-practical-writing` に従って直接執筆する
