@@ -1,6 +1,6 @@
 ---
 name: quality-gate
-description: 全パス（新規・改稿・翻訳）に統一品質基準を適用する
+description: 記事公開前の受け入れゲート。新規・改稿・翻訳のどのパスでも同じブロック条件を通し、PASS/FAIL を返す。判定は下さず、各レビュアー・判定器が出した verdict が揃って緑かを照合する層。Use when — 公開直前（writing-team Mission A step 10 / B step 7 / C step 2）、他人が書いた原稿を公開してよいか確かめたいとき、/quality-gate <file>。NOT for — 記事品質そのものの判定（→ article-judge）、初見読者の明瞭性（→ zenn-clarity-reviewer）、ループ制御と panel の起動条件（→ writing-team「改稿ループ」）、公開作業の手順（→ publish-article）、著者判断の再現（→ zenn-editorial-judgment。判断層を機械 gate 化しない — ADR-0006 Decision 3）
 user-invocable: true
 origin: shimo4228
 ---
@@ -30,8 +30,8 @@ origin: shimo4228
 - [ ] **zenn-clarity-reviewer の verdict が PASS**: 初見読者の明瞭性レビュー済みで FAIL が解消されている（FAIL のままなら公開不可。editor CRITICAL 0 と同格のブロッキング条件）
 - [ ] **AI slop なし**: `writing-ecosystem` skill の禁止リストに該当する表現がない
 - [ ] **未説明概念なし**: 専門用語・自作概念が初出時に説明されている
-- [ ] **セキュリティ**: API キー、個人パス（`/Users/`）、機密情報が含まれていない
-- [ ] **frontmatter 完備**: title, emoji, type, topics, published が正しく設定されている
+- [ ] **セキュリティ**: [publish-article](../publish-article/SKILL.md) Step 2 の grep パターンを実行し、検出 0（**実行形の正本はあちら**。ここに検査コマンドを再掲しない）
+- [ ] **frontmatter 完備**: [publish-article](../publish-article/SKILL.md) Step 3（`npx zenn list:articles`）がパス（仕様の正本は `zenn-format`）
 
 ### Zenn/Dev.to 記事追加（type で分岐しない）
 
@@ -41,9 +41,10 @@ origin: shimo4228
 
 ### 翻訳記事追加
 
-- [ ] **コードブロック完全性**: 原文と翻訳のコードブロック数が一致
-- [ ] **リンク完全性**: すべての URL・画像パスが保持されている
-- [ ] **用語一貫性**: 翻訳グロッサリーの用語が正しく使われている
+- [ ] **`devto-translator` Phase 4 のセルフチェックが完了している**（コードブロック完全性 /
+      リンク完全性 / 用語一貫性 / AI slop / 技術的正確性）。**検査項目の正本は
+      [devto-translator](../../agents/devto-translator.md) Phase 4** — ここには再掲しない
+      （2026-08-23: 同じ 3 項目を別の言い回しで二重に持っていた）
 
 ---
 

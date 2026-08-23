@@ -1,7 +1,7 @@
 # schedule.json Schema（正本）
 
 > このファイルは `scripts/schedule.json` の**スキーマ**の正本。
-> `schedule-publish`, `publish-article`, `devto-translator` はここを参照する。
+> `publish-article`, `devto-translator` はここを参照する。
 >
 > **membership・日付・title の正本は `articles/*.md` frontmatter**（ADR-0009）。
 > schedule.json は Dev.to URL のエンリッチ専用で、記事一覧の正本ではない。

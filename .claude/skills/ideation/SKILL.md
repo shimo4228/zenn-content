@@ -32,41 +32,19 @@ origin: shimo4228
 4. **既存記事の隙間**: 公開済み記事を一覧し、カバーされていないテーマを探す
 5. **実測フィードバック**: `article-stocktake` の最新サマリ（memory: article-quality.md 冒頭）— 過去に読者へ届いたテーマ・構造の**事実**。推薦理由・優劣づけには使わない（下記 Notes の禁止条項は維持）
 
-### Step 2: チャンネル routing
+### Step 2 以降は他 skill が持つ（2026-08-23 縮約）
 
-種ごとに、どのチャンネル向きかを 1 行で当てる（**記事 type では分けない** — 2026-07 廃止）:
+本 skill の固有分は **Step 1 の 5 情報源だけ**。以下はポインタで、ここに手順を再掲しない:
 
-- **Zenn / Dev.to（実用軸）** — 読者が数秒で何かわかり、そのまま手を動かして再現できる種
-- **note → Substack（エッセイ）** — 思索・立場表明・組織論。実用手順に落ちない種
+- **チャンネル routing**（Zenn 実用 / note→Substack エッセイ。記事 type では分けない — 2026-07 廃止）
+  → `theme-eval` Step 1.5 が判定と一緒に扱う
+- **テーマ強度の判定**（T1-T8 / Write-A・B見込み / Deepen）→ **`theme-eval` skill を読んで実行する**。
+  本 skill は判定しない（2026-08-23 に独自判定表を廃止 — T2 非自明性 / T3 言説の空白 /
+  T8 トレンド寄生を欠く弱いサブセットで、theme-eval が「厳しさの供給源」とする T3 を落としていた）
+- **構成案** → Zenn/Dev.to は `zenn-practical-writing` Phase 1、note は `writing-ecosystem`
+- **タイトル候補** → `headline-craft`（判定は `title-eval`）
 
-チャンネルは優劣でなく routing（ADR-0003）。判断に迷う種は次の step で theme-eval が扱う。
-
-### Step 3: テーマ強度は theme-eval に渡す
-
-**本スキルは強度を判定しない**（2026-08-23 に独自判定表を廃止 — T2 非自明性 /
-T3 言説の空白 / T8 トレンド寄生を欠く弱いサブセットで、theme-eval が「厳しさの供給源」と
-する T3 を落としていた）。
-
-種ごとに一文でテーマを立て、`theme-eval` skill（T1-T8）へ渡す。verdict と Deepen プロンプトは
-あちらが返す。
-
-### Step 4: 提案
-
-```markdown
-## テーマ提案
-
-**タイトル案**: [概念を伝えるタイトル]
-**コア論点**: [1文]
-**チャンネル**: Zenn/Dev.to（実用軸） / note→Substack（エッセイ）
-**独自性**: [自分だけが書ける理由]
-**想定読者**: [誰が読むか]
-**推定ボリューム**: [字数の目安]
-
-### 次のステップ
-- [ ] [skill: theme-eval] でテーマ強度を判定する（Write-A/B見込み / Deepen。執筆前ゲート、2026-08-12 追加）
-- [ ] 素材を集める（コード、ログ、スクリーンショット）
-- [ ] Zenn/Dev.to なら `zenn-practical-writing` Phase 1、note なら `writing-ecosystem` に従って構成案を立てる（オーケストレーター本体が直接執筆）
-```
+種ごとに一文でテーマを立て、`theme-eval` へ渡すところまでが本 skill の仕事。
 
 ---
 

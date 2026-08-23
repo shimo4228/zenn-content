@@ -49,7 +49,7 @@ memory の `article-quality.md` にある内容品質ランク（A/B/C）と突�
 
 | 乖離パターン | 示唆 | 還流先 |
 |---|---|---|
-| **A ランク × 実測下位** | 内容は良いが届いていない — タイトル・配信・タイミングの問題 | title-eval（タイトル）/ seo-optimizer（topics・emoji）/ schedule-publish（Distribution 層） |
+| **A ランク × 実測下位** | 内容は良いが届いていない — タイトル・配信・タイミングの問題 | title-eval（タイトル）/ zenn-format（topics・emoji）/ 投稿タイミング（`.claude/rules/zenn-writing.md`「投稿ペース方針」） |
 | **B/C ランク × 実測上位** | 読者需要のあるテーマ・構造 | ideation の情報源（事実として） |
 
 一致セル（A×上位、C×下位）は正常動作なので列挙しない。各乖離記事に定性所見を 1 行添える（「タイトルが概念名のみで用途が見えない」等の具体観察）。
@@ -64,7 +64,7 @@ memory の `article-quality.md` にある内容品質ランク（A/B/C）と突�
 ### Step 5: 還流
 
 - **企画へ**: ideation は Step 1 の情報源としてこのサマリを読む（推薦理由にはしない — ideation Notes の禁止条項は維持）
-- **配信へ**: A×下位 記事の Distribution 改善（リタイトル等）は title-eval（タイトル判定）と seo-optimizer（topics・emoji）の管轄で、ユーザーが個別に判断
+- **配信へ**: A×下位 記事の Distribution 改善（リタイトル等）は title-eval（タイトル判定）と zenn-format（topics・emoji）の管轄で、ユーザーが個別に判断
 
 ---
 

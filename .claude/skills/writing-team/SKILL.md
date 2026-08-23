@@ -1,6 +1,6 @@
 ---
 name: writing-team
-description: Claude Code をオーケストレーター（PM）として、執筆チームを編成・指揮する
+description: 記事・エッセイの執筆ミッション全体を指揮するオーケストレータ。Mission A（新規）/ B（改稿）/ C（翻訳 + クロスポスト）/ D（アイデア出し）の実行順序、改稿ループの制御（草稿ゲート vs binding 最終判定・上限 2 ラウンド・voice 回帰監視）、レビュー panel の起動条件と並列構成の**正本**。Use when — 記事を新しく書く / 改稿する / 英訳して出す、「執筆チームを立てて」「/writing-team」、どの順でレビューを回すか迷ったとき。NOT for — 書き方・文体（→ zenn-practical-writing）、品質の判定（→ article-judge）、受け入れゲート（→ quality-gate）、公開作業（→ publish-article）、テーマの強度（→ theme-eval）
 user-invocable: true
 origin: shimo4228
 ---
@@ -20,8 +20,7 @@ origin: shimo4228
 /writing-team new               # Mission A: 新規記事
 /writing-team revise             # Mission B: 改稿
 /writing-team translate          # Mission C: 翻訳 + クロスポスト
-/writing-team schedule           # Mission D: バッチスケジューリング
-/writing-team ideate             # Mission E: アイデア出し
+/writing-team ideate             # Mission D: アイデア出し
 ```
 
 ---
@@ -62,12 +61,12 @@ origin: shimo4228
    構成系の指摘は「任意の磨き」に降格しない — 推奨を付けず中立で著者ゲートへ必ず昇格する）
 9. 最終判定【binding】— 凍結した公開候補に対して mechanical_checks + [agent: article-judge]（fresh・質問は新規生成）を再実行
    quality-gate が参照できるのはこの verdict だけ。通読 GO 中の著者修正は**修正ごとに回さずバッチする** — 通読が終わった時点の本文に対して 1 回だけ再実行する（著者が不要と判断すれば省略可。著者通読が常に最上位のゲート — 2026-08-12 著者指示）
-11. [skill: quality-gate]    — 統一品質基準チェック（最終判定の article-judge = Publishable を含む）
-12. [skill: title-eval]      — タイトル判定ループ（本文凍結後・投稿直前に単独で回す。headline-craft 生成 → fresh 判定 → Refine 1 回、最終選択は著者。2026-08-13 新設）
-   Zenn/Dev.to は続けて [skill: seo-optimizer] — topics・emoji 最適化（内容は変えない）
+10. [skill: quality-gate]    — 受け入れゲート（最終判定の article-judge = Publishable を含む）
+11. [skill: title-eval]      — タイトル判定ループ（本文凍結後・投稿直前に単独で回す。headline-craft 生成 → fresh 判定 → Refine 1 回、最終選択は著者。2026-08-13 新設）
+   Zenn/Dev.to は続けて [skill: zenn-format]「Topics / Emoji の提案フロー」（内容は変えない）
    ⏸ ユーザー確認: ドラフト全文 + レビュー結果 + タイトル/SEO 提案（一括確認 = publish 前の通読 GO）
-13. [skill: publish-article] — 公開チェックリスト（published_at 含む）
-14. git push
+12. [skill: publish-article] — 公開チェックリスト（published_at 含む）
+13. git push
 ```
 
 **レビュアー**: step 7 の品質レビュー agent は、出力先チャンネルに対応する行をチャンネル表（`.claude/rules/zenn-writing.md`）で引く。厚さはどのチャンネルでも同じ。
@@ -108,7 +107,8 @@ origin: shimo4228
 
 ```
 draft
-  → scripts: uv run python mechanical_checks.py <draft> [--baseline <初稿>] [--lang en]   … 決定論の証拠 JSON（EN 記事は --lang en 必須）
+  → `cd scripts && uv run python mechanical_checks.py <draft> [--baseline <初稿>] [--lang en]`
+    … 決定論の証拠 JSON（**`cd scripts` 必須** — repo ルートから走らない。EN 記事は `--lang en` 必須）
   → [agent: article-judge]（fresh context・機械 JSON を渡す）
       ├ Publishable → ループ終了、次の step へ
       ├ Fix         → 本体が span 単位指摘だけを修正（全文書き直し禁止・voice 保全）
@@ -133,21 +133,16 @@ draft
 1. [agent: devto-translator]  — 一気通貫（翻訳→タグ→画像→投稿）
 2. [skill: quality-gate]      — 「翻訳記事追加」チェック（コードブロック・リンク・用語一貫性）
    ⏸ ユーザー確認: ドライラン結果
-3. schedule.json 更新（refs/schedule-schema.md 準拠）
+3. schedule.json 更新（`.claude/refs/schedule-schema.md` 準拠）
 4. git push
 ```
 
-## Mission D: バッチスケジューリング
+## Mission D: アイデア出し
 
-```
-1. [skill: schedule-publish]  — スコアリング + 日程割り当て
-   ⏸ ユーザー確認: スケジュール案
-2. schedule.json 更新
-3. published_at 設定
-4. git push
-```
-
-## Mission E: アイデア出し
+> 旧 Mission D「バッチスケジューリング」は 2026-08-23 に廃止（skill `schedule-publish` を
+> Retire）。4 軸 12 点スコアは台帳に一度も書かれず公開処理も読んでいなかった（消費者不在。
+> ADR-0008 が llm-as-judge の集計禁止に反する先行事例として記録済み）。複数の未公開稿の
+> 公開順は、`.claude/rules/zenn-writing.md`「投稿ペース方針」を見て会話で決める。
 
 ```
 1. [skill: ideation]          — テーマ検討
@@ -176,6 +171,6 @@ draft
 > 内容は著者の思考が決める。配信戦略は内容を変えずに最適化する。
 
 オーケストレーターはこの原則を全ミッションで守る:
-- title-eval / seo-optimizer は Distribution レイヤーのみ（冒頭文・本文は変えない）
+- title-eval / zenn-format の提案フローは Distribution レイヤーのみ（冒頭文・本文は変えない）
 - レビュー指摘は品質向上のため（エンゲージメント最適化のためではない）
 - 構成変更の提案は著者の論旨をより正確に伝えるためのもの

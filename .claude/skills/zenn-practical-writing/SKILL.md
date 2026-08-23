@@ -209,7 +209,9 @@ Zenn/Dev.to 実用記事は Diátaxis の **how-to（課題達成）** と **ref
 
 1. **並列リサーチ** — 対象技術 / 組み合わせ先 / 既存記事との差別化ポイントを Task tool で並列に調べる
 2. **実体験ログ** — つまずき→原因→解決を表（#, 問題, 原因, 解決）に整理。記事の「オチ」になる気づきを特定
-3. **context ファイルに集約** — `drafts/article-context_<topic>-<date>.md` に企画・タイムライン・技術コンテキスト・差別化・リサーチ要点をまとめてから執筆
+3. **context ファイルに集約** — `drafts/article-context_<topic>-<date>.md` に企画・タイムライン・技術コンテキスト・差別化・リサーチ要点をまとめてから執筆。
+   セッション内外の素材を証拠台帳（Claims Register・一次/⚠未検証の tier 付き）にまとめるなら
+   **global `collect-context` skill を読んでから実行する**（手順の正本はあちら。台帳は fact-checker への入力にもなる）
 
 AI 対話などの**生ログ**は `articles/_context/{slug}-{source}-log.md` に退避する（Zenn の同期対象外。詳細は `.claude/rules/zenn-writing.md`）。
 

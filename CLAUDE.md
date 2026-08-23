@@ -55,11 +55,7 @@ All articles MUST use Zenn frontmatter. Field-by-field spec is canonical in `.cl
    - **No AI slop** — 禁止リストの正本は global `writing-ecosystem` skill（語の実値はここに書かない）
 
 5. **Structure**
-   - **Introduction** - Hook reader with a problem or insight
-   - **Context** - Background and motivation
-   - **Implementation** - Technical details with code examples
-   - **Lessons Learned** - Reflections and takeaways
-   - **Conclusion** - Summary and next steps
+   - 記事構成の正本は `zenn-practical-writing`「導入の設計」（一瞬でわかる → 掴み → 緊張 → 解決 → Higher Ground）。ここには構成を書かない — 旧 5 部構成（Introduction / Context / Implementation / Lessons Learned / Conclusion）は 2026-08-23 に `zenn-format` が実用軸と非整合として削除済みで、その `Context - 背景説明` は warm-up fluff として禁止されている側だった
    - **Environment-dependent changes** - When commands depend on local paths, existing settings, symlinks, or authentication, finish the human-facing narrative first, then provide a standalone read-only planning prompt for the reader's coding agent. The agent must stop for human approval before implementation. Canonical rules: `zenn-practical-writing`.
 
 ### Image Guidelines
@@ -93,7 +89,7 @@ note/<slug>.md（JA 正本・初出）
 - **末尾**: 出典・参考文献（該当時）+「関連リンク」節 — 関連 repo/DOI・GitHub ハブ（著者ハブ規約を適用）・公開後の Substack 英語版 URL。note に canonical URL 設定機能はない（2026-08 検索確認）ため、この節が還流手段
 - **レビュー**: Zenn 記事と同じ厚さで公開前に回す（下記 Editor Agent Usage のアイデアエッセイ chain）
 - **投稿は人間が手動**。`schedule.json` に載せない（dev.to クロスポスト対象外）
-- **貼り付けは HTML 経由**（Markdown 直貼りは note でプレーンテキスト化する）。`tail -n +2 <slug>.md | pandoc -f gfm -t html -s --metadata pagetitle="<タイトル>" -o <slug>.html`（**`-f gfm` 必須** — 既定方言はリストを段落に潰す。`substack-publishing` に実証あり） で貼り付け用 HTML を併置（先頭 h1 はタイトル欄別入力のため除外）。ブラウザで開いて全選択コピー → note エディタへペースト。substack/ の .html 併置と同じ慣例
+- **貼り付けは HTML 経由**（Markdown 直貼りは note でプレーンテキスト化する）。`scripts/render_note_assets.sh note/<slug>.md` で貼り付け用 HTML を併置し（先頭 h1 の除外と `-f gfm` はスクリプトが持つ）、ブラウザで開いて全選択コピー → note エディタへペースト。**手順の正本は skill `substack-publishing`（note/ も対象）。ここに pandoc コマンドを書かない** — 二重化した版は片方だけ古びる。substack/ の .html 併置と同じ慣例
 - **ペース: 週 1〜2 本**。burst しない（2026-07-16 rate limit = policy signal の教訓）
 - 公開後、冒頭 or 末尾に note URL を追記して commit（mirror 化）。既存の frontmatter 付き旧 mirror 2 本はそのまま
 - 公開後、`scripts/corpus.yml` の `essays:` に 1 エントリ（slug / date / ja.title / ja.url / ja.file）を追記し `npm run generate:index`（EN 版を Substack に出したら同エントリに `en:` を足す）
@@ -154,21 +150,19 @@ See `docs/CODEMAPS/scripts.md` for the publishing pipeline (single `devto_crossp
 
 Pipeline reference: `docs/CODEMAPS/scripts.md`
 
-- [ ] Code snippets have no API keys
-- [ ] Screenshots have no sensitive information (file paths, usernames)
-- [ ] File paths are anonymized
-- [ ] All code examples are tested and executable
-- [ ] レビュー完了（担当 agent はチャンネル表の「レビュー agent」列）
-- [ ] タイトル最適化済み（`/seo-optimizer` → global `headline-craft` 経由で候補提示・確定。英訳より前に確定させる）
-- [ ] fact-checker でファクトチェック完了（事実主張を含む記事は必須）
-- [ ] zenn-clarity-reviewer の verdict が PASS（初見読者の明瞭性。FAIL のままなら公開不可）
-- [ ] Zenn frontmatter validates (`npm run validate`)
-- [ ] Preview looks good (`npm run preview`)
-- [ ] `published_at` を設定（`YYYY-MM-DD HH:MM` 形式、JST）
-- [ ] English translation created in `articles-en/`
-- [ ] `schedule.json` updated with both Japanese and English entries
-- [ ] Cross-post target scheduled: Dev.to (English)
-- [ ] `npm run generate:index` 実行済み（`docs/PUBLICATIONS.md` と README 読書経路が最新。CI の `check:index` が赤にならない）
+> **チェック項目をここに列挙しない。** 2026-08-23 まで本節は独自のリストを持ち、
+> 公開ブロック条件 3 つ（最終判定 article-judge = Publishable / AI slop なし /
+> 未説明概念なし）を欠いたまま `quality-gate` と分岐していた。3 つのリストのうち
+> 完全なものが 1 つも無い状態だったため、常駐層は入口だけを持つ。
+
+公開前に通す順序は 2 つだけ:
+
+1. **`/quality-gate <file>`** — 受け入れゲート（公開可否のブロック条件と PASS/FAIL の正本）
+2. **`/publish-article <file>`** — 公開作業の手順（セキュリティ grep・frontmatter 検証・
+   `published_at`・schedule.json・Dev.to クロスポスト・`npm run generate:index`・push）
+
+タイトル確定（`/title-eval`）と topics・emoji（`/zenn-format`）は本文凍結後・英訳より前。
+全体のミッション順序は `writing-team` が正本。
 
 ---
 

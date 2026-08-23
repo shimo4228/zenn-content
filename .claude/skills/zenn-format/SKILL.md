@@ -1,6 +1,6 @@
 ---
 name: zenn-format
-description: Zenn 記事の frontmatter・記法・テンプレートの正本。emoji/topics 選定、Markdown 記法、コード埋め込みのベストプラクティスを扱う。文体・執筆プロセスは扱わない（zenn-practical-writing / zenn-idea-voice を参照）。
+description: Zenn 記事の frontmatter・記法・テンプレートの正本。emoji/topics の選定基準と、公開直前の topics・emoji 提案フロー（Distribution 層のみ、内容は変えない）、Zenn 固有の Markdown 記法（コードブロックの diff/ファイル名指定・`:::message`・埋め込み・内部リンク）を扱う。汎用の Markdown 作法は持たない。文体・執筆プロセスは扱わない（zenn-practical-writing / zenn-idea-voice を参照）。
 user-invocable: true
 origin: shimo4228
 ---
@@ -43,7 +43,8 @@ published: true  # false for draft
 
 ### Emoji Selection
 
-> emoji・topics の選定基準は**このスキルが正本**（`seo-optimizer` は提案フローのみ持ち、基準はここに defer する）。
+> emoji・topics は**基準も提案フローもこのスキルが正本**（2026-08-23 に `seo-optimizer` を Retire し、
+> 分かれていた提案フローをここへ統合 — 基準の唯一の消費者だったため。提案フローは下記「Topics / Emoji の提案フロー」）。
 
 | Theme | Recommended Emojis |
 |-------|-------------------|
@@ -71,6 +72,29 @@ published: true  # false for draft
 - **定着しているか実際に確認する**（`https://zenn.dev/topics/<tag>` を確認し、記事数0や存在しないタグを弾く）
 - **記事数が多すぎる汎用タグより、記事の核に近いニッチなタグを優先する**（例: 記事の主題が「ハーネスへの組み込み」なら、母数の大きい `openai`（数千記事）より的を絞った `harness`（数十〜百記事）の方が、対象読者に届きやすく埋もれにくい）。定着している（0記事ではない）ことは要件だが、記事数が多いことは優先理由にならない
 - **`ai` / `llm` のような一般名すぎるタグは単独で使わない**（検索性・差別化に寄与しない）。同じ概念を指すならより具体的な語（製品名・技術名・`skills` 等の機能カテゴリ）に置き換える
+
+### Topics / Emoji の提案フロー
+
+公開直前（本文凍結後、`title-eval` でタイトルを確定した後）に、既存記事の topics・emoji を
+見直すときの手順。**Distribution レイヤーのみ** — 本文・冒頭文は変えない（ADR-0001、
+`.claude/rules/content-integrity.md`）。
+
+1. 現在の topics / emoji を、上の Tag guidelines と Emoji Selection に照らして評価する（違反は指摘）
+2. 差し替え候補を **diff 形式**（現在 → 提案）で提示し、各項目に理由を 1 行添える
+3. **最終判断は著者に委ねる** — 選択肢を提示するだけで、確定はしない
+
+```markdown
+### Topics 提案
+- 現在: {current} → 提案: {proposed}
+- 理由: {why}
+
+### Emoji 提案
+- 現在: {current} → 提案: {proposed}
+- 理由: {why}
+```
+
+- SEO を理由にクリックベイトへ寄せない（誠実さ規約は `writing-ecosystem` の Title Conventions）
+- Zenn のトレンドは変化するので、提案は参考値として扱う（`https://zenn.dev/topics/<tag>` の実地確認が優先）
 
 ---
 
@@ -131,8 +155,7 @@ Store images in `/images/` directory:
 # External links
 [Anki公式サイト](https://apps.ankiweb.net/)
 
-# Internal links (within Zenn) — フル URL 必須
-# 相対パス（/articles/xxx）は Zenn 上で正しく解決されない（.claude/rules/zenn-writing.md 参照）
+# Internal links (within Zenn) — 規則の正本は .claude/rules/zenn-writing.md「内部リンク」
 [前回の記事](https://zenn.dev/shimo4228/articles/previous-article-slug)
 
 # Footnotes
@@ -157,55 +180,10 @@ Store images in `/images/` directory:
 :::
 ```
 
-### Tables
-
-```markdown
-| Column 1 | Column 2 | Column 3 |
-|----------|----------|----------|
-| Data 1   | Data 2   | Data 3   |
-```
-
----
-
-## Code Embedding Best Practices
-
-### Minimal Code Snippets
-
-Show **only what's needed** to illustrate the point:
-
-**Good:**
-```python
-# Show only the relevant function
-def _tokenize(text: str) -> set[str]:
-    tokens = re.split(r"[\s　、。？?！!,.\-:：]+", text)
-    return {t for t in tokens if len(t) >= 2}
-```
-
-**Bad:**
-```python
-# Showing entire file including unrelated imports and functions
-from __future__ import annotations
-import json
-import logging
-# ... 100+ lines of irrelevant code
-```
-
-### Include Context
-
-```python
-# BAD: No context
-tokens = re.split(r"[\s　、。？?！!,.\-:：]+", text)
-
-# GOOD: With context
-# Split on whitespace and common Japanese/English punctuation
-tokens = re.split(r"[\s　、。？?！!,.\-:：]+", text)
-```
-
-### Show Before/After
-
-For refactoring or improvements, show both versions side by side.
-
----
+> **汎用の Markdown / コード埋め込み作法はここに持たない**（2026-08-23 削除）。
+> 表の書き方・最小コードスニペット・前後比較の見せ方は、Claude が prompt なしで
+> 適用する一般作法で、Zenn 固有の情報ではなかった。記事としての見せ方の判断は
+> `zenn-practical-writing`（実用軸・低認知負荷）が正本。
 
 ## Publishing Workflow
 

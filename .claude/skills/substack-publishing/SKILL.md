@@ -25,9 +25,12 @@ writing-ecosystem の review 通過後。**Substack は英語チャンネル**�
 - **入力時ショートカット**（短い編集向け）: `#`/`##`/`###`+space=見出し、`>`+space=引用、`---`=区切り線、`*`/`-`+space=リスト、cmd+B/I、cmd+K=リンク。**貼り付けでは変換されない**（タイプ時のみ効く）。
 - **MD→HTML→リッチテキスト貼り付け**（全文向け・推奨）:
 
+  ```bash
+  scripts/render_note_assets.sh substack/<slug>-en.md   # note/<slug>.md も同じ
   ```
-  pandoc -f gfm essay.md -s -o essay.html   # -f gfm 必須（§下記の罠を参照）
-  ```
+
+  先頭 h1 の除外（タイトル欄に別入力するため）と `-f gfm`（§下記の罠）をスクリプトが持つ。
+  **手打ちの `pandoc` を書かない** — 方言指定を落とした版が過去に混入していた。
 
   ブラウザで `essay.html` を開く → 本文を選択 → コピー → Substack 本文に貼ると整形保持（見出し / 太字 / 斜体 / リンク / 区切り線）。Substack は貼り付け時に独自スタイルを当てるので、保持されるのは構造であって見た目の細部ではない。
 
@@ -66,7 +69,8 @@ essay の **core metaphor** を1つ視覚化する。プロンプト規約:
 Substack エディタ（ProseMirror 系）への構造保持貼り付けは、**macOS システムクリップボードへ HTML flavor を直接書いて cmd+V** が最も確実:
 
 ```bash
-pandoc -f gfm body.md -o body.html   # -f gfm 必須（下記）
+pandoc -f gfm body.md -o body.html   # -f gfm 必須（下記）。原稿ファイル全体なら
+                                     # scripts/render_note_assets.sh が h1 除外込みで同じ html を作る
 hex=$(xxd -p body.html | tr -d '\n')
 osascript -e "set the clipboard to «data HTML${hex}»"
 # → エディタ本文をクリックして cmd+V

@@ -5,9 +5,9 @@ user-invocable: true
 origin: shimo4228
 ---
 
-# zenn-idea-voice — idea/opinion の opt-in personality
+# zenn-idea-voice — 話題が合う記事への opt-in personality
 
-**この 2 つの著者 voice 資産を保持する**: (1) 毒の効いたユーモア、(2) 刃牙リファレンス。どちらも idea/opinion 記事に**任意で**足す personality であって、必須ではない。
+**この 2 つの著者 voice 資産を保持する**: (1) 毒の効いたユーモア、(2) 刃牙リファレンス。どちらも**話題が合う記事に任意で**足す personality であって、必須ではない。**type（tech/idea）では分けない**（2026-07 廃止。下の Scope が正本）。
 
 ## Scope — いつ使うか
 

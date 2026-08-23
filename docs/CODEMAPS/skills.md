@@ -11,8 +11,7 @@
 | `zenn-format` | Zenn frontmatter / markdown / emoji / topics — canonical reference |
 | `ideation` | Theme exploration & ideation |
 | `publish-article` | Pre-publish checklist + cross-post procedure |
-| `schedule-publish` | Discoverability scoring + schedule.json date assignment |
-| `seo-optimizer` | Title / tag / emoji optimization (Content Integrity: no intro rewrites) |
+| `zenn-format` | Frontmatter / notation + topics·emoji proposal flow (Content Integrity: no intro rewrites) |
 | `quality-gate` | Unified quality standard across all paths |
 | `article-stocktake` | Post-publication eval loop: real metrics (Zenn/Dev.to) × quality rank divergence (ADR-0005) |
 
@@ -39,5 +38,5 @@ zenn-editorial-judgment (type + human how-to / agent handoff decision)
 
 Post-publication (monthly, human-driven):
   metrics_snapshot.py → article-stocktake (rank × tier divergence)
-  → memory article-quality.md → ideation (fact source) / seo-optimizer (distribution)
+  → memory article-quality.md → ideation (fact source) / zenn-format (distribution)
 ```

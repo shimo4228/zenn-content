@@ -31,9 +31,9 @@ origin: shimo4228
 
 **本スキルは公開作業の手順であって、品質ゲートではない。**レビュー panel（editor +
 fact-checker + zenn-clarity-reviewer + codex-review）とタイトル確定（title-eval →
-seo-optimizer）と最終判定（article-judge）は、すべて **`writing-team` の責務**。
+zenn-format の提案フロー）と最終判定（article-judge）は、すべて **`writing-team` の責務**。
 
-- 正本: `writing-team` Mission A の step 7（panel）/ step 9（binding 最終判定）/ step 12（タイトル）
+- 正本: `writing-team` Mission A の step 7（panel）/ step 9（binding 最終判定）/ step 11（タイトル）
 - 公開可否の判定は `quality-gate` skill が行う。本スキルはその後に走る
 
 `/publish-article` を単独で呼ぶ場合も、**品質は保証されない**。先に `writing-team` を
@@ -46,7 +46,8 @@ seo-optimizer）と最終判定（article-judge）は、すべて **`writing-tea
 - [ ] コードスニペットに API キーが含まれていないか
 - [ ] `/Users/username/` のような個人パスが含まれていないか
 - [ ] スクリーンショットに機密情報が映っていないか
-- [ ] SpecStory ログがサニタイズされているか
+- [ ] 生ログを引用した箇所がサニタイズされているか（生ログの置き場は `articles/_context/`。
+      Zenn 同期対象外だが、本文へ引用するときは個人パス・キーを落とす）
 
 **自動検出パターン:**
 ```

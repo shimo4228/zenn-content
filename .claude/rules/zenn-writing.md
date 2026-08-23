@@ -81,11 +81,37 @@ CLAUDE.md はここを指すだけで、値を再掲しない。rules は main l
 
 ## Zenn 投稿ペース方針（投稿タイミングの正本）
 
-> 投稿ペース・バズタイムは**このセクションを正本**とする。他スキル（`schedule-publish` / `publish-article` / `refs/schedule-schema.md`）はここを参照し、値を再掲しない。
+> 投稿ペース・バズタイムは**このセクションを正本**とする。他スキル（`publish-article` / `refs/schedule-schema.md`）はここを参照し、値を再掲しない。
 
 - **週 2-3 本ペース**（毎日投稿は 2026/3 の Zenn AI コンテンツ乱造対策で凍結リスクあり）
 - **バズタイム: 火〜水 7:00-9:00（JST）** に集中。他の日は執筆期間
 - 背景: Zenn は投稿上限がユーザーごとに設定され、高頻度投稿は凍結リスク。書き溜め→分散投稿のストック型で 1 本の密度を上げる
+
+## 値の所在マップ（2026-08-23 に global writing-ecosystem から移設）
+
+**この節は「どこに実値があるか」だけを示す。値そのものは書かない** — 地図が値を持ったら
+それ自体が次の重複源になる。層の梯子と例外の類型（global な原則）は
+`~/.claude/skills/writing-ecosystem/SKILL.md`「値の所在マップ」が持つ。
+
+| 判断 | 実値を持つ唯一の場所 | 層 | consumer に cross-model を含むか |
+|---|---|---|---|
+| チャンネル→文体・声・レビュー agent | 本ファイル「チャンネル表」 | **常駐** | ○（codex には呼び出し prompt で渡す） |
+| タイトル文字数・投稿ペース・レートリミット・固有用語 | 本ファイル | **常駐** | — |
+| AI slop 禁止語・craft・段落密度・専門用語の緩和策・タイトル原則・エッセイ 4 段構成 | global `writing-ecosystem` skill | 発火時 | ○ |
+| テーマ強度の質問セット | `theme-eval` skill | 発火時 | — |
+| タイトル判定の質問セット | `title-eval` skill | 発火時 | — |
+| 記事品質の質問セット | `refs/kaguura-craft-checklist.md` §A/§B | Read 要 | — |
+| 改稿ループの制御（上限・実行位置・凍結後の再実行） | `writing-team` skill | 発火時 | — |
+| 公開ブロック条件と PASS/FAIL | `quality-gate` skill | 発火時 | — |
+| topics・emoji の選定基準と提案フロー | `zenn-format` skill | 発火時 | — |
+| 造語閾値 | `zenn-clarity-reviewer` agent | **agent 常駐** | — |
+| 出典ブロックの構成規則 | `fact-checker` agent | **agent 常駐** | — |
+| エッセイ 4 段の検査・論点数の上限 | `essay-reviewer` agent | **agent 常駐** | — |
+| Dev.to のタグ方針・エラーリカバリ・固有変換・翻訳セルフチェック | `devto-translator` agent | **agent 常駐** | — |
+| 決定論チェックの閾値・語リスト | `scripts/mechanical_checks.py` | コード | — |
+| `published_at` の必須性・索引生成契約 | `scripts/generate_article_index.py` | コード | — |
+| note/Substack の貼り付け HTML 生成 | `scripts/render_note_assets.sh` | コード | — |
+| 台帳スキーマ | `refs/schedule-schema.md` | Read 要 | — |
 
 ## Dev.to クロスポスト規約（EN 記事）
 

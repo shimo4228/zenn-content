@@ -23,6 +23,10 @@ origin: shimo4228
 - 記事本文（凍結稿）と core claim 1 文
 - タイトル候補 3〜6 本（headline-craft の手順で生成。現行タイトルがあれば必ず含める）
 - チャンネル（note = フィード軸 / Zenn = 検索・フィード両軸 + 文字数上限あり（値は project rules） / Dev.to = EN フィード軸）
+- **Zenn/Dev.to のときだけ足す所見 2 点**（2026-08-23 に `seo-optimizer` から移管）:
+  - **主要キーワードの自然な含有** — 検索軸の判定材料。語の選び直しは可、意味は変えない（ADR-0001）
+  - **自チャンネル実測の参照** — memory `article-quality.md`（品質ランク × 実測 tier、乖離パターン）を読み、
+    2 軸判定（検索寄せ / フィード寄せ）の参考にする。**事実として使い、推薦理由にはしない**
 
 ## Step 1 — 候補ごとの二値チェック（各 1 行証拠必須）
 
@@ -52,7 +56,7 @@ origin: shimo4228
 
 ## 配線
 
-- writing-team Mission A の **step 12 が本 skill 自身**（本文凍結後・公開直前）。Zenn/Dev.to では title 確定後に、同 step の続きで `seo-optimizer` が topics・emoji を扱う。note エッセイは seo-optimizer を通らないので title-eval 単体で回す
+- writing-team Mission A の **step 11 が本 skill 自身**（本文凍結後・公開直前）。Zenn/Dev.to では title 確定後に、同 step の続きで `zenn-format`「Topics / Emoji の提案フロー」が topics・emoji を扱う。note エッセイは topics・emoji を持たないので title-eval 単体で回す
 - 判定は article-judge と同様 fresh agent で実行し、判定器の対抗タイトルも著者への提示に含める（判定器の生成物も候補プールに入れてよい — 選ぶのは著者）
 
 ## Related
@@ -60,4 +64,4 @@ origin: shimo4228
 - `~/.claude/skills/headline-craft/SKILL.md` — 候補生成（技法カタログ・流入 2 軸）
 - `~/.claude/skills/writing-ecosystem/SKILL.md` — Title Conventions（規範）
 - `.claude/skills/theme-eval/SKILL.md` / `.claude/agents/article-judge.md` — 同形式の既存 2 判定器
-- `.claude/skills/seo-optimizer/SKILL.md` — Zenn の topics/emoji（本 skill はタイトル判定のみ）
+- `.claude/skills/zenn-format/SKILL.md` — Zenn の topics/emoji の基準と提案フロー（本 skill はタイトル判定のみ）

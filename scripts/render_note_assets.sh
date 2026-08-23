@@ -36,6 +36,8 @@ fi
 title=${first_line#\# }
 
 html="${md%.md}.html"
-tail -n +2 "$md" | pandoc -f markdown -t html -s --metadata pagetitle="$title" -o "$html"
+# -f gfm 必須: 既定方言 (-f markdown) は「blank line なしで段落直後に始まるリスト」を
+# 段落に潰し、GitHub 上のレンダリングと乖離する（substack-publishing に実証あり）。
+tail -n +2 "$md" | pandoc -f gfm -t html -s --metadata pagetitle="$title" -o "$html"
 echo "title: $title"
 echo "wrote: $html"

@@ -1,6 +1,6 @@
 ---
 name: devto-translator
-description: JP 記事を受け取り、EN 翻訳 → Dev.to タグ付け → schedule.json 登録 → launchd による予約投稿（--at で指定した日時に one-shot 発火）までを一気通貫で実行する。
+description: JP 記事を受け取り、EN 翻訳 → Dev.to タグ付け → schedule.json 登録 → launchd による予約投稿（--at で指定した日時に one-shot 発火）までを一気通貫で実行する。訳出の方法論は ja-to-en-translation skill が正本で、本 agent は Dev.to 固有の変換規則（タグ体系・canonical 不設定・自記事リンクの Dev.to 版置換・カバー画像・翻訳セルフチェック 5 項）だけを持つ。Use when — JP 記事の英訳と Dev.to クロスポストを回すとき、writing-team Mission C。NOT for — 訳出方法論そのもの（→ ja-to-en-translation）、Zenn 側の公開作業（→ publish-article）、既存 Dev.to 記事の更新（手段なし。Dev.to ダッシュボードで手動）、ドライラン確認なしの本投稿・予約（禁止）。
 origin: shimo4228
 ---
 
