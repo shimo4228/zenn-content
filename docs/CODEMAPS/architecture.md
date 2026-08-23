@@ -39,14 +39,15 @@ zenn-content/
 │   ├── metrics_snapshot.py        Zenn / Dev.to reception snapshots → metrics/
 │   └── tests/                     pytest (104 tests)
 ├── docs/              PUBLICATIONS.md (generated index), CODEMAPS, adr/, translation-glossary
-├── .claude/           project skills (15), agents (3), rules, refs
+├── .claude/           project platform skills (4), agent (1), publishing contract, refs
 └── .github/workflows/ validate.yml (zenn frontmatter check, push/PR to main)
 ```
 
 ## Agents
 
-Project agents (3): `devto-translator` (JP→EN + Dev.to), `zenn-clarity-reviewer` (first-contact clarity), `theme-reviewer` (pre-writing theme review, no verdict — ADR-0011). Drafting is done by the orchestrator, not a subagent.
-Review agents are global (`~/.claude/agents/`): `editor`, `essay-reviewer`, `fact-checker`.
+Project agent: `devto-translator` (Dev.to-specific draft conversion; publishing remains a separate gated step). Drafting is done by the
+orchestrator, not a subagent. Global writing agents are `theme-reviewer`, `editor`, `essay-reviewer`,
+`prose-clarity-reviewer`, and `fact-checker`; global `writing-ecosystem` owns their sequence.
 
 ## Toolchain
 - **Validation**: `zenn list:articles` (frontmatter check) via `npm run validate`.

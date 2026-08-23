@@ -53,11 +53,13 @@ Accountability architecture and practical observability for agents that act on t
 
 ## How the corpus is made
 
-Articles are written from real sessions with Claude Code as collaborator — it reviews, fact-checks, translates, and cross-posts; the author writes and decides. The harness that does this is in `.claude/` and is itself part of what the articles describe:
+Articles are written from real sessions with Claude Code as collaborator — it reviews, fact-checks,
+translates, and cross-posts; the author writes and decides. Human prose uses the global
+`writing-ecosystem` flow: one central thesis, one causal spine, selected evidence, an explicit cut list,
+title judgment, a reviewer panel, and an author publication decision.
 
-- [`zenn-practical-writing`](.claude/skills/zenn-practical-writing/SKILL.md) — the default voice for every article (practical axis: usable in seconds, reproducible by hand)
-- [`writing-team`](.claude/skills/writing-team/SKILL.md) — orchestrates the review loop (editor · fact-checker · clarity reviewer · article judge)
-- [`theme-eval`](.claude/skills/theme-eval/SKILL.md) — rates the theme before and after drafting, because a weak question caps the article
+- [Publication channel contract](.claude/rules/publishing-channels.md) — Zenn / Dev.to / note / Substack audience, format, review, and handoff values
+- [Project publishing skills](.claude/skills/) — Zenn format, platform publishing, and post-publication measurement only
 - Conventions and review workflow: [CLAUDE.md](CLAUDE.md) · publishing pipeline: [docs/CODEMAPS/scripts.md](docs/CODEMAPS/scripts.md)
 
 ```bash

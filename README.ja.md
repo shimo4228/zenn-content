@@ -53,11 +53,13 @@ LLM-as-judge の設計、別モデルによるレビュー、そして「レビ�
 
 ## どうやって書いているか
 
-記事は実セッションから、Claude Code を協働者として書いています。レビュー・ファクトチェック・翻訳・クロスポストは Claude Code が担い、書くことと決めることは著者が担います。その仕組みは `.claude/` にあり、それ自体が記事の題材でもあります:
+記事は実セッションから、Claude Code を協働者として書いています。レビュー・ファクトチェック・
+翻訳・クロスポストはClaude Codeが担い、書くことと決めることは著者が担います。人間向け文章は
+global `writing-ecosystem`の一つの流れで、中心命題、因果線、採用証拠、切り捨てる論点、タイトル
+判定、review panel、著者の公開判断まで進みます。
 
-- [`zenn-practical-writing`](.claude/skills/zenn-practical-writing/SKILL.md) — 全記事の既定の声（実用軸: 数秒で何かわかり、そのまま手を動かせる）
-- [`writing-team`](.claude/skills/writing-team/SKILL.md) — レビューループの指揮（editor · fact-checker · clarity reviewer · article judge）
-- [`theme-eval`](.claude/skills/theme-eval/SKILL.md) — 執筆前と完成稿の 2 時点でテーマを判定（弱い問いは記事の上限を決めるため）
+- [媒体contract](.claude/rules/publishing-channels.md) — Zenn / Dev.to / note / Substackの読者・形式・review・handoff
+- [project-local publishing skills](.claude/skills/) — Zenn形式、媒体公開、公開後計測だけ
 - 規約とレビュー手順: [CLAUDE.md](CLAUDE.md) · 公開パイプライン: [docs/CODEMAPS/scripts.md](docs/CODEMAPS/scripts.md)
 
 ```bash

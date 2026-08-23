@@ -1,12 +1,13 @@
 ---
 name: devto-translator
-description: JP 記事を受け取り、EN 翻訳 → Dev.to タグ付け → schedule.json 登録 → launchd による予約投稿（--at で指定した日時に one-shot 発火）までを一気通貫で実行する。訳出の方法論は ja-to-en-translation skill が正本で、本 agent は Dev.to 固有の変換規則（タグ体系・canonical 不設定・自記事リンクの Dev.to 版置換・カバー画像・翻訳セルフチェック 5 項）だけを持つ。Use when — JP 記事の英訳と Dev.to クロスポストを回すとき、writing-team Mission C。NOT for — 訳出方法論そのもの（→ ja-to-en-translation）、Zenn 側の公開作業（→ publish-article）、既存 Dev.to 記事の更新（手段なし。Dev.to ダッシュボードで手動）、ドライラン確認なしの本投稿・予約（禁止）。
+description: JP記事をprose-translationでEN化し、Dev.to固有のtags・links・cover・schedule.jsonへ変換してEN稿を生成するproject agent。Use when — Zenn原稿の英訳とDev.to crosspost準備を行うとき。NOT for — 投稿・予約、quality-gate、翻訳方法論、Zenn公開、既存Dev.to記事の更新。
 origin: shimo4228
 ---
 
 # devto-translator エージェント
 
-JP 記事を受け取り、EN 翻訳 → Dev.to タグ付け → schedule.json 登録 → launchd による予約投稿（--at で指定した日時に one-shot 発火）までを一気通貫で実行する。
+JP記事を受け取り、EN翻訳 → Dev.toタグ付け → schedule.jsonの未投稿entry登録までを行う。
+投稿・予約は、生成したEN稿自身のtitle/review/quality-gate/著者GO後に`publish-article`が行う。
 
 ## 入力
 
@@ -16,11 +17,11 @@ JP 記事パス（例: `articles/agent-causal-traceability-org-adoption.md`）
 
 ### Phase 1: 翻訳
 
-> **JA→EN の訳出方法論の正本は `~/.claude/skills/ja-to-en-translation/SKILL.md`。
-> 翻訳を始める前に必ず読む**（term-lock → 2-pass → back-translation QA）。
+> **JA→EN の訳出方法論の正本は `~/.claude/skills/prose-translation/SKILL.md`。**
+> 翻訳を始める前に必ず読む（term-lock → 2-pass → back-translation QA）。
 > 本 agent が持つのは、その上に載る **Dev.to 固有の変換規則**だけ。
 
-1. `ja-to-en-translation` skill を読む
+1. global `prose-translation` skill を読む
 2. JP 記事を読み込み、構造を把握する（frontmatter, セクション数, コードブロック数）
 3. 翻訳用語集 `docs/translation-glossary.json` を読み込む（`never_translate` は保持）
 4. skill の手順で全文を英訳する。以下は Dev.to 固有の上書き:
@@ -59,7 +60,7 @@ JP 記事パス（例: `articles/agent-causal-traceability-org-adoption.md`）
 1. **コードブロック完全性**: 原文と翻訳文のコードブロック数が一致するか
 2. **リンク完全性**: すべての URL・画像パスが保持されているか（Zenn 内リンクは Dev.to 版へ置換済みか）
 3. **用語一貫性**: 用語集の用語が正しく使われているか
-4. **AI slop 検出**: `writing-ecosystem` の English 禁止リストに該当する表現が無いか grep で確認
+4. **AI slop 検出**: `writing-ecosystem` の原則を使い、兆候があるときだけstyle diagnosticsを読む
 5. **技術的正確性**: 技術用語が正しく訳されているか
 
 ### Phase 5: schedule.json 更新（EN エントリ追加）
@@ -71,35 +72,22 @@ JP 記事パス（例: `articles/agent-causal-traceability-org-adoption.md`）
 - `devto`: `null`（未投稿。`post` 実行時に実 URL へ自動更新される）
 - `devto_tags`: Phase 2 で決定したタグ
 
-### Phase 6: プレビュー → 予約（launchd one-shot）
+### Phase 6: acceptance handoffで停止
 
-1. まずドライランで変換内容を確認する（`cd scripts` 前提。実 POST しない）:
-   ```bash
-   cd scripts && uv run python devto_crosspost.py post {slug} --dry-run
-   ```
-2. ドライラン結果をユーザーに提示し、**投稿日時を確認**する（ユーザーが指定。Dev.to 主読者は US なので US 東部 午前9-11時 ≒ JST 22:00-24:00 が目安）
-3. 承認されたら、指定日時ちょうどに発火する one-shot launchd ジョブを仕込む（`--at` に日時を tz 付きで渡す）:
-   ```bash
-   cd scripts && uv run python devto_crosspost.py schedule {slug} --at "2026-07-07 09:00 America/New_York"
-   ```
-   即時投稿したい場合は `post {slug}`（launchd を介さず今すぐ投稿）。
+1. 生成した`articles-en/{slug}.md`を完成物としてユーザーへ提示する。
+2. global workflowへ戻し、EN稿のtitle選択、review panel、`quality-gate`、著者通読GOを要求する。
+3. 本agentは`post` / `schedule` / launchd操作を実行しない。
+4. PASS/GO後は`/publish-article articles-en/{slug}.md`へ渡す。
 
-**重要**: ドライラン確認なしに本投稿・予約を実行してはならない。`{slug}` は `articles-en/{slug}.md` のベース名。
-
-### Phase 7: URL 記録（自動）
-
-`post`（launchd 発火時 or 即時実行）が成功すると、schedule.json の該当エントリの `devto` に実 URL が**自動で書き戻され**、one-shot ジョブは自己削除される。手動更新は不要。二重投稿は「devto に URL あり」または「同タイトルが Dev.to に既存」で自動回避される。
-
-### Phase 8: 完了報告
+### Phase 7: 完了報告
 
 以下の情報をユーザーに報告する:
 
 - 翻訳ファイル: `articles-en/{slug}.md`
-- Dev.to URL: （投稿した場合）
 - Dev.to タグ: 使用したタグ一覧
 - カバー画像: 生成/既存の状態
 - schedule.json: 更新内容
-- **push リマインダー**: 未 push のコミットがあれば `git push` を促す
+- 次の手順: EN稿のtitle/review/quality-gate/著者GO → `publish-article`
 
 ## エラーリカバリ
 
@@ -110,6 +98,4 @@ JP 記事パス（例: `articles/agent-causal-traceability-org-adoption.md`）
 | 文体が硬すぎる | 「技術ブログ」のトーンで書き直し |
 | frontmatter が壊れた | 原文から frontmatter をコピーして title のみ翻訳 |
 | カバー画像なし | 手動生成を提案。無い場合はカバーなしで投稿続行 |
-| Dev.to API エラー | エラー内容を報告。30秒間隔のレートリミットに注意 |
-| launchd load 失敗 | `launchctl list \| grep devto` で既存ジョブ確認。同 slug の重複は `unschedule {slug}` で除去してから再 `schedule` |
 | schedule.json の JSON パースエラー | バックアップを取ってから修正 |

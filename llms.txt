@@ -35,11 +35,10 @@ Zenn (JP) publishing is not scripted — it uses Zenn's native `published_at` fr
 
 ## Claude Code integration
 
-- [.claude/rules/content-integrity.md](.claude/rules/content-integrity.md): Content Integrity principle (content decided by author, distribution optimized without changing content)
-- [.claude/rules/zenn-writing.md](.claude/rules/zenn-writing.md): Zenn platform overlay (title length, frontmatter, :::message conventions)
-- [.claude/skills/zenn-practical-writing/SKILL.md](.claude/skills/zenn-practical-writing/SKILL.md): default voice for all Zenn/Dev.to articles (practical axis, not split by tech/idea); drafting is done directly by the orchestrator, not delegated to a subagent
-- [.claude/agents/devto-translator.md](.claude/agents/devto-translator.md): JP→EN translator + Dev.to publisher
-- [.claude/refs/translation-rules.md](.claude/refs/translation-rules.md): JP→EN translation standards
+- [Publication channel contract](.claude/rules/publishing-channels.md): Zenn / Dev.to / note / Substack path, audience, register, review panel, validation, title constraints, and publish handoff
+- [Project skills](.claude/skills/): platform format and publishing (`zenn-format`, `publish-article`, `substack-publishing`) plus local reception measurement (`article-stocktake`)
+- Global writing harness: `writing-ecosystem`, `title-eval`, `quality-gate`, `theme-reviewer`, and `prose-clarity-reviewer` under `~/.claude/`
+- [.claude/agents/devto-translator.md](.claude/agents/devto-translator.md): JP→EN translation and Dev.to-specific draft preparation; publishing is a separate gated step
 - [.claude/refs/schedule-schema.md](.claude/refs/schedule-schema.md): schedule.json schema
 
 ## Research ecosystem

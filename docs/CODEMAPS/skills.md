@@ -1,42 +1,45 @@
-<!-- Generated: 2026-08-02 | Skills: 15, Project agents: 3 | Token estimate: ~500 -->
-# Claude Code Skills & Agents
+<!-- Generated: 2026-08-23 | Project skills: 4 | Project agents: 1 -->
+# Writing Harness Skills & Agents
 
-## Project Skills (.claude/skills/)
+## Global writing layer (`~/.claude`)
 
-| Skill | Purpose |
-|-------|---------|
-| `writing-team` | Orchestrator (PM): mission triage → team assembly → quality gate |
-| `zenn-practical-writing` | Default voice and structure for all Zenn/Dev.to articles (実用軸; environment-dependent changes use human narrative → agent handoff) |
-| `zenn-idea-voice` | Opt-in personality flavor (毒humor / 刃牙 references) |
-| `zenn-format` | Zenn frontmatter / markdown / emoji / topics — canonical reference |
-| `ideation` | Theme exploration & ideation |
-| `publish-article` | Pre-publish checklist + cross-post procedure |
-| `zenn-format` | Frontmatter / notation + topics·emoji proposal flow (Content Integrity: no intro rewrites) |
-| `quality-gate` | Unified quality standard across all paths |
-| `article-stocktake` | Post-publication eval loop: real metrics (Zenn/Dev.to) × quality rank divergence (ADR-0005) |
+| Asset | Responsibility |
+|---|---|
+| `writing-ecosystem` | Sole human-prose orchestrator: theme → one-thesis brief → draft → title → review → acceptance |
+| `session-theme-mining` | Finds 0–3 evidence-backed questions from past sessions; author selects |
+| `collect-context` | Builds the evidence dossier; does not choose what enters the draft |
+| `headline-craft` / `title-eval` | Generate title candidates / judge them against the frozen draft |
+| `quality-gate` | Aggregates the project channel contract into PASS / FAIL / BLOCKED |
+| `theme-reviewer` | Pre-write findings and deepening questions; no verdict |
+| `editor` / `essay-reviewer` | Practical-channel / essay-channel review |
+| `prose-clarity-reviewer` | First-contact clarity, title-axis, and insider-context review |
+| `fact-checker` | Web verification of factual claims |
 
-> `zenn-writer` (voice router), `chatlog-to-article`, `content-research-writer` were retired — see ADR-0003 and its 2026-07-06 addendum.
+## Project-local layer
 
-## Project Agents (.claude/agents/)
+| Asset | Responsibility |
+|---|---|
+| `publishing-channels.md` | Path, audience, register, panel, validator, title constraint, publish handoff |
+| `zenn-format` | Zenn frontmatter, topics / emoji, Zenn Markdown |
+| `publish-article` | Zenn / Dev.to preview, scheduling, index, and push boundary |
+| `substack-publishing` | note / Substack HTML paste, publication, and corpus mirror |
+| `article-stocktake` | Zenn / Dev.to reception measurement; reports and stops |
+| `devto-translator` | Dev.to-specific translation conversion; stops before review, gate, and publishing |
 
-| Agent | Purpose |
-|-------|---------|
-| `devto-translator` | JP→EN translation + Dev.to publishing (one-shot launchd scheduling) |
-| `zenn-clarity-reviewer` | First-contact reader clarity review (coined-term budget / title-axis / insider-context). Blocking gate — FAIL blocks publish (ADR-0004) |
+## Data flow
 
-> `editor`, `essay-reviewer`, `fact-checker` were **promoted to global** (`~/.claude/agents/`) on 2026-04-18. `zenn-drafter` was retired (ADR-0003 — writing is done by the orchestrator itself). Shared writing standards live in the global `writing-ecosystem` skill.
+```text
+session-theme-mining (optional) → author selection → theme-reviewer
+  → collect-context (optional evidence dossier)
+  → writing-ecosystem editorial brief: one thesis + causal spine + selected evidence + cut list
+  → orchestrator draft → headline-craft → title-eval
+  → channel editor + prose-clarity-reviewer + fact-checker + codex-review
+  → quality-gate reads publishing-channels.md → author GO
+  → project-local publisher
 
-## Workflow
-
+Post-publication:
+  metrics_snapshot.py → article-stocktake → author-facing observation report (stop)
 ```
-zenn-editorial-judgment (type + human how-to / agent handoff decision)
-  → Draft (orchestrator writes directly, per zenn-practical-writing;
-       environment-dependent changes: human narrative → read-only agent plan)
-  → editor + fact-checker + zenn-clarity-reviewer + codex-review (parallel review)
-  → human approval → published_at → git push (Zenn native schedule)
-  → devto-translator (EN) → devto_crosspost.py schedule (one-shot launchd)
 
-Post-publication (monthly, human-driven):
-  metrics_snapshot.py → article-stocktake (rank × tier divergence)
-  → memory article-quality.md → ideation (fact source) / zenn-format (distribution)
-```
+A structural review fix invalidates the brief and title verdict. Copy edits do not. ADRs, memory, and raw
+session history are not writing-time rules.

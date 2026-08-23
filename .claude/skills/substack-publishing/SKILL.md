@@ -1,6 +1,6 @@
 ---
 name: substack-publishing
-description: 完成・レビュー済みの human essay を Substack に公開し、LLM 発見のために corpus へミラーするワークフロー。Substack が raw Markdown 非対応なための MD→HTML rich-text paste、Title/Subtitle/body のフィールド分け、タグ戦略（archive 用 ≠ 拡散用）、カバー画像プロンプトの作り方、Claude in Chrome によるエディタ自動操作（OS クリップボードへの HTML flavor 直接セット + cmd+V）、公開後の content repo `substack/` フォルダへのミラー + research repo からの cross-link、公開後の配信ファネル運用（Notes 3 型・organic recommendations・welcome email・ケイデンス）を扱う。Voice / AI-slop / Title / 出典は writing-ecosystem、翻訳は ja-to-en-translation に defer。essay を Substack に出すとき・Substack の配信運用を考えるときに使う。
+description: 完成・レビュー済みのhuman essayをnote/SubstackへHTML pasteで公開し、project corpusへmirrorするlocal workflow。Voice / AI-slop / Title / 出典はglobal writing-ecosystem、翻訳はprose-translationにdefer。Use when — note/Substackへ手動投稿・mirror・配信運用するとき。NOT for — 執筆、翻訳、quality判定。
 user-invocable: true
 origin: shimo4228
 ---
@@ -11,12 +11,13 @@ origin: shimo4228
 
 ## いつ使うか
 
-writing-ecosystem の review 通過後。**Substack は英語チャンネル**（2026-08-12 改定）: 日本語アイデアエッセイの正本（初出）は content repo の `note/`（note.com へ手動投稿）で、Substack へはその正本を `ja-to-en-translation` で訳した EN 版を出す。旧モデル（Substack 初出 → note 転載）は廃止。
+global `quality-gate` PASSと著者GOの後に使う。日本語正本は`note/`、Substackへは
+`prose-translation`で訳したEN版を出す。
 
 ## defer 先（本 skill では再掲しない）
 
 - Voice / AI-slop / Title 規約 / 出典編入（Citation & Sources Workflow）→ `writing-ecosystem`
-- JA→EN 翻訳 → `ja-to-en-translation`
+- JA→EN 翻訳 → `prose-translation`
 
 ## 1. Substack は raw Markdown を変換しない
 
@@ -177,7 +178,7 @@ EN 版の初出は Substack、JA 正本は content repo の `note/`（note.com �
 draft (writing-ecosystem) — JA 正本は content repo の note/ に置き、note.com へ手動投稿
   → review (チャンネル表のレビュー agent + fact-checker + 明瞭性レビュー + cross-model レビュー)
   → 出典編入 (writing-ecosystem: Citation & Sources Workflow)
-  → translate (ja-to-en-translation) — note 正本から EN 版を作る（Substack は EN チャンネル）
+  → translate (prose-translation) — note 正本から EN 版を作る（Substack は EN チャンネル）
   → substack-publishing ←ここ
       ├ MD→HTML 変換 → Substack に貼る（Title / Subtitle / body 分け）
       ├ タグ spine + カバー画像プロンプト
@@ -187,5 +188,5 @@ draft (writing-ecosystem) — JA 正本は content repo の note/ に置き、no
 ## Related
 
 - `writing-ecosystem` skill — 執筆・レビューの orchestrator（Voice / AI-slop / Title / 出典の正本。本 skill の defer 先）
-- `ja-to-en-translation` skill — bilingual 公開時の JA→EN 翻訳
+- global `prose-translation` skill — bilingual公開時のJA→EN翻訳
 - `paper-deposit` skill — 学術 paper を Zenodo / SSRN に出す姉妹ワークフロー（human essay ではなく academic 向け）

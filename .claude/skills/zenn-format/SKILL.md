@@ -1,198 +1,125 @@
 ---
 name: zenn-format
-description: Zenn 記事の frontmatter・記法・テンプレートの正本。emoji/topics の選定基準と、公開直前の topics・emoji 提案フロー（Distribution 層のみ、内容は変えない）、Zenn 固有の Markdown 記法（コードブロックの diff/ファイル名指定・`:::message`・埋め込み・内部リンク）を扱う。汎用の Markdown 作法は持たない。文体・執筆プロセスは扱わない（zenn-practical-writing / zenn-idea-voice を参照）。
+description: Zenn記事のfrontmatter、emoji/topics、Zenn固有Markdown記法の正本。Use when — Zenn原稿を作成・検証するとき、本文凍結後にtopics/emoji候補を提示するとき。NOT for — 執筆構成・voice・タイトル判定・公開可否・Dev.to/note/Substack形式。
 user-invocable: true
 origin: shimo4228
 ---
 
 # Zenn Format Skill
 
-**Purpose:** Zenn 記事の形式・記法・テンプレートのリファレンス。
-文体・執筆プロセスは [zenn-practical-writing](../zenn-practical-writing/SKILL.md) が正本（任意の personality flavor は [zenn-idea-voice](../zenn-idea-voice/SKILL.md)）。
+文体と執筆プロセスはglobal `writing-ecosystem`、titleはglobal `title-eval`、channel値は
+`.claude/rules/publishing-channels.md`、公開操作は`publish-article`が持つ。
 
----
+## Frontmatter
 
-## Zenn Article Format
-
-### Frontmatter Template
-
-Every Zenn article MUST start with YAML frontmatter:
+draft template:
 
 ```markdown
 ---
-title: "Your Article Title"  # 文字数は .claude/rules/zenn-writing.md が正本
+title: "Your Article Title"
 emoji: "📚"
-type: "tech"  # "tech" or "idea"
-topics: ["claude", "anki", "ai", "python", "tdd"]  # 1-5 tags, lowercase
-published: true  # false for draft
+type: "tech"
+topics: ["claude", "ai", "python"]
+published: false
 ---
 
-# Article content starts here
+## 最初の見出し
 ```
 
-### Frontmatter Fields
+本文見出しはH2から始める。公開時は`published: true`と`published_at`を設定する。
 
-| Field | Required | Description | Examples |
-|-------|----------|-------------|----------|
-| `title` | ✅ | Article title（文字数上限の正本: `.claude/rules/zenn-writing.md`「タイトル文字数上限」） | "TDD で作る pdf2anki の品質保証パイプライン" |
-| `emoji` | ✅ | Single emoji representing the article | "📚", "🔬", "🤖", "⚡" |
-| `type` | ✅ | Article type | `"tech"` (technical) or `"idea"` (opinion/essay) |
-| `topics` | ✅ | 1-5 tags (lowercase, no spaces) | `["claude", "anki", "python", "tdd"]` |
-| `published` | ✅ | Publication status | `true` (public) or `false` (draft) |
-| `published_at` | **Required when `published: true`** | Scheduled publish time (Zenn-specific)。公開記事で欠けていると `scripts/generate_article_index.py` が `ValueError` を投げ索引生成が止まる（ADR-0009）。フォーマットと罠: `.claude/rules/zenn-writing.md` | `2026-04-15 07:00` (JST) |
+| Field | Requirement |
+|---|---|
+| `title` | required。文字数はchannel contract |
+| `emoji` | required、single emoji |
+| `type` | required、`tech`または`idea`。voice分岐には使わない |
+| `topics` | required、lowercase 1〜5件 |
+| `published` | required、boolean |
+| `published_at` | `published: true`でrequired。`YYYY-MM-DD HH:MM` JST |
 
-### Emoji Selection
+## Emoji and topics
 
-> emoji・topics は**基準も提案フローもこのスキルが正本**（2026-08-23 に `seo-optimizer` を Retire し、
-> 分かれていた提案フローをここへ統合 — 基準の唯一の消費者だったため。提案フローは下記「Topics / Emoji の提案フロー」）。
+emojiは記事の主対象を示す一つを選ぶ。
 
-| Theme | Recommended Emojis |
-|-------|-------------------|
-| AI/LLM | 🤖, 🧠, 💬, ✨ |
-| Anki/Learning | 📚, 🎓, 🔖, 📝 |
-| Testing/Quality | 🔬, ✅, 🧪, 🎯 |
-| Development | ⚙️, 🛠️, 💻, 🏗️ |
-| Performance | ⚡, 🚀, 📊, 🔥 |
-| Architecture | 🏛️, 🗺️, 🧩, 🌐 |
+| Theme | Candidates |
+|---|---|
+| AI / LLM | 🤖, 🧠, 💬 |
+| Learning | 📚, 🎓, 📝 |
+| Testing | 🔬, ✅, 🧪 |
+| Development | ⚙️, 🛠️, 💻 |
+| Performance | ⚡, 📊 |
+| Architecture | 🏛️, 🧩, 🌐 |
 
-### Topics (Tags)
+topics:
 
-**Common tags:**
-- `claude` - Claude AI / Claude Code
-- `anki` - Anki flashcard system
-- `python` - Python programming
-- `tdd` - Test-Driven Development
-- `cli` - Command-line tools
-- `automation` - Workflow automation
+- 1〜5件。具体性があるなら5件まで使う
+- 主題に最も近い製品名・技術名を優先する
+- `ai` / `llm`のような一般語だけで埋めない
+- `https://zenn.dev/topics/<tag>`で実在と現在の使用を確認する
+- 記事数の多さだけで選ばず、対象読者との一致を優先する
 
-**Tag guidelines:**
-- **上限の5個まで使い切る**（3-4個に留めない）。5個埋まる具体性があるなら埋める
-- 最も具体的なタグから優先する
-- 言語・フレームワークが関係するなら含める（`python`, `typescript`）
-- **定着しているか実際に確認する**（`https://zenn.dev/topics/<tag>` を確認し、記事数0や存在しないタグを弾く）
-- **記事数が多すぎる汎用タグより、記事の核に近いニッチなタグを優先する**（例: 記事の主題が「ハーネスへの組み込み」なら、母数の大きい `openai`（数千記事）より的を絞った `harness`（数十〜百記事）の方が、対象読者に届きやすく埋もれにくい）。定着している（0記事ではない）ことは要件だが、記事数が多いことは優先理由にならない
-- **`ai` / `llm` のような一般名すぎるタグは単独で使わない**（検索性・差別化に寄与しない）。同じ概念を指すならより具体的な語（製品名・技術名・`skills` 等の機能カテゴリ）に置き換える
+本文凍結とtitle選択の後、現在値と候補をdiffで提示する。topics / emojiはdistributionだけを
+変え、本文・中心命題・見出しを書き換えない。最終選択は著者が行う。
 
-### Topics / Emoji の提案フロー
+## Zenn Markdown
 
-公開直前（本文凍結後、`title-eval` でタイトルを確定した後）に、既存記事の topics・emoji を
-見直すときの手順。**Distribution レイヤーのみ** — 本文・冒頭文は変えない（ADR-0001、
-`.claude/rules/content-integrity.md`）。
+### Code blocks
 
-1. 現在の topics / emoji を、上の Tag guidelines と Emoji Selection に照らして評価する（違反は指摘）
-2. 差し替え候補を **diff 形式**（現在 → 提案）で提示し、各項目に理由を 1 行添える
-3. **最終判断は著者に委ねる** — 選択肢を提示するだけで、確定はしない
-
-```markdown
-### Topics 提案
-- 現在: {current} → 提案: {proposed}
-- 理由: {why}
-
-### Emoji 提案
-- 現在: {current} → 提案: {proposed}
-- 理由: {why}
-```
-
-- SEO を理由にクリックベイトへ寄せない（誠実さ規約は `writing-ecosystem` の Title Conventions）
-- Zenn のトレンドは変化するので、提案は参考値として扱う（`https://zenn.dev/topics/<tag>` の実地確認が優先）
-
----
-
-## Article Structure Patterns
-
-> **2026-08-23 に削除。** 記事構成の正本は `zenn-practical-writing`「実用記事の構成テンプレート」。
-> 本スキルは記法・frontmatter だけを扱い、執筆プロセスには介入しない（冒頭の宣言どおり）。
-> 旧 3 パターンは実用軸の既定構成（一瞬でわかる → 掴み → 緊張 → 解決 → Higher Ground）と
-> 整合せず、Pattern 1 の `## 背景` は warm-up fluff として禁止されている側だった。
-
----
-
-## Zenn Markdown Syntax
-
-### Code Blocks
-
-Always specify language for syntax highlighting:
+languageを必ず指定し、必要なら先頭commentでpathを示す。
 
 ````markdown
 ```python
-def _tokenize(text: str) -> set[str]:
-    """Tokenize text for similarity comparison."""
-    tokens = re.split(r"[\s　、。？?！!,.\-:：]+", text)
-    return {t for t in tokens if len(t) >= 2}
+# src/auth/session.py:88
+def rotate_token(session: Session) -> Token:
+    ...
 ```
 ````
 
-Supported languages: `python`, `typescript`, `javascript`, `bash`, `json`, `yaml`, `markdown`, `diff`
-
-### File Path References
-
-Include file paths for code snippets:
-
-```markdown
-```python
-# src/pdf2anki/quality.py:322-329
-def _tokenize(text: str) -> set[str]:
-    ...
-```
-```
-
 ### Images
 
-Store images in `/images/` directory:
-
 ```markdown
-![Tokenization flow diagram](/images/tokenization-flow.png)
+![Tokenization flow](/images/tokenization-flow.png)
 ```
 
-**Image guidelines:**
-- Use descriptive filenames: `architecture-diagram.png` not `img1.png`
-- Sanitize screenshots: no personal paths, no API keys
-- Optimize for web: compress images, use PNG for diagrams, JPG for photos
+descriptive filenameを使い、個人path・key・credentialをsanitiseする。
 
 ### Links
 
+Zenn内部記事もfull URLを使う。
+
 ```markdown
-# External links
-[Anki公式サイト](https://apps.ankiweb.net/)
-
-# Internal links (within Zenn) — 規則の正本は .claude/rules/zenn-writing.md「内部リンク」
-[前回の記事](https://zenn.dev/shimo4228/articles/previous-article-slug)
-
-# Footnotes
-テキスト[^1]
-
-[^1]: 補足説明
+[前回の記事](https://zenn.dev/shimo4228/articles/previous-slug)
 ```
 
-### Message Boxes
+### Blocks
 
 ```markdown
 :::message
-重要な情報やヒント
+補足
 :::
 
 :::message alert
-警告や注意事項
+警告
 :::
 
-:::details 折りたたみ可能なセクション
-詳細情報をここに
+:::details 詳細
+補助情報
 :::
 ```
 
-> **汎用の Markdown / コード埋め込み作法はここに持たない**（2026-08-23 削除）。
-> 表の書き方・最小コードスニペット・前後比較の見せ方は、Claude が prompt なしで
-> 適用する一般作法で、Zenn 固有の情報ではなかった。記事としての見せ方の判断は
-> `zenn-practical-writing`（実用軸・低認知負荷）が正本。
+`details`は中心命題から外れた論点の退避先ではない。補助情報だけに使う。
 
-## Publishing Workflow
+## Validation and handoff
 
-公開前チェック（レビュー→セキュリティ→frontmatter→published_at→スケジュール→クロスポスト→push）の正本は [publish-article](../publish-article/SKILL.md)。ここでは再掲しない。
+```bash
+npm run validate
+```
 
----
+validation後の公開処理は`publish-article`へ渡す。
 
-## Related Resources
+## Related
 
-- [CLAUDE.md](../../../CLAUDE.md) - Writing guidelines and content standards
-- `~/.claude/agents/editor.md` - Technical review criteria（グローバル agent。プロジェクト外のため相対リンク不可）
-- [Zenn公式ドキュメント](https://zenn.dev/zenn/articles/markdown-guide) - Markdown syntax guide
+- `.claude/rules/publishing-channels.md`
+- global `writing-ecosystem` / `title-eval`
+- local `publish-article`
+- [Zenn Markdown Guide](https://zenn.dev/zenn/articles/markdown-guide)

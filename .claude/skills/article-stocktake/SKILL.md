@@ -1,6 +1,6 @@
 ---
 name: article-stocktake
-description: 公開済み記事の実測メトリクス（Zenn いいね / Dev.to reactions・views）を収集し、内容品質ランク（A/B/C）× 実測 tier の乖離を棚卸しして memory と ideation に還流する
+description: 公開済みZenn/Dev.to記事の実測メトリクスを収集し、内容品質ランクと実測tierの乖離をproject-localに報告する。Use when — 月次または記事2〜3本ごとの受信状況を確認するとき。NOT for — テーマ候補の生成・順位付け、本文改稿、媒体共通の執筆フロー。
 user-invocable: true
 origin: shimo4228
 ---
@@ -9,7 +9,7 @@ origin: shimo4228
 
 **Purpose:** 公開後の実測データで記事 Eval ループ（AKC の Measure phase）を回す。予測ではなく読者の実際の行動（いいね・reactions・views・フォロー）を ground truth とし、**内容品質と実測読者価値の乖離**を主シグナルとして企画・配信に還流する。
 
-> 根拠: [ADR-0005](../../../docs/adr/0005-post-publication-eval-loop.md)（公開前の予測型エンゲージメントレビュアーは不採用）
+予測ではなく、公開後に観測した読者行動だけを扱う。
 
 ---
 
@@ -49,8 +49,8 @@ memory の `article-quality.md` にある内容品質ランク（A/B/C）と突�
 
 | 乖離パターン | 示唆 | 還流先 |
 |---|---|---|
-| **A ランク × 実測下位** | 内容は良いが届いていない — タイトル・配信・タイミングの問題 | title-eval（タイトル）/ zenn-format（topics・emoji）/ 投稿タイミング（`.claude/rules/zenn-writing.md`「投稿ペース方針」） |
-| **B/C ランク × 実測上位** | 読者需要のあるテーマ・構造 | ideation の情報源（事実として） |
+| **A ランク × 実測下位** | 内容は良いが届いていない — タイトル・配信・タイミングの問題 | global `title-eval` / local `zenn-format` / `.claude/rules/publishing-channels.md` |
+| **B/C ランク × 実測上位** | 読者需要を示す観測 | 著者のnext-move reviewへ事実として提示 |
 
 一致セル（A×上位、C×下位）は正常動作なので列挙しない。各乖離記事に定性所見を 1 行添える（「タイトルが概念名のみで用途が見えない」等の具体観察）。
 
@@ -59,26 +59,28 @@ memory の `article-quality.md` にある内容品質ランク（A/B/C）と突�
 ランク・tier の更新案を提示し、**ユーザー確認後に** memory の `article-quality.md` を更新する:
 
 - 既存の A/B/C 表に **実測 tier 列と判定日**を追加（別軸並記。ランクと混ぜない）
-- 冒頭に「実測サマリ」節（届いたテーマ・構造の事実 3-5 行 + フォロワー推移 1 行）を置く — ideation Step 1 が読む前提の要約
+- 冒頭に「実測サマリ」節（届いたテーマ・構造の事実3〜5行 + follower推移1行）を置く
 
-### Step 5: 還流
+### Step 5: Report and stop
 
-- **企画へ**: ideation は Step 1 の情報源としてこのサマリを読む（推薦理由にはしない — ideation Notes の禁止条項は維持）
-- **配信へ**: A×下位 記事の Distribution 改善（リタイトル等）は title-eval（タイトル判定）と zenn-format（topics・emoji）の管轄で、ユーザーが個別に判断
+乖離表と実測サマリを著者へ提示して止まる。`session-theme-mining`を自動起動せず、候補の順位や
+推薦を作らない。著者は受信指標を「何を書くか・cadence・language placement」の判断に使えるが、
+既存の中心命題や本文を数字へ合わせて変形しない。A×下位のdistribution見直しはglobal
+`title-eval`とlocal `zenn-format`へ個別に渡す。
 
 ---
 
 ## Guardrails（Content Integrity）
 
-- **既存記事のエンゲージメント目的リライトを提案しない**（catchify bright-line、ADR-0001）。乖離が示すのは Distribution 層（タイトル語選び・タグ・タイミング）の改善余地か、次の企画の判断材料であり、本文改変ではない
-- 実測 tier を「テーマ推薦の理由」に使わない。ideation への還流は事実提示まで
+- **既存記事のエンゲージメント目的リライトを提案しない**。乖離が示すのはdistributionの改善余地か、著者が次に何を書くかを考えるための観測である
+- 実測tierから自動でテーマを推薦・順位付けしない
 - LLM による tier 判定は Step 4 の人間確認を通してのみ memory に固定される（LLM 単独の承認経路を作らない）
 
 ---
 
 ## Related
 
-- `scripts/metrics_snapshot.py` — 収集スクリプト（raw 値のみ。正規化はこの skill の責務）
-- memory `article-quality.md` — 内容ランク × 実測 tier の正本（非公開）
-- `.claude/skills/ideation/SKILL.md` — 還流先（Step 1 情報源）
-- `docs/adr/0005-post-publication-eval-loop.md` — 設計判断の記録
+- `scripts/metrics_snapshot.py` — raw値の収集
+- `scripts/metrics/snapshots.jsonl` — project-local observation record
+- memory `article-quality.md` — 内容ランクと実測tierのprivate working record
+- global `title-eval`; local `zenn-format`
