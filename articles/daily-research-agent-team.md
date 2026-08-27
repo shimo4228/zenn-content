@@ -176,3 +176,7 @@ Opus をオーケストレーターとして全工程に関与させるのは、
 この記事で紹介したシステムの全コードは GitHub で公開しています。
 
 https://github.com/shimo4228/claude-skill-daily-research
+
+## 関連リンク
+
+- [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/daily-research-agent-team.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります

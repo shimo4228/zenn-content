@@ -364,3 +364,4 @@ herdr は「tmux の後継」として見ると Zed と冗長に見えます。�
 - [iPhone公式アプリでClaude Codeを運用する](https://zenn.dev/shimo4228/articles/iphone-claude-code-remote-control) — 会話 UX 側の運用
 - [Cursor から Zed への移行記](https://zenn.dev/shimo4228/articles/cursor-to-zed-migration) — 本記事の Zed 環境の前提
 - [github.com/shimo4228](https://github.com/shimo4228) — 筆者の GitHub（エージェント関連のスキル・ツール置き場）
+- [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/herdr-agent-multiplexer.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります

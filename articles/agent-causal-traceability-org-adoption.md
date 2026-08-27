@@ -121,6 +121,10 @@ ADR-0015 を書き終えて、並べて眺めていて、あっ、と声が出�
 
 事故コストを先に払うか、後に払うか。どちらかでしか払わずに済ませる方法は、自分の知る限り、ない。
 
+## 関連リンク
+
+- [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/agent-causal-traceability-org-adoption.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります
+
 ---
 
 **参照**

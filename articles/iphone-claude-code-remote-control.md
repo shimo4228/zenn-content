@@ -325,3 +325,7 @@ fine-grained PAT（対象リポジトリと有効期限を限定できるアク�
 - [spawn-session skill（claude-harness）](https://github.com/shimo4228/claude-harness/blob/main/skills/spawn-session/SKILL.md) — 本記事の spawn 方式をスキル化したもの
 
 研究としての成果物（DOI 付き）は [github.com/shimo4228](https://github.com/shimo4228) に。
+
+## 関連リンク
+
+- [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/iphone-claude-code-remote-control.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります

@@ -115,6 +115,10 @@ AI エージェントも、この時間軸の中にいる。
 
 ブラックボックスの中身を問うことは重要だ。しかしそれと同じくらい、**なぜ見えないのか — 技術の限界か、ビジネスの都合か、社会の速度か — を分けて見る**ことが次の議論の土台になる。この3つを混ぜたまま「ブラックボックスは危険だ」と言っても、打ち手が見えない。分けて見れば、少なくとも打てる場所と打てない場所の区別はつく。
 
+## 関連リンク
+
+- [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/agent-blackbox-capitalism-timescale.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります
+
 ---
 
 [^1]: beren, "[Scaffolded LLMs as natural language computers](https://www.lesswrong.com/posts/43C3igfmMrE9Qoyfe/scaffolded-llms-as-natural-language-computers)", LessWrong, 2023

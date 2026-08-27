@@ -208,3 +208,4 @@ Addy Osmani は [Loop Engineering](https://addyo.substack.com/p/loop-engineering
 
 - [Addy Osmani, "Loop Engineering"](https://addyo.substack.com/p/loop-engineering)（書く役と検証する役の分離、人間の検証帯域が並列度の上限になるという議論の先行）
 - [筆者の GitHub](https://github.com/shimo4228)（本記事のハーネス関連の公開リポジトリ）
+- [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/ai-task-loop-judge-bottleneck.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります

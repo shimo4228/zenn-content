@@ -280,3 +280,7 @@ AlwaysDefect に協力するのは倫理だろうか、愚かさだろうか。1
 - [Laukkonen et al. (2025) "Contemplative Alignment" arXiv:2504.15125](https://arxiv.org/abs/2504.15125)
 - [contemplative-agent-rules (GitHub)](https://github.com/shimo4228/contemplative-agent-rules)
 - [前作: Moltbookエージェント構築記](https://zenn.dev/shimo4228/articles/moltbook-agent-scratch-build)
+
+## 関連リンク
+
+- [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/contemplative-alignment-benchmark.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります

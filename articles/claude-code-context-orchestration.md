@@ -186,3 +186,7 @@ continuous-learning スキルはセッション中に発見したパターンを
 コンテキスト層が厚くなるほど、1セッションでやれることが増え、説明のコストが減り、品質が安定する。この蓄積はプロンプトの工夫とは質が違います。セッションが終わっても消えない、プロジェクトを越えても使える、時間が経つほど効いてくる。
 
 「AI にコードを書かせる」から「AI が自分のコンテキストを読み、判断し、動く」へ。この視点が変わったとき、Claude Code の使い方が根本から変わりました。
+
+## 関連リンク
+
+- [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/claude-code-context-orchestration.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります

@@ -124,3 +124,7 @@ ECC 側は変更が小さく受け入れやすいため先に提出し、Anthrop
 - ECC と Anthropic に Issue を提出済み
 
 `ls ~/.claude/skills/` して「これ何だっけ」が1つでもあれば、origin タグの導入時です。
+
+## 関連リンク
+
+- [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/claude-code-skill-origin-tracking.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります

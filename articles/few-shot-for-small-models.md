@@ -273,3 +273,7 @@ specific data points, quoted fragments, concrete metaphors...
 最終的な変更量は4ファイル、14行追加、5行削除。1日の試行錯誤の末にたどり着いたのは、この少ない差分だった。
 
 小型LLMを素手で運用しないと見えない景色がある。フレームワークで隠蔽される前の、生のトレードオフ。壊れたモデル出力の中に、原則が埋まっていた。
+
+## 関連リンク
+
+- [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/few-shot-for-small-models.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります

@@ -556,3 +556,4 @@ GitHub リポジトリのルートに CITATION.cff を置くと、サイドバ�
 - [claude-skill-context-sync](https://github.com/shimo4228/claude-skill-context-sync) — context-sync スキル
 - [claude-skill-comply](https://github.com/shimo4228/claude-skill-comply) — skill-comply スキル
 - [Everything Claude Code (ECC)](https://github.com/affaan-m/everything-claude-code) — 5スキルのコントリビュート先
+- [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/coding-agent-memory-architecture.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります

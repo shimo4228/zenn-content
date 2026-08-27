@@ -230,3 +230,4 @@ RED を書いた時点で、既存実装の 3 つの穴が露出しました。�
 - [Chaos Toolkit](https://chaostoolkit.org/) / [toxiproxy](https://github.com/Shopify/toxiproxy) — 分散システム向けの chaos ツール（本記事では対象規模の違いから不採用）
 - [agent-chaos](https://github.com/deepankarm/agent-chaos) — AI エージェント向け chaos engineering の先行 OSS（fault 分類の参考にした prior art）
 - [著者の GitHub](https://github.com/shimo4228) — その他のリポジトリ・ツール
+- [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/chaos-tdd-fault-injection.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります

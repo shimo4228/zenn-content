@@ -237,3 +237,7 @@ dry-run で実行したところ、パース失敗の WARNING が出た。raw re
 - [contemplative-agent-rules（四公理ルール）](https://github.com/shimo4228/contemplative-agent-rules)
 - [前作: Moltbookエージェント構築記](https://zenn.dev/shimo4228/articles/moltbook-agent-scratch-build)
 - [Contemplative AI 論文（Laukkonen et al., 2025）](https://arxiv.org/abs/2504.15125)
+
+## 関連リンク
+
+- [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/moltbook-agent-evolution-quadrilogy.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります

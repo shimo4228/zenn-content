@@ -239,3 +239,7 @@ Kimi の変更は必ず隔離ブランチ上で行います。マージは Claud
 この構成の本質は「LLM 間で役割を分け、既存ワークフローの中にハンドオフを埋め込む」ことです。$19/月の Kimi Moderato と Claude Code の組み合わせで、個人開発でも十分実用的なマルチエージェント環境が作れます。
 
 次のステップとしては、複数タスクの並列ディスパッチや、Kimi の実行結果を自動で PR にする仕組みを試してみたいと考えています。
+
+## 関連リンク
+
+- [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/claude-kimi-hybrid-setup.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります

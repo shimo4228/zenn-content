@@ -289,3 +289,7 @@ Apple MCP（IDE 統合）と XcodeBuildMCP（ヘッドレス自動化）は補�
 - [エピソードログから倫理が生まれるまで — Contemplative Agent 17日間の設計記録](https://zenn.dev/shimo4228/articles/contemplative-agent-journey)
 
 研究としての成果物（DOI 付き）は [github.com/shimo4228](https://github.com/shimo4228) に。
+
+## 関連リンク
+
+- [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/xcodebuildmcp-ios-verification.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります

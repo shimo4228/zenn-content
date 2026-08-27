@@ -449,6 +449,10 @@ gitも知らなかった初心者が、10日間でこうしてZennに技術記�
 
 お楽しみに！
 
+## 関連リンク
+
+- [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/ecc-journey-part1.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります
+
 ---
 
 この記事が役に立ったら、いいねをお願いします。

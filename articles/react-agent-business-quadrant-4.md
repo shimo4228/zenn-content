@@ -115,3 +115,7 @@ published_at: 2026-05-02 17:00
 - [Agent Knowledge Cycle (AKC)](https://github.com/shimo4228/agent-knowledge-cycle) — 本記事で参照した「能力 ↑ → 全体的な判断」原則の出所
 - [Contemplative Agent](https://github.com/shimo4228/contemplative-agent) — `core/rules_distill.py` の実装、9B 時代のワークフロー端の例
 - [Agent Attribution Practice (AAP)](https://github.com/shimo4228/agent-attribution-practice) — 本シリーズの 4 象限名はここに整合している
+
+## 関連リンク
+
+- [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/react-agent-business-quadrant-4.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります

@@ -137,3 +137,4 @@ codex-review の価値を「Claude だけでは見つからないバグをよく
 - [Contemplative Agent](https://github.com/shimo4228/contemplative-agent) / [ADR-0071](https://github.com/shimo4228/contemplative-agent/blob/main/docs/adr/0071-read-only-pattern-composition-instruments.md) / [該当コミット](https://github.com/shimo4228/contemplative-agent/commit/224fdd97b740df7bf1b2a18bc77f6e8cc4980ec0) — 今回の実例
 - [Codex CLI（本家）](https://github.com/openai/codex)
 - [shimo4228 の GitHub](https://github.com/shimo4228) — 他の公開リポジトリ一覧
+- [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/codex-review-cross-model-decorrelation.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります

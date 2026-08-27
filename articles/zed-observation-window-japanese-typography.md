@@ -457,3 +457,7 @@ system_profiler SPFontsDataType 2>/dev/null | \
 
 :::
 <!-- textlint-enable -->
+
+## 関連リンク
+
+- [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/zed-observation-window-japanese-typography.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります

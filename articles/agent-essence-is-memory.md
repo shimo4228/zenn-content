@@ -335,6 +335,10 @@ tools: ["Read", "Grep", "Glob"]  # 読み取り専用
 
 ツールは手だ。推論は脳だ。だが記憶は、そのエージェントが「そのエージェントである」ことの根拠だ。記憶の管理はエージェント開発で最も難しい問題だ。解決を報告できる日が来たら、続編を書く。
 
+## 関連リンク
+
+- [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/agent-essence-is-memory.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります
+
 ---
 
 **関連リンク:**

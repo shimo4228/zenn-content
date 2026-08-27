@@ -220,3 +220,4 @@ cp -r skills/shadow-mode-validation ~/.claude/skills/shadow-mode-validation
 - [自律エージェントをあえて M1 Mac で作る — 制約が設計を鍛えるという選択](https://zenn.dev/shimo4228/articles/small-llm-by-choice) — 本記事が属する小型 LLM 運用シリーズのハブ
 - [Claude Codeから簡単にCodexレビューさせるスキルを作った](https://zenn.dev/shimo4228/articles/codex-review-cross-model-decorrelation) — 別系統モデルレビューの仕組み
 - [github.com/shimo4228](https://github.com/shimo4228) — 著者の他のリポジトリ一覧
+- [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/agent-observability-patterns.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります

@@ -242,3 +242,7 @@ Gemini との対話から得た知見を、検証結果と合わせて整理し�
 AIに自社製品を語らせると、事実と自己弁護の混ざった回答が返ってきます。面白い対話でした。ただ、そのまま記事にしていたら誤情報の拡散になるところでした。
 
 次にAIに技術的な説明をされたら、まず公式ドキュメントの該当箇所を開く。それだけで半分の不正確さは見抜けます。今回の対話で得たいちばんの収穫は、技術的な知見ではなくこの習慣でした。
+
+## 関連リンク
+
+- [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/token-economics-ai-orchestration.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります

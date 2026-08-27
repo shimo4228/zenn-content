@@ -197,3 +197,7 @@ AI が書いた原稿を校正するという行為は、**AI が実装時に何
 初稿の生成には数分しかかからなかった。そこから2時間かけて対話を重ね、タイトルは3回変わり、核心が「委譲した」から「要らなかった」に変わった。
 
 AI が書き、人が反応し、対話の中で核心が見つかる。「AI生成」という言葉だけでは、この過程が見えない。そこを私は伝えたかった。
+
+## 関連リンク
+
+- [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/ai-article-writing-process.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります

@@ -259,3 +259,4 @@ python3 extract.py <jsonl> <out.md> で人間ターンと本文だけ抜いて�
 
 - [earendil-works/pi](https://github.com/earendil-works/pi) — 本文の条件 C で使った最小構成のコーディングエージェント
 - [github.com/shimo4228](https://github.com/shimo4228) — 筆者のリポジトリ一覧
+- [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/transcript-not-ledger.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります

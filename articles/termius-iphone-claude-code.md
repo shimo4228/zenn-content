@@ -410,3 +410,7 @@ GUIの飾りを全部捨てた先にあったのは、最も軽くて、最も�
 - [推論でもツールでもない — AIエージェントの本質は「記憶」ではないか](https://zenn.dev/shimo4228/articles/agent-essence-is-memory)
 
 研究としての成果物（DOI 付き）は [github.com/shimo4228](https://github.com/shimo4228) に。
+
+## 関連リンク
+
+- [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/termius-iphone-claude-code.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります

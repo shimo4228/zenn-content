@@ -347,3 +347,4 @@ README にこう書かれています。
 - [anthropics/claude-plugins-official](https://github.com/anthropics/claude-plugins-official) — `claude-security` プラグインの配布元
 - [Claude Security](https://claude.com/product/claude-security) — 同機能のホスト版（この記事で扱ったのはセッション内で完結するプラグイン版）
 - [github.com/shimo4228](https://github.com/shimo4228) — 筆者のリポジトリ一覧
+- [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/claude-security-harness-self-scan.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります

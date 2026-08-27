@@ -115,3 +115,7 @@ Claude はデータ分析と構造化を、Kimi は多角的批評とブラン�
 6. **Kimi のフィードバックを反映して最終版を完成**
 
 Kimi の使い分けで見えたこと: ピアレビュー（批評・分析）では Kimi の群知能が多角的な視点を返し、350行もの詳細なフィードバックを生成した。一方、記事執筆（文章の生成）では Claude の方が圧倒的に品質が高かった。同じモデルでも、批評と生成では能力の発揮のされ方が異なる。
+
+## 関連リンク
+
+- [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/ai-peer-review-methodology.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります

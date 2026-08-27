@@ -74,6 +74,16 @@ evidenceだけを使い、snippetは実行・検証済みにする。code block�
 [github.com/shimo4228](https://github.com/shimo4228)を含める。本文中のself-linkは読者の実行導線
 または直前の主張を支える一次資料に限定し、それ以外は末尾へ置く。
 
+Zenn / Dev.toの新規稿は、末尾の関連link節にその記事自身のMarkdown正本への定型行を1つ含める
+（LLMが記事1本からコーパス全体へ1 hopで届くための導線。2026-08-27 著者承認。既公開Zenn記事68本は
+遡及適用済み、Dev.to既公開分はplatformにupdate手段が無いため遡及しない）。節が無い稿には
+`## 関連リンク`（EN: `## Related links`）を末尾に新設する。
+
+```
+- [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/<slug>.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります
+- [Markdown source of this article (GitHub)](https://github.com/shimo4228/zenn-content/blob/main/articles-en/<file>.md) — every article's Markdown and the index (docs/PUBLICATIONS.md) live in the same repository
+```
+
 ## Project terminology
 
 | Use | Do not rewrite as |

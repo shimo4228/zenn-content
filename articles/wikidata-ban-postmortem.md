@@ -220,3 +220,4 @@ Wikidata は、個々の編集こそ許容されていても、自分を中心�
 - [GEO: Generative Engine Optimization (Aggarwal et al., KDD 2024)](https://arxiv.org/abs/2311.09735)
 - [Wikidata:Autobiography](https://www.wikidata.org/wiki/Wikidata:Autobiography) / [Wikidata:Notability](https://www.wikidata.org/wiki/Wikidata:Notability)
 - [著者の GitHub](https://github.com/shimo4228) — 研究リポジトリ群の一覧
+- [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/wikidata-ban-postmortem.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります

@@ -205,3 +205,7 @@ Step 3: get_observations(IDs) → 必要な記録だけ全文取得
 「何を知っているか」と「何をしたか」を分けて管理する。この使い分けがうまく回れば、毎セッションのコンテキスト収集コストはかなり下がるはずだ。
 
 なお、Mem0 は現在 daily-research プロジェクトで本番運用しているが、用途は異なる。Mem0 は「調査テーマの履歴管理」という明示的なナレッジベースとして使い、claude-mem は「作業ログの自動記録」として使う。両者は補完し合う関係だ。
+
+## 関連リンク
+
+- [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/claude-code-persistent-memory.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります

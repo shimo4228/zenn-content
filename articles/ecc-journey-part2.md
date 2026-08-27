@@ -374,3 +374,7 @@ Claude API は強力なツールです。しかし「API を叩けば解決す�
 この記事が、同じ道を歩く人の参考になれば幸いです。
 
 pdf2anki は [GitHub で公開](https://github.com/shimo4228/pdf2anki) しています。
+
+## 関連リンク
+
+- [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/ecc-journey-part2.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります

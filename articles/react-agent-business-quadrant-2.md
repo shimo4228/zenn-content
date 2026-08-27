@@ -127,3 +127,7 @@ Autonomous Agentic Loop 象限自体のアカウンタビリティ問題は、�
   3. [AIエージェントのブラックボックスは二層ある — 技術の限界とビジネスの都合](https://zenn.dev/shimo4228/articles/agent-blackbox-capitalism-timescale)
 - [Contemplative Agent](https://github.com/shimo4228/contemplative-agent) — ReAct を使わない構造化エージェント実装。前作の (3) LLM ワークフロー象限に該当
 - [Agent Attribution Practice (AAP)](https://github.com/shimo4228/agent-attribution-practice) — エージェントの責任主体・帰属を扱う研究 repo
+
+## 関連リンク
+
+- [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/react-agent-business-quadrant-2.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります

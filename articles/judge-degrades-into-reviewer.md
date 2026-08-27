@@ -302,3 +302,4 @@ judge を壊すかどうかを、精度で判断しないでください。
 - [LLM-as-judge はスコアを集計しない — チェックは証拠、判定は総合判断](https://zenn.dev/shimo4228/articles/llm-judge-checks-not-scores) — 今回捨てた judge の判定形式そのものを設計した回です
 - [Harness Alignment and Harness Drift: Why Intent, Unlike Correctness, Resists Automation](https://doi.org/10.5281/zenodo.20578272) — 本文で引いた拙論（2026-06、CC BY 4.0）
 - [github.com/shimo4228](https://github.com/shimo4228) — 執筆ハーネスを含むリポジトリ群
+- [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/judge-degrades-into-reviewer.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります

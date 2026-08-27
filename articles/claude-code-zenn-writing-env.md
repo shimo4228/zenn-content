@@ -186,3 +186,7 @@ python scripts/publish.py articles/my-article.md --platform qiita --update auto
 | クロスポスト手順 | `learned/zenn-qiita-crosspost-workflow` | learned スキル |
 
 どれも最初から計画して作ったわけではありません。記事を書く中で問題にぶつかり、Claude Code と一緒に解決し、その知見がスキルやスクリプトとして環境に残ります。問題が起きるたびに環境が少し賢くなる。これが Claude Code で執筆環境を「育てる」ということでした。
+
+## 関連リンク
+
+- [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/claude-code-zenn-writing-env.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります

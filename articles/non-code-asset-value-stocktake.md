@@ -198,3 +198,4 @@ lint が答えられるのは「このファイルは正しいか」まで。「
 - スキル本体: [shimo4228/repo-asset-stocktake](https://github.com/shimo4228/repo-asset-stocktake)
 - 姉妹スキルの設計過程: [AI の苦手な仕事をスクリプトに逃がす — スキル棚卸しコマンドの設計・実装・公開の全記録](https://zenn.dev/shimo4228/articles/skill-stocktake-design-journey)
 - 著者のスキル・研究リポジトリ一覧: [github.com/shimo4228](https://github.com/shimo4228)
+- [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/non-code-asset-value-stocktake.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります

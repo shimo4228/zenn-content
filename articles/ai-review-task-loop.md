@@ -533,6 +533,7 @@ references:
 - [Claude Codeハーネス公開ミラー](https://github.com/shimo4228/claude-harness)
 - [著者のGitHub](https://github.com/shimo4228)
 - [Dev.to英語版](https://dev.to/shimo4228/ai-review-kept-creating-work-why-i-deleted-4541-lines-22ec)
+- [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/ai-review-task-loop.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります
 
 ---
 

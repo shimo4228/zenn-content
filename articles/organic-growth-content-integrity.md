@@ -139,3 +139,7 @@ AI エージェントに計画を立てさせて自律実行する流れが注�
 そしてその矛盾を解消したのは、個別のリファクタリングではなく、Content Integrity という原則だった。「内容は著者の思考が決める。配信は内容を変えずに最適化する」。この一文が、32件の矛盾のうちどれを残しどれを廃止するかの判断基準になった。
 
 有機的成長には定期的な棚卸しと、判断の拠り所になる原則が必要だった。
+
+## 関連リンク
+
+- [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/organic-growth-content-integrity.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります

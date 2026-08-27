@@ -196,3 +196,7 @@ curl http://localhost:11434/api/generate -d '{
 同じプロンプトを `mistral:latest`（Instruct 版）にも投げて、比較してみてください。「しつけ後」と「素の状態」の差が一目瞭然です。
 
 知識として「次のトークンを予測しているだけ」と知っているのと、実際にその振る舞いを目にするのとでは、理解の深さが全く違います。
+
+## 関連リンク
+
+- [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/base-model-experience.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります

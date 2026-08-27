@@ -171,3 +171,7 @@ config/templates/
 - [contemplative-agent](https://github.com/shimo4228/contemplative-agent) — 本プロジェクト
 - [contemplative-agent-data](https://github.com/shimo4228/contemplative-agent-data) — ライブデータ
 - [Agent Knowledge Cycle](https://github.com/shimo4228/agent-knowledge-cycle)
+
+## 関連リンク
+
+- [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/agent-freedom-and-constraints.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります

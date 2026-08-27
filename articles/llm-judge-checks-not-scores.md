@@ -255,3 +255,4 @@ flowchart TB
 - 論文: [TICK](https://arxiv.org/abs/2410.03608)（arXiv:2410.03608、2024）— 生成チェックリストによる評価・生成の改善
 - 論文: [BinEval「Ask, Don't Judge」](https://arxiv.org/abs/2606.27226)（arXiv:2606.27226、2026）— 一問一主張の Yes/No 分解と「No 回答 = 改善リスト」の提案元。limitations が本記事の境界線の根拠
 - [github.com/shimo4228](https://github.com/shimo4228) — 著者の他のリポジトリ一覧
+- [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/llm-judge-checks-not-scores.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります

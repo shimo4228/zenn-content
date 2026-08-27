@@ -200,3 +200,7 @@ Contemplative Agent のコードは、いずれ不要になる。LLM がセッ�
 **Contemplative Agent** は [GitHub で公開](https://github.com/shimo4228/contemplative-agent)している。README の "Design: Symbiotic, Not Standalone" セクションに設計思想を記載している。ホストは Claude Code のみ検証済み。他のコーディングエージェントでの検証レポートがあれば歓迎する。
 :::
 <!-- textlint-enable -->
+
+## 関連リンク
+
+- [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/symbiotic-agent-architecture.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります

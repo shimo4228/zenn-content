@@ -149,3 +149,7 @@ claude-mem が提供しようとしていた価値は、これらの組み合わ
 「登録すればモデルが使ってくれる」という暗黙の前提は、少なくとも現在の Claude Code のアーキテクチャとは乖離している。deferred tool という仕組みが存在する以上、README に「Install」と書いて終わるツールは、ユーザーの `.claude.json` を太らせる以外の仕事をしない。
 
 棚卸しの結果、自分の環境からは claude-mem、mgrep、sequential-thinking をすべてアンインストールした。環境はシンプルになり、起動は速くなり、失ったものは何もなかった。
+
+## 関連リンク
+
+- [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/mcp-install-and-hope-problem.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります

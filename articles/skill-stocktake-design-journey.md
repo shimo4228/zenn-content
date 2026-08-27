@@ -326,6 +326,10 @@ claude-skill-stocktake/
 
 この記事の経験から言えることは、その境界は「AI の能力の限界」ではなく「AI の能力の種類」によって決まるということだ。判断力と正確さは別の軸にある。AI が得意なことを AI に、機械が得意なことを機械に。この分業を意識するだけで、AI ツールの信頼性は大きく変わる。
 
+## 関連リンク
+
+- [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/skill-stocktake-design-journey.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります
+
 ---
 
 *skill-stocktake は [claude-skill-stocktake](https://github.com/shimo4228/claude-skill-stocktake) リポジトリで公開しています。*

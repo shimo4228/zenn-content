@@ -189,3 +189,7 @@ Kimi が生成した 8,500 行は、Opus の修正フェーズでは scaffolding
 3. **本記事**——Kimi に実装を委任し、8,500 行のコードと 61% のゴミと Claude を名乗る Kimi を得た
 
 環境構築→ピアレビュー→実装委任と試してきて、結論は逆説的だった。**AI 同士を分業させるより、1 つの AI に一貫して任せた方が速い。** Kimi の爆速実装力は本物だが、個人開発ではその出力をレビューする認知負荷がボトルネックになる。AI 分業を徹底的に試したからこそ、たどり着いた答えだった。少なくとも、委任先の AI が自分の名前を忘れるようなら、分業の設計を見直した方がいい。
+
+## 関連リンク
+
+- [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/kimi-delegation-failure-lessons.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります

@@ -230,3 +230,4 @@ LLM に「この指示を知っていますか」と聞いても、ロード元�
 
 - [claude-harness](https://github.com/shimo4228/claude-harness) — 筆者が実際に育てている Claude Code ハーネス
 - [github.com/shimo4228](https://github.com/shimo4228) — 筆者のほかのリポジトリ一覧
+- [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/claude-code-claudemd-excludes.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります

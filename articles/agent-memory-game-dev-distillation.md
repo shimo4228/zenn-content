@@ -183,3 +183,7 @@ distill パイプライン単体で見ると、Mem0 の ADD/UPDATE/DELETE ゲー
 - "Multi-LLM-Agents Debate: Performance, Efficiency, and Scaling Challenges" ICLR Blogposts 2025
 - Laukkonen et al. (2025) "Contemplative Artificial Intelligence"
 - "Architecture Tricks: Managing Behaviors in Time, Space, and Depth" (GDC 2013, Isla)
+
+## 関連リンク
+
+- [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/agent-memory-game-dev-distillation.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります

@@ -407,3 +407,7 @@ v1 の `/learn` は確実に動きます。セッションの終わりに手動�
 
 - Part 1: [Everything Claude Code で初めて本格的な開発を始めた初心者の 10 日間](https://qiita.com/shimo4228/items/06d48f19bde5e6401a85)
 - Part 2: [LLM の出力は信用するな — Claude API で PDF→Anki 自動生成 CLI を作って学んだ 6 つの防御策](https://qiita.com/shimo4228/items/743f2b43f63b2bbe2dba)
+
+## 関連リンク
+
+- [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/ecc-journey-part3.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります

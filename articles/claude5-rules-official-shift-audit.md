@@ -233,3 +233,4 @@ python3 -c "import json; print('\n'.join(sorted(json.load(open('settings.json'))
 - [generation-audit](https://github.com/shimo4228/generation-audit) — 本記事の手順をスキル化した公開リポ
 - [rules-stocktake](https://github.com/shimo4228/rules-stocktake) — 常駐ルールの棚卸しスキル（rationale / review-when を読む改善済み）
 - [github.com/shimo4228](https://github.com/shimo4228) — 著者の GitHub（ハーネス関連リポジトリ一覧）
+- [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/claude5-rules-official-shift-audit.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります

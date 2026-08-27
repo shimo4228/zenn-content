@@ -213,3 +213,7 @@ contemplative-agent は、コーディングエージェント（Claude Code, Cu
 - [Agent Knowledge Cycle](https://github.com/shimo4228/agent-knowledge-cycle)
 - Park et al. (2023) "Generative Agents"
 - Packer et al. (2024) "MemGPT"
+
+## 関連リンク
+
+- [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/contemplative-agent-journey.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります

@@ -96,3 +96,7 @@ Hooksはいずれ別の仕組みに置き換わる。看板や物理的障壁は
 看板ではない。内在的な価値の整列でもない。責任を負える人間がループに入る構造 — それがおそらく、エージェントが実務で機能する唯一の形だ。
 
 登れる壁に看板を立てるのはもう終わりにすべきだ。問われているのは、壁の高さでも看板の文言でもない。誰がその壁の前に立つのかだ。
+
+## 関連リンク
+
+- [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/ai-agent-accountability-wall.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります

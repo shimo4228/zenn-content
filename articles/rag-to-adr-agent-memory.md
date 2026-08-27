@@ -169,3 +169,4 @@ Ollama 経路では `prompt_eval_count` がキャッシュヒット時も全プ�
 - Anthropic "Effective Context Engineering for AI Agents": https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents
 - Anthropic Prompt caching（プレフィックス一致の仕様）: https://platform.claude.com/docs/en/build-with-claude/prompt-caching
 - 著者の GitHub: https://github.com/shimo4228
+- [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/rag-to-adr-agent-memory.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります

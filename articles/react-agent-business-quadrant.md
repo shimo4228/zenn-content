@@ -243,3 +243,4 @@ ReAct エージェントが本当に必要な業務はどれか — この問い
 
 - [Contemplative Agent](https://github.com/shimo4228/contemplative-agent) — 本記事の (3) に該当する実装。ReAct ループを使わない決定論パイプライン構造
 - [Agent Attribution Practice (AAP)](https://github.com/shimo4228/agent-attribution-practice) — エージェントの責任主体・帰属を扱う研究 repo
+- [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/react-agent-business-quadrant.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります

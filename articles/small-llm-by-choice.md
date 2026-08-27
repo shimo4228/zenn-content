@@ -104,5 +104,6 @@ Mac Studio や新しい MacBook Pro の購入ページまで行ったことは�
 - 構築記の始まり: https://zenn.dev/shimo4228/articles/moltbook-agent-scratch-build
 - 小型モデルとの格闘の前作: https://zenn.dev/shimo4228/articles/few-shot-for-small-models
 - 著者の GitHub: https://github.com/shimo4228
+- [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/small-llm-by-choice.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります
 
 [^1]: 具体的には、ループの制御やツール選択を LLM に委ねる ReAct パターンを既定にしない、ということです。処理の流れはコードが握り、LLM は意味判断の担当箇所でだけ呼びます。どの業務なら ReAct が本当に必要になるのかは「[ReAct エージェントが本当に必要な業務はどれか](https://zenn.dev/shimo4228/articles/react-agent-business-quadrant)」で扱っています。

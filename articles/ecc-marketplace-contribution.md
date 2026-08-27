@@ -121,6 +121,10 @@ Phase 4 では `LC_ALL=C grep -rn '[^\x00-\x7F]'` で日本語の残存をチェ
 
 自分のリポジトリに8件のスキルを並べていたとき、見る人は月に数人だった。ECC に入った今、同じスキルが5万人の玄関に並んでいる。経路が存在すると知っていることと、知らないことでは、挑戦の前提がまるで違う。
 
+## 関連リンク
+
+- [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/ecc-marketplace-contribution.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります
+
 ---
 
 Claude Code のスキルは、書いた人だけが使うものにしておくには惜しい。ECC への PR は 1ファイル、英語に直して、必須セクションを揃えて送るだけだ。自分が解いた問題は、たぶん他の誰かも同じように困っている。スキルを共有して、Claude Code のエコシステムをみんなで育てていけたらいい。

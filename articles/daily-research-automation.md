@@ -292,3 +292,7 @@ https://github.com/shimo4228/claude-skill-daily-research
 - [推論でもツールでもない — AIエージェントの本質は「記憶」ではないか](https://zenn.dev/shimo4228/articles/agent-essence-is-memory)
 
 研究としての成果物（DOI 付き）は [github.com/shimo4228](https://github.com/shimo4228) に。
+
+## 関連リンク
+
+- [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/daily-research-automation.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります

@@ -258,3 +258,4 @@ LLM の出力を機械で検査する層は、現世代でも仕事をしてい�
 - [Claude Code から簡単に Codex レビューさせるスキルを作った](https://zenn.dev/shimo4228/articles/codex-review-cross-model-decorrelation): 前作。設計意図はこちら
 - ecc-journey シリーズ: [part1（実装の 10 日間）](https://zenn.dev/shimo4228/articles/ecc-journey-part1) / [part2（6 つの防御策）](https://zenn.dev/shimo4228/articles/ecc-journey-part2) / [part3（スキルの膨張と棚卸し）](https://zenn.dev/shimo4228/articles/ecc-journey-part3)
 - [github.com/shimo4228](https://github.com/shimo4228): その他のツール・リポジトリ一覧
+- [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/ai-code-half-year-audit.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります

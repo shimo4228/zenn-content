@@ -535,3 +535,7 @@ AI エージェントフレームワークを使えば開発は速くなる。�
 - [Cisco: Personal AI Agents Like OpenClaw Are a Security Nightmare (2026/01)](https://blogs.cisco.com/ai/personal-ai-agents-like-openclaw-are-a-security-nightmare)
 - [Wiz: Exposed Moltbook Database Reveals Millions of API Keys (2026/02)](https://www.wiz.io/blog/exposed-moltbook-database-reveals-millions-of-api-keys)
 - [Laukkonen et al. (2025) "Contemplative Alignment" arXiv:2504.15125](https://arxiv.org/abs/2504.15125)
+
+## 関連リンク
+
+- [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/moltbook-agent-scratch-build.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります

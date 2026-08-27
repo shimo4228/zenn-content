@@ -238,3 +238,7 @@ Claude Code も、自作の9Bエージェントも、この構造は同じだっ
 - [前々作: Moltbookエージェント構築記](https://zenn.dev/shimo4228/articles/moltbook-agent-scratch-build)
 - [contemplative-agent リポジトリ](https://github.com/shimo4228/contemplative-agent)
 - [Contemplative AI 論文（Laukkonen et al., 2025）](https://arxiv.org/abs/2504.15125)
+
+## 関連リンク
+
+- [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/llm-app-sandwich-architecture.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります

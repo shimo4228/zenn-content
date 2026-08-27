@@ -239,3 +239,4 @@ OTel SDK では `span.end()` は即送信ではなく、`BatchSpanProcessor`（s
 - [事故のあとで因果を辿れるか](https://zenn.dev/shimo4228/articles/agent-causal-traceability-org-adoption) — さらに前段。エージェントの障害後に因果を辿れる記録がなぜ要るか、という問題意識
 - [自律エージェントをあえて M1 Mac で作る — 制約が設計を鍛えるという選択](https://zenn.dev/shimo4228/articles/small-llm-by-choice) — 本記事が属する小型 LLM 運用シリーズのハブ
 - [筆者の GitHub](https://github.com/shimo4228) — エージェント本体・関連リポジトリの一覧
+- [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/agent-logs-to-opentelemetry.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります

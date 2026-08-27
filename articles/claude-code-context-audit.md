@@ -196,3 +196,7 @@ cd ~/MyAI_Lab/swift-app-b && claude
 気にしていた rules の浪費（#3）より、**CLAUDE.md の未配備（#1）とセッションの起動場所（#5）の方がはるかに影響が大きい**という結果でした。
 
 設定を増やすことより、**既存の仕組みを正しい場所で使う**方が効果的です。
+
+## 関連リンク
+
+- [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/claude-code-context-audit.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります
