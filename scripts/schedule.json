@@ -787,6 +787,17 @@
         "agents"
       ],
       "notes": "EN translation of KPI は改善していた。それでも自作の LLM judge を捨てた（即時投稿）"
+    },
+    {
+      "file": "articles-en/review-chain-damping.md",
+      "devto": "https://dev.to/shimo4228/i-cut-my-ai-review-chain-from-6-stages-to-1-breaking-the-loop-that-never-hits-zero-findings-1moi",
+      "devto_tags": [
+        "claudecode",
+        "aiagents",
+        "codereview",
+        "agenticcoding"
+      ],
+      "notes": "EN translation of AIレビューを6系統から1系統へ——「指摘ゼロ」で終われないループの切り方"
     }
   ]
 }
