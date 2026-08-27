@@ -480,14 +480,14 @@ references:
     title: "Trace packet filename producers"
     url: "https://github.com/shimo4228/contemplative-agent/commit/510b623c48e068c69d7fe014d4bfcf91c7363e70"
   - id: R4
-    title: "Move review admission from severity to premise verification"
-    url: "https://github.com/shimo4228/claude-config/commit/7b4b1bc541a1eae427a7d39451474ee54d138ced"
+    title: "Review-admission rule moved from severity to premise verification (current revision; the introducing commit lives in the private harness history)"
+    url: "https://github.com/shimo4228/claude-harness/blob/main/rules/common/task-tracking.md"
   - id: R5
     title: "Record the HIGH finding"
     url: "https://github.com/shimo4228/contemplative-agent/commit/f0f8c5368bfe43545973e939aa595f45ea0792ae"
   - id: R6
-    title: "Snapshot of the remaining claims module"
-    url: "https://github.com/shimo4228/claude-config/commit/734a502b0d05f62e7a2b5691558aa04642cde063"
+    title: "The remaining claims module (current revision; line counts were measured at the 2026-08-16 snapshot)"
+    url: "https://github.com/shimo4228/claude-harness/blob/main/scripts/claims.py"
 ```
 
 ### 読者のエージェントへ渡すread-only監査プロンプト
@@ -530,7 +530,7 @@ references:
 ## 関連リンク
 
 - [Contemplative Agent](https://github.com/shimo4228/contemplative-agent)
-- [Claude Codeハーネス](https://github.com/shimo4228/claude-config)
+- [Claude Codeハーネス公開ミラー](https://github.com/shimo4228/claude-harness)
 - [著者のGitHub](https://github.com/shimo4228)
 - [Dev.to英語版](https://dev.to/shimo4228/ai-review-kept-creating-work-why-i-deleted-4541-lines-22ec)
 
