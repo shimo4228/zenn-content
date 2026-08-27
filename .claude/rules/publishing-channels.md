@@ -2,7 +2,7 @@
 # Publishing Channel Contract
 
 このファイルは zenn-content の媒体固有 overlay。執筆手順・中心命題・因果線・craft・AI slop・
-タイトル判定は global `writing-ecosystem` / `title-eval` が持つ。ここには path、読者との約束、
+タイトル点検は global `writing-ecosystem` / `title-reviewer` が持つ。ここには path、読者との約束、
 register、review panel、機械検査、platform 形式、公開 handoff だけを置く。
 
 ## Channel routing
@@ -25,7 +25,7 @@ path がどの行にも一致しない、または複数行に一致する場合
 - `prose-clarity-reviewer`: PASS
 - `fact-checker`: INACCURATE 0、未解決 PARTIALLY 0
 - `codex-review`: 完了、または実行不能理由とfallback reviewを記録
-- `title-eval`: 本文の最後の構造変更後に実行し、著者が選択済み
+- `title-reviewer`: 本文の最後の構造変更後に実行し、findings を見て著者がタイトルを選択済み
 - AI-mediated writing: 適用可否を記録し、該当するならglobal canonの開示blockを収録済み
 - source embedding: Zenn/Dev.toは検証済み主張をinline linkまたはReferencesへ、note/Substackは
   検証済みsourceを末尾へ編入し、channel editorのfocused recheck完了
@@ -107,6 +107,6 @@ evidenceだけを使い、snippetは実行・検証済みにする。code block�
 ## Related
 
 - global `writing-ecosystem` — 共通執筆フローとcanon
-- global `quality-gate` / `title-eval` — 共通受け入れ・タイトル判定
+- global `quality-gate` / `title-reviewer` — 共通受け入れ・タイトル点検
 - local `zenn-format` / `publish-article` / `substack-publishing` — platform操作
 - local `devto-translator` — Dev.to固有のEN稿変換。投稿は`publish-article`

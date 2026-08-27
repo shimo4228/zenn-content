@@ -49,7 +49,7 @@ memory の `article-quality.md` にある内容品質ランク（A/B/C）と突�
 
 | 乖離パターン | 示唆 | 還流先 |
 |---|---|---|
-| **A ランク × 実測下位** | 内容は良いが届いていない — タイトル・配信・タイミングの問題 | global `title-eval` / local `zenn-format` / `.claude/rules/publishing-channels.md` |
+| **A ランク × 実測下位** | 内容は良いが届いていない — タイトル・配信・タイミングの問題 | global `title-reviewer` / local `zenn-format` / `.claude/rules/publishing-channels.md` |
 | **B/C ランク × 実測上位** | 読者需要を示す観測 | 著者のnext-move reviewへ事実として提示 |
 
 一致セル（A×上位、C×下位）は正常動作なので列挙しない。各乖離記事に定性所見を 1 行添える（「タイトルが概念名のみで用途が見えない」等の具体観察）。
@@ -66,7 +66,7 @@ memory の `article-quality.md` にある内容品質ランク（A/B/C）と突�
 乖離表と実測サマリを著者へ提示して止まる。`session-theme-mining`を自動起動せず、候補の順位や
 推薦を作らない。著者は受信指標を「何を書くか・cadence・language placement」の判断に使えるが、
 既存の中心命題や本文を数字へ合わせて変形しない。A×下位のdistribution見直しはglobal
-`title-eval`とlocal `zenn-format`へ個別に渡す。
+`title-reviewer`とlocal `zenn-format`へ個別に渡す。
 
 ---
 
@@ -83,4 +83,4 @@ memory の `article-quality.md` にある内容品質ランク（A/B/C）と突�
 - `scripts/metrics_snapshot.py` — raw値の収集
 - `scripts/metrics/snapshots.jsonl` — project-local observation record
 - memory `article-quality.md` — 内容ランクと実測tierのprivate working record
-- global `title-eval`; local `zenn-format`
+- global `title-reviewer`; local `zenn-format`

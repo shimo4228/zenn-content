@@ -8,7 +8,7 @@
 | `writing-ecosystem` | Sole human-prose orchestrator: theme → one-thesis brief → draft → title → review → acceptance |
 | `session-theme-mining` | Finds 0–3 evidence-backed questions from past sessions; author selects |
 | `collect-context` | Builds the evidence dossier; does not choose what enters the draft |
-| `headline-craft` / `title-eval` | Generate title candidates / judge them against the frozen draft |
+| `headline-craft` / `title-reviewer` | Generate title candidates / review them against the frozen draft (findings only) |
 | `quality-gate` | Aggregates the project channel contract into PASS / FAIL / BLOCKED |
 | `theme-reviewer` | Pre-write findings and deepening questions; no verdict |
 | `editor` / `essay-reviewer` | Practical-channel / essay-channel review |
@@ -32,7 +32,7 @@
 session-theme-mining (optional) → author selection → theme-reviewer
   → collect-context (optional evidence dossier)
   → writing-ecosystem editorial brief: one thesis + causal spine + selected evidence + cut list
-  → orchestrator draft → headline-craft → title-eval
+  → orchestrator draft → headline-craft → title-reviewer
   → channel editor + prose-clarity-reviewer + fact-checker + codex-review
   → quality-gate reads publishing-channels.md → author GO
   → project-local publisher

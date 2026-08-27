@@ -771,6 +771,22 @@
         "agents"
       ],
       "notes": "EN translation of 評価を全部通った原稿が 2 本とも空疎だった。AI に渡す台帳には会話ログの原本を添える（即時投稿）"
+    },
+    {
+      "file": "articles/judge-degrades-into-reviewer.md",
+      "date": "2026-08-27",
+      "notes": "KPI は改善していた。それでも自作の LLM judge を捨てた（即時公開）"
+    },
+    {
+      "file": "articles-en/judge-degrades-into-reviewer.md",
+      "devto": "https://dev.to/shimo4228/my-kpis-improved-i-deleted-my-homegrown-llm-judge-anyway-2n73",
+      "devto_tags": [
+        "claudecode",
+        "llm",
+        "evaluation",
+        "agents"
+      ],
+      "notes": "EN translation of KPI は改善していた。それでも自作の LLM judge を捨てた（即時投稿）"
     }
   ]
 }

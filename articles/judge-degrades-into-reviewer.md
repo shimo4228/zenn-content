@@ -4,6 +4,7 @@ emoji: "⚖️"
 type: "tech"
 topics: ["claudecode", "llm", "agent", "設計", "codereview"]
 published: true
+published_at: 2026-08-27 19:49
 ---
 
 自作の LLM judge をお持ちなら、ひとつ思い出してみてください。**その judge の verdict が、成果物の行き先を実際に変えたのは、最後にいつですか。**

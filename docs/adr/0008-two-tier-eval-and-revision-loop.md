@@ -2,7 +2,7 @@
 
 ## Status
 
-Superseded in part by [ADR-0011](0011-dismantle-the-eval-layer.md) (2026-08-23) — Decision 1・2・4 は解体され、テーマ層は `theme-reviewer` agent へ、記事層は panel 4 本 + 著者通読へ戻った。Decision 3 は対象資産ごと削除。判定器として残るのは `title-eval` のみ。
+Superseded in part by [ADR-0011](0011-dismantle-the-eval-layer.md) (2026-08-23) — Decision 1・2・4 は解体され、テーマ層は `theme-reviewer` agent へ、記事層は panel 4 本 + 著者通読へ戻った。Decision 3 は対象資産ごと削除。判定器として残るのは `title-eval` のみ〔※ 2026-08-23 同日追記: その `title-eval` も `title-reviewer` へ変換し、判定器は 0 本になった〕。
 
 ## Date
 
