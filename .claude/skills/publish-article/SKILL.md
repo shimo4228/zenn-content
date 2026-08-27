@@ -34,8 +34,12 @@ origin: shimo4228
 ### 1. Validate target
 
 ```bash
+npm run evidence -- articles/<slug>.md --online   # 構造・書式・実在・一致 + 外部URLの生死
 npm run validate
 ```
+
+`deviations`が1件でもあれば公開操作を始めない。`grandfathered`は検査導入前の既公開分なので
+blockしない。目視で数え直さず、scriptの出力をそのまま扱う。
 
 Zenn稿のtitle、emoji、type、topics、slug、`published_at`は`zenn-format`とchannel contractに従う。
 EN稿は`devto-translator` self-check済みであることを確認する。

@@ -111,9 +111,20 @@ Zenn内部記事もfull URLを使う。
 
 ## Validation and handoff
 
+**Step 0 — 数える検査はscriptに任せる。**
+
 ```bash
-npm run validate
+npm run evidence -- articles/<slug>.md      # 構造・書式・実在・一致
+npm run evidence -- articles/ --text        # 全数
+npm run validate                            # Zenn frontmatter（一覧表示のみ）
 ```
+
+`deviations`をfindingsへそのまま転記する。**目視で数え直さない。** `grandfathered`は検査導入前に
+公開済みの記事の逸脱なので、その稿を改稿するときだけ扱う。`signals`は判定ではなく解釈の材料
+（register混在、self-linkの位置、段落密度）。
+
+検査項目の正本は`scripts/zenn_evidence.py`のmodule docstringと各`check_*`関数。ここに複製しない。
+公開直前は`--online`を足して外部URLの生死も見る（既定はoffline完結）。
 
 validation後の公開処理は`publish-article`へ渡す。
 

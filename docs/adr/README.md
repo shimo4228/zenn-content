@@ -16,6 +16,7 @@ context, the decision, the alternatives considered, and the consequences.
 | [0009](0009-readme-routing-page-and-generated-publications-index.md) | README をルーティングページにし、網羅一覧を生成索引 1 つへ集約する | Accepted | 2026-08-18 |
 | [0010](0010-channel-values-in-the-resident-layer.md) | チャンネルの値は常駐層に 1 箇所だけ置く | Accepted | 2026-08-23 |
 | [0011](0011-dismantle-the-eval-layer.md) | eval 層を解体し、テーマはレビュアーに戻す | Accepted | 2026-08-23 |
+| [0012](0012-zenn-review-deterministic-layer.md) | Zenn レビューの決定論層を evidence script へ降ろす | Accepted | 2026-08-27 |
 
 ADR-0003 partially supersedes ADR-0001 (zenn-writer row) and ADR-0002 §2
 (`writing-standards.md` reference) — see its Consequences section.

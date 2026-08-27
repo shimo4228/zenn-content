@@ -8,6 +8,7 @@
     "new:article": "zenn new:article",
     "new:book": "zenn new:book",
     "validate": "zenn list:articles",
+    "evidence": "uv run --project scripts python scripts/zenn_evidence.py",
     "generate:index": "cd scripts && uv run python generate_article_index.py",
     "check:index": "cd scripts && uv run python generate_article_index.py --check"
   },

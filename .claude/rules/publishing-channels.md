@@ -9,7 +9,7 @@ register、review panel、機械検査、platform 形式、公開 handoff だけ
 
 | Channel | Path matcher | Reader promise | Register | Channel editor | Deterministic checks | Title constraints | Publish handoff |
 |---|---|---|---|---|---|---|---|
-| Zenn | `articles/*.md` | 検索・feedから来たengineerが、数秒で用途を理解し再現または判断できる | 日本語ですます。直接指示・具体観察・判断則を優先し、修辞疑問で結論を弱めない | `editor` | `npm run validate`; Zenn frontmatter; `published: true`なら`published_at`必須 | 原則50字以内、正確さに必要なら60字まで | `zenn-format` → `publish-article` |
+| Zenn | `articles/*.md` | 検索・feedから来たengineerが、数秒で用途を理解し再現または判断できる | 日本語ですます。直接指示・具体観察・判断則を優先し、修辞疑問で結論を弱めない | `editor` | `npm run validate`; `npm run evidence -- articles/<slug>.md`（deviations 0。公開直前は`--online`も） | 原則50字以内、正確さに必要なら60字まで | `zenn-format` → `publish-article` |
 | Dev.to | `articles-en/*.md` | 英語圏のengineerが同じ成果を再現または判断できる | Natural English。direct、practical、outcome-first。essayistic hedgeへ寄せない | `editor` | `devto-translator` self-check; `devto_crosspost.py post <slug> --dry-run` | local上限なし。検索/フィードは原稿の性質で選ぶ | `devto-translator` → `publish-article` |
 | note | `note/*.md` | AIを仕事や生活で使う一般読者が、一つの問いを自分の問題として考えられる | 日本語ですます、発見調。評価は問いへ開けるが事実は断定する | `essay-reviewer` | 新規稿はfrontmatterなし | platform上限なし。feedで問いと対象が分かる | `substack-publishing`のnote手順 |
 | Substack | `substack/*.md` | 英語圏の一般読者がJA正本と同じ問いを追える | Natural English、discovery tone。JA正本の確度を保つ | `essay-reviewer` | 新規稿はfrontmatterなし; `prose-translation`後のレビュー完了 | title/subtitleを分ける | `substack-publishing` |
@@ -70,19 +70,22 @@ evidenceだけを使い、snippetは実行・検証済みにする。code block�
 
 ## Related links
 
-記事末尾の関連link節で著者自身のrepository / toolを一つでも紹介する場合は、著者hub
-[github.com/shimo4228](https://github.com/shimo4228)を含める。本文中のself-linkは読者の実行導線
-または直前の主張を支える一次資料に限定し、それ以外は末尾へ置く。
-
-Zenn / Dev.toの新規稿は、末尾の関連link節にその記事自身のMarkdown正本への定型行を1つ含める
-（LLMが記事1本からコーパス全体へ1 hopで届くための導線。2026-08-27 著者承認。既公開Zenn記事68本は
-遡及適用済み、Dev.to既公開分はplatformにupdate手段が無いため遡及しない）。節が無い稿には
-`## 関連リンク`（EN: `## Related links`）を末尾に新設する。
+Zenn / Dev.toの全稿は、末尾の関連link節に次の2行を含める。節が無い稿には`## 関連リンク`
+（EN: `## Related links`）を末尾に新設する。既公開Zenn記事68本は2026-08-27に遡及適用済み。
+Dev.to既公開分はplatformにupdate手段が無いため遡及しない。
 
 ```
 - [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/<slug>.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります
-- [Markdown source of this article (GitHub)](https://github.com/shimo4228/zenn-content/blob/main/articles-en/<file>.md) — every article's Markdown and the index (docs/PUBLICATIONS.md) live in the same repository
+- [著者のGitHub](https://github.com/shimo4228) — DOI 付きの研究リポジトリ一覧
 ```
+
+2行は行き先が違うので併記する（2026-08-27 著者決定）。正本リンクは**書いたもの**のコーパスへ、
+著者hubは**作ったもの**——DOI付きの研究repo群へ届く。Zennの記事ページは著者hubへのリンクを
+`<a href>`として持たない（`githubUsername`は`__NEXT_DATA__`のJSON値のみで、profile cardの
+リンク先はZenn内`/shimo4228`）。本文末のリンクはprofile cardと違い本文DOMの一部なので、
+本文抽出後も残る。
+
+本文中のself-linkは読者の実行導線または直前の主張を支える一次資料に限定し、それ以外は末尾へ置く。
 
 ## Project terminology
 
