@@ -19,14 +19,18 @@ path がどの行にも一致しない、または複数行に一致する場合
 
 ## Shared acceptance profile
 
-全channelで、同じ最終タイトル + 本文に対する次の証跡を要求する。
+全channelで、内容GO済みの本文 + 最終タイトルに対する次の証跡を要求する。reviewer panel は
+タイトル確定前の凍結本文に対して実行してよい（タイトル作業は著者の内容GO後 —
+2026-08-27 著者指示）。
 
 - channel editor: unresolved CRITICAL 0、canonical coverageのpending / unverified 0
 - `prose-clarity-reviewer`: PASS
 - `fact-checker`: INACCURATE 0、未解決 PARTIALLY 0
 - `codex-review`: 完了、または実行不能理由とfallback reviewを記録
-- `title-reviewer`: 本文の最後の構造変更後に実行し、findings を見て著者がタイトルを選択済み
-- AI-mediated writing: 適用可否を記録し、該当するならglobal canonの開示blockを収録済み
+- `title-reviewer`: 著者の内容GO後（= 本文の最後の構造変更後）に実行し、findings を見て著者がタイトルを選択済み
+- AI-mediated writing: Zenn (`articles/*.md`) は開示block適用外（2026-08-23 著者判断 —
+  媒体読者にとってAI利用は前提で、開示は情報量を持たない。毎回問い直さない）。
+  Dev.to / note / Substackは適用可否を記録し、該当するならglobal canonの開示blockを収録済み
 - source embedding: Zenn/Dev.toは検証済み主張をinline linkまたはReferencesへ、note/Substackは
   検証済みsourceを末尾へ編入し、channel editorのfocused recheck完了
 - public-safety scan: 秘密、個人path、未sanitized screenshot / raw log 0
