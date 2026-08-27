@@ -293,3 +293,4 @@ Apple MCP（IDE 統合）と XcodeBuildMCP（ヘッドレス自動化）は補�
 ## 関連リンク
 
 - [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/xcodebuildmcp-ios-verification.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります
+- [著者のGitHub](https://github.com/shimo4228) — DOI 付きの研究リポジトリ一覧

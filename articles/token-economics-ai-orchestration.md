@@ -246,3 +246,4 @@ AIに自社製品を語らせると、事実と自己弁護の混ざった回答
 ## 関連リンク
 
 - [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/token-economics-ai-orchestration.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります
+- [著者のGitHub](https://github.com/shimo4228) — DOI 付きの研究リポジトリ一覧

@@ -517,3 +517,4 @@ Claude Code にはプラグインシステム（`enabledPlugins`）がある。�
 ## 関連リンク
 
 - [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/claude-code-effective-settings-10.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります
+- [著者のGitHub](https://github.com/shimo4228) — DOI 付きの研究リポジトリ一覧

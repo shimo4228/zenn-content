@@ -124,6 +124,7 @@ Phase 4 では `LC_ALL=C grep -rn '[^\x00-\x7F]'` で日本語の残存をチェ
 ## 関連リンク
 
 - [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/ecc-marketplace-contribution.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります
+- [著者のGitHub](https://github.com/shimo4228) — DOI 付きの研究リポジトリ一覧
 
 ---
 

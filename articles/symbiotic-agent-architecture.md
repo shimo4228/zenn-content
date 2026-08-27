@@ -204,3 +204,4 @@ Contemplative Agent のコードは、いずれ不要になる。LLM がセッ�
 ## 関連リンク
 
 - [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/symbiotic-agent-architecture.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります
+- [著者のGitHub](https://github.com/shimo4228) — DOI 付きの研究リポジトリ一覧
