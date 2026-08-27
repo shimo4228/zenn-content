@@ -1,4 +1,4 @@
-<!-- Generated: 2026-07-05 | Codemaps: 4 | Token estimate: ~250 -->
+<!-- Generated: 2026-08-27 | Codemaps: 4 | Token estimate: ~250 -->
 # CODEMAPS Index
 
 Token-lean architecture documentation for `zenn-content` — a bilingual (JP/EN)
@@ -10,15 +10,15 @@ the role-specific map you need.
 | [architecture.md](architecture.md) | Project shape | Directory layout, data flow, agents, toolchain |
 | [scripts.md](scripts.md) | Publishing pipeline | Entry points, key functions, schedule.json schema, tests |
 | [dependencies.md](dependencies.md) | Dependencies | Node lint stack, Python publishing deps, external services |
-| [skills.md](skills.md) | Claude Code config | Project skills (15), project agents (2), workflow |
+| [skills.md](skills.md) | Claude Code config | Project skills (4), project agent (1), writing workflow |
 
 ## Quick facts
 
-- **Content**: 50 JP articles in `articles/` (49 published), 58 EN in `articles-en/` (36 published)
-- **Substack mirror**: `substack/` (out of Zenn convention scope)
+- **Content**: JP articles in `articles/`, EN in `articles-en/` — every count and URL lives in the generated [../PUBLICATIONS.md](../PUBLICATIONS.md) (ADR-0009)
+- **Idea essays**: `note/` is the JA canonical (first published on note since 2026-08), `substack/` the EN edition; out of Zenn convention scope
 - **JP publishing**: Zenn native `published_at` scheduling (no script)
 - **EN publishing**: Dev.to cross-post via `devto_crosspost.py` — `schedule <slug> --at "<datetime>"` arms a per-article one-shot launchd job that fires at that datetime, posts, and self-removes — GitHub Actions cron retired 2026-05
-- **CI**: `.github/workflows/validate.yml` only (Zenn frontmatter check)
+- **CI**: `.github/workflows/validate.yml` only (Zenn frontmatter check + `check:index` drift gate)
 
 ## Related
 

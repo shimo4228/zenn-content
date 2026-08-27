@@ -1,4 +1,4 @@
-<!-- Generated: 2026-08-18 | Files scanned: articles + articles-en + note + substack + scripts | Token estimate: ~700 -->
+<!-- Generated: 2026-08-27 | Files scanned: articles + articles-en + note + substack + scripts | Token estimate: ~700 -->
 # Architecture
 
 ## Project Type
@@ -37,7 +37,7 @@ zenn-content/
 │   ├── corpus.yml                 essays / papers / research lines (no-frontmatter membership)
 │   ├── reading_paths.yml          README curated routes (author judgment)
 │   ├── metrics_snapshot.py        Zenn / Dev.to reception snapshots → metrics/
-│   └── tests/                     pytest (104 tests)
+│   └── tests/                     pytest (counts in scripts.md)
 ├── docs/              PUBLICATIONS.md (generated index), CODEMAPS, adr/, translation-glossary
 ├── .claude/           project platform skills (4), agent (1), publishing contract, refs
 └── .github/workflows/ validate.yml (zenn frontmatter check, push/PR to main)

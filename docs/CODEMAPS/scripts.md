@@ -1,4 +1,4 @@
-<!-- Generated: 2026-08-18 | Files: 4 Python scripts | Token estimate: ~600 -->
+<!-- Generated: 2026-08-27 | Files: 4 Python scripts | Token estimate: ~600 -->
 # Scripts (Publishing Pipeline)
 
 ## Entry Point
@@ -92,11 +92,12 @@ Other script: `metrics_snapshot.py` writes Zenn / Dev.to reception snapshots to
 
 ## Tests
 
-- `tests/test_devto_crosspost.py` — 59 tests (respx-mocked Dev.to API, launchctl
-  stubbed): `--at` tz conversion, conversion rules, tag resolution, POST
+- `tests/test_devto_crosspost.py` — respx-mocked Dev.to API, launchctl stubbed: `--at` tz conversion, conversion rules, tag resolution, POST
   success/failure/no-url, idempotency skip, one-shot self-cleanup, plist render,
   agent lifecycle, schedule/env/path helpers, command dispatch.
-- `tests/test_generate_article_index.py` — 15 tests (tmp repo fixture): membership /
+- `tests/test_generate_article_index.py` — tmp repo fixture: membership /
   ordering / EN resolution / Dev.to enrichment, `published_at` required, essays /
   papers / lines rendering, corpus validation, marker splice, `--check` semantics.
+- `tests/test_metrics_snapshot.py` — record building, Zenn / Dev.to pagination,
+  fail-soft collection when an API key or endpoint is missing.
 - Run: `cd scripts && uv run pytest --cov=. --cov-report=term-missing` (≥ 80%).
