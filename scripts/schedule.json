@@ -798,6 +798,17 @@
         "agenticcoding"
       ],
       "notes": "EN translation of AIレビューを6系統から1系統へ——「指摘ゼロ」で終われないループの切り方"
+    },
+    {
+      "file": "articles-en/lint-as-subtraction.md",
+      "devto": "https://dev.to/shimo4228/after-cutting-my-ai-reviews-i-put-a-complexity-ceiling-in-ruff-1hho",
+      "devto_tags": [
+        "claudecode",
+        "aiagents",
+        "staticanalysis",
+        "codereview"
+      ],
+      "notes": "EN translation of AIレビューを減らした先に、複雑度の上限をRuffで置いた（即時投稿）"
     }
   ]
 }
