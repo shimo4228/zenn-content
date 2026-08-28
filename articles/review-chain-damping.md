@@ -182,4 +182,5 @@ diff外指摘の起票も絞りました。HIGH指摘6件のうち即時性が�
 
 - [Claude Codeハーネス公開ミラー（本記事の設定とADR）](https://github.com/shimo4228/claude-harness)
 - [Contemplative Agent](https://github.com/shimo4228/contemplative-agent)
-- [著者のGitHub](https://github.com/shimo4228)
+- [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/review-chain-damping.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります
+- [著者のGitHub](https://github.com/shimo4228) — DOI 付きの研究リポジトリ一覧
