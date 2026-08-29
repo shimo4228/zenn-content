@@ -45,3 +45,8 @@ scripts/*.log
 scripts/*.log.disabled
 scripts/*.plist
 *.pyc
+
+# Python (skill-local uv projects under .claude/skills/)
+__pycache__/
+.pytest_cache/
+.ruff_cache/
