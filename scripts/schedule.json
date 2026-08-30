@@ -788,6 +788,11 @@
       "notes": "AIレビューを減らした先に、複雑度の上限をRuffで置いた（09:48 手動公開）"
     },
     {
+      "file": "articles/instrument-consumption-plan.md",
+      "date": "2026-08-31",
+      "notes": "未使用コード検出が拾わなかった2,063行を消した——参照でなく消費を、新設時に書かせる（08:30 予約）"
+    },
+    {
       "file": "articles-en/judge-degrades-into-reviewer.md",
       "devto": "https://dev.to/shimo4228/my-kpis-improved-i-deleted-my-homegrown-llm-judge-anyway-2n73",
       "devto_tags": [
