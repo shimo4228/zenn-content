@@ -10,7 +10,7 @@ Japanese originals on Zenn; English editions on Dev.to, or as source in `article
 ### 2026-08
 
 - **2026-08-31** [未使用コード検出が拾わなかった2,063行を消した——参照でなく消費を、新設時に書かせる](https://zenn.dev/shimo4228/articles/instrument-consumption-plan)
-  EN: — · `claudecode` `aiエージェント` `静的解析` `技術的負債` `adr`
+  EN: [My Dead-Code Scan Returned Zero, Then I Deleted 2,063 Lines: Detectors Measure References, Not Consumption](https://dev.to/shimo4228/my-dead-code-scan-returned-zero-then-i-deleted-2063-lines-detectors-measure-references-not-4o4e) · `claudecode` `aiエージェント` `静的解析` `技術的負債` `adr`
 - **2026-08-30** [AIレビューを減らした先に、複雑度の上限をRuffで置いた](https://zenn.dev/shimo4228/articles/lint-as-subtraction)
   EN: [After Cutting My AI Reviews, I Put a Complexity Ceiling in Ruff](https://dev.to/shimo4228/after-cutting-my-ai-reviews-i-put-a-complexity-ceiling-in-ruff-1hho) · `claudecode` `aiエージェント` `lint` `ruff` `開発プロセス`
 - **2026-08-29** [AIレビューを6系統から1系統へ——「指摘ゼロ」で終われないループの切り方](https://zenn.dev/shimo4228/articles/review-chain-damping)

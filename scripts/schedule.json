@@ -824,6 +824,17 @@
         "codereview"
       ],
       "notes": "EN translation of AIレビューを減らした先に、複雑度の上限をRuffで置いた（即時投稿）"
+    },
+    {
+      "file": "articles-en/instrument-consumption-plan.md",
+      "devto": "https://dev.to/shimo4228/my-dead-code-scan-returned-zero-then-i-deleted-2063-lines-detectors-measure-references-not-4o4e",
+      "devto_tags": [
+        "claudecode",
+        "aiagents",
+        "staticanalysis",
+        "technicaldebt"
+      ],
+      "notes": "EN translation of 未使用コード検出が拾わなかった2,063行を消した——参照でなく消費を、新設時に書かせる（即時投稿）"
     }
   ]
 }
