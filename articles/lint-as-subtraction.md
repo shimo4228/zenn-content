@@ -3,7 +3,8 @@ title: "AIレビューを減らした先に、複雑度の上限をRuffで置い
 emoji: "📏"
 type: "tech"
 topics: ["claudecode", "aiエージェント", "lint", "ruff", "開発プロセス"]
-published: false
+published: true
+published_at: 2026-08-30 09:48
 ---
 
 AIエージェントにコードを書かせていると、レビューがどんどん増えます。

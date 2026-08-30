@@ -3,7 +3,8 @@ title: "AIレビューを6系統から1系統へ——「指摘ゼロ」で終�
 emoji: "📉"
 type: "tech"
 topics: ["claudecode", "aiエージェント", "コードレビュー", "開発プロセス"]
-published: false
+published: true
+published_at: 2026-08-29 07:20
 ---
 
 2026年8月24日の夜、私はAIにこう打ち込みました。

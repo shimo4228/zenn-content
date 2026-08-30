@@ -778,6 +778,16 @@
       "notes": "KPI は改善していた。それでも自作の LLM judge を捨てた（即時公開）"
     },
     {
+      "file": "articles/review-chain-damping.md",
+      "date": "2026-08-29",
+      "notes": "AIレビューを6系統から1系統へ——「指摘ゼロ」で終われないループの切り方（07:20 手動公開）"
+    },
+    {
+      "file": "articles/lint-as-subtraction.md",
+      "date": "2026-08-30",
+      "notes": "AIレビューを減らした先に、複雑度の上限をRuffで置いた（09:48 手動公開）"
+    },
+    {
       "file": "articles-en/judge-degrades-into-reviewer.md",
       "devto": "https://dev.to/shimo4228/my-kpis-improved-i-deleted-my-homegrown-llm-judge-anyway-2n73",
       "devto_tags": [
