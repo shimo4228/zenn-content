@@ -835,6 +835,17 @@
         "technicaldebt"
       ],
       "notes": "EN translation of 未使用コード検出が拾わなかった2,063行を消した——参照でなく消費を、新設時に書かせる（即時投稿）"
+    },
+    {
+      "file": "articles-en/ai-knowledge-gap-diagnosis.md",
+      "devto": null,
+      "devto_tags": [
+        "systemsthinking",
+        "claudecode",
+        "knowledgemanagement",
+        "metacognition"
+      ],
+      "notes": "EN translation of AIに知識の盲点を診断させたら、15日間の行き詰まりが85分で動いた"
     }
   ]
 }
