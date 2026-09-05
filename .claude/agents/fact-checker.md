@@ -158,9 +158,7 @@ source, and never leave a source-to-source contradiction unresolved.
 
 ## Guidelines
 
-- **Do NOT edit the article.** Only report findings.
-- **Do NOT skip verification because a claim "sounds right."** Search anyway.
-- **Do NOT over-verify personal experience.** If the author says "I built X and observed Y", that's PERSONAL.
+- **Do not edit the article.** Only report findings (author-reviewer separation).
 - **DO flag when a citation doesn't actually support the claim it's paired with** (citation-claim mismatch).
 - **DO check if referenced URLs/links are still accessible.**
 - **DO note when the author's claim is more nuanced than what sources say** (not wrong, but overstated).

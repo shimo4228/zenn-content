@@ -58,7 +58,7 @@ null  →  "https://dev.to/shimo4228/actual-url"
 
 ## canonical_url について
 
-- **legacy フィールド**（表に定義が無いまま実データに 27 件、最終 2026-04-18）。**新規エントリでは付けない**
+- **legacy フィールド**（既存データにだけ残る）。**新規エントリでは付けない**
 - **JP 記事**: canonical_url は不要（Zenn が git push で自動公開するため）
 - **EN 記事**: canonical_url を設定しない（言語が異なるため Zenn canonical は無意味）
 

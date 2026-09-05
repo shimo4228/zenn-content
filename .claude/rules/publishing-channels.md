@@ -20,16 +20,15 @@ path がどの行にも一致しない、または複数行に一致する場合
 ## Shared acceptance profile
 
 全channelで、内容GO済みの本文 + 最終タイトルに対する次の証跡を要求する。reviewer panel は
-タイトル確定前の凍結本文に対して実行してよい（タイトル作業は著者の内容GO後 —
-2026-08-27 著者指示）。
+タイトル確定前の凍結本文に対して実行してよい（タイトル作業は著者の内容GO後）。
 
 - channel editor: unresolved CRITICAL 0、canonical coverageのpending / unverified 0
 - `prose-clarity-reviewer`: PASS
 - `fact-checker`: INACCURATE 0、未解決 PARTIALLY 0
 - `codex-review`: 完了、または実行不能理由とfallback reviewを記録
 - `title-reviewer`: 著者の内容GO後（= 本文の最後の構造変更後）に実行し、findings を見て著者がタイトルを選択済み
-- AI-mediated writing: Zenn (`articles/*.md`) は開示block適用外（2026-08-23 著者判断 —
-  媒体読者にとってAI利用は前提で、開示は情報量を持たない。毎回問い直さない）。
+- AI-mediated writing: Zenn (`articles/*.md`) は開示block適用外（媒体読者にとってAI利用は
+  前提で、開示は情報量を持たない。毎回問い直さない）。
   Dev.to / note / Substackは適用可否を記録し、該当するならglobal canonの開示blockを収録済み
 - source embedding: Zenn/Dev.toは検証済み主張をinline linkまたはReferencesへ、note/Substackは
   検証済みsourceを末尾へ編入し、channel editorのfocused recheck完了
@@ -71,15 +70,15 @@ evidenceだけを使い、snippetは実行・検証済みにする。code block�
 ## Related links
 
 Zenn / Dev.toの全稿は、末尾の関連link節に次の2行を含める。節が無い稿には`## 関連リンク`
-（EN: `## Related links`）を末尾に新設する。既公開Zenn記事68本は2026-08-27に遡及適用済み。
-Dev.to既公開分はplatformにupdate手段が無いため遡及しない。
+（EN: `## Related links`）を末尾に新設する。Dev.to既公開分はplatformにupdate手段が無いため
+遡及しない。
 
 ```
 - [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/<slug>.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります
 - [著者のGitHub](https://github.com/shimo4228) — DOI 付きの研究リポジトリ一覧
 ```
 
-2行は行き先が違うので併記する（2026-08-27 著者決定）。正本リンクは**書いたもの**のコーパスへ、
+2行は行き先が違うので併記する。正本リンクは**書いたもの**のコーパスへ、
 著者hubは**作ったもの**——DOI付きの研究repo群へ届く。Zennの記事ページは著者hubへのリンクを
 `<a href>`として持たない（`githubUsername`は`__NEXT_DATA__`のJSON値のみで、profile cardの
 リンク先はZenn内`/shimo4228`）。本文末のリンクはprofile cardと違い本文DOMの一部なので、

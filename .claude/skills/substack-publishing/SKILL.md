@@ -31,7 +31,7 @@ global `quality-gate` PASSと著者GOの後に使う。日本語正本は`note/`
   ```
 
   先頭 h1 の除外（タイトル欄に別入力するため）と `-f gfm`（§下記の罠）をスクリプトが持つ。
-  **手打ちの `pandoc` を書かない** — 方言指定を落とした版が過去に混入していた。
+  **手打ちの `pandoc` を書かない** — `-f gfm` を落とすと §5 の段落潰れを起こす。
 
   ブラウザで `essay.html` を開く → 本文を選択 → コピー → Substack 本文に貼ると整形保持（見出し / 太字 / 斜体 / リンク / 区切り線）。Substack は貼り付け時に独自スタイルを当てるので、保持されるのは構造であって見た目の細部ではない。
 
@@ -63,7 +63,7 @@ essay の **core metaphor** を1つ視覚化する。プロンプト規約:
 
 ## 5. ブラウザ自動化（Claude in Chrome）での投稿
 
-エディタ操作をエージェントに任せる場合の実証済み手順（2026-07 実走で確立）。公開ゲートは維持する: **下書き構築まで自動、Publish はプレビューを人間が確認して OK した後のみ**。
+エディタ操作をエージェントに任せる場合の手順。公開ゲートは維持する: **下書き構築まで自動、Publish はプレビューを人間が確認して OK した後のみ**。
 
 ### 本文投入 — OS クリップボードに HTML flavor を直接セットする
 
@@ -107,7 +107,7 @@ osascript -e 'set the clipboard to (read (POSIX file "/path/cover.png") as «cla
 
 EN 版の初出は Substack、JA 正本は content repo の `note/`（note.com が JA の公開チャンネル）。EN 版も LLM クローラーに読ませるため content / corpus repo にミラーする。
 
-- 置き場は **`substack/` フォルダ**（content repo 内）。新規ファイルは frontmatter なし・冒頭 `# 見出し` 形式（2026-08-12 著者指示。旧ファイルの Zenn 風 frontmatter は名残）。
+- 置き場は **`substack/` フォルダ**（content repo 内）。新規ファイルは frontmatter なし・冒頭 `# 見出し` 形式。既存ファイルは変更しない。
   - **`drafts/` には置かない**（"下書き" 扱いで corpus 上 deprioritize されるため）
   - **その repo の記事公開フォルダ（例: Zenn の `articles/`）にも置かない**（媒体への誤公開を避ける）
   - 媒体の「下書きフラグ」frontmatter（例: Zenn `published: false`）は付けない（下書き signal を避ける）

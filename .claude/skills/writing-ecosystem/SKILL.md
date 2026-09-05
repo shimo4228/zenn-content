@@ -1,7 +1,7 @@
 ---
 name: writing-ecosystem
 description: 人間向け記事・エッセイ・ブログポスト・ニュースレターの唯一の執筆 orchestrator。project の publication channel contract を読み、中心命題 1 つの editorial brief、因果線、証拠の選択と除外、構成、執筆、review panel、著者の内容 GO、title-reviewer、quality-gate までを統括する。Use when — 「この記事を書いて」「このテーマでエッセイにして」「原稿の論点を一つに絞って構造改稿して」のような新規執筆・全体改稿・全文の別 channel 展開。NOT for — 一文や段落だけの翻訳（→ prose-translation）、title だけ（→ headline-craft / title-reviewer）、SNS 下書き（→ x-draft）、公開 thread 返信（→ public-comment）、AI 向け docs、README、paper、媒体固有の公開操作。
-compatibility: Designed for Claude Code (or similar agent products). Orchestrates globally installed agents under ~/.claude/agents/.
+compatibility: Designed for Claude Code (or similar agent products). Orchestrates the review agents under <project>/.claude/agents/.
 user-invocable: true
 origin: shimo4228
 ---
@@ -15,7 +15,7 @@ origin: shimo4228
 
 ## Scope
 
-**人間 primary のコンテンツのみ扱う**。AI-facing ドキュメント（`llms.txt` / `llms-full.txt` / FAQ ページ等）には `llms-txt-writer` skill を使う。audience 判定と役割分担は [Audience Separation: Human vs AI](../llms-txt-writer/SKILL.md#audience-separation-human-vs-ai) を参照。
+**人間 primary のコンテンツのみ扱う**。AI-facing ドキュメント（`llms.txt` / `llms-full.txt` / FAQ ページ等）には `llms-txt-writer` skill を使う。audience 判定と役割分担は [Audience Separation: Human vs AI](~/.claude/skills/llms-txt-writer/SKILL.md#audience-separation-human-vs-ai) を参照。
 
 本 skill は媒体名・語尾・frontmatter・文字数・reviewer 構成・公開 command を持たない。記事全体を
 扱う task では最初に
@@ -265,7 +265,7 @@ channel contract が正本。記事全体の task で contract が無ければ�
 
 ### 感情語の扱い
 
-- **タイトル**: 禁止（「壊れている」「地獄」「最強」など）
+- **タイトル**: 禁止。実値は下の Title Conventions が持つ
 - **本文**: 著者の自然な体験描写なら OK（「正直つらかった」「ここで詰まった」）
 
 ### 結論の問い化

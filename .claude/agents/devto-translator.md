@@ -50,7 +50,7 @@ JP 記事パス（例: `articles/agent-causal-traceability-org-adoption.md`）
 ### Phase 3: カバー画像（手動運用）
 
 1. `images/covers/{slug}.png` が既に存在するか確認する
-2. 存在しない場合は**手動生成を促す**（自動生成スクリプトは廃止。Gemini 等でユニークな画像を作り `images/covers/{slug}.png` に置く）。カバーなしでも投稿は可能
+2. 存在しない場合は**手動生成を促す**（Gemini 等でユニークな画像を作り `images/covers/{slug}.png` に置く）。カバーなしでも投稿は可能
 3. 画像がある場合のカバー URL: `https://raw.githubusercontent.com/shimo4228/zenn-content/main/images/covers/{slug}.png`（`post` 実行時にファイルが存在すれば自動参照される）
 
 ### Phase 4: セルフチェック
