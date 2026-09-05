@@ -4,6 +4,7 @@ emoji: "🔍"
 type: "tech"
 topics: ["claudecode", "aiエージェント", "システム思考", "知識管理"]
 published: true
+published_at: 2026-09-02 19:19
 ---
 
 2026年8月15日、私はAIにこう書きました。
