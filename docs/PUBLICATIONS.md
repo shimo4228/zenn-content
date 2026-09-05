@@ -10,7 +10,7 @@ Japanese originals on Zenn; English editions on Dev.to, or as source in `article
 ### 2026-09
 
 - **2026-09-05** [3か月で159回commitしたLLM向けアーキテクチャ文書を消した。構造はLSP、理由はADR、図は人間に](https://zenn.dev/shimo4228/articles/codemap-retirement)
-  EN: — · `claudecode` `aiエージェント` `lsp` `ドキュメント` `adr`
+  EN: [I Deleted the LLM-Facing Architecture Docs I Had Committed 159 Times in 3 Months: Structure Goes to LSP, Reasons to ADRs, Diagrams to Humans](https://dev.to/shimo4228/i-deleted-the-llm-facing-architecture-docs-i-had-committed-159-times-in-3-months-structure-goes-to-1a94) · `claudecode` `aiエージェント` `lsp` `ドキュメント` `adr`
 - **2026-09-02** [AIに知識の盲点を診断させたら、15日間の行き詰まりが85分で動いた](https://zenn.dev/shimo4228/articles/ai-knowledge-gap-diagnosis)
   EN: [I Asked AI to Diagnose My Knowledge Blind Spots — 15 Days of Deadlock Moved in 85 Minutes](https://dev.to/shimo4228/i-asked-ai-to-diagnose-my-knowledge-blind-spots-15-days-of-deadlock-moved-in-85-minutes-3j2n) · `claudecode` `aiエージェント` `システム思考` `知識管理`
 

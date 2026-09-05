@@ -851,6 +851,17 @@
       "file": "articles/codemap-retirement.md",
       "date": "2026-09-05",
       "notes": "codemap 退役記事（即時公開）。削除シリーズ 4 本目"
+    },
+    {
+      "file": "articles-en/codemap-retirement.md",
+      "devto": "https://dev.to/shimo4228/i-deleted-the-llm-facing-architecture-docs-i-had-committed-159-times-in-3-months-structure-goes-to-1a94",
+      "devto_tags": [
+        "claudecode",
+        "aiagents",
+        "documentation",
+        "architecture"
+      ],
+      "notes": "EN translation of 3か月で159回commitしたLLM向けアーキテクチャ文書を消した。構造はLSP、理由はADR、図は人間に（即時投稿）"
     }
   ]
 }
