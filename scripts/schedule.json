@@ -867,6 +867,17 @@
       "file": "articles/domain-knowledge-travelers-vocabulary.md",
       "date": "2026-09-16",
       "notes": "「ドメイン知識」は翻訳者の語彙。DDD の出自と今夏の言説から、翻訳者の席が消えると論じる idea 稿"
+    },
+    {
+      "file": "articles-en/domain-knowledge-travelers-vocabulary.md",
+      "devto": "https://dev.to/shimo4228/people-inside-the-business-dont-call-it-a-domain-3kb2",
+      "devto_tags": [
+        "discuss",
+        "ddd",
+        "aiagents",
+        "career"
+      ],
+      "notes": "EN translation of 業務の中にいる人は、それを「ドメイン」とは呼ばない"
     }
   ]
 }
