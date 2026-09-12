@@ -33,8 +33,8 @@ path がどの行にも一致しない、または複数行に一致する場合
 - source embedding: Zenn/Dev.toは検証済み主張をinline linkまたはReferencesへ、note/Substackは
   検証済みsourceを末尾へ編入し、channel editorのfocused recheck完了
 - public-safety scan: 秘密、個人path、未sanitized screenshot / raw log 0
-- paragraph density: 全channelで1段落3文までを許容する。`prose-clarity-reviewer`の既定（1〜2文）をこの値で
-  上書きし、3文の段落をblockingにしない。4文以上は分割を求める
+- panel cadence: `prose-clarity-reviewer`と`codex-review`は構造凍結時に各1回。以後の部分改稿の
+  regressionはchannel editorだけが見る
 
 `quality-gate` はこのprofileと上表の機械検査を集約する。reviewerを起動したり、文章を再判定
 したりしない。

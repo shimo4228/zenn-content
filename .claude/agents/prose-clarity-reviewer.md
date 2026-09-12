@@ -52,13 +52,6 @@ must restate the substance in one phrase (a quoted fragment, a number, a named c
 that cannot be restated in one phrase indicates a structural problem, not a wording problem. Treat as
 high severity.
 
-### Paragraph density
-
-Default is one to two sentences per paragraph; flag three or more. A staccato run of fragments
-(「訴訟、補償、規制。」) is exempt. A comparison of two or more items belongs in a list, not in running
-prose. A subordinate clause welded on with an em dash should be two sentences. Uniform paragraph
-length is a structural tell.
-
 ### No insider-context dependency
 
 Each paragraph must retain its meaning without knowledge of the author's harness, file names, ADRs,

@@ -111,6 +111,12 @@ review 修正が central thesis、causal spine、主要節を変えたら brief 
   届く唯一の層）。著者が同種指摘を 2 回却下したら、その場で contract の該当行を更新または削除する
 - **再レビュー規律**: 2 round 目以降は CRITICAL と変更部分の regression のみを blocking とし、
   新規 MEDIUM/MINOR は集計のみ（Anthropic best-practices の re-review convergence、as-of 2026-08-27）
+- **panel の回数**: `prose-clarity-reviewer` と cross-model review は構造凍結時に各 1 回。以後の
+  部分改稿の regression は channel editor だけが見る。同じ観点で繰り返し読ませると、指摘ごとの
+  限定句と段落分割が積もって本文が防御的になる
+- **cross-model 指摘の採用**: カテゴリのすり替え・事実誤り・帰属の誤りだけを採用し、ヘッジや
+  限定句の追加を求める指摘は採用しない（裁定表は `codex-review` の Prose 裁定基準）。全採用は
+  一文ずつ正しくして通読を重くする
 - **blocking の根拠水準**: blocking 指摘は一次ソースの引用を要す。証拠台帳のみを根拠とする指摘は
   advisory（根拠 n=1・2026-08-27。以後 3 記事で台帳由来の偽陽性ゼロなら本行は削除候補）
 
