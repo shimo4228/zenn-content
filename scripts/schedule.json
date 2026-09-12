@@ -878,6 +878,11 @@
         "career"
       ],
       "notes": "EN translation of 業務の中にいる人は、それを「ドメイン」とは呼ばない"
+    },
+    {
+      "file": "articles/log-projection-blind-by-construction.md",
+      "date": "2026-09-14",
+      "notes": "計器シリーズ4本目。30行サンプルは11秒の連打に盲目、週内差分は慢性故障に盲目 — 投影が隠す形を出力ヘッダに書く（ADR-0110）"
     }
   ]
 }
