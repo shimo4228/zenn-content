@@ -31,7 +31,7 @@ findings であり、verdict、score、順位、推薦する 1 本を出さな�
 候補ごとに Yes / No / Unverified と 1 行証拠を付ける。証拠源は Axis が editorial brief、
 Delivery〜Curiosity closure が本文、Channel fit が local contract。
 
-1. **Axis** — 中心命題を圧縮し、副次論点を主役にしていない
+1. **Axis** — 中心命題と同じ軸を指し、副次論点を主役にしていない。命題の再述は要求しない。題材や緊張を名指すだけの短い題も、本文がその軸で書かれていれば Yes
 2. **Delivery** — タイトルの約束を本文が回収する
 3. **Specificity** — 何についての原稿か単独で分かる
 4. **Honesty** — 本文以上の断定、空の数字、感情的な煽りがない
@@ -42,7 +42,7 @@ Axis と Honesty の No は他と交換できない欠陥として、findings �
 
 ## Counter-candidate
 
-上位候補に 1 回だけ対抗案を 1 本立て、どこが勝りどこが劣るかを書く。
+上位候補に 1 回だけ対抗案を 1 本立て、どこが勝りどこが劣るかを書く。対抗案は 1 文で、候補中で最も短いものより長くしない。
 読むべき読者を弾く候補があれば、誰を弾くかを名指しする。
 
 ## Output
