@@ -862,6 +862,11 @@
         "architecture"
       ],
       "notes": "EN translation of 3か月で159回commitしたLLM向けアーキテクチャ文書を消した。構造はLSP、理由はADR、図は人間に（即時投稿）"
+    },
+    {
+      "file": "articles/domain-knowledge-travelers-vocabulary.md",
+      "date": "2026-09-16",
+      "notes": "「ドメイン知識」は翻訳者の語彙。DDD の出自と今夏の言説から、翻訳者の席が消えると論じる idea 稿"
     }
   ]
 }
