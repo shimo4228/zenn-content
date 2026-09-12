@@ -883,6 +883,17 @@
       "file": "articles/log-projection-blind-by-construction.md",
       "date": "2026-09-14",
       "notes": "計器シリーズ4本目。30行サンプルは11秒の連打に盲目、週内差分は慢性故障に盲目 — 投影が隠す形を出力ヘッダに書く（ADR-0110）"
+    },
+    {
+      "file": "articles-en/log-projection-blind-by-construction.md",
+      "devto": "https://dev.to/shimo4228/why-an-11-second-burst-never-showed-up-in-the-log-that-gets-read-every-week-14nd",
+      "devto_tags": [
+        "claudecode",
+        "aiagents",
+        "observability",
+        "logging"
+      ],
+      "notes": "EN translation of 毎週読まれるログに、11秒の連打が写らなかった理由"
     }
   ]
 }

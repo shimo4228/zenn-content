@@ -12,7 +12,7 @@ Japanese originals on Zenn; English editions on Dev.to, or as source in `article
 - **2026-09-16** [業務の中にいる人は、それを「ドメイン」とは呼ばない](https://zenn.dev/shimo4228/articles/domain-knowledge-travelers-vocabulary)
   EN: [People Inside the Business Don't Call It a 'Domain'](https://dev.to/shimo4228/people-inside-the-business-dont-call-it-a-domain-3kb2) · `aiエージェント` `ddd` `設計` `ai`
 - **2026-09-14** [毎週読まれるログに、11秒の連打が写らなかった理由](https://zenn.dev/shimo4228/articles/log-projection-blind-by-construction)
-  EN: — · `claudecode` `aiエージェント` `ログ` `オブザーバビリティ` `adr`
+  EN: [Why an 11-Second Burst Never Showed Up in the Log That Gets Read Every Week](https://dev.to/shimo4228/why-an-11-second-burst-never-showed-up-in-the-log-that-gets-read-every-week-14nd) · `claudecode` `aiエージェント` `ログ` `オブザーバビリティ` `adr`
 - **2026-09-05** [3か月で159回commitしたLLM向けアーキテクチャ文書を消した。構造はLSP、理由はADR、図は人間に](https://zenn.dev/shimo4228/articles/codemap-retirement)
   EN: [I Deleted the LLM-Facing Architecture Docs I Had Committed 159 Times in 3 Months: Structure Goes to LSP, Reasons to ADRs, Diagrams to Humans](https://dev.to/shimo4228/i-deleted-the-llm-facing-architecture-docs-i-had-committed-159-times-in-3-months-structure-goes-to-1a94) · `claudecode` `aiエージェント` `lsp` `ドキュメント` `adr`
 - **2026-09-02** [AIに知識の盲点を診断させたら、15日間の行き詰まりが85分で動いた](https://zenn.dev/shimo4228/articles/ai-knowledge-gap-diagnosis)
