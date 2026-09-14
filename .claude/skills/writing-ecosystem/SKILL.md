@@ -97,7 +97,9 @@ out-of-scope を保持する。翻訳先の local contract へ route し直す�
 
 本文の構造を凍結したら、local contract の channel reviewer、`prose-clarity-reviewer`、
 `fact-checker`、必要な cross-model review を本文へ実行する。editor と essay-reviewer の両方を
-回すのは contract が要求する場合だけ。
+回すのは contract が要求する場合だけ。`fact-checker` の dispatch prompt には証拠台帳と一次資料の
+path（repo、出力ファイル）を名指しで渡す — code / path / 出力の照合はこの agent が持ち、channel
+reviewer は判断だけを持つ。
 
 review 修正が central thesis、causal spine、主要節を変えたら brief → 関係 reviewer へ戻る。
 レビュー反映後、下の Final structural pass を確認してから著者が本文を通読し、**内容 GO** を

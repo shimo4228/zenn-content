@@ -2,7 +2,7 @@
 name: prose-clarity-reviewer
 description: "First-contact reader clarity reviewer for human-primary articles, essays, blog posts, and newsletters. Reads once as the audience declared by the project's publication channel contract and flags first-screen failure, coined-term overuse, title-body axis drift, editorial meta-commentary, insider-context dependency, and translationese. Use after structural freeze of a draft or major revision, in parallel with the channel editor and fact-checker. NOT for academic papers or READMEs."
 tools: ["Read", "Grep", "Glob"]
-model: sonnet
+model: opus
 origin: shimo4228
 ---
 

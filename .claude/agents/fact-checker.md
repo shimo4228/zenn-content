@@ -27,6 +27,7 @@ Read the article and extract ALL verifiable factual claims. Classify each:
 | **Citation** | 「Eisenstein (1979) によれば〜」 |
 | **Causality** | 「〜の結果、〜が起きた」 |
 | **Statistic** | 「5〜20 倍増幅しうる」 |
+| **Code / reference** | 「`src/auth/session.py:42`」「このコマンドの出力は `count: 0`」「`×13 in 11s` と出た」 |
 
 Skip claims that are:
 - Author's personal experience or opinion (mark as PERSONAL)
@@ -112,6 +113,20 @@ When sources conflict, prefer in this order:
 4. Blog posts from domain experts
 5. Community discussions (LessWrong, HN, Reddit)
 
+## Code / reference claims（ローカル照合）
+
+path・行番号・コマンド出力・引用ブロックは Web でなく、dispatch prompt が名指しした
+repo / 証拠台帳 / 出力ファイルに Read と Grep で当てる。判定は逐語照合で行う:
+
+- path と行番号が、名指しされた repo の現在の tree に存在するか
+- 本文の出力・引用ブロックが、名指しされた出力ファイル / 一次資料と逐語一致するか（抜粋は
+  可。改変・補完は ⚠️）
+- 本文の数値が、台帳の Claims Register の行に辿れるか
+
+snippet の実行は起草者の義務（channel contract の Practical-channel evidence）で、本 agent は
+実行しない。出力が本文に載っていて照合先と一致すれば ✅、照合先が dispatch prompt に無ければ
+❓ と「照合先未指定」を書く。この種別は `editor` が持たない — editor は判断だけを見る。
+
 ## Local-Source Verification (personal-history claims)
 
 Some claims are about the author's *own* history — "I ran the stocktake 3 times",
@@ -172,7 +187,7 @@ source, and never leave a source-to-source contradiction unresolved.
 
 ## Related
 
-- `editor` agent — 実用チャンネルの構造・コード品質レビュー
+- `editor` agent — 実用チャンネルの判断レビュー（議論の動き・説明の質・AI slop）。code / path / 出力の照合は本 agent が持つ
 - `essay-reviewer` agent — エッセイチャンネルの論理構成・過積載レビュー
 - `writing-ecosystem` skill — AI slop / Voice / タイトル規約の正本。出典の本文編入は同 skill の **Citation & Sources Workflow** が所有（本 agent は paste-ready ブロックを返すのみ）
 

@@ -2,7 +2,7 @@
 name: essay-reviewer
 description: Strict essay editor for essay publishing channels; which channel routes here is defined by the project's rules channel table, not by article type. Reviews essays that mix social theory, organizational analysis, design philosophy, historical perspective, and personal narrative. Checks logical structure, argument overload, tone consistency, and audience fit. Use PROACTIVELY after drafting or substantially revising an essay, before publication.
 tools: ["Read", "Grep", "Glob"]
-model: sonnet
+model: fable
 origin: shimo4228
 ---
 
