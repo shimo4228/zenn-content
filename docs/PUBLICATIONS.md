@@ -10,7 +10,7 @@ Japanese originals on Zenn; English editions on Dev.to, or as source in `article
 ### 2026-09
 
 - **2026-09-17** [最上位モデルをセッション既定にしたら、重い実装とレビューでFableの使用限度が尽きた](https://zenn.dev/shimo4228/articles/top-model-as-default-leaks)
-  EN: — · `claudecode` `aiエージェント` `サブエージェント` `anthropic` `llm`
+  EN: [I Made the Top Model My Session Default, and One Heavy Implementation Plus Its Review Burned Through Fable's Usage Limit](https://dev.to/shimo4228/i-made-the-top-model-my-session-default-and-one-heavy-implementation-plus-its-review-burned-4182) · `claudecode` `aiエージェント` `サブエージェント` `anthropic` `llm`
 - **2026-09-16** [業務の中にいる人は、それを「ドメイン」とは呼ばない](https://zenn.dev/shimo4228/articles/domain-knowledge-travelers-vocabulary)
   EN: [People Inside the Business Don't Call It a 'Domain'](https://dev.to/shimo4228/people-inside-the-business-dont-call-it-a-domain-3kb2) · `aiエージェント` `ddd` `設計` `ai`
 - **2026-09-14** [毎週読まれるログに、11秒の連打が写らなかった理由](https://zenn.dev/shimo4228/articles/log-projection-blind-by-construction)

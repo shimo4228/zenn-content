@@ -899,6 +899,17 @@
       "file": "articles/top-model-as-default-leaks.md",
       "date": "2026-09-17",
       "notes": "最上位モデルをセッション既定にすると pin できない経路へ漏れ、使用限度の次に判断層が落ちる。review-model-notice / plan-executor hook と既定反転（ADR-0057）"
+    },
+    {
+      "file": "articles-en/top-model-as-default-leaks.md",
+      "devto": "https://dev.to/shimo4228/i-made-the-top-model-my-session-default-and-one-heavy-implementation-plus-its-review-burned-4182",
+      "devto_tags": [
+        "claudecode",
+        "aiagents",
+        "agenticcoding",
+        "anthropic"
+      ],
+      "notes": "EN translation of 最上位モデルをセッション既定にしたら、重い実装とレビューでFableの使用限度が尽きた"
     }
   ]
 }
