@@ -68,6 +68,22 @@ URL = posted (auto-recorded), else pending. Schema source of truth:
   2026-05; `.github/workflows/` holds only `validate.yml`. `DEVTO_API_KEY` stays in
   `scripts/.env` (gitignored), never in a plist.
 
+## note publishing support
+
+`note_publish.py` prepares title/body/manifest assets with Pandoc (Markdown tables become
+`header: value / header: value` bullets because note cannot render `<table>`), verifies body
+text and semantic HTML spans, and maintains a private SQLite approval/claim ledger.
+It does not drive the browser. The `note-publishing` skill owns UI operations;
+[note-pipeline.md](../note-pipeline.md) owns daily scheduling and activation tests.
+Run `uv run --project scripts python scripts/note_publish.py --help` from the repo root.
+
+`note_daily.sh run|install|uninstall|status` is the unattended runner: `run` fills
+`note_daily_prompt.md` (mode, ledger path, run directory) and hands it to
+`claude -p --chrome` with a tool allowlist; `install` writes a recurring 09:00
+Asia/Tokyo launchd agent into `~/Library/LaunchAgents/` (rendered at install time, so no
+personal path is committed). Runs log to `.notes/note-publishing/runs/<timestamp>-<mode>/`
+with `result.json` as the machine-readable outcome.
+
 ## Publication index generator
 
 `generate_article_index.py` renders `docs/PUBLICATIONS.md` (every article / essay /

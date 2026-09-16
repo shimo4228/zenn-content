@@ -1,6 +1,6 @@
 ---
 name: substack-publishing
-description: 完成・レビュー済みのhuman essayをnote/SubstackへHTML pasteで公開し、project corpusへmirrorするlocal workflow。Voice / AI-slop / Title / 出典はglobal writing-ecosystem、翻訳はprose-translationにdefer。Use when — note/Substackへ手動投稿・mirror・配信運用するとき。NOT for — 執筆、翻訳、quality判定。
+description: 完成・レビュー済みのhuman essayをSubstackへHTML pasteで公開し、project corpusへmirrorするlocal workflow。Voice / AI-slop / Title / 出典はglobal writing-ecosystem、翻訳はprose-translationにdefer。Use when — Substackへ手動投稿・mirror・配信運用するとき。NOT for — note投稿（note-publishing）、執筆、翻訳、quality判定。
 user-invocable: true
 origin: shimo4228
 ---
@@ -11,7 +11,7 @@ origin: shimo4228
 
 ## いつ使うか
 
-global `quality-gate` PASSと著者GOの後に使う。日本語正本は`note/`、Substackへは
+global `quality-gate` PASSと著者GOの後に使う。noteの投稿操作は`note-publishing`が所有する。日本語正本は`note/`（Zenn転載は`articles/`）、Substackへは
 `prose-translation`で訳したEN版を出す。
 
 ## defer 先（本 skill では再掲しない）
@@ -175,7 +175,7 @@ EN 版の初出は Substack、JA 正本は content repo の `note/`（note.com �
 ## ワークフロー上の位置
 
 ```
-draft (writing-ecosystem) — JA 正本は content repo の note/ に置き、note.com へ手動投稿
+draft (writing-ecosystem) — JA 正本は content repo の note/ に置き、note-publishing で note.com へ投稿
   → review (チャンネル表のレビュー agent + fact-checker + 明瞭性レビュー + cross-model レビュー)
   → 出典編入 (writing-ecosystem: Citation & Sources Workflow)
   → translate (prose-translation) — note 正本から EN 版を作る（Substack は EN チャンネル）

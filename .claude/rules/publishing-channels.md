@@ -2,8 +2,19 @@
 # Publishing Channel Contract
 
 このファイルは zenn-content の媒体固有 overlay。執筆手順・中心命題・因果線・craft・AI slop・
-タイトル点検は project-local `writing-ecosystem` / `title-reviewer` が持つ。ここには path、読者との約束、
+タイトル点検は project-local `writing-ecosystem` / `title-reviewer` が持つ。ここには著者方針、path、読者との約束、
 register、review panel、機械検査、platform 形式、公開 handoff だけを置く。
+
+## Author orientation
+
+著者は、読者がものの見方を更新し、自分の目的・前提・進む方向を問い直せる文章を重視する。
+エージェントによって実行の選択肢が広がるほど、何のために行うか、誰にどんな影響があるかを
+考える価値が増すと捉えている。これは著者の価値観であり、AIの能力に関する一般法則とは区別する。
+具体的な実装や経験は、その問いを支える材料にもなる。
+
+この方針はテーマと構成を選ぶ際の指針として扱う。個々の記事の目的に応じて、実用的な手順、
+理解の深化、視点の変化のどれを中心に届けるかを選ぶ。受け入れ判定は下記の Shared acceptance
+profile に従い、この方針自体は全記事共通の採点項目や必須のWhy節にはしない。
 
 ## Channel routing
 
@@ -11,7 +22,7 @@ register、review panel、機械検査、platform 形式、公開 handoff だけ
 |---|---|---|---|---|---|---|---|
 | Zenn | `articles/*.md` | 検索・feedから来たengineerが、数秒で用途を理解し再現または判断できる | 日本語ですます。直接指示・具体観察・判断則を優先し、修辞疑問で結論を弱めない。結論の決め台詞を常体で置くのは著者の意図的ブレイクとして許容し、reviewerはCRITICALにしない | `editor` | `npm run validate`; `npm run evidence -- articles/<slug>.md`（deviations 0。公開直前は`--online`も） | 原則50字以内、正確さに必要なら60字まで。em dash（——）連結不可 | `zenn-format` → `publish-article` |
 | Dev.to | `articles-en/*.md` | 英語圏のengineerが同じ成果を再現または判断できる | Natural English。direct、practical、outcome-first。essayistic hedgeへ寄せない | `editor` | `devto-translator` self-check; `devto_crosspost.py post <slug> --dry-run` | local上限なし。検索/フィードは原稿の性質で選ぶ | `devto-translator` → `publish-article` |
-| note | `note/*.md` | AIを仕事や生活で使う一般読者が、一つの問いを自分の問題として考えられる | 日本語ですます、発見調。評価は問いへ開けるが事実は断定する | `essay-reviewer` | 新規稿はfrontmatterなし | platform上限なし。feedで問いと対象が分かる | `substack-publishing`のnote手順 |
+| note | `note/*.md` | AIを仕事や生活で使う一般読者が、一つの問いを自分の問題として考えられる | 日本語ですます、発見調。評価は問いへ開けるが事実は断定する | `essay-reviewer` | 新規稿はfrontmatterなし | platform上限なし。feedで問いと対象が分かる | `note-publishing` |
 | Substack | `substack/*.md` | 英語圏の一般読者がJA正本と同じ問いを追える | Natural English、discovery tone。JA正本の確度を保つ | `essay-reviewer` | 新規稿はfrontmatterなし; `prose-translation`後のレビュー完了 | title/subtitleを分ける | `substack-publishing` |
 
 path がどの行にも一致しない、または複数行に一致する場合、`writing-ecosystem` と
@@ -103,7 +114,7 @@ Zenn / Dev.toの全稿は、末尾の関連link節に次の2行を含める。�
 ## Cadence and scheduling
 
 - Zenn: 週2〜3本。火〜水 7:00〜9:00 JSTを優先し、burstしない
-- note: 週1〜2本。手動投稿
+- note: 著者が一括承認した原文転載を毎日09:00 JSTに最大1本。検証と有効化条件は `docs/note-pipeline.md`
 - JP/EN pair: Zenn 09:00 JST、Dev.toは前日22:00 JSTを既定とする
 - `scripts/schedule.json` schemaは `.claude/refs/schedule-schema.md`
 
@@ -117,14 +128,14 @@ Zenn / Dev.toの全稿は、末尾の関連link節に次の2行を含める。�
 
 ## note / Substack contract
 
-- JA正本・初出は`note/<slug>.md`。ENは`prose-translation`で`substack/<slug>-en.md`へ訳す
+- note初出のJA正本は`note/<slug>.md`。Zennからの原文転載は`articles/<slug>.md`が正本で、`note/<slug>.md`は転載版。ENは`prose-translation`で`substack/<slug>-en.md`へ訳す
 - 新規稿はfrontmatterなし。既存の旧mirrorは変更しない
-- note/SubstackへMarkdownを直貼りせず、`substack-publishing`のHTML paste手順を使う
+- note は `note-publishing`、Substack は `substack-publishing` のHTML paste手順を使う
 - 公開後は`scripts/corpus.yml`を更新し、`npm run generate:index`
 
 ## Related
 
 - project-local `writing-ecosystem` — 共通執筆フローとcanon
 - project-local `quality-gate` / `title-reviewer` — 共通受け入れ・タイトル点検
-- local `zenn-format` / `publish-article` / `substack-publishing` — platform操作
+- local `zenn-format` / `publish-article` / `note-publishing` / `substack-publishing` — platform操作
 - local `devto-translator` — Dev.to固有のEN稿変換。投稿は`publish-article`

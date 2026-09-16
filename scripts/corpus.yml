@@ -59,6 +59,15 @@ essays:
       url: https://note.com/shimo4228/n/nd6626c834ea5
       file: note/non-engineer-no-name-yet.md
 
+# Zenn articles reposted verbatim to note (articles/*.md stays canonical; note/<slug>.md is
+# the repost copy). Not rendered by generate_article_index.py yet; recorded so the note URL
+# has one home. Add one entry after each note-publishing run.
+note_reposts:
+  - slug: domain-knowledge-travelers-vocabulary
+    date: 2026-09-13
+    url: https://note.com/shimo4228/n/ndc5b18c9a909
+    file: note/domain-knowledge-travelers-vocabulary.md
+
 # Papers deposited from the research lines. Zenodo concept DOI is canonical;
 # SSRN is a mirror. `from` lists the Zenn article slugs the paper grew out of.
 papers:

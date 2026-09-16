@@ -38,7 +38,9 @@ ADRs / memory / raw session history from writing-time rules.
 - Dev.to: `articles-en/`; translation method is global `prose-translation`, platform conversion is `devto-translator`
 - note JA canonical: `note/`; no frontmatter
 - Substack EN translation: `substack/`; no frontmatter
-- note / Substack HTML paste and corpus mirroring: `substack-publishing`
+- note publishing and corpus mirroring: `note-publishing`
+- Substack publishing and corpus mirroring: `substack-publishing`
+- note daily queue and scheduling: `docs/note-pipeline.md`
 - Zenn / Dev.to publishing pipeline: `publish-article`
 
 Exact register, audience promise, reviewer panel, title limit, `published_at`, cadence, terminology, and
@@ -58,7 +60,7 @@ Pipeline details: `docs/CODEMAPS/scripts.md`.
 
 1. `/quality-gate <file>`
 2. author publication GO
-3. `/publish-article <file>` for Zenn / Dev.to, or `substack-publishing` for note / Substack
+3. `/publish-article <file>` for Zenn / Dev.to, `note-publishing` for note, or `substack-publishing` for Substack
 4. `npm run generate:index`
 5. `npm run validate` and `npm run check:index`
 
