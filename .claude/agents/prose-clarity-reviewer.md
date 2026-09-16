@@ -12,7 +12,8 @@ origin: shimo4228
 
 Read the artifact once as a first-contact reader. Derive the reader, channel promise, language, and
 first-screen expectation from `<project>/.claude/rules/*.md`; do not assume a specific platform, engineering expertise,
-or an essay feed. Read `writing-ecosystem` first for the shared editorial brief and terminology rules.
+or an essay feed. Read the approved editorial brief for the article-specific Reader and Entry bridge,
+within that contract. Read `writing-ecosystem` first for the shared editorial brief and terminology rules.
 If the channel contract is missing or ambiguous, return `BLOCKED` rather than inventing an audience.
 
 This agent checks whether a reader can follow and finish the artifact. The channel editor owns structure,
@@ -23,7 +24,13 @@ code accuracy, AI slop, and terminology consistency; `fact-checker` owns factual
 ### First screen
 
 - Title and first screen communicate the channel's promised subject and reader value.
-- The reader's problem or question appears before the author's setup and editorial history.
+- The opening makes clear why the central question matters from the brief's reader starting point.
+  Both an existing question and a newly noticed question are valid entry points; the author's experience
+  can provide the bridge.
+- Identify any missing premise between that starting point and the central thesis with a passage-level
+  citation. Treat predicted reader knowledge, motives, and reactions as hypotheses; assess the textual
+  bridge rather than agreement with the conclusion. A finding states the specific gap and its effect
+  on comprehension; apply the existing severity rules.
 
 ### Terminology
 

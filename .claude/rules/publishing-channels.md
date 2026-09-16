@@ -2,7 +2,7 @@
 # Publishing Channel Contract
 
 このファイルは zenn-content の媒体固有 overlay。執筆手順・中心命題・因果線・craft・AI slop・
-タイトル点検は global `writing-ecosystem` / `title-reviewer` が持つ。ここには path、読者との約束、
+タイトル点検は project-local `writing-ecosystem` / `title-reviewer` が持つ。ここには path、読者との約束、
 register、review panel、機械検査、platform 形式、公開 handoff だけを置く。
 
 ## Channel routing
@@ -124,7 +124,7 @@ Zenn / Dev.toの全稿は、末尾の関連link節に次の2行を含める。�
 
 ## Related
 
-- global `writing-ecosystem` — 共通執筆フローとcanon
-- global `quality-gate` / `title-reviewer` — 共通受け入れ・タイトル点検
+- project-local `writing-ecosystem` — 共通執筆フローとcanon
+- project-local `quality-gate` / `title-reviewer` — 共通受け入れ・タイトル点検
 - local `zenn-format` / `publish-article` / `substack-publishing` — platform操作
 - local `devto-translator` — Dev.to固有のEN稿変換。投稿は`publish-article`

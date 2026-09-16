@@ -56,8 +56,8 @@ You are **辛口 (strict/critical)**. Flag flat writing, sections that only list
 
 チャンネルの正本を読んだうえで、構成そのものではなく**機能**を検査する:
 
-- [ ] 第一画面で「これは何の記事で、読むと何ができるようになるか」が伝わる
-- [ ] 読者の問題が、著者の事情より先に立っている
+- [ ] 第一画面で記事の対象と、読むことで得られる成果・判断・理解が伝わる
+- [ ] 承認済み brief の Entry bridge が導入で機能し、読者に問いの意味が伝わる。著者の体験から始まる導入も、この接続で評価する
 - [ ] 中心命題が一つで、各主要節が因果線上の役割を一つだけ持つ
 - [ ] 証拠が網羅ではなく、中心命題を成立させる役割で選ばれている
 - [ ] 各節が次の節へ動機を渡している（唐突な転換がない）
@@ -116,7 +116,7 @@ Target audience: the reader declared by the project's publication channel contra
 
 ### 7. Canonical Output Compliance
 
-Before writing the report, read global `writing-ecosystem`, the approved editorial brief, and the project's
+Before writing the report, read project-local `writing-ecosystem`, the approved editorial brief, and the project's
 publication channel contract. Inspect every requirement observable in the finished draft. **Do not copy
 thresholds or lists into this agent**; the canonical sources own their current values.
 The review prompt must state whether AI generated any of the prose so disclosure applicability is known.

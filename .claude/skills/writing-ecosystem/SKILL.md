@@ -71,9 +71,10 @@ local contract から出力 channel と読者を決める。テーマ未選択�
 全部入れる coverage checklist ではない。構成前に次の **editorial brief** を提示し、著者確認で止まる。
 
 ```markdown
-Reader: <一人の具体的読者と、その人の問い / 目的>
+Reader: <一人の具体的読者。その人の状況・既知のこと・当然視していること・問いがあればその問い。根拠と仮説を区別する>
 Channel: <local contract の channel>
 Central thesis: <この原稿が成立させる命題を一文で。必ず一つ>
+Entry bridge: <読者の出発点から、なぜ中心命題を考える意味があるかが伝わる場面・観察・問いを1〜2文で>
 Causal spine: <観察 / 問題 → 緊張 → 機序 → 読者の判断・行動・Higher Ground>
 Selected evidence:
 - <evidence id>: <因果線での役割>
@@ -81,11 +82,17 @@ Out of scope:
 - <面白いがこの命題を進めない論点>
 ```
 
+Reader は channel contract の読者との約束に沿って記事ごとに具体化する。読者の知識や動機の
+推測は仮説として著者と確認する。Entry bridge は既存の疑問への接続と、新しい疑問が生まれる
+入口の両方を含む。著者の体験も、その問いの意味を読者へ伝えるなら入口になる。読者が得る
+価値には理解や視点の変化も含み、結論への同意は読者に開いておく。
+
 実用 how-to では central thesis を「読者が得る一つの成果または判断則」としてよい。証拠は
 量でなく役割で選ぶ。同じ役割の例が複数あるなら、因果に必要な最小の一例を残す。
 
 ### 3. Outline and draft
 
+導入で Entry bridge を具体化し、読者が共有していない前提を本文で補う。
 各 load-bearing section に causal spine 上の役割を一つだけ割り当て、採用 evidence を紐付ける。
 並列の agenda を節として足さない。具体物を先に置き、説明を後にする。執筆中に別の中心命題が
 現れたら混ぜずに停止し、editorial brief を再確認する。out-of-scope は `details` へ押し込まない。

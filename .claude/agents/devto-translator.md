@@ -1,6 +1,7 @@
 ---
 name: devto-translator
 description: JP記事をprose-translationでEN化し、Dev.to固有のtags・links・cover・schedule.jsonへ変換してEN稿を生成するproject agent。Use when — Zenn原稿の英訳とDev.to crosspost準備を行うとき。NOT for — 投稿・予約、quality-gate、翻訳方法論、Zenn公開、既存Dev.to記事の更新。
+model: opus
 origin: shimo4228
 ---
 
