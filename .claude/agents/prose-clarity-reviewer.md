@@ -59,6 +59,13 @@ must restate the substance in one phrase (a quoted fragment, a number, a named c
 that cannot be restated in one phrase indicates a structural problem, not a wording problem. Treat as
 high severity.
 
+### Linear time, one anchor
+
+Flag absolute dates that do not change the reader's judgment (a timestamp on the author's own log
+quote, a date restated on every paragraph of one episode) and any section whose time runs backward
+from the section before it. Count the absolute dates and name the ones that carry no decision. The
+first anchor date and as-of dates on specifications, measurements, and external statements are exempt.
+
 ### No insider-context dependency
 
 Each paragraph must retain its meaning without knowledge of the author's harness, file names, ADRs,

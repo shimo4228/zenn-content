@@ -894,6 +894,11 @@
         "logging"
       ],
       "notes": "EN translation of 毎週読まれるログに、11秒の連打が写らなかった理由"
+    },
+    {
+      "file": "articles/top-model-as-default-leaks.md",
+      "date": "2026-09-17",
+      "notes": "最上位モデルをセッション既定にすると pin できない経路へ漏れ、使用限度の次に判断層が落ちる。review-model-notice / plan-executor hook と既定反転（ADR-0057）"
     }
   ]
 }
