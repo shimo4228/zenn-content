@@ -921,6 +921,16 @@
         "benchmarking"
       ],
       "notes": "EN translation of 文章を書かないモデルJevのスキル選択は、0.3秒でOpusにどこまで近づくか（即時投稿）"
+    },
+    {
+      "file": "articles/jev-vs-opus-skill-selection.md",
+      "date": "2026-09-21",
+      "notes": "Contemplative Agent のスキル選択 150 件で Jev と Opus を比較。Opus 同士 0.678 / Jev 0.346 / gemma4:e4b 0.14〜0.16、0.32 秒・約 560 分の 1（即時公開）"
+    },
+    {
+      "file": "articles/jev-retrofit-limits.md",
+      "date": "2026-09-21",
+      "notes": "Jev の skill router を Claude Code の hook に足し、Mods でスキル一覧を書き換える手前で引き返した。選ぶ役を誰が持つか。EN 版は未判断（即時公開）"
     }
   ]
 }
