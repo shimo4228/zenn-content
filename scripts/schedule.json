@@ -910,6 +910,17 @@
         "anthropic"
       ],
       "notes": "EN translation of 最上位モデルをセッション既定にしたら、重い実装とレビューでFableの使用限度が尽きた"
+    },
+    {
+      "file": "articles-en/jev-vs-opus-skill-selection.md",
+      "devto": "https://dev.to/shimo4228/how-close-to-opus-does-jev-a-model-that-writes-no-text-get-at-skill-selection-in-03-seconds-1nfj",
+      "devto_tags": [
+        "aiagents",
+        "llm",
+        "localllm",
+        "benchmarking"
+      ],
+      "notes": "EN translation of 文章を書かないモデルJevのスキル選択は、0.3秒でOpusにどこまで近づくか（即時投稿）"
     }
   ]
 }
