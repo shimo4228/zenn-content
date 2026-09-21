@@ -10,7 +10,7 @@ Japanese originals on Zenn; English editions on Dev.to, or as source in `article
 ### 2026-09
 
 - **2026-09-21** [JevのスキルルーターをClaude Codeに足して、スキル一覧を書き換える手前で引き返した](https://zenn.dev/shimo4228/articles/jev-retrofit-limits)
-  EN: — · `jev` `claudecode` `aiエージェント` `llm`
+  EN: [I Added Jev's Skill Router to Claude Code and Turned Back Just Before Rewriting the Skill Listing](https://dev.to/shimo4228/i-added-jevs-skill-router-to-claude-code-and-turned-back-just-before-rewriting-the-skill-listing-34in) · `jev` `claudecode` `aiエージェント` `llm`
 - **2026-09-21** [文章を書かないモデルJevのスキル選択は、0.3秒でOpusにどこまで近づくか](https://zenn.dev/shimo4228/articles/jev-vs-opus-skill-selection)
   EN: [How Close to Opus Does Jev, a Model That Writes No Text, Get at Skill Selection in 0.3 Seconds?](https://dev.to/shimo4228/how-close-to-opus-does-jev-a-model-that-writes-no-text-get-at-skill-selection-in-03-seconds-1nfj) · `jev` `llm` `aiエージェント` `claude`
 - **2026-09-17** [最上位モデルをセッション既定にしたら、重い実装とレビューでFableの使用限度が尽きた](https://zenn.dev/shimo4228/articles/top-model-as-default-leaks)

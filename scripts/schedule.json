@@ -931,6 +931,17 @@
       "file": "articles/jev-retrofit-limits.md",
       "date": "2026-09-21",
       "notes": "Jev の skill router を Claude Code の hook に足し、Mods でスキル一覧を書き換える手前で引き返した。選ぶ役を誰が持つか。EN 版は未判断（即時公開）"
+    },
+    {
+      "file": "articles-en/jev-retrofit-limits.md",
+      "devto": "https://dev.to/shimo4228/i-added-jevs-skill-router-to-claude-code-and-turned-back-just-before-rewriting-the-skill-listing-34in",
+      "devto_tags": [
+        "claudecode",
+        "aiagents",
+        "agenticcoding",
+        "llm"
+      ],
+      "notes": "EN translation of JevのスキルルーターをClaude Codeに足して、スキル一覧を書き換える手前で引き返した（即時投稿）"
     }
   ]
 }
