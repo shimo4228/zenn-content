@@ -121,9 +121,9 @@ out-of-scope を保持する。翻訳先の local contract へ route し直す�
 path（repo、出力ファイル）を名指しで渡す — code / path / 出力の照合はこの agent が持ち、channel
 reviewer は判断だけを持つ。
 
-review 修正が central thesis、causal spine、主要節を変えたら brief → 関係 reviewer へ戻る。
-レビュー反映後、下の Final structural pass を確認してから著者が本文を通読し、**内容 GO** を
-出す。内容が確定するのはこの GO であり、タイトル作業はその後に置く。
+採用した指摘は orchestrator が反映し、反映後の稿は reviewer へ戻さず著者の通読へ渡す。
+下の Final structural pass を確認してから著者が本文を通読し、**内容 GO** を出す。
+修正が central thesis、causal spine、主要節を変えたときだけ、brief → 関係 reviewer へ戻る。内容が確定するのはこの GO であり、タイトル作業はその後に置く。
 
 #### 指摘の処分規律
 
@@ -131,11 +131,17 @@ review 修正が central thesis、causal spine、主要節を変えたら brief 
   CRITICAL でなく「裁定要求」として報告し、裁定者は著者
 - **裁定の書き戻し**: 裁定結果は memory でなく channel contract に書く（fresh-context reviewer に
   届く唯一の層）。著者が同種指摘を 2 回却下したら、その場で contract の該当行を更新または削除する
-- **再レビュー規律**: 2 round 目以降は CRITICAL と変更部分の regression のみを blocking とし、
-  新規 MEDIUM/MINOR は集計のみ（Anthropic best-practices の re-review convergence、as-of 2026-08-27）
-- **panel の回数**: `prose-clarity-reviewer` と cross-model review は構造凍結時に各 1 回。以後の
-  部分改稿の regression は channel editor だけが見る。同じ観点で繰り返し読ませると、指摘ごとの
-  限定句と段落分割が積もって本文が防御的になる
+- **panel の回数**: channel reviewer・`prose-clarity-reviewer`・cross-model review は構造凍結時に
+  各 1 回。レビュー修正を確かめるのは著者の通読で、reviewer ではない。修正を reviewer に読み
+  直させると、読むたびに新しい指摘が生まれて終わらず、限定句と段落分割が積もって本文が
+  防御的になる
+- **処分記録**: orchestrator は指摘ごとに採用・不採用と理由を 1 行ずつ残し、`quality-gate` へ
+  凍結稿への report と並べて渡す。受け入れの証跡は「凍結稿への report + 処分記録 + 著者の
+  内容 GO」で、反映後の稿への reviewer verdict は要らない
+- **brief へ戻った round**: reviewer を走らせ直すのは、修正が central thesis・causal spine・
+  主要節を変えて brief へ戻ったときだけ。その round は CRITICAL と変更部分の regression のみを
+  blocking とし、新規 MEDIUM/MINOR は集計のみ（Anthropic best-practices の re-review
+  convergence、as-of 2026-08-27）
 - **`fact-checker` の回数**: 著者の通読の前に 1 回。以後は、本文に新しい引用・数値・外部ソースが
   入ったときだけ、その差分を対象に回す。全文の再照合は構造が動くたびに同じ主張を払い直すことになる
 - **reviewer への dispatch**: 初見の読みを担う reviewer（`prose-clarity-reviewer`）には、原稿の path と

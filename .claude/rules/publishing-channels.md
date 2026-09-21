@@ -30,22 +30,26 @@ path がどの行にも一致しない、または複数行に一致する場合
 
 ## Shared acceptance profile
 
-全channelで、内容GO済みの本文 + 最終タイトルに対する次の証跡を要求する。reviewer panel は
-タイトル確定前の凍結本文に対して実行してよい（タイトル作業は著者の内容GO後）。
+全channelで次の証跡を要求する。reviewer panel は構造凍結時の本文に各1回実行する。採用した
+指摘の反映はorchestratorが行い、反映後の稿を確かめるのは著者の通読（内容GO）である。
+reviewer verdictは凍結稿へのreportで足り、反映後の稿へのverdictは要求しない。
 
-- channel editor: unresolved CRITICAL 0、canonical coverageのpending / unverified 0
-- `prose-clarity-reviewer`: PASS
-- `fact-checker`: INACCURATE 0、未解決 PARTIALLY 0
+- 処分記録: orchestratorが指摘ごとに採用・不採用と理由を1行ずつ残している
+- channel editor: 凍結稿へのreportあり。CRITICALとcanonical coverageのpending / unverifiedは
+  全件処分済み
+- `prose-clarity-reviewer`: 凍結稿へのreportあり。FAILの根拠になったfindingは全件処分済み
+- `fact-checker`: INACCURATEとPARTIALLYは全件処分済み（訂正、または一次ソースで反証）
+- 著者の内容GO: レビュー反映後の本文に対して出ている
 - `codex-review`: 完了、または実行不能理由とfallback reviewを記録
 - `title-reviewer`: 著者の内容GO後（= 本文の最後の構造変更後）に実行し、findings を見て著者がタイトルを選択済み
 - AI-mediated writing: Zenn (`articles/*.md`) は開示block適用外（媒体読者にとってAI利用は
   前提で、開示は情報量を持たない。毎回問い直さない）。
   Dev.to / note / Substackは適用可否を記録し、該当するならglobal canonの開示blockを収録済み
 - source embedding: Zenn/Dev.toは検証済み主張をinline linkまたはReferencesへ、note/Substackは
-  検証済みsourceを末尾へ編入し、channel editorのfocused recheck完了
+  検証済みsourceを末尾へ、orchestratorが編入済み。確かめるのは機械検査と著者の通読
 - public-safety scan: 秘密、個人path、未sanitized screenshot / raw log 0
-- panel cadence: `prose-clarity-reviewer`と`codex-review`は構造凍結時に各1回。以後の部分改稿の
-  regressionはchannel editorだけが見る
+- panel cadence: reviewerを走らせ直すのは、修正が中心命題・因果線・主要節を変えてbriefへ
+  戻ったときだけ。`fact-checker`は、本文に新しい引用・数値・外部ソースが入ったとき、その差分だけ
 
 `quality-gate` はこのprofileと上表の機械検査を集約する。reviewerを起動したり、文章を再判定
 したりしない。

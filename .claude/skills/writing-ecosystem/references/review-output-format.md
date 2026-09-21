@@ -45,7 +45,7 @@
 
 - Applied canon: [source section names]
 - Not applicable: [requirement + reason]
-- Pending / unverified: [まだ実行できない検査（post-fact-check recheck 等）や不足入力、なければ none]
+- Pending / unverified: [まだ実行できない検査（出典の編入など、凍結後に orchestrator が行う作業）や不足入力、なければ none]
 - Must-fix violations: [CRITICAL finding references, or none]
 - Advisory findings: [MEDIUM/MINOR finding references, or none]
 

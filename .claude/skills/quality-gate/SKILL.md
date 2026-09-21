@@ -29,8 +29,9 @@ contract は対象 path ごとに少なくとも次を宣言する:
 
 1. 原稿 path を local contract の 1 channel に解決する。0 件または複数件なら推測せず
    `BLOCKED: channel contract missing or ambiguous`。
-2. required reviewer ごとに、対象が現在の完成稿であることと blocking finding が解消済みで
-   あることを確認する。report が無ければ FAIL。
+2. required reviewer ごとに、contract が指定する版（構造凍結稿または完成稿）への report が
+   あることと、blocking finding が処分済み（反映、または著者裁定で不採用）であることを、
+   処分記録と照合して確認する。report が無ければ FAIL。
 3. contract の deterministic checks を実行または証跡照合する。秘密・個人 path・未サニタイズの
    生ログは全公開物の共通 blocker とする。媒体固有 validator は contract の command を使う。
 4. 最新 `title-reviewer` が本文の最後の構造変更後に実行され、著者がタイトルを選択済みか確認する。
