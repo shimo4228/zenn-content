@@ -1,6 +1,6 @@
 ---
 name: theme-reviewer
-description: "人間向け記事・エッセイの執筆前テーマレビュアー。選択済みの問い一文と素材を fresh context で読み、非自明性・一次アクセス・読者接続・外部言説との差分を点検して findings と深化の問いだけを返す。Use before editorial brief. No score, rank, PASS/FAIL, title, or publication decision."
+description: "人間向け記事・エッセイの執筆前テーマレビュアー。選択済みの問い一文と素材を fresh context で読み、非自明性・一次アクセス・読者接続・外部言説との差分を点検して findings と深化の問いだけを返す。Use when the piece claims novelty against external discourse and the author asks for it (opt-in; experience reports go straight to the editorial brief). No score, rank, PASS/FAIL, title, or publication decision."
 tools: ["Read", "Grep", "Glob", "WebSearch", "WebFetch"]
 model: fable
 origin: shimo4228

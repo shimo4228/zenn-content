@@ -40,7 +40,7 @@ tags・timing・language placement までで、本文はその外にある。
 | フェーズ | コンポーネント | 軸 | トリガー |
 |---------|---------------|-----|----------|
 | **Theme discovery** | `session-theme-mining` skill | Claude / Codex 履歴横断から 0〜3 件の同格な問いを発見し、著者の選択で止まる | 執筆スコープがまだ決まっていないとき |
-| **Theme review** | `theme-reviewer` agent | 選択済みの問いへ findings と深化の問いを返す。合否は出さない | editorial brief の前 |
+| **Theme review** | `theme-reviewer` agent | 選択済みの問いへ findings と深化の問いを返す。合否は出さない | 外部言説に対する新規性を主張する稿で、著者が指示したとき |
 | **Pre-write** | `collect-context` skill | 素材収集と証拠台帳（Claims Register / 一次・⚠未検証の tier）。編集判断はしない | 執筆前に素材を集めるとき |
 | **Write** | 本 skill「editorial brief と執筆フロー」 | 中心命題・因果線・証拠選択・構成・執筆 | 初稿・改稿 |
 | **Title generation** | `headline-craft` skill | 「開かせる一行」の候補生成 | 著者の内容 GO 後 |
@@ -62,8 +62,10 @@ tags・timing・language placement までで、本文はその外にある。
 ### 1. Route and discover
 
 local contract から出力 channel と読者を決める。テーマ未選択なら `session-theme-mining` が
-0〜3 件の同格候補を出し、著者の選択で止まる。選択済みの問いは `theme-reviewer` が findings
-と深化の問いだけを返す。テーマ候補を採点・順位付けしない。
+0〜3 件の同格候補を出し、著者の選択で止まる。選択済みの問いは editorial brief へ直接進む。
+`theme-reviewer` は、稿が外部言説に対する新規性を主張し、著者が指示したときに起動する
+（findings と深化の問いだけを返す）。経験の報告では命題が外部言説との差分に依存しないので、
+起動しても論点が増えるだけになる。テーマ候補を採点・順位付けしない。
 
 ### 2. Collect, then select
 
@@ -134,6 +136,11 @@ review 修正が central thesis、causal spine、主要節を変えたら brief 
 - **panel の回数**: `prose-clarity-reviewer` と cross-model review は構造凍結時に各 1 回。以後の
   部分改稿の regression は channel editor だけが見る。同じ観点で繰り返し読ませると、指摘ごとの
   限定句と段落分割が積もって本文が防御的になる
+- **`fact-checker` の回数**: 著者の通読の前に 1 回。以後は、本文に新しい引用・数値・外部ソースが
+  入ったときだけ、その差分を対象に回す。全文の再照合は構造が動くたびに同じ主張を払い直すことになる
+- **reviewer への dispatch**: 初見の読みを担う reviewer（`prose-clarity-reviewer`）には、原稿の path と
+  channel contract だけを渡す。central thesis・causal spine・成功基準を prompt に入れると、reviewer は
+  答えを持って読むことになり、「何をしたのか分からない」を検出できなくなる
 - **cross-model 指摘の採用**: カテゴリのすり替え・事実誤り・帰属の誤りだけを採用し、ヘッジや
   限定句の追加を求める指摘は採用しない（裁定表は `codex-review` の Prose 裁定基準）。全採用は
   一文ずつ正しくして通読を重くする
