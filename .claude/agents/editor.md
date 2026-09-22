@@ -57,6 +57,8 @@ You are **辛口 (strict/critical)**. Flag flat writing, sections that only list
 チャンネルの正本を読んだうえで、構成そのものではなく**機能**を検査する:
 
 - [ ] 第一画面で記事の対象と、読むことで得られる成果・判断・理解が伝わる
+- [ ] 実用 channel では、最初の見出しの前に読者がそのまま使える成果物が 1 個ある（コマンド / プロンプト /
+  repo / 流れ 1 行 / hero 図）。予告文だけなら指摘する
 - [ ] 承認済み brief の Entry bridge が導入で機能し、読者に問いの意味が伝わる。著者の体験から始まる導入も、この接続で評価する
 - [ ] 中心命題が一つで、各主要節が因果線上の役割を一つだけ持つ
 - [ ] 証拠が網羅ではなく、中心命題を成立させる役割で選ばれている
@@ -78,7 +80,9 @@ You are **辛口 (strict/critical)**. Flag flat writing, sections that only list
 - [ ] Technical concepts are **accurately explained** — 単純化が誤解を生んでいない
 - [ ] No misleading simplifications or overstatements
 - [ ] Trade-offs and alternatives are **honestly discussed**
-- [ ] 載せた code / 出力は**最小**で、直前の主張を運んでいる（飾りの snippet を指摘する）
+- [ ] 載せた code / 出力 / 図 / 表は**最小**で、直前の主張を運んでいる（飾りの snippet と飾りの図を指摘する。
+  図の直後に「この図が示すこと」の 1 文が無ければ指摘する）
+- [ ] 比喩は 1 記事 1 個で、外すと中心命題の形が消える（消えないなら削る指摘）
 - [ ] 本文内で矛盾していない（冒頭で「見つけた」と書いたものを後段で「見ていなかった」と書く等）
 
 **Common issues to flag:**

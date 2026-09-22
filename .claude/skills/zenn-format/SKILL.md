@@ -83,6 +83,33 @@ def rotate_token(session: Session) -> Token:
 
 descriptive filenameを使い、個人path・key・credentialをsanitiseする。
 
+### Tables
+
+比較にだけ使う。列は3〜4まで、行頭の列に読者が探す語を置く。並列は箇条書き、因果は散文
+（使い分けの正本は`writing-ecosystem`の「認知負荷の設計」）。
+
+### Figures
+
+図は内容GOの後、`writing-ecosystem`のFigure planに沿って起こす。Zennが受けるのは`/images`直下の
+`.png .jpg .jpeg .gif .webp`、3MB以内。SVGは不可（Zenn公式 deploy-github-images、as-of 2026-09-22）。
+
+1. `/eli5 <その節の主張1文>` に、形（対比 / 流れ / 階層 / 2軸）と制約を添えて呼ぶ: 1600×900の1画面、
+   要素6個以内、文字は名詞句、色は2色+灰、フォントは`"Hiragino Sans", system-ui`。読者の既知物との
+   比喩を持つのはhero図だけで、他の図は構造だけを描く。出力HTMLを `figures/<slug>-<what>.html` に
+   保存する（共通styleは`figures/_base.css`。artifactとして公開しない）
+2. repo rootで `python3 -m http.server 8765 --bind 127.0.0.1 --directory figures &` を起動し、Playwright
+   MCPで `browser_resize` 1600×900 → `browser_navigate` `http://127.0.0.1:8765/<slug>-<what>.html`
+   → `browser_take_screenshot`（scale css、type png、filename `images/<slug>-<what>.png`。repo root
+   からの相対path）。`file:`直開きはブロックされる。撮ったら`Read`で目視し、はみ出し・重なり・
+   折り返しを直して撮り直す。`ls -la images/<slug>-*.png` で3MB以内を確かめ、`pkill -f "http.server 8765"`
+   でserverを止める
+3. 記事側は `![<図が示すこと1文>](/images/<slug>-<what>.png)` を、その節の発見が出そろった段落の後に
+   置き、直後に「この図が示すこと」を1文書く。alt textは図の文字（数値・モデル名）を含める
+4. 本文を直したらHTMLを直して撮り直す。図の文字と本文の差分は`fact-checker`に渡す
+
+mermaidは流れ図でeli5図を補うときだけ。nodeは8個まで。生成画像（ChatGPT等）を使うときは
+同じ`images/`規約で、生成promptを`figures/<slug>-<what>.prompt.md`に残す。
+
 ### Links
 
 Zenn内部記事もfull URLを使う。

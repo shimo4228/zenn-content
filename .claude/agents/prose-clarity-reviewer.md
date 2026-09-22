@@ -27,6 +27,8 @@ code accuracy, AI slop, and terminology consistency; `fact-checker` owns factual
 - The opening makes clear why the central question matters from the brief's reader starting point.
   Both an existing question and a newly noticed question are valid entry points; the author's experience
   can provide the bridge.
+- If the first screen carries a figure or a deliverable (command, prompt, repo, one-line flow), it must
+  convey the subject and the reader value on its own. A figure whose meaning needs the body first is a finding.
 - Identify any missing premise between that starting point and the central thesis with a passage-level
   citation. Treat predicted reader knowledge, motives, and reactions as hypotheses; assess the textual
   bridge rather than agreement with the conclusion. A finding states the specific gap and its effect
