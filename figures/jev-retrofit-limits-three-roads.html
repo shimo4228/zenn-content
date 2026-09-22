@@ -1,0 +1,21 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><link rel="stylesheet" href="_base.css"><title>three-roads</title></head><body><div class="stage">
+<h1>Jev の判定を Claude Code に届ける 3 つの道</h1>
+<div class="sub">私は 1 つ目で止め、2 つ目は前日に別の人が作っていた</div>
+<svg viewBox="0 0 1600 900">
+<defs><marker id="m" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#1f3a5f"/></marker>
+<marker id="mg" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#9aa3ad"/></marker></defs>
+<path class="arrow" d="M380,500 C520,500 520,285 640,285" marker-end="url(#m)"/>
+<path class="arrow" d="M380,500 L640,500" marker-end="url(#m)"/>
+<path class="arrow gray" d="M380,500 C520,500 520,745 640,745" marker-end="url(#mg)"/>
+<path class="arrow" d="M1160,285 L1250,285" marker-end="url(#m)"/>
+<path class="arrow" d="M1160,515 L1250,515" marker-end="url(#m)"/>
+<path class="arrow gray" d="M1160,745 L1250,745" marker-end="url(#mg)"/>
+</svg>
+<div class="card acc" style="left:72px;top:430px;width:300px"><span class="tag acc">出発点</span><div class="big">Jev の判定</div></div>
+<div class="card" style="left:650px;top:200px;width:500px;font-size:24px"><span class="tag">道 1</span><div class="big">1 行足す</div><div>hook の additionalContext。スキル一覧はそのまま</div></div>
+<div class="card" style="left:650px;top:430px;width:500px;font-size:24px"><span class="tag">道 2</span><div class="big">一覧を書き換える</div><div>Mods の skill_listing。既定の選択を置き換える</div></div>
+<div class="card gray" style="left:650px;top:660px;width:500px;font-size:24px"><span class="tag gray">道 3</span><div class="big">一覧を軽くする</div><div>公式設定 skillOverrides。見せ方を 4 段階で切り替える</div></div>
+<div class="card acc" style="left:1260px;top:215px;width:270px;font-size:24px"><span class="tag acc">私</span><div>ここで止めた</div></div>
+<div class="card" style="left:1260px;top:445px;width:270px;font-size:24px"><span class="tag">前日</span><div>jev-skill-suggestion が実装済み</div></div>
+<div class="card gray" style="left:1260px;top:675px;width:270px;font-size:24px"><span class="tag gray">用途</span><div>トークンを減らすだけなら</div></div>
+</div></body></html>

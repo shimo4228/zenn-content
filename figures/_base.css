@@ -1,0 +1,19 @@
+:root{--ink:#1f3a5f;--acc:#e07a1f;--gray:#9aa3ad;--bg:#fbfaf7;--card:#fff}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1600px;height:900px;background:var(--bg);font-family:"Hiragino Sans","Hiragino Kaku Gothic ProN",system-ui,sans-serif;color:var(--ink);overflow:hidden}
+.stage{position:relative;width:1600px;height:900px;padding:56px 72px}
+h1{font-size:44px;font-weight:700;letter-spacing:.01em;line-height:1.3}
+.sub{font-size:26px;color:#4b5563;margin-top:10px;font-weight:400}
+.card{position:absolute;background:var(--card);border:3px solid var(--ink);border-radius:20px;padding:22px 26px;font-size:28px;line-height:1.35}
+.card.acc{border-color:var(--acc)}
+.card.gray{border-color:var(--gray);color:#4b5563}
+.tag{display:inline-block;font-size:20px;font-weight:700;padding:4px 12px;border-radius:999px;color:#fff;background:var(--ink);margin-bottom:8px}
+.tag.acc{background:var(--acc)}
+.tag.gray{background:var(--gray)}
+.big{font-size:38px;font-weight:700;line-height:1.2}
+.note{position:absolute;font-size:22px;color:#4b5563}
+svg{position:absolute;left:0;top:0;width:1600px;height:900px;pointer-events:none}
+.arrow{stroke:var(--ink);stroke-width:6;fill:none}
+.arrow.acc{stroke:var(--acc)}
+.arrow.gray{stroke:var(--gray);stroke-dasharray:14 12}
+.lbl{font-size:22px;fill:#4b5563}

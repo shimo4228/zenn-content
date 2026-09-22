@@ -1,0 +1,24 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><link rel="stylesheet" href="_base.css"><title>hero</title></head><body><div class="stage">
+<h1>ハンドルは Claude Code が握ったまま</h1>
+<div class="sub">Jev は助手席から 1 行のメモを渡すだけ</div>
+<svg viewBox="0 0 1600 900">
+<defs><marker id="m" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#1f3a5f"/></marker>
+<marker id="ma" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#e07a1f"/></marker></defs>
+<path class="arrow" d="M420,400 L560,400" marker-end="url(#m)"/>
+<path class="arrow" d="M1080,400 L1230,400" marker-end="url(#m)"/>
+<path class="arrow acc" d="M420,660 L560,660" marker-end="url(#ma)"/>
+<path class="arrow acc" d="M985,690 L1030,690" marker-end="url(#ma)"/>
+<!-- steering wheel -->
+<circle cx="820" cy="250" r="66" fill="none" stroke="#1f3a5f" stroke-width="10"/>
+<circle cx="820" cy="250" r="18" fill="#1f3a5f"/>
+<path d="M820,268 L820,314 M762,230 L802,250 M878,230 L838,250" stroke="#1f3a5f" stroke-width="10" stroke-linecap="round"/>
+<text x="820" y="160" text-anchor="middle" class="lbl" style="font-size:24px;fill:#1f3a5f;font-weight:700">運転席</text>
+<text x="775" y="850" text-anchor="middle" class="lbl" style="font-size:24px;fill:#e07a1f;font-weight:700">助手席</text>
+</svg>
+<div class="card" style="left:72px;top:340px;width:340px"><span class="tag">入力</span><div class="big">プロンプト</div></div>
+<div class="card" style="left:570px;top:340px;width:500px"><span class="tag">選ぶ役</span><div class="big">Claude Code</div><div>スキル一覧 59 本を全文で読んで選ぶ</div></div>
+<div class="card" style="left:1240px;top:340px;width:290px"><span class="tag">結果</span><div class="big">スキル 1 本</div></div>
+<div class="card acc" style="left:72px;top:600px;width:340px"><span class="tag acc">同じ入力</span><div class="big">プロンプト</div></div>
+<div class="card acc" style="left:570px;top:600px;width:410px"><span class="tag acc">並走</span><div class="big">Jev</div><div>0.7〜1.6 秒で判定</div></div>
+<div class="card acc" style="left:1040px;top:610px;width:490px;font-size:24px"><span class="tag acc">足せるのは 1 行</span><div>「adr-writer が関係ありそう」</div><div style="color:#4b5563;font-size:20px;margin-top:6px">読むか無視するかは運転席が決める</div></div>
+</div></body></html>
