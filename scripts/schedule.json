@@ -942,6 +942,23 @@
         "llm"
       ],
       "notes": "EN translation of JevのスキルルーターをClaude Codeに足して、スキル一覧を書き換える手前で引き返した（即時投稿）"
+    },
+    {
+      "file": "articles/local-decision-model-conditions.md",
+      "canonical_url": "https://zenn.dev/shimo4228/articles/local-decision-model-conditions",
+      "date": "2026-09-24",
+      "notes": "Jevの判断をローカルで再現するには何が要るか — 3条件×4候補の実測（09:00 予約）"
+    },
+    {
+      "file": "articles-en/local-decision-model-conditions.md",
+      "devto": "https://dev.to/shimo4228/what-does-it-take-to-reproduce-jevs-decisions-locally-3i0n",
+      "devto_tags": [
+        "localllm",
+        "aiagents",
+        "llm",
+        "benchmarking"
+      ],
+      "notes": "EN translation of Jevの判断をローカルで再現するには何が要るか"
     }
   ]
 }
