@@ -86,7 +86,7 @@ descriptive filenameを使い、個人path・key・credentialをsanitiseする�
 ### Tables
 
 比較にだけ使う。列は3〜4まで、行頭の列に読者が探す語を置く。並列は箇条書き、因果は散文
-（使い分けの正本は`writing-ecosystem`の「認知負荷の設計」）。
+（使い分けの正本は`writing-ecosystem`の「具体物を先、説明を後」）。
 
 ### Figures
 
