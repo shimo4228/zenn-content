@@ -10,7 +10,7 @@ Japanese originals on Zenn; English editions on Dev.to, or as source in `article
 ### 2026-09
 
 - **2026-09-25** [LLMに任せていたリサーチの判定を、判定専用モデルJevに移す](https://zenn.dev/shimo4228/articles/jev-research-judgment-offload)
-  EN: [Moving My Research Pipeline's Judgment Calls from an LLM to Jev, a Judgment-Only Model](../articles-en/jev-research-judgment-offload.md) (source) · `jev` `pydanticai` `aiエージェント` `llm`
+  EN: [Moving My Research Pipeline's Judgment Calls from an LLM to Jev, a Judgment-Only Model](https://dev.to/shimo4228/moving-my-research-pipelines-judgment-calls-from-an-llm-to-jev-a-judgment-only-model-4ncj) · `jev` `pydanticai` `aiエージェント` `llm`
 - **2026-09-24** [Jevの判断をローカルで再現するには何が要るか](https://zenn.dev/shimo4228/articles/local-decision-model-conditions)
   EN: [What Does It Take to Reproduce Jev's Decisions Locally?](https://dev.to/shimo4228/what-does-it-take-to-reproduce-jevs-decisions-locally-3i0n) · `jev` `llm` `aiエージェント` `ollama`
 - **2026-09-21** [JevのスキルルーターをClaude Codeに足して、スキル一覧を書き換える手前で引き返した](https://zenn.dev/shimo4228/articles/jev-retrofit-limits)

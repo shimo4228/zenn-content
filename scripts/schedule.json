@@ -968,7 +968,7 @@
     },
     {
       "file": "articles-en/jev-research-judgment-offload.md",
-      "devto": null,
+      "devto": "https://dev.to/shimo4228/moving-my-research-pipelines-judgment-calls-from-an-llm-to-jev-a-judgment-only-model-4ncj",
       "devto_tags": [
         "jev",
         "pydanticai",
