@@ -959,6 +959,23 @@
         "benchmarking"
       ],
       "notes": "EN translation of Jevの判断をローカルで再現するには何が要るか"
+    },
+    {
+      "file": "articles/jev-research-judgment-offload.md",
+      "canonical_url": "https://zenn.dev/shimo4228/articles/jev-research-judgment-offload",
+      "date": "2026-09-25",
+      "notes": "LLMに任せていたリサーチの判定を、判定専用モデルJevに移す（09:00 予約）"
+    },
+    {
+      "file": "articles-en/jev-research-judgment-offload.md",
+      "devto": null,
+      "devto_tags": [
+        "jev",
+        "pydanticai",
+        "aiagents",
+        "llm"
+      ],
+      "notes": "EN translation of LLMに任せていたリサーチの判定を、判定専用モデルJevに移す（即時投稿）"
     }
   ]
 }

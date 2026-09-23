@@ -1,0 +1,21 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><link rel="stylesheet" href="_base.css"><title>pipeline</title>
+<style>.card{font-size:24px}.card .big{font-size:32px}.steps{font-size:20px;color:#4b5563;margin-top:6px}.hl{position:absolute;border:4px dashed var(--acc);border-radius:26px}</style></head><body><div class="stage">
+<h1>判定は Jev が答え、コードが決める</h1>
+<div class="sub">1 本のラインを処理する流れ。LLM は書くところだけ、Claude は事前の準備だけ</div>
+<svg viewBox="0 0 1600 900">
+<defs><marker id="m" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#1f3a5f"/></marker>
+<marker id="mg" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#9aa3ad"/></marker></defs>
+<path class="arrow gray" d="M240,365 L240,448" marker-end="url(#mg)"/>
+<path class="arrow" d="M398,560 L440,560" marker-end="url(#m)"/>
+<path class="arrow" d="M1000,560 L1042,560" marker-end="url(#m)"/>
+<path class="arrow" d="M1292,560 L1334,560" marker-end="url(#m)"/>
+</svg>
+<div class="card gray" style="left:72px;top:210px;width:520px;border-style:dashed"><span class="tag gray">事前（実行の外）</span><div class="big">Claude が問いと検索語を書く</div></div>
+<div class="card gray" style="left:72px;top:455px;width:320px"><span class="tag gray">コード</span><div class="big">準備</div><div class="steps">1 問いを読む<br>2 検索語を読む<br>3 取得する</div></div>
+<div class="hl" style="left:430px;top:420px;width:580px;height:258px"></div>
+<div class="note" style="left:446px;top:384px;color:#e07a1f;font-weight:700">この記事で扱うところ</div>
+<div class="card acc" style="left:450px;top:440px;width:540px"><span class="tag acc">Jev が答え → コードが決める</span><div class="big">判定</div><div class="steps">4 資料をふるう<br>5 資料 × 問いで判定する<br>6 文 × 問いで判定する</div></div>
+<div class="card" style="left:1050px;top:455px;width:235px"><span class="tag">LLM → Jev</span><div class="big">書く</div><div class="steps">7 問いごとの節を<br>書いて点検</div></div>
+<div class="card gray" style="left:1342px;top:455px;width:190px"><span class="tag gray">コード</span><div class="big">出す</div><div class="steps">8 Obsidian<br>に保存</div></div>
+<div class="note" style="left:72px;top:790px">実行中の Claude の呼び出しは 0 回。LLM は本文と問いの候補を書くときに使う</div>
+</div></body></html>

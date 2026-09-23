@@ -1,0 +1,13 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><link rel="stylesheet" href="_base.css"><title>ladder</title>
+<style>.lv{position:absolute;left:72px;width:420px;height:118px;border-top:3px solid var(--ink);font-size:26px;font-weight:700;padding-top:14px}.lv span{display:block;font-size:20px;font-weight:400;color:#4b5563}.card{font-size:22px;padding:10px 20px}.card .big{font-size:28px}</style></head><body><div class="stage">
+<h1>同じ「intent」でも、問いと並べると段階が分かれる</h1>
+<div class="sub">問い「エージェントと運用者の意図整合は、テストで検査できない部分をどう保っているか」</div>
+<div class="lv" style="top:220px">同じ問い<span>この問いに答えている</span></div>
+<div class="lv" style="top:360px">同じ問題<span>別の角度から同じ問題</span></div>
+<div class="lv" style="top:500px">同じ分野<span>分野は同じ、問題は別</span></div>
+<div class="lv" style="top:640px">別の問題<span>語を共有するだけ</span></div>
+<div class="card acc" style="left:540px;top:368px;width:620px"><span class="tag acc">SkillSpec</span><div class="big">この段階 0.77・関係あり 0.44</div><div>スキルが仕様どおりかを推論させる</div></div>
+<div class="card" style="left:540px;top:508px;width:620px"><span class="tag">FinInteract</span><div class="big">この段階 0.53・関係あり 0.20</div><div>曖昧な金融の質問で意図を確かめる</div></div>
+<div class="card gray" style="left:540px;top:648px;width:620px"><span class="tag gray">User Intent Entropy</span><div class="big">この段階 0.60・関係あり 0.08</div><div>AI の人格とユーザーの意図のばらつき</div></div>
+<div class="card gray" style="left:1210px;top:362px;width:320px;border-style:dashed"><span class="tag gray">コードの閾値</span><div class="big">関係あり ≥ 0.5</div><div style="font-size:20px;color:#4b5563">届かなければ段階に関わらず不採用。3 本とも不採用</div></div>
+</div></body></html>
