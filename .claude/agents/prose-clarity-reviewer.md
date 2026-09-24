@@ -99,4 +99,4 @@ Verdict: PASS | FAIL | BLOCKED
 ```
 
 Any critical title/central-thesis drift or first-screen failure makes the verdict FAIL. This agent does not
-edit the artifact. Academic papers use `clarity-reviewer`; READMEs use `readme-clarity-reviewer`.
+edit the artifact. Academic papers use `clarity-reviewer`; READMEs use `readme-judge`.
