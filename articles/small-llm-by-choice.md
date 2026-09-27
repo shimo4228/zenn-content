@@ -78,15 +78,44 @@ Mac Studio や新しい MacBook Pro の購入ページまで行ったことは�
 
 ## このシリーズで扱う技術的な中身
 
-ここまでが「なぜ小型か」の話です。実際に 16GB で無人運用を成立させた技術は、続く技術記事で扱います。すでに読めるのはこの 2 本です。
+ここまでが「なぜ小型か」の話です。このエージェント（Contemplative Agent）の開発記録を、テーマごとに公開順で並べます。公開のたびに、このハブへリンクを追加していきます。
+
+### 作り始めと設計（2026 年 3〜4 月）
+
+- [Moltbookエージェント構築記 — Claude Codeとセキュリティファースト開発](https://zenn.dev/shimo4228/articles/moltbook-agent-scratch-build) — このエージェントの構築記の始まり
+- [Prompt-Based Alignmentには天井がある — 囚人のジレンマ3モデル実証](https://zenn.dev/shimo4228/articles/contemplative-alignment-benchmark)
+- [Moltbookエージェント進化記 — 自然言語で制御し、記憶で学び、失敗しても壊れない設計](https://zenn.dev/shimo4228/articles/moltbook-agent-evolution-quadrilogy)
+- [LLMアプリの正体は「mdとコードのサンドイッチ」だった](https://zenn.dev/shimo4228/articles/llm-app-sandwich-architecture)
+- [自律エージェントにオーケストレーション層は本当に必要か](https://zenn.dev/shimo4228/articles/symbiotic-agent-architecture)
+- [推論でもツールでもない — AIエージェントの本質は「記憶」ではないか](https://zenn.dev/shimo4228/articles/agent-essence-is-memory)
+- [エージェントの記憶が壊れた — 9Bモデルと格闘した1日](https://zenn.dev/shimo4228/articles/few-shot-for-small-models) — 小型モデルとの格闘が本格化した回
+- [ゲーム開発のメモリ管理をAIエージェントの記憶蒸留に移植した](https://zenn.dev/shimo4228/articles/agent-memory-game-dev-distillation)
+- [自律エージェントの自由と制約 — 自己修正・信頼境界・ゲーム性の設計](https://zenn.dev/shimo4228/articles/agent-freedom-and-constraints)
+- [エピソードログから倫理が生まれるまで — Contemplative Agent 17日間の設計記録](https://zenn.dev/shimo4228/articles/contemplative-agent-journey)
+
+### 無人運用を支える記録と検査
 
 - **[AIエージェントの「なぜその判断？」に答えるオブザーバビリティ設計3パターン](https://zenn.dev/shimo4228/articles/agent-observability-patterns)** — 無人運用の土台になる「エージェントの判断を後から追える形で記録する」側の設計
+- **[LLM エージェントに fault injection TDD を入れたら silent failure が3件出た](https://zenn.dev/shimo4228/articles/chaos-tdd-fault-injection)** — その記録チャネルを assert する側。運用障害の履歴からテストを起こし、黙って壊れる箇所を事前に露出させる
+- [AI エージェントの自前ログ、OpenTelemetry につないだら何が見える？](https://zenn.dev/shimo4228/articles/agent-logs-to-opentelemetry)
 - **[Claude Code のメモリーにベクトルは 1 本もない — memory RAG の前に ADR を](https://zenn.dev/shimo4228/articles/rag-to-adr-agent-memory)** — 「読める規模 × LLM の強さ」でエージェントの記憶設計を判定する。小型モデル環境（本シリーズ）が RAG の正当領域、frontier 級が ADR の領域という整理
-- **LLM エージェントに fault injection TDD を入れたら silent failure が3件出た**（近日公開） — その記録チャネルを assert する側。運用障害の履歴からテストを起こし、黙って壊れる箇所を事前に露出させる
+- [毎週読まれるログに、11秒の連打が写らなかった理由](https://zenn.dev/shimo4228/articles/log-projection-blind-by-construction)
 
-この先の題目は、あえて決め切らないことにします。書いてみるとトピックも内容も変わるからです（実際、fault injection の記事は当初の構想には無く、書く過程でこのシリーズに接続されました）。公開のたびに、このハブへリンクを追加していきます。
+### AI に書かせたコードを減らす
 
-このエージェント自体の構築記は [Moltbookエージェント構築記 — Claude Codeとセキュリティファースト開発](https://zenn.dev/shimo4228/articles/moltbook-agent-scratch-build) から始まっています。小型モデルとの格闘が本格化した回は [エージェントの記憶が壊れた — 9B モデルと格闘した 1 日](https://zenn.dev/shimo4228/articles/few-shot-for-small-models) です。
+- [AIレビューの指摘をタスクへ送り続けたら、修理が終わらなくなった——4,541行を捨てるまで](https://zenn.dev/shimo4228/articles/ai-review-task-loop)
+- [AIレビューを減らした先に、複雑度の上限をRuffで置いた](https://zenn.dev/shimo4228/articles/lint-as-subtraction)
+- [未使用コード検出が拾わなかった2,063行を消した——参照でなく消費を、新設時に書かせる](https://zenn.dev/shimo4228/articles/instrument-consumption-plan)
+- [AIに知識の盲点を診断させたら、15日間の行き詰まりが85分で動いた](https://zenn.dev/shimo4228/articles/ai-knowledge-gap-diagnosis)
+- [3か月で159回commitしたLLM向けアーキテクチャ文書を消した。構造はLSP、理由はADR、図は人間に](https://zenn.dev/shimo4228/articles/codemap-retirement)
+
+### 判定をローカルの小さいモデルでこなす
+
+- [文章を書かないモデルJevのスキル選択は、0.3秒でOpusにどこまで近づくか](https://zenn.dev/shimo4228/articles/jev-vs-opus-skill-selection)
+- [Jevの判断をローカルで再現するには何が要るか](https://zenn.dev/shimo4228/articles/local-decision-model-conditions)
+- [Jev型判定モデルを足す前に、生成モデルの確率を読む](https://zenn.dev/shimo4228/articles/local-judgment-read-logprobs)
+
+題目は、あえて決め切らずに書いています。書いてみるとトピックも内容も変わるからです（実際、fault injection の記事は当初の構想には無く、書く過程でこのシリーズに接続されました）。
 
 ## まとめ
 
