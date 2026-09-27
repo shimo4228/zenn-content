@@ -66,7 +66,7 @@ zenn-content is defined as a GitHub-hosted content repository that produces long
 
 ## Who writes the articles in zenn-content?
 
-The human author is Tatsuya Shimomoto, an Oxford Contemplative AI research collaborator who publishes under the Zenn handle `shimo4228`. Drafting is done directly by the Claude Code orchestrator, using global `writing-ecosystem`: one central thesis, one causal spine, selected evidence with explicit roles, and an out-of-scope list are approved before drafting. After structural freeze, the project channel editor, `prose-clarity-reviewer`, `fact-checker`, and `codex-review` may inspect the frozen body while the title is still provisional; title work follows the author's content GO, with `headline-craft` generating candidates and `title-reviewer` returning findings. The author retains final approval before publication.
+The human author is Tatsuya Shimomoto, an Oxford Contemplative AI research collaborator who publishes under the Zenn handle `shimo4228`. Drafting is done directly by the Claude Code orchestrator, using global `writing-ecosystem`: one central thesis, one causal spine, selected evidence with explicit roles, and an out-of-scope list are approved before drafting. After structural freeze, the project channel editor, `fact-checker`, and a first-contact read run on Codex (the Codex plugin's `codex:codex-rescue`, read-only, using the `prose-clarity-reviewer` checklist) inspect the frozen body while the title is still provisional; title work follows the author's content GO, with `headline-craft` generating candidates and `title-reviewer` returning findings. The author retains final approval before publication.
 
 ## How are articles cross-posted to Zenn and Dev.to?
 
@@ -78,11 +78,11 @@ Content Integrity means the author owns the central thesis, claims, and structur
 
 ## How does the publishing pipeline work?
 
-The publishing pipeline is: optional `session-theme-mining` → author theme selection → optional `theme-reviewer` and `collect-context` → approved one-thesis editorial brief → orchestrator draft → structural freeze → channel editor + `prose-clarity-reviewer` + `fact-checker` + `codex-review` (may run on the frozen body before the title is final) → author content GO → `headline-craft` candidates → `title-reviewer` findings and author title selection → global `quality-gate` reading `.claude/rules/publishing-channels.md` → author GO → project-local publisher. Structural review changes invalidate the brief and any completed title work; copy edits do not. `publish-article` handles Zenn/Dev.to mechanics, while `substack-publishing` handles note/Substack.
+The publishing pipeline is: optional `session-theme-mining` → author theme selection → optional `theme-reviewer` and `collect-context` → approved one-thesis editorial brief → orchestrator draft → structural freeze → channel editor + `fact-checker` + first-contact read on Codex (may run on the frozen body before the title is final) → author content GO → `headline-craft` candidates → `title-reviewer` findings and author title selection → global `quality-gate` reading `.claude/rules/publishing-channels.md` → author GO → project-local publisher. Structural review changes invalidate the brief and any completed title work; copy edits do not. `publish-article` handles Zenn/Dev.to mechanics, while `substack-publishing` handles note/Substack.
 
 ## How are articles reviewed before publishing?
 
-Review is channel-routed, not frontmatter-type-routed. The local publication contract chooses `editor` for practical Zenn/Dev.to channels and `essay-reviewer` for note/Substack essays. `prose-clarity-reviewer`, `fact-checker`, and `codex-review` join the panel for every channel. `quality-gate` aggregates their current reports but does not review prose itself.
+Review is channel-routed, not frontmatter-type-routed. The local publication contract chooses `editor` for practical Zenn/Dev.to channels and `essay-reviewer` for note/Substack essays. `fact-checker` and a first-contact read on Codex (the `prose-clarity-reviewer` checklist; the Claude agent is the fallback when the plugin is unavailable) join the panel for every channel; the Codex read doubles as the cross-model review (ADR-0013). `quality-gate` aggregates their current reports but does not review prose itself.
 
 ## What does "Build in Public" mean in this repository?
 

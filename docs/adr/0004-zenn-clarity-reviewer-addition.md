@@ -20,6 +20,10 @@ ADR-0003 §5 は「新しいレビューエージェントは作らない。実�
 2. **ブロッキングゲートとする**。agent は PASS|FAIL の verdict を返し、`quality-gate` の必須条件に「verdict が PASS」を追加（editor CRITICAL 0 と同格）。FAIL のままの記事は公開できない。
 3. **配置は project とする**。判定基準は global `rules/common/skills.md` の Knowledge Placement「Global vs Project」（本件を機に正本化 — global ADR-0025）: 2+ の repo / channel で使う資産は global、単一 platform / channel 固有は project overlay。本 agent は Zenn/Dev.to チャンネル専用（学術論文は global `clarity-reviewer` が担当し、両者は When-NOT-to-Use 節で相互に defer 済み）のため project が正しい。editor / fact-checker が global なのは複数チャンネル共有だからであり、基準は一貫している。
 
+> **注記（2026-09-27, ADR-0013）**: Decision 1 の実行者は Codex（plugin の `codex:codex-rescue`、読み取り専用）に移った。
+> checklist（現 `prose-clarity-reviewer`）、Decision 2 のブロッキングゲート、Decision 3 の project 配置は残る。
+> Claude の agent は plugin が使えないときの代替になる。
+
 ## Alternatives Considered
 
 - **global `clarity-reviewer` を Zenn にも流用する** — 読者モデルが違う（論文: 分野は知るが companion repo を知らない読者 / Zenn: フィードから来たエンジニア）。基準の分岐を 1 agent に押し込むと両方の精度が落ちるため不採用。

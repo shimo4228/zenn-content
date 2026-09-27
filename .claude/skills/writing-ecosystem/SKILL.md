@@ -47,7 +47,7 @@ tags・timing・language placement までで、本文はその外にある。
 | **Title review** | `title-reviewer` agent | 本文との契約を fresh context で点検し findings を返す | headline-craft の後、quality-gate の前 |
 | **Review: 品質** | `editor` agent | 記事の構造・コード・AI slop・用語 | 実用チャンネルのレビュー時 |
 | **Review: 論理** | `essay-reviewer` agent | エッセイの論理構成・過積載・トーン | エッセイチャンネルのレビュー時 |
-| **Review: 初見明瞭性** | `prose-clarity-reviewer` agent | 第一画面・中心命題・内部文脈依存 | 構造凍結後の review panel 時 |
+| **Review: 初見明瞭性（cross-model）** | Codex plugin の `codex:codex-rescue` agent（読み取り専用、checklist は `prose-clarity-reviewer` agent） | 第一画面・中心命題・内部文脈依存・カテゴリのすり替え | 構造凍結後の review panel 時 |
 | **Review: 事実** | `fact-checker` agent | 事実主張の Web 検証 | 公開前検証時 |
 | **Acceptance** | `quality-gate` skill | local contract の reviewer verdict と機械検査を集約 | 公開直前 |
 | **Publish** | project-local publishing skill | platform API / UI / schedule / corpus 更新 | 著者 GO 後 |
@@ -118,8 +118,18 @@ out-of-scope を保持する。翻訳先の local contract へ route し直す�
 
 ### 4. Freeze, review, and content GO
 
-本文の構造を凍結したら、local contract の channel reviewer、`prose-clarity-reviewer`、
-`fact-checker`、必要な cross-model review を本文へ実行する。editor と essay-reviewer の両方を
+本文の構造を凍結したら、local contract の channel reviewer、`fact-checker`、初見の読みを本文へ実行する。
+初見の読みは Claude と別系統のモデルが担う — 同じ系統の reviewer は著者（orchestrator）と同じ所を
+読み飛ばす。Codex plugin（openai/codex-plugin-cc）の `codex:codex-rescue` agent を background で起動し、
+prompt の先頭に「Read-only review. Do not edit files (no --write).」と書く（書かないと rescue は書き込み可で走る）。
+続けて「`.claude/agents/prose-clarity-reviewer.md` の checklist を読み、channel contract の読者として原稿を 1 回だけ読み、
+checklist の形式で報告する。加えて本文から弁護できるカテゴリのすり替え・事実の矛盾・帰属の誤りを挙げる。
+ヘッジの追加は求めない。日本語で書く」と、checklist・contract・原稿の path だけを渡す。これが panel の
+cross-model review を兼ねる。`/codex:adversarial-review` は使わない — 著者しか起動できず、prompt がソフトウェアの
+変更を攻める前提で prose に合わない。中継役の agent が返ってこないときは、Codex 側の結果を
+`node ~/.claude/plugins/cache/openai-codex/codex/*/scripts/codex-companion.mjs status` → `result <job-id>` で取り出す
+（2026-09-27、Codex は 2 分半で完了したのに中継役が 10 分以上止まった）。plugin が使えないときは Claude の
+`prose-clarity-reviewer` agent で代替し、理由を処分記録に残す。editor と essay-reviewer の両方を
 回すのは contract が要求する場合だけ。`fact-checker` の dispatch prompt には証拠台帳と一次資料の
 path（repo、出力ファイル）を名指しで渡す — code / path / 出力の照合はこの agent が持ち、channel
 reviewer は判断だけを持つ。
@@ -139,8 +149,7 @@ reviewer は判断だけを持つ。
   CRITICAL でなく「裁定要求」として報告し、裁定者は著者
 - **裁定の書き戻し**: 裁定結果は memory でなく channel contract に書く（fresh-context reviewer に
   届く唯一の層）。著者が同種指摘を 2 回却下したら、その場で contract の該当行を更新または削除する
-- **panel の回数**: channel reviewer・`prose-clarity-reviewer`・cross-model review は構造凍結時に
-  各 1 回。レビュー修正を確かめるのは著者の通読で、reviewer ではない。修正を reviewer に読み
+- **panel の回数**: channel reviewer・初見の読み（Codex）は構造凍結時に各 1 回。レビュー修正を確かめるのは著者の通読で、reviewer ではない。修正を reviewer に読み
   直させると、読むたびに新しい指摘が生まれて終わらず、限定句と段落分割が積もって本文が
   防御的になる
 - **処分記録**: orchestrator は指摘ごとに採用・不採用と理由を 1 行ずつ残し、`quality-gate` へ
@@ -152,12 +161,20 @@ reviewer は判断だけを持つ。
   convergence、as-of 2026-08-27）
 - **`fact-checker` の回数**: 著者の通読の前に 1 回。以後は、本文に新しい引用・数値・外部ソースが
   入ったときだけ、その差分を対象に回す。全文の再照合は構造が動くたびに同じ主張を払い直すことになる
-- **reviewer への dispatch**: 初見の読みを担う reviewer（`prose-clarity-reviewer`）には、原稿の path と
-  channel contract だけを渡す。central thesis・causal spine・成功基準を prompt に入れると、reviewer は
+- **reviewer への dispatch**: 初見の読み（Codex）には、原稿の path と channel contract と checklist の
+  path だけを渡す。central thesis・causal spine・成功基準を prompt に入れると、reviewer は
   答えを持って読むことになり、「何をしたのか分からない」を検出できなくなる
-- **cross-model 指摘の採用**: カテゴリのすり替え・事実誤り・帰属の誤りだけを採用し、ヘッジや
-  限定句の追加を求める指摘は採用しない（裁定表は `codex-review` の Prose 裁定基準）。全採用は
-  一文ずつ正しくして通読を重くする
+- **cross-model 指摘の採用**: 初見の読みの findings と、カテゴリのすり替え・事実誤り・帰属の誤りを
+  採用候補にし、ヘッジや限定句の追加を求める指摘は採用しない。全採用は一文ずつ正しくして通読を重くする。
+  既定の裁定:
+
+  | finding の型 | 既定 |
+  |---|---|
+  | ヘッジ済み思弁への「根拠不足」 | 不採用（発見調は仮説明示つきの思弁を許す） |
+  | カテゴリのすり替え（実行↔動機、順番づけ↔確率の近さ 等） | 常に採用検討 |
+  | 概念・歴史的接続の過大主張、帰属の誤り | 常に採用検討 |
+  | 文体規約違反（register 混在・意図外の常体） | 採用（意図的ブレイクと照合の上で） |
+  | 構造再設計の提案 | 著者判断へ昇格 |
 - **blocking の根拠水準**: blocking 指摘は一次ソースの引用を要す。証拠台帳のみを根拠とする指摘は
   advisory（根拠 n=1・2026-08-27。以後 3 記事で台帳由来の偽陽性ゼロなら本行は削除候補）
 
@@ -439,7 +456,7 @@ publish handoff だけを持つ。本 skill の craft、AI slop、中心命題�
 - `headline-craft` skill — 「開かせる一行」の候補生成技法（タイトル・tagline・subtitle・SNS 告知文）。規範は本 skill の Title Conventions、技法はあちら
 - `title-reviewer` agent — 凍結稿とタイトル候補の契約点検（findings のみ。採否は著者）
 - `theme-reviewer` agent — 選択済みの問いへの findings と深化の問い
-- `prose-clarity-reviewer` agent — 初見読者の明瞭性と中心命題の貫通
+- `prose-clarity-reviewer` agent — 初見読みの checklist。既定の実行者は Codex plugin、Claude agent は plugin 不在時の代替
 - `quality-gate` skill — local contract の reviewer verdict と機械検査を集約
 - `prose-translation` skill — 日英**双方向**の voice 保持翻訳（JA→EN / EN→JA。AI-slop / Voice / Title / 出典編入は本 skill に defer）
 - `x-draft` skill — X 投稿の下書き。AI slop / Craft は本 skill に defer するが、**Voice は SNS register への意図的分岐**（記事の文体を持ち込まない）

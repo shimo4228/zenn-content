@@ -33,7 +33,7 @@ session-theme-mining (optional) → author selection → theme-reviewer (opt-in,
   → collect-context (optional evidence dossier)
   → writing-ecosystem editorial brief: one thesis + causal spine + selected evidence + cut list
   → orchestrator draft → headline-craft → title-reviewer
-  → channel editor + prose-clarity-reviewer + fact-checker + codex-review
+  → channel editor + fact-checker + first-contact read on Codex (codex:codex-rescue read-only, prose-clarity-reviewer checklist)
   → quality-gate reads publishing-channels.md → author GO
   → project-local publisher
 

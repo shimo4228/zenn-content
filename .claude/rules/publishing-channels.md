@@ -37,10 +37,11 @@ reviewer verdictは凍結稿へのreportで足り、反映後の稿へのverdict
 - 処分記録: orchestratorが指摘ごとに採用・不採用と理由を1行ずつ残している
 - channel editor: 凍結稿へのreportあり。CRITICALとcanonical coverageのpending / unverifiedは
   全件処分済み
-- `prose-clarity-reviewer`: 凍結稿へのreportあり。FAILの根拠になったfindingは全件処分済み
+- 初見の読み（Codex plugin の `codex:codex-rescue`、読み取り専用、checklist は `prose-clarity-reviewer`）: 凍結稿への
+  reportあり。FAILの根拠になったfindingと、カテゴリのすり替え・事実誤り・帰属の誤りは全件処分済み。
+  pluginが使えないときはClaudeの`prose-clarity-reviewer`で代替し、理由を記録
 - `fact-checker`: INACCURATEとPARTIALLYは全件処分済み（訂正、または一次ソースで反証）
 - 著者の内容GO: レビュー反映後の本文に対して出ている
-- `codex-review`: 完了、または実行不能理由とfallback reviewを記録
 - `title-reviewer`: 著者の内容GO後（= 本文の最後の構造変更後）に実行し、findings を見て著者がタイトルを選択済み
 - AI-mediated writing: Zenn (`articles/*.md`) は開示block適用外（媒体読者にとってAI利用は
   前提で、開示は情報量を持たない。毎回問い直さない）。

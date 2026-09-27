@@ -17,6 +17,7 @@ context, the decision, the alternatives considered, and the consequences.
 | [0010](0010-channel-values-in-the-resident-layer.md) | チャンネルの値は常駐層に 1 箇所だけ置く | Accepted | 2026-08-23 |
 | [0011](0011-dismantle-the-eval-layer.md) | eval 層を解体し、テーマはレビュアーに戻す | Accepted | 2026-08-23 |
 | [0012](0012-zenn-review-deterministic-layer.md) | Zenn レビューの決定論層を evidence script へ降ろす | Accepted | 2026-08-27 |
+| [0013](0013-first-contact-read-on-codex.md) | 初見の読みを Codex に移し、cross-model review を兼ねさせる | Accepted | 2026-09-27 |
 
 ADR-0003 partially supersedes ADR-0001 (zenn-writer row) and ADR-0002 §2
 (`writing-standards.md` reference) — see its Consequences section.
@@ -25,3 +26,5 @@ ADR-0010 partially supersedes ADR-0003 §2 (channel/文体 table) and ADR-0002 �
 (`translation-rules.md` reference) — both carry dated notes in place.
 ADR-0011 supersedes ADR-0008 §1・2・4 (eval subsystem dismantled; theme layer
 becomes a reviewer, article layer returns to the 4-agent panel + author read-through).
+ADR-0013 partially supersedes ADR-0004 Decision 1 (executor moves to Codex) and ADR-0011
+Decision 2 (`codex-review` leaves the panel) — both carry dated notes in place.

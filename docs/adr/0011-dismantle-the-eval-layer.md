@@ -63,6 +63,9 @@ ADR-0008 が risk として挙げた「judge の好みへの文体収束（平�
 2. **`article-judge` agent を廃止し、K1-K4 を破棄する**。完成稿の評価は panel 4 本
    （チャンネル表のレビュー agent + fact-checker + zenn-clarity-reviewer + codex-review）
    + 著者通読に戻す。
+
+   > **注記（2026-09-27, ADR-0013）**: panel の `codex-review` は廃し、初見の読み（Codex）が cross-model review を兼ねる。
+   > panel は channel reviewer・fact-checker・Codex の初見の読みの 3 本になる。
 3. **機構を削除する**: craft チェックリスト（`.claude/refs/kaguura-craft-checklist.md`）、
    `scripts/mechanical_checks.py` + テスト、`writing-team` の「改稿ループ」節、
    `quality-gate` の第 1 必須条件。checklist の消費者は article-judge のみ、
