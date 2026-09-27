@@ -13,6 +13,8 @@
 | 深い洞察 / 重要な示唆 / 本質的な問い | 洞察・示唆・問いそのもの |
 | 最先端 / cutting-edge / ever-evolving | 何が新しく、いつの情報か |
 | leverage / 活用する | 具体的な動作、または plain `use` |
+| 手元 / 手元で / 手元の環境 | 指している場所を名指しする（ローカル PC、自分の Mac、社内サーバー） |
+| 造語・証拠台帳や内部の呼び名（梯子、arm、face、shadow 等） | 既存の用語があればそれを使い、初出で 1 文説明する（梯子 → アブレーション）。既存の用語が無いときはやったことの名前で書く。造語はしない |
 | Moreover / Furthermore / It's worth noting | 接続を直接書くか削る |
 | delve / multifaceted / holistic / transformative / pivotal / landscape / tapestry / unlock / harness / unleash / empower / paradigm | 原稿固有の名詞と動詞 |
 
