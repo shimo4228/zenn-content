@@ -1,0 +1,14 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><link rel="stylesheet" href="_base.css"><title>bootstrap</title><style>.card{font-size:22px;width:270px;top:320px;height:290px}.card .big{font-size:28px}.s{font-size:20px;color:#4b5563;margin-top:8px}</style></head><body><div class="stage">
+<h1>95% 信頼区間の作り方（ブートストラップ）</h1>
+<div class="sub">評価用の 150 件から、選び直して計算し直すことを 2,000 回繰り返す</div>
+<svg viewBox="0 0 1600 900"><defs><marker id="m" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#1f3a5f"/></marker><marker id="ma" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#e07a1f"/></marker><marker id="mg" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#9aa3ad"/></marker></defs>
+<path class="arrow" d="M350,465 L382,465" marker-end="url(#m)"/><path class="arrow" d="M660,465 L692,465" marker-end="url(#m)"/><path class="arrow" d="M970,465 L1002,465" marker-end="url(#m)"/><path class="arrow acc" d="M1280,465 L1312,465" marker-end="url(#ma)"/>
+<path class="arrow gray" d="M830,620 C830,720 520,720 520,625" marker-end="url(#mg)"/></svg>
+<div class="card gray" style="left:72px"><span class="tag gray">元の組</span><div class="big">150 件</div><div class="s">本番の点数の帯から<br>30 件ずつ</div></div>
+<div class="card" style="left:385px"><span class="tag">1 選び直す</span><div class="big">150 件</div><div class="s">同じ投稿を何度<br>選んでもよい</div></div>
+<div class="card" style="left:695px"><span class="tag">2 計算し直す</span><div class="big">AUC の差</div><div class="s">1 回ごとに<br>差が 1 個できる</div></div>
+<div class="card" style="left:1005px"><span class="tag">3 並べる</span><div class="big">差 2,000 個</div><div class="s">小さい順に並べ<br>両端 50 個ずつ除く</div></div>
+<div class="card acc" style="left:1315px;width:215px"><span class="tag acc">残りの範囲</span><div class="big">95%<br>信頼区間</div></div>
+<div class="note" style="left:560px;top:735px">1〜2 を 2,000 回繰り返す</div>
+<div class="note" style="left:72px;top:800px">読み方: 投稿全体で測ったときの本当の差は、この範囲のどこかにあると考えてよい</div>
+</div></body></html>

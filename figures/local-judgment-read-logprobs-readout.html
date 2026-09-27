@@ -1,0 +1,12 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><link rel="stylesheet" href="_base.css"><title>readout</title><style>.card{font-size:24px;width:262px;top:300px;height:320px}.card .big{font-size:26px;white-space:nowrap}.s{font-size:19px;color:#4b5563;margin-top:10px;line-height:1.5}</style></head><body><div class="stage">
+<h1>確率の読み方: 1 token だけ生成させて、A〜D を拾う</h1>
+<div class="sub">Ollama の /api/generate に num_predict: 1 と logprobs を付けて送る</div>
+<svg viewBox="0 0 1600 900"><defs><marker id="m" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#1f3a5f"/></marker><marker id="ma" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#e07a1f"/></marker><marker id="mg" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#9aa3ad"/></marker></defs>
+<path class="arrow" d="M336,460 L356,460" marker-end="url(#m)"/><path class="arrow" d="M624,460 L644,460" marker-end="url(#m)"/><path class="arrow" d="M912,460 L932,460" marker-end="url(#m)"/><path class="arrow acc" d="M1200,460 L1220,460" marker-end="url(#ma)"/></svg>
+<div class="card gray" style="left:72px"><span class="tag gray">1 送る</span><div class="big">4 段の問い</div><div class="s">分野の説明 + 投稿<br>+ A〜D の選択肢<br>「1 文字で答えて」</div></div>
+<div class="card" style="left:360px"><span class="tag">2 gemma</span><div class="big">1 token だけ</div><div class="s">温度 0<br>その位置の候補を<br>上位 20 まで返す</div></div>
+<div class="card" style="left:648px"><span class="tag">3 拾う</span><div class="big">A〜D だけ</div><div class="s">上位 20 には空白や<br>引用符も混ざる<br>出なかった文字は 0</div></div>
+<div class="card acc" style="left:936px"><span class="tag acc">4 割り直す</span><div class="big">合計 1 に</div><div class="s">A〜D の 4 文字で<br>割り直す<br>例: C 77.4%<br>D 0.8%</div></div>
+<div class="card acc" style="left:1224px;width:306px;border-style:dashed"><span class="tag acc">5 コードが決める</span><div class="big">D に線を引く</div><div class="s">線の位置は<br>自分のデータで決める</div></div>
+<div class="note" style="left:72px;top:700px">この記事の「確率」は、モデルの生の確率ではなく、手順 4 で A〜D の中で割り直した値</div>
+</div></body></html>

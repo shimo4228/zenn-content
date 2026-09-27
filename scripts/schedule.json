@@ -976,6 +976,10 @@
         "llm"
       ],
       "notes": "EN translation of LLMに任せていたリサーチの判定を、判定専用モデルJevに移す（即時投稿）"
+    },
+    {
+      "file": "articles/local-judgment-read-logprobs.md",
+      "notes": "Jev型判定モデルを足す前に、生成モデルの確率を読む（即時公開）"
     }
   ]
 }

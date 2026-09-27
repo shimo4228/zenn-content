@@ -1,0 +1,15 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><link rel="stylesheet" href="_base.css"><title>tradeoff</title><style>.card{font-size:22px;padding:14px 20px}.card .big{font-size:28px}</style></head><body><div class="stage">
+<h1>並べる力が同じなら、載せ替えの要らない方を選ぶ</h1>
+<div class="sub">16 GB の M1 で、生成に使う gemma と一緒に動かす場合</div>
+<svg viewBox="0 0 1600 900"><defs><marker id="m" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#1f3a5f"/></marker><marker id="ma" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#e07a1f"/></marker><marker id="mg" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#9aa3ad"/></marker></defs>
+<path class="arrow" d="M200,800 L200,230" marker-end="url(#m)"/><path class="arrow" d="M200,800 L1500,800" marker-end="url(#m)"/>
+<line x1="760" y1="240" x2="760" y2="790" stroke="#9aa3ad" stroke-width="3" stroke-dasharray="10 10"/></svg>
+<div class="note" style="left:80px;top:215px;font-weight:700;color:#1f3a5f">並べる力<br>（AUC）</div>
+<div class="note" style="left:1180px;top:815px;font-weight:700;color:#1f3a5f">追加のメモリ →</div>
+<div class="note" style="left:300px;top:815px">gemma だけで済む</div><div class="note" style="left:800px;top:815px">2 つ目のモデルを載せる</div>
+<div class="card acc" style="left:260px;top:270px;width:440px"><span class="tag acc">gemma の確率読み</span><div class="big">0.915</div><div>同じモデルなので載せ替え 0 回</div></div>
+<div class="card" style="left:820px;top:300px;width:430px"><span class="tag">JevK5（判定用に学習）</span><div class="big">0.902</div><div>同居できず、判定のたびに入れ替え<br>gemma の載せ直し 約 7 秒</div></div>
+<div class="card gray" style="left:260px;top:600px;width:440px"><span class="tag gray">本番の形（数字を書かせる）</span><div class="big">並べる力が低い</div><div>評価用 150 件で 0.815</div></div>
+<div class="card gray" style="left:1060px;top:560px;width:440px;border-style:dashed"><span class="tag gray">前回の候補（MLX 版）</span><div class="big">質を測る前に打ち切り</div><div>1 件 22.7 秒、メモリ不足</div></div>
+<div class="note" style="left:860px;top:215px">0.915 と 0.902 は同じ holdout 2,548 件での AUC</div>
+</div></body></html>
