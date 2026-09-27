@@ -980,6 +980,17 @@
     {
       "file": "articles/local-judgment-read-logprobs.md",
       "notes": "Jev型判定モデルを足す前に、生成モデルの確率を読む（即時公開）"
+    },
+    {
+      "file": "articles-en/local-judgment-read-logprobs.md",
+      "devto": "https://dev.to/shimo4228/before-adding-a-jev-type-judgment-model-read-your-generation-models-probabilities-5da0",
+      "devto_tags": [
+        "ollama",
+        "localllm",
+        "gemma",
+        "jev"
+      ],
+      "notes": "EN translation of Jev型判定モデルを足す前に、生成モデルの確率を読む（即時投稿予定）"
     }
   ]
 }

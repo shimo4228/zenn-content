@@ -10,7 +10,7 @@ Japanese originals on Zenn; English editions on Dev.to, or as source in `article
 ### 2026-09
 
 - **2026-09-27** [Jev型判定モデルを足す前に、生成モデルの確率を読む](https://zenn.dev/shimo4228/articles/local-judgment-read-logprobs)
-  EN: — · `llm` `ollama` `gemma` `aiエージェント` `jev`
+  EN: [Before Adding a Jev-Type Judgment Model, Read Your Generation Model's Probabilities](https://dev.to/shimo4228/before-adding-a-jev-type-judgment-model-read-your-generation-models-probabilities-5da0) · `llm` `ollama` `gemma` `aiエージェント` `jev`
 - **2026-09-25** [LLMに任せていたリサーチの判定を、判定専用モデルJevに移す](https://zenn.dev/shimo4228/articles/jev-research-judgment-offload)
   EN: [Moving My Research Pipeline's Judgment Calls from an LLM to Jev, a Judgment-Only Model](https://dev.to/shimo4228/moving-my-research-pipelines-judgment-calls-from-an-llm-to-jev-a-judgment-only-model-4ncj) · `jev` `pydanticai` `aiエージェント` `llm`
 - **2026-09-24** [Jevの判断をローカルで再現するには何が要るか](https://zenn.dev/shimo4228/articles/local-decision-model-conditions)
