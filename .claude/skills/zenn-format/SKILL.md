@@ -85,12 +85,21 @@ descriptive filenameを使い、個人path・key・credentialをsanitiseする�
 
 ### Tables
 
-比較にだけ使う。列は3〜4まで、行頭の列に読者が探す語を置く。並列は箇条書き、因果は散文
-（使い分けの正本は`writing-ecosystem`の「具体物を先、説明を後」）。
+比較にだけ使う。列は3〜4まで、行頭の列に読者が探す語を置く。並列は箇条書き、因果は散文。
 
 ### Figures
 
-図は内容GOの後、`writing-ecosystem`のFigure planに沿って起こす。Zennが受けるのは`/images`直下の
+図は内容GOの後、brief の Figure plan に沿って節ごとに起こす。
+
+- 節ごとに形を1語で言う（対比 / 流れ / 階層 / 2軸 / 並列）。並列は箇条書きのまま、形が言えない節は図を置かない
+- 1記事3〜4枚まで。置く位置は見出し直後でなく、その節の発見が出そろった段落の後（先に図を出すと節の展開を
+  先取りする）。hero図だけは Entry bridge の段落の後、最初の見出しの前に置く
+- 読者の既知物との比喩（eli5比喩）は1記事1個で、題・第一画面・hero図のどれか1箇所に置く。背骨2の唯一の
+  例外で、外すと中心命題の形が消えるときだけ置く
+
+review-when: pilot（`articles/jev-retrofit-limits.md`、2026-09-22）を含む図入りの3本の`article-stocktake`で
+直近稿と差が出ない、またはZennの画像規約が変わる。差が出なければ縮める。
+Zennが受けるのは`/images`直下の
 `.png .jpg .jpeg .gif .webp`、3MB以内。SVGは不可（Zenn公式 deploy-github-images、as-of 2026-09-22）。
 
 1. `/eli5 <その節の主張1文>` に、形（対比 / 流れ / 階層 / 2軸）と制約を添えて呼ぶ: 1600×900の1画面、

@@ -1,20 +1,9 @@
 <!-- origin: shimo4228 -->
 # Publishing Channel Contract
 
-このファイルは zenn-content の媒体固有 overlay。執筆手順・中心命題・因果線・craft・AI slop・
-タイトル点検は project-local `writing-ecosystem` / `title-reviewer` が持つ。ここには著者方針、path、読者との約束、
+このファイルは zenn-content の媒体固有の値だけを持つ。著者の方針と執筆の原理は `.claude/rules/writing-principles.md`、
+執筆手順は project-local `writing-ecosystem`、タイトル点検は `title-reviewer` agent が持つ。ここには path、読者との約束、
 register、review panel、機械検査、platform 形式、公開 handoff だけを置く。
-
-## Author orientation
-
-著者は、読者がものの見方を更新し、自分の目的・前提・進む方向を問い直せる文章を重視する。
-エージェントによって実行の選択肢が広がるほど、何のために行うか、誰にどんな影響があるかを
-考える価値が増すと捉えている。これは著者の価値観であり、AIの能力に関する一般法則とは区別する。
-具体的な実装や経験は、その問いを支える材料にもなる。
-
-この方針はテーマと構成を選ぶ際の指針として扱う。個々の記事の目的に応じて、実用的な手順、
-理解の深化、視点の変化のどれを中心に届けるかを選ぶ。受け入れ判定は下記の Shared acceptance
-profile に従い、この方針自体は全記事共通の採点項目や必須のWhy節にはしない。
 
 ## Channel routing
 
@@ -30,16 +19,13 @@ path がどの行にも一致しない、または複数行に一致する場合
 
 ## Shared acceptance profile
 
-全channelで次の証跡を要求する。reviewer panel は構造凍結時の本文に各1回実行する。採用した
-指摘の反映はorchestratorが行い、反映後の稿を確かめるのは著者の通読（内容GO）である。
-reviewer verdictは凍結稿へのreportで足り、反映後の稿へのverdictは要求しない。
+全channelで次の証跡を要求する。panel の回数と、反映後の稿を確かめる役は `writing-ecosystem` の指摘の処分規律が持つ。
 
 - 処分記録: orchestratorが指摘ごとに採用・不採用と理由を1行ずつ残している
 - channel editor: 凍結稿へのreportあり。CRITICALとcanonical coverageのpending / unverifiedは
   全件処分済み
 - 初見の読み（Codex plugin の `codex:codex-rescue`、読み取り専用、checklist は `prose-clarity-reviewer`）: 凍結稿への
-  reportあり。FAILの根拠になったfindingと、カテゴリのすり替え・事実誤り・帰属の誤りは全件処分済み。
-  pluginが使えないときはClaudeの`prose-clarity-reviewer`で代替し、理由を記録
+  reportあり。FAILの根拠になったfindingと、カテゴリのすり替え・事実誤り・帰属の誤りは全件処分済み
 - `fact-checker`: INACCURATEとPARTIALLYは全件処分済み（訂正、または一次ソースで反証）
 - 著者の内容GO: レビュー反映後の本文に対して出ている
 - `title-reviewer`: 著者の内容GO後（= 本文の最後の構造変更後）に実行し、findings を見て著者がタイトルを選択済み
@@ -49,7 +35,6 @@ reviewer verdictは凍結稿へのreportで足り、反映後の稿へのverdict
 - source embedding: Zenn/Dev.toは検証済み主張をinline linkまたはReferencesへ、note/Substackは
   検証済みsourceを末尾へ、orchestratorが編入済み。確かめるのは機械検査と著者の通読
 - public-safety scan: 秘密、個人path、未sanitized screenshot / raw log 0
-- panel cadence: `writing-ecosystem` の指摘の処分規律（panel の回数・brief へ戻った round・`fact-checker` の回数）に従う
 
 `quality-gate` はこのprofileと上表の機械検査を集約する。reviewerを起動したり、文章を再判定
 したりしない。
@@ -139,7 +124,8 @@ Zenn / Dev.toの全稿は、末尾の関連link節に次の2行を含める。�
 
 ## Related
 
-- project-local `writing-ecosystem` — 共通執筆フローとcanon
-- project-local `quality-gate` / `title-reviewer` — 共通受け入れ・タイトル点検
+- `.claude/rules/writing-principles.md` — 執筆の背骨（著者の方針と原理）
+- project-local `writing-ecosystem` — 共通執筆フロー
+- project-local `quality-gate` skill / `title-reviewer` agent — 共通受け入れ・タイトル点検
 - local `zenn-format` / `publish-article` / `note-publishing` / `substack-publishing` — platform操作
 - local `devto-translator` — Dev.to固有のEN稿変換。投稿は`publish-article`

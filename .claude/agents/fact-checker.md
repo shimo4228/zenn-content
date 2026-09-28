@@ -189,6 +189,6 @@ source, and never leave a source-to-source contradiction unresolved.
 
 - `editor` agent — 実用チャンネルの判断レビュー（議論の動き・説明の質・AI slop）。code / path / 出力の照合は本 agent が持つ
 - `essay-reviewer` agent — エッセイチャンネルの論理構成・過積載レビュー
-- `writing-ecosystem` skill — AI slop / Voice / タイトル規約の正本。出典の本文編入は同 skill の **Citation & Sources Workflow** が所有（本 agent は paste-ready ブロックを返すのみ）
+- `writing-ecosystem` skill — 出典の本文編入は同 skill の **Citation & Sources Workflow** が所有（本 agent は paste-ready ブロックを返すのみ）
 
 **Your goal:** Surface factual errors before publication, so the author can fix them or the article can be withdrawn. Verify, don't debunk.

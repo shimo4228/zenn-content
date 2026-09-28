@@ -6,30 +6,27 @@ user-invocable: true
 origin: shimo4228
 ---
 
-# writing-ecosystem — 人間向け執筆・レビューエコシステムの正本
+# writing-ecosystem — 人間向け執筆の手順
 
-人間読者向けコンテンツ（記事・エッセイ・ブログポスト・ニュースレター等）の執筆とレビューに関わるコンポーネント（skill と agent）の役割境界・使い分け・共通規約をまとめた正本。
+人間読者向けコンテンツ（記事・エッセイ・ブログポスト・ニュースレター）を書く手順と、関わる skill・agent の
+役割分担の正本。
 
-> AI slop・タイトル規範・執筆フローは本 skill directory が正本。Voice の実値は channel contract が
-> 持つ。詳細診断表だけ `references/` へ分離し、必要な phase で読む。
+**書き始める前に `~/MyAI_Lab/zenn-content/.claude/rules/writing-principles.md`（執筆の背骨: 著者の方針と原理 6 本）を読む。**
+この repo で作業していれば rules として常駐しているが、別 repo からの `--add-dir` や他 skill からの参照では載っていない。
+判断は背骨から導き、本 skill は手順・役割・受け入れの規律だけを持つ。
 
 ## Scope
 
-**人間 primary のコンテンツのみ扱う**。AI-facing ドキュメント（`llms.txt` / `llms-full.txt` / FAQ ページ等）には `llms-txt-writer` skill を使う。audience 判定と役割分担は [Audience Separation: Human vs AI](~/.claude/skills/llms-txt-writer/SKILL.md#audience-separation-human-vs-ai) を参照。
+**人間 primary のコンテンツのみ扱う**。AI-facing ドキュメント（`llms.txt` / `llms-full.txt` / FAQ ページ等）には `llms-txt-writer` skill を使う。audience 判定と役割分担は `~/.claude/skills/llms-txt-writer/SKILL.md` の「Audience Separation: Human vs AI」節を読む。
 
-本 skill は媒体名・語尾・frontmatter・文字数・reviewer 構成・公開 command を持たない。記事全体を
+媒体名・語尾・frontmatter・文字数・reviewer 構成・公開 command は channel contract が持つ。記事全体を
 扱う task では最初に
 `<project>/.claude/rules/*.md` の **publication channel contract** を読み、対象 path を 1 channel
 へ解決する。contract が無い、または複数 channel に一致する場合は推測せず停止する。
 
-執筆時の規範は本 skill と現在の local contract だけである。ADR、memory、過去セッションは
-規範として参照しない。過去セッションを素材にするときは `session-theme-mining` が選んだ一次
+執筆時の規範は、背骨の rule・local contract・本 skill の手順だけである。ADR と memory は経緯と事例の記録で、
+規範は背骨に一本化してある。過去セッションを素材にするときは `session-theme-mining` が選んだ一次
 pointer、`collect-context` が作る evidence dossier の順に限定して受け取る。
-
-### Content integrity
-
-中心命題、主張、構成は著者の判断が決める。受信指標が変えられるのは何を書くか・title の語選び・
-tags・timing・language placement までで、本文はその外にある。
 
 ---
 
@@ -45,7 +42,7 @@ tags・timing・language placement までで、本文はその外にある。
 | **Write** | 本 skill「editorial brief と執筆フロー」 | 中心命題・因果線・証拠選択・構成・執筆 | 初稿・改稿 |
 | **Title generation** | `headline-craft` skill | 「開かせる一行」の候補生成 | 著者の内容 GO 後 |
 | **Title review** | `title-reviewer` agent | 本文との契約を fresh context で点検し findings を返す | headline-craft の後、quality-gate の前 |
-| **Review: 品質** | `editor` agent | 記事の構造・コード・AI slop・用語 | 実用チャンネルのレビュー時 |
+| **Review: 品質** | `editor` agent | 議論の動き・説明の質・AI slop・記事内用語（code / path の照合は `fact-checker`） | 実用チャンネルのレビュー時 |
 | **Review: 論理** | `essay-reviewer` agent | エッセイの論理構成・過積載・トーン | エッセイチャンネルのレビュー時 |
 | **Review: 初見明瞭性（cross-model）** | Codex plugin の `codex:codex-rescue` agent（読み取り専用、checklist は `prose-clarity-reviewer` agent） | 第一画面・中心命題・内部文脈依存・カテゴリのすり替え | 構造凍結後の review panel 時 |
 | **Review: 事実** | `fact-checker` agent | 事実主張の Web 検証 | 公開前検証時 |
@@ -53,9 +50,7 @@ tags・timing・language placement までで、本文はその外にある。
 | **Publish** | project-local publishing skill | platform API / UI / schedule / corpus 更新 | 著者 GO 後 |
 | **Overlay** | `<project>/.claude/rules/*.md` | チャンネル固有の事実・配線 | プロジェクト内作業時のみ |
 
-一文・一段落の翻訳（`prose-translation`）、title だけ（`headline-craft` / `title-reviewer`）、SNS
-（`x-draft`）、公開 thread（`public-comment`）、README（`readme-writer`）、paper（`paper-ecosystem`）は
-この flow に入れず、それぞれの専用 skill へ直接 route する。
+flow の外へ route する先は末尾の Related。
 
 ## Canonical workflow
 
@@ -65,11 +60,11 @@ local contract から出力 channel と読者を決める。テーマ未選択�
 0〜3 件の同格候補を出し、著者の選択で止まる。選択済みの問いは §2 の中心命題の対話へ進む。
 `theme-reviewer` は、稿が外部言説に対する新規性を主張し、著者が指示したときに起動する
 （findings と深化の問いだけを返す）。経験の報告では命題が外部言説との差分に依存しないので、
-起動しても論点が増えるだけになる。テーマ候補を採点・順位付けしない。
+起動しても論点が増えるだけになる。テーマ候補は同格のまま著者に渡し、選ぶのは著者である。
 
 ### 2. Collect, then select
 
-必要なら `collect-context` で evidence dossier を作る。dossier は lookup material であり、本文へ
+過去セッションや複数 repo の記録を素材にするときは `collect-context` で evidence dossier を作る（`fact-checker` に渡す台帳になる）。dossier は lookup material であり、本文へ
 全部入れる coverage checklist ではない。
 
 **中心命題は、書く前に著者と話して決める。** brief を書く前に、orchestrator は著者に、何に
@@ -83,38 +78,28 @@ local contract から出力 channel と読者を決める。テーマ未選択�
 Reader: <channel contract の読者と、中心命題の対話で著者が言った「誰に向けて書くか」の原文 1 行>
 Channel: <local contract の channel>
 Author's words: <中心命題の対話で著者が言った原文。要約・言い換えをしない>
-Central thesis: <Author's words を、この原稿が成立させる命題一文にしたもの。必ず一つ>
+Central thesis: <Author's words を、この原稿が成立させる命題一文にしたもの。必ず一つ。確度は Author's words のまま（背骨 1）>
 Entry bridge: <読者の出発点から、なぜ中心命題を考える意味があるかが伝わる場面・観察・問いを1〜2文で>
 Figure plan: <内容 GO の後に埋める。節 → 形（対比 / 流れ / 階層 / 2 軸 / 並列）→ 図の有無。並列は list のまま>
-Causal spine: <観察 / 問題 → 緊張 → 機序 → 読者の判断・行動・Higher Ground>
+Causal spine: <観察 / 問題 → 緊張 → 機序 → 著者の判断（決めたこと・決めなかったこと）>
 Selected evidence:
 - <evidence id>: <因果線での役割>
 Out of scope:
-- <面白いがこの命題を進めない論点>
+- <面白いがこの命題を進めない論点。本文に載る未検証の推論は、ここへ落とす前に著者へ聞く（背骨 4）>
 ```
 
-読者が何を知っているかを orchestrator は列挙しない。確かめるのは著者の通読である。Entry bridge は既存の疑問への接続と、新しい疑問が生まれる
-入口の両方を含む。著者の体験も、その問いの意味を読者へ伝えるなら入口になる。読者が得る
-価値には理解や視点の変化も含み、結論への同意は読者に開いておく。
+読者が何を知っているかを確かめるのは著者の通読である。Entry bridge は既存の疑問への接続と、新しい疑問が
+生まれる入口の両方を含む。著者の体験も、その問いの意味を読者へ伝えるなら入口になる。
 
-local contract に著者方針がある場合は、テーマ・構成の判断に参照する。視点の変化を狙う原稿では、
-必要に応じて「読者のどんな見方や判断が変わりうるか」を既存の brief に添える。
-これは期待する価値の仮説として扱い、実際の読者への効果とは区別する。
-
-実用 how-to では central thesis を「読者が得る一つの成果または判断則」としてよい。証拠は
-量でなく役割で選ぶ。同じ役割の例が複数あるなら、因果に必要な最小の一例を残す。
+実用 how-to では central thesis を「読者が得る一つの成果または判断則」としてよい。
 
 ### 3. Outline and draft
 
-導入は Entry bridge の場面・観察・問いで開く。読者が既に知っている語だけで書き、本文で定義する語は
-定義する節で初めて出す。執筆理由や背景は、読者を場面に置いた後に、その場面が要る分だけ書く。
-読者が共有していない前提は本文で補う。
-各 load-bearing section に causal spine 上の役割を一つだけ割り当て、採用 evidence を紐付ける。
-並列の agenda を節として足さない。具体物を先に置き、説明を後にする。執筆中に別の中心命題が
-現れたら混ぜずに停止し、editorial brief を再確認する。out-of-scope は `details` へ押し込まない。
-
-**時間は一直線に、錨は 1 本。** 絶対日付の錨は最初の 1 回だけ打ち、以後は相対か無しで進める。
-節の順序は時系列に揃え、後の節で時間を遡らない。検査の細目は `prose-clarity-reviewer` が持つ。
+導入は Entry bridge の場面・観察・問いで開く。執筆理由や背景は、読者を場面に置いた後に、その場面が
+要る分だけ書く。読者が共有していない前提は本文で補う。各 load-bearing section に causal spine 上の役割を
+一つだけ割り当て、採用 evidence を紐付ける。並列の agenda を節として足さない。語・節の切れ目・時間・
+証拠の置き方は背骨の 2・5・6 に従う。執筆中に別の中心命題が現れたら混ぜずに停止し、editorial brief を
+再確認する（背骨 4）。out-of-scope は本文から外す — `details` に押し込むと、読者には本文の一部として届く。
 
 翻訳は `prose-translation` を使い、承認済み central thesis、causal spine、selected evidence、
 out-of-scope を保持する。翻訳先の local contract へ route し直す。
@@ -139,11 +124,11 @@ plugin が使えないときは Claude の
 path（repo、出力ファイル）を名指しで渡す — code / path / 出力の照合はこの agent が持ち、channel
 reviewer は判断だけを持つ。
 
-採用した指摘は orchestrator が反映し、反映後の稿は reviewer へ戻さず著者の通読へ渡す。
-下の Final structural pass を確認してから著者が本文を通読し、**内容 GO** を出す。
-修正が central thesis、causal spine、主要節を変えたときだけ、brief → 関係 reviewer へ戻る。内容が確定するのはこの GO であり、タイトル作業はその後に置く。
+採用した指摘は orchestrator が反映し（回数と戻り条件は下の処分規律）、out-of-scope が本文へ戻っていないことを
+確認してから著者が本文を通読し、**内容 GO** を出す。内容が確定するのはこの GO であり、タイトル作業はその後に置く。
 
-図は内容 GO の後に起こす（brief の Figure plan をここで埋める。手順は下の「図」）。
+図は内容 GO の後に起こす（brief の Figure plan をここで埋める。形の選び方と手順は project の format skill — Zenn は `zenn-format` の Figures。
+図の規約を持たない channel では Figure plan は「なし」と書く）。
 図の文字と本文の差分だけを `fact-checker` に回し、図を足した稿は著者がもう一度通読する。図と
 その直後の 1 文の追加は構造変更ではないので、この通読は確認であり、内容 GO と title-reviewer は
 やり直さない。
@@ -177,13 +162,6 @@ reviewer は判断だけを持つ。
   | 概念・歴史的接続の過大主張、帰属の誤り | 常に採用検討 |
   | 文体規約違反（register 混在・意図外の常体） | 採用（意図的ブレイクと照合の上で） |
   | 構造再設計の提案 | 著者判断へ昇格 |
-
-#### Final structural pass（内容 GO の通読前チェック）
-
-- `N reasons` と `N questions` を対応させるなら 1:1。対応しない列挙を鏡像にしない
-- out-of-scope が本文へ戻っていない
-
-中心命題の貫通・支配的命題・summary の新規導入は `prose-clarity-reviewer` が同じ phase で見る。
 
 ### 5. Title
 
@@ -224,164 +202,45 @@ fact-check で確定した一次資料を、**本文の出典セクションに�
 | 実用チャンネルの記事 / tutorial | 本文中の inline link を基本に、必要なら末尾に補助的な References |
 | 学術 paper | 本ワークフローではなく `citation-formatter` agent（in-text ↔ reference の 1:1・format・DOI 検証） |
 
-### 引用の検証水準（citation tier）
-
-引用に要求される検証の深さは、**引用が何を主張するか**と**ジャンル**で決まる。
-
-| 引用のレベル | 例 | 必要な検証 |
-|---|---|---|
-| **帰属**（著者 X は Y と主張している） | 「Froese は AI ジレンマを定式化した」 | 抄録で可 — 抄録は著者自身が書き査読を通った公式の主張要約 |
-| **中身・ニュアンス**（議論の詳細・特定ページ） | 「p.165 で〜と述べる」 | 該当箇所の通読 |
-| **評価・反駁**（当否の判定・批判・拡張） | 「この議論は誤っている」 | 全文精読 |
-
-- **エッセイ / 記事**（人間向け）: 帰属レベルに収まる引用なら抄録ベースで可。当否判定をしないことを本文で明示するとなお良い
-- **学術 paper**: 本表を適用しない。`paper-ecosystem`（`~/MyAI_Lab/paper-lab` 常駐）の Source Fidelity Rules（一次ソース直接照合）が正本で、常に厳格側
-- **検証の格を隠さない**: 抄録引用は全文精読と同じ見た目になる（citation laundering）。抄録には本文より強く言う「スピン」の実証報告もある。本文で開示する先例: 「出典の格は中程度（三次文献）であり、一次学術文献での裏取りは未了」型の一文
+引用ごとに要る検証の深さ（帰属・中身・評価）は [`references/publication-procedures.md`](references/publication-procedures.md) を読む。
 
 ### 翻訳記事の出典
 
 `prose-translation` で訳した記事は、原文の出典セクションを引き継ぐ。**URL / DOI は保持**し、description のみ英訳する。
 
-### 自リポ言及の節度（本文内の self-link 制限）
-
-本文中の自リポリンクは、読者がその場で手を動かすための**導線**か、直前の主張を支える**一次資料**
-だけに置く。どちらでもない言及はリンクを末尾の関連リンク / 出典セクションへ寄せる。
-**同一 repo への本文リンクは 1 記事 1 回まで**（末尾セクションは対象外）。
-
 ---
 
-## Craft 規約（文の技術）
+## Genre shapes
 
-genre 中立。出典: Orwell "Politics and the English Language" (1946)、
-Kaguura Gichuru (The Write Path, 2026-07)。
-
-- **一人の読者へ手紙を書く。** その文は誰に向いているか
-- **読者は前を覚えていない。** その指示語は何を指すか、その場で言えるか
-- **副詞を削り、動詞を強くする。** 数値で言えるなら数値で言う
-- **能動態を既定にする。** 行為者を伏せる理由があるか
-- **物や概念は、既存の名前で呼ぶ。** 界隈の定着語・製品名・モデル名はそのまま使う。説明の 1 文を足すのは、
-  著者が通読で止まった名前だけ。平易語への言い換えや「〇〇役」のラベルは読み手に置き換えの手間を渡し、
-  読者が知っている名前への注記は読み手を素人扱いする
-- **名前以外の言い回しは平易にする。** 「〜において」のような硬い言い回しは誰のためか
-- **著者が学べない説明は、読者も学べない。** 数値の読み方と、なぜそうなるかまで書いたか
-- **見慣れた比喩は使わない。** 情報を運んでいるか、間を埋めているか
-- **第 2 稿は第 1 稿より短い。** その文は論点を前へ進めるか
-- **文の壁は宿題に見える。** ただし全行独立はロボット臭
-- **深い input からしか深い文章は出ない。** この原稿は何を読んで書いたか
-
-これらは判断の補助であって検査項目ではない。守った結果、文が不誠実になる・
-回りくどくなる・言いたいことが消えるなら、規約の方を破る。
-
-shared word target は置かない。長さの上限は local contract、段落密度と造語・専門用語の
-閾値は `prose-clarity-reviewer`、直し方の実例は
-[`references/style-diagnostics.md`](references/style-diagnostics.md) が持つ。
-
----
-
-## Draft craft and genre shapes
-
-執筆順序の正本は上の Canonical workflow。ここは承認済み brief を文章にするときの craft だけを持つ。
-
-### 具体物を先、説明を後
-
-- 節の入口に置くのは**具体物** — 実例・出力・逸話・数値・画面の描写・コードブロック
-- 説明はその**後**。順序が逆になると、読者は何の話か分からないまま抽象を読まされる
-- 提供された文脈で裏づけられない経歴・実績・数値は書かない
-- **操作・実験・選択の前に、目的を 1 文。** 何のためにやったか、なぜその候補や道具を選んだかが
-  無いと、読者には唐突に見える
-- **仕組みの節は 1 件を追う。** 実際の入力 1 件が何を聞かれ何が返ったかを見せ、それが示す主張を 1 文で
-  言い、型・設定・コードの一般形はその後に置く
-- **前後比較（表・並置の装置）は、前の案が読者も選びうる案で、変更が 1 つのときに使う。** それ以外は現行の設計を正面から
-  説明し、実例は現行の資料から取る。見えていた失敗を「前」に置くと、読者には「なぜそれをやったのか」
-  だけが残る
-- **表 / 箇条書き / 散文。** 比較は表、並列は箇条書き、因果は散文
-- **証拠の全文は本文の外へ。** 実験ログ・設定全文・ADR はリンクか折りたたみに逃がし、本文は判断・数値・
-  trade-off だけを残す
-
-### 図
-
-図を起こすのは、local contract の Deterministic checks に Figure plan を持つ channel だけ。画像の形式は
-project の format skill が決める。
-
-- **図は凍結後に、節ごとに。** 内容 GO の後、節ごとに形を 1 語で言う（対比 / 流れ / 階層 / 2 軸 / 並列）。
-  並列以外は `/eli5 <その節の主張 1 文>` で 1 枚起こす（大きな絵・少ない言葉・読者の既知物との対比）。
-  形が言えない節は図を置かない。1 記事 3〜4 枚まで。置く位置は見出し直後でなく、その節の発見が
-  出そろった段落の後（先に図を出すと節の展開を先取りする）。例外は hero 図で、Entry bridge の段落の後、最初の見出しの前に置く。
-  図の直後に「この図が示すこと」を 1 文置く。生成と PNG 化の手順は project の `zenn-format`
-- **eli5 比喩は 1 記事 1 個。** eli5 比喩とは読者の既知物との対比（運転席と助手席、CPU と GPU）で、
-  タイトル・第一画面・hero 図のどれか 1 箇所に置く。hero 図以外の図は構造（対比 / 流れ / 階層 / 2 軸）
-  だけを描き、既知物の比喩を持たない。上の「見慣れた比喩は使わない」と両立する条件は、外すと中心命題の
-  形が消えること（消えないなら削る）
-
-review-when: pilot（`articles/jev-retrofit-limits.md`、2026-09-22）を含む図入りの 3 本の `article-stocktake` で
-直近稿と差が出ない、または Zenn の画像規約が変わる。差が出なければ Scaffold Dissolution で縮める。
-
-### ジャンル別の構成
+どの shape も central thesis と causal spine に従属する。複数論点を統合できるのは、同じ中心命題の因果線で
+上下関係を持つ場合だけである。
 
 | genre | 構成 |
 |---|---|
-| 実用記事 / チュートリアル | Entry bridge の直後に、読者が何を得るかを言う。主要節ごとにコードか端末出力を置く。締めは要約でなく具体的な takeaway |
-| エッセイ / オピニオン | **[エッセイの 4 段構成](#エッセイの-4-段構成heros-journey-型) が正本**。1 節 1 論点、意見を支える実例を置く |
+| 実用記事 / チュートリアル | Entry bridge の直後に、読者が何を得るかを言う。主要節ごとにコードか端末出力を置く。締めは因果線の著者の判断で終える（背骨 3） |
+| エッセイ / オピニオン | 下の 4 段構成。1 節 1 論点、意見を支える実例を置く |
 | ニュースレター | 最初の 1 画面を強くする。近況の羅列にせず洞察を混ぜる。節ラベルで走査可能にする |
-
-どの shape も central thesis と causal spine に従属する。テンプレートを満たすために節・装置・例を
-足さない。複数論点を統合できるのは、同じ中心命題の因果線で上下関係を持つ場合だけである。
-
-### Environment-dependent implementation handoff
-
-local path、既存設定、symlink、認証、権限に依存する変更を読者へ渡す記事では、まず人間向け本文
-だけで問題・判断則・採用境界を完結させる。その後に、読者のcoding agentへ渡すstandalone promptを
-置ける。promptはread-onlyで環境を調査し、実装planを返し、人間承認前に編集・install・commit・
-publishしない。agent handoffは人間向け理由説明の代替ではない。
-
-## AI Slop
-
-> その表現を別の記事にそのまま挿入しても意味が通るなら、それは AI slop。
-
-著者の具体的な観察・経験・数値を伴わない評価語、形だけ反復できる対比・列挙・等間隔リズム、
-無内容な opener / closer を使わない。兆候を見つけたときだけ
-[`references/style-diagnostics.md`](references/style-diagnostics.md) を読む。
-
----
-
-## Voice & Tone Rules
-
-### Voice は channel contract が持つ
-
-実用記事の直接指示、essayの発見調、その他のregisterをglobal既定で上書きしない。local contractが
-宣言したvoiceを使い、著者の具体観察・確度・未解決範囲を保つ。
-
-**語尾（ですます / だ・である）の実値は本 skill が持たない。** project の publication
-channel contract が正本。記事全体の task で contract が無ければ推測しない。
-
-発見調の診断例は [`references/style-diagnostics.md`](references/style-diagnostics.md) が持つ。
-
-### 未解決の正直さ
-
-解決していない問題は解決したふりをしない。「まだわからない」「今後の課題」と正直に書く。完璧な結論に無理に収束させない。
-
-### 感情語の扱い
-
-本文では、著者の自然な体験描写なら使ってよい（「正直つらかった」「ここで詰まった」）。タイトルでの扱いは下の Title Conventions が持つ。
-
-### 結論の問い化
-
-contract が発見調を宣言し、読者自身に推論してほしい評価は問いにできる。ただし、全部を疑問形にして確度をぼかさない。
-検証済みの事実・数値・具体観察は断定を保ち、評価や結論だけを証拠の強さに合わせて問い・観察・
-断定から選ぶ。機械的な弱化が起きたときは `references/style-diagnostics.md` の例を読む。
-
-### AI メディエイト執筆の開示
-
-AI が実際のテキスト生成を担った記事（AI-mediated writing）で channel contract が開示を求める場合、**記事末に開示ブロックを置く**。適用可否は contract が持つ。要素: (1) AI-mediated である旨の明言、(2) 原稿の来歴、(3) 主張・判断・責任が著者に帰属すること、(4) 準拠方針への参照。媒体固有のブロック記法が使えなければプレーンな段落 + 強調で書く。
 
 ### エッセイの 4 段構成（Hero's Journey 型）
 
-essay の既定構成（出典: Kaguura 2026。Craft 規約と同じ取り込み）:
+essay の既定構成（出典: Kaguura 2026、ADR-0007）:
 
-1. **Calm Story** — 開き方は §3「Outline and draft」の導入（Entry bridge の場面で開く）。essay 固有の役割は、低認知負荷で読者を著者の声に慣れさせること
-2. **Plunge（緊張）** — 読者が乗ったところで、大きな問題・不都合な真実・パラドックスを提示する。緊張が途中離脱を難しくする
+1. **Calm Story** — Entry bridge の場面で開き、低認知負荷で読者を著者の声に慣れさせる
+2. **Plunge（緊張）** — 読者が乗ったところで、大きな問題・不都合な真実・パラドックスを提示する
 3. **Solution** — フレームワーク・中核ルールを提示して読者を引き上げる
-4. **Higher Ground** — 開始時より高い位置で終える。読者が「学んだ」と感じて読み終える。未解決のまま残すこと自体が Higher Ground になりうる
+4. **Higher Ground** — 開始時より高い位置で終える。未解決のまま残すこと自体が Higher Ground になりうる
+
+### Environment-dependent implementation handoff
+
+local path・既存設定・認証・権限に依存する変更を読者へ渡す記事では、人間向け本文だけで問題・判断則・
+採用境界を完結させた後に、読者の coding agent へ渡す standalone prompt を置ける。prompt は read-only で
+環境を調査して実装 plan を返し、人間の承認前に編集・install・commit・publish しない。
+
+### Voice
+
+register と語尾の実値は channel contract が持つ。contract が無い task では推測しない。AI slop と voice
+drift の兆候を見つけたときだけ [`references/style-diagnostics.md`](references/style-diagnostics.md) を読む。
+AI-mediated writing の開示を contract が求める channel では [`references/publication-procedures.md`](references/publication-procedures.md) の要素で書く。
 
 ---
 
@@ -421,47 +280,16 @@ essay の既定構成（出典: Kaguura 2026。Craft 規約と同じ取り込み
 
 ---
 
-## Theme discovery boundary
-
-テーマ未選択なら `session-theme-mining` を使う。同 skill は候補を問いとして発見し、採点・順位・
-推薦を行わない。選択済みテーマの外部言説との差分は `theme-reviewer`、証拠の収集は
-`collect-context`、本文への採否は editorial brief が持つ。受信指標を使う project でも、数値で
-中心命題を変形しない。何を書くかの人間判断に使い、アイデアの中身を最適化しない。
-
-## Section Length Guidelines
-
-- 1 つのセクションが記事全体の 30% を超えたら分割を検討する
-- セクション長は重要度に比例させる。主要な論点に厚く、補足に薄く
-- 独立した論点が多すぎる記事は分割を検討する（**上限の数値は判定を出す側（`essay-reviewer`）が持つ** — ここには書かない）
-
----
-
 ## How to Extend (Project Overlay)
 
-プラットフォーム固有ルール（文字数上限、タグ仕様、組織固有の禁止表現など）は **プロジェクトの rules/ に overlay** として置く:
+プラットフォーム固有の値（文字数上限、タグ仕様、組織固有の禁止表現など）は project の
+`.claude/rules/<publishing-channels>.md` に置く。contract は背骨と本 skill の手順を再掲しない。
 
-```
-<project>/.claude/rules/<publishing-channels>.md
-```
+## Related（この flow の外へ route する先）
 
-contract は path matcher、読者、voice/register、reviewer panel、deterministic checks、title constraints、
-publish handoff だけを持つ。本 skill の craft、AI slop、中心命題、因果線を再掲しない。
-
----
-
-## Related
-
-- `headline-craft` skill — 「開かせる一行」の候補生成技法（タイトル・tagline・subtitle・SNS 告知文）。規範は本 skill の Title Conventions、技法はあちら
-- `title-reviewer` agent — 凍結稿とタイトル候補の契約点検（findings のみ。採否は著者）
-- `theme-reviewer` agent — 選択済みの問いへの findings と深化の問い
-- `prose-clarity-reviewer` agent — 初見読みの checklist。既定の実行者は Codex plugin、Claude agent は plugin 不在時の代替
-- `quality-gate` skill — local contract の reviewer verdict と機械検査を集約
-- `prose-translation` skill — 日英**双方向**の voice 保持翻訳（JA→EN / EN→JA。AI-slop / Voice / Title / 出典編入は本 skill に defer）
-- `x-draft` skill — X 投稿の下書き。AI slop / Craft は本 skill に defer するが、**Voice は SNS register への意図的分岐**（記事の文体を持ち込まない）
-- `public-comment` skill — 公開 thread への返信。genre 固有の追加規律だけを持ち、tell の正本は `references/style-diagnostics.md`
-- `readme-writer` skill — **README / repo トップページ専用**。audience が「repo を開いた初対面の人」なら本 skill の初稿手順ではなくあちらを入口にする（Voice は ですます への意図的分岐）
-- project-local publishing skill — platform UI / API / schedule / corpus update. 本skillは公開操作を持たない
-- `editor` agent — 実用チャンネルのレビュー（構造・コード・AI slop・用語）
-- `essay-reviewer` agent — エッセイチャンネルのレビュー（論理構成・過積載・トーン）
-- `fact-checker` agent — 事実主張の Web 検証
-- `llms-txt-writer` skill — **AI 向けドキュメント（llms.txt / llms-full.txt / FAQ 等）専用**。audience が AI なら本 skill ではなくあちらを使う
+- `prose-translation` skill — 日英双方向の voice 保持翻訳。一文・一段落の翻訳はこちらだけで足りる
+- `x-draft` skill — X 投稿の下書き（Voice は SNS register への意図的分岐）
+- `public-comment` skill — 公開 thread への返信
+- `readme-writer` skill — README / repo トップページ（Voice は ですます への意図的分岐）
+- `llms-txt-writer` skill — AI 向けドキュメント（llms.txt / FAQ 等）
+- `headline-craft` skill — 「開かせる一行」の候補生成。規範は本 skill の Title Conventions

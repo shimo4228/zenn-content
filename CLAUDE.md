@@ -6,9 +6,6 @@ This repository contains published, author-voiced Zenn / Dev.to articles and not
 AI agents, Claude Code workflows, and LLM engineering. Study drafts without an author voice do not belong.
 The repository is public; nothing load-bearing depends on a publishing platform remaining available.
 
-Reception metrics in `scripts/metrics/snapshots.jsonl` may inform **what to write**, cadence, and language
-placement. They must not deform an idea, doctrine decision, or existing article body.
-
 ## Publications index
 
 README is a routing page, not an article list. The exhaustive generated index is `docs/PUBLICATIONS.md`.
@@ -24,13 +21,14 @@ Human-primary prose has one entrypoint, resident in this repository:
 `.claude/skills/writing-ecosystem/SKILL.md` (the
 review agents `editor` / `essay-reviewer` / `prose-clarity-reviewer` / `theme-reviewer` / `title-reviewer` /
 `fact-checker` and the skills `quality-gate` / `session-theme-mining` live in `.claude/` too).
+The author's writing values and principles live only in `.claude/rules/writing-principles.md` (the backbone).
 Platform and repository values live only in `.claude/rules/publishing-channels.md`.
 For article work in another repository, add this repo with `claude --add-dir ~/MyAI_Lab/zenn-content`
 or start the session here.
 
-Do not restate the shared flow here. `writing-ecosystem` owns the editorial brief, central thesis, causal
-spine, evidence selection, revision return conditions, common review order, and the boundary that excludes
-ADRs / memory / raw session history from writing-time rules.
+Do not restate the backbone or the shared flow here. `writing-ecosystem` owns the procedure: the editorial
+brief, review order, revision return conditions, and the boundary that excludes ADRs / memory / raw session
+history from writing-time rules.
 
 ## Channel and format boundaries
 

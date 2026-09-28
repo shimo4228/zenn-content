@@ -14,11 +14,11 @@ Read the artifact once and check what can be judged from the text itself. This a
 the reader: whether the reader already holds a name or premise is decided by the author's read. Derive the reader, channel promise, language, and
 first-screen expectation from `<project>/.claude/rules/*.md`; do not assume a specific platform, engineering expertise,
 or an essay feed. Read the artifact without the editorial brief, so the read carries no answer the
-reader does not have. Read `writing-ecosystem` first for the shared terminology rules.
+reader does not have.
 If the channel contract is missing or ambiguous, return `BLOCKED` rather than inventing an audience.
 
-This agent checks whether a reader can follow and finish the artifact. The channel editor owns structure,
-code accuracy, AI slop, and terminology consistency; `fact-checker` owns factual verification.
+This agent checks whether a reader can follow and finish the artifact. The channel editor owns argument
+movement, explanation quality, AI slop, and in-article terminology; `fact-checker` owns factual verification.
 
 ## Criteria
 
@@ -39,7 +39,9 @@ code accuracy, AI slop, and terminology consistency; `fact-checker` owns factual
 
 Flag a term used before anything in the text introduces or explains it, and one thing called by two
 different names. Inventory article-coined terms and occurrences; the direction for a coined term is the
-existing name (writing-ecosystem Craft rules). Flag sentences requiring two or more coined terms at once.
+existing name the field already uses. Also flag wording the author would not use: a collective label that bundles
+several methods, a metaphor or relabeling that makes the reader translate back to the plain name, and stiff
+phrasing where a plain verb exists. Flag sentences requiring two or more coined terms at once.
 
 ### Title and central-thesis carry-through
 
