@@ -48,6 +48,7 @@ cd scripts && uv run python metrics_snapshot.py
   - `{"ts", "source": "note_dash", "slug", "note_url", "status", "impressions", "pv", "likes", "comments", "published_at"}`
   - アカウント合計は `"type": "account"` と `"window"` を付けた 1 行
 - `slug` は repo の slug。Zenn は表のリンク `zenn.dev/link/articles/<slug>`、note は `scripts/corpus.yml` の URL またはタイトル一致で引く。引けない行は `slug` を空にして `title` を残す
+- 数字はスクリーンショットから読まず、javascript_tool で DOM から取る。Zenn は `a[href*="/link/articles/"]`、note は `a[href*="/shimo4228/n/"]` ごとに、リンクを含む行の innerText を取り出して数値化し、件数が画面の記事数と一致するか確かめる
 - `-` 表示は 0 として記録する
 - note のダッシュボードは background tab だと読み込みが止まる。screenshot で前面化してから読む
 - どちらかにログインしていなければ、その source を飛ばして報告する（ログインは著者が行う）
