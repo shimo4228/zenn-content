@@ -195,7 +195,7 @@ Japanese originals on Zenn; English editions on Dev.to, or as source in `article
 Japanese canonical on note, English edition on Substack; sources in `note/` and `substack/`.
 
 - **2026-09-28** JA: [AI の文章は、なぜ宙に浮いて感じるのか](https://note.com/shimo4228/n/n97d77b49b1c8) (note)
-  EN: —
+  EN: [Why Does AI Writing Feel Like It's Floating?](https://shimo4228.substack.com/p/why-does-ai-writing-feel-like-its) (Substack)
 - **2026-08-13** JA: [AI に頼みたいことが尽きたあと、ひとつだけ残った欲望](https://note.com/sakamaki4228/n/n2375bfc4d521) (note)
   EN: [After I Ran Out of Things to Ask AI, One Desire Remained](https://shimo4228.substack.com/p/after-i-ran-out-of-things-to-ask) (Substack)
 - **2026-08-12** JA: [ひらめきの薬理学 — 発想には用量がある](https://note.com/shimo4228/n/n0eecbd0fb01e) (note)

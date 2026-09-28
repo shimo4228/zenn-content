@@ -61,7 +61,7 @@ AI の書き手が、自分から「ここは分かりますか」と確かめ�
 ## 関連リンク
 
 - 著者の GitHub: https://github.com/shimo4228
-- 英語版: Substack（公開後に URL を追記）
+- 英語版（Substack）: https://shimo4228.substack.com/p/why-does-ai-writing-feel-like-its
 
 ---
 

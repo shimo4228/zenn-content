@@ -10,6 +10,10 @@ essays:
       title: AI の文章は、なぜ宙に浮いて感じるのか
       url: https://note.com/shimo4228/n/n97d77b49b1c8
       file: note/lost-referents-in-generated-prose.md
+    en:
+      title: Why Does AI Writing Feel Like It's Floating?
+      url: https://shimo4228.substack.com/p/why-does-ai-writing-feel-like-its
+      file: substack/lost-referents-in-generated-prose-en.md
   - slug: ai-desire-exhaustion
     date: 2026-08-13
     ja:
