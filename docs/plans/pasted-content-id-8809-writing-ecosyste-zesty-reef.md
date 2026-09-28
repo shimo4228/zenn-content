@@ -97,3 +97,17 @@ EN は後で `prose-translation` → `substack/…-en.md`。reviewer は essay-r
 - `/quality-gate note/lost-referents-in-generated-prose.md` が PASS（panel report + 処分記録 + 内容 GO + title findings）
 - public-safety: 本文に個人 path・session id を出さない。第三者論文の抜粋は名前 1 語まで
 - 公開後 `scripts/corpus.yml` 更新 → `npm run generate:index` → `npm run validate` / `npm run check:index`
+
+## 改訂 brief（2026-09-28、著者通読で二度 brief へ戻った後）
+
+上の brief は C9・C10 で置き換わった。現行の正本はこの節。
+
+**Author's words**（C10）: 「ちょっとAIの文章に感じる違和感をいうと、人間と前提を共有していないと感じる。何か空疎で宙に浮いているような感じだ。ストライクゾーンが違うので、振ってもぜんぜん違う競技をしているような感じだ。一体なぜこれが起こるのだろう。この感じの方が記事にする価値がある。」
+
+**Central thesis**: 会話では前提（共通基盤、Clark & Brennan 1991）は相手の反応を見ながら確かめて積み上がる。AI の書き手にはこの確かめがなく、読者についての文字の説明と記録から前提を推定して共有済みとして書く（Shaikh et al. 2024 の "presume common ground"）。だから知っていることを説明し、要るものを飛ばす。
+
+**Causal spine**: 違和感と朝のレポート → ずれの二つの向き（説明しすぎ／要るものを飛ばす）、どちらも規則を守った結果として起きる、この記事の下書き自身の実例 → 共通基盤と grounding、AI の手元にあるのは読者の説明文と記録だけ → 先回りの規則は矛盾して効かず、直したのは止まった読み手（著者の一言で問いが入れ替わった）→ 記事の問いは著者の言葉で言う。
+
+**Title**: AI の文章は、なぜ宙に浮いて感じるのか（title-reviewer 全項目 Yes、著者選択）
+
+**Out of scope**: ベンチ・judge の仕組み、モデル交代と原因の切り分け、reviewer 評価の細部、手順を足すハーネス改善案。
