@@ -1,5 +1,5 @@
 ---
-title: "Jevの判定プラグインをClaude Codeに1週間入れて、外した"
+title: "「これ意味あるかな？」Claude Codeに入れたJevのプラグインを1週間で外すまで"
 emoji: "🧗"
 type: "tech"
 topics: ["jev", "claudecode", "aiエージェント", "llm"]
