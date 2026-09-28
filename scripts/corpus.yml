@@ -4,6 +4,12 @@
 # Zenn/Dev.to articles are NOT listed here — their source of truth is articles/*.md.
 
 essays:
+  - slug: lost-referents-in-generated-prose
+    date: 2026-09-28
+    ja:
+      title: AI の文章は、なぜ宙に浮いて感じるのか
+      url: https://note.com/shimo4228/n/n97d77b49b1c8
+      file: note/lost-referents-in-generated-prose.md
   - slug: ai-desire-exhaustion
     date: 2026-08-13
     ja:
