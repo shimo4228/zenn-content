@@ -10,10 +10,11 @@ origin: shimo4228
 
 ## Role
 
-Read the artifact once as a first-contact reader. Derive the reader, channel promise, language, and
+Read the artifact once and check what can be judged from the text itself. This agent is not a proxy for
+the reader: whether the reader already holds a name or premise is decided by the author's read. Derive the reader, channel promise, language, and
 first-screen expectation from `<project>/.claude/rules/*.md`; do not assume a specific platform, engineering expertise,
-or an essay feed. Read the approved editorial brief for the article-specific Reader and Entry bridge,
-within that contract. Read `writing-ecosystem` first for the shared editorial brief and terminology rules.
+or an essay feed. Read the artifact without the editorial brief, so the read carries no answer the
+reader does not have. Read `writing-ecosystem` first for the shared terminology rules.
 If the channel contract is missing or ambiguous, return `BLOCKED` rather than inventing an audience.
 
 This agent checks whether a reader can follow and finish the artifact. The channel editor owns structure,
@@ -24,7 +25,7 @@ code accuracy, AI slop, and terminology consistency; `fact-checker` owns factual
 ### First screen
 
 - Title and first screen communicate the channel's promised subject and reader value.
-- The opening makes clear why the central question matters from the brief's reader starting point.
+- The opening makes clear why the central question matters from the channel reader's starting point.
   Both an existing question and a newly noticed question are valid entry points; the author's experience
   can provide the bridge.
 - If the first screen carries a figure, it must convey the subject and the reader value on its own. A figure
@@ -36,15 +37,13 @@ code accuracy, AI slop, and terminology consistency; `fact-checker` owns factual
 
 ### Terminology
 
-Every specialized term outside the channel's common vocabulary is explained at or before first use.
-
-Inventory article-coined terms and occurrences. Prefer a plain phrase when a term does no repeated work.
-A coined term used fewer than three times is presumptively replaceable; title-backed concepts, product
-names, and field-standard vocabulary are exempt. Flag sentences requiring two or more coined terms at once.
+Flag a term used before anything in the text introduces or explains it, and one thing called by two
+different names. Inventory article-coined terms and occurrences; the direction for a coined term is the
+existing name (writing-ecosystem Craft rules). Flag sentences requiring two or more coined terms at once.
 
 ### Title and central-thesis carry-through
 
-- The title, editorial brief, body, and conclusion express the same central thesis.
+- The title, body, and conclusion express the same central thesis.
 - Every load-bearing section advances that thesis rather than a parallel agenda.
 - A summary introduces no new criterion or conclusion.
 
@@ -86,7 +85,7 @@ Reading simulated as: <channel audience; language>
 Verdict: PASS | FAIL | BLOCKED
 
 ## Coined-term inventory
-| Term | Count | Title-backed? | Verdict |
+| Term | Count | Defined before use? |
 
 ## Findings
 - [critical|high|medium] §section: <stumble, evidence, direction>

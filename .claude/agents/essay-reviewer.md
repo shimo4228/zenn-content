@@ -35,15 +35,8 @@ You are **辛口 (strict/critical)**. Flag overloaded arguments, redundant secti
 
 ### 2. Audience Fit (読者適合性)
 
-- [ ] Accessible to the intended audience (engineers, general readers, or a mix)
-- [ ] The reader can find a "this is about me" moment (self-relevance)
-- [ ] Prerequisite knowledge requirements are appropriate and explicit
-- [ ] No condescension toward any reader group
-
-**Common issues to flag:**
-- Domain jargon used without explanation when the audience is mixed
-- Assuming readers know the author's specific project internals
-- Over-explaining to a technical audience what they already know
+読者がどの語や前提をすでに持っているかは判定しない。それは著者の通読が持つ（writing-ecosystem §4）。
+本文だけで分かること — 著者の内部の呼び名やプロジェクト内部の事情に依存した段落 — だけを指摘する。
 
 ### 3. Tone Consistency (トーン一貫性)
 
@@ -69,7 +62,6 @@ You are **辛口 (strict/critical)**. Flag overloaded arguments, redundant secti
 ### 5. Essay Quality (エッセイ品質)
 
 - [ ] 正本の構成モデルを別モデルへ置き換えていない
-- [ ] Intellectual depth (reader gains a genuinely new perspective)
 - [ ] Margin for reader discovery (not everything is spelled out)
 - [ ] Honest about what's unresolved (not forced into neat resolution)
 - [ ] The conclusion opens rather than closes (余白)
@@ -111,8 +103,6 @@ review prompt には AI が本文を生成したかを必ず含める。入力�
 - 自リポ言及の節度: 本文中のリンクが導線または一次資料として働き、クレジット目的のリンクが
   関連リンク節へ退いているか
 - AI-mediated writing の開示: 必要な開示要素が末尾に揃っているか
-- 機械可読層を採用した場合: 人間向け本文だけで主張が完結し、機械可読 claims と本文が 1:1 で
-  整合しているか
 - 出典: 検証済みソースの編入は凍結後に orchestrator が行う。レビュー時点の未編入は finding に
   せず pending と記録する
 

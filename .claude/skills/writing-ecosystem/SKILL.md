@@ -62,7 +62,7 @@ tags・timing・language placement までで、本文はその外にある。
 ### 1. Route and discover
 
 local contract から出力 channel と読者を決める。テーマ未選択なら `session-theme-mining` が
-0〜3 件の同格候補を出し、著者の選択で止まる。選択済みの問いは editorial brief へ直接進む。
+0〜3 件の同格候補を出し、著者の選択で止まる。選択済みの問いは §2 の中心命題の対話へ進む。
 `theme-reviewer` は、稿が外部言説に対する新規性を主張し、著者が指示したときに起動する
 （findings と深化の問いだけを返す）。経験の報告では命題が外部言説との差分に依存しないので、
 起動しても論点が増えるだけになる。テーマ候補を採点・順位付けしない。
@@ -70,12 +70,20 @@ local contract から出力 channel と読者を決める。テーマ未選択�
 ### 2. Collect, then select
 
 必要なら `collect-context` で evidence dossier を作る。dossier は lookup material であり、本文へ
-全部入れる coverage checklist ではない。構成前に次の **editorial brief** を提示し、著者確認で止まる。
+全部入れる coverage checklist ではない。
+
+**中心命題は、書く前に著者と話して決める。** brief を書く前に、orchestrator は著者に、何に
+引っかかっているか・何を問いたいかを聞く。著者の答えを命題の形で言い返し、著者が違うと言えば
+直す。session-theme-mining で選ばれた問いや dossier の Claims は、この対話の材料であって答えでは
+ない。合意した著者の言葉は brief の Author's words に原文のまま置く。
+
+構成前に次の **editorial brief** を提示し、著者確認で止まる。
 
 ```markdown
-Reader: <一人の具体的読者。その人の状況・既知のこと・当然視していること・問いがあればその問い。根拠と仮説を区別する>
+Reader: <channel contract の読者と、中心命題の対話で著者が言った「誰に向けて書くか」の原文 1 行>
 Channel: <local contract の channel>
-Central thesis: <この原稿が成立させる命題を一文で。必ず一つ>
+Author's words: <中心命題の対話で著者が言った原文。要約・言い換えをしない>
+Central thesis: <Author's words を、この原稿が成立させる命題一文にしたもの。必ず一つ>
 Entry bridge: <読者の出発点から、なぜ中心命題を考える意味があるかが伝わる場面・観察・問いを1〜2文で>
 Figure plan: <内容 GO の後に埋める。節 → 形（対比 / 流れ / 階層 / 2 軸 / 並列）→ 図の有無。並列は list のまま>
 Causal spine: <観察 / 問題 → 緊張 → 機序 → 読者の判断・行動・Higher Ground>
@@ -85,8 +93,7 @@ Out of scope:
 - <面白いがこの命題を進めない論点>
 ```
 
-Reader は channel contract の読者との約束に沿って記事ごとに具体化する。読者の知識や動機の
-推測は仮説として著者と確認する。Entry bridge は既存の疑問への接続と、新しい疑問が生まれる
+読者が何を知っているかを orchestrator は列挙しない。確かめるのは著者の通読である。Entry bridge は既存の疑問への接続と、新しい疑問が生まれる
 入口の両方を含む。著者の体験も、その問いの意味を読者へ伝えるなら入口になる。読者が得る
 価値には理解や視点の変化も含み、結論への同意は読者に開いておく。
 
@@ -106,12 +113,8 @@ local contract に著者方針がある場合は、テーマ・構成の判断�
 並列の agenda を節として足さない。具体物を先に置き、説明を後にする。執筆中に別の中心命題が
 現れたら混ぜずに停止し、editorial brief を再確認する。out-of-scope は `details` へ押し込まない。
 
-**時間は一直線に、錨は 1 本。** 物語の時間は最初の 1 回で絶対日付の錨を打ち、以後は相対
-（翌朝、3 日後、その週末）か無しで進める。節の順序は時系列に揃え、後の節で時間を遡らない。
-遡らないと因果が書けないなら、素材の並びでなく構成を直す。絶対日付を残すのは読者の判断を
-変えるものだけ（仕様や計測の as-of、外部発言の日付、比較対象になる過去の事故）。著者自身の
-ログの引用に日付・時刻を付けない。evidence dossier のタイムスタンプは検証の座標であって
-本文の語彙ではない — 照合は `fact-checker` が台帳で行うので、本文が日付を持つ必要はない。
+**時間は一直線に、錨は 1 本。** 絶対日付の錨は最初の 1 回だけ打ち、以後は相対か無しで進める。
+節の順序は時系列に揃え、後の節で時間を遡らない。検査の細目は `prose-clarity-reviewer` が持つ。
 
 翻訳は `prose-translation` を使い、承認済み central thesis、causal spine、selected evidence、
 out-of-scope を保持する。翻訳先の local contract へ route し直す。
@@ -119,16 +122,18 @@ out-of-scope を保持する。翻訳先の local contract へ route し直す�
 ### 4. Freeze, review, and content GO
 
 本文の構造を凍結したら、local contract の channel reviewer、`fact-checker`、初見の読みを本文へ実行する。
+reviewer が見るのは本文の内側で判定できること（事実・構造・register・分類の軸・後方参照・矛盾）で、
+読者が何をすでに持っているか（何の話か分かるか）は著者の通読だけが持つ。
 初見の読みは Claude と別系統のモデルが担う — 同じ系統の reviewer は著者（orchestrator）と同じ所を
 読み飛ばす。Codex plugin（openai/codex-plugin-cc）の `codex:codex-rescue` agent を background で起動し、
 prompt の先頭に「Read-only review. Do not edit files (no --write).」と書く（書かないと rescue は書き込み可で走る）。
 続けて「`.claude/agents/prose-clarity-reviewer.md` の checklist を読み、channel contract の読者として原稿を 1 回だけ読み、
 checklist の形式で報告する。加えて本文から弁護できるカテゴリのすり替え・事実の矛盾・帰属の誤りを挙げる。
-ヘッジの追加は求めない。日本語で書く」と、checklist・contract・原稿の path だけを渡す。これが panel の
-cross-model review を兼ねる。`/codex:adversarial-review` は使わない — 著者しか起動できず、prompt がソフトウェアの
-変更を攻める前提で prose に合わない。中継役の agent が返ってこないときは、Codex 側の結果を
-`node ~/.claude/plugins/cache/openai-codex/codex/*/scripts/codex-companion.mjs status` → `result <job-id>` で取り出す
-（2026-09-27、Codex は 2 分半で完了したのに中継役が 10 分以上止まった）。plugin が使えないときは Claude の
+ヘッジの追加は求めない。日本語で書く」と、checklist・contract・原稿の path だけを渡す。central thesis・
+causal spine・成功基準を渡すと、reviewer は答えを持って読み、「何をしたのか分からない」を検出できなくなる。
+これが panel の cross-model review を兼ねる（経緯は ADR-0013）。中継役の agent が返ってこないときは、Codex 側の結果を
+`node ~/.claude/plugins/cache/openai-codex/codex/*/scripts/codex-companion.mjs status` → `result <job-id>` で取り出す。
+plugin が使えないときは Claude の
 `prose-clarity-reviewer` agent で代替し、理由を処分記録に残す。editor と essay-reviewer の両方を
 回すのは contract が要求する場合だけ。`fact-checker` の dispatch prompt には証拠台帳と一次資料の
 path（repo、出力ファイル）を名指しで渡す — code / path / 出力の照合はこの agent が持ち、channel
@@ -149,6 +154,7 @@ reviewer は判断だけを持つ。
   CRITICAL でなく「裁定要求」として報告し、裁定者は著者
 - **裁定の書き戻し**: 裁定結果は memory でなく channel contract に書く（fresh-context reviewer に
   届く唯一の層）。著者が同種指摘を 2 回却下したら、その場で contract の該当行を更新または削除する
+- **著者の通読指摘は種類への指摘**: 1 箇所を指摘されたら、同じ型を全文から探して直す
 - **panel の回数**: channel reviewer・初見の読み（Codex）は構造凍結時に各 1 回。レビュー修正を確かめるのは著者の通読で、reviewer ではない。修正を reviewer に読み
   直させると、読むたびに新しい指摘が生まれて終わらず、限定句と段落分割が積もって本文が
   防御的になる
@@ -157,13 +163,9 @@ reviewer は判断だけを持つ。
   内容 GO」で、反映後の稿への reviewer verdict は要らない
 - **brief へ戻った round**: reviewer を走らせ直すのは、修正が central thesis・causal spine・
   主要節を変えて brief へ戻ったときだけ。その round は CRITICAL と変更部分の regression のみを
-  blocking とし、新規 MEDIUM/MINOR は集計のみ（Anthropic best-practices の re-review
-  convergence、as-of 2026-08-27）
+  blocking とし、新規 MEDIUM/MINOR は集計のみ
 - **`fact-checker` の回数**: 著者の通読の前に 1 回。以後は、本文に新しい引用・数値・外部ソースが
   入ったときだけ、その差分を対象に回す。全文の再照合は構造が動くたびに同じ主張を払い直すことになる
-- **reviewer への dispatch**: 初見の読み（Codex）には、原稿の path と channel contract と checklist の
-  path だけを渡す。central thesis・causal spine・成功基準を prompt に入れると、reviewer は
-  答えを持って読むことになり、「何をしたのか分からない」を検出できなくなる
 - **cross-model 指摘の採用**: 初見の読みの findings と、カテゴリのすり替え・事実誤り・帰属の誤りを
   採用候補にし、ヘッジや限定句の追加を求める指摘は採用しない。全採用は一文ずつ正しくして通読を重くする。
   既定の裁定:
@@ -175,8 +177,6 @@ reviewer は判断だけを持つ。
   | 概念・歴史的接続の過大主張、帰属の誤り | 常に採用検討 |
   | 文体規約違反（register 混在・意図外の常体） | 採用（意図的ブレイクと照合の上で） |
   | 構造再設計の提案 | 著者判断へ昇格 |
-- **blocking の根拠水準**: blocking 指摘は一次ソースの引用を要す。証拠台帳のみを根拠とする指摘は
-  advisory（根拠 n=1・2026-08-27。以後 3 記事で台帳由来の偽陽性ゼロなら本行は削除候補）
 
 #### Final structural pass（内容 GO の通読前チェック）
 
@@ -234,7 +234,7 @@ fact-check で確定した一次資料を、**本文の出典セクションに�
 
 - **エッセイ / 記事**（人間向け）: 帰属レベルに収まる引用なら抄録ベースで可。当否判定をしないことを本文で明示するとなお良い
 - **学術 paper**: 本表を適用しない。`paper-ecosystem`（`~/MyAI_Lab/paper-lab` 常駐）の Source Fidelity Rules（一次ソース直接照合）が正本で、常に厳格側
-- **検証の格を隠さない**: 抄録引用は全文精読と同じ見た目になる（citation laundering）。抄録には本文より強く言う「スピン」の実証報告もある。機械可読レイヤーがある記事では `confidence` の隣に `verification`（どこまで読んだか + as-of 日付）を書ける。本文で開示する先例: 「出典の格は中程度（三次文献）であり、一次学術文献での裏取りは未了」型の一文
+- **検証の格を隠さない**: 抄録引用は全文精読と同じ見た目になる（citation laundering）。抄録には本文より強く言う「スピン」の実証報告もある。本文で開示する先例: 「出典の格は中程度（三次文献）であり、一次学術文献での裏取りは未了」型の一文
 
 ### 翻訳記事の出典
 
@@ -257,8 +257,11 @@ Kaguura Gichuru (The Write Path, 2026-07)。
 - **読者は前を覚えていない。** その指示語は何を指すか、その場で言えるか
 - **副詞を削り、動詞を強くする。** 数値で言えるなら数値で言う
 - **能動態を既定にする。** 行為者を伏せる理由があるか
-- **平易語で足りるなら平易語を使う。** 硬い語は誰のためか
-- **日常語で言えるなら専門用語を使わない。** その語は読者の語彙か
+- **物や概念は、既存の名前で呼ぶ。** 界隈の定着語・製品名・モデル名はそのまま使う。説明の 1 文を足すのは、
+  著者が通読で止まった名前だけ。平易語への言い換えや「〇〇役」のラベルは読み手に置き換えの手間を渡し、
+  読者が知っている名前への注記は読み手を素人扱いする
+- **名前以外の言い回しは平易にする。** 「〜において」のような硬い言い回しは誰のためか
+- **著者が学べない説明は、読者も学べない。** 数値の読み方と、なぜそうなるかまで書いたか
 - **見慣れた比喩は使わない。** 情報を運んでいるか、間を埋めているか
 - **第 2 稿は第 1 稿より短い。** その文は論点を前へ進めるか
 - **文の壁は宿題に見える。** ただし全行独立はロボット臭
@@ -282,6 +285,8 @@ shared word target は置かない。長さの上限は local contract、段落�
 - 節の入口に置くのは**具体物** — 実例・出力・逸話・数値・画面の描写・コードブロック
 - 説明はその**後**。順序が逆になると、読者は何の話か分からないまま抽象を読まされる
 - 提供された文脈で裏づけられない経歴・実績・数値は書かない
+- **操作・実験・選択の前に、目的を 1 文。** 何のためにやったか、なぜその候補や道具を選んだかが
+  無いと、読者には唐突に見える
 - **仕組みの節は 1 件を追う。** 実際の入力 1 件が何を聞かれ何が返ったかを見せ、それが示す主張を 1 文で
   言い、型・設定・コードの一般形はその後に置く
 - **前後比較（表・並置の装置）は、前の案が読者も選びうる案で、変更が 1 つのときに使う。** それ以外は現行の設計を正面から
@@ -355,28 +360,13 @@ channel contract が正本。記事全体の task で contract が無ければ�
 
 ### 感情語の扱い
 
-- **タイトル**: 禁止。実値は下の Title Conventions が持つ
-- **本文**: 著者の自然な体験描写なら OK（「正直つらかった」「ここで詰まった」）
+本文では、著者の自然な体験描写なら使ってよい（「正直つらかった」「ここで詰まった」）。タイトルは下の Title Conventions に従う。
 
 ### 結論の問い化
 
 contract が発見調を宣言し、読者自身に推論してほしい評価は問いにできる。ただし、全部を疑問形にして確度をぼかさない。
 検証済みの事実・数値・具体観察は断定を保ち、評価や結論だけを証拠の強さに合わせて問い・観察・
 断定から選ぶ。機械的な弱化が起きたときは `references/style-diagnostics.md` の例を読む。
-
-### エッセイの二層構成（人間向けナラティブ + LLM 読者向け機械可読レイヤー）
-
-エッセイの想定読者に人間だけでなく LLM（クローラー・エージェント）も含める場合の任意の構成。
-
-- **前半は人間向けエッセイとして完結させる**。後半を読まない読者にも主張が全部伝わること
-- **後半は `## ここから先は AI 読者向け` 見出しで人間の読者を明示的に降ろし**、YAML ブロックで主張を異常粒度で書き下す:
-  - `document`（provenance: 原稿の来歴・authorship の帰属）
-  - `definitions`（操作的定義。定義しないという判断もステータスとして明記）
-  - `claims`（各 claim に evidence / confidence / scope_limit / basis）
-  - `non_claims`（誤読されやすい「主張していないこと」を先回りで列挙）
-  - `references`（DOI / ISBN 付き）
-  - `author_epistemic_profile`（著者の認識スタイル・スタンスの自己申告）
-- 機械可読レイヤーの claims と本文の主張は 1:1 で整合させる（essay-reviewer のレビュー観点に含める）
 
 ### AI メディエイト執筆の開示
 

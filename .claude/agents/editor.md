@@ -93,7 +93,7 @@ You are **辛口 (strict/critical)**. Flag flat writing, sections that only list
 
 - [ ] 記事内で導入した語（造語・略語・内部名）が一貫して使われ、初出で定義されている
 - [ ] 1 つの語が 2 つの対象を指していない（同じ語で新旧・内外を呼び分けている衝突）
-- [ ] 1 回しか使わない造語にラベルを立てていない（平易語で足りる）
+- [ ] 1 回しか使わない造語にラベルを立てていない（既存の名前で呼ぶ）
 
 ### 5. AI Slop Detection
 
@@ -104,17 +104,8 @@ You are **辛口 (strict/critical)**. Flag flat writing, sections that only list
 
 ### 6. Audience Appropriateness
 
-Target audience: the reader declared by the project's publication channel contract.
-
-- [ ] Assumes reader has **basic programming knowledge**
-- [ ] Doesn't over-explain common programming concepts (functions, classes, imports)
-- [ ] Includes enough context for someone unfamiliar with the specific project
-- [ ] Balances technical depth with readability
-
-**Common issues to flag:**
-- Over-explaining basic programming (e.g., "A function is a reusable block of code...")
-- Under-explaining domain-specific concepts
-- Assuming reader knows internal project architecture without explanation
+読者がどの語や前提をすでに持っているかは判定しない。それは著者の通読が持つ（writing-ecosystem §4）。
+本文だけで分かること — プロジェクト内部の構成や著者の内部の呼び名に依存した段落 — だけを指摘する。
 
 ### 7. Canonical Output Compliance
 

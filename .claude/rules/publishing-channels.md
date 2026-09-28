@@ -22,7 +22,7 @@ profile に従い、この方針自体は全記事共通の採点項目や必須
 |---|---|---|---|---|---|---|---|
 | Zenn | `articles/*.md` | 検索・feedから来たengineerが、数秒で用途を理解し再現または判断できる | 日本語ですます。直接指示・具体観察・判断則を優先し、修辞疑問で結論を弱めない。結論の決め台詞を常体で置くのは著者の意図的ブレイクとして許容し、reviewerはCRITICALにしない | `editor` | `npm run validate`; `npm run evidence -- articles/<slug>.md`（deviations 0。公開直前は`--online`も）; brief の Figure plan が本文と一致（人手） | 原則50字以内、正確さに必要なら60字まで。em dash（——）連結不可 | `zenn-format` → `publish-article` |
 | Dev.to | `articles-en/*.md` | 英語圏のengineerが同じ成果を再現または判断できる | Natural English。direct、practical、outcome-first。essayistic hedgeへ寄せない | `editor` | `devto-translator` self-check; `devto_crosspost.py post <slug> --dry-run` | local上限なし。検索/フィードは原稿の性質で選ぶ | `devto-translator` → `publish-article` |
-| note | `note/*.md` | AIを仕事や生活で使う一般読者が、一つの問いを自分の問題として考えられる | 日本語ですます、発見調。評価は問いへ開けるが事実は断定する | `essay-reviewer` | 新規稿はfrontmatterなし | platform上限なし。feedで問いと対象が分かる | `note-publishing` |
+| note | `note/*.md` | 読者が、一つの問いを自分の問題として考えられる | 日本語ですます、発見調。評価は問いへ開けるが事実は断定する | `essay-reviewer` | 新規稿はfrontmatterなし | platform上限なし。feedで問いと対象が分かる | `note-publishing` |
 | Substack | `substack/*.md` | 英語圏の一般読者がJA正本と同じ問いを追える | Natural English、discovery tone。JA正本の確度を保つ | `essay-reviewer` | 新規稿はfrontmatterなし; `prose-translation`後のレビュー完了 | title/subtitleを分ける | `substack-publishing` |
 
 path がどの行にも一致しない、または複数行に一致する場合、`writing-ecosystem` と
@@ -49,8 +49,7 @@ reviewer verdictは凍結稿へのreportで足り、反映後の稿へのverdict
 - source embedding: Zenn/Dev.toは検証済み主張をinline linkまたはReferencesへ、note/Substackは
   検証済みsourceを末尾へ、orchestratorが編入済み。確かめるのは機械検査と著者の通読
 - public-safety scan: 秘密、個人path、未sanitized screenshot / raw log 0
-- panel cadence: reviewerを走らせ直すのは、修正が中心命題・因果線・主要節を変えてbriefへ
-  戻ったときだけ。`fact-checker`は、本文に新しい引用・数値・外部ソースが入ったとき、その差分だけ
+- panel cadence: `writing-ecosystem` の指摘の処分規律（panel の回数・brief へ戻った round・`fact-checker` の回数）に従う
 
 `quality-gate` はこのprofileと上表の機械検査を集約する。reviewerを起動したり、文章を再判定
 したりしない。
