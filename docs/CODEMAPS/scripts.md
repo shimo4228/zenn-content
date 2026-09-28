@@ -128,7 +128,9 @@ human-readable summary). Wired into the channel table's deterministic checks,
 into a commit hook. ADR-0012.
 
 Other script: `metrics_snapshot.py` writes Zenn / Dev.to reception snapshots to
-`metrics/snapshots.jsonl`. The publishing pipeline has no prose linter; global reviewers and
+`metrics/snapshots.jsonl`. Dashboard-only numbers (Zenn views, note impressions / PV) are appended to
+the same file as `zenn_dash` / `note_dash` rows by the `article-stocktake` collect step, which reads
+the logged-in dashboards in Chrome. The publishing pipeline has no prose linter; global reviewers and
 `quality-gate` own semantic acceptance.
 
 ## Tests

@@ -116,3 +116,95 @@
 {"ts": "2026-07-26T23:16:15+00:00", "source": "devto", "slug": "daily-research-automation", "devto_url": "https://dev.to/shimo4228/zero-python-code-how-i-built-a-daily-ai-research-report-system-4357", "reactions": 0, "comments": 0, "views": 5, "published_at": "2026-02-15T09:15:19.278Z"}
 {"ts": "2026-07-26T23:16:15+00:00", "source": "devto", "slug": "everything-claude-code-ecc-complete-cheatsheet-24ok", "devto_url": "https://dev.to/shimo4228/everything-claude-code-ecc-complete-cheatsheet-24ok", "reactions": 6, "comments": 0, "views": 1864, "published_at": "2026-02-14T05:10:15.261Z"}
 {"ts": "2026-07-26T23:16:15+00:00", "type": "followers", "zenn": 12, "devto": 749}
+{"ts": "2026-09-28T22:38:46+00:00", "source": "zenn_dash", "slug": "local-judgment-read-logprobs", "views": 17, "published_at": "2026-09-27"}
+{"ts": "2026-09-28T22:38:46+00:00", "source": "zenn_dash", "slug": "jev-research-judgment-offload", "views": 26, "published_at": "2026-09-24"}
+{"ts": "2026-09-28T22:38:46+00:00", "source": "zenn_dash", "slug": "local-decision-model-conditions", "views": 527, "published_at": "2026-09-23"}
+{"ts": "2026-09-28T22:38:46+00:00", "source": "zenn_dash", "slug": "jev-retrofit-limits", "views": 193, "published_at": "2026-09-21"}
+{"ts": "2026-09-28T22:38:46+00:00", "source": "zenn_dash", "slug": "jev-vs-opus-skill-selection", "views": 144, "published_at": "2026-09-21"}
+{"ts": "2026-09-28T22:38:46+00:00", "source": "zenn_dash", "slug": "top-model-as-default-leaks", "views": 28, "published_at": "2026-09-17"}
+{"ts": "2026-09-28T22:38:46+00:00", "source": "zenn_dash", "slug": "log-projection-blind-by-construction", "views": 8, "published_at": "2026-09-14"}
+{"ts": "2026-09-28T22:38:46+00:00", "source": "zenn_dash", "slug": "domain-knowledge-travelers-vocabulary", "views": 37, "published_at": "2026-09-13"}
+{"ts": "2026-09-28T22:38:46+00:00", "source": "zenn_dash", "slug": "codemap-retirement", "views": 38, "published_at": "2026-09-05"}
+{"ts": "2026-09-28T22:38:46+00:00", "source": "zenn_dash", "slug": "ai-knowledge-gap-diagnosis", "views": 14, "published_at": "2026-09-02"}
+{"ts": "2026-09-28T22:38:46+00:00", "source": "zenn_dash", "slug": "instrument-consumption-plan", "views": 12, "published_at": "2026-08-31"}
+{"ts": "2026-09-28T22:38:46+00:00", "source": "zenn_dash", "slug": "lint-as-subtraction", "views": 50, "published_at": "2026-08-30"}
+{"ts": "2026-09-28T22:38:46+00:00", "source": "zenn_dash", "slug": "review-chain-damping", "views": 53, "published_at": "2026-08-29"}
+{"ts": "2026-09-28T22:38:46+00:00", "source": "zenn_dash", "slug": "judge-degrades-into-reviewer", "views": 19, "published_at": "2026-08-27"}
+{"ts": "2026-09-28T22:38:46+00:00", "source": "zenn_dash", "slug": "transcript-not-ledger", "views": 6, "published_at": "2026-08-21"}
+{"ts": "2026-09-28T22:38:46+00:00", "source": "zenn_dash", "slug": "ai-task-loop-judge-bottleneck", "views": 93, "published_at": "2026-08-20"}
+{"ts": "2026-09-28T22:38:46+00:00", "source": "zenn_dash", "slug": "ai-review-task-loop", "views": 82, "published_at": "2026-08-16"}
+{"ts": "2026-09-28T22:38:46+00:00", "source": "zenn_dash", "slug": "ai-code-half-year-audit", "views": 51, "published_at": "2026-08-14"}
+{"ts": "2026-09-28T22:38:46+00:00", "source": "zenn_dash", "slug": "rag-to-adr-agent-memory", "views": 82, "published_at": "2026-08-06"}
+{"ts": "2026-09-28T22:38:46+00:00", "source": "zenn_dash", "slug": "claude-code-claudemd-excludes", "views": 63, "published_at": "2026-08-03"}
+{"ts": "2026-09-28T22:38:46+00:00", "source": "zenn_dash", "slug": "wikidata-ban-postmortem", "views": 50, "published_at": "2026-07-30"}
+{"ts": "2026-09-28T22:38:46+00:00", "source": "zenn_dash", "slug": "human-gate-intent-not-diff", "views": 45, "published_at": "2026-07-29"}
+{"ts": "2026-09-28T22:38:46+00:00", "source": "zenn_dash", "slug": "claude-security-harness-self-scan", "views": 68, "published_at": "2026-07-28"}
+{"ts": "2026-09-28T22:38:46+00:00", "source": "zenn_dash", "slug": "claude5-rules-official-shift-audit", "views": 230, "published_at": "2026-07-27"}
+{"ts": "2026-09-28T22:38:46+00:00", "source": "zenn_dash", "slug": "herdr-agent-multiplexer", "views": 803, "published_at": "2026-07-21"}
+{"ts": "2026-09-28T22:38:46+00:00", "source": "zenn_dash", "slug": "agent-logs-to-opentelemetry", "views": 147, "published_at": "2026-07-17"}
+{"ts": "2026-09-28T22:38:46+00:00", "source": "zenn_dash", "slug": "chaos-tdd-fault-injection", "views": 39, "published_at": "2026-07-16"}
+{"ts": "2026-09-28T22:38:46+00:00", "source": "zenn_dash", "slug": "llm-judge-checks-not-scores", "views": 74, "published_at": "2026-07-15"}
+{"ts": "2026-09-28T22:38:46+00:00", "source": "zenn_dash", "slug": "small-llm-by-choice", "views": 101, "published_at": "2026-07-14"}
+{"ts": "2026-09-28T22:38:46+00:00", "source": "zenn_dash", "slug": "agent-observability-patterns", "views": 82, "published_at": "2026-07-13"}
+{"ts": "2026-09-28T22:38:46+00:00", "source": "zenn_dash", "slug": "iphone-claude-code-remote-control", "views": 97, "published_at": "2026-07-09"}
+{"ts": "2026-09-28T22:38:46+00:00", "source": "zenn_dash", "slug": "non-code-asset-value-stocktake", "views": 20, "published_at": "2026-07-08"}
+{"ts": "2026-09-28T22:38:46+00:00", "source": "zenn_dash", "slug": "codex-review-cross-model-decorrelation", "views": 170, "published_at": "2026-07-07"}
+{"ts": "2026-09-28T22:38:46+00:00", "source": "zenn_dash", "slug": "react-agent-business-quadrant-4", "views": 35, "published_at": "2026-05-02"}
+{"ts": "2026-09-28T22:38:46+00:00", "source": "zenn_dash", "slug": "react-agent-business-quadrant-3", "views": 35, "published_at": "2026-05-01"}
+{"ts": "2026-09-28T22:38:46+00:00", "source": "zenn_dash", "slug": "react-agent-business-quadrant-2", "views": 69, "published_at": "2026-04-30"}
+{"ts": "2026-09-28T22:38:46+00:00", "source": "zenn_dash", "slug": "react-agent-business-quadrant", "views": 80, "published_at": "2026-04-29"}
+{"ts": "2026-09-28T22:38:46+00:00", "source": "zenn_dash", "slug": "organic-growth-content-integrity", "views": 17, "published_at": "2026-04-18"}
+{"ts": "2026-09-28T22:38:46+00:00", "source": "zenn_dash", "slug": "zed-observation-window-japanese-typography", "views": 293, "published_at": "2026-04-16"}
+{"ts": "2026-09-28T22:38:46+00:00", "source": "zenn_dash", "slug": "agent-blackbox-capitalism-timescale", "views": 79, "published_at": "2026-04-14"}
+{"ts": "2026-09-28T22:38:46+00:00", "source": "zenn_dash", "slug": "agent-causal-traceability-org-adoption", "views": 68, "published_at": "2026-04-13"}
+{"ts": "2026-09-28T22:38:46+00:00", "source": "zenn_dash", "slug": "ai-agent-accountability-wall", "views": 58, "published_at": "2026-04-07"}
+{"ts": "2026-09-28T22:38:46+00:00", "source": "zenn_dash", "slug": "contemplative-agent-journey", "views": 22, "published_at": "2026-04-05"}
+{"ts": "2026-09-28T22:38:46+00:00", "source": "zenn_dash", "slug": "agent-freedom-and-constraints", "views": 51, "published_at": "2026-04-01"}
+{"ts": "2026-09-28T22:38:46+00:00", "source": "zenn_dash", "slug": "agent-memory-game-dev-distillation", "views": 37, "published_at": "2026-03-30"}
+{"ts": "2026-09-28T22:38:46+00:00", "source": "zenn_dash", "slug": "coding-agent-memory-architecture", "views": 38, "published_at": "2026-03-26"}
+{"ts": "2026-09-28T22:38:46+00:00", "source": "zenn_dash", "slug": "mcp-install-and-hope-problem", "views": 24, "published_at": "2026-03-24"}
+{"ts": "2026-09-28T22:38:46+00:00", "source": "zenn_dash", "slug": "few-shot-for-small-models", "views": 81, "published_at": "2026-03-23"}
+{"ts": "2026-09-28T22:38:46+00:00", "source": "zenn_dash", "slug": "agent-essence-is-memory", "views": 115, "published_at": "2026-03-21"}
+{"ts": "2026-09-28T22:38:46+00:00", "source": "zenn_dash", "slug": "ai-article-writing-process", "views": 49, "published_at": "2026-03-20"}
+{"ts": "2026-09-28T22:38:46+00:00", "source": "zenn_dash", "slug": "symbiotic-agent-architecture", "views": 72, "published_at": "2026-03-19"}
+{"ts": "2026-09-28T22:38:46+00:00", "source": "zenn_dash", "slug": "llm-app-sandwich-architecture", "views": 64, "published_at": "2026-03-16"}
+{"ts": "2026-09-28T22:38:46+00:00", "source": "zenn_dash", "slug": "moltbook-agent-evolution-quadrilogy", "views": 50, "published_at": "2026-03-14"}
+{"ts": "2026-09-28T22:38:46+00:00", "source": "zenn_dash", "slug": "contemplative-alignment-benchmark", "views": 44, "published_at": "2026-03-11"}
+{"ts": "2026-09-28T22:38:46+00:00", "source": "zenn_dash", "slug": "moltbook-agent-scratch-build", "views": 45, "published_at": "2026-03-08"}
+{"ts": "2026-09-28T22:38:46+00:00", "source": "zenn_dash", "slug": "active-inference-viz-dev-story", "views": 167, "published_at": "2026-03-07"}
+{"ts": "2026-09-28T22:38:46+00:00", "source": "zenn_dash", "slug": "obsidian-cli-claude-code-vault-management", "views": 473, "published_at": "2026-03-06"}
+{"ts": "2026-09-28T22:38:46+00:00", "source": "zenn_dash", "slug": "claude-code-effective-settings-10", "views": 443, "published_at": "2026-03-05"}
+{"ts": "2026-09-28T22:38:46+00:00", "source": "zenn_dash", "slug": "ecc-marketplace-contribution", "views": 77, "published_at": "2026-03-04"}
+{"ts": "2026-09-28T22:38:46+00:00", "source": "zenn_dash", "slug": "xcodebuildmcp-ios-verification", "views": 354, "published_at": "2026-03-03"}
+{"ts": "2026-09-28T22:38:46+00:00", "source": "zenn_dash", "slug": "kimi-delegation-failure-lessons", "views": 116, "published_at": "2026-02-28"}
+{"ts": "2026-09-28T22:38:46+00:00", "source": "zenn_dash", "slug": "claude-code-persistent-memory", "views": 177, "published_at": "2026-02-27"}
+{"ts": "2026-09-28T22:38:46+00:00", "source": "zenn_dash", "slug": "ai-peer-review-methodology", "views": 88, "published_at": "2026-02-26"}
+{"ts": "2026-09-28T22:38:46+00:00", "source": "zenn_dash", "slug": "token-economics-ai-orchestration", "views": 66, "published_at": "2026-02-25"}
+{"ts": "2026-09-28T22:38:46+00:00", "source": "zenn_dash", "slug": "skill-stocktake-design-journey", "views": 93, "published_at": "2026-02-24"}
+{"ts": "2026-09-28T22:38:46+00:00", "source": "zenn_dash", "slug": "claude-kimi-hybrid-setup", "views": 164, "published_at": "2026-02-24"}
+{"ts": "2026-09-28T22:38:46+00:00", "source": "zenn_dash", "slug": "claude-code-context-orchestration", "views": 77, "published_at": "2026-02-23"}
+{"ts": "2026-09-28T22:38:46+00:00", "source": "zenn_dash", "slug": "base-model-experience", "views": 39, "published_at": "2026-02-22"}
+{"ts": "2026-09-28T22:38:46+00:00", "source": "zenn_dash", "slug": "daily-research-postmortem", "views": 36, "published_at": "2026-02-22"}
+{"ts": "2026-09-28T22:38:46+00:00", "source": "zenn_dash", "slug": "daily-research-agent-team", "views": 47, "published_at": "2026-02-21"}
+{"ts": "2026-09-28T22:38:46+00:00", "source": "zenn_dash", "slug": "claude-code-zenn-writing-env", "views": 91, "published_at": "2026-02-20"}
+{"ts": "2026-09-28T22:38:46+00:00", "source": "zenn_dash", "slug": "claude-code-skill-origin-tracking", "views": 57, "published_at": "2026-02-19"}
+{"ts": "2026-09-28T22:38:46+00:00", "source": "zenn_dash", "slug": "claude-code-context-audit", "views": 128, "published_at": "2026-02-18"}
+{"ts": "2026-09-28T22:38:46+00:00", "source": "zenn_dash", "slug": "claude-code-obsidian-vault-organization", "views": 270, "published_at": "2026-02-16"}
+{"ts": "2026-09-28T22:38:46+00:00", "source": "zenn_dash", "slug": "daily-research-automation", "views": 296, "published_at": "2026-02-15"}
+{"ts": "2026-09-28T22:38:46+00:00", "source": "zenn_dash", "slug": "ecc-journey-part3", "views": 102, "published_at": "2026-02-14"}
+{"ts": "2026-09-28T22:38:46+00:00", "source": "zenn_dash", "slug": "termius-iphone-claude-code", "views": 1187, "published_at": "2026-02-14"}
+{"ts": "2026-09-28T22:38:46+00:00", "source": "zenn_dash", "slug": "cursor-to-zed-migration", "views": 1765, "published_at": "2026-02-12"}
+{"ts": "2026-09-28T22:38:46+00:00", "source": "zenn_dash", "slug": "claude-code-self-generation", "views": 75, "published_at": "2026-02-11"}
+{"ts": "2026-09-28T22:38:46+00:00", "source": "zenn_dash", "slug": "ecc-journey-part2", "views": 204, "published_at": "2026-02-11"}
+{"ts": "2026-09-28T22:38:46+00:00", "source": "zenn_dash", "slug": "ecc-cheatsheet", "views": 389, "published_at": "2026-02-09"}
+{"ts": "2026-09-28T22:38:46+00:00", "source": "zenn_dash", "slug": "ecc-journey-part1", "views": 213, "published_at": "2026-02-09"}
+{"ts": "2026-09-28T22:38:46+00:00", "source": "zenn_dash", "type": "account", "window": "last_1_month", "views": 2673}
+{"ts": "2026-09-28T22:38:46+00:00", "source": "note_dash", "slug": "lost-referents-in-generated-prose", "note_url": "https://note.com/shimo4228/n/n97d77b49b1c8", "status": "published", "impressions": 59, "pv": 16, "likes": 1, "comments": 0, "published_at": "2026-09-28"}
+{"ts": "2026-09-28T22:38:46+00:00", "source": "note_dash", "slug": "agent-blackbox-capitalism-timescale", "note_url": "https://note.com/shimo4228/n/n5bbe363e9b46", "status": "published", "impressions": 268, "pv": 13, "likes": 3, "comments": 0, "published_at": "2026-09-18"}
+{"ts": "2026-09-28T22:38:46+00:00", "source": "note_dash", "slug": "agent-causal-traceability-org-adoption", "note_url": "https://note.com/shimo4228/n/nbf43bd2b13f5", "status": "published", "impressions": 124, "pv": 11, "likes": 3, "comments": 0, "published_at": "2026-09-17"}
+{"ts": "2026-09-28T22:38:46+00:00", "source": "note_dash", "slug": "ai-agent-accountability-wall", "note_url": "https://note.com/shimo4228/n/ne7de6716d645", "status": "published", "impressions": 111, "pv": 15, "likes": 1, "comments": 1, "published_at": "2026-09-15"}
+{"ts": "2026-09-28T22:38:46+00:00", "source": "note_dash", "slug": "domain-knowledge-travelers-vocabulary", "note_url": "https://note.com/shimo4228/n/ndc5b18c9a909", "status": "published", "impressions": 274, "pv": 19, "likes": 1, "comments": 0, "published_at": "2026-09-13"}
+{"ts": "2026-09-28T22:38:46+00:00", "source": "note_dash", "slug": "ideation-pharmacology", "note_url": "https://note.com/shimo4228/n/n0eecbd0fb01e", "status": "draft", "impressions": 43, "pv": 2, "likes": 0, "comments": 0, "published_at": "2026-08-12"}
+{"ts": "2026-09-28T22:38:46+00:00", "source": "note_dash", "slug": "ai-externalized-accountability-pollution", "note_url": "https://note.com/shimo4228/n/ncd77818533f0", "status": "published", "impressions": 95, "pv": 7, "likes": 0, "comments": 0, "published_at": "2026-08-06"}
+{"ts": "2026-09-28T22:38:46+00:00", "source": "note_dash", "slug": "non-engineer-no-name-yet", "note_url": "https://note.com/shimo4228/n/nd6626c834ea5", "status": "published", "impressions": 73, "pv": 2, "likes": 0, "comments": 0, "published_at": "2026-06-05"}
+{"ts": "2026-09-28T22:38:46+00:00", "source": "note_dash", "type": "account", "window": "2026-09-02/2026-09-29", "impressions": 1047, "pv": 85, "likes": 9, "comments": 1}

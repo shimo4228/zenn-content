@@ -1,6 +1,6 @@
 ---
 name: article-stocktake
-description: 公開済みZenn/Dev.to記事の実測メトリクスを収集し、内容品質ランクと実測tierの乖離をproject-localに報告する。Use when — 月次または記事2〜3本ごとの受信状況を確認するとき。NOT for — テーマ候補の生成・順位付け、本文改稿、媒体共通の執筆フロー。
+description: 公開済みZenn/Dev.to/note記事の実測メトリクスを収集し、内容品質ランクと実測tierの乖離をproject-localに報告する。Use when — 週1回の収集（collect）、月次または記事2〜3本ごとの受信状況を確認するとき。NOT for — テーマ候補の生成・順位付け、本文改稿、媒体共通の執筆フロー。
 user-invocable: true
 origin: shimo4228
 ---
@@ -16,10 +16,13 @@ origin: shimo4228
 ## Usage
 
 ```
-/article-stocktake        # 収集 → 乖離分析 → 更新提案
+/article-stocktake          # 収集 → 乖離分析 → 更新提案
+/article-stocktake collect  # Step 1 だけ回して止まる（週 1 回の定点観測）
 ```
 
-目安周期: 月次、または記事 2-3 本公開ごと。自動化はしない（人間駆動）。
+周期は 2 つ。収集は週 1 回（定期実行してよい）。分析（Step 2 以降）は月次、または記事 2-3 本公開ごとで、人間駆動。
+
+週 1 回にする理由: 両ダッシュボードとも記事ごとの数字は**今日時点の累計しか出さない**。記事ごとの公開直後の伸びは、累計を定点で残して差分を取る以外に再構成できない。Zenn はアカウント全体の日次推移も直近 1 か月しか遡れない（2026-09-29 確認）。
 
 ---
 
@@ -33,12 +36,30 @@ cd scripts && uv run python metrics_snapshot.py
 
 `scripts/metrics/snapshots.jsonl` に追記される（Zenn: liked/bookmarked/comments、Dev.to: reactions/comments/views、フォロワー総数）。API 欠損は fail-soft — 片系が死んでいても続行し、警告のみ。
 
+続けて、ログイン済みの Chrome（Claude in Chrome）でダッシュボードを読み、同じファイルへ追記する。閲覧数は公開 API に無く、ここでしか取れない。
+
+| source | 画面 | 読む値 |
+|---|---|---|
+| `zenn_dash` | `https://zenn.dev/dashboard/stats` の「投稿ごとの合計表示回数」（「もっと読み込む」を尽きるまで押す） | 記事ごとの `views`（累計）と、「表示回数」の直近 1 か月合計 |
+| `note_dash` | `https://note.com/dashboard` の記事表 | 記事ごとの `impressions` / `pv` / `likes` / `comments`（累計）と、上部の過去 28 日合計 |
+
+- 行の形（1 記事 1 行、同じ収集回は同じ `ts`）:
+  - `{"ts", "source": "zenn_dash", "slug", "views", "published_at"}`
+  - `{"ts", "source": "note_dash", "slug", "note_url", "status", "impressions", "pv", "likes", "comments", "published_at"}`
+  - アカウント合計は `"type": "account"` と `"window"` を付けた 1 行
+- `slug` は repo の slug。Zenn は表のリンク `zenn.dev/link/articles/<slug>`、note は `scripts/corpus.yml` の URL またはタイトル一致で引く。引けない行は `slug` を空にして `title` を残す
+- `-` 表示は 0 として記録する
+- note のダッシュボードは background tab だと読み込みが止まる。screenshot で前面化してから読む
+- どちらかにログインしていなければ、その source を飛ばして報告する（ログインは著者が行う）
+
 ### Step 2: 正規化と tier 算出
 
-最新 ts のレコードを読み、記事ごとに正規化する:
+source ごとに最新 ts のレコードを読み、記事ごとに正規化する（収集回ごとに source の組が違うので、全体の最新 ts だけを読まない）:
 
 - **主指標**: Zenn `liked / 公開後日数`（古い記事が累積で有利になるのを補正）
 - **補助指標**: Dev.to views・reactions（EN 側の到達）、ブックマーク（参照価値）
+- **届いたか / 刺さったかの分解**: Zenn は `liked / views`（読まれた中での反応）、note は `pv / impressions`（一覧で見えた中で開かれた割合）と `likes / pv`
+- **伸び方**: `*_dash` の同じ slug を前回の収集回と差し引いた週次増分。note 転載記事は Zenn 版と並べて媒体差を見る
 - 相対 tier を **上位 / 中位 / 下位** の 3 段に分ける（全公開記事内の相対評価）
 
 **絶対スコアを出力しない**（output discipline）。「7.2/10」ではなく tier と乖離だけを提示する。
