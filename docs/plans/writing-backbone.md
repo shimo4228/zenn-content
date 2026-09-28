@@ -5,7 +5,7 @@
 2026-09-29 の記事 `jev-guard-blind-to-local-verify` の執筆で、著者の通読指摘 C1〜C10 の大半が
 「reviewer が見ない層」（確度・語・節の切れ目・テンプレの装置）に集中した。原因を辿ると、
 規約が症状ごとの細則として 3 層（writing-ecosystem の Craft / Draft craft / AI slop / Voice、
-contract の Author orientation、auto memory の feedback 18 本）に散り、互いに食い違っていた
+contract の Author orientation、auto memory の執筆関連 feedback 17 本）に散り、互いに食い違っていた
 （例: SKILL の「締めは具体的な takeaway」と「テンプレのために装置を足さない」）。
 
 著者の依頼（原文）: 「memoryとかに散在しているものもハーネスの規約として一本化して矛盾した
@@ -107,7 +107,7 @@ memory には置かない」の 1 行 + 一次資料 1 行に。構造レビュ�
 - C3 `refactor(agents)` — editor / essay-reviewer / prose-clarity-reviewer / fact-checker を背骨の検査文に。skill-creator の草稿ゲート。試走: 内容 GO 済みの jev-guard 稿に新 editor を 1 回 dispatch し、新規 CRITICAL が出ないことを確認（記事には反映しない）
 - C4 `docs(harness)` — global 表記の是正、llms-full.txt と docs/CODEMAPS の追従
 - C5（git 外）memory の処分
-- harness 側の別 commit: harness-sync で公開 skill repo に rules/writing-principles.md を同梱
+- harness 側の別 commit: global skill 4 本（public-comment / x-draft / readme-writer / prose-translation）の writing-ecosystem 節への参照を背骨 rule と style-diagnostics の path に付け替え、harness-sync で公開 skill repo `claude-skill-writing-ecosystem` に rules/writing-principles.md を同梱（ADR-0014 D6）
 
 検証: `npm run validate`、`npm run check:index`、harness_lint、skill-health の参照検査（dangling 0）、
 「Craft 規約 / Section Length / 語りかけの積極形 / Author orientation」の grep が ADR 注記以外 0 件、
@@ -120,4 +120,25 @@ title-harness との合流: 本 plan は Title 関連に触れない。先に ma
 ## 見積もり
 
 規約合計（skill + references + rules + agents）約 1,360 → 1,080 行（−21%）。SKILL の規範部分
-約 180 → 46 行。memory の執筆 feedback 18 本・約 430 行 → 3 本。同じ規則が 2 か所にある組 18 → 0。
+約 180 → 46 行。memory の執筆関連 feedback 17 本・419 行 → 1 本（ほか feedback 以外の一次資料 2 本）。同じ規則が 2 か所にある組 18 → 0。
+
+## 付録: 削除する memory の要旨（2026-09-29 時点の description。memory は git 外なので復元の手がかりとして残す）
+
+| ファイル | 吸収先 | 要旨 |
+|---|---|---|
+| feedback_article-structural-review-patterns | P1/P2/P5 | 記事改稿でユーザーが繰り返し正した構造パターン 4 つ（一般則と筆者事情の区別 / キャッチ最小主義 / やったことの骨格宣言 / 判断の地図を前方に） |
+| feedback_dated-quotes-are-history | P1 | 外部発言の引用で現在を主張しない — 現在形の主張は今日観察できる事実で支え、日付付き発言は「経緯」に降格する（2026-08-05 rag-to-adr 記事でのユーザー指摘） |
+| feedback_decide-here-and-ask-before-discarding | P4 | 台帳への先延ばしを嫌う。ただし所有者判断が要る項目を黙って捨てるのも禁止 — 捨てる前に聞く |
+| feedback_draft-from-discovery-not-ledger | P6 | 証拠台帳の Claims Register を節に割り付けて書くと事実の羅列になり芯が抜ける。初稿は発見の順で、主張が先・数字は証拠として後ろ（2026-09-13 著者指摘） |
+| feedback_linear-time-one-anchor | P5 | 台帳のタイムスタンプを本文へ写さない — 絶対日付は錨 1 本、時間は一直線、著者ログの引用に日時を付けない（2026-09-16 著者指摘） |
+| feedback_premise-flip-restart-from-brief | P2/P4/P6 | 執筆中に前提・中心命題が反転したら、既存稿へ継ぎ足さず新セッションで brief から書き直す。総称の造語で複数の手法を束ねない。実物を先に見せる |
+| feedback_reader-open-axis-for-tool-reports | P2/P6 | 自分の環境で起きたことを記事にするとき、軸を「自分の問題」でなく「読者が判断に使えるもの」に置く |
+| feedback_reader-problem-not-author-framing | P3 | 読者問題ファーストは強制テンプレートでなくメンタルモデル — 問題文は読者の言葉で書き、マニフェスト/立場表明にはフレーム自体を被せない（2026-07-12 |
+| feedback_specificity-vs-clarity | P2/P6 | 実名/実例の使用許可は具体性を最大化する義務ではない。読者の理解しやすさを優先して取捨選択する |
+| feedback_writing-as-thinking | P4 | 記事執筆中に著者の思考が整理され、核心が変わることがある。その過程を大切にする |
+| feedback_content-integrity | 前文・ADR-0001 | Content Integrity 原則 — 内容は著者の思考が決める。配信最適化は内容を変えない範囲で行う |
+| feedback_dedup-consolidate-over-pointer | ADR-0010 D5-D7 | 重複解消は「揃える」禁止・統合が第一手・ポインタは残余。消費者が 1 つなら統合、ポインタは命令形で書く |
+| feedback_review-cadence-and-no-paragraph-cap | writing-ecosystem 処分規律 | 段落の文数上限を廃止、prose-clarity と codex は凍結時に 1 回、cross-model のヘッジ要求は採用しない（2026-09-12 著者決定） |
+| feedback_eval-purpose-deepen-not-select | 失効（ADR-0011） | 評価関数の目的は選別でなく協同での問いの深化 — 著者の思い入れと verdict のズレは忖度で埋めない |
+| feedback_lint-timing | 失効（textlint 撤去） | textlint/markdownlint は公開前の文面確定後に一度だけ実行する。執筆完了直後・editor レビュー前に走らせない |
+| feedback_reader-address-positive-form | 失効（指す節が無い） | 語りかけ規約は禁止形（皆さん禁止）だけでは不足 — 積極形「掴み/結論で読者に直接語りかける」を追加。判定基準は「真に迫っているか」 |

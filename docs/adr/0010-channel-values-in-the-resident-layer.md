@@ -30,6 +30,8 @@ Accepted
 
 2. **global skill は genre 中立 canon に純化し、チャンネルの値を持たない。** `writing-ecosystem` は AI slop 禁止・craft・段落密度・専門用語の緩和策・タイトル原則・エッセイ 4 段構成・初稿手順を持つ。語尾・出力先・レビュー agent の割り当ては持たない。値を持たなければ競合しようがない。
 
+   > **注記（2026-09-29, ADR-0014）**: canon のうち価値・方針（craft・AI slop・Voice の規範部分）は常駐 rule `.claude/rules/writing-principles.md` の原理 6 本へ移す。`writing-ecosystem` は手順の正本に絞る。チャンネルの値を持たない点はこのまま有効。
+
 3. **`description:` にチャンネルの属性を書かない。** description は常駐するので、短く目立たないのに必ず効く — 最も安く矛盾を仕込める層だった。スコープ語だけを書き、文体・語尾は書かない。
 
 4. **binding な判定閾値は、判定を出す側（agent 本文 / 検査コード）が持つ。** agent 本文はその agent に必ず全文載る保証つき層で、skill 本文は description 競合次第の無保証層。保証の高い層から低い層へ値を降ろさない。造語閾値は `zenn-clarity-reviewer`、出典ブロックの構成規則は `fact-checker`、エッセイ 4 段の検査と論点数は `essay-reviewer` が持つ。

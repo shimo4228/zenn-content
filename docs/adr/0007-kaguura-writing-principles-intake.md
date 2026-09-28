@@ -40,6 +40,8 @@ Kaguura Gichuru "How I Got 20,585 Substack Subscribers in 90 Days"（The Write P
 | net-giver コメント哲学 | global `public-comment` |
 | Substack 配信ファネル（Notes 3 型・recommendations 等） | global `substack-publishing` §7 |
 
+> **注記（2026-09-29, ADR-0014）**: Craft 規約は原理 P1〜P6（`.claude/rules/writing-principles.md`）へ畳み、文レベルの 4 項目は `writing-ecosystem/references/style-diagnostics.md` へ移す。エッセイ 4 段構成は `writing-ecosystem` のジャンル表に残る。取り込み自体は有効。
+
 ### Content Integrity（ADR-0001）との整理
 
 執筆時の構成設計（掴み・緊張・Higher Ground などの引き込み設計）は **Content 層の著者判断**であり、ADR-0001 が禁じる「完成稿の事後 catchify」とは別物。ADR-0001 の改定は不要（Notes に整理を追記）。

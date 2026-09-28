@@ -31,6 +31,9 @@ memory の feedback は auto-memory の確率的リコールに依存し、執�
    - 分割理由: 発火文脈が異なる（values は方針議論・企画・ハーネス設計時、judgment は執筆・改稿の実作業時）。1 本にすると description が両義的になり確率的トリガーの精度が落ちる
    - 相互参照: judgment の各ゲートは why を values へポインタ、values は運用を judgment へポインタ。価値観の本文は values のみが持つ（再掲しない）
 2. **feedback memory は削除せず一次資料として残置する**。originSessionId と生の事例を持つ監査資料であり、各ファイル先頭に昇格マーク 1 行のみ付す。スキルは蒸留された規則、memory は生事例、という役割分担
+
+   > **注記（2026-09-29, ADR-0014）**: 執筆の feedback memory は、背骨（`.claude/rules/writing-principles.md`）へ移す 13 本と失効した 3 本を、著者の承認後に削除する。残した memory が stale なポインタを持ち、矛盾した指示の源になっていたため。一次資料として残すのは執筆関連 3 本。
+
 3. **quality-gate には統合しない**。判断層を機械 gate 化すると「チェックリストを埋めるために部品を足す」テンプレート化の弊害が起きる（`feedback_reader-problem-not-author-framing` 自身が警告する失敗パターン）。zenn-editorial-judgment は著者判断の再現装置であり、機械検査の追加ではない
 4. **zenn-practical-writing にタイプ別免除条項を追加する**。同スキルの受け入れチェックリストは「冒頭にわかること行」等の装置を無条件必須としており、立場表明記事へのフレーム過剰適用（small-llm-by-choice #0 で実証済みの失敗）と形式矛盾する。Phase 1 の前にタイプ判定を挟み、立場表明では装置を免除して声だけ適用する
 
