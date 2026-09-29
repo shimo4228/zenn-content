@@ -10,7 +10,7 @@ Japanese originals on Zenn; English editions on Dev.to, or as source in `article
 ### 2026-09
 
 - **2026-09-29** [「これ意味あるかな？」Claude Codeに入れたJevのプラグインを1週間で外すまで](https://zenn.dev/shimo4228/articles/jev-guard-blind-to-local-verify)
-  EN: — · `jev` `claudecode` `aiエージェント` `llm`
+  EN: ["Is There Any Point to This?" Removing the Jev Plugins I Added to Claude Code After One Week](https://dev.to/shimo4228/is-there-any-point-to-this-removing-the-jev-plugins-i-added-to-claude-code-after-one-week-49eh) · `jev` `claudecode` `aiエージェント` `llm`
 - **2026-09-27** [Jev型判定モデルを足す前に、生成モデルの確率を読む](https://zenn.dev/shimo4228/articles/local-judgment-read-logprobs)
   EN: [Before Adding a Jev-Type Judgment Model, Read Your Generation Model's Probabilities](https://dev.to/shimo4228/before-adding-a-jev-type-judgment-model-read-your-generation-models-probabilities-5da0) · `llm` `ollama` `gemma` `aiエージェント` `jev`
 - **2026-09-25** [LLMに任せていたリサーチの判定を、判定専用モデルJevに移す](https://zenn.dev/shimo4228/articles/jev-research-judgment-offload)

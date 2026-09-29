@@ -995,6 +995,17 @@
     {
       "file": "articles/jev-guard-blind-to-local-verify.md",
       "notes": "「これ意味あるかな？」Claude Codeに入れたJevのプラグインを1週間で外すまで（即時公開）"
+    },
+    {
+      "file": "articles-en/jev-guard-blind-to-local-verify.md",
+      "devto": "https://dev.to/shimo4228/is-there-any-point-to-this-removing-the-jev-plugins-i-added-to-claude-code-after-one-week-49eh",
+      "devto_tags": [
+        "jev",
+        "claudecode",
+        "aiagents",
+        "agenticcoding"
+      ],
+      "notes": "EN translation of 「これ意味あるかな？」Claude Codeに入れたJevのプラグインを1週間で外すまで（即時投稿）"
     }
   ]
 }
