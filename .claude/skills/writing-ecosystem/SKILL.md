@@ -45,7 +45,7 @@ pointer、`collect-context` が作る evidence dossier の順に限定して受�
 | **Review: 品質** | `editor` agent | 議論の動き・説明の質・AI slop・記事内用語（code / path の照合は `fact-checker`） | 実用チャンネルのレビュー時 |
 | **Review: 論理** | `essay-reviewer` agent | エッセイの論理構成・過積載・トーン | エッセイチャンネルのレビュー時 |
 | **Review: 初見明瞭性（cross-model）** | Codex plugin の `codex:codex-rescue` agent（読み取り専用、checklist は `prose-clarity-reviewer` agent） | 第一画面・中心命題・内部文脈依存・カテゴリのすり替え | 構造凍結後の review panel 時 |
-| **Review: 事実** | `fact-checker` agent | 事実主張の Web 検証 | 公開前検証時 |
+| **Review: 事実** | `fact-checker` agent | 事実主張の Web 検証と、code / path / 出力のローカル照合 | 公開前検証時 |
 | **Acceptance** | `quality-gate` skill | local contract の reviewer verdict と機械検査を集約 | 公開直前 |
 | **Publish** | project-local publishing skill | platform API / UI / schedule / corpus 更新 | 著者 GO 後 |
 | **Overlay** | `<project>/.claude/rules/*.md` | チャンネル固有の事実・配線 | プロジェクト内作業時のみ |
@@ -72,7 +72,8 @@ local contract から出力 channel と読者を決める。テーマ未選択�
 直す。session-theme-mining で選ばれた問いや dossier の Claims は、この対話の材料であって答えでは
 ない。合意した著者の言葉は brief の Author's words に原文のまま置く。
 
-構成前に次の **editorial brief** を提示し、著者確認で止まる。
+構成前に次の **editorial brief** を `docs/plans/<slug>.md` に書いて提示し、著者確認で止まる（reviewer の dispatch prompt に
+この path を渡す）。
 
 ```markdown
 Reader: <channel contract の読者と、中心命題の対話で著者が言った「誰に向けて書くか」の原文 1 行>
@@ -119,7 +120,8 @@ causal spine・成功基準を渡すと、reviewer は答えを持って読み�
 これが panel の cross-model review を兼ねる（経緯は ADR-0013）。中継役の agent が返ってこないときは、Codex 側の結果を
 `node ~/.claude/plugins/cache/openai-codex/codex/*/scripts/codex-companion.mjs status` → `result <job-id>` で取り出す。
 plugin が使えないときは Claude の
-`prose-clarity-reviewer` agent で代替し、理由を処分記録に残す。editor と essay-reviewer の両方を
+`prose-clarity-reviewer` agent で代替し、理由を処分記録に残す。channel reviewer の dispatch prompt には、承認済み brief の path と、AI が本文を生成したかを書く（Author's words と
+の確度照合と、開示の要否に使う）。editor と essay-reviewer の両方を
 回すのは contract が要求する場合だけ。`fact-checker` の dispatch prompt には証拠台帳と一次資料の
 path（repo、出力ファイル）を名指しで渡す — code / path / 出力の照合はこの agent が持ち、channel
 reviewer は判断だけを持つ。

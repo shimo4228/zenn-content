@@ -1,6 +1,6 @@
 ---
 name: prose-clarity-reviewer
-description: "First-contact reader clarity reviewer for human-primary articles, essays, blog posts, and newsletters. Reads once as the audience declared by the project's publication channel contract and flags first-screen failure, coined-term overuse, title-body axis drift, editorial meta-commentary, insider-context dependency, and translationese. Use after structural freeze of a draft or major revision, in parallel with the channel editor and fact-checker. NOT for academic papers or READMEs."
+description: "First-contact reader clarity reviewer for human-primary articles, essays, blog posts, and newsletters. Reads once as the audience declared by the project's publication channel contract and flags first-screen failure, coined-term overuse, central-thesis carry-through, editorial meta-commentary, insider-context dependency, and translationese. Use after structural freeze of a draft or major revision, in parallel with the channel editor and fact-checker. NOT for academic papers or READMEs."
 tools: ["Read", "Grep", "Glob"]
 model: opus
 origin: shimo4228
@@ -33,7 +33,7 @@ movement, explanation quality, AI slop, and in-article terminology; `fact-checke
 - Identify any missing premise between that starting point and the central thesis with a passage-level
   citation. Treat predicted reader knowledge, motives, and reactions as hypotheses; assess the textual
   bridge rather than agreement with the conclusion. A finding states the specific gap and its effect
-  on comprehension; apply the existing severity rules.
+  on comprehension, with a severity of critical (blocks following or finishing the artifact), high, or medium.
 
 ### Terminology
 
@@ -45,7 +45,8 @@ phrasing where a plain verb exists. Flag sentences requiring two or more coined 
 
 ### Title and central-thesis carry-through
 
-- The title, body, and conclusion express the same central thesis.
+- The body and the conclusion express the same central thesis. The title is chosen after the content GO, so a
+  working title is not checked here.
 - Every load-bearing section advances that thesis rather than a parallel agenda.
 - A summary introduces no new criterion or conclusion.
 
@@ -99,5 +100,5 @@ Verdict: PASS | FAIL | BLOCKED
 - <specific strength>
 ```
 
-Any critical title/central-thesis drift or first-screen failure makes the verdict FAIL. This agent does not
-edit the artifact. Academic papers use `clarity-reviewer`; READMEs use `readme-judge`.
+Any critical central-thesis drift or first-screen failure makes the verdict FAIL. This agent does not
+edit the artifact. Academic papers use `clarity-reviewer` (resident in `~/MyAI_Lab/paper-lab`); READMEs use `readme-judge`.
