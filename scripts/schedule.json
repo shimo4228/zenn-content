@@ -991,6 +991,10 @@
         "jev"
       ],
       "notes": "EN translation of Jev型判定モデルを足す前に、生成モデルの確率を読む（即時投稿予定）"
+    },
+    {
+      "file": "articles/jev-guard-blind-to-local-verify.md",
+      "notes": "「これ意味あるかな？」Claude Codeに入れたJevのプラグインを1週間で外すまで（即時公開）"
     }
   ]
 }

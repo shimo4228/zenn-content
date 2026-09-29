@@ -3,7 +3,8 @@ title: "「これ意味あるかな？」Claude Codeに入れたJevのプラグ�
 emoji: "🧗"
 type: "tech"
 topics: ["jev", "claudecode", "aiエージェント", "llm"]
-published: false
+published: true
+published_at: 2026-09-29 12:47
 ---
 
 [前回の記事](https://zenn.dev/shimo4228/articles/jev-retrofit-limits)の最後に、私はこう書きました。Jevでスキルを提案するプラグインを、何も足さずログだけを残す設定で動かし、Jevが選んだスキルと、Claude Codeが実際に使ったスキルを突き合わせる、と。
