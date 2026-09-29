@@ -1,13 +1,13 @@
 ---
 name: publish-article
-description: quality-gate PASS済みの対象稿1本について、Zennのfrontmatter・preview・予約またはDev.toのdry-run・予約、公開索引、push確認を扱うproject-local公開skill。Use when — 対象となるZenn稿またはEN稿自身のglobal quality-gate PASSと著者GOの後。NOT for — 翻訳生成、prose review、security/quality判定、note/Substack投稿。
+description: quality-gate PASS済みの対象稿1本について、Zennのfrontmatter・preview・予約またはDev.toのdry-run・予約、公開索引、push確認を扱うproject-local公開skill。Use when — 対象となるZenn稿またはEN稿自身のproject-local quality-gate PASSと著者GOの後。NOT for — 翻訳生成、prose review、security/quality判定、note/Substack投稿。
 user-invocable: true
 origin: shimo4228
 ---
 
 # Publish Article Skill
 
-このskillは公開操作だけを持つ。文章品質とpublic-safetyはglobal `quality-gate`、Zenn形式は
+このskillは公開操作だけを持つ。文章品質とpublic-safetyはproject-local `quality-gate`、Zenn形式は
 `zenn-format`、channel値は `.claude/rules/publishing-channels.md` が正本。
 
 ## Usage
@@ -21,7 +21,7 @@ origin: shimo4228
 
 ## Preconditions
 
-- 引数で指定した対象稿自身のglobal `quality-gate`がPASS
+- 引数で指定した対象稿自身のproject-local `quality-gate`がPASS
 - 著者が最終タイトルと本文を通読済み
 - 著者が公開GOを出している
 
@@ -117,7 +117,7 @@ commit / pushはユーザーの明示依頼がある場合だけ行う。記事�
 
 ## Related
 
-- global `writing-ecosystem` / `quality-gate`
+- project-local `writing-ecosystem` / `quality-gate`
 - local `zenn-format`
 - `.claude/rules/publishing-channels.md`
 - `.claude/refs/schedule-schema.md`

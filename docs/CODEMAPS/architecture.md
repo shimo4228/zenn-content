@@ -47,7 +47,7 @@ zenn-content/
 
 Project agent: `devto-translator` (Dev.to-specific draft conversion; publishing remains a separate gated step). Drafting is done by the
 orchestrator, not a subagent. Global writing agents are `theme-reviewer`, `editor`, `essay-reviewer`,
-`prose-clarity-reviewer`, and `fact-checker`; global `writing-ecosystem` owns their sequence.
+`prose-clarity-reviewer`, and `fact-checker`; project-local `writing-ecosystem` owns their sequence.
 
 ## Toolchain
 - **Validation**: `zenn list:articles` (frontmatter check) via `npm run validate`.

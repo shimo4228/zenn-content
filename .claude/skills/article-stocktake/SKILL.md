@@ -71,7 +71,7 @@ memory の `article-quality.md` にある内容品質ランク（A/B/C）と突�
 
 | 乖離パターン | 示唆 | 還流先 |
 |---|---|---|
-| **A ランク × 実測下位** | 内容は良いが届いていない — タイトル・配信・タイミングの問題 | global `title-reviewer` / local `zenn-format` / `.claude/rules/publishing-channels.md` |
+| **A ランク × 実測下位** | 内容は良いが届いていない — タイトル・配信・タイミングの問題 | project-local `title-reviewer` agent / local `zenn-format` / `.claude/rules/publishing-channels.md` |
 | **B/C ランク × 実測上位** | 読者需要を示す観測 | 著者のnext-move reviewへ事実として提示 |
 
 一致セル（A×上位、C×下位）は正常動作なので列挙しない。各乖離記事に定性所見を 1 行添える（「タイトルが概念名のみで用途が見えない」等の具体観察）。
@@ -105,4 +105,4 @@ memory の `article-quality.md` にある内容品質ランク（A/B/C）と突�
 - `scripts/metrics_snapshot.py` — raw値の収集
 - `scripts/metrics/snapshots.jsonl` — project-local observation record
 - memory `article-quality.md` — 内容ランクと実測tierのprivate working record
-- global `title-reviewer`; local `zenn-format`
+- project-local `title-reviewer` agent; local `zenn-format`

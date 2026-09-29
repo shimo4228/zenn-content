@@ -55,7 +55,7 @@ LLM-as-judge の設計、別モデルによるレビュー、そして「レビ�
 
 記事は実セッションから、Claude Code を協働者として書いています。レビュー・ファクトチェック・
 翻訳・クロスポストはClaude Codeが担い、書くことと決めることは著者が担います。人間向け文章は
-global `writing-ecosystem`の一つの流れで、中心命題、因果線、採用証拠、切り捨てる論点、タイトル
+project-local `writing-ecosystem`の一つの流れで、中心命題、因果線、採用証拠、切り捨てる論点、タイトル
 判定、review panel、著者の公開判断まで進みます。
 
 - [媒体contract](.claude/rules/publishing-channels.md) — Zenn / Dev.to / note / Substackの読者・形式・review・handoff

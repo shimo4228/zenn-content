@@ -31,7 +31,7 @@ path がどの行にも一致しない、または複数行に一致する場合
 - `title-reviewer`: 著者の内容GO後（= 本文の最後の構造変更後）に実行し、findings を見て著者がタイトルを選択済み
 - AI-mediated writing: Zenn (`articles/*.md`) は開示block適用外（媒体読者にとってAI利用は
   前提で、開示は情報量を持たない。毎回問い直さない）。
-  Dev.to / note / Substackは適用可否を記録し、該当するならglobal canonの開示blockを収録済み
+  Dev.to / note / Substackは適用可否を記録し、該当するなら`writing-ecosystem/references/publication-procedures.md` の開示blockを収録済み
 - source embedding: Zenn/Dev.toは検証済み主張をinline linkまたはReferencesへ、note/Substackは
   検証済みsourceを末尾へ、orchestratorが編入済み。確かめるのは機械検査と著者の通読
 - public-safety scan: 秘密、個人path、未sanitized screenshot / raw log 0

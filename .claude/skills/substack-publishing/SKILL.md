@@ -1,6 +1,6 @@
 ---
 name: substack-publishing
-description: 完成・レビュー済みのhuman essayをSubstackへHTML pasteで公開し、project corpusへmirrorするlocal workflow。Voice / AI-slop / Title / 出典はglobal writing-ecosystem、翻訳はprose-translationにdefer。Use when — Substackへ手動投稿・mirror・配信運用するとき。NOT for — note投稿（note-publishing）、執筆、翻訳、quality判定。
+description: 完成・レビュー済みのhuman essayをSubstackへHTML pasteで公開し、project corpusへmirrorするlocal workflow。執筆の原理は writing-principles rule、Title / 出典は project-local writing-ecosystem、翻訳はprose-translationにdefer。Use when — Substackへ手動投稿・mirror・配信運用するとき。NOT for — note投稿（note-publishing）、執筆、翻訳、quality判定。
 user-invocable: true
 origin: shimo4228
 ---
@@ -11,7 +11,7 @@ origin: shimo4228
 
 ## いつ使うか
 
-global `quality-gate` PASSと著者GOの後に使う。noteの投稿操作は`note-publishing`が所有する。日本語正本は`note/`（Zenn転載は`articles/`）、Substackへは
+project-local `quality-gate` PASSと著者GOの後に使う。noteの投稿操作は`note-publishing`が所有する。日本語正本は`note/`（Zenn転載は`articles/`）、Substackへは
 `prose-translation`で訳したEN版を出す。
 
 ## defer 先（本 skill では再掲しない）
