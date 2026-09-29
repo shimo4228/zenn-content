@@ -1,0 +1,30 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><link rel="stylesheet" href="_base.css"><title>hero</title></head><body><div class="stage">
+<h1>線路の上なら、替えた部品の効果を読める</h1>
+<div class="sub">ハンドルを握る Claude Code に足すと、その後の動きが変わりうる</div>
+<svg viewBox="0 0 1600 900">
+<defs><marker id="m" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#1f3a5f"/></marker>
+<marker id="ma" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#e07a1f"/></marker></defs>
+<!-- rails -->
+<path d="M72,404 L1528,404 M72,424 L1528,424" stroke="#9aa3ad" stroke-width="5" fill="none"/>
+<path d="M110,394 L110,434 M190,394 L190,434 M270,394 L270,434 M350,394 L350,434 M430,394 L430,434 M510,394 L510,434 M590,394 L590,434 M670,394 L670,434 M750,394 L750,434 M830,394 L830,434 M910,394 L910,434 M990,394 L990,434 M1070,394 L1070,434 M1150,394 L1150,434 M1230,394 L1230,434 M1310,394 L1310,434 M1390,394 L1390,434 M1470,394 L1470,434" stroke="#9aa3ad" stroke-width="5"/>
+<path class="arrow" d="M392,300 L500,300" marker-end="url(#m)"/>
+<path class="arrow" d="M952,300 L1060,300" marker-end="url(#m)"/>
+<path class="arrow acc" d="M524,690 L610,690" marker-end="url(#ma)"/>
+<path class="arrow acc" d="M1014,690 L1100,690" marker-end="url(#ma)"/>
+</svg>
+<div class="note" style="left:72px;top:186px;font-weight:700;color:#1f3a5f">流れが決まっているパイプライン</div>
+<div class="card" style="left:72px;top:232px;width:310px"><span class="tag">入力</span><div class="big">資料</div></div>
+<div class="card acc" style="left:512px;top:232px;width:430px"><span class="tag acc">差し替えた部品</span><div class="big">Jev が判定する</div></div>
+<div class="card" style="left:1072px;top:232px;width:456px"><span class="tag">その後</span><div class="big">LLM が文章を書く</div></div>
+<div class="note" style="left:72px;top:448px">前と後ろはコードで決まっている。替えた部品だけを取り出して試せる</div>
+<div class="note" style="left:72px;top:566px;font-weight:700;color:#1f3a5f">次に何をするかを、その場で決めるエージェント</div>
+<div class="card" style="left:72px;top:612px;width:440px"><span class="tag">運転席</span><div class="big">Claude Code</div><div style="font-size:24px">考えてはツールを呼ぶ</div></div>
+<div class="card acc" style="left:622px;top:612px;width:380px"><span class="tag acc">後から足した部品</span><div class="big">プラグインが</div><div class="big">完了を止める</div></div>
+<div class="card gray" style="left:1112px;top:612px;width:416px"><span class="tag gray">その後</span><div class="big">動きが変わりうる</div><div style="font-size:24px">検証、応答、次の進め方</div></div>
+<div class="note" style="left:72px;top:812px">効いたのか損ねたのかは、ログの数字からは読みにくい</div>
+<svg viewBox="0 0 1600 900">
+<circle cx="440" cy="700" r="42" fill="none" stroke="#1f3a5f" stroke-width="8"/>
+<circle cx="440" cy="700" r="12" fill="#1f3a5f"/>
+<path d="M440,712 L440,742 M403,687 L429,700 M477,687 L451,700" stroke="#1f3a5f" stroke-width="8" stroke-linecap="round"/>
+</svg>
+</div></body></html>

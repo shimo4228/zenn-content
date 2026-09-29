@@ -1,0 +1,27 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><link rel="stylesheet" href="_base.css"><title>belay-view</title>
+<style>
+.step{position:absolute;top:262px;width:256px;height:150px;background:#fff;border:3px solid #1f3a5f;border-radius:20px;padding:24px 16px;font-size:22px;line-height:1.35;white-space:nowrap}
+.step b{display:block;font-size:28px;font-weight:700;margin-bottom:6px}
+.seen{position:absolute;top:510px;width:256px;text-align:center;font-size:28px;font-weight:700;padding:20px 6px;border-radius:16px}
+.seen.no{color:#4b5563;border:3px dashed #9aa3ad}
+.seen.yes{color:#fff;background:#e07a1f;border:3px solid #e07a1f}
+</style></head><body><div class="stage">
+<h1>検証は 3 回通っていたが、jev-belay は検査 0 と数えた</h1>
+<div class="sub">止められた 1 件を、起きた順に</div>
+<svg viewBox="0 0 1600 900">
+<path d="M340,323 L362,337 L340,351 z M640,323 L662,337 L640,351 z M940,323 L962,337 L940,351 z M1240,323 L1262,337 L1240,351 z" fill="#1f3a5f"/>
+</svg>
+<div class="note" style="left:72px;top:214px;font-weight:700;color:#1f3a5f">Claude Code がしたこと</div>
+<div class="step" style="left:72px"><b>verify.sh</b>2 回とも成功</div>
+<div class="step" style="left:372px"><b>テストを直す</b>1 か所</div>
+<div class="step" style="left:672px"><b>verify.sh</b>3 回目も成功</div>
+<div class="step" style="left:972px"><b>msg.txt を書く</b>commit メッセージ</div>
+<div class="step" style="left:1272px"><b>完了を報告</b>commit の後</div>
+<div class="note" style="left:72px;top:462px;font-weight:700;color:#e07a1f">jev-belay の数え方</div>
+<div class="seen no" style="left:72px">検査に数えない</div>
+<div class="seen yes" style="left:372px">変更 1</div>
+<div class="seen no" style="left:672px">検査に数えない</div>
+<div class="seen yes" style="left:972px">変更 2</div>
+<div class="seen yes" style="left:1272px">検査 0 → 止める</div>
+<div class="note" style="left:72px;top:660px;font-size:26px;width:1456px;line-height:1.6">verify.sh はコマンド名にランナーの名前がなく、成功時は何も出力しない。<br>止められた Claude Code は verify.sh をやり直し、約 2 分半後に同じく成功した</div>
+</div></body></html>
