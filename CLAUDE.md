@@ -50,7 +50,10 @@ Drafting stays in the orchestrator. Review and acceptance follow `writing-ecosys
 ## Post-publication measurement
 
 `article-stocktake` is project-local instrumentation. It collects and reports reception differences, then
-stops. It does not generate or rank themes and does not call `session-theme-mining` automatically.
+stops. Human-side reception data lives in `scripts/metrics/snapshots.jsonl`: Zenn views and note
+impressions / PV / likes are read from each platform's dashboard (`source: zenn_dash` / `note_dash`, one row
+per article plus an `account` row), alongside the older Zenn / Dev.to API rows. Check this file before
+claiming human reception is unmeasured; the row format and collection procedure belong to `article-stocktake`. It does not generate or rank themes and does not call `session-theme-mining` automatically.
 
 ## Verification and publishing
 
