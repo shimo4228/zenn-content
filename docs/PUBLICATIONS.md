@@ -196,7 +196,7 @@ Japanese originals on Zenn; English editions on Dev.to, or as source in `article
 
 Japanese canonical on note, English edition on Substack; sources in `note/` and `substack/`.
 
-- **2026-10-01** JA: [いずれ消えゆくとわかっていてもなお、なぜ手を止めないのだろうか—AGIが全てを飲み込むとしても](https://note.com/shimo4228/n/nf87f16b3b9c8) (note)
+- **2026-10-01** JA: [AGIが全てを飲み込むとしても、なぜ手を止めないのだろう](https://note.com/shimo4228/n/nf87f16b3b9c8) (note)
   EN: —
 - **2026-09-28** JA: [AI の文章は、なぜ宙に浮いて感じるのか](https://note.com/shimo4228/n/n97d77b49b1c8) (note)
   EN: [Why Does AI Writing Feel Like It's Floating?](https://shimo4228.substack.com/p/why-does-ai-writing-feel-like-its) (Substack)
