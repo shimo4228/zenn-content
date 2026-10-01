@@ -57,11 +57,12 @@ cd scripts && uv run python metrics_snapshot.py
 
 source ごとに最新 ts のレコードを読み、記事ごとに正規化する（収集回ごとに source の組が違うので、全体の最新 ts だけを読まない）:
 
-- **主指標**: Zenn `liked / 公開後日数`（古い記事が累積で有利になるのを補正）
+- **主指標**: Zenn `liked`（累計）。公開後日数と並べて読む
+- **補助指標（到達）**: Zenn `views`（`zenn_dash`）。liked が 0〜1 に集まる記事群は views で届いた量を区別する
 - **補助指標**: Dev.to views・reactions（EN 側の到達）、ブックマーク（参照価値）
 - **届いたか / 刺さったかの分解**: Zenn は `liked / views`（読まれた中での反応）、note は `pv / impressions`（一覧で見えた中で開かれた割合）と `likes / pv`
 - **伸び方**: `*_dash` の同じ slug を前回の収集回と差し引いた週次増分。note 転載記事は Zenn 版と並べて媒体差を見る
-- 相対 tier を **上位 / 中位 / 下位** の 3 段に分ける（全公開記事内の相対評価）
+- tier は liked の絶対段で分ける: **上位 = liked ≥2 / 中位 = 1 / 下位 = 0**。liked が全記事で一桁に集まる分布では、相対分位にすると同値の記事が境界をまたぎ、新しい記事の追加だけで旧記事の tier が動く（2026-10-02 観測）。liked の分布が広がったら段の閾値を見直す
 
 **絶対スコアを出力しない**（output discipline）。「7.2/10」ではなく tier と乖離だけを提示する。
 
