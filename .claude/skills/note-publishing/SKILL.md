@@ -1,6 +1,6 @@
 ---
 name: note-publishing
-description: "完成済み原稿をnoteへ原文を保って転載する。『noteに投稿して』『この記事をnoteへ転載して』『承認済み記事をnoteで公開して』で使用。NOT for — 執筆・改稿（writing-ecosystem）、Substack投稿（substack-publishing）、候補選定・配信時刻管理（docs/note-pipeline.md）。"
+description: "完成済み原稿をnoteへ原文を保って転載する。『noteに投稿して』『この記事をnoteへ転載して』『承認済み記事をnoteで公開して』『noteの見出し画像を作って』で使用。NOT for — 執筆・改稿（writing-ecosystem）、Substack投稿（substack-publishing）、候補選定・配信時刻管理（docs/note-pipeline.md）。"
 user-invocable: true
 origin: shimo4228
 ---
@@ -33,6 +33,40 @@ uv run --project scripts python scripts/note_publish.py prepare articles/SLUG.md
 脚注参照と末尾注記を同じ番号で表示する。Zennの ::: 構文は自動で捨てず停止する。
 共通の note/Substack H1原稿用変換は scripts/render_note_assets.sh、脚注を含むnote投稿用の
 変換と検証は scripts/note_publish.py が所有する。
+
+## 見出し画像（カバーアート）
+
+内容GOとタイトル確定の後に作る（題と命題が動くと画像の主題も動く）。画像は著者が自分の
+生成ツールで作り、orchestrator はプロンプトと検査を受け持つ。
+
+仕様（noteヘルプ「登録画像の推奨サイズ一覧」、as-of 2026-10-01 閲覧、
+https://www.help-note.com/hc/ja/articles/360000231642 ）:
+
+- 記事の見出し画像の推奨は 1280 × 670 px（約 1.91:1）。推奨と異なる比率はトリミングされ、
+  ブラウザとアプリで見え方が違う
+- 1 枚の容量は最大 10MB
+- 置き場は `images/covers/<slug>-note.png`。既存の note 用 5 枚は 1734×907 前後で、比率は推奨と同じ
+
+プロンプトの組み立て:
+
+1. 主題は本文から取る。中心命題、冒頭の引用、本文の像（著者の言葉）のうち 1 つを絵にする。
+   orchestrator が新しい比喩を足さない
+2. 文字を入れない（タイトルは note のタイトル欄が持つ）。AI 記事の定番の絵（ロボット・
+   光る脳・回路）を入れない、と明記する
+3. 端末ごとに周辺が切れるので、要素を中央に寄せ、左右に余白を残す
+4. 比率 1.91:1 と 1280×670 以上を明記する。画風の違う 2〜3 案を出し、各案に本文との対応を
+   1 行添えて著者が選ぶ。宗教・思想の色が強い画風は、著者が本文で避けた色と照合する
+
+検査（著者が画像を置いた後）:
+
+```sh
+sips -g pixelWidth -g pixelHeight images/covers/SLUG-note.png
+ls -l images/covers/SLUG-note.png
+```
+
+幅÷高さが 1.90〜1.92、幅 1280 以上、10MB 未満を確かめ、画像を開いて文字・個人情報・
+画面の写り込みが無いことを見る。アップロードは下の画面操作 6、著者が自分で貼る場合は
+エディターの「画像を追加」から同じファイルを選ぶ。
 
 ## noteエディターの性質（2026-09-13 実測）
 
