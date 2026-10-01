@@ -11,7 +11,7 @@ register、review panel、機械検査、platform 形式、公開 handoff だけ
 |---|---|---|---|---|---|---|---|
 | Zenn | `articles/*.md` | 検索・feedから来たengineerが、数秒で用途を理解し再現または判断できる | 日本語ですます。直接指示・具体観察・判断則を優先し、修辞疑問で結論を弱めない。結論の決め台詞を常体で置くのは著者の意図的ブレイクとして許容し、reviewerはCRITICALにしない | `editor` | `npm run validate`; `npm run evidence -- articles/<slug>.md`（deviations 0。公開直前は`--online`も）; brief の Figure plan が本文と一致（人手） | 原則50字以内、正確さに必要なら60字まで。em dash（——）連結不可 | `zenn-format` → `publish-article` |
 | Dev.to | `articles-en/*.md` | 英語圏のengineerが同じ成果を再現または判断できる | Natural English。direct、practical、outcome-first。essayistic hedgeへ寄せない | `editor` | `devto-translator` self-check; `devto_crosspost.py post <slug> --dry-run` | local上限なし。検索/フィードは原稿の性質で選ぶ | `devto-translator` → `publish-article` |
-| note | `note/*.md` | 読者が、一つの問いを自分の問題として考えられる | 日本語ですます、発見調。評価は問いへ開けるが事実は断定する | `essay-reviewer` | 新規稿はfrontmatterなし | platform上限なし。feedで問いと対象が分かる | `note-publishing` |
+| note | `note/*.md` | 読者が、一つの問いを自分の問題として考えられる | 日本語ですます、発見調。評価は問いへ開けるが事実は断定する | `essay-reviewer` | 新規稿はfrontmatterなし | platform上限なし。feedで問いと対象が分かる。feedのカードで見えるのはPCで約33字・モバイルで約30字（2026-10-01 著者観測）なので、対象語と問いは先頭30字に置く | `note-publishing` |
 | Substack | `substack/*.md` | 英語圏の一般読者がJA正本と同じ問いを追える | Natural English、discovery tone。JA正本の確度を保つ | `essay-reviewer` | 新規稿はfrontmatterなし; `prose-translation`後のレビュー完了 | title/subtitleを分ける | `substack-publishing` |
 
 path がどの行にも一致しない、または複数行に一致する場合、`writing-ecosystem` と
