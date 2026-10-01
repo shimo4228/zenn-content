@@ -4,6 +4,12 @@
 # Zenn/Dev.to articles are NOT listed here — their source of truth is articles/*.md.
 
 essays:
+  - slug: agi-judgment-trail
+    date: 2026-10-01
+    ja:
+      title: いずれ消えゆくとわかっていてもなお、なぜ手を止めないのだろうか—AGIが全てを飲み込むとしても
+      url: https://note.com/shimo4228/n/nf87f16b3b9c8
+      file: note/agi-judgment-trail.md
   - slug: lost-referents-in-generated-prose
     date: 2026-09-28
     ja:
