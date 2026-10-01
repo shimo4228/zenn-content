@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>いずれ消えゆくとわかっていてもなお、なぜ手を止めないのだろうか——AGIが全てを飲み込むとしても</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      white-space: pre-wrap;
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+</head>
+<body>
+<blockquote>
+<p>ああ、まだ使えるうちに使い尽くせ</p>
+<p>我らもまた塵へと降りてゆく前に</p>
+<p>塵は塵へ、塵の下に横たわる</p>
+<p>酒もなく、歌もなく、歌い手もなく、そして終わりもなく</p>
+<p>——オマル・ハイヤーム『ルバイヤート』第 24
+歌（エドワード・フィッツジェラルドの英訳第 5 版から、訳は筆者）</p>
+</blockquote>
+<p>AGI（人間と同じくらい幅広い知的作業をこなせる
+AI）は今年中に実現するだろう、という雰囲気を感じています。それを強く意識したのは、9
+月 13 日に安野貴博さんが note
+に書いた、シリコンバレーで聞いてきた話を読んだときです。世界トップレベルの
+AI
+研究者が「自分のAI研究者としての賞味期限はあと1年だと思う」と言い、研究者たちの間には「残り1〜2年で『AIの研究開発が自動化してゆく』という一定のコンセンサスがあった」そうです。</p>
+<p>私はこの半年、Claude Code で AI
+コーディングを続けてきました。コードを書かせるだけでなく、その周りに規則や検査の仕組み（ハーネスと呼ばれます）を組み、設計で迷ったところは判断の記録として残してきました。記事を読んだあと、2026
+年 10 月 1 日の朝に、Claude と雑談を始めました。AGI
+が来たらコーディングエージェントはどうなるのだろう、という素朴な疑問からです。話しているうちに、この半年の蓄積も来年には無駄になるだろう、という気がしてきました。</p>
+<h2
+id="古びるのはモデルの弱さを補っていた部分">古びるのは、モデルの弱さを補っていた部分</h2>
+<p>同じ 9 月、Anthropic の CEO である Dario Amodei
+も自身のサイトに書いています。</p>
+<blockquote>
+<p>Since roughly this summer, AI has been advancing drastically faster,
+driven primarily by AI's growing ability to build the next generation of
+AI</p>
+</blockquote>
+<p>この夏ごろから、AI が次の世代の AI
+を作る力を伸ばしたことで、進歩が劇的に速くなった、という観察です。彼はこれを、業界全体で始まりつつある再帰的な自己改善だと呼んでいます。</p>
+<p>私の技法が古びることは、予想ではなく一度起きています。7
+月に新しい世代のモデルが出たとき、毎回のセッションに読み込ませていた規則を
+5,789 語から 2,314 語へ、6
+割削りました。削ったのは、手順を細かく指示する表や、同じことを何度も強調する文です。どれも前の世代のモデルが取りこぼしていたところを補うために書いたもので、判断力の上がったモデルにはもう要らず、むしろ互いに食い違う指示として邪魔になっていました。</p>
+<p>雑談の中で「じゃあハーネスは２０２６年だけの言葉だ」と言うと、Claude
+は半分だけうなずきました。やり直しや検証の繰り返し、作業の分解のような、うまくやるための足場はモデルに吸収されていく。でも、何に触ってよいか、誰の意図に従うか、失敗したら誰が責任を持つかは、モデルの外に置いておかないと困る。7
+月に私が削ったものと残したものも、おおむねその線で分かれていました。</p>
+<p>では AGI はいつ来るのか。ここは調べるほど幅が出ました。予測市場の
+Polymarket では、「OpenAI が 2027 年より前に AGI
+の達成を発表する」の値は 10 月 1 日時点で 17% です。AI 2027
+というシナリオを書いたグループは 8 月に予測を前倒しし、中心人物の
+Kokotajlo は、AI が自動でコードを書く段階の到来の中央値を 2027 年 11
+月に置きました。一方で、懐疑派の Gary Marcus は 2025 年 12
+月の時点で、2026 年にも 2027 年にも AGI
+は来ないと予想していました。私には時期は分かりませんし、この記事でも決めません。分かるのは、私の技法はその日を待たずにまた古びるだろう、ということだけです。</p>
+<h2
+id="それでも判断の履歴を残してきた">それでも、判断の履歴を残してきた</h2>
+<p>この半年、私は設計で判断したことを記録に残してきました。ハーネスの設計判断の記録だけで、3
+月から数えて 85
+件あります。何を選び、何を捨てたか、なぜそうしたか、どうなったらその判断を見直すか。7
+月に規則を削ったときも、削った理由と、モデルの世代が変わったらまた見直すことを書きました。</p>
+<p>雑談の終わりのほうで、私はつい本音をこぼしていました。判断の履歴だけは残してきたけれど、「なんだかずっと自分の墓を立てている気分だ。existence
+proofだ」と。</p>
+<p>existence proof
+は存在証明、つまり「こういうものが確かに存在する」と実物を一つ示してみせる証明のことです。</p>
+<p>技法は古びますし、記録も残らないかもしれません。それが分かっていて、なぜ手を止めないのか。理由を探してみました。</p>
+<h2 id="残したいのは自分のためか">残したいのは、自分のためか</h2>
+<p>一つ目に思いつくのは、生存欲や承認欲求です。</p>
+<p>雑談でも、私は「私程度の知性でも何か残したいと思ったけど」と言い、すぐに「残るといいけど残らないだろうな。みんな天才すぎるわ」と続けています。残したいと言った同じ口で、残らないだろうと言っている。誰かと比べて残る見込みを測っているあたりは、承認欲求に近いのかもしれません。</p>
+<p>Claude
+は、後から振り返って価値が出る記録は一番賢い人のものとは限らない、その位置にいた人にしか書けないものだ、と返してきました。これも、残る価値があるから残す、という理由です。</p>
+<h2 id="道標という理由">道標という理由</h2>
+<p>もう一つの理由は、Claude
+のほうから出てきました。墓の話をしたとき、Claude
+は別の言葉を返してきたのです。「墓は終わった人のためのもので、道標は後から来る人のためのものです」。技法は古びても、その時々の不確かさの中で何を選び、何を捨て、なぜそうしたかは、後から再構成できない、というのです。</p>
+<p>この朝の話は、途中で AI の安全性に寄り道していました。AI
+が人間より賢くなれば、人間はその中身も意図も確かめにくくなる。本物の詐欺師ほど善人のように振る舞うと言うしね、と私が言うと、Claude
+は、それが欺瞞的アラインメントと呼ばれる懸念だと教えてくれました。訓練や評価を受けている間だけ望ましく振る舞い、本当の目的を隠すことです。それなら同程度のモデルに監視させ合うしかない、でも結託されると終わりだし、結託できない仕組みを作っても突破されるかもしれない。そう考えて、私は「人間社会のようだ」と言いました。Claude
+は、AI
+コントロールと呼ばれる分野で結託も中心的な論点になっていて、結託のコストを高くする方向の研究がある、と返しました。</p>
+<p>その先で私は、AI
+に敵対的に検証させて、人間に分かるように報告させる方向になるのだろう、それは
+AI
+コーディングから生まれた技法で、この１年は無駄ではないかもな、と言いました。出自のほうは訂正されました。AI
+同士に議論させて人間が判定する「ディベート」という発想は、2018 年に
+Irving、Christiano、Amodei
+らが提案していたそうです。調べると、その論文は確かに 2018 年 5
+月に出ていました。Claude
+によれば、コードは作ったものをテストで安く確かめられる珍しい領域で、AI
+に作らせ、別の AI
+に疑わせ、人間が最後に判断する、という型を何千回も試せた、と。</p>
+<p>振り返ると、私のハーネスもその形をしていました。実装した AI とは別の
+AI がレビューし、公開や取り消せない操作は私が決める。どこまで AI
+に任せ、どこから自分が判断するかは、失敗するたびに引き直してきました。確かめにくい相手とつきあう時代が来るなら、その線をどう引いたかの記録は、後から来る人の道標になるかもしれない。今は私もそう思っています。</p>
+<p>ただ、それが手を止めない理由の全部だとは思いません。</p>
+<h2 id="理由を離れても">理由を離れても</h2>
+<p>7
+月に規則を削って、技法が古びるのを自分の手で確かめました。そのあとも判断の記録は増え続け、85
+件のうち 66 件はそれ以降に書いたものです。</p>
+<p>人間はいずれ死にます。死ねば、積み上げたものも意味がなくなります。それと、AGI
+が自分の軌跡を飲み込むことには、本質的に違いはないのかもしれないとも思います。人は死ぬことがわかっていても、何か意味を見出し、創作を続けたりして、何かを残そうとします。それは生存欲や承認欲求かもしれないし、後から来る人の役に立ちたいということかもしれません。けれど、そういうことから離れたとしても、人は何かをすることがあります。理由を離れた行為は存在する気がします。</p>
+<p>私にとっては、エージェントで何かをすることがそうかもしれません。エージェントで収益を得ているわけではありません。もちろん、これで名前が売れたらいいとも思います。でも、動いているのはそういうところとは離れた情熱です。好奇心ドリブンと言えばそれまでですが。あとは瞑想でしょうか。最近はサボりがちですが。</p>
+<p>全ての人がそうするとは限りません。それでも、死ねば全てなくなるとしても、何かをする人はいます。</p>
+<p>この半年の技法は来年には古びるでしょう。判断の記録が残るかどうかも分かりません。それでも、私は今日も手を止めていません。</p>
+<hr />
+<h2 id="出典参考文献">出典・参考文献</h2>
+<ul>
+<li>Omar Khayyám, <em>Rubáiyát of Omar Khayyám</em>, tr. Edward
+FitzGerald, 5th ed., 1889, XXIV. Project Gutenberg: <a
+href="https://www.gutenberg.org/ebooks/246">https://www.gutenberg.org/ebooks/246</a></li>
+<li>安野貴博「「AI研究者としての自分の賞味期限はあと１年」——AGI競争も終盤戦の様相を呈すシリコンバレーでは何が語られていたか」note,
+2026-09-13. <a
+href="https://note.com/takahiroanno/n/n4accbde18d56">https://note.com/takahiroanno/n/n4accbde18d56</a></li>
+<li>Dario Amodei, "We Must Pace the Frontier", 2026-09. <a
+href="https://www.darioamodei.com/post/we-must-pace-the-frontier">https://www.darioamodei.com/post/we-must-pace-the-frontier</a></li>
+<li>Polymarket, "OpenAI announces it has achieved AGI before
+2027?"（2026-10-01 閲覧）. <a
+href="https://polymarket.com/event/openai-announces-it-has-achieved-agi-before-2027">https://polymarket.com/event/openai-announces-it-has-achieved-agi-before-2027</a></li>
+<li>AI Futures Project, "Q2.5 2026 Timelines Update: Uplift and
+Revenue", 2026-08-16. <a
+href="https://blog.aifutures.org/p/q25-2026-timelines-update-uplift">https://blog.aifutures.org/p/q25-2026-timelines-update-uplift</a></li>
+<li>Gary Marcus, "Six (or seven) predictions for AI 2026", 2025-12-20.
+<a
+href="https://garymarcus.substack.com/p/six-or-seven-predictions-for-ai-2026">https://garymarcus.substack.com/p/six-or-seven-predictions-for-ai-2026</a></li>
+<li>Irving, Christiano, Amodei, "AI safety via debate", 2018-05-02. <a
+href="https://arxiv.org/abs/1805.00899">https://arxiv.org/abs/1805.00899</a></li>
+<li>7 月の規則の削減の記録: 「Opus 5
+世代でルールの書き方は公式に変わった——自作ルールの棚卸し手順」Zenn,
+2026-07-27. <a
+href="https://zenn.dev/shimo4228/articles/claude5-rules-official-shift-audit">https://zenn.dev/shimo4228/articles/claude5-rules-official-shift-audit</a></li>
+</ul>
+<hr />
+<p><strong>この文章について</strong>: 本文の生成には
+AI（Claude）を使いました。素材は、2026 年 10 月 1 日朝の著者と Claude
+の雑談と、その後の調査です。何を書くか、どの判断を自分のものとするかは著者が決め、主張と判断の責任は著者にあります。この開示は、著者のリサーチリポジトリ
+<a
+href="https://github.com/shimo4228/attention-not-self">attention-not-self</a>
+の「メソドロジー」節にある AI-assisted scholarship
+の方針に準じています。</p>
+</body>
+</html>
