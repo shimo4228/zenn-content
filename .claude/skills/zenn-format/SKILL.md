@@ -104,7 +104,8 @@ Zennが受けるのは`/images`直下の
 
 1. skill: `mono-figure` で描いて撮る（mono-color の設計表 → SVG → PNG）。1600×900の1画面、文字は名詞句。
    読者の既知物との比喩を持つのはhero図だけで、他の図は構造だけを描く。HTMLは`figures/<slug>-<what>.html`、
-   PNGは`images/<slug>-<what>.png`（artifactとして公開しない）
+   PNGは`images/<slug>-<what>.png`（artifactとして公開しない）。文字の大きさ（1600×900 で）: 見出し 44〜48px で 1 行、
+   ラベル 22px 以上、注記 18px 以上。図は記事の幅まで縮んで表示されるので、これより小さい文字は読めない
 2. 記事側は `![<図が示すこと1文>](/images/<slug>-<what>.png)` を、その節の発見が出そろった段落の後に
    置き、直後に「この図が示すこと」を1文書く。alt textは図の文字（数値・モデル名）を含める
 3. 本文を直したらHTMLを直して撮り直す。図の文字と本文の差分は`fact-checker`に渡す
