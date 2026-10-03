@@ -2,7 +2,7 @@
 title: "Claude ModsとOutput Styleで、Claude Codeを執筆用のハーネスにする"
 emoji: "✍️"
 type: "tech"
-topics: ["claudecode", "claude", "contextengineering"]
+topics: ["claudecode", "claude", "contextengineering", "プラグイン", "執筆"]
 published: false
 ---
 
