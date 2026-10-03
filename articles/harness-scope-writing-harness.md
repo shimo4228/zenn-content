@@ -28,7 +28,7 @@ Claude Codeには、リポジトリの`.claude/settings.json`で外す設定が�
 
 ## Modで、リポジトリごとに見せるものを選びます
 
-Modを使うと、Claude Codeが、Claudeに渡すスキル一覧や指示ファイル（CLAUDE.mdやrules）を組み立てる途中に関数を差し込めます。2.1.287以降では既定で有効です。
+Modを使うと、Claude Codeが、Claudeに渡すスキル一覧や指示ファイル（CLAUDE.mdやrules）を組み立てる途中に関数を差し込めます。2.1.287以降では既定で有効です（[Mods overview](https://code.claude.com/docs/en/plugins/mods/overview)）。
 
 これを使って、グローバルのハーネスは1つのまま、リポジトリごとにClaudeに見せるものを選ぶ[harness-scope](https://github.com/shimo4228/harness-scope)を作りました。インストールは1回だけです。
 
@@ -89,7 +89,7 @@ harness-scopeには、残すものだけを並べる形の`writing`というprof
 
 ## 外すつもりだったコーディング指示は、Claude 5系にはありませんでした
 
-Modを作ろうと決めたとき、外したかったものはもう1つありました。Claude Codeのsystem promptにあるコーディング用の指示です。出力スタイルには`keep-coding-instructions`という項目があり、`false`にするとコーディング用の部分が外れます。
+Modを作ろうと決めたとき、外したかったものはもう1つありました。Claude Codeのsystem promptにあるコーディング用の指示です。出力スタイルには`keep-coding-instructions`という項目があり、`false`にするとコーディング用の部分が外れます（[Output styles](https://code.claude.com/docs/en/output-styles)）。
 
 まずOpus 5.5で、`keep-coding-instructions: false`の出力スタイルを選ぶ前と後のsystem promptを記録しました。外れた節はありませんでした。Claudeはこの1条件の結果から、外したかったものはそもそも無い、とまとめました。私はこの結論を止めました。
 
