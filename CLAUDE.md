@@ -30,6 +30,10 @@ Do not restate the backbone or the shared flow here. `writing-ecosystem` owns th
 brief, review order, revision return conditions, and the boundary that excludes ADRs / memory / raw session
 history from writing-time rules.
 
+The project output style `.claude/output-styles/zenn-writing.md` (selected in `.claude/settings.json`) governs how
+Claude talks with the author, not article prose. For coding work such as `scripts/`, set `"outputStyle": "default"` in
+`.claude/settings.local.json` (CLI: `/output-style default`).
+
 ## Channel and format boundaries
 
 - Zenn: `articles/`; format and syntax are owned by `zenn-format`

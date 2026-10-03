@@ -9,4 +9,4 @@
 
 | # | Title |
 |---|---|
-| [0001](0001-writing-output-style.md) | zenn-content 用の出力スタイルで、コーディング用の system prompt 指示を外す |
+| [0001](0001-writing-output-style.md) | zenn-content 用の出力スタイルで、著者との会話の規約を持つ |

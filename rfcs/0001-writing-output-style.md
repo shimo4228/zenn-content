@@ -1,90 +1,68 @@
 ---
-state: in_progress 2026-10-03
-review-when: Claude Code の出力スタイルの仕様（`keep-coding-instructions` の既定値、project の `.claude/output-styles/`、`outputStyle` の設定の優先順位）が変わったとき。prose mod（下の Prior art）が system prompt の節も扱うようになったとき
+state: done 2026-10-03
+review-when: Claude Code の出力スタイルの仕様（本文の届き方、project の `.claude/output-styles/`、`outputStyle` の優先順位）が変わったとき。Claude Code が Claude 5 系で lean でない system prompt を使うようになったとき。スタイルの項目に反する著者の指摘が続いたとき
 ---
 ## Summary
 
-zenn-content 専用の出力スタイルを `.claude/output-styles/` に置き、この repo の project 設定で選ぶ。`keep-coding-instructions` は既定の `false` のままにして、Claude Code のコーディング用の指示を、この repo の執筆セッションの system prompt から外す。
+zenn-content 専用の出力スタイル `zenn-writing` を `.claude/output-styles/` に置き、`.claude/settings.json` で選ぶ。中身は著者との会話の規約（問いへの答え方、判断の渡し方、命題の扱い、報告、通読の渡し方、説明のしかた）で、記事の文章の規約は持たない。
 
 ## Motivation
 
-- この repo のセッションは記事・エッセイの執筆と公開作業が中心だが、Claude Code の system prompt にはソフトウェア開発向けの指示（変更範囲の決め方、コメントの書き方、検証のしかたなど）が入ったままになっている
-- 現状、この repo 用の出力スタイルは無い。どの settings にも `outputStyle` の指定が無く、Claude Code の標準の system prompt で動いている（2026-10-03 確認）
-- global の harness からの流入（rules・skill 一覧・agent 一覧など）は、著者の別 repo の prose mod が扱う（Prior art）。そこでは「system prompt の節は出力スタイルに任せる」と決めた。この RFC はその受け持ちを zenn-content 側で実装する
+- この repo のセッションは記事・エッセイの執筆と公開作業が中心だが、著者との会話のしかたを決めた場所が無かった。どの settings にも `outputStyle` が無く、Claude Code の Default で動いていた（2026-10-03 確認。global の `signal-first` は ADR-0079 で著者が無効のままを選んでいる）
+- 過去セッション（2026-07〜10、119 本）の著者の発言には、応答のしかたへの同じ反応が繰り返し出ていた: 問いに改稿で返された、選ぶ材料が実物でない、Claude の案の枠が命題に残った、「できない」が確かめずに出た、通読する稿が手元で開けない
+- 起票時は「コーディング用の指示を system prompt から外す」ことが目的だった。計測でこの目的は Claude 5 系では成り立たないと分かり（Status）、著者の判断（2026-10-03）で会話の規約を書くことに改めた
 
 ## Guide-level explanation
 
-- zenn-content でセッションを開くと、執筆用のスタイルが自動で選ばれる。著者が毎回選び直す必要はない
-- コーディングの作業（`scripts/` の Python や公開パイプラインの修正）をこの repo でするときは、`/config` などでスタイルを切り替える。切り替え方は README か CLAUDE.md に 1 行で書く
+- zenn-content でセッションを開くと `zenn-writing` が選ばれる。著者が選び直す必要はない
+- `scripts/` などのコーディング作業では `.claude/settings.local.json` に `"outputStyle": "default"` を置く（local が project の settings.json より優先）。CLI では `/output-style default`。CLAUDE.md に 1 行で書いた
 
 ## Reference-level explanation
 
-- 置き場所: `.claude/output-styles/<name>.md`（project の出力スタイル。公式ドキュメント code.claude.com/docs/en/output-styles、2026-10-03 確認）
-- 選び方: project の settings の `outputStyle`。公開 repo で共有するなら `.claude/settings.json`、著者の手元だけなら `.claude/settings.local.json`。project の設定は `~/.claude/settings.json` より優先される
-- frontmatter: `keep-coding-instructions` を書かない（既定 `false`）
-- 効く範囲: メインの会話と fork には効く。fork 以外の subagent（editor・fact-checker などの review agent）は自分の system prompt で動くので効かない
-
-本文に書くもの・書かないもの:
-
-- 書かない: 執筆の原理（`.claude/rules/writing-principles.md` が唯一の正本）、媒体ごとの値（`.claude/rules/publishing-channels.md`）、執筆手順（`writing-ecosystem`）。CLAUDE.md の「backbone を他所で言い直さない」規約に従う
-- 書く候補: コーディング指示を外したことで抜ける、この repo に要る作業の作法（git と公開物の扱い、`npm run validate` などの機械検査の使い方）。何が抜けるかは、外す前後の system prompt を比べてから決める
+- 置き場所: `.claude/output-styles/zenn-writing.md`。選択: `.claude/settings.json` の `"outputStyle": "zenn-writing"`（公開 repo で選択を共有する）
+- frontmatter に `keep-coding-instructions` は書かない（既定 `false`）
+- 本文は system prompt の節ではなく、リマインダー（`output_style_instructions`）として毎ターン届く。効くのはメインの会話と fork だけで、review agent には効かない
+- 記事の本文もメインの会話が起草するので、本文の冒頭で「記事・brief・訳文の文章は writing-principles と channel contract に従う」と範囲を切った
+- 項目は 7 つ。どれも過去セッションの著者の発言（複数 session）を根拠にし、外部の研究・編集実務で補った。選ぶ場面で推奨を添える項目と、中心命題では案より先に著者の考えを聞く項目を分けたのは、AI の提案が書き手の意見と構想を寄せる実証（Jakesch et al., CHI 2023 / Bhat et al., CHI 2026）と、履歴で Claude の案の枠が命題に残った例（6 session）による
 
 ## Drawbacks
 
-- スタイルの切り替えを忘れると、`scripts/` のコーディング作業がコーディング指示なしで進む
-- コーディング指示の中には、執筆作業でも効いていた作法が混ざっている可能性がある（ファイルを読んでから書き換える、など）。外すと失われる
-- 本文に何かを書くと、rules との二重定義になりうる
+- コーディング作業で切り替えを忘れると、Claude 5 系の system prompt の冒頭 1 行（「自分の判断で」）が「Output Style に従う」に替わったまま進む
+- 項目は 8 月の摩擦を多く含む。Claude 5 系で既に出なくなったものがあるかは測っていない
+- 指示は保証ではない。守られたかを測る計器は無い
 
 ## Rationale and alternatives
 
-- **何もしない**: コーディング指示が執筆の判断に混ざり続ける
-- **global の出力スタイルで外す**: 著者の他の repo はコーディング中心なので、global では外せない
-- **prose mod の Mod で system prompt の節を外す**: prose mod の詳細設計で、v0.1 では節に触れず出力スタイルに任せると決めた
-- **`force-for-plugin` 付きのスタイルを prose mod に同梱する**: plugin を有効にした repo で自動適用できるが、zenn-content 固有の作法を global の plugin に持たせることになる
+- **何もしない**: 会話の規約を決めた場所が無いまま、同じ摩擦が著者の言い直しで直される
+- **global の signal-first を使う**: 著者が ADR-0079 で無効を選んでいる。執筆特有の項目（命題の扱い・通読の渡し方）も無い
+- **workflow が出した 14 項目の草稿**: 1 項目 100〜150 字、計約 5,400 字。手順（reviewer への中継、対の言語版への波及、削除前の退避）が混ざり、Claude 5 系向けの指針（短い指示で足り、規定しすぎは質を下げうる）にも反する。応答の型だけを 7 項目に絞った
+- **rules に書く**: rules は毎セッションの CLAUDE.md 層に載り、会話の規約と記事の規約の境目が見えにくくなる。出力スタイルは「応答の型」を持つ公式の置き場
 
 ## Prior art
 
-- prose mod（著者が別 repo で設計・実装中の Mod。2026-10-03 時点で未公開）: global の harness を repo ごとに ON/OFF する Mod。system prompt の節は出力スタイルに任せると決めている
-- global の出力スタイル `signal-first`（`keep-coding-instructions: true`）: 著者の応答の register を決めるスタイル。執筆用スタイルとの関係（受け継ぐか、別にするか）は未定
-
-## Unresolved questions
-
-- `keep-coding-instructions: false` で、実際にどの節が外れるか。外す前後で system prompt を記録して比べる（prose mod の probe が使える）
-- 本文に何を書くか（上の「書く候補」）。何も書かない最小のスタイルで足りるか
-- global の `signal-first` の register をこの repo でも使うか
-- 選択を `settings.json`（公開）と `settings.local.json`（手元）のどちらに置くか
-- コーディング作業との切り替えの手間を、どこまで許容するか
-
-## Future possibilities
-
-- 執筆向けスタイルの雛形を、prose mod の README で他の書き手向けに紹介する
+- harness-scope（旧 prose mod。著者の別 repo）: global の harness を repo ごとに ON/OFF する Mod。system prompt の節は出力スタイルに任せると決めている。計測の probe（`tools/probe/`）はこの repo のもの
+- global の出力スタイル `signal-first`（ADR-0073、ADR-0079 で無効）: 結論先頭・1 問 1 観点・推奨を添える。`zenn-writing` の項目 2 は同じ向き
+- 公開されている執筆用スタイル（DawnEver/Academic ほか 10 本、2026-10-03 調査）: 300〜830 語が中心。返信の形式と成果物の形式を分けて書く例（jakecadams/writing-style）がある
 
 ## Status
 
-in_progress 2026-10-03 — 外す前後を計測した。外れる量はモデルで決まる。Claude 5 系では外れる節が無く、Haiku 4.5 では
-`doing_tasks` が外れた。作るかの判断待ち。
+done 2026-10-03 — `zenn-writing` を置いて project で選んだ。plan: [docs/plans/rfc1-replicated-lecun.md](../docs/plans/rfc1-replicated-lecun.md)
 
-計測（Claude Code 2.1.287、prose mod の probe、zenn-content で `claude -p` に短い 1 文。plan:
-[docs/plans/rfc1-replicated-lecun.md](../docs/plans/rfc1-replicated-lecun.md)）。C0 は出力スタイルなし、C1 は probe 同梱の
-計測用スタイル（`keep-coding-instructions: false`）を `--settings` で選んだ。
+計測 1: `keep-coding-instructions` で何が外れるか（Claude Code 2.1.287、harness-scope の probe、zenn-content で `claude -p` に短い 1 文）。C0 は出力スタイルなし、C1 は `keep-coding-instructions: false` の計測用スタイル。
 
 | モデル | trait | C0 の節の合計 | C1 で外れた節 |
 |---|---|---|---|
-| Haiku 4.5 | `lean` なし | 28,108 字 | `doing_tasks` 3,319 字 |
-| Sonnet 5.5 | `lean` | 6,557 字 | なし |
-| Opus 5.5 | `lean` | 6,557 字 | なし |
+| Haiku 4.5 / Opus 4.6 / Sonnet 4.6 | `lean` なし | 28,108 字 | `doing_tasks` 3,319 字（Haiku で確認） |
+| Sonnet 5.5 / Opus 5.5 | `lean` | 6,557 字 | なし |
+| Fable 5.1 | `lean` | 12,621 字 | （C1 は未計測。`doing_tasks` は C0 に無い） |
 
-- `doing_tasks` は docs の言う「コーディング用の指示」の本体。依頼をソフトウェア開発として解釈する、既存ファイルの編集を
-  優先する、頼まれていない機能や抽象を足さない、など
-- Claude 5 系の system prompt（trait `lean`）には `doing_tasks` がもともと無い。C1 で変わったのは本体（`lean_body`）の
-  1 行目だけ（「You are an agent working with the user toward their goals…」→「You are an interactive agent that helps users
-  according to your "Output Style"…」）。「Write code that reads like the surrounding code…」（`communication` 節）と
-  「Reference code as `file_path:line_number`」は残った
-- どのモデルでも、スタイルの本文は system prompt の節ではなくリマインダー（`output_style`・`output_style_instructions`）として
-  足された。CLAUDE.md と rules、skill 一覧などのリマインダーは変わらなかった
+- Claude 5 系の lean な system prompt には `doing_tasks`（依頼をソフトウェア開発として解釈する、既存ファイルの編集を優先する、頼まれていない抽象を足さない、など）がもともと無い。スタイルを選ぶと、`keep-coding-instructions` が true でも false でも、本体の 1 行目が「You are an agent working with the user toward their goals, using your own judgment along the way.」から「…helps users according to your "Output Style"…」に替わるだけ
 - plugin のスタイルは名前空間付き（`prose-probe:writing-probe`）でないと選ばれず、名前だけでは黙って Default になった
+
+調査: 項目は workflow（agent 78 本）で決めた。過去セッション 119 本から著者の発言 1,017 件を直前の応答と対で読み、外部調査（出力スタイルの実例、共同執筆の研究、編集実務）と既存の規約の地図を合わせ、候補ごとに証拠・二重定義・記事への漏れの 3 視点で反証した。草稿の 14 項目を、応答の型だけの 7 項目に絞った。
+
+計測 2: 導入後（Opus 5.5）。`.claude/settings.json` だけで `zenn-writing` が選ばれ、本文が `output_style_instructions`（555 字）で届いた。`.claude/settings.local.json` に `"outputStyle": "default"` を置くと外れ、冒頭 1 行も元に戻った。Desktop app での表示は未確認。
 
 ## Next action
 
-- 著者が判断する: この repo を主に Claude 5 系で使う限り、スタイルで外れるのは冒頭の 1 行だけ。Haiku など lean でない
-  モデルで執筆する場面があるかで、作る価値が変わる
+- Desktop app で zenn-content の新しいセッションを開き、`/output-style` で `zenn-writing` が選ばれていることを確かめる
