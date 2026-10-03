@@ -94,7 +94,7 @@ descriptive filenameを使い、個人path・key・credentialをsanitiseする�
 - 節ごとに形を1語で言う（対比 / 流れ / 階層 / 2軸 / 並列）。並列は箇条書きのまま、形が言えない節は図を置かない
 - 1記事3〜4枚まで。置く位置は見出し直後でなく、その節の発見が出そろった段落の後（先に図を出すと節の展開を
   先取りする）。hero図だけは Entry bridge の段落の後、最初の見出しの前に置く
-- 読者の既知物との比喩（eli5比喩）は1記事1個で、題・第一画面・hero図のどれか1箇所に置く。背骨2の唯一の
+- 読者の既知物との比喩は1記事1個で、題・第一画面・hero図のどれか1箇所に置く。背骨2の唯一の
   例外で、外すと中心命題の形が消えるときだけ置く
 
 review-when: pilot（`articles/jev-retrofit-limits.md`、2026-09-22）を含む図入りの3本の`article-stocktake`で
@@ -102,22 +102,15 @@ review-when: pilot（`articles/jev-retrofit-limits.md`、2026-09-22）を含む�
 Zennが受けるのは`/images`直下の
 `.png .jpg .jpeg .gif .webp`、3MB以内。SVGは不可（Zenn公式 deploy-github-images、as-of 2026-09-22）。
 
-1. `/eli5 <その節の主張1文>` に、形（対比 / 流れ / 階層 / 2軸）と制約を添えて呼ぶ: 1600×900の1画面、
-   要素6個以内、文字は名詞句、色は2色+灰、フォントは`"Hiragino Sans", system-ui`。読者の既知物との
-   比喩を持つのはhero図だけで、他の図は構造だけを描く。出力HTMLを `figures/<slug>-<what>.html` に
-   保存する（共通styleは`figures/_base.css`。artifactとして公開しない）
-2. repo rootで `python3 -m http.server 8765 --bind 127.0.0.1 --directory figures &` を起動し、Playwright
-   MCPで `browser_resize` 1600×900 → `browser_navigate` `http://127.0.0.1:8765/<slug>-<what>.html`
-   → `browser_take_screenshot`（scale css、type png、filename `images/<slug>-<what>.png`。repo root
-   からの相対path）。`file:`直開きはブロックされる。撮ったら`Read`で目視し、はみ出し・重なり・
-   折り返しを直して撮り直す。`ls -la images/<slug>-*.png` で3MB以内を確かめ、`pkill -f "http.server 8765"`
-   でserverを止める
-3. 記事側は `![<図が示すこと1文>](/images/<slug>-<what>.png)` を、その節の発見が出そろった段落の後に
+1. skill: `mono-figure` で描いて撮る（mono-color の設計表 → SVG → PNG）。1600×900の1画面、文字は名詞句。
+   読者の既知物との比喩を持つのはhero図だけで、他の図は構造だけを描く。HTMLは`figures/<slug>-<what>.html`、
+   PNGは`images/<slug>-<what>.png`（artifactとして公開しない）
+2. 記事側は `![<図が示すこと1文>](/images/<slug>-<what>.png)` を、その節の発見が出そろった段落の後に
    置き、直後に「この図が示すこと」を1文書く。alt textは図の文字（数値・モデル名）を含める
-4. 本文を直したらHTMLを直して撮り直す。図の文字と本文の差分は`fact-checker`に渡す
+3. 本文を直したらHTMLを直して撮り直す。図の文字と本文の差分は`fact-checker`に渡す
 
-mermaidは流れ図でeli5図を補うときだけ。nodeは8個まで。生成画像（ChatGPT等）を使うときは
-同じ`images/`規約で、生成promptを`figures/<slug>-<what>.prompt.md`に残す。
+mermaidは流れ図でmono-figureの図を補うときだけ。nodeは8個まで。生成画像（mono-figure の Codex の道、ChatGPT等）を
+使うときは同じ`images/`規約で、生成promptを`figures/<slug>-<what>.prompt.md`に残す。
 
 ### Links
 

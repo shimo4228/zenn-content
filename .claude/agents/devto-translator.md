@@ -42,7 +42,7 @@ EN 稿が参照する図は英語版の PNG にする（`devto_crosspost.py` は
 
 1. EN 稿の `![...](/images/<name>.png)` を列挙する。`images/covers/` はカバーなので対象外
 2. 各図の原本 `figures/<name>.html` を `figures/<name>-en.html` に複製し、図の文字（SVG の `<text>`、`aria-label`、`<title>`）を Phase 1 と同じ term-lock で英訳する。数字・モデル名・コード識別子（`doing_tasks` など）は原本のまま。英語は日本語より長くなるので、枠からはみ出す文字は語を短くするか、座標と字の大きさを直す。図の構造（形・線・色・比例の高さ）は変えない
-3. zenn-format の Figures の手順 2 と同じ方法で撮る（`figures/` を http.server で配信 → Playwright で 1600×900 → `images/<name>-en.png`）。撮ったら `Read` で目視し、はみ出し・重なり・残った日本語を直して撮り直す。3MB 以内を確かめ、server を止める
+3. skill: `mono-figure` の SVG の道の手順 3〜4 と同じ方法で `images/<name>-en.png` に撮る。撮ったら `Read` で目視し、はみ出し・重なり・残った日本語を直して撮り直す。3MB 以内を確かめ、server を止める
 4. EN 稿の参照を `/images/<name>-en.png` に置き換える。alt text は英語版の図の文字に合わせる
 5. 原本の HTML が無い図（生成画像など）は英語版を作らず、Phase 7 の報告にファイル名を挙げて著者の判断に回す
 
