@@ -36,6 +36,16 @@ JP 記事パス（例: `articles/agent-causal-traceability-org-adoption.md`）
      記事以外のリンクはそのまま
 5. `articles-en/{slug}.md` に保存する
 
+### Phase 1.5: 図の英訳
+
+EN 稿が参照する図は英語版の PNG にする（`devto_crosspost.py` は `/images/` を raw URL に置き換えるだけで、図の中の日本語はそのまま Dev.to に出る）。
+
+1. EN 稿の `![...](/images/<name>.png)` を列挙する。`images/covers/` はカバーなので対象外
+2. 各図の原本 `figures/<name>.html` を `figures/<name>-en.html` に複製し、図の文字（SVG の `<text>`、`aria-label`、`<title>`）を Phase 1 と同じ term-lock で英訳する。数字・モデル名・コード識別子（`doing_tasks` など）は原本のまま。英語は日本語より長くなるので、枠からはみ出す文字は語を短くするか、座標と字の大きさを直す。図の構造（形・線・色・比例の高さ）は変えない
+3. zenn-format の Figures の手順 2 と同じ方法で撮る（`figures/` を http.server で配信 → Playwright で 1600×900 → `images/<name>-en.png`）。撮ったら `Read` で目視し、はみ出し・重なり・残った日本語を直して撮り直す。3MB 以内を確かめ、server を止める
+4. EN 稿の参照を `/images/<name>-en.png` に置き換える。alt text は英語版の図の文字に合わせる
+5. 原本の HTML が無い図（生成画像など）は英語版を作らず、Phase 7 の報告にファイル名を挙げて著者の判断に回す
+
 ### Phase 2: Dev.to タグ付け
 
 1. `scripts/devto_crosspost.py` の `resolve_devto_tags()` のフォールバック規則を参照する（override 優先、英数トピックのみ、最大4、idea は discuss 前置）
@@ -59,7 +69,7 @@ JP 記事パス（例: `articles/agent-causal-traceability-org-adoption.md`）
 翻訳完了後、以下を自己検証する。問題が見つかったらその場で修正する:
 
 1. **コードブロック完全性**: 原文と翻訳文のコードブロック数が一致するか
-2. **リンク完全性**: すべての URL・画像パスが保持されているか（Zenn 内リンクは Dev.to 版へ置換済みか）
+2. **リンク完全性**: すべての URL・画像パスが保持されているか（Zenn 内リンクは Dev.to 版へ置換済みか、図は `-en.png` を指しているか）
 3. **用語一貫性**: 用語集の用語が正しく使われているか
 4. **AI slop 検出**: `writing-ecosystem` の原則を使い、兆候があるときだけstyle diagnosticsを読む
 5. **技術的正確性**: 技術用語が正しく訳されているか
@@ -87,6 +97,7 @@ JP 記事パス（例: `articles/agent-causal-traceability-org-adoption.md`）
 - 翻訳ファイル: `articles-en/{slug}.md`
 - Dev.to タグ: 使用したタグ一覧
 - カバー画像: 生成/既存の状態
+- 図: 英語版を作った図と、原本 HTML が無く日本語のまま残った図
 - schedule.json: 更新内容
 - 次の手順: EN稿のtitle/review/quality-gate/著者GO → `publish-article`
 
