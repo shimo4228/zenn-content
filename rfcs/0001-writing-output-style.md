@@ -21,7 +21,7 @@ zenn-content 専用の出力スタイル `zenn-writing` を `.claude/output-styl
 
 - 置き場所: `.claude/output-styles/zenn-writing.md`。選択: `.claude/settings.json` の `"outputStyle": "zenn-writing"`（公開 repo で選択を共有する）
 - frontmatter に `keep-coding-instructions` は書かない（既定 `false`）
-- 本文は system prompt の節ではなく、リマインダー（`output_style_instructions`）として毎ターン届く。効くのはメインの会話と fork だけで、review agent には効かない
+- 本文は system prompt の節ではなく、リマインダー（`output_style_instructions`、555 字）として最初のターンに届く。2 ターン目以降に届くのは `output_style`（95 字、スタイル名の念押し）だけ（2.1.288 の probe、2026-10-03）。効くのはメインの会話と fork だけで、review agent には効かない
 - 記事の本文もメインの会話が起草するので、本文の冒頭で「記事・brief・訳文の文章は writing-principles と channel contract に従う」と範囲を切った
 - 項目は 7 つ。どれも過去セッションの著者の発言（複数 session）を根拠にし、外部の研究・編集実務で補った。選ぶ場面で推奨を添える項目と、中心命題では案より先に著者の考えを聞く項目を分けたのは、AI の提案が書き手の意見と構想を寄せる実証（Jakesch et al., CHI 2023 / Bhat et al., CHI 2026）と、履歴で Claude の案の枠が命題に残った例（6 session）による
 
