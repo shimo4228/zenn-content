@@ -100,7 +100,14 @@ npm run check:index
 note/Substack essayは`scripts/corpus.yml`へentryを追加してから生成する。READMEのreading pathは
 `scripts/reading_paths.yml`の著者判断であり、新記事を自動追加しない。
 
-### 7. Commit and push boundary
+### 7. Announcement handoff（人間が実行）
+
+公開を確認したら、新規公開1本につき1回、著者が自分のXで手動告知する。告知は内容を変えない
+（ADR-0001の配信レイヤー）。下書きが要れば`x-draft`を使ってよいが、投稿は著者が行う。同じ公開物の
+繰り返し告知、他者の場での宣伝投稿、自動投稿はしない（判断の正本: personal-branding ADR-0005 /
+authorship-strategy ADR-0007 第2項の注記）。完了報告に「告知: 著者待ち」と1行残す。
+
+### 8. Commit and push boundary
 
 commit / pushはユーザーの明示依頼がある場合だけ行う。記事・schedule・索引をcommitした場合は、
 未pushだとZenn予約とDev.to jobが反映されないため、必ずpush状態を確認してユーザーへ伝える。
