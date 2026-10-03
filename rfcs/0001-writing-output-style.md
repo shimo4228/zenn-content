@@ -1,5 +1,5 @@
 ---
-state: draft 2026-10-03
+state: in_progress 2026-10-03
 review-when: Claude Code の出力スタイルの仕様（`keep-coding-instructions` の既定値、project の `.claude/output-styles/`、`outputStyle` の設定の優先順位）が変わったとき。prose mod（下の Prior art）が system prompt の節も扱うようになったとき
 ---
 ## Summary
@@ -61,9 +61,26 @@ zenn-content 専用の出力スタイルを `.claude/output-styles/` に置き�
 
 ## Status
 
-draft 2026-10-03 — 起票のみ。prose mod の詳細設計で、system prompt の節は出力スタイルに任せると決まったことを受けて起票した。
+in_progress 2026-10-03 — 外す前後を計測した。`keep-coding-instructions: false` で system prompt から外れる節は無かった。
+作るかの判断待ち。
+
+計測（Claude Code 2.1.287、prose mod の probe、zenn-content で `claude -p` に短い 1 文。plan:
+[docs/plans/rfc1-replicated-lecun.md](../docs/plans/rfc1-replicated-lecun.md)）:
+
+- C0 は出力スタイルなし。C1 は probe 同梱の計測用スタイル（`keep-coding-instructions: false`）を `--settings` で選んだ。
+  plugin のスタイルは名前空間付き（`prose-probe:writing-probe`）でないと選ばれず、名前だけでは黙って Default になった
+- system prompt は trait `lean` で、節は C0・C1 とも同じ 10 節。変わったのは本体（`lean_body`）の 1 行目だけ:
+  「You are an agent working with the user toward their goals…」が「You are an interactive agent that helps users
+  according to your "Output Style"…」になった（1,603 → 1,641 字）
+- コーディング向けの文は C1 にも残った: `communication` 節の「Write code that reads like the surrounding code…」と、本体の
+  「Reference code as `file_path:line_number`」。docs が例に挙げる、変更範囲・コメント・検証の指示に当たる節は、lean では
+  C0 にもともと無い
+- スタイルの本文はリマインダー（`output_style` 108 字、`output_style_instructions` 64 字）として足された。CLAUDE.md と rules
+  （37,495 字）、skill 一覧などのリマインダーは変わらなかった
+
+この RFC の Motivation（コーディング用の指示が執筆セッションに入ったまま）は、2.1.287 の lean な system prompt では
+当てはまらない。出力スタイルにできるのは、冒頭の 1 行を「Output Style に従う」に替え、本文を足すことだけ。
 
 ## Next action
 
-- 外す前後の system prompt を記録して比べ、何が外れるかを確かめる
-- その結果を見て、スタイルの本文と置き場所を決める
+- 著者が判断する: 役割の宣言を足すためだけにスタイルを作るか、`withdrawn` で閉じるか
