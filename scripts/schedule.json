@@ -1013,7 +1013,7 @@
     },
     {
       "file": "articles-en/harness-scope-writing-harness.md",
-      "devto": null,
+      "devto": "https://dev.to/shimo4228/turning-claude-code-into-a-writing-harness-with-claude-mods-and-an-output-style-1a73",
       "devto_tags": [
         "claudecode",
         "contextengineering",

@@ -10,7 +10,7 @@ Japanese originals on Zenn; English editions on Dev.to, or as source in `article
 ### 2026-10
 
 - **2026-10-03** [Claude ModsとOutput Styleで、Claude Codeを執筆用のハーネスにする](https://zenn.dev/shimo4228/articles/harness-scope-writing-harness)
-  EN: — · `claudecode` `claude` `contextengineering` `プラグイン` `執筆`
+  EN: [Turning Claude Code into a Writing Harness with Claude Mods and an Output Style](https://dev.to/shimo4228/turning-claude-code-into-a-writing-harness-with-claude-mods-and-an-output-style-1a73) · `claudecode` `claude` `contextengineering` `プラグイン` `執筆`
 
 ### 2026-09
 
