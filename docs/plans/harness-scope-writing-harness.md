@@ -26,7 +26,7 @@ Central thesis: Claude Code で記事を書く利点は、skill・rule・渡す�
 Entry bridge: 執筆 repo（zenn-content）で Claude Code を開くと、Claude に見える skill 一覧は 101 件 26,551 字、agent 一覧は
 38 型 18,988 字。そのうちこの repo 自身のものは 7 件と 7 型で、残りはコード用に育てた global のハーネスだった（C1〜C3）。
 
-Figure plan: 内容 GO の後に埋める
+Figure plan: hero（導入の後）→ 階層: Mod と出力スタイルの 2 経路 / 「外すつもりのコーディング指示」節 → 対比: 世代別の system prompt の節（高さは字数に比例）/ 「会話の規約」節 → 流れ: ターンごとに新しく差し込まれるリマインダー。比較表の節は表が数字を持つので図なし。描き方は artifact-diagramming の SVG に、mono-color（yanliudesign/mono-color-skill）の紙・インク・書体を当てた。インクは Cobalt の一色刷り（クールグレー地、明朝見出し）で、二色の 3 案を見た著者の明示の選択
 
 Causal spine:
 1. 観察 — Claude Code で書く利点はハーネスを自由に組めること。だが執筆 repo でも Claude の目に入るのはコード用の global（C1〜C3）

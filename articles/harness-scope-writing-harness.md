@@ -14,6 +14,10 @@ Claude Codeで記事を書くと、claude.aiのチャットとは違う良さが
 
 この記事では、Claudeに見せるものをModで選び、Claudeの話し方を出力スタイルで決める、という2つの組み方と、作る途中で測って分かったことを書きます。計測はClaude Code 2.1.287と2.1.288で、`claude -p`を使いました。
 
+![Claudeに渡るスキル98件・エージェント37型・指示ファイル21件（リポジトリ分を含む総数）は、Modのprofile zenn-writingで49件・14型・19件になる。リポジトリのものはModでも外れない。出力スタイル zenn-writingは1ターン目に会話の規約の本文を差し込み、2ターン目からは名前の念押しだけを差し込む](/images/harness-scope-writing-harness-hero.png)
+
+ModはClaudeに見えるものを選び、出力スタイルはClaudeの話し方を決めます。2つは別の経路でClaudeに届きます。
+
 ## 設定でいくつか外しても、一覧はほとんど縮みませんでした
 
 Claude Codeには、リポジトリの`.claude/settings.json`で外す設定があります。2.1.287では、`skillOverrides`（スキル）、`enabledPlugins`（プラグイン）、`claudeMdExcludes`（指示ファイル）がリポジトリ単位で効きました。
@@ -99,13 +103,17 @@ Modを作ろうと決めたとき、外したかったものはもう1つあり�
 | Sonnet 5.5 / Opus 5.5 | 6,557字 | なし |
 | Fable 5.1 | 12,621字 | （未計測。`doing_tasks`は最初から無い） |
 
-`doing_tasks`は、依頼をソフトウェア開発として解釈する、既存のファイルの編集を優先する、といった指示の節です。Claude 5系のsystem promptには、この節が最初からありません。出力スタイルを選んで変わるのは、本体の1行目だけでした。
+`doing_tasks`は、依頼をソフトウェア開発として解釈する、既存のファイルの編集を優先する、といった指示の節です。Claude 5系のsystem promptには、この節が最初からありません。Sonnet 5.5とOpus 5.5では、出力スタイルを選んで変わるのは本体の1行目だけでした。
 
 ```text
 You are an agent working with the user toward their goals, using your own judgment along the way.
 ```
 
 これが「…according to your "Output Style"…」に替わります。Claude 5系では、system promptに外すものはありませんでした。外すものが残っていたのは、前の節で扱ったグローバルのハーネスの方でした。
+
+![system promptの節の合計は、Claude 4系（Haiku 4.5 / Opus 4.6 / Sonnet 4.6）で28,108字、Sonnet 5.5 / Opus 5.5は6,557字、Fable 5.1は12,621字。doing_tasks 3,319字は4系にあり、5系には最初から無い。Sonnet 5.5 / Opus 5.5で変わるのは1行目だけ](/images/harness-scope-writing-harness-generations.png)
+
+高さは節の合計字数に比例しています。`doing_tasks`があるのは、計測したClaude 4系の3モデルのsystem promptだけです（外れることはHaiku 4.5で確認しました）。
 
 ## 出力スタイルには、私との会話の規約を書きました
 
@@ -134,6 +142,10 @@ You are an agent working with the user toward their goals, using your own judgme
 置き場所は`.claude/output-styles/zenn-writing.md`で、`.claude/settings.json`の`"outputStyle": "zenn-writing"`で選びます。リポジトリで選ぶので、このリポジトリを開けば毎回このスタイルになります。スクリプトの修正のようなコーディング作業では、`.claude/settings.local.json`に`"outputStyle": "default"`を置けば外れ、1行目も元に戻ります。
 
 スタイルの本文は、system promptではなく、会話の中に差し込まれるリマインダーとして届きます。本文のリマインダーが差し込まれるのは最初のターンだけでした。2ターン目から新しく差し込まれるのは、スタイル名を念押しする95字の短い文だけです。
+
+![1ターン目には出力スタイルの本文（会話の規約7項目）と名前の念押し95字が差し込まれ、2ターン目には名前の念押し95字だけが差し込まれる](/images/harness-scope-writing-harness-turns.png)
+
+高さは字数に比例しています。会話の規約の本文が新しく差し込まれるのは、1ターン目だけです。
 
 ## 見せるものと話し方を、別々に決める
 

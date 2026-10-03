@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8"><title>hero</title>
+<style>
+html,body{margin:0;width:1600px;height:900px;background:#E9E9E5;overflow:hidden}
+svg{display:block;font-family:"Hiragino Sans","Hiragino Kaku Gothic ProN",system-ui,sans-serif}
+</style></head><body>
+<svg viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-label="Claude に渡るスキル・エージェント・指示ファイル（数はリポジトリ分を含む総数）は Mod（profile zenn-writing）で選ばれ、スキル98件が49件、エージェント37型が14型、指示ファイル21件が19件になる。リポジトリのものは Mod でも外れない。外したものは Claude に届かない。出力スタイル zenn-writing は1ターン目に会話の規約の本文を差し込み、2ターン目からは名前の念押しだけを差し込む。">
+  <defs>
+    <marker id="ah-ink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#2148B8"/></marker>
+    <marker id="ah-acc" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#2148B8"/></marker>
+    <marker id="ah-gray" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#2148B8"/></marker>
+  </defs>
+
+  <!-- title -->
+  <text x="72" y="70" font-size="18" fill="#2148B8" font-family="Menlo, monospace" letter-spacing="2">FIG.1  harness-scope × output style</text><text x="72" y="122" font-size="48" font-weight="600" fill="#2148B8" font-family="Hiragino Mincho ProN, serif">見せるものと話し方を、別の場所で決める</text>
+
+  <!-- global harness -->
+  <rect x="72" y="170" width="420" height="370" rx="4" fill="none" stroke="#2148B8" stroke-width="3"/>
+  <text x="102" y="216" font-size="30" font-weight="700" fill="#2148B8">グローバルのハーネス</text>
+  <text x="102" y="250" font-size="22" fill="#2148B8">コード用に育てたもの</text>
+  <g font-size="24" fill="#2148B8">
+    <line x1="102" y1="272" x2="462" y2="272" stroke="#2148B8" stroke-width="1" opacity=".5"/><text x="122" y="303">自作スキル・エージェント</text>
+    <line x1="102" y1="326" x2="462" y2="326" stroke="#2148B8" stroke-width="1" opacity=".5"/><text x="122" y="357">プラグイン</text>
+    <line x1="102" y1="380" x2="462" y2="380" stroke="#2148B8" stroke-width="1" opacity=".5"/><text x="122" y="411">ビルトイン</text>
+    <line x1="102" y1="434" x2="462" y2="434" stroke="#2148B8" stroke-width="1" opacity=".5"/><text x="122" y="465">claude.ai から同期</text>
+    <line x1="102" y1="488" x2="462" y2="488" stroke="#2148B8" stroke-width="1" opacity=".5"/><text x="122" y="519">rules・CLAUDE.md</text>
+  </g>
+
+  <!-- lanes into the Mod gate -->
+  <g stroke="#2148B8" stroke-width="5" fill="none">
+    <line x1="492" y1="300" x2="730" y2="300"/>
+    <line x1="492" y1="370" x2="730" y2="370"/>
+    <line x1="492" y1="440" x2="730" y2="440"/>
+  </g>
+  <g font-size="22" fill="#2148B8" text-anchor="middle">
+    <text x="611" y="288">スキル 98件</text>
+    <text x="611" y="358">エージェント 37型</text>
+    <text x="611" y="428">指示ファイル 21件</text>
+  </g>
+
+  <!-- Mod gate -->
+  <rect x="730" y="262" width="22" height="216" rx="6" fill="#2148B8"/>
+  <text x="741" y="214" font-size="28" font-weight="700" fill="#2148B8" text-anchor="middle">Mod</text>
+  <text x="741" y="246" font-size="20" fill="#2148B8" text-anchor="middle">profile zenn-writing</text>
+
+  <!-- lanes out of the gate -->
+  <g stroke="#2148B8" stroke-width="5" fill="none" marker-end="url(#ah-ink)">
+    <line x1="752" y1="300" x2="1166" y2="300"/>
+    <line x1="752" y1="370" x2="1166" y2="370"/>
+    <line x1="752" y1="440" x2="1166" y2="440"/>
+  </g>
+  <g font-size="22" fill="#2148B8" text-anchor="middle" font-weight="700">
+    <text x="964" y="288">スキル 49件</text>
+    <text x="964" y="358">エージェント 14型</text>
+    <text x="964" y="428">指示ファイル 19件</text>
+  </g>
+
+  <!-- removed -->
+  <path d="M741,478 L741,516 L770,516" stroke="#2148B8" stroke-opacity=".45" stroke-width="4" stroke-dasharray="10 8" fill="none" marker-end="url(#ah-gray)"/>
+  <text x="782" y="524" font-size="22" font-weight="700" fill="#2148B8">外す</text>
+  <text x="838" y="524" font-size="22" fill="#2148B8">スキル 49件・エージェント 23型</text>
+  <text x="838" y="554" font-size="22" fill="#2148B8">testing.md・coding-style.md</text>
+
+  <!-- repo's own -->
+  <rect x="72" y="584" width="420" height="96" rx="4" fill="none" stroke="#2148B8" stroke-width="3"/>
+  <text x="102" y="624" font-size="28" font-weight="700" fill="#2148B8">zenn-content のもの</text>
+  <text x="102" y="660" font-size="22" fill="#2148B8">スキル・エージェント・CLAUDE.md</text>
+  <line x1="492" y1="632" x2="1166" y2="632" stroke="#2148B8" stroke-width="5" marker-end="url(#ah-ink)"/>
+  <text x="834" y="618" font-size="22" fill="#2148B8" text-anchor="middle">Mod でも外れない</text>
+
+  <!-- output style -->
+  <rect x="72" y="736" width="420" height="104" rx="4" fill="#ADB9D7" stroke="#2148B8" stroke-width="3"/>
+  <text x="102" y="778" font-size="26" font-weight="700" fill="#2148B8">出力スタイル zenn-writing</text>
+  <text x="102" y="816" font-size="22" fill="#2148B8">会話の規約 7項目</text>
+  <line x1="492" y1="788" x2="1166" y2="788" stroke="#2148B8" stroke-width="5" marker-end="url(#ah-acc)"/>
+  <text x="834" y="774" font-size="22" fill="#2148B8" text-anchor="middle" font-weight="700">1ターン目: 規約の本文を差し込む</text>
+  <text x="834" y="820" font-size="22" fill="#2148B8" text-anchor="middle">2ターン目から: 名前の念押しだけ</text>
+
+  <!-- Claude -->
+  <rect x="1186" y="170" width="342" height="682" rx="4" fill="#2148B8"/>
+  <text x="1216" y="210" font-size="30" font-weight="700" fill="#E9E9E5">Claude</text>
+  <text x="1338" y="210" font-size="22" fill="#E9E9E5">執筆のセッション</text>
+  <rect x="1206" y="236" width="302" height="436" rx="2" fill="none" stroke="#E9E9E5" stroke-width="1.5" stroke-dasharray="2 6"/>
+  <text x="1226" y="266" font-size="20" font-weight="700" fill="#E9E9E5" letter-spacing="1">見えるもの</text>
+  <g font-size="24" fill="#E9E9E5">
+    <text x="1226" y="309">スキル一覧</text>
+    <text x="1226" y="379">エージェント一覧</text>
+    <text x="1226" y="449">指示ファイル</text>
+    <text x="1226" y="641">リポジトリのもの</text>
+  </g>
+  <rect x="1206" y="740" width="302" height="92" rx="2" fill="#E9E9E5"/>
+  <text x="1226" y="770" font-size="20" font-weight="700" fill="#2148B8" letter-spacing="1">話し方</text>
+  <text x="1226" y="804" font-size="24" fill="#2148B8">会話の規約</text>
+<path d="M1186,291 L1200,300 L1186,309 z" fill="#E9E9E5"/><path d="M1186,361 L1200,370 L1186,379 z" fill="#E9E9E5"/><path d="M1186,431 L1200,440 L1186,449 z" fill="#E9E9E5"/><path d="M1186,623 L1200,632 L1186,641 z" fill="#E9E9E5"/><path d="M1186,779 L1200,788 L1186,797 z" fill="#E9E9E5"/><text x="1226" y="524" font-size="22" fill="#E9E9E5" opacity=".62">外したものは届かない</text><text x="611" y="486" font-size="18" fill="#2148B8" text-anchor="middle" font-family="Menlo, monospace" opacity=".75">数はリポジトリ分を含む</text></svg>
+</body></html>
