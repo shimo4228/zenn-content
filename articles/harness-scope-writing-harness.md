@@ -3,7 +3,8 @@ title: "Claude ModsとOutput Styleで、Claude Codeを執筆用のハーネス�
 emoji: "✍️"
 type: "tech"
 topics: ["claudecode", "claude", "contextengineering", "プラグイン", "執筆"]
-published: false
+published: true
+published_at: 2026-10-03 17:31
 ---
 
 Claude Codeで記事を書くと、claude.aiのチャットとは違う良さがあります。スキルやルールといったハーネスを自分で組めますし、Claudeにどんなコンテキストを渡すかもかなり自由に決められます。私はこのリポジトリ（zenn-content）に、執筆用のスキルとレビュー用のエージェントを置いて記事を書いています。

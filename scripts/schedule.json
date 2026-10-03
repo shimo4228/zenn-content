@@ -1006,6 +1006,10 @@
         "agenticcoding"
       ],
       "notes": "EN translation of 「これ意味あるかな？」Claude Codeに入れたJevのプラグインを1週間で外すまで（即時投稿）"
+    },
+    {
+      "file": "articles/harness-scope-writing-harness.md",
+      "notes": "Claude Mods（harness-scope）と出力スタイル zenn-writing で執筆用のハーネスを組む。即時公開"
     }
   ]
 }
