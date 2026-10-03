@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>hero</title>
+<style>
+html,body{margin:0;width:1600px;height:900px;background:#E9E9E5;overflow:hidden}
+svg{display:block;font-family:"Hiragino Sans","Hiragino Kaku Gothic ProN",system-ui,sans-serif}
+</style></head><body>
+<svg viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-label="The skills, agents, and instruction files passed to Claude (counts include the repository's own) are chosen by the Mod (profile zenn-writing): 98 skills become 49, 37 agent types become 14, and 21 instruction files become 19. The repository's own items are kept even with the Mod. Removed items never reach Claude. Output style zenn-writing inserts the text of the conversation rules on turn 1, and from turn 2 inserts only a reminder of its name.">
+  <defs>
+    <marker id="ah-ink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#2148B8"/></marker>
+    <marker id="ah-acc" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#2148B8"/></marker>
+    <marker id="ah-gray" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#2148B8"/></marker>
+  </defs>
+
+  <!-- title -->
+  <text x="72" y="70" font-size="18" fill="#2148B8" font-family="Menlo, monospace" letter-spacing="2">FIG.1  harness-scope × output style</text><text x="72" y="165" font-size="92" font-weight="600" fill="#2148B8" font-family="Hiragino Mincho ProN, serif">What Claude sees, how it talks,</text><text x="72" y="265" font-size="92" font-weight="600" fill="#2148B8" font-family="Hiragino Mincho ProN, serif">decided in separate places</text><g transform="translate(112.0,153.8) scale(0.86)">
+
+  <!-- global harness -->
+  <rect x="72" y="170" width="420" height="370" rx="4" fill="none" stroke="#2148B8" stroke-width="3"/>
+  <text x="102" y="216" font-size="30" font-weight="700" fill="#2148B8">Global harness</text>
+  <text x="102" y="250" font-size="22" fill="#2148B8">grown for code</text>
+  <g font-size="24" fill="#2148B8">
+    <line x1="102" y1="272" x2="462" y2="272" stroke="#2148B8" stroke-width="1" opacity=".5"/><text x="122" y="303">My own skills &amp; agents</text>
+    <line x1="102" y1="326" x2="462" y2="326" stroke="#2148B8" stroke-width="1" opacity=".5"/><text x="122" y="357">Plugins</text>
+    <line x1="102" y1="380" x2="462" y2="380" stroke="#2148B8" stroke-width="1" opacity=".5"/><text x="122" y="411">Built-ins</text>
+    <line x1="102" y1="434" x2="462" y2="434" stroke="#2148B8" stroke-width="1" opacity=".5"/><text x="122" y="465">Synced from claude.ai</text>
+    <line x1="102" y1="488" x2="462" y2="488" stroke="#2148B8" stroke-width="1" opacity=".5"/><text x="122" y="519">rules &amp; CLAUDE.md</text>
+  </g>
+
+  <!-- lanes into the Mod gate -->
+  <g stroke="#2148B8" stroke-width="5" fill="none">
+    <line x1="492" y1="300" x2="730" y2="300"/>
+    <line x1="492" y1="370" x2="730" y2="370"/>
+    <line x1="492" y1="440" x2="730" y2="440"/>
+  </g>
+  <g font-size="22" fill="#2148B8" text-anchor="middle">
+    <text x="611" y="288">98 skills</text>
+    <text x="611" y="358">37 agent types</text>
+    <text x="611" y="428">21 instruction files</text>
+  </g>
+
+  <!-- Mod gate -->
+  <rect x="730" y="262" width="22" height="216" rx="6" fill="#2148B8"/>
+  <text x="741" y="214" font-size="28" font-weight="700" fill="#2148B8" text-anchor="middle">Mod</text>
+  <text x="741" y="246" font-size="20" fill="#2148B8" text-anchor="middle">profile zenn-writing</text>
+
+  <!-- lanes out of the gate -->
+  <g stroke="#2148B8" stroke-width="5" fill="none" marker-end="url(#ah-ink)">
+    <line x1="752" y1="300" x2="1166" y2="300"/>
+    <line x1="752" y1="370" x2="1166" y2="370"/>
+    <line x1="752" y1="440" x2="1166" y2="440"/>
+  </g>
+  <g font-size="22" fill="#2148B8" text-anchor="middle" font-weight="700">
+    <text x="964" y="288">49 skills</text>
+    <text x="964" y="358">14 agent types</text>
+    <text x="964" y="428">19 instruction files</text>
+  </g>
+
+  <!-- removed -->
+  <path d="M741,478 L741,516 L770,516" stroke="#2148B8" stroke-opacity=".45" stroke-width="4" stroke-dasharray="10 8" fill="none" marker-end="url(#ah-gray)"/>
+  <text x="782" y="524" font-size="22" font-weight="700" fill="#2148B8">Removed</text>
+  <text x="905" y="524" font-size="22" fill="#2148B8">49 skills, 23 agent types</text>
+  <text x="782" y="554" font-size="22" fill="#2148B8">testing.md, coding-style.md</text>
+
+  <!-- repo's own -->
+  <rect x="72" y="584" width="420" height="96" rx="4" fill="none" stroke="#2148B8" stroke-width="3"/>
+  <text x="102" y="624" font-size="28" font-weight="700" fill="#2148B8">zenn-content's own</text>
+  <text x="102" y="660" font-size="22" fill="#2148B8">skills, agents, CLAUDE.md</text>
+  <line x1="492" y1="632" x2="1166" y2="632" stroke="#2148B8" stroke-width="5" marker-end="url(#ah-ink)"/>
+  <text x="834" y="618" font-size="22" fill="#2148B8" text-anchor="middle">kept even with the Mod</text>
+
+  <!-- output style -->
+  <rect x="72" y="736" width="420" height="104" rx="4" fill="#ADB9D7" stroke="#2148B8" stroke-width="3"/>
+  <text x="102" y="778" font-size="26" font-weight="700" fill="#2148B8">Output style zenn-writing</text>
+  <text x="102" y="816" font-size="22" fill="#2148B8">7 conversation rules</text>
+  <line x1="492" y1="788" x2="1166" y2="788" stroke="#2148B8" stroke-width="5" marker-end="url(#ah-acc)"/>
+  <text x="834" y="774" font-size="22" fill="#2148B8" text-anchor="middle" font-weight="700">Turn 1: inserts the rules' full text</text>
+  <text x="834" y="820" font-size="22" fill="#2148B8" text-anchor="middle">From turn 2: only a name reminder</text>
+
+  <!-- Claude -->
+  <rect x="1186" y="170" width="342" height="682" rx="4" fill="#2148B8"/>
+  <text x="1216" y="210" font-size="30" font-weight="700" fill="#E9E9E5">Claude</text>
+  <text x="1338" y="210" font-size="22" fill="#E9E9E5">writing session</text>
+  <rect x="1206" y="236" width="302" height="436" rx="2" fill="none" stroke="#E9E9E5" stroke-width="1.5" stroke-dasharray="2 6"/>
+  <text x="1226" y="266" font-size="20" font-weight="700" fill="#E9E9E5" letter-spacing="1">What it sees</text>
+  <g font-size="24" fill="#E9E9E5">
+    <text x="1226" y="309">Skill listing</text>
+    <text x="1226" y="379">Agent listing</text>
+    <text x="1226" y="449">Instruction files</text>
+    <text x="1226" y="641">Repository's own</text>
+  </g>
+  <rect x="1206" y="740" width="302" height="92" rx="2" fill="#E9E9E5"/>
+  <text x="1226" y="770" font-size="20" font-weight="700" fill="#2148B8" letter-spacing="1">How it talks</text>
+  <text x="1226" y="804" font-size="24" fill="#2148B8">Conversation rules</text>
+<path d="M1186,291 L1200,300 L1186,309 z" fill="#E9E9E5"/><path d="M1186,361 L1200,370 L1186,379 z" fill="#E9E9E5"/><path d="M1186,431 L1200,440 L1186,449 z" fill="#E9E9E5"/><path d="M1186,623 L1200,632 L1186,641 z" fill="#E9E9E5"/><path d="M1186,779 L1200,788 L1186,797 z" fill="#E9E9E5"/><text x="1226" y="524" font-size="22" fill="#E9E9E5" opacity=".62">Removed: never sent</text><text x="611" y="486" font-size="18" fill="#2148B8" text-anchor="middle" font-family="Menlo, monospace" opacity=".75">incl. repo's own</text></g></svg>
+</body></html>
