@@ -61,26 +61,30 @@ zenn-content 専用の出力スタイルを `.claude/output-styles/` に置き�
 
 ## Status
 
-in_progress 2026-10-03 — 外す前後を計測した。`keep-coding-instructions: false` で system prompt から外れる節は無かった。
-作るかの判断待ち。
+in_progress 2026-10-03 — 外す前後を計測した。外れる量はモデルで決まる。Claude 5 系では外れる節が無く、Haiku 4.5 では
+`doing_tasks` が外れた。作るかの判断待ち。
 
 計測（Claude Code 2.1.287、prose mod の probe、zenn-content で `claude -p` に短い 1 文。plan:
-[docs/plans/rfc1-replicated-lecun.md](../docs/plans/rfc1-replicated-lecun.md)）:
+[docs/plans/rfc1-replicated-lecun.md](../docs/plans/rfc1-replicated-lecun.md)）。C0 は出力スタイルなし、C1 は probe 同梱の
+計測用スタイル（`keep-coding-instructions: false`）を `--settings` で選んだ。
 
-- C0 は出力スタイルなし。C1 は probe 同梱の計測用スタイル（`keep-coding-instructions: false`）を `--settings` で選んだ。
-  plugin のスタイルは名前空間付き（`prose-probe:writing-probe`）でないと選ばれず、名前だけでは黙って Default になった
-- system prompt は trait `lean` で、節は C0・C1 とも同じ 10 節。変わったのは本体（`lean_body`）の 1 行目だけ:
-  「You are an agent working with the user toward their goals…」が「You are an interactive agent that helps users
-  according to your "Output Style"…」になった（1,603 → 1,641 字）
-- コーディング向けの文は C1 にも残った: `communication` 節の「Write code that reads like the surrounding code…」と、本体の
-  「Reference code as `file_path:line_number`」。docs が例に挙げる、変更範囲・コメント・検証の指示に当たる節は、lean では
-  C0 にもともと無い
-- スタイルの本文はリマインダー（`output_style` 108 字、`output_style_instructions` 64 字）として足された。CLAUDE.md と rules
-  （37,495 字）、skill 一覧などのリマインダーは変わらなかった
+| モデル | trait | C0 の節の合計 | C1 で外れた節 |
+|---|---|---|---|
+| Haiku 4.5 | `lean` なし | 28,108 字 | `doing_tasks` 3,319 字 |
+| Sonnet 5.5 | `lean` | 6,557 字 | なし |
+| Opus 5.5 | `lean` | 6,557 字 | なし |
 
-この RFC の Motivation（コーディング用の指示が執筆セッションに入ったまま）は、2.1.287 の lean な system prompt では
-当てはまらない。出力スタイルにできるのは、冒頭の 1 行を「Output Style に従う」に替え、本文を足すことだけ。
+- `doing_tasks` は docs の言う「コーディング用の指示」の本体。依頼をソフトウェア開発として解釈する、既存ファイルの編集を
+  優先する、頼まれていない機能や抽象を足さない、など
+- Claude 5 系の system prompt（trait `lean`）には `doing_tasks` がもともと無い。C1 で変わったのは本体（`lean_body`）の
+  1 行目だけ（「You are an agent working with the user toward their goals…」→「You are an interactive agent that helps users
+  according to your "Output Style"…」）。「Write code that reads like the surrounding code…」（`communication` 節）と
+  「Reference code as `file_path:line_number`」は残った
+- どのモデルでも、スタイルの本文は system prompt の節ではなくリマインダー（`output_style`・`output_style_instructions`）として
+  足された。CLAUDE.md と rules、skill 一覧などのリマインダーは変わらなかった
+- plugin のスタイルは名前空間付き（`prose-probe:writing-probe`）でないと選ばれず、名前だけでは黙って Default になった
 
 ## Next action
 
-- 著者が判断する: 役割の宣言を足すためだけにスタイルを作るか、`withdrawn` で閉じるか
+- 著者が判断する: この repo を主に Claude 5 系で使う限り、スタイルで外れるのは冒頭の 1 行だけ。Haiku など lean でない
+  モデルで執筆する場面があるかで、作る価値が変わる
