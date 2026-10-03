@@ -1010,6 +1010,17 @@
     {
       "file": "articles/harness-scope-writing-harness.md",
       "notes": "Claude Mods（harness-scope）と出力スタイル zenn-writing で執筆用のハーネスを組む。即時公開"
+    },
+    {
+      "file": "articles-en/harness-scope-writing-harness.md",
+      "devto": null,
+      "devto_tags": [
+        "claudecode",
+        "contextengineering",
+        "plugins",
+        "writing"
+      ],
+      "notes": "EN translation of Claude ModsとOutput Styleで、Claude Codeを執筆用のハーネスにする（即時投稿予定）"
     }
   ]
 }
