@@ -36,7 +36,7 @@ cd scripts && uv run python metrics_snapshot.py
 
 `scripts/metrics/snapshots.jsonl` に追記される（Zenn: liked/bookmarked/comments、Dev.to: reactions/comments/views、フォロワー総数）。API 欠損は fail-soft — 片系が死んでいても続行し、警告のみ。
 
-続けて、ログイン済みの Chrome（Claude in Chrome）でダッシュボードを読み、同じファイルへ追記する。閲覧数は公開 API に無く、ここでしか取れない。
+続けて、Claude アプリの組み込みブラウザ（`mcp__Claude_Browser__*`）でダッシュボードを読み、同じファイルへ追記する。Chrome と拡張の起動に依存しないので、アプリが動いていれば読める。閲覧数は公開 API に無く、ここでしか取れない。
 
 | source | 画面 | 読む値 |
 |---|---|---|
@@ -48,10 +48,10 @@ cd scripts && uv run python metrics_snapshot.py
   - `{"ts", "source": "note_dash", "slug", "note_url", "status", "impressions", "pv", "likes", "comments", "published_at"}`
   - アカウント合計は `"type": "account"` と `"window"` を付けた 1 行
 - `slug` は repo の slug。Zenn は表のリンク `zenn.dev/link/articles/<slug>`、note は `scripts/corpus.yml` の URL またはタイトル一致で引く。引けない行は `slug` を空にして `title` を残す
-- 数字はスクリーンショットから読まず、javascript_tool で DOM から取る。Zenn は `a[href*="/link/articles/"]`、note は `a[href*="/shimo4228/n/"]` ごとに、リンクを含む行の innerText を取り出して数値化し、件数が画面の記事数と一致するか確かめる
+- 数字はスクリーンショットから読まず、javascript_tool で DOM から取る。Zenn は `a[href*="/link/articles/"]`、note は `a[href*="/shimo4228/n/"]` ごとに、リンクを含む行の innerText を取り出して数値化し、件数が画面の記事数と一致するか確かめる。行の範囲は公開日（Zenn は「YYYY年M月D日に公開」）を目印に親要素をたどる — 題に「回」を含む記事があり、「回」を目印にすると数値の手前で止まる
 - `-` 表示は 0 として記録する
-- note のダッシュボードは background tab だと読み込みが止まる。screenshot で前面化してから読む
-- どちらかにログインしていなければ、その source を飛ばして報告する（ログインは著者が行う）
+- 組み込みブラウザでは、裏のタブ（`visibilityState: hidden`）でも note の記事表が読み込まれる（2026-10-05 確認）。Chrome の裏タブでは止まった
+- どちらかにログインしていなければ、その source を飛ばして報告する（ログインは著者が行う。Zenn の Google ログインは組み込みブラウザでパスキーが使えないので、別の確認方法を選ぶ）
 
 ### Step 2: 正規化と tier 算出
 
