@@ -183,17 +183,18 @@ def _message_to_blockquote(m: re.Match[str]) -> str:
     return "\n".join(f"> {line}" for line in lines)
 
 
-def _details_to_html(m: re.Match[str]) -> str:
+def _details_to_liquid(m: re.Match[str]) -> str:
+    # Dev.to's sanitizer drops raw <details>/<summary>; only the liquid tag renders folded.
     summary = m.group(1).strip()
     body = m.group(2).strip()
-    return f"<details><summary>{summary}</summary>\n\n{body}\n\n</details>"
+    return f"{{% details {summary} %}}\n\n{body}\n\n{{% enddetails %}}"
 
 
 def strip_zenn_syntax(content: str) -> str:
-    """Replace Zenn-specific syntax with standard Markdown / HTML equivalents."""
+    """Replace Zenn-specific syntax with standard Markdown / Dev.to liquid equivalents."""
     content = _ZENN_IMAGE_RE.sub(rf"![\1]({GITHUB_RAW_BASE}/\2)", content)
     content = _ZENN_MESSAGE_RE.sub(_message_to_blockquote, content)
-    content = _ZENN_DETAILS_RE.sub(_details_to_html, content)
+    content = _ZENN_DETAILS_RE.sub(_details_to_liquid, content)
     return content
 
 

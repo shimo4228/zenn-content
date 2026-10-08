@@ -33,7 +33,7 @@ Consolidated 2026-07 from five modules (`publish.py` / `_schedule_utils.py` /
   URL back to schedule.json → `remove_agent()` (one-shot self-cleanup).
 - `parse_zenn_article()` / `strip_zenn_syntax()` / `resolve_devto_tags()` —
   Zenn markdown → Dev.to payload (`:::message`→blockquote, `:::details`→
-  `<details>`, `/images/…`→GitHub raw URL). The proven transform core.
+  `{% details %}` liquid tag, `/images/…`→GitHub raw URL). The proven transform core.
 - `render_plist()` — uses `sys.executable` / `__file__`, so **no username is
   hard-coded**; the rendered file lives only in the user's untracked LaunchAgents.
 

@@ -79,10 +79,12 @@ class TestStripZennSyntax:
     def test_message_becomes_blockquote(self) -> None:
         assert dc.strip_zenn_syntax(":::message\na\nb\n:::") == "> a\n> b"
 
-    def test_details_becomes_html(self) -> None:
+    def test_details_becomes_liquid_tag(self) -> None:
+        # Dev.to strips raw <details>/<summary> (not in RENDERED_MARKDOWN_SCRUBBER);
+        # only the {% details %} liquid tag renders folded.
         out = dc.strip_zenn_syntax(":::details Title\ninner\n:::")
-        assert out.startswith("<details><summary>Title</summary>")
-        assert "inner" in out
+        assert out == "{% details Title %}\n\ninner\n\n{% enddetails %}"
+        assert "<details>" not in out
 
 
 class TestResolveDevtoTags:
