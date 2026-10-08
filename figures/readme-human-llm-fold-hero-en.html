@@ -1,0 +1,112 @@
+<!doctype html>
+<!--
+manifest (mono-figure):
+subject: 1枚のREADMEの以前と今。見える本文に人間向けとLLM向けが混ざる形 → 見える本文は人間、末尾の<details>はLLM
+intent: editorial information（hero、対比）
+exact_text: 英訳稿 articles-en/readme-human-llm-fold.md から写す
+text_language: en（Dev.to 版。原本は readme-human-llm-fold-hero.html）
+representation: abstract symbol extraction
+ratio: 16:9（1600×900、zenn-format Figures）
+substrate: cool_gray #E9E9E5
+mode: pure one-ink（濃度差の淡色 #ADB9D7 は同じ版の網）
+palette: cobalt
+inks: Cobalt #2148B8
+plate_roles: 構造・文字・矢印をすべて 1 版で
+layout: composition_ruled_information（頁の配置のみ。図の中は artifact-diagramming）
+empty_paper: 約 40%
+visual_tension: balanced
+focal_event: 右の頁で畳んだ節が開いて、LLM 向けの事実が外へ出る点線の箱
+release_zone: 左右の頁のあいだの余白
+type_hierarchy: programmatic（見出し Hiragino Mincho、ラベル Hiragino Sans、注記 Menlo）
+disruption: 右の頁から外へはみ出す畳んだ中身の箱
+manual gesture: 左の頁の右端の角括弧 1 つ
+series: harness-scope-writing-harness の図と同じ紙・インク・書体
+-->
+<html lang="en"><head><meta charset="utf-8"><title>hero</title>
+<style>
+html,body{margin:0;width:1600px;height:900px;background:#E9E9E5;overflow:hidden}
+svg{display:block;font-family:"Hiragino Sans","Hiragino Kaku Gothic ProN",system-ui,sans-serif}
+</style></head><body>
+<svg viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-label="The earlier README put explanations for humans and facts for LLMs in the same visible body, and a human stopped reading at the tenth sentence. The README from now on keeps the visible body for humans and folds the facts for LLMs, plus pointers to llms.txt and similar files, into a details block at the end. The five AI assistants that could fetch the URL's contents also read the folded contents.">
+  <defs>
+    <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#2148B8"/></marker>
+  </defs>
+
+  <text x="72" y="70" font-size="18" fill="#2148B8" font-family="Menlo, monospace" letter-spacing="2">FIG.1  README</text>
+  <text x="72" y="124" font-size="46" font-weight="600" fill="#2148B8" font-family="Hiragino Mincho ProN, serif">Visible body for humans, folded section for LLMs</text>
+
+  <!-- ===== left: before ===== -->
+  <text x="72" y="206" font-size="30" font-weight="700" fill="#2148B8">Earlier README</text>
+  <text x="72" y="242" font-size="22" fill="#2148B8">Facts for LLMs sat in the visible body too</text>
+  <rect x="72" y="270" width="330" height="560" rx="4" fill="#FAFAF7" fill-opacity=".35" stroke="#2148B8" stroke-width="3"/>
+  <g>
+    <rect x="102" y="300" width="250" height="14" fill="#2148B8"/>
+    <rect x="102" y="334" width="270" height="14" fill="#ADB9D7"/>
+    <rect x="102" y="368" width="230" height="14" fill="#ADB9D7"/>
+    <rect x="102" y="402" width="260" height="14" fill="#2148B8"/>
+    <rect x="102" y="436" width="270" height="14" fill="#ADB9D7"/>
+    <rect x="102" y="470" width="240" height="14" fill="#ADB9D7"/>
+    <rect x="102" y="504" width="265" height="14" fill="#ADB9D7"/>
+    <rect x="102" y="538" width="220" height="14" fill="#2148B8"/>
+    <rect x="102" y="572" width="270" height="14" fill="#ADB9D7"/>
+    <rect x="102" y="606" width="250" height="14" fill="#ADB9D7"/>
+    <rect x="102" y="640" width="235" height="14" fill="#2148B8"/>
+    <rect x="102" y="674" width="270" height="14" fill="#ADB9D7"/>
+    <rect x="102" y="708" width="245" height="14" fill="#ADB9D7"/>
+    <rect x="102" y="742" width="260" height="14" fill="#ADB9D7"/>
+    <rect x="102" y="776" width="230" height="14" fill="#2148B8"/>
+  </g>
+  <!-- bracket: where the human stopped -->
+  <path d="M418,298 L430,298 L430,486 L418,486" fill="none" stroke="#2148B8" stroke-width="3"/>
+  <line x1="430" y1="392" x2="452" y2="392" stroke="#2148B8" stroke-width="3"/>
+  <text x="462" y="384" font-size="28" font-weight="700" fill="#2148B8">Human</text>
+  <text x="462" y="418" font-size="22" fill="#2148B8">stopped reading</text>
+  <text x="462" y="448" font-size="22" fill="#2148B8">at sentence 10</text>
+
+  <!-- legend -->
+  <rect x="462" y="700" width="34" height="14" fill="#2148B8"/>
+  <text x="508" y="714" font-size="22" fill="#2148B8">Explanation for humans</text>
+  <rect x="462" y="740" width="34" height="14" fill="#ADB9D7"/>
+  <text x="508" y="754" font-size="22" fill="#2148B8">Facts for LLMs</text>
+
+  <!-- divider -->
+  <line x1="800" y1="190" x2="800" y2="840" stroke="#2148B8" stroke-width="1" stroke-dasharray="3 9" opacity=".6"/>
+
+  <!-- ===== right: now ===== -->
+  <text x="848" y="206" font-size="30" font-weight="700" fill="#2148B8">README from now on</text>
+  <text x="848" y="242" font-size="22" fill="#2148B8">readme-writer: facts for LLMs go in a &lt;details&gt; at the end</text>
+  <rect x="848" y="270" width="330" height="262" rx="4" fill="#FAFAF7" fill-opacity=".35" stroke="#2148B8" stroke-width="3"/>
+  <g>
+    <rect x="878" y="300" width="250" height="14" fill="#2148B8"/>
+    <rect x="878" y="334" width="230" height="14" fill="#2148B8"/>
+    <rect x="878" y="368" width="260" height="14" fill="#2148B8"/>
+    <rect x="878" y="402" width="210" height="14" fill="#2148B8"/>
+  </g>
+  <!-- collapsed details bar -->
+  <rect x="868" y="452" width="290" height="50" rx="3" fill="#2148B8"/>
+  <text x="888" y="485" font-size="22" fill="#E9E9E5" font-family="Menlo, monospace">▸ &lt;details&gt;</text>
+
+  <!-- unfolded contents -->
+  <line x1="1013" y1="502" x2="1013" y2="580" stroke="#2148B8" stroke-width="3" stroke-dasharray="8 7"/>
+  <rect x="848" y="580" width="330" height="250" rx="4" fill="none" stroke="#2148B8" stroke-width="3" stroke-dasharray="10 8"/>
+  <text x="878" y="620" font-size="22" font-weight="700" fill="#2148B8">Folded contents</text>
+  <g>
+    <rect x="878" y="644" width="270" height="14" fill="#ADB9D7"/>
+    <rect x="878" y="678" width="250" height="14" fill="#ADB9D7"/>
+    <rect x="878" y="712" width="265" height="14" fill="#ADB9D7"/>
+  </g>
+  <text x="878" y="772" font-size="22" fill="#2148B8">Facts for LLMs</text>
+  <text x="878" y="806" font-size="22" fill="#2148B8">Pointers to llms.txt etc.</text>
+
+  <!-- readers -->
+  <line x1="1236" y1="358" x2="1194" y2="358" stroke="#2148B8" stroke-width="4" marker-end="url(#ah)"/>
+  <text x="1250" y="350" font-size="28" font-weight="700" fill="#2148B8">Human</text>
+  <text x="1250" y="384" font-size="22" fill="#2148B8">reads the visible body</text>
+
+  <path d="M1236,706 L1194,706" stroke="#2148B8" stroke-width="4" fill="none" marker-end="url(#ah)"/>
+  <path d="M1222,706 L1222,477 L1184,477" stroke="#2148B8" stroke-width="4" fill="none" marker-end="url(#ah)"/>
+  <text x="1250" y="686" font-size="28" font-weight="700" fill="#2148B8">AI assistants</text>
+  <text x="1250" y="722" font-size="22" fill="#2148B8">All 5 that fetched it</text>
+  <text x="1250" y="752" font-size="22" fill="#2148B8">also read the folded part</text>
+</svg>
+</body></html>

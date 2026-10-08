@@ -1026,6 +1026,17 @@
       "file": "articles/readme-human-llm-fold.md",
       "date": "2026-10-09",
       "notes": "READMEを見える本文（人間）と畳んだ節（LLM）に分けた試行と canary 実験。記事自体を fixture にして公開後に追記。2026-10-09 09:00 予約"
+    },
+    {
+      "file": "articles-en/readme-human-llm-fold.md",
+      "devto": null,
+      "devto_tags": [
+        "readme",
+        "llm",
+        "llmstxt",
+        "geo"
+      ],
+      "notes": "EN translation of READMEは人間とLLM、どちらのためのものか？（著者GO後に即時投稿予定）"
     }
   ]
 }
