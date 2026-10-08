@@ -50,3 +50,7 @@ scripts/*.plist
 __pycache__/
 .pytest_cache/
 .ruff_cache/
+
+# html-plan の副産物
+docs/plans/*.packed.html
+docs/plans/*.artifact.html
