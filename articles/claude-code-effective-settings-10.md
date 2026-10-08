@@ -518,3 +518,7 @@ Claude Code にはプラグインシステム（`enabledPlugins`）がある。�
 
 - [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/claude-code-effective-settings-10.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります
 - [著者のGitHub](https://github.com/shimo4228) — DOI 付きの研究リポジトリ一覧
+
+---
+
+**この記事の書き方**: 本文は Claude（Claude Code）が書きました。素材は 270 セッションの運用記録と、私の settings.json・hooks の実物と、私との対話です。フックのブロック対象を 6 パターンに絞ることは私が決めました。内容の責任は私が負います。

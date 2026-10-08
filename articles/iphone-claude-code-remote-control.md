@@ -330,3 +330,7 @@ fine-grained PAT（対象リポジトリと有効期限を限定できるアク�
 
 - [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/iphone-claude-code-remote-control.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります
 - [著者のGitHub](https://github.com/shimo4228) — DOI 付きの研究リポジトリ一覧
+
+---
+
+**この記事の書き方**: 本文は Claude（Claude Code）が書きました。素材は iPhone 公式アプリと Mac 上の Claude Code の運用記録、spawn.sh などのスクリプトと、私との対話です。新セッションの起動を spawn 方式にすることは私が決めました。内容の責任は私が負います。

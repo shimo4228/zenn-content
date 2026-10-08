@@ -125,3 +125,7 @@ Deep Research や未知環境のブラウザ自動操作も、コーディング
 
 - [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/react-agent-business-quadrant-3.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります
 - [著者のGitHub](https://github.com/shimo4228) — DOI 付きの研究リポジトリ一覧
+
+---
+
+**この記事の書き方**: 本文は Claude（Claude Code）が書きました。素材は前作までの 4 象限の枠組みと、私の設計上の観察と、私との対話です。内容の責任は私が負います。

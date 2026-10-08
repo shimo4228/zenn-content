@@ -282,3 +282,7 @@ questions.json に統合
 
 :::
 <!-- textlint-enable ja-technical-writing/ja-no-mixed-period -->
+
+---
+
+**この記事の書き方**: 本文は Claude（Claude Code）が書きました。素材は約 400 問の問題データと Claude Code とのバッチ生成の作業記録と、私との対話です。Claude Code 自身に 397 問を直接生成させることは私が決めました。出力は検証スクリプトと Python・Swift のテストで確かめました。内容の責任は私が負います。

@@ -243,3 +243,7 @@ Claude Code も、自作の9Bエージェントも、この構造は同じだっ
 
 - [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/llm-app-sandwich-architecture.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります
 - [著者のGitHub](https://github.com/shimo4228) — DOI 付きの研究リポジトリ一覧
+
+---
+
+**この記事の書き方**: 本文は Claude（Claude Code）が書きました。素材は自作エージェントの insight コマンドの旧実装・再実装と dry-run の結果と、私との対話です。再実装した insight コマンドは dry-run で動作を確かめました。内容の責任は私が負います。

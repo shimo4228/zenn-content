@@ -185,3 +185,7 @@ diff外指摘の起票も絞りました。HIGH指摘6件のうち即時性が�
 - [Contemplative Agent](https://github.com/shimo4228/contemplative-agent)
 - [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/review-chain-damping.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります
 - [著者のGitHub](https://github.com/shimo4228) — DOI 付きの研究リポジトリ一覧
+
+---
+
+**この記事の書き方**: 本文は Claude（Claude Code）が書きました。素材は私のレビュー chain の git 履歴・運用実測・ADR と、公式ドキュメントと、私との対話です。常設レビューを 6 系統から 1 系統（と条件付き 1 系統）に縮めることは私が決めました。指摘の件数は git 履歴と運用記録から数え直しました。内容の責任は私が負います。

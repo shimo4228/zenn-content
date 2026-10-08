@@ -396,3 +396,7 @@ Zedは1.0前の今が試し始めるのにちょうどいいタイミングで�
 
 - [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/cursor-to-zed-migration.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります
 - [著者のGitHub](https://github.com/shimo4228) — DOI 付きの研究リポジトリ一覧
+
+---
+
+**この記事の書き方**: 本文は Claude（Claude Code）が書きました。素材は私の Zed の settings.json とレイアウトの試行錯誤、Gemini への相談内容と、私との対話です。Zed のビルトイン AI を切り、ターミナルで Claude Code CLI を使う構成にすることは私が決めました。内容の責任は私が負います。

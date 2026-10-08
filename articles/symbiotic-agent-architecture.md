@@ -205,3 +205,7 @@ Contemplative Agent のコードは、いずれ不要になる。LLM がセッ�
 
 - [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/symbiotic-agent-architecture.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります
 - [著者のGitHub](https://github.com/shimo4228) — DOI 付きの研究リポジトリ一覧
+
+---
+
+**この記事の書き方**: 本文は Claude（Claude Code）が書きました。素材は Contemplative Agent の設計と、Claude Cowork での試行結果と、私との対話です。オーケストレーション層を持たず、CLI だけをエントリポイントにすることは私が決めました。他のホストで動くかは Claude Cowork で試しました。内容の責任は私が負います。

@@ -245,3 +245,7 @@ ReAct エージェントが本当に必要な業務はどれか — この問い
 - [Agent Attribution Practice (AAP)](https://github.com/shimo4228/agent-attribution-practice) — エージェントの責任主体・帰属を扱う研究 repo
 - [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/react-agent-business-quadrant.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります
 - [著者のGitHub](https://github.com/shimo4228) — DOI 付きの研究リポジトリ一覧
+
+---
+
+**この記事の書き方**: 本文は Claude（Claude Code）が書きました。素材は Yao らの ReAct 論文や Anthropic・OpenAI のガイドと、私の実装経験と、私との対話です。ReAct エージェントの適用域を探索的なタスクに絞ることは私が決めました。内容の責任は私が負います。

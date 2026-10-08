@@ -415,3 +415,7 @@ GUIの飾りを全部捨てた先にあったのは、最も軽くて、最も�
 
 - [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/termius-iphone-claude-code.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります
 - [著者のGitHub](https://github.com/shimo4228) — DOI 付きの研究リポジトリ一覧
+
+---
+
+**この記事の書き方**: 本文は Claude（Claude Code）が書きました。素材は Gemini との対話記録と、環境構築の試行錯誤の経緯と、私との対話です。Mosh でなく、まず SSH と tmux で運用することは私が決めました。内容の責任は私が負います。

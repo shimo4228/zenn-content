@@ -132,3 +132,7 @@ blockの理由文を読んだモデルは、自分で`Agent(subagent_type: "gene
 - [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/top-model-as-default-leaks.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります
 - [著者のGitHub](https://github.com/shimo4228) — DOI 付きの研究リポジトリ一覧
 - [claude-harness](https://github.com/shimo4228/claude-harness) — 本稿のhook `hooks/review-model-notice.sh` とテストの公開ミラー
+
+---
+
+**この記事の書き方**: 本文は Claude（Claude Code）が書きました。素材は私の settings・hook・agent 起動ログと、公式ドキュメントと、私との対話です。セッション既定は最上位のまま、漏れる経路だけを塞ぐことは私が決めました。agent の起動件数は自分のログで数えました。内容の責任は私が負います。

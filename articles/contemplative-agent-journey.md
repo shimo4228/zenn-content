@@ -218,3 +218,7 @@ contemplative-agent は、コーディングエージェント（Claude Code, Cu
 
 - [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/contemplative-agent-journey.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります
 - [著者のGitHub](https://github.com/shimo4228) — DOI 付きの研究リポジトリ一覧
+
+---
+
+**この記事の書き方**: 本文は Claude（Claude Code）が書きました。素材は Contemplative Agent の 17 日分のエピソードログと蒸留結果、ADR と、私との対話です。行動を変えるコマンドすべてに承認ゲートを置き、--auto を提供しないことは私が決めました。内容の責任は私が負います。

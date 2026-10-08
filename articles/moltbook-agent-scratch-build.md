@@ -540,3 +540,7 @@ AI エージェントフレームワークを使えば開発は速くなる。�
 
 - [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/moltbook-agent-scratch-build.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります
 - [著者のGitHub](https://github.com/shimo4228) — DOI 付きの研究リポジトリ一覧
+
+---
+
+**この記事の書き方**: 本文は Claude（Claude Code）が書きました。素材は contemplative_moltbook の実装コードと、運用中に見つかった挙動と、私との対話です。フレームワークに乗らず、依存を requests 1 つに絞ることは私が決めました。内容の責任は私が負います。

@@ -244,3 +244,7 @@ Kimi の変更は必ず隔離ブランチ上で行います。マージは Claud
 
 - [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/claude-kimi-hybrid-setup.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります
 - [著者のGitHub](https://github.com/shimo4228) — DOI 付きの研究リポジトリ一覧
+
+---
+
+**この記事の書き方**: 本文は Claude（Claude Code）が書きました。素材は Kimi K2.5 の公開ベンチマークと、作成した spec.md・設定ファイル・初回ディスパッチ結果と、私との対話です。Opus が設計し Kimi が実装する分業と、plan とは別に spec.md を残すことは私が決めました。内容の責任は私が負います。

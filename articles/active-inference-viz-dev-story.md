@@ -234,3 +234,7 @@ Streamlit でブラウザからインタラクティブに動かせます。能�
 
 - [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/active-inference-viz-dev-story.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります
 - [著者のGitHub](https://github.com/shimo4228) — DOI 付きの研究リポジトリ一覧
+
+---
+
+**この記事の書き方**: 本文は Claude（Claude Code）が書きました。素材は元論文（Priorelli et al. 2025）とその公開コードと、私との対話です。能動的推論の論文を、ブラウザで動かす可視化ツールにすることは私が決めました。内容の責任は私が負います。

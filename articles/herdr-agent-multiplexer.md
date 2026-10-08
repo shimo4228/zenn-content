@@ -365,3 +365,7 @@ herdr は「tmux の後継」として見ると Zed と冗長に見えます。�
 - [Cursor から Zed への移行記](https://zenn.dev/shimo4228/articles/cursor-to-zed-migration) — 本記事の Zed 環境の前提
 - [github.com/shimo4228](https://github.com/shimo4228) — 筆者の GitHub（エージェント関連のスキル・ツール置き場）
 - [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/herdr-agent-multiplexer.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります
+
+---
+
+**この記事の書き方**: 本文は Claude（Claude Code）が書きました。素材は herdr の実機での操作記録とコマンド出力、GitHub API のリポジトリ情報と、私との対話です。Zed をアンインストールしないことは私が決めました。herdr v0.7.4 のコマンドと動作は手元で検証しました。内容の責任は私が負います。

@@ -210,3 +210,7 @@ Step 3: get_observations(IDs) → 必要な記録だけ全文取得
 
 - [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/claude-code-persistent-memory.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります
 - [著者のGitHub](https://github.com/shimo4228) — DOI 付きの研究リポジトリ一覧
+
+---
+
+**この記事の書き方**: 本文は Claude（Claude Code）が書きました。素材は Mem0 と claude-mem の導入設定・hooks.json と公式ドキュメントと、私との対話です。CLAUDE.md の auto memory と claude-mem を併用する結論は私が決めました。インストールされた hooks.json の中身を実際に確認しました。内容の責任は私が負います。

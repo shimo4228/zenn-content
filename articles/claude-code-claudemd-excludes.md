@@ -231,3 +231,7 @@ LLM に「この指示を知っていますか」と聞いても、ロード元�
 - [claude-harness](https://github.com/shimo4228/claude-harness) — 筆者が実際に育てている Claude Code ハーネス
 - [github.com/shimo4228](https://github.com/shimo4228) — 筆者のほかのリポジトリ一覧
 - [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/claude-code-claudemd-excludes.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります
+
+---
+
+**この記事の書き方**: 本文は Claude（Claude Code）が書きました。素材は Claude Code v2.1.220 での実測結果と公式ドキュメントと、私との対話です。個人ハーネスだけを入れ替え repo の設定は残す境界は私が決めました。除外の効果は手元の v2.1.220 環境で実測しました。内容の責任は私が負います。

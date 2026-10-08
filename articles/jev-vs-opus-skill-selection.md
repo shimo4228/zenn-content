@@ -153,3 +153,7 @@ Jevに選ばせたログを教師にして、手元の小型モデルを学習�
 - [gemma側の集計と読み（公開リポジトリのevidence）](https://github.com/shimo4228/contemplative-agent/blob/1ec4d2dcf7973e0677ded25cd36f21fe91a48c3d/docs/evidence/rfc-0043/README.md)
 - [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/jev-vs-opus-skill-selection.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります
 - [著者のGitHub](https://github.com/shimo4228) — DOI 付きの研究リポジトリ一覧
+
+---
+
+**この記事の書き方**: 本文は Claude（Claude Code）が書きました。素材は Contemplative Agent のスキル選択ログ 150 件と、Jev・Opus の計測結果と、私との対話です。内容の責任は私が負います。

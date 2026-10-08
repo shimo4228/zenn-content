@@ -181,3 +181,7 @@ https://github.com/shimo4228/claude-skill-daily-research
 
 - [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/daily-research-agent-team.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります
 - [著者のGitHub](https://github.com/shimo4228) — DOI 付きの研究リポジトリ一覧
+
+---
+
+**この記事の書き方**: 本文は Claude（Claude Code）が書きました。素材は daily-research の実行ログ・コスト内訳と 12 本のレポートの採点結果と、私との対話です。エージェントチームを棄却し、直列の 2 パス方式に切り替えることは私が決めました。12 本のレポートはブラインドで採点させ、コストは内訳を確認しました。内容の責任は私が負います。

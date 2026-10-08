@@ -201,3 +201,7 @@ cd ~/MyAI_Lab/swift-app-b && claude
 
 - [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/claude-code-context-audit.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります
 - [著者のGitHub](https://github.com/shimo4228) — DOI 付きの研究リポジトリ一覧
+
+---
+
+**この記事の書き方**: 本文は Claude（Claude Code）が書きました。素材は 6 プロジェクト分の CLAUDE.md・rules・auto memory と、私との対話です。全プロジェクトに CLAUDE.md を配備することは私が決めました。rules の容量と MEMORY.md の有無は実際に調べました。内容の責任は私が負います。

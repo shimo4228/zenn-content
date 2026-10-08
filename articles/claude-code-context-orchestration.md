@@ -191,3 +191,7 @@ continuous-learning スキルはセッション中に発見したパターンを
 
 - [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/claude-code-context-orchestration.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります
 - [著者のGitHub](https://github.com/shimo4228) — DOI 付きの研究リポジトリ一覧
+
+---
+
+**この記事の書き方**: 本文は Claude（Claude Code）が書きました。素材は 1 ヶ月の Claude Code の利用セッションと、実際の設定・memory と、私との対話です。内容の責任は私が負います。

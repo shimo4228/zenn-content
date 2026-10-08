@@ -297,3 +297,7 @@ Anthropic が Claude 5 世代向けに出したコンテキストエンジニア
 - [Harness Alignment and Harness Drift](https://doi.org/10.5281/zenodo.20578272) — 承認ゲートの位置づけを扱った論文
 - [github.com/shimo4228](https://github.com/shimo4228) — その他のリポジトリ
 - [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/human-gate-intent-not-diff.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります
+
+---
+
+**この記事の書き方**: 本文は Claude（Claude Code）が書きました。素材は私の Claude Code ハーネスの規約・スキル定義と、Codex によるレビュー結果と、私との対話です。ゲートで人間に見せるものを対象の種類で決めることは私が決めました。内容の責任は私が負います。

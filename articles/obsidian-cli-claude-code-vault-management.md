@@ -508,3 +508,7 @@ Obsidian に CLI が入ったことの本質は、コマンドが増えたこと
 
 - [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/obsidian-cli-claude-code-vault-management.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります
 - [著者のGitHub](https://github.com/shimo4228) — DOI 付きの研究リポジトリ一覧
+
+---
+
+**この記事の書き方**: 本文は Claude（Claude Code）が書きました。素材は Obsidian 公式 CLI のコマンド仕様と、3,674 ファイルの Vault を整理した経験と、私との対話です。内容の責任は私が負います。

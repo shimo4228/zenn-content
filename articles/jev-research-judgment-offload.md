@@ -183,3 +183,7 @@ class Answers(BaseModel):
 - [Jevの判断をローカルで再現するには何が要るか](https://zenn.dev/shimo4228/articles/local-decision-model-conditions)
 - [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/jev-research-judgment-offload.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります
 - [著者のGitHub](https://github.com/shimo4228) — DOI 付きの研究リポジトリ一覧
+
+---
+
+**この記事の書き方**: 本文は Claude（Claude Code）が書きました。素材は毎朝のリサーチ・パイプラインのコードと、手元の実行記録と、私との対話です。判定だけを Jev に移し、文章は LLM に残すことは私が決めました。通るべき資料を 4 件置き、絞り込みで落ちないことを確かめました。内容の責任は私が負います。

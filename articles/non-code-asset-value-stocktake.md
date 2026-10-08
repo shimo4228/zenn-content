@@ -199,3 +199,7 @@ lint が答えられるのは「このファイルは正しいか」まで。「
 - 姉妹スキルの設計過程: [AI の苦手な仕事をスクリプトに逃がす — スキル棚卸しコマンドの設計・実装・公開の全記録](https://zenn.dev/shimo4228/articles/skill-stocktake-design-journey)
 - 著者のスキル・研究リポジトリ一覧: [github.com/shimo4228](https://github.com/shimo4228)
 - [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/non-code-asset-value-stocktake.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります
+
+---
+
+**この記事の書き方**: 本文は Claude（Claude Code）が書きました。素材は repo-asset-stocktake スキルの実装と、別リポジトリに回した棚卸し結果と、私との対話です。価値判断の層だけを LLM で薄く自作することは私が決めました。内容の責任は私が負います。

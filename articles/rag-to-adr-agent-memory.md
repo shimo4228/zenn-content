@@ -170,3 +170,7 @@ Ollama 経路では `prompt_eval_count` がキャッシュヒット時も全プ�
 - Anthropic Prompt caching（プレフィックス一致の仕様）: https://platform.claude.com/docs/en/build-with-claude/prompt-caching
 - 著者の GitHub: https://github.com/shimo4228
 - [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/rag-to-adr-agent-memory.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります
+
+---
+
+**この記事の書き方**: 本文は Claude（Claude Code）が書きました。素材は auto-memory ディレクトリの実測と、Contemplative Agent の ADR・計測データと、私との対話です。重複検出を embedding から全文を読ませる LLM 方式に戻すことは私が決めました。ファイル数とプレフィル時間は手元で実測しました。内容の責任は私が負います。

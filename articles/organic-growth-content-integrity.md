@@ -144,3 +144,7 @@ AI エージェントに計画を立てさせて自律実行する流れが注�
 
 - [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/organic-growth-content-integrity.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります
 - [著者のGitHub](https://github.com/shimo4228) — DOI 付きの研究リポジトリ一覧
+
+---
+
+**この記事の書き方**: 本文は Claude（Claude Code）が書きました。素材は執筆環境（.claude/）の監査結果と、Claude Code との再設計の対話と、私との対話です。catchify を廃止し、内容を変える最適化をやめることは私が決めました。内容の責任は私が負います。

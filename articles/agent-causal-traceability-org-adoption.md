@@ -139,3 +139,7 @@ ADR-0015 を書き終えて、並べて眺めていて、あっ、と声が出�
 1. [登れる壁に看板を立てても意味がない — AIエージェントに必要なのはガードレールではなくアカウンタビリティだ](https://zenn.dev/shimo4228/articles/ai-agent-accountability-wall)
 2. 本記事
 3. [AIエージェントのブラックボックスは二層ある — 技術の限界とビジネスの都合](https://zenn.dev/shimo4228/articles/agent-blackbox-capitalism-timescale)
+
+---
+
+**この記事の書き方**: 本文は Claude（Claude Code）が書きました。素材は私の contemplative-agent の運用経験と ADR-0015 と、私との対話です。1 エージェントの外部接続口を 1 つに限ることは私が決めました。内容の責任は私が負います。

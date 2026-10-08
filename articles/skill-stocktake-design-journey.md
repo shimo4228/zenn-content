@@ -334,3 +334,7 @@ claude-skill-stocktake/
 ---
 
 *skill-stocktake は [claude-skill-stocktake](https://github.com/shimo4228/claude-skill-stocktake) リポジトリで公開しています。*
+
+---
+
+**この記事の書き方**: 本文は Claude（Claude Code）が書きました。素材は /skill-stocktake の設計過程・スクリプト・テストと、公開チャネルの調査と、私との対話です。ルーブリックを廃止し、機械的処理をスクリプトに分けることは私が決めました。内容の責任は私が負います。

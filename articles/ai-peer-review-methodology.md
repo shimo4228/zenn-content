@@ -120,3 +120,7 @@ Kimi の使い分けで見えたこと: ピアレビュー（批評・分析）�
 
 - [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/ai-peer-review-methodology.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります
 - [著者のGitHub](https://github.com/shimo4228) — DOI 付きの研究リポジトリ一覧
+
+---
+
+**この記事の書き方**: 本文は Kimi K2.5 が初稿を書き、Claude（Claude Code）が書き直しました。素材は私の既存記事 7 本と、Claude と Kimi K2.5 のレビュー出力と、私との対話です。ブランディングの方向性を「限界を探る開拓者」へ移すことは私が決めました。内容の責任は私が負います。

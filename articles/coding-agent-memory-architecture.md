@@ -558,3 +558,7 @@ GitHub リポジトリのルートに CITATION.cff を置くと、サイドバ�
 - [Everything Claude Code (ECC)](https://github.com/affaan-m/everything-claude-code) — 5スキルのコントリビュート先
 - [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/coding-agent-memory-architecture.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります
 - [著者のGitHub](https://github.com/shimo4228) — DOI 付きの研究リポジトリ一覧
+
+---
+
+**この記事の書き方**: 本文は Claude（Claude Code）が書きました。素材は 3 つのプロジェクトへの context-sync 適用記録と skill-comply の計測データと、私との対話です。ECC へのコントリビューションをやめ、概念を AKC として独立させることは私が決めました。遵守率は skill-comply で実測しました。内容の責任は私が負います。

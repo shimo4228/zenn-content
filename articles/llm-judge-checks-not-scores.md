@@ -256,3 +256,7 @@ flowchart TB
 - 論文: [BinEval「Ask, Don't Judge」](https://arxiv.org/abs/2606.27226)（arXiv:2606.27226、2026）— 一問一主張の Yes/No 分解と「No 回答 = 改善リスト」の提案元。limitations が本記事の境界線の根拠
 - [github.com/shimo4228](https://github.com/shimo4228) — 著者の他のリポジトリ一覧
 - [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/llm-judge-checks-not-scores.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります
+
+---
+
+**この記事の書き方**: 本文は Claude（Claude Code）が書きました。素材は私のスキル監査と知識抽出の運用記録、73 スキルの再監査結果、先行論文と、私との対話です。スコアを集計せず判定は総合判断で出させる設計は私が決めました。検出された 12 件は 1 件ずつ確認して修正しました。内容の責任は私が負います。

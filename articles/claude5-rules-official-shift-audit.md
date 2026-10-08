@@ -234,3 +234,7 @@ python3 -c "import json; print('\n'.join(sorted(json.load(open('settings.json'))
 - [rules-stocktake](https://github.com/shimo4228/rules-stocktake) — 常駐ルールの棚卸しスキル（rationale / review-when を読む改善済み）
 - [github.com/shimo4228](https://github.com/shimo4228) — 著者の GitHub（ハーネス関連リポジトリ一覧）
 - [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/claude5-rules-official-shift-audit.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります
+
+---
+
+**この記事の書き方**: 本文は Claude（Claude Code）が書きました。素材は私の ~/.claude のルール一式と、実セッションから採った system prompt・tool description と、私との対話です。plan mode 禁止ルールなど旧世代向けルールの退役と保持の判定は私が決めました。settings.json の該当キーの有無と常駐ルールの語数は実際に確認・計測しました。内容の責任は私が負います。

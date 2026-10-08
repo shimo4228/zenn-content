@@ -260,3 +260,7 @@ python3 extract.py <jsonl> <out.md> で人間ターンと本文だけ抜いて�
 - [earendil-works/pi](https://github.com/earendil-works/pi) — 本文の条件 C で使った最小構成のコーディングエージェント
 - [github.com/shimo4228](https://github.com/shimo4228) — 筆者のリポジトリ一覧
 - [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/transcript-not-ledger.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります
+
+---
+
+**この記事の書き方**: 本文は Claude（Claude Code）が書きました。素材は私のセッション記録（transcript）と証拠台帳、4 条件の比較実験と、私との対話です。台帳は索引に残し、生ログの原本を添えて渡すことは私が決めました。台帳の記述は元のセッション記録と突き合わせて確かめました。内容の責任は私が負います。

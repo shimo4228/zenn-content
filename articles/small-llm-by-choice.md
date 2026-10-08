@@ -136,3 +136,7 @@ Mac Studio や新しい MacBook Pro の購入ページまで行ったことは�
 - [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/small-llm-by-choice.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります
 
 [^1]: 具体的には、ループの制御やツール選択を LLM に委ねる ReAct パターンを既定にしない、ということです。処理の流れはコードが握り、LLM は意味判断の担当箇所でだけ呼びます。どの業務なら ReAct が本当に必要になるのかは「[ReAct エージェントが本当に必要な業務はどれか](https://zenn.dev/shimo4228/articles/react-agent-business-quadrant)」で扱っています。
+
+---
+
+**この記事の書き方**: 本文は Claude（Claude Code）が書きました。素材は Contemplative Agent の約 3 ヶ月の無人運用と、過去の業務自動化の経験と、私との対話です。16GB の M1 Mac と小型モデルで作り続けることは私が決めました。内容の責任は私が負います。

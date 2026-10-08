@@ -161,3 +161,7 @@ Modで、Claudeに見せるスキル・エージェント・指示ファイル�
 - [harness-scope（GitHub）](https://github.com/shimo4228/harness-scope) — この記事のMod
 - [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/harness-scope-writing-harness.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります
 - [著者のGitHub](https://github.com/shimo4228) — DOI 付きの研究リポジトリ一覧
+
+---
+
+**この記事の書き方**: 本文は Claude（Claude Code）が書きました。素材は Claude Code 2.1.287・2.1.288 の計測ログと、過去のセッションでの私の発言 1,017 件と、私との対話です。出力スタイルに書く内容を会話の規約に絞ることは私が決めました。system prompt の差は、モデルを変えて取り直して確かめました。内容の責任は私が負います。

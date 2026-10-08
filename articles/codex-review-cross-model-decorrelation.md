@@ -138,3 +138,7 @@ codex-review の価値を「Claude だけでは見つからないバグをよく
 - [Codex CLI（本家）](https://github.com/openai/codex)
 - [shimo4228 の GitHub](https://github.com/shimo4228) — 他の公開リポジトリ一覧
 - [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/codex-review-cross-model-decorrelation.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります
+
+---
+
+**この記事の書き方**: 本文は Claude（Claude Code）が書きました。素材は codex-review スキルのスクリプトと、Contemplative Agent の計器追加時のレビュー記録と、私との対話です。別モデルを 1 点だけ混ぜる設計と、非自明な diff をレビュー対象にするルールは私が決めました。指摘 4 件はコードを読んで再現を確認し、修正して回帰テストを足しました。内容の責任は私が負います。

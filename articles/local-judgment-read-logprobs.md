@@ -266,3 +266,7 @@ A〜D の 1 文字で答えさせると、150 件は 4 つの箱にしか分か�
 - [測定の記録（Contemplative Agent の evidence）](https://github.com/shimo4228/contemplative-agent/tree/main/docs/evidence/rfc-0045) — アブレーション・JevK5・揺れの幅の集計
 - [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/local-judgment-read-logprobs.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります
 - [著者のGitHub](https://github.com/shimo4228) — DOI 付きの研究リポジトリ一覧
+
+---
+
+**この記事の書き方**: 本文は Claude（Claude Code）が書きました。素材は自律エージェントの本番採点ログ 2,698 件と、手元の gemma・JevK5 の実測結果と、私との対話です。JevK5 を採らず、gemma の確率読みを並走させることは私が決めました。合格基準は測る前に決め、残りの 2,548 件で 1 回だけ測りました。内容の責任は私が負います。

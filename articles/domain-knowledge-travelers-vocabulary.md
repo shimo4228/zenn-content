@@ -209,3 +209,7 @@ DDD が成り立たない受託や SIer では、翻訳は最初から開発者�
 - [登れる壁に看板を立てても意味がない](https://zenn.dev/shimo4228/articles/ai-agent-accountability-wall) — 本文で触れた砂時計モデルの初出
 - [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/domain-knowledge-travelers-vocabulary.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります
 - [著者のGitHub](https://github.com/shimo4228) — DOI 付きの研究リポジトリ一覧
+
+---
+
+**この記事の書き方**: 本文は Claude（Claude Code）が書きました。素材は Evans の DDD 原典と公式リファレンス、Anthropic の分析などの公開資料と、私との対話です。「学べ」でなく「中に入れ」と勧めることは私が決めました。DDD の出自は Evans の原典など一次資料で確かめました。内容の責任は私が負います。

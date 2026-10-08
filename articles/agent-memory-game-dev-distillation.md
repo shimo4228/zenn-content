@@ -188,3 +188,7 @@ distill パイプライン単体で見ると、Mem0 の ADD/UPDATE/DELETE ゲー
 
 - [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/agent-memory-game-dev-distillation.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります
 - [著者のGitHub](https://github.com/shimo4228) — DOI 付きの研究リポジトリ一覧
+
+---
+
+**この記事の書き方**: 本文は Claude（Claude Code）が書きました。素材は 9B ローカルモデルエージェントの 18 日間の運用記録と実装コード、先行研究と、私との対話です。ゲーム開発のメモリ技法を記憶蒸留へ移植することは私が決めました。内容の責任は私が負います。

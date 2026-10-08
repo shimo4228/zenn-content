@@ -303,3 +303,7 @@ judge を壊すかどうかを、精度で判断しないでください。
 - [Harness Alignment and Harness Drift: Why Intent, Unlike Correctness, Resists Automation](https://doi.org/10.5281/zenodo.20578272) — 本文で引いた拙論（2026-06、CC BY 4.0）
 - [github.com/shimo4228](https://github.com/shimo4228) — 執筆ハーネスを含むリポジトリ群
 - [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/judge-degrades-into-reviewer.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります
+
+---
+
+**この記事の書き方**: 本文は Claude（Claude Code）が書きました。素材は私の記事執筆ハーネスの judge 2 本のコードと、過去記事 67 本のバックテスト記録と、私との対話です。自作の judge を削除することは私が決めました。数値はすべて自分のリポジトリで実測しました。内容の責任は私が負います。

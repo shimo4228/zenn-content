@@ -297,3 +297,7 @@ https://github.com/shimo4228/claude-skill-daily-research
 
 - [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/daily-research-automation.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります
 - [著者のGitHub](https://github.com/shimo4228) — DOI 付きの研究リポジトリ一覧
+
+---
+
+**この記事の書き方**: 本文は Claude（Claude Code）が書きました。素材は daily-research の設計メモ・仕様書と初回フル実行の結果と、私との対話です。テーマ選定のスコアリング基準と、Claude Code 単体で始める構成は私が決めました。初回のフル実行テストで所要時間とコストを確認しました。内容の責任は私が負います。

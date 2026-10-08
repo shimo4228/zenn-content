@@ -346,3 +346,7 @@ uvx ruff@0.16.1 check --isolated --no-cache --output-format json \
 - [AIレビューを6系統から1系統へ——「指摘ゼロ」で終われないループの切り方](https://zenn.dev/shimo4228/articles/review-chain-damping) — 前編。レビューを減らした経緯と、その実測
 - [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/lint-as-subtraction.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります
 - [著者のGitHub](https://github.com/shimo4228) — DOI 付きの研究リポジトリ一覧
+
+---
+
+**この記事の書き方**: 本文は Claude（Claude Code）が書きました。素材は私の全リポジトリの lint 設定、Ruff の実測結果、各ツールの公式ドキュメントと、私との対話です。複雑度の上限だけを入れ、ファイル行数の上限は保留することは私が決めました。刈った後の挙動は、新旧の出力を突き合わせて確かめました。内容の責任は私が負います。

@@ -334,3 +334,7 @@ ADRやRFCの受理ゲートを持っていなくても、同じ判定は回せ�
 - [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/instrument-consumption-plan.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります
 - [著者のGitHub](https://github.com/shimo4228) — DOI 付きの研究リポジトリ一覧
 - [Contemplative Agent](https://github.com/shimo4228/contemplative-agent) — 本稿の測定対象。設計判断は`docs/adr/`に、消費計画の義務はADR-0101にあります
+
+---
+
+**この記事の書き方**: 本文は Claude（Claude Code）が書きました。素材は Contemplative Agent のコミット履歴・ADR と、削除直前のリビジョンで回した検査の出力と、私との対話です。新しい計器の設計判断に消費計画の 3 項目を書かせることは私が決めました。削除直前のリビジョンを復元して、3 つの検査を回し直しました。内容の責任は私が負います。

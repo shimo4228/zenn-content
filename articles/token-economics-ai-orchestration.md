@@ -247,3 +247,7 @@ AIに自社製品を語らせると、事実と自己弁護の混ざった回答
 
 - [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/token-economics-ai-orchestration.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります
 - [著者のGitHub](https://github.com/shimo4228) — DOI 付きの研究リポジトリ一覧
+
+---
+
+**この記事の書き方**: 本文は Claude（Claude Code）が書きました。素材は Gemini との対話記録と、公式ドキュメント・ユーザー報告と、私との対話です。Gemini の各主張は公式ドキュメントとユーザー報告で検証しました。内容の責任は私が負います。

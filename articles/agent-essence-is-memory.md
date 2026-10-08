@@ -361,3 +361,7 @@ tools: ["Read", "Grep", "Glob"]  # 読み取り専用
 - Adams, G. S. et al. (2021). People systematically overlook subtractive changes. *Nature*, 592, 258-261.
 - Laukkonen, R. et al. (2025). Contemplative AI. arXiv:2504.15125
 <!-- textlint-enable -->
+
+---
+
+**この記事の書き方**: 本文は Claude（Claude Code）が書きました。素材は Contemplative Agent の運用ログと蒸留の実験結果、遵守率の計測結果と、私との対話です。出力の検査ではなくプロンプトの側を直すことは私が決めました。スキルの遵守率は実際に計測しました。内容の責任は私が負います。

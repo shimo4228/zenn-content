@@ -230,3 +230,7 @@ Archify の architecture schema には、この対策の欄が用意されてい
 - [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/codemap-retirement.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります
 - [著者のGitHub](https://github.com/shimo4228) — DOI 付きの研究リポジトリ一覧
 - [Contemplative Agent](https://github.com/shimo4228/contemplative-agent) — 本稿の測定対象。設計判断は `docs/adr/` にあります
+
+---
+
+**この記事の書き方**: 本文は Claude（Claude Code）が書きました。素材は Contemplative Agent の codemap と git 履歴、LSP の実行結果、ADR と、私との対話です。codemap を縮小でなく全削除し、生成する仕組みも harness から外すことは私が決めました。依頼文の数字は、ファイルサイズと git 履歴を実測して確かめました。内容の責任は私が負います。

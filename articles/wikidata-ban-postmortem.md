@@ -221,3 +221,7 @@ Wikidata は、個々の編集こそ許容されていても、自分を中心�
 - [Wikidata:Autobiography](https://www.wikidata.org/wiki/Wikidata:Autobiography) / [Wikidata:Notability](https://www.wikidata.org/wiki/Wikidata:Notability)
 - [著者の GitHub](https://github.com/shimo4228) — 研究リポジトリ群の一覧
 - [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/wikidata-ban-postmortem.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります
+
+---
+
+**この記事の書き方**: 本文は Claude（Claude Code）が書きました。素材は Wikidata の削除ログ・block 通知と、事故対応の記録・ADR と、私との対話です。block 解除を申請せず撤退し、自分で作る経路を使わないことは私が決めました。件数と時刻は Wikidata の公開 API で確認しました。内容の責任は私が負います。

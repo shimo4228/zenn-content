@@ -278,3 +278,7 @@ specific data points, quoted fragments, concrete metaphors...
 
 - [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/few-shot-for-small-models.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります
 - [著者のGitHub](https://github.com/shimo4228) — DOI 付きの研究リポジトリ一覧
+
+---
+
+**この記事の書き方**: 本文は Claude（Claude Code）が書きました。素材は 9B モデルのエージェント開発セッションの記録と、dry-run の計測結果・コードと、私との対話です。dry-run を再実行して Before と After の数値を比べました。内容の責任は私が負います。

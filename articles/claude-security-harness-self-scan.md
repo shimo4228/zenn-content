@@ -348,3 +348,7 @@ README にこう書かれています。
 - [Claude Security](https://claude.com/product/claude-security) — 同機能のホスト版（この記事で扱ったのはセッション内で完結するプラグイン版）
 - [github.com/shimo4228](https://github.com/shimo4228) — 筆者のリポジトリ一覧
 - [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/claude-security-harness-self-scan.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります
+
+---
+
+**この記事の書き方**: 本文は Claude（Claude Code）が書きました。素材は ~/.claude 設定一式のスキャン結果とワークフローの journal.jsonl と、私との対話です。推奨の deny 追加を採らず、許可リストから外す対処にすることは私が決めました。届いた 20 件はすべて再現を確認してから修正しました。内容の責任は私が負います。

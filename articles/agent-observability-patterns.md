@@ -221,3 +221,7 @@ cp -r skills/shadow-mode-validation ~/.claude/skills/shadow-mode-validation
 - [Claude Codeから簡単にCodexレビューさせるスキルを作った](https://zenn.dev/shimo4228/articles/codex-review-cross-model-decorrelation) — 別系統モデルレビューの仕組み
 - [github.com/shimo4228](https://github.com/shimo4228) — 著者の他のリポジトリ一覧
 - [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/agent-observability-patterns.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります
+
+---
+
+**この記事の書き方**: 本文は Claude（Claude Code）が書きました。素材は Contemplative Agent の運用実績と、公開した 3 つの skill の設計文書と、私との対話です。合否の閾値を事前に登録する提案を却下することは私が決めました。内容の責任は私が負います。

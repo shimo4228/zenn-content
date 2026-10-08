@@ -259,3 +259,7 @@ LLM の出力を機械で検査する層は、現世代でも仕事をしてい�
 - ecc-journey シリーズ: [part1（実装の 10 日間）](https://zenn.dev/shimo4228/articles/ecc-journey-part1) / [part2（6 つの防御策）](https://zenn.dev/shimo4228/articles/ecc-journey-part2) / [part3（スキルの膨張と棚卸し）](https://zenn.dev/shimo4228/articles/ecc-journey-part3)
 - [github.com/shimo4228](https://github.com/shimo4228): その他のツール・リポジトリ一覧
 - [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/ai-code-half-year-audit.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります
+
+---
+
+**この記事の書き方**: 本文は Claude（Claude Code）が書きました。素材は pdf2anki の実装コードとコミット履歴、2 系統のレビュー結果と、私との対話です。修正を両者一致の指摘と課金系から始めることは私が決めました。指摘は実行再現かコード読解で実在を確認しました。内容の責任は私が負います。

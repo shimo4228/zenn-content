@@ -194,3 +194,7 @@ Kimi が生成した 8,500 行は、Opus の修正フェーズでは scaffolding
 
 - [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/kimi-delegation-failure-lessons.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります
 - [著者のGitHub](https://github.com/shimo4228) — DOI 付きの研究リポジトリ一覧
+
+---
+
+**この記事の書き方**: 本文は Claude（Claude Code）が書きました。素材は Kimi K2.5 に任せた開発の生成コード・出力データ・コミット履歴と、私との対話です。データソースを再リサーチさせることは私が決めました。内容の責任は私が負います。

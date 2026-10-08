@@ -231,3 +231,7 @@ RED を書いた時点で、既存実装の 3 つの穴が露出しました。�
 - [agent-chaos](https://github.com/deepankarm/agent-chaos) — AI エージェント向け chaos engineering の先行 OSS（fault 分類の参考にした prior art）
 - [著者の GitHub](https://github.com/shimo4228) — その他のリポジトリ・ツール
 - [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/chaos-tdd-fault-injection.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります
+
+---
+
+**この記事の書き方**: 本文は Claude（Claude Code）が書きました。素材は Contemplative Agent の運用障害の履歴と、テストの実行結果と、私との対話です。本番コードに注入用のフックを一切足さないことは私が決めました。記事中の数値は執筆時に再実測しました。内容の責任は私が負います。

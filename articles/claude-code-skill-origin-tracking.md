@@ -129,3 +129,7 @@ ECC 側は変更が小さく受け入れやすいため先に提出し、Anthrop
 
 - [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/claude-code-skill-origin-tracking.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります
 - [著者のGitHub](https://github.com/shimo4228) — DOI 付きの研究リポジトリ一覧
+
+---
+
+**この記事の書き方**: 本文は Claude（Claude Code）が書きました。素材は 79 個のスキルファイルと ECC の configure-ecc の一覧と、私との対話です。スキルに origin メタデータを付ける運用ルールは私が決めました。ECC 由来のスキルは configure-ecc の一覧と照合して確かめました。内容の責任は私が負います。

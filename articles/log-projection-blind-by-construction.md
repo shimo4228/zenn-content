@@ -165,3 +165,7 @@ published_at: 2026-09-14 09:00
 - [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/log-projection-blind-by-construction.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります
 - [著者のGitHub](https://github.com/shimo4228) — DOI 付きの研究リポジトリ一覧
 - [Contemplative Agent](https://github.com/shimo4228/contemplative-agent) — 本稿の測定対象。朝の設計はADR-0107、午後の置き換えはADR-0110、2つの故障はRFC-0036とRFC-0032にあります
+
+---
+
+**この記事の書き方**: 本文は Claude（Claude Code）が書きました。素材は Contemplative Agent の週次の API ログ・LLM 呼び出しログと、ADR・RFC と、私との対話です。既知のバグを捕まえる列は作らず、セッション単位の投影にすることは私が決めました。置き換えた投影が連打を写すことは、修理前の週の実データで確かめました。内容の責任は私が負います。

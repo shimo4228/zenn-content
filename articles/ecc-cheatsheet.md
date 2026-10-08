@@ -302,3 +302,7 @@ ECCを活用して、AI時代の開発フローを体験してください！
 より詳しい情報は、[ECC公式リポジトリ](https://github.com/affaan-m/everything-claude-code)をご覧ください。
 :::
 <!-- textlint-enable ja-technical-writing/ja-no-mixed-period -->
+
+---
+
+**この記事の書き方**: 本文は Claude（Claude Code）が書きました。素材は ECC 公式リポジトリのコマンド・エージェント・スキル・ルールの構成と、私との対話です。内容の責任は私が負います。

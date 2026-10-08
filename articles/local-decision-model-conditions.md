@@ -185,3 +185,7 @@ kevは384 token以下で学習されています。serving時に`num_ctx`を伸�
 - [Apple Foundation Models — 第3世代](https://machinelearning.apple.com/research/introducing-third-generation-of-apple-foundation-models) / [apple-fm-sdk (PyPI)](https://pypi.org/project/apple-fm-sdk/)
 - [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/local-decision-model-conditions.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります
 - [著者のGitHub](https://github.com/shimo4228) — DOI 付きの研究リポジトリ一覧
+
+---
+
+**この記事の書き方**: 本文は Claude（Claude Code）が書きました。素材は自律エージェントのスキル選択ログ 150 行と、各候補モデルの実測結果・公開資料と、私との対話です。4 候補を採らず、再測定の再開条件を置くことは私が決めました。Laya のレイテンシは、model card とは別に手元の環境で実測しました。内容の責任は私が負います。

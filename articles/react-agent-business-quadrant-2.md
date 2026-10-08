@@ -132,3 +132,7 @@ Autonomous Agentic Loop 象限自体のアカウンタビリティ問題は、�
 
 - [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/react-agent-business-quadrant-2.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります
 - [著者のGitHub](https://github.com/shimo4228) — DOI 付きの研究リポジトリ一覧
+
+---
+
+**この記事の書き方**: 本文は Claude（Claude Code）が書きました。素材は前作の 4 象限の枠組みと、Elish らの先行研究と、私との対話です。LLM ワークフロー象限に肯定形の名前を付けることは私が決めました。内容の責任は私が負います。

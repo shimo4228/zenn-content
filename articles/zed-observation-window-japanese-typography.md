@@ -462,3 +462,7 @@ system_profiler SPFontsDataType 2>/dev/null | \
 
 - [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/zed-observation-window-japanese-typography.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります
 - [著者のGitHub](https://github.com/shimo4228) — DOI 付きの研究リポジトリ一覧
+
+---
+
+**この記事の書き方**: 本文は Claude（Claude Code）が書きました。素材は Zed の settings.json と、フォント導入・設定変更の作業記録と、私との対話です。LSP は残し、使わないパネルは機能を残してボタンだけ隠すことは私が決めました。Notifications の Connect が何に繋がるかは公式ドキュメントで確認しました。内容の責任は私が負います。

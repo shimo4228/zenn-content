@@ -182,3 +182,7 @@ https://github.com/shimo4228/claude-skill-daily-research
 
 - [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/daily-research-postmortem.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります
 - [著者のGitHub](https://github.com/shimo4228) — DOI 付きの研究リポジトリ一覧
+
+---
+
+**この記事の書き方**: 本文は Claude（Claude Code）が書きました。素材はパイプラインの障害ログ・コミット履歴と Claude Code とのデバッグのやり取りと、私との対話です。Claude Code の調査への 3 つの指摘と、WebSearch の回数制限の撤廃は私が決めました。修正後に手動で実行し、2パス方式が正常に完了することを確認しました。内容の責任は私が負います。

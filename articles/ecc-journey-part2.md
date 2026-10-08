@@ -379,3 +379,7 @@ pdf2anki は [GitHub で公開](https://github.com/shimo4228/pdf2anki) してい
 
 - [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/ecc-journey-part2.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります
 - [著者のGitHub](https://github.com/shimo4228) — DOI 付きの研究リポジトリ一覧
+
+---
+
+**この記事の書き方**: 本文は Claude（Claude Code）が書きました。素材は pdf2anki の実装コードと開発中の ADR・テスト・eval の記録と、私との対話です。OpenAI 対応を見送ることは私が決めました。生成カードの第 1 層通過率を実測しました。内容の責任は私が負います。

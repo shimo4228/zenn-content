@@ -131,3 +131,7 @@ AI エージェントも、この時間軸の中にいる。
 1. [登れる壁に看板を立てても意味がない — AIエージェントに必要なのはガードレールではなくアカウンタビリティだ](https://zenn.dev/shimo4228/articles/ai-agent-accountability-wall)
 2. [事故のあとで因果を辿れるか — エージェント設計が組織論に収斂するまで](https://zenn.dev/shimo4228/articles/agent-causal-traceability-org-adoption)
 3. 本記事
+
+---
+
+**この記事の書き方**: 本文は Claude（Claude Code）が書きました。素材は私のエージェント運用の経験と、引用した論文・文献と、私との対話です。内容の責任は私が負います。

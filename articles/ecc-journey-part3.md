@@ -412,3 +412,7 @@ v1 の `/learn` は確実に動きます。セッションの終わりに手動�
 
 - [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/ecc-journey-part3.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります
 - [著者のGitHub](https://github.com/shimo4228) — DOI 付きの研究リポジトリ一覧
+
+---
+
+**この記事の書き方**: 本文は Claude（Claude Code）が書きました。素材は私の ECC 環境のスキル棚卸しの記録と、手元のログ・ディレクトリの調査結果と、私との対話です。1 つの層で 10 件を超えたら棚卸しする基準は私が決めました。continuous-learning-v2 の実態は手元のログとディレクトリを調べて確かめました。内容の責任は私が負います。
