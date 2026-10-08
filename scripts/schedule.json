@@ -1021,6 +1021,11 @@
         "writing"
       ],
       "notes": "EN translation of Claude ModsとOutput Styleで、Claude Codeを執筆用のハーネスにする（即時投稿予定）"
+    },
+    {
+      "file": "articles/readme-human-llm-fold.md",
+      "date": "2026-10-09",
+      "notes": "READMEを見える本文（人間）と畳んだ節（LLM）に分けた試行と canary 実験。記事自体を fixture にして公開後に追記。2026-10-09 09:00 予約"
     }
   ]
 }

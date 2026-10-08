@@ -1,0 +1,86 @@
+<!doctype html>
+<!--
+manifest (mono-figure):
+subject: readme-fetch-canary の語の置き場所（README 26,361 字の中の 3 か所、README の外の 2 か所）と、取得できた 5 つのアシスタントが答えた数
+intent: editorial information（配置図）
+exact_text: 記事 articles/readme-human-llm-fold.md と畳んだ節の表から写す
+text_language: ja
+representation: abstract symbol extraction
+ratio: 16:9（1600×900、zenn-format Figures）
+substrate: cool_gray #E9E9E5
+mode: pure one-ink（淡色 #ADB9D7 は同じ版の網）
+palette: cobalt
+inks: Cobalt #2148B8
+plate_roles: 構造・文字・矢印をすべて 1 版で
+layout: composition_ruled_information
+empty_paper: 約 45%
+visual_tension: balanced
+focal_event: 字数に比例した README の帯の両端に、語の位置が刺さる 3 本の線
+release_zone: 帯の下の中央の余白
+type_hierarchy: programmatic（見出し Hiragino Mincho、ラベル Hiragino Sans、位置と数は Menlo）
+disruption: 帯の左端に寄り集まった V と D の 2 本の線
+manual gesture: 位置の線の折れ（引き出し線）1 系統
+series: readme-human-llm-fold-hero と同じ紙・インク・書体
+scale: 帯は x=120〜1480（1,360px）が 26,361 字。位置は 0 始まりの添字 188 / 640 / 26,352、変更履歴の見出しは 692
+-->
+<html lang="ja"><head><meta charset="utf-8"><title>canary</title>
+<style>
+html,body{margin:0;width:1600px;height:900px;background:#E9E9E5;overflow:hidden}
+svg{display:block;font-family:"Hiragino Sans","Hiragino Kaku Gothic ProN",system-ui,sans-serif}
+</style></head><body>
+<svg viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-label="readme-fetch-canary の README は 26,361字。冒頭（189字目）、冒頭近くの details の中（641字目）、2.5万字あまりの変更履歴のあとの末尾（26,353字目）、READMEからリンクした docs/setup.md、リンクのない llms.txt に別々のランダムな語を置いた。URLの中身を取得できた5つのアシスタントは、冒頭・畳んだ中・末尾・docs/setup.md の語を5つとも答え、llms.txt の語は4つが答えた。">
+  <defs>
+    <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#2148B8"/></marker>
+  </defs>
+
+  <text x="72" y="70" font-size="18" fill="#2148B8" font-family="Menlo, monospace" letter-spacing="2">FIG.2  readme-fetch-canary</text>
+  <text x="72" y="124" font-size="46" font-weight="600" fill="#2148B8" font-family="Hiragino Mincho ProN, serif">置き場所ごとに、別のランダムな語を置いた</text>
+
+  <!-- README bar, to scale -->
+  <text x="120" y="222" font-size="26" font-weight="700" fill="#2148B8">README.md</text>
+  <text x="1480" y="222" font-size="22" fill="#2148B8" text-anchor="end" font-family="Menlo, monospace">26,361字</text>
+  <rect x="155.7" y="244" width="1324.3" height="60" fill="#ADB9D7"/>
+  <rect x="120" y="244" width="1360" height="60" fill="none" stroke="#2148B8" stroke-width="3"/>
+  <text x="818" y="282" font-size="22" fill="#2148B8" text-anchor="middle">変更履歴 2.5万字あまり</text>
+
+  <!-- position lines -->
+  <g stroke="#2148B8" stroke-width="4" fill="none">
+    <path d="M129.7,236 L129.7,312 L129.7,392 L130,392"/>
+    <path d="M153,236 L153,312 L153,350 L470,350 L470,392"/>
+    <path d="M1479.5,236 L1479.5,392"/>
+  </g>
+  <g fill="#2148B8">
+    <circle cx="129.7" cy="236" r="6"/>
+    <circle cx="153" cy="236" r="6"/>
+    <circle cx="1479.5" cy="236" r="6"/>
+  </g>
+
+  <!-- V -->
+  <text x="120" y="430" font-size="26" font-weight="700" fill="#2148B8">冒頭（見える）</text>
+  <text x="120" y="464" font-size="22" fill="#2148B8" font-family="Menlo, monospace">189字目</text>
+  <text x="120" y="500" font-size="22" font-weight="700" fill="#2148B8">5つとも答えた</text>
+
+  <!-- D -->
+  <text x="460" y="430" font-size="26" font-weight="700" fill="#2148B8">冒頭近くの&lt;details&gt;の中</text>
+  <text x="460" y="464" font-size="22" fill="#2148B8" font-family="Menlo, monospace">641字目</text>
+  <text x="460" y="500" font-size="22" font-weight="700" fill="#2148B8">5つとも答えた</text>
+
+  <!-- T -->
+  <text x="1480" y="430" font-size="26" font-weight="700" fill="#2148B8" text-anchor="end">末尾（見える）</text>
+  <text x="1480" y="464" font-size="22" fill="#2148B8" text-anchor="end" font-family="Menlo, monospace">26,353字目</text>
+  <text x="1480" y="500" font-size="22" font-weight="700" fill="#2148B8" text-anchor="end">5つとも答えた</text>
+
+  <!-- outside README -->
+  <rect x="860" y="618" width="380" height="150" rx="4" fill="none" stroke="#2148B8" stroke-width="3"/>
+  <text x="890" y="664" font-size="26" font-weight="700" fill="#2148B8" font-family="Menlo, monospace">docs/setup.md</text>
+  <text x="890" y="700" font-size="22" fill="#2148B8">READMEからリンク</text>
+  <text x="890" y="738" font-size="22" font-weight="700" fill="#2148B8">5つとも答えた</text>
+
+  <rect x="420" y="618" width="380" height="150" rx="4" fill="none" stroke="#2148B8" stroke-width="3" stroke-dasharray="10 8"/>
+  <text x="450" y="664" font-size="26" font-weight="700" fill="#2148B8" font-family="Menlo, monospace">llms.txt</text>
+  <text x="450" y="700" font-size="22" fill="#2148B8">READMEからのリンクなし</text>
+  <text x="450" y="738" font-size="22" font-weight="700" fill="#2148B8">4つが答えた</text>
+
+  <text x="72" y="846" font-size="18" fill="#2148B8" font-family="Menlo, monospace" opacity=".8">URLの中身を取得できた5つのアシスタント（ChatGPT・Claude.ai・Gemini・Grok・Qwen）</text>
+</svg>
+</body></html>
