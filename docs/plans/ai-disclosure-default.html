@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="ja">
+<meta charset="utf-8">
+<title>AI 開示文の既定化</title>
+<link rel="stylesheet" href="htmlplan.css">
+<script src="htmlplan.js" defer></script>
+<style data-mock-shared>
+  .ar { font: 14px/1.75 -apple-system, BlinkMacSystemFont, "Hiragino Sans", sans-serif; color: #1f2328; background: #fff; border: 1px solid #d0d7de; border-radius: 8px; padding: 14px 18px; }
+  .ar h2 { font-size: 16px; margin: 12px 0 4px; }
+  .ar p { margin: 4px 0; } .ar ul { margin: 4px 0; padding-left: 20px; }
+  .ar hr { border: 0; border-top: 1px solid #d0d7de; margin: 12px 0; }
+  .ar .dim { color: #8c959f; } .ar a { color: #0969da; }
+</style>
+<body>
+
+<header>
+  <h1>全媒体の稿に AI 開示文を既定で置く</h1>
+  <doc-changes changed="93"></doc-changes>
+  <details class="thread"><summary>Why · 3 件</summary>
+    <doc-quote via="prompt" from="著者">AI開示をプラットフォームを問わずに規定にしたい。今Attention-not-selfに準じてという記述があるが、何だかリポ誘導しているみたいだから、誠実でAuthenticityが高まるようなAI開示文にして、ハーネスにAI開示文を入れることを規定にして。</doc-quote>
+    <doc-quote via="doc" from="調査 report（kind: external）" href="research/2026-10-08-ai-disclosure-default.md">(4) 準拠方針リンクを著者に要求する規範・platform は、調べた範囲に無い … AI の関与範囲を具体的に示すと「全自動」という誤仮定が外れる … 出典 URL の開示が AI ラベルのマイナス効果をほぼ打ち消した</doc-quote>
+    <doc-quote via="prompt" from="著者（Respond 時の補正）">既定のままで実装して。Zennの記事はGithubと同期するから全部AI開示を入れておいて。他のプラットフォームはこれからの分だけでいい</doc-quote>
+  </details>
+</header>
+
+<main>
+<doc-plan>
+
+<!-- ═════ 1 ═════ -->
+<doc-claim>
+  <p>どの媒体の稿も、末尾に同じ形の開示文が付く。</p>
+  <doc-mock frame="none" w="460" caption="Zenn も対象に入る。関連リンクの後に区切り線を引いて置く。"><template>
+<div class="ar">
+  <p>…だから私は、Jev をフローの固定した部品として使うことにしました。</p>
+  <h2>関連リンク</h2>
+  <ul><li><a>この記事のMarkdown正本（GitHub）</a></li><li><a>著者のGitHub</a></li></ul>
+  <hr>
+  <p data-ref="disc"><b>この記事の書き方</b>: 本文は Claude（Claude Code）が書きました。素材は私のセッション記録と計測結果、それに私との対話です。…</p>
+</div></template>
+    <doc-pin ref="disc" title="新しい既定">Zenn・Dev.to・note・Substack で同じ型。</doc-pin>
+  </doc-mock>
+  <doc-ask id="place">
+    <p>開示文はどこに置きますか。</p>
+    <label><input type="radio" name="place" value="last" checked> 最末尾（関連リンクの後、区切り線の下） <small>evidence が既にこの区切りを読む。note にも同じ規則で効く</small></label>
+    <label><input type="radio" name="place" value="before"> 本文の直後（関連リンクの前） <small>今の Dev.to 稿の位置</small></label>
+    <label><input type="radio" name="place" value="top"> 冒頭 <small>Medium 型。最初に知らせるが、書き出しを奪う</small></label>
+  </doc-ask>
+
+  <doc-claim>
+    <p>Zenn の適用外を消し、全媒体の受け入れ条件にする。</p>
+    <doc-code diff file=".claude/rules/publishing-channels.md" start="32" wrap>
+<script type="text/plain">
+- - AI-mediated writing: Zenn (`articles/*.md`) は開示block適用外（媒体読者にとってAI利用は
+-   前提で、開示は情報量を持たない。毎回問い直さない）。
+-   Dev.to / note / Substackは適用可否を記録し、該当するなら`writing-ecosystem/references/publication-procedures.md` の開示blockを収録済み
++ - AI 開示: AI が本文を書いた稿は、全媒体で `writing-ecosystem/references/publication-procedures.md` の
++   開示 block を収録済み。Zenn も対象（AI 利用が前提の読者にも、何を誰がしたかは情報になる）
+</script>
+    </doc-code>
+  </doc-claim>
+
+  <doc-claim>
+    <p>reviewer は「該当すれば」でなく、毎回開示文を照合する。</p>
+    <doc-code diff file=".claude/agents/editor.md" start="116" wrap>
+<script type="text/plain">
+  The dispatch prompt states whether AI generated any of the prose so disclosure applicability is known.
+  If that input is missing, report the disclosure check as unverified.
+@@
+  self-link discipline, and the AI-mediated-writing disclosure when applicable.
++ The disclosure block (`publication-procedures.md`) is required on every channel. Check that each slot
++ names this article's own materials, decisions and checks, and that the block carries no link.
+</script>
+    </doc-code>
+  </doc-claim>
+</doc-claim>
+
+<!-- ═════ 2 ═════ -->
+<doc-claim>
+  <p>開示文はリンクを持たず、誰が何をしたかを書く。</p>
+  <doc-draft id="ja" label="日本語の型（〈〉は記事ごとに埋める）">
+<script type="text/plain">
+**この記事の書き方**: 本文は Claude（Claude Code）が書きました。素材は〈私のセッション記録・計測結果・コミット〉と、私との対話です。〈中心の主張と、どの結果を採るか〉は私が決め、〈数値は手元で再計測し、引用は一次資料と照らし合わせ〉ました。公開前に私が全文を読み、内容の責任は私が負います。
+</script>
+  </doc-draft>
+  <doc-ask id="person">
+    <p>開示文の主語は誰にしますか。</p>
+    <label><input type="radio" name="person" value="watashi" checked> 私 <small>本文と同じ声。判断の持ち主がはっきりする</small></label>
+    <label><input type="radio" name="person" value="chosha"> 著者 <small>今の note 稿の形。一歩引いた記録調</small></label>
+  </doc-ask>
+
+  <doc-claim>
+    <p>枠の中身は brief から取り、確かめていないことは書かない。</p>
+    <doc-code diff file=".claude/skills/writing-ecosystem/references/publication-procedures.md" start="19" wrap>
+<script type="text/plain">
+  ## AI-mediated writing の開示
+
+- AI が実際のテキスト生成を担った記事で channel contract が開示を求める場合、記事末に開示ブロックを置く。
+- 適用可否は contract が持つ。要素: (1) AI-mediated である旨の明言、(2) 原稿の来歴、(3) 主張・判断・責任が
+- 著者に帰属すること、(4) 準拠方針への参照。媒体固有のブロック記法が使えなければプレーンな段落 + 強調で書く。
++ AI が本文を書いた稿は、全媒体で末尾に `**この記事の書き方**`（EN: `**How this was written**`）の段落を置く。
++ 4 つの枠を、その記事の具体で埋める: (1) 誰が本文を書いたか（ツール名）、(2) 素材、(3) 著者が決めたこと、
++ (4) 著者が確かめたこと。最後に責任の一文を置く。リンクは置かない — 来歴の根拠は本文と関連リンクが持つ。
++ (2)〜(4) は承認済み brief と証拠台帳から取る。確かめていない検証は書かない（書けない枠は削る）。
+</script>
+    </doc-code>
+  </doc-claim>
+
+  <doc-claim>
+    <p>EN 稿は同じ枠を訳した型を使う。</p>
+    <doc-code title="英語の型（Dev.to・Substack）" lang="md" wrap>
+<script type="text/plain">
+**How this was written:** Claude (Claude Code) wrote the prose. It worked from 〈my session records, measurements, and commits〉 and from conversations with me. I decided 〈the central claim and which results to keep〉, and I 〈re-ran the measurements and checked each quote against its source〉. I read the full text before publishing, and I am responsible for its content.
+</script>
+    </doc-code>
+  </doc-claim>
+</doc-claim>
+
+<!-- ═════ 3 ═════ -->
+<doc-claim>
+  <p>Zenn 稿に開示文が無いと、evidence が deviation を出す。</p>
+  <doc-mock frame="terminal" title="zenn-content" w="470"><template><span class="dim">></span> npm run evidence -- articles/new-article.md
+articles: 1  deviations: 1  grandfathered: 0
+new-article.md
+  deviation    <b>disclosure-missing</b> (expected: **この記事の書き方**)</template></doc-mock>
+
+  <doc-claim>
+    <p><code>check_disclosure()</code> は末尾に見出し語を探す。</p>
+    <doc-code title="scripts/zenn_evidence.py · sketch" lang="py">
+<script type="text/plain">
+DISCLOSURE_LABEL = "**この記事の書き方**"
+
+
+def check_disclosure(a: Article, dev: list) -> None:
+    # 全 Zenn 稿が対象。公開済みの稿にも入れたので grandfathered は持たない
+    if DISCLOSURE_LABEL not in a.prose:
+        dev.append({"rule": "disclosure-missing", "expected": DISCLOSURE_LABEL})
+</script>
+    </doc-code>
+  </doc-claim>
+
+  <doc-claim>
+    <p>ADR-0012 の失効条件に当たったので、注記を残す。</p>
+    <doc-code diff file="docs/adr/0012-zenn-review-deterministic-layer.md" start="102">
+<script type="text/plain">
+  - 記事本文へ AI 生成物の開示要件が Zenn 側の規約として入ったとき — 開示 block の存在検査は
+    deterministic なので script 側へ移す
++
++ > **注記（2026-10-0X, commit「feat(evidence): 開示 block の存在を検査する」）** 開示を全媒体の既定に
++ > したので、この条件を満たした。存在検査は `check_disclosure()` に置き、文面の照合は editor に残す。
+</script>
+    </doc-code>
+  </doc-claim>
+</doc-claim>
+
+<!-- ═════ 4 ═════ -->
+<doc-claim>
+  <p>Zenn は公開済みの全稿に足し、他媒体は書き換えない。</p>
+  <doc-tree caption="Zenn は GitHub と同期するので全稿に足す。他媒体の 5 本は手を付けない。">
+<script type="text/plain">
+articles/
+  ~ *.md  (84 本)                          # 末尾に開示 block。枠は本文に書いてあることだけで埋める
+note/
+  agi-judgment-trail.md                    # 2026-10-01 公開
+  lost-referents-in-generated-prose.md
+  on-embodiment-in-the-age-of-ai.md
+substack/
+  lost-referents-in-generated-prose-en.md
+  on-embodiment-in-the-age-of-ai-en.md
+</script>
+  </doc-tree>
+  <doc-ask id="retro">
+    <p>note・Substack の 5 本の「準じています」をどうしますか。</p>
+    <label><input type="radio" name="retro" value="keep" checked> 残す <small>repo の正本と公開物を一致させたまま</small></label>
+    <label><input type="radio" name="retro" value="strip"> repo の一文を消す <small>公開物は著者が手で直す</small></label>
+  </doc-ask>
+</doc-claim>
+
+<!-- ═════ shared ═════ -->
+<doc-claim aux="shared">
+  <p>共有：見出し語は 1 つで、型と script と reviewer が使う。</p>
+  <doc-tree caption="ADR は書かない。経緯は commit 本文と ADR-0012 の注記が持つ。">
+<script type="text/plain">
+.claude/rules/
+  ~ publishing-channels.md            # claim 1.1
+.claude/skills/writing-ecosystem/
+  ~ SKILL.md                          # dispatch prompt の「開示の要否」を外す
+  ~ references/publication-procedures.md   # claim 2.1。JA / EN の型
+.claude/agents/
+  ~ editor.md                         # claim 1.2
+  ~ essay-reviewer.md                 # claim 1.2 と同じ変更
+  ~ devto-translator.md               # 開示 block を EN の型で訳す
+scripts/
+  ~ zenn_evidence.py                  # claim 3.1
+  ~ tests/test_zenn_evidence.py       # 欠落 / grandfathered / 区切り線の下
+docs/adr/
+  ~ 0012-zenn-review-deterministic-layer.md   # claim 3.2
+</script>
+  </doc-tree>
+  <doc-ask id="executor">
+    <p>実行者の決定：誰が作りますか。</p>
+    <label><input type="radio" name="executor" value="here" checked> この session <small>大半が rule・skill・agent の散文。implementation-chain の例外 (a)</small></label>
+    <label><input type="radio" name="executor" value="build"> build セッションへ dispatch <small>script と test だけ別 session に渡す</small></label>
+  </doc-ask>
+</doc-claim>
+
+<doc-claim aux="scope">
+  <p>変えないもの：公開済みの Dev.to 投稿・Substack の設定・関連リンク。</p>
+  <ul>
+    <li>Dev.to の既存投稿：platform に更新手段が無い。既存の 3 要素型のまま残す。</li>
+    <li>Substack の “How I make this” statement：アカウントの設定なので著者が決める。末尾の開示文とは別物。</li>
+    <li>関連リンク 2 行の規約・背骨 rule・タイトル工程。</li>
+    <li>開示文の効果は測らない。技術ブログ読者での実験が無く（report の Still unknown）、ペナルティを 0 にすることは目標にしない。</li>
+  </ul>
+</doc-claim>
+
+</doc-plan>
+</main>
+</body></html>
