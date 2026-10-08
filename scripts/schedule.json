@@ -1029,7 +1029,7 @@
     },
     {
       "file": "articles-en/readme-human-llm-fold.md",
-      "devto": null,
+      "devto": "https://dev.to/shimo4228/is-a-readme-for-humans-or-for-llms-2206",
       "devto_tags": [
         "readme",
         "llm",
