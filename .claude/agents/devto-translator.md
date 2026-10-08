@@ -34,6 +34,8 @@ JP 記事パス（例: `articles/agent-causal-traceability-org-adoption.md`）
      `articles-en/` エントリの `devto` フィールドから解決する。Dev.to 版が無い
      （エントリなし / `devto: null`）ときだけ Zenn URL を残す。GitHub / ADR / 公式ドキュメント等、
      記事以外のリンクはそのまま
+   - JP 稿末尾の `**この記事の書き方**` 段落は、`writing-ecosystem/references/publication-procedures.md`
+     「AI 開示」の EN の型（`**How this was written:**`）で訳し、(1) に英訳も AI が担ったことを足す
 5. `articles-en/{slug}.md` に保存する
 
 ### Phase 1.5: 図の英訳

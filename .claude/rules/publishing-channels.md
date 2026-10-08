@@ -29,9 +29,8 @@ path がどの行にも一致しない、または複数行に一致する場合
 - `fact-checker`: INACCURATEとPARTIALLYは全件処分済み（訂正、または一次ソースで反証）
 - 著者の内容GO: レビュー反映後の本文に対して出ている
 - `title-reviewer`: 著者の内容GO後（= 本文の最後の構造変更後）に実行し、findings を見て著者がタイトルを選択済み
-- AI-mediated writing: Zenn (`articles/*.md`) は開示block適用外（媒体読者にとってAI利用は
-  前提で、開示は情報量を持たない。毎回問い直さない）。
-  Dev.to / note / Substackは適用可否を記録し、該当するなら`writing-ecosystem/references/publication-procedures.md` の開示blockを収録済み
+- AI 開示: AI が本文を書いた稿は、全媒体で`writing-ecosystem/references/publication-procedures.md` の開示 block を
+  最末尾に収録済み。Zenn も対象（AI 利用が前提の読者にも、この稿で誰が何をしたかは情報になる）
 - source embedding: Zenn/Dev.toは検証済み主張をinline linkまたはReferencesへ、note/Substackは
   検証済みsourceを末尾へ、orchestratorが編入済み。確かめるのは機械検査と著者の通読
 - public-safety scan: 秘密、個人path、未sanitized screenshot / raw log 0

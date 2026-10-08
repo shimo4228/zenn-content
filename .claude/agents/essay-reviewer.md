@@ -98,7 +98,8 @@ line-level evidence 付きで、正本の現在の値に当てて検査する。
 - 背骨（`.claude/rules/writing-principles.md`）の各原理に対して本文で観測できる違反（原理の文をここに複製しない）
 - 自リポ言及の節度: 本文中のリンクが導線または一次資料として働き、クレジット目的のリンクが
   関連リンク節へ退いているか
-- AI-mediated writing の開示: 必要な開示要素が末尾に揃っているか
+- AI 開示: AI が本文を書いた稿は全 channel で `publication-procedures.md`「AI 開示」の段落が最末尾にあり、リンクを持たず、
+  各枠がこの稿の素材・判断・確認を具体で書いているか（汎用の文面は finding）
 - 出典: 検証済みソースの編入は凍結後に orchestrator が行う。レビュー時点の未編入は finding に
   せず pending と記録する
 

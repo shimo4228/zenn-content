@@ -15,6 +15,10 @@ import pytest
 import zenn_evidence as ze
 
 CANONICAL = "https://github.com/shimo4228/zenn-content/blob/main/articles"
+DISCLOSURE = (
+    "\n---\n\n**この記事の書き方**: 本文は Claude（Claude Code）が書きました。"
+    "素材は私の計測ログと、私との対話です。内容の責任は私が負います。\n"
+)
 
 
 def article(
@@ -28,6 +32,7 @@ def article(
     published_at: str | None = "2026-08-01 09:00",
     body: str = "\n## 見出し\n\n本文です。\n",
     related: str | None = None,
+    disclosure: str = DISCLOSURE,
 ) -> str:
     fm = [
         f'title: "{title}"',
@@ -44,7 +49,7 @@ def article(
             f"- [この記事のMarkdown正本（GitHub）]({CANONICAL}/{slug}.md) — 索引も同じリポジトリ\n"
             "- [著者のGitHub](https://github.com/shimo4228) — DOI 付きの研究リポジトリ一覧\n"
         )
-    return "---\n" + "\n".join(fm) + "\n---\n" + body + related
+    return "---\n" + "\n".join(fm) + "\n---\n" + body + related + disclosure
 
 
 @pytest.fixture
@@ -234,10 +239,11 @@ def test_related_links_section_stops_at_disclosure_separator(repo: Path) -> None
         "\n## 関連リンク\n\n"
         f"- [正本]({CANONICAL}/sample.md)\n"
         "- [著者のGitHub](https://github.com/shimo4228)\n"
-        "\n---\n\n**AIメディエイト執筆について**: 本文。\n"
     )
-    p = write(repo, "sample", article(related=related))
-    assert ze.evaluate(p, repo)["deviations"] == []
+    disclosure = "\n---\n\n**この記事の書き方**: 本文は Claude が書きました。\n- 箇条書きに見える行\n"
+    p = write(repo, "sample", article(related=related, disclosure=disclosure))
+    result = ze.evaluate(p, repo)
+    assert result["info"]["related_links_count"] == 2
 
 
 def test_related_links_with_subheadings(repo: Path) -> None:
@@ -246,8 +252,10 @@ def test_related_links_with_subheadings(repo: Path) -> None:
         f"- [正本]({CANONICAL}/sample.md)\n"
         "- [著者のGitHub](https://github.com/shimo4228)\n"
     )
-    p = write(repo, "sample", article(related=related))
-    assert ze.evaluate(p, repo)["deviations"] == []
+    disclosure = "\n---\n\n**この記事の書き方**: 本文は Claude が書きました。\n- 箇条書きに見える行\n"
+    p = write(repo, "sample", article(related=related, disclosure=disclosure))
+    result = ze.evaluate(p, repo)
+    assert result["info"]["related_links_count"] == 2
 
 
 # --- safety ---------------------------------------------------------------
@@ -429,3 +437,54 @@ def test_cli_single_file(repo: Path, capsys: pytest.CaptureFixture[str]) -> None
     p = write(repo, "a", article("a"))
     assert ze.main([str(p), "--root", str(repo)]) == 0
     assert len(json.loads(capsys.readouterr().out)) == 1
+
+
+# --- AI disclosure block --------------------------------------------------
+
+
+def test_disclosure_missing_is_a_deviation_even_when_published(repo: Path) -> None:
+    p = write(repo, "sample", article(published_at="2026-02-10 09:00", disclosure=""))
+    result = ze.evaluate(p, repo)
+    assert "disclosure-missing" in rules(result)
+    assert result["grandfathered"] == []
+
+
+def test_disclosure_before_related_links_is_not_last(repo: Path) -> None:
+    body = "\n## 見出し\n\n本文です。\n\n**この記事の書き方**: 本文は Claude が書きました。\n"
+    p = write(repo, "sample", article(body=body, disclosure=""))
+    assert "disclosure-not-last" in rules(ze.evaluate(p, repo))
+
+
+def test_disclosure_with_link_is_flagged(repo: Path) -> None:
+    disclosure = "\n---\n\n**この記事の書き方**: 方針は[こちら](https://github.com/shimo4228/x)に準じます。\n"
+    p = write(repo, "sample", article(disclosure=disclosure))
+    assert "disclosure-has-link" in rules(ze.evaluate(p, repo))
+
+
+def test_disclosure_inside_code_fence_does_not_count(repo: Path) -> None:
+    body = "\n## 見出し\n\n```markdown\n**この記事の書き方**: 例\n```\n"
+    p = write(repo, "sample", article(body=body, disclosure=""))
+    assert "disclosure-missing" in rules(ze.evaluate(p, repo))
+
+
+def test_disclosure_after_related_links_is_clean(repo: Path) -> None:
+    p = write(repo, "sample", article())
+    assert ze.evaluate(p, repo)["deviations"] == []
+
+
+def test_content_after_disclosure_is_not_last(repo: Path) -> None:
+    disclosure = DISCLOSURE + "\n- [追記](https://example.com)\n"
+    p = write(repo, "sample", article(disclosure=disclosure))
+    assert "disclosure-not-last" in rules(ze.evaluate(p, repo))
+
+
+def test_bare_url_in_disclosure_is_a_link(repo: Path) -> None:
+    disclosure = "\n---\n\n**この記事の書き方**: 方針は https://example.com を参照。\n"
+    p = write(repo, "sample", article(disclosure=disclosure))
+    assert "disclosure-has-link" in rules(ze.evaluate(p, repo))
+
+
+def test_register_signals_skip_the_disclosure(repo: Path) -> None:
+    with_block = ze.evaluate(write(repo, "a", article("a")), repo)["signals"]["register"]
+    without = ze.evaluate(write(repo, "b", article("b", disclosure="")), repo)["signals"]["register"]
+    assert with_block == without

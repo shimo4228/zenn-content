@@ -13,6 +13,8 @@ Canonical sources for the values checked here:
   Zenn-specific syntax, Related links, Project terminology
 - ``.claude/skills/zenn-format/SKILL.md`` — frontmatter fields, emoji / topics,
   code blocks, images, links, message blocks
+- ``.claude/skills/writing-ecosystem/references/publication-procedures.md`` —
+  the AI disclosure block (label, place, no link)
 
 Two output layers, deliberately separated:
 
@@ -48,6 +50,9 @@ TITLE_SOFT_LIMIT = 50
 TITLE_HARD_LIMIT = 60
 
 VALID_TYPES = {"tech", "idea"}
+
+# AI 開示 block の見出し語。全 Zenn 稿に入れたので grandfathered は持たない (ADR-0012 注記)
+DISCLOSURE_LABEL = "**この記事の書き方**"
 TOPICS_MIN, TOPICS_MAX = 1, 5
 
 # Project terminology — Use / Do not rewrite as
@@ -263,6 +268,20 @@ def check_links(a: Article, root: Path, dev: list, info: dict) -> None:
     info["related_links_count"] = len(LIST_LINK.findall(section))
 
 
+def check_disclosure(a: Article, dev: list) -> None:
+    """The disclosure paragraph exists, is the last thing in the article, and has no link."""
+    pos = a.prose.rfind(DISCLOSURE_LABEL)
+    if pos < 0:
+        dev.append({"rule": "disclosure-missing", "expected": DISCLOSURE_LABEL})
+        return
+    paragraph, *tail = re.split(r"\n\s*\n", a.prose[pos:], maxsplit=1)
+    rest = tail[0] if tail else ""
+    if rest.strip():
+        dev.append({"rule": "disclosure-not-last", "expected": "nothing after the disclosure paragraph"})
+    if "](" in paragraph or re.search(r"https?://", paragraph):
+        dev.append({"rule": "disclosure-has-link"})
+
+
 def check_safety(a: Article, dev: list, info: dict) -> None:
     users = {u for u in PERSONAL_PATH.findall(a.body)}
     real = sorted(u for u in users if u.lower() not in PATH_PLACEHOLDERS)
@@ -288,8 +307,11 @@ def check_terminology(a: Article, dev: list) -> None:
 
 def collect_signals(a: Article) -> dict:
     """Hybrid layer: the script counts, a reviewer interprets."""
-    polite = len(POLITE_END.findall(a.prose))
-    plain = len(PLAIN_END.findall(a.prose))
+    # The disclosure block is a fixed-register template, not the author's prose.
+    cut = a.prose.rfind(DISCLOSURE_LABEL)
+    prose = a.prose[:cut] if cut >= 0 else a.prose
+    polite = len(POLITE_END.findall(prose))
+    plain = len(PLAIN_END.findall(prose))
     section = related_links_section(a) or ""
     body_self_links = len(re.findall(r"github\.com/shimo4228", a.body)) - len(
         re.findall(r"github\.com/shimo4228", section)
@@ -333,6 +355,7 @@ def evaluate(path: Path, root: Path, online: bool = False) -> dict:
     check_frontmatter(a, dev, grand, info)
     check_structure(a, dev, grand, info)
     check_links(a, root, dev, info)
+    check_disclosure(a, dev)
     check_safety(a, dev, info)
     check_terminology(a, dev)
     if online:

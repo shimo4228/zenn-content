@@ -121,7 +121,7 @@ causal spine・成功基準を渡すと、reviewer は答えを持って読み�
 `node ~/.claude/plugins/cache/openai-codex/codex/*/scripts/codex-companion.mjs status` → `result <job-id>` で取り出す。
 plugin が使えないときは Claude の
 `prose-clarity-reviewer` agent で代替し、理由を処分記録に残す。channel reviewer の dispatch prompt には、承認済み brief の path と、AI が本文を生成したかを書く（Author's words と
-の確度照合と、開示の要否に使う）。editor と essay-reviewer の両方を
+の確度照合と、開示の照合に使う）。editor と essay-reviewer の両方を
 回すのは contract が要求する場合だけ。`fact-checker` の dispatch prompt には証拠台帳と一次資料の
 path（repo、出力ファイル）を名指しで渡す — code / path / 出力の照合はこの agent が持ち、channel
 reviewer は判断だけを持つ。
@@ -242,7 +242,7 @@ local path・既存設定・認証・権限に依存する変更を読者へ渡�
 
 register と語尾の実値は channel contract が持つ。contract が無い task では推測しない。AI slop と voice
 drift の兆候を見つけたときだけ [`references/style-diagnostics.md`](references/style-diagnostics.md) を読む。
-AI-mediated writing の開示を contract が求める channel では [`references/publication-procedures.md`](references/publication-procedures.md) の要素で書く。
+AI が本文を書いた稿は、全 channel で [`references/publication-procedures.md`](references/publication-procedures.md) の「AI 開示」の型で末尾に開示を書く。
 
 ---
 

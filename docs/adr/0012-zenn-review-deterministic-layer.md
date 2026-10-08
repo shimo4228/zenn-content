@@ -102,6 +102,10 @@ hub は作ったものの DOI 付き repo 群へ。Zenn の記事ページは hu
 - 記事本文へ AI 生成物の開示要件が Zenn 側の規約として入ったとき — 開示 block の存在検査は
   deterministic なので script 側へ移す
 
+  > **注記（2026-10-08, commit「feat(evidence): AI 開示 block の存在・位置・リンク無しを検査する」）**
+  > この条件を満たした。AI 開示を全媒体の既定にし（plan: `docs/plans/ai-disclosure-default.html`）、Zenn は
+  > 公開済みの全稿にも入れたので、`check_disclosure()` は grandfathered を持たない。枠の中身の照合は editor に残す。
+
 ## Alternatives Considered
 
 **`zenn-validator` を採用する。** 公式 `zenn-dev/zenn-editor` の一部。単独 package の最終公開が

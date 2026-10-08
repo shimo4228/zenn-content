@@ -119,7 +119,10 @@ If that input is missing, report the disclosure check as unverified.
 Check with line-level evidence: the single central thesis, causal-spine progression, selected-evidence roles,
 out-of-scope discipline, one purpose per section,
 active/plain prose, warm-up or repetition,
-self-link discipline, and the AI-mediated-writing disclosure when applicable.
+self-link discipline, and the AI disclosure block. The block is required on every channel when AI wrote
+the prose (`writing-ecosystem/references/publication-procedures.md`, "AI 開示"): check that it sits at the very end,
+carries no link, and that each slot names this article's own materials, decisions and checks rather than
+generic wording.
 
 Do not claim that an unobservable process happened. Review the remaining prose instead. Report a
 requirement as not applicable only when the supplied channel contract establishes the exemption.
