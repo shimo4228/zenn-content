@@ -10,7 +10,7 @@ Japanese originals on Zenn; English editions on Dev.to, or as source in `article
 ### 2026-10
 
 - **2026-10-09** [READMEは人間とLLM、どちらのためのものか？](https://zenn.dev/shimo4228/articles/readme-human-llm-fold)
-  EN: — · `readme` `llm` `claudecode` `geo` `llmstxt`
+  EN: [Is a README for Humans or for LLMs?](https://dev.to/shimo4228/is-a-readme-for-humans-or-for-llms-2206) · `readme` `llm` `claudecode` `geo` `llmstxt`
 - **2026-10-03** [Claude ModsとOutput Styleで、Claude Codeを執筆用のハーネスにする](https://zenn.dev/shimo4228/articles/harness-scope-writing-harness)
   EN: [Turning Claude Code into a Writing Harness with Claude Mods and an Output Style](https://dev.to/shimo4228/turning-claude-code-into-a-writing-harness-with-claude-mods-and-an-output-style-1a73) · `claudecode` `claude` `contextengineering` `プラグイン` `執筆`
 
