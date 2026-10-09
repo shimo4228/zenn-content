@@ -1037,6 +1037,11 @@
         "geo"
       ],
       "notes": "EN translation of READMEは人間とLLM、どちらのためのものか？（著者GO後に即時投稿予定）"
+    },
+    {
+      "file": "articles/skill-description-pointer.md",
+      "date": "2026-10-09",
+      "notes": "スキルの description を常駐ポインタに書き直した記事。一覧の予算と名前だけになる規則を Claude Code 2.1.295 の本体で確認。初のペルソナ読み（r0 で停止）。2026-10-09 即時公開"
     }
   ]
 }

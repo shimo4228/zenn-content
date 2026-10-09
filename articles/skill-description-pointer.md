@@ -3,7 +3,8 @@ title: "うわっ…私のスキルのdescription長すぎ…！？"
 emoji: "📏"
 type: "tech"
 topics: ["claudecode", "claude", "agentskills", "llm"]
-published: false
+published: true
+published_at: 2026-10-09 20:39
 ---
 
 自分のスキルのdescriptionを眺めていて、「長すぎない？」と思いました。書き直す前、`~/.claude/skills/` には54本のスキルを置いていて、descriptionは合計28,131字、中央値435.5字、800字を超えるものが10本ありました。
