@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="ja">
+<meta charset="utf-8">
+<title>記事のペルソナ読み</title>
+<link rel="stylesheet" href="htmlplan.css">
+<script src="htmlplan.js" defer></script>
+<body>
+
+<header>
+  <h1>Zenn 記事のペルソナ読みループ</h1>
+  <doc-changes new="4" changed="4"></doc-changes>
+  <details class="thread"><summary>Why · 著者の発言 3 つと調査 report</summary>
+    <doc-quote via="prompt" from="著者" at="2026-10-09">ZennのEvalの仕組みだけど、Readme judgeみたいに記事ごとのジャッジのペルソナを設定してループ回す形にしたらどう？</doc-quote>
+    <doc-quote via="prompt" from="著者" at="2026-10-09">3</doc-quote>
+    <doc-quote via="prompt" from="著者" at="2026-10-09">私が日本のハーネス構築において並ぶ者がいないほど考えていることがわかるレベルまでにして</doc-quote>
+    <doc-quote via="doc" from="調査 report" href="research/2026-10-09-article-persona-loop.md">LLM の新規性判定は人間専門家と食い違い、過大評価の方向だった … 改稿で hedge が増える点は supported、「内容は劣化しない」は unsupported</doc-quote>
+  </details>
+</header>
+
+<main>
+<doc-plan>
+
+<!-- ═════ 1 ═════ -->
+<doc-claim>
+  <p>記事ごとに読み手 3 人を brief で決める</p>
+  <doc-code diff file=".claude/skills/writing-ecosystem/SKILL.md" start="79" title="brief の雛形に 1 行足す">
+<script type="text/plain">
+@@ -79,5 +79,6 @@
+ Reader: <channel contract の読者と、中心命題の対話で著者が言った「誰に向けて書くか」の原文 1 行>
+ Channel: <local contract の channel>
+ Author's words: <中心命題の対話で著者が言った原文。要約・言い換えをしない>
++Personas: <読み手 3 人。各 1〜2 文で役割・既に知っていること・比べる相手・時間の予算（references/persona-read.md）>
+ Central thesis: <Author's words を、この原稿が成立させる命題一文にしたもの。必ず一つ。確度は Author's words のまま（背骨 1）>
+ Entry bridge: <読者の出発点から、なぜ中心命題を考える意味があるかが伝わる場面・観察・問いを1〜2文で>
+</script>
+    <doc-pin line="82" tone="ok" title="著者が brief と一緒に確かめる"></doc-pin>
+  </doc-code>
+
+  <doc-claim>
+    <p>3 人目は日本のハーネス実践者に固定する</p>
+    <doc-code title="persona-read.md · 人選 · sketch" lang="markdown">
+<script type="text/plain">
+## 読み手を 3 人選ぶ（記事ごと）
+
+- **主な読者** — channel contract の読者。この記事の題材を自分の環境で使っている人
+- **流入経路から来た人** — Zenn のトレンド・検索・X 告知のうち、この記事が実際に受ける経路
+- **日本のハーネス実践者** — 自分でも harness を組み、日本語の記事を読み比べてきた人。
+  止めどきの問い（著者がどこまで考えているか）を一番厳しく読む役。毎回入れる
+
+人選は brief の Personas 行に書き、以後のラウンドで同じ 3 人を使う。
+</script>
+    </doc-code>
+  </doc-claim>
+
+  <doc-claim>
+    <p>新しい機能の語の「分からない」は追わない</p>
+    <doc-code title="persona-read.md · 新しい機能の語 · sketch（visitor-read.md:67-75 と同じ規則）" lang="markdown">
+<script type="text/plain">
+## 新しい機能の語
+
+読み手のモデルは知識のカットオフ後の機能を知らない（例: /skill-doctor、skillListingBudgetFraction）。
+
+- 読ませる前に一次資料で正式な表記を確かめる
+- 「その語が分からない」は実際の読者の反応ではない。初出に一句の言い換えを 1 回付けたら追わない
+</script>
+    </doc-code>
+  </doc-claim>
+</doc-claim>
+
+<!-- ═════ 2 ═════ -->
+<doc-claim>
+  <p>読み手は凍結前の稿を隔離して読む</p>
+  <doc-code title="persona-read.md · 起動 · sketch（tagline-eval.md の形）" lang="bash">
+<script type="text/plain">
+# 著者の CLAUDE.md・rules・skill を読まない。ツールも持たせない。毎ラウンド新しいプロセス
+claude -p --setting-sources "" --strict-mcp-config --tools "" --model sonnet \
+  --system-prompt "You are <persona>. Answer as that person would, honestly." \
+  "$(cat prompt.md drafts/<slug>/r1.md)" > drafts/<slug>/r1/<persona>.json
+</script>
+    <doc-pin line="2" tone="info" title="Dify・first-reader・自作の 3 件で一致した隔離"></doc-pin>
+    <doc-pin line="3" tone="warn" title="書き手は Claude、読み手は sonnet。自己選好は残る"></doc-pin>
+  </doc-code>
+
+  <doc-claim>
+    <p>読み手は読後に残った判断を自分の語で返す</p>
+    <doc-mock frame="terminal" title="r1/practitioner.json" w="470"><template><span class="dim">{</span>
+  "stopped_reading_at": "<b>listing 予算の節</b>",
+  "what_the_author_decided": "description を常駐ポインタにし、幅を lint で数える",
+  "what_the_author_left_open": "発火率は測っていない",
+  "why_it_holds": "名前だけ 29→6 本を同じ道具で測った",
+  "unclear_terms": ["常駐ポインタ"],
+  "pushed_away": ["予算 30,000 の前提が書いてない"],
+  "depth_vs_what_i_have_read": "<span class="y">recorded only</span>"
+<span class="dim">}</span></template></doc-mock>
+    <doc-ask id="question">
+      <p>止めどきに使う読み手の答えはどれか</p>
+      <label><input type="radio" name="question" value="recall-plus" checked> 読後の判断の言い直しで止め、深さの印象は記録だけ <small>新規性判定の上振れを止めどきに入れない</small></label>
+      <label><input type="radio" name="question" value="recall"> 読後の判断の言い直しだけ <small>深さの印象は聞かない</small></label>
+      <label><input type="radio" name="question" value="direct"> 「並ぶ者がいないか」を直接聞いて止める <small>2606.12071 では LLM が新規性を甘く判定</small></label>
+    </doc-ask>
+    <div data-if="question=direct"><doc-note tone="risk">読み手の yes が止めどきになると、改稿役は権威の語・固有名を足す方向に登る（report の authority bias）。claim 3.1 の数え上げが唯一の歯止めになる。</doc-note></div>
+  </doc-claim>
+
+  <doc-claim>
+    <p>比較材料との対比較は両順で読み、記録だけにする</p>
+    <doc-code title="persona-read.md · 比較材料 · sketch" lang="markdown">
+<script type="text/plain">
+## 比較材料（検索時点で取り直す）
+
+- Zenn API（topicname=harness / claudecode）から、運用の実測・撤退まで書いた記事を 2〜3 本選ぶ
+  （2026-10-09 時点の第一候補: i_ichi「ハーネスを1か月ぶりに減築した」）
+- 日本のハーネス実践者にだけ、自稿と 1 本を並べて「どちらの著者が深く考えているか、どの文で」を聞く
+- 左右を入れ替えて 2 回読む。両順で同じ側を選んだときだけ記録する
+- 結果は著者に渡す材料で、止めどきには使わない
+</script>
+    </doc-code>
+    <doc-ask id="compare">
+      <p>比較材料を読み手に渡すか</p>
+      <label><input type="radio" name="compare" value="record" checked> 渡し、両順の対比較を記録だけ <small>著者は相対位置を見られる</small></label>
+      <label><input type="radio" name="compare" value="none"> 渡さない <small>比較を渡す実装は調査で 0 件</small></label>
+      <label><input type="radio" name="compare" value="stop"> 対比較を止めどきに使う <small>比較は LLM 側へ上振れする報告あり</small></label>
+    </doc-ask>
+    <div data-if="compare=none"><doc-note tone="info">この claim は消え、「並ぶ者がいない」の相対部分は著者の通読だけが持つ。</doc-note></div>
+  </doc-claim>
+</doc-claim>
+
+<!-- ═════ 3 ═════ -->
+<doc-claim>
+  <p>改稿は見せ方だけを直し、主張を足さない</p>
+  <doc-code title="persona-read.md · 改稿の範囲 · sketch" lang="markdown">
+<script type="text/plain">
+## 読み手の指摘を二つに分ける
+
+- 文面で直る — 止まった箇所、分からない語、順序、入口、説明の 1 文。orchestrator が直す
+- 事実の不足 — 「測っていない」「前提が書いてない」。著者へ渡す。本文で薄めない・足さない
+
+足さないもの: 新しい数値、最上級、格付けの語（第一人者・唯一・誰よりも）、
+             台帳に無い固有名、限定句の追加（背骨 1。改稿で hedge が増える: 2609.14767）
+</script>
+    <doc-pin line="4" tone="warn" title="ここが主張の入口。著者だけが埋める"></doc-pin>
+  </doc-code>
+
+  <doc-claim>
+    <p>足した数値・最上級・限定句を機械で数える</p>
+    <doc-code title="scripts/drift_count.py · sketch" lang="py">
+<script type="text/plain">
+SUPERLATIVES = ("最も", "唯一", "初めて", "誰よりも", "第一人者", "圧倒的", "並ぶ者")
+HEDGES = ("かもしれ", "と思われ", "可能性があ", "おそらく", "とは限らな")
+
+def drift(prev: str, curr: str, dossier: str) -> dict[str, list[str]]:
+    """prev → curr で増えた語を返す。数値は台帳に無いものだけ。"""
+    return {
+        "new_numbers": [n for n in numbers(curr) - numbers(prev) if n not in dossier],
+        "new_superlatives": added(prev, curr, SUPERLATIVES),
+        "new_hedges": added(prev, curr, HEDGES),
+        "new_names": [w for w in latin_and_katakana(curr) - latin_and_katakana(prev) if w not in dossier],
+    }
+</script>
+      <doc-pin line="7" tone="info" title="Paper Pilot 2608.28596 の drift 指標と同じ考え方"></doc-pin>
+    </doc-code>
+    <doc-note tone="warn"><strong>止める</strong> 1 件でも出たら、その改稿を著者の確認なしに次のラウンドへ渡さない。</doc-note>
+  </doc-claim>
+</doc-claim>
+
+<!-- ═════ 4 ═════ -->
+<doc-claim>
+  <p>ループは 3 周か新しい理由が消えたら止まる</p>
+  <doc-machine name="loop" caption="凍結した後は今の panel が 1 回だけ読む。">
+<script type="text/plain">
+machine loop initial draft
+state draft          # brief 承認後の初稿 r0
+state reading        # 3 人が隔離して読む
+state revising       # 見せ方だけを直す
+state author         # 事実の不足と drift を著者へ
+state frozen final   # 構造凍結。panel へ
+
+| draft | reading | revising |
+| .     | frozen  | author   |
+
+draft    -read->  reading  : r0
+reading  -fix->   revising : 文面の理由
+revising -next->  reading  : r+1
+reading  -stop->  frozen   : 理由が消えた
+reading  -cap->   frozen   : 上限
+reading  -fact->  author   : 事実の不足
+revising -drift-> author   : drift
+author   -back->  revising : 著者が補う
+</script>
+  </doc-machine>
+  <doc-ask id="rounds">
+    <p>改稿の周回の上限は何回か</p>
+    <div class="opts-row">
+      <label><input type="radio" name="rounds" value="3" checked> 3 <small>README の運用と同じ</small></label>
+      <label><input type="radio" name="rounds" value="2"> 2</label>
+      <label><input type="radio" name="rounds" value="5"> 5</label>
+    </div>
+  </doc-ask>
+  <div data-if="rounds=5"><doc-note tone="warn">Loop-Back（2609.14767）では改稿 1 回ごとに Clarity が下がった。Pan（2407.04549）では最終反復で人間の点が落ちた。</doc-note></div>
+
+  <doc-claim>
+    <p>panel は凍結稿に 1 回のまま変えない</p>
+    <doc-code diff file=".claude/skills/writing-ecosystem/SKILL.md" start="108" title="§4 の前にループを置く">
+<script type="text/plain">
+@@ -108,1 +108,6 @@
++### 3.5. Persona read（Zenn）
++
++brief の Personas の 3 人に、凍結前の稿を `references/persona-read.md` の手順で読ませ、
++止めどきまで見せ方を直す。読み手の合格は受け入れの証跡にならない。
++
+ ### 4. Freeze, review, and content GO
+</script>
+      <doc-pin line="109" tone="ok" title="凍結の前。処分規律の「各 1 回」は保つ"></doc-pin>
+    </doc-code>
+  </doc-claim>
+</doc-claim>
+
+<!-- ═════ 5 ═════ -->
+<doc-claim>
+  <p>公開の可否は著者の通読が決める</p>
+  <doc-code diff file=".claude/rules/publishing-channels.md" start="24" title="Shared acceptance profile に 1 行">
+<script type="text/plain">
+@@ -24,2 +24,4 @@
+ - 処分記録: orchestratorが指摘ごとに採用・不採用と理由を1行ずつ残している
++- ペルソナ読み（Zenn）: 各ラウンドの読み手の JSON と drift の結果あり。止めた理由（上限 / 理由の消滅 /
++  事実の不足のみ）を処分記録に書いている。読み手の評価は受け入れ条件にしない
+ - channel editor: 凍結稿へのreportあり。CRITICALとcanonical coverageのpending / unverifiedは
+</script>
+  </doc-code>
+  <doc-ask id="calibrate">
+    <p>ループの外で読み手を照合する手段はどれか</p>
+    <label><input type="radio" name="calibrate" value="readthrough" checked> 著者の通読。通読の指摘数を記事ごとに記録 <small>README の read-through-log と同じ形</small></label>
+    <label><input type="radio" name="calibrate" value="humans"> 著者の通読 ＋ 人間の読み手 1〜2 人 <small>依頼の手間が記事ごとに出る</small></label>
+    <label><input type="radio" name="calibrate" value="reception"> 著者の通読 ＋ 公開後の実測と照合 <small>snapshots.jsonl の liked と並べる</small></label>
+  </doc-ask>
+
+  <doc-claim>
+    <p>ADR-0015 が ADR-0011 の改稿ループ廃止を覆す</p>
+    <doc-code diff file="docs/adr/0011-dismantle-the-eval-layer.md" start="69" title="ADR-0011 Decision 3 に注記">
+<script type="text/plain">
+@@ -69,4 +69,7 @@
+ 3. **機構を削除する**: craft チェックリスト（`.claude/refs/kaguura-craft-checklist.md`）、
+    `scripts/mechanical_checks.py` + テスト、`writing-team` の「改稿ループ」節、
+    `quality-gate` の第 1 必須条件。checklist の消費者は article-judge のみ、
+    mechanical_checks の消費者も article-judge のみで、判定器が消えると読み手がいなくなる。
++
++   > **注記（2026-10-09, ADR-0015）**: 改稿ループは、判定器でなく隔離したペルソナの読みとして凍結前に戻す。
++   > 受け入れは本 ADR のとおり著者の通読が持つ。
+</script>
+    </doc-code>
+  </doc-claim>
+</doc-claim>
+
+<!-- ═════ shared ═════ -->
+<doc-claim aux="shared">
+  <p>手順は references の 1 本に集める</p>
+  <doc-tree caption="基準を 1 ファイルに閉じる（ADR-0011 Context 1 の整合コスト対策）。">
+<script type="text/plain">
+.claude/skills/writing-ecosystem/
+  ~ SKILL.md                       # brief に Personas、§3.5 を足す
+  references/
+    + persona-read.md              # 人選・起動・答えの形・比較・改稿範囲・止めどき
+.claude/rules/
+  ~ publishing-channels.md         # 受け入れの証跡に 1 行
+scripts/
+  + drift_count.py
+  tests/
+    + test_drift_count.py
+docs/adr/
+  + 0015-persona-read-loop.md
+  ~ 0011-dismantle-the-eval-layer.md   # 注記
+  ~ README.md                      # 索引
+</script>
+  </doc-tree>
+  <doc-ask id="executor">
+    <p>実行者の決定: 誰が実装するか</p>
+    <label><input type="radio" name="executor" value="this" checked> このセッション（Opus） <small>大半が skill・rule・ADR の散文（implementation-chain の例外 a）</small></label>
+    <label><input type="radio" name="executor" value="dispatch"> build-tier の新規セッションへ渡す <small>このプランを入力にする</small></label>
+  </doc-ask>
+</doc-claim>
+
+<!-- ═════ scope ═════ -->
+<doc-claim aux="scope">
+  <p>変えないもの</p>
+  <ul>
+    <li>背骨（writing-principles.md）と、確度の上限が著者の言葉であること</li>
+    <li>panel 3 本（editor・fact-checker・Codex の初見の読み）とその回数</li>
+    <li>title-reviewer と headline-craft。タイトルの eval はこのプランの外</li>
+    <li>note・Substack・Dev.to の手順。ペルソナ読みは Zenn だけで始める</li>
+    <li>skill description の記事の brief。ループは凍結前に回るので、brief はこのプランと並行で進める</li>
+  </ul>
+</doc-claim>
+
+</doc-plan>
+</main>
+</body></html>
