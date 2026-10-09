@@ -1042,6 +1042,17 @@
       "file": "articles/skill-description-pointer.md",
       "date": "2026-10-09",
       "notes": "スキルの description を常駐ポインタに書き直した記事。一覧の予算と名前だけになる規則を Claude Code 2.1.295 の本体で確認。初のペルソナ読み（r0 で停止）。2026-10-09 即時公開"
+    },
+    {
+      "file": "articles-en/skill-description-pointer.md",
+      "devto": null,
+      "devto_tags": [
+        "claudecode",
+        "agentskills",
+        "contextengineering",
+        "claude"
+      ],
+      "notes": "EN translation of うわっ…私のスキルのdescription長すぎ…！？（EN稿の title/review/quality-gate/著者GO 後に投稿）"
     }
   ]
 }

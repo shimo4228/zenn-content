@@ -1,0 +1,78 @@
+<!doctype html>
+<!--
+manifest (mono-figure):
+subject: スキル一覧の予算を超えたとき、どのスキルに description が付くか（Claude Code 2.1.295 の選び方 4 手順）
+intent: editorial information（流れ）
+exact_text: EN 稿 articles-en/skill-description-pointer.md「The skill listing has a budget, and over it, skills get only their names」節と図の alt から写す
+text_language: en
+representation: abstract symbol extraction
+ratio: 16:9（1600×900、zenn-format Figures）
+substrate: cool_gray #E9E9E5
+mode: pure one-ink（淡色 #ADB9D7 は同じ版の網）
+palette: cobalt
+inks: Cobalt #2148B8
+plate_roles: 構造・文字・矢印をすべて 1 版で
+layout: composition_ruled_information
+empty_paper: 約 40%
+visual_tension: balanced
+focal_event: 3 行目の長い description の帯が、残りの予算の枠からはみ出して「名前だけ」へ落ちる
+release_zone: 右下の余白
+type_hierarchy: programmatic（見出し Hiragino Mincho、ラベル Hiragino Sans、名前と数は Menlo）
+disruption: 3 行目だけ帯が破線の枠を越える
+manual gesture: 上から下へ順に進む矢印 1 系統
+series: readme-human-llm-fold-hero / -canary と同じ紙・インク・書体
+scale: 帯の長さは模式（字数に比例しない）
+-->
+<html lang="en"><head><meta charset="utf-8"><title>budget (EN)</title>
+<style>
+html,body{margin:0;width:1600px;height:900px;background:#E9E9E5;overflow:hidden}
+svg{display:block;font-family:"Hiragino Sans","Hiragino Kaku Gothic ProN",system-ui,sans-serif}
+</style></head><body>
+<svg viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-label="Over budget, only descriptions that fit whole get attached. The budget is a width of 30,000 (Opus 5.5, 1M window). Over it, Claude Code goes down the list and chooses. Bundled skills and skills with a high usage score get their descriptions. A skill with usage score 0 and a long description (loop-design-check) does not fit the remaining budget and is listed by name only. A skill with usage score 0 and a short description: the next one is tried, and it gets its description if it fits.">
+  <defs>
+    <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#2148B8"/></marker>
+  </defs>
+
+  <text x="72" y="70" font-size="18" fill="#2148B8" font-family="Menlo, monospace" letter-spacing="2">FIG.1  skill listing budget</text>
+  <text x="72" y="124" font-size="46" font-weight="600" fill="#2148B8" font-family="Hiragino Mincho ProN, serif">Over budget, only descriptions that fit whole get attached</text>
+  <text x="72" y="172" font-size="22" fill="#2148B8">The budget is a width of 30,000 (Opus 5.5, 1M window). Over it, Claude Code goes down the list and chooses</text>
+
+  <!-- column heads -->
+  <text x="120" y="236" font-size="20" fill="#2148B8" font-family="Menlo, monospace">highest usage score first</text>
+  <text x="700" y="236" font-size="20" fill="#2148B8" font-family="Menlo, monospace">description</text>
+  <text x="1270" y="236" font-size="20" fill="#2148B8" font-family="Menlo, monospace">listed as</text>
+  <line x1="72" y1="252" x2="1528" y2="252" stroke="#2148B8" stroke-width="2"/>
+
+  <!-- order arrow -->
+  <path d="M92,290 L92,770" stroke="#2148B8" stroke-width="3" fill="none" marker-end="url(#ah)"/>
+
+  <!-- row 1: bundled -->
+  <text x="120" y="320" font-size="26" font-weight="700" fill="#2148B8">Bundled skills</text>
+  <text x="120" y="352" font-size="20" fill="#2148B8">always keep their description</text>
+  <rect x="700" y="296" width="300" height="44" fill="#ADB9D7" stroke="#2148B8" stroke-width="3"/>
+  <text x="1270" y="328" font-size="26" font-weight="700" fill="#2148B8">with description</text>
+
+  <!-- row 2: high score -->
+  <text x="120" y="440" font-size="26" font-weight="700" fill="#2148B8">High usage score</text>
+  <text x="120" y="472" font-size="20" fill="#2148B8">fits the remaining budget</text>
+  <rect x="700" y="416" width="380" height="44" fill="#ADB9D7" stroke="#2148B8" stroke-width="3"/>
+  <text x="1270" y="448" font-size="26" font-weight="700" fill="#2148B8">with description</text>
+
+  <!-- row 3: score 0, long -->
+  <text x="120" y="560" font-size="26" font-weight="700" fill="#2148B8">Usage score 0, long</text>
+  <text x="120" y="592" font-size="20" fill="#2148B8">doesn’t fit, so it is skipped</text>
+  <rect x="700" y="530" width="300" height="72" fill="none" stroke="#2148B8" stroke-width="3" stroke-dasharray="10 8"/>
+  <text x="712" y="622" font-size="18" fill="#2148B8" font-family="Menlo, monospace">remaining budget</text>
+  <rect x="700" y="544" width="500" height="44" fill="#ADB9D7" stroke="#2148B8" stroke-width="3"/>
+  <text x="1270" y="568" font-size="26" font-weight="700" fill="#2148B8">name only</text>
+  <text x="1270" y="600" font-size="20" fill="#2148B8" font-family="Menlo, monospace">- loop-design-check</text>
+
+  <!-- row 4: score 0, short -->
+  <text x="120" y="680" font-size="26" font-weight="700" fill="#2148B8">Usage score 0, short</text>
+  <text x="120" y="712" font-size="20" fill="#2148B8">the next one is tried; gets it if it fits</text>
+  <rect x="700" y="656" width="120" height="44" fill="#ADB9D7" stroke="#2148B8" stroke-width="3"/>
+  <text x="1270" y="688" font-size="26" font-weight="700" fill="#2148B8">with description</text>
+
+  <text x="72" y="846" font-size="18" fill="#2148B8" font-family="Menlo, monospace" opacity=".8">No description is cut off midway (only the part over the per-skill cap of 1,536 characters is cut). Claude Code 2.1.295</text>
+</svg>
+</body></html>

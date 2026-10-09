@@ -1,0 +1,64 @@
+<!doctype html>
+<!--
+manifest (mono-figure):
+subject: 誰が呼ぶか（invocation）でスキルを分けると、description がどこに置かれ、どう書かれるか
+intent: editorial information（対比）
+exact_text: EN 稿 articles-en/skill-description-pointer.md「First, I decided whether the model should invoke a skill at all」節と図の alt から写す
+text_language: en
+representation: abstract symbol extraction
+ratio: 16:9（1600×900、zenn-format Figures）
+substrate: cool_gray #E9E9E5
+mode: pure one-ink（淡色 #ADB9D7 は同じ版の網）
+palette: cobalt
+inks: Cobalt #2148B8
+plate_roles: 構造・文字・矢印をすべて 1 版で
+layout: composition_ruled_information
+empty_paper: 約 45%
+visual_tension: balanced
+focal_event: 毎ターンのスキル一覧の枠の内と外に、2 種類のスキルが分かれる
+release_zone: 下の中央の余白
+type_hierarchy: programmatic（見出し Hiragino Mincho、ラベル Hiragino Sans、名前と数は Menlo）
+disruption: 左のスキルだけ一覧の枠の外（破線）に置く
+manual gesture: 分岐の矢印 1 系統
+series: skill-description-pointer-budget-en と同じ紙・インク・書体
+-->
+<html lang="en"><head><meta charset="utf-8"><title>invocation (EN)</title>
+<style>
+html,body{margin:0;width:1600px;height:900px;background:#E9E9E5;overflow:hidden}
+svg{display:block;font-family:"Hiragino Sans","Hiragino Kaku Gothic ProN",system-ui,sans-serif}
+</style></head><body>
+<svg viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-label="First, split skills by who invokes them. A skill a person invokes with /name gets disable-model-invocation: true, is dropped before the listing, uses none of the budget, and its description is one line for humans (e.g. grill-me). A skill the model invokes is in the skill listing every turn; its description is a pointer resident every turn that says only when to use the skill, and the steps and output shape go in the body (e.g. measurement-discipline, 1,046 → 291 characters). Writing them short is my own call.">
+  <defs>
+    <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#2148B8"/></marker>
+  </defs>
+
+  <text x="72" y="70" font-size="18" fill="#2148B8" font-family="Menlo, monospace" letter-spacing="2">FIG.2  invocation</text>
+  <text x="72" y="124" font-size="46" font-weight="600" fill="#2148B8" font-family="Hiragino Mincho ProN, serif">First, split skills by who invokes them</text>
+
+  <!-- split -->
+  <text x="800" y="206" font-size="26" font-weight="700" fill="#2148B8" text-anchor="middle">Skills</text>
+  <path d="M800,222 L800,250 L420,250 L420,300" stroke="#2148B8" stroke-width="3" fill="none" marker-end="url(#ah)"/>
+  <path d="M800,250 L1180,250 L1180,300" stroke="#2148B8" stroke-width="3" fill="none" marker-end="url(#ah)"/>
+
+  <!-- left: human-invoked -->
+  <text x="420" y="342" font-size="28" font-weight="700" fill="#2148B8" text-anchor="middle">A person invokes with /name</text>
+  <rect x="170" y="370" width="500" height="330" rx="4" fill="none" stroke="#2148B8" stroke-width="3" stroke-dasharray="10 8"/>
+  <text x="200" y="418" font-size="22" fill="#2148B8" font-family="Menlo, monospace">disable-model-invocation: true</text>
+  <text x="200" y="470" font-size="24" font-weight="700" fill="#2148B8">dropped before the listing</text>
+  <text x="200" y="506" font-size="22" fill="#2148B8">uses none of the budget</text>
+  <text x="200" y="566" font-size="24" font-weight="700" fill="#2148B8">description: one line for humans</text>
+  <text x="200" y="640" font-size="22" fill="#2148B8" font-family="Menlo, monospace">e.g. grill-me</text>
+
+  <!-- right: model-invoked, inside the listing -->
+  <text x="1180" y="342" font-size="28" font-weight="700" fill="#2148B8" text-anchor="middle">The model invokes</text>
+  <rect x="900" y="370" width="560" height="330" rx="4" fill="#ADB9D7" fill-opacity=".45" stroke="#2148B8" stroke-width="3"/>
+  <text x="930" y="418" font-size="22" fill="#2148B8" font-family="Menlo, monospace">skill listing, every turn</text>
+  <text x="930" y="470" font-size="24" font-weight="700" fill="#2148B8">a pointer resident every turn</text>
+  <text x="930" y="506" font-size="22" fill="#2148B8">says only when to use the skill</text>
+  <text x="930" y="542" font-size="22" fill="#2148B8">the steps and output shape go in the body</text>
+  <text x="930" y="640" font-size="22" fill="#2148B8" font-family="Menlo, monospace">e.g. measurement-discipline</text>
+  <text x="930" y="676" font-size="22" fill="#2148B8" font-family="Menlo, monospace">1,046 → 291 characters</text>
+
+  <text x="72" y="846" font-size="18" fill="#2148B8" font-family="Menlo, monospace" opacity=".8">Split from Matt Pocock, mattpocock/skills (.agents/invocation.md). Writing them short is my own call</text>
+</svg>
+</body></html>
