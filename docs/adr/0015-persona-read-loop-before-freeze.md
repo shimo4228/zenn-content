@@ -54,6 +54,10 @@ ADR-0011 が改稿ループを外した理由は二つ: judge を通った稿に
    `.claude/skills/writing-ecosystem/references/persona-read.md`。writing-ecosystem の §3.5 と brief の `Personas:` 行から指す
 2. **読み手は記事ごとに 3 人（`primary` / `inflow` / `practitioner`）。`practitioner` は毎回「日本のハーネス実践者」にする。** 人選は
    brief で著者が確かめ、ラウンド間で固定する
+
+   > **注記（2026-10-09, commit「docs(writing): ペルソナの人選を著者の確認なしにする」）**: 人選は orchestrator が brief に書き、
+   > 著者の確認を待たない（著者「ペルソナ別に確かめなくていいよ」）。ラウンド間で固定することはそのまま立つ。
+
 3. **読み手は上の隔離した `claude -p` で、毎ラウンド新しいプロセスで読む。** brief・中心命題・台帳は渡さない。記事ごとに、著者の rules
    の見出しが読み手に見えないことと、隔離を外すと見えることを確かめる
 4. **止めどきは、読後に残った著者の判断の言い直しと brief の判断の照合（一致 / ずれ / 欠落）で決める。** 深さの印象は記録だけにする。
