@@ -44,7 +44,7 @@ rules・skill を読み込まない隔離した `claude -p` で走らせる。�
 claude -p --setting-sources "" --strict-mcp-config --tools "" --model sonnet \
   --system-prompt "あなたは <人物説明>。その人として正直に答える。" \
   "$(cat drafts/<slug>/persona/prompt.md drafts/<slug>/persona/r<N>.reader.md)" \
-  > drafts/<slug>/persona/r<N>-<ID>.json
+  < /dev/null > drafts/<slug>/persona/r<N>-<ID>.json
 ```
 
 **起動前の確認（記事ごとに 1 回）**: 同じフラグで「渡された instructions に『執筆の背骨』か『Publishing Channel
