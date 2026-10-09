@@ -1045,7 +1045,7 @@
     },
     {
       "file": "articles-en/skill-description-pointer.md",
-      "devto": null,
+      "devto": "https://dev.to/shimo4228/whoa-my-claude-code-skill-descriptions-are-way-too-long-43l",
       "devto_tags": [
         "claudecode",
         "agentskills",

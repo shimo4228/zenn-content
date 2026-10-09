@@ -10,7 +10,7 @@ Japanese originals on Zenn; English editions on Dev.to, or as source in `article
 ### 2026-10
 
 - **2026-10-09** [うわっ…私のスキルのdescription長すぎ…！？](https://zenn.dev/shimo4228/articles/skill-description-pointer)
-  EN: — · `claudecode` `claude` `agentskills` `llm`
+  EN: [Whoa… My Claude Code Skill Descriptions Are Way Too Long…?!](https://dev.to/shimo4228/whoa-my-claude-code-skill-descriptions-are-way-too-long-43l) · `claudecode` `claude` `agentskills` `llm`
 - **2026-10-09** [READMEは人間とLLM、どちらのためのものか？](https://zenn.dev/shimo4228/articles/readme-human-llm-fold)
   EN: [Is a README for Humans or for LLMs?](https://dev.to/shimo4228/is-a-readme-for-humans-or-for-llms-2206) · `readme` `llm` `claudecode` `geo` `llmstxt`
 - **2026-10-03** [Claude ModsとOutput Styleで、Claude Codeを執筆用のハーネスにする](https://zenn.dev/shimo4228/articles/harness-scope-writing-harness)
