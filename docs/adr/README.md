@@ -19,6 +19,7 @@ context, the decision, the alternatives considered, and the consequences.
 | [0012](0012-zenn-review-deterministic-layer.md) | Zenn レビューの決定論層を evidence script へ降ろす | Accepted | 2026-08-27 |
 | [0013](0013-first-contact-read-on-codex.md) | 初見の読みを Codex に移し、cross-model review を兼ねさせる | Accepted | 2026-09-27 |
 | [0014](0014-writing-backbone-in-resident-rules.md) | 執筆の背骨を常駐 rule に置き、writing-ecosystem の細則を原理へ畳む | Accepted | 2026-09-29 |
+| [0015](0015-persona-read-loop-before-freeze.md) | Zenn 稿の構造凍結前に、記事ごとのペルソナ読みで見せ方を改稿するループを置く | Accepted | 2026-10-09 |
 
 ADR-0003 partially supersedes ADR-0001 (zenn-writer row) and ADR-0002 §2
 (`writing-standards.md` reference) — see its Consequences section.
@@ -31,3 +32,5 @@ ADR-0013 partially supersedes ADR-0004 Decision 1 (executor moves to Codex) and 
 Decision 2 (`codex-review` leaves the panel) — both carry dated notes in place.
 ADR-0014 partially supersedes ADR-0010 Decision 2, ADR-0006 Decision 2, ADR-0007 (Craft 規約の正本)
 and ADR-0011 Decision 4 (the writing backbone moves to `.claude/rules/writing-principles.md`) — all carry dated notes in place.
+ADR-0015 partially supersedes ADR-0011 Decision 3 (the revision loop returns as a persona read before structural freeze,
+for Zenn only; acceptance stays with the panel and the author's read-through) — ADR-0011 carries a dated note in place.

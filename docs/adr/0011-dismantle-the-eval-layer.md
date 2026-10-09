@@ -70,6 +70,10 @@ ADR-0008 が risk として挙げた「judge の好みへの文体収束（平�
    `scripts/mechanical_checks.py` + テスト、`writing-team` の「改稿ループ」節、
    `quality-gate` の第 1 必須条件。checklist の消費者は article-judge のみ、
    mechanical_checks の消費者も article-judge のみで、判定器が消えると読み手がいなくなる。
+
+   > **注記（2026-10-09, ADR-0015）**: 改稿ループは、判定器でなく記事ごとのペルソナ読み（隔離した読み手が読後に残った判断を
+   > 言い直す）として Zenn 稿の構造凍結前に戻す。Decision 2 の受け入れ（panel と著者の通読）と、craft checklist・
+   > `mechanical_checks.py`・article-judge の削除はそのまま立つ。
 4. **執筆側へ移す項目は無い**（照合済み）。§B の craft は `writing-ecosystem`「Craft 規約」
    「語りかけの積極形」「エッセイの 4 段構成」と `zenn-practical-writing`「導入の設計」に既にあり、
    書く側のほうが厚い（段落密度の閾値・専門用語の緩和策 7 種・各節末の「判定」手順は執筆側にしかない）。

@@ -127,6 +127,18 @@ human-readable summary). Wired into the channel table's deterministic checks,
 `zenn-format` Step 0, and `publish-article` Validate target — deliberately not
 into a commit hook. ADR-0012.
 
+## drift_count.py
+
+`drift_count.py` compares two full rounds of a Zenn draft during the persona read
+(`writing-ecosystem/references/persona-read.md`) and lists what the revision added or dropped
+that the author did not decide: numbers absent from the evidence dossier (full-width folded,
+date / time / version parts ignored, `%` kept distinct), added superlatives, added and removed
+hedges, and Latin names absent from the dossier. `new_katakana` is listed for reading only.
+JSON out; exit 1 when anything but `new_katakana` is non-empty.
+
+Run: `uv run --project scripts python scripts/drift_count.py <prev.md> <curr.md> --dossier <dossier.md>`.
+ADR-0015.
+
 Other script: `metrics_snapshot.py` writes Zenn / Dev.to reception snapshots to
 `metrics/snapshots.jsonl`. Dashboard-only numbers (Zenn views, note impressions / PV) are appended to
 the same file as `zenn_dash` / `note_dash` rows by the `article-stocktake` collect step, which reads
@@ -138,6 +150,9 @@ the logged-in dashboards in Chrome. The publishing pipeline has no prose linter;
 - `tests/test_devto_crosspost.py` — respx-mocked Dev.to API, launchctl stubbed: `--at` tz conversion, conversion rules, tag resolution, POST
   success/failure/no-url, idempotency skip, one-shot self-cleanup, plist render,
   agent lifecycle, schedule/env/path helpers, command dispatch.
+- `tests/test_drift_count.py` — each kind of addition and removal, number canonicalization
+  (full-width, separators, redundant zeros, `%`, date parts), token-level name matching against
+  the dossier, katakana as informational, CLI exit codes.
 - `tests/test_generate_article_index.py` — tmp repo fixture: membership /
   ordering / EN resolution / Dev.to enrichment, `published_at` required, essays /
   papers / lines rendering, corpus validation, marker splice, `--check` semantics.
