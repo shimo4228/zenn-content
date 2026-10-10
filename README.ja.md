@@ -70,8 +70,6 @@ npm run check:index                # 索引か読書経路が古ければ失敗�
 
 ## 著者のほかの仕事
 
-- **[Claude ModsとOutput Styleで、Claude Codeを執筆用のハーネスにする](https://zenn.dev/shimo4228/articles/harness-scope-writing-harness)**（[English](https://dev.to/shimo4228/turning-claude-code-into-a-writing-harness-with-claude-mods-and-an-output-style-1a73)）: このリポジトリの執筆用スキルとレビュー用エージェントに専用のハーネスを持たせた経緯です。Mod（Claude Code 自体の振る舞いを変える仕組み）で Claude に見えるスキル一覧をここでは絞り（記事の 2026 年 10 月 3 日の計測で 98 件から 49 件）、Output Style で Claude が著者とどう話すかを決めています。
-- **[AI 執筆チームの有機的成長と Content Integrity](https://zenn.dev/shimo4228/articles/organic-growth-content-integrity)**（[English](https://dev.to/shimo4228/organic-growth-and-content-integrity-in-an-ai-writing-team-1h67)）: このリポジトリの `.claude/` がどう育ったかと、42 本書いた後に監査して見つかった 32 件の矛盾です。
 - **[claude-skill-writing-ecosystem](https://github.com/shimo4228/claude-skill-writing-ecosystem)**（英語）: 執筆の流れを統括するスキルと 6 つのレビュー用エージェントで、記事・エッセイ向けです。中心命題 1 つ、レビュー担当の一巡、著者の GO を軸にしています。ここで使っている執筆の流れを、インストールできる形にした写しです。
 - **[harness-scope](https://github.com/shimo4228/harness-scope)**（英語）: `.claude/harness-scope.json` を読む Claude Code の Mod（プラグインに入れる hooks module）です。グローバルのスキル・エージェント・ルール・ツールを、名前付きのプロファイルでリポジトリごとに出し入れします。
 - **[Authorship Strategy](https://github.com/shimo4228/authorship-strategy)**: 読者が LLM を介してアイデアに出会うとき、著者が見つけられ名前とともに伝わるにはどうするかを扱う著者のプロジェクトです。その答えとして、作品を公開し、広まっても出典が付いていくようにしています（DOI [10.5281/zenodo.20263316](https://doi.org/10.5281/zenodo.20263316)）。
