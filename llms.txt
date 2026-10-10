@@ -2,6 +2,8 @@
 
 > Japanese and English writing by Tatsuya Shimomoto (shimo4228) on coding agents — how they remember, fail, get reviewed, and stay accountable — plus idea essays and the papers that grew from them. Japanese originals on Zenn, English editions on Dev.to, essays on note (JP) and Substack (EN); the Markdown sources here are canonical. Writing, reviewing, translating, and publishing are done with Claude Code.
 
+Status: active and curated by hand; articles are added as they are published, and `docs/PUBLICATIONS.md` is generated, never hand-edited.
+
 ## Core documentation
 
 - [Full AI Reference](llms-full.txt): self-contained Q&A, glossary, and project facts for AI search engines and AI agents
@@ -22,7 +24,7 @@ The exhaustive, generated index of everything published from this repository —
 
 ## Idea essays (note / Substack)
 
-Author-voiced idea essays outside the Zenn/Dev.to convention. Since 2026-08 the Japanese canonical is first published on note (`note/`), and its English edition on Substack (`substack/`); earlier essays were Substack-first. Per-essay URLs are in the [Publications index](docs/PUBLICATIONS.md#idea-essays-note--substack).
+Author-voiced idea essays outside the Zenn/Dev.to convention. Since 2026-08 the Japanese canonical is first published on note (`note/`), and its English edition on Substack (`substack/`); earlier essays were Substack-first. `note/` also holds verbatim note reposts of Zenn articles, whose canonical stays in `articles/`. Per-essay URLs are in the [Publications index](docs/PUBLICATIONS.md#idea-essays-note--substack).
 
 ## Publishing pipeline
 
@@ -36,23 +38,23 @@ Zenn (JP) publishing is not scripted — it uses Zenn's native `published_at` fr
 ## Claude Code integration
 
 - [Publication channel contract](.claude/rules/publishing-channels.md): Zenn / Dev.to / note / Substack path, audience, register, review panel, validation, title constraints, and publish handoff
-- [Project skills](.claude/skills/): platform format and publishing (`zenn-format`, `publish-article`, `substack-publishing`) plus local reception measurement (`article-stocktake`)
-- Global writing harness: `writing-ecosystem`, `title-reviewer`, `quality-gate`, `theme-reviewer`, and `prose-clarity-reviewer` under `~/.claude/`
+- [Project skills](.claude/skills/): the writing orchestrator `writing-ecosystem`, the acceptance gate `quality-gate`, theme discovery `session-theme-mining`, platform format and publishing (`zenn-format`, `publish-article`, `note-publishing`, `substack-publishing`), plus local reception measurement (`article-stocktake`)
+- [Project agents](.claude/agents/): review agents `editor`, `essay-reviewer`, `prose-clarity-reviewer`, `theme-reviewer`, `title-reviewer`, and `fact-checker`, all resident in this repository
 - [.claude/agents/devto-translator.md](.claude/agents/devto-translator.md): JP→EN translation and Dev.to-specific draft preparation; publishing is a separate gated step
 - [.claude/refs/schedule-schema.md](.claude/refs/schedule-schema.md): schedule.json schema
 
 ## Research ecosystem
 
-This essay corpus is the human-readable essay surface of a five-line research ecosystem on agent design and authorship under AI-mediated diffusion. Attribution is carried by this federated-identifier layer, not by a license clause; the corpus is released under CC0-1.0.
+This essay corpus is the human-readable essay surface of a five-line practice ecosystem on agent design and authorship under AI-mediated diffusion. Attribution is carried by this federated-identifier layer, not by a license clause; the corpus is released under CC0-1.0.
 
-- [Ecosystem hub](https://github.com/shimo4228/shimo4228): index of all five research lines (federation parent)
+- [Ecosystem hub](https://github.com/shimo4228/shimo4228): the author's hub: five practice lines and their DOIs (federation parent)
 - [Author ORCID](https://orcid.org/0009-0002-6168-4162): persistent author identifier
 - [CITATION.cff](CITATION.cff): citation metadata recording the corpus's intrinsic content-derived identifier (Software Heritage snapshot), the essay genre's priority-claim mechanism
 - [Authorship Strategy (DOI)](https://doi.org/10.5281/zenodo.20263316): sibling line whose genre-split placement model governs this corpus's identifier and license
-- [Agent Knowledge Cycle (DOI)](https://doi.org/10.5281/zenodo.19200726): sibling research line
-- [Contemplative Agent (DOI)](https://doi.org/10.5281/zenodo.19212118): sibling research line
-- [Agent Attribution Practice (DOI)](https://doi.org/10.5281/zenodo.19652013): sibling research line
-- [Attention, Not Self (DOI)](https://doi.org/10.5281/zenodo.20262112): sibling research line
+- [Agent Knowledge Cycle (DOI)](https://doi.org/10.5281/zenodo.19200726): sibling practice line
+- [Contemplative Agent (DOI)](https://doi.org/10.5281/zenodo.19212118): sibling practice line
+- [Agent Attribution Practice (DOI)](https://doi.org/10.5281/zenodo.19652013): sibling practice line
+- [Attention, Not Self (DOI)](https://doi.org/10.5281/zenodo.20262112): sibling practice line
 
 ## Related
 
