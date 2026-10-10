@@ -17,7 +17,7 @@ origin: shimo4228
 
 ## Scope
 
-**人間 primary のコンテンツのみ扱う**。AI-facing ドキュメント（`llms.txt` / `llms-full.txt` / FAQ ページ等）には `llms-txt-writer` skill を使う。audience 判定と役割分担は `~/.claude/skills/llms-txt-writer/SKILL.md` の「Audience Separation: Human vs AI」節を読む。
+**人間 primary のコンテンツのみ扱う**。AI-facing ドキュメント（`llms.txt` / `llms-full.txt` / FAQ ページ等）には `llms-txt-writer` skill を使う。audience 判定と役割分担は `llms-txt-writer` skill の SKILL.md の「Audience Separation: Human vs AI」節を読む。
 
 媒体名・語尾・frontmatter・文字数・reviewer 構成・公開 command は channel contract が持つ。記事全体を
 扱う task では最初に
