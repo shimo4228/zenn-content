@@ -19,7 +19,7 @@ draft template:
 title: "Your Article Title"
 emoji: "📚"
 type: "tech"
-topics: ["claude", "ai", "python"]
+topics: ["claudecode", "mcp", "python"]
 published: false
 ---
 
@@ -53,8 +53,8 @@ emojiは記事の主対象を示す一つを選ぶ。
 topics:
 
 - 1〜5件。具体性があるなら5件まで使う
-- 主題に最も近い製品名・技術名を優先する
-- `ai` / `llm`のような一般語だけで埋めない
+- 主題に最も近い製品名・技術名・手法名を選ぶ。各 topic は、その語で検索した読者がこの記事に届く語にする
+- `ai` / `llm` / `generativeai` は入れない — 主題を問わず付く広い語で、その語で探す読者の関心が記事の主題と合わない。空いた枠は本文が正面から扱う手法名（例: `llmasajudge`）で埋めるか、空けたままにする
 - `https://zenn.dev/topics/<tag>`で実在と現在の使用を確認する
 - 記事数の多さだけで選ばず、対象読者との一致を優先する
 
