@@ -10,7 +10,7 @@ Japanese originals on Zenn; English editions on Dev.to, or as source in `article
 ### 2026-10
 
 - **2026-10-13** [Evalとレビューの違い、わかりますか？](https://zenn.dev/shimo4228/articles/claude-code-eval-concepts)
-  EN: — · `claudecode` `eval` `review` `llmasajudge` `llmops`
+  EN: [Can You Tell an Eval from a Review?](https://dev.to/shimo4228/can-you-tell-an-eval-from-a-review-1b3) · `claudecode` `eval` `review` `llmasajudge` `llmops`
 - **2026-10-09** [うわっ…私のスキルのdescription長すぎ…！？](https://zenn.dev/shimo4228/articles/skill-description-pointer)
   EN: [Whoa… My Claude Code Skill Descriptions Are Way Too Long…?!](https://dev.to/shimo4228/whoa-my-claude-code-skill-descriptions-are-way-too-long-43l) · `claudecode` `claude` `agentskills` `llm`
 - **2026-10-09** [READMEは人間とLLM、どちらのためのものか？](https://zenn.dev/shimo4228/articles/readme-human-llm-fold)
