@@ -21,6 +21,10 @@ path がどの行にも一致しない、または複数行に一致する場合
 
 全channelで次の証跡を要求する。panel の回数と、反映後の稿を確かめる役は `writing-ecosystem` の指摘の処分規律が持つ。
 
+JP 正本がこの profile を通った後の EN 訳（Dev.to / Substack）は、channel editor の report とその処分記録、AI 開示、
+public-safety scan、channel の機械検査、著者の公開 GO で受け入れる。中身は JP で検証済みなので、ペルソナ読み・初見の読み・
+`fact-checker`・`title-reviewer` は EN では回さない。EN の題は translator の推奨案で決める。
+
 - 処分記録: orchestratorが指摘ごとに採用・不採用と理由を1行ずつ残している
 - ペルソナ読み（Zenn のみ）: 各ラウンドの読み手の JSON・判断の照合と、改稿したラウンドの `drift_count.py` の出力が
   `drafts/<slug>/persona/` にあり、止めた理由（判断が一致 / 残りが著者へ渡すものだけ / 3 周）を処分記録に書いている。

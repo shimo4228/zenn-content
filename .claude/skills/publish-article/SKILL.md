@@ -84,8 +84,8 @@ cd scripts && uv run python devto_crosspost.py schedule <slug> --at "2026-07-07 
 ### 5. Cross-channel boundary
 
 Zenn稿の公開実行からEN稿を生成・予約しない。crosspostする場合はこのrunを終了し、
-`devto-translator`で`articles-en/<slug>.md`を生成する。そのEN稿でtitle選択・review panel・
-`quality-gate`・著者通読GOを完了してから、別runとして
+`devto-translator`で`articles-en/<slug>.md`を生成する。そのEN稿で channel editor のreview・
+`quality-gate`（EN 訳の受け入れ条件は channel contract）・著者の公開GOを完了してから、別runとして
 `/publish-article articles-en/<slug>.md`を実行する。
 
 Dev.to schedule成功時、実URLは`schedule.json`へ自動書き戻しされ、one-shot jobは自己削除される。

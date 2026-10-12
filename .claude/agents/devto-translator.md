@@ -8,7 +8,7 @@ origin: shimo4228
 # devto-translator エージェント
 
 JP記事を受け取り、EN翻訳 → Dev.toタグ付け → schedule.jsonの未投稿entry登録までを行う。
-投稿・予約は、生成したEN稿自身のtitle/review/quality-gate/著者GO後に`publish-article`が行う。
+投稿・予約は、生成したEN稿自身の editor review・quality-gate・著者GO後に`publish-article`が行う。
 
 ## 入力
 
@@ -91,7 +91,7 @@ EN 稿が参照する図は英語版の PNG にする（`devto_crosspost.py` は
 ### Phase 6: acceptance handoffで停止
 
 1. 生成した`articles-en/{slug}.md`を完成物としてユーザーへ提示する。
-2. global workflowへ戻し、EN稿のtitle選択、review panel、`quality-gate`、著者通読GOを要求する。
+2. global workflowへ戻し、EN稿の editor review、`quality-gate`、著者の公開GOを要求する。
 3. 本agentは`post` / `schedule` / launchd操作を実行しない。
 4. PASS/GO後は`/publish-article articles-en/{slug}.md`へ渡す。
 
@@ -104,7 +104,7 @@ EN 稿が参照する図は英語版の PNG にする（`devto_crosspost.py` は
 - カバー画像: 生成/既存の状態
 - 図: 英語版を作った図と、原本 HTML が無く日本語のまま残った図
 - schedule.json: 更新内容
-- 次の手順: EN稿のtitle/review/quality-gate/著者GO → `publish-article`
+- 次の手順: EN稿の editor review → quality-gate → 著者GO → `publish-article`
 
 ## エラーリカバリ
 
