@@ -1,6 +1,8 @@
 # 非数値のアセスメントは「eval」なのか？— LLMアプリ／コーディングエージェントにおける「評価」と「レビュー」の境界
 
 > 来歴: 2026-10-12、著者が Deep Research（LLM による調査ツール）に依頼して得た出力を、そのまま保管したもの。依頼文は記事「Claude Code の eval」執筆中に作成した（下の「依頼の要点」）。記事本文で使った主張は、別途一次資料と照合している。ここにある引用・判定は調査ツールの出力で、照合していない箇所を含む。
+>
+> 照合で分かった食い違い（2026-10-12）: Braintrust の “Evaluators are scorers and classifiers.” は一次資料の逐語ではない。実在する文は “Scorers measure quality with numeric scores, while classifiers assign labels so you can group and analyze results.”（https://www.braintrust.dev/docs/evaluate）。
 
 依頼の要点: 「数値を出さない評価（点数も合格率も出さないもの）を eval と呼ぶのか」。主要な一次資料の定義、点数にしない出力の扱い、二値判定、AI のコードレビュー、生成→批評→修正のループ、語の系譜、HCI の質的評価との関係を問うた。
 
