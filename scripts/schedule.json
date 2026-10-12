@@ -1053,6 +1053,11 @@
         "claude"
       ],
       "notes": "EN translation of うわっ…私のスキルのdescription長すぎ…！？（EN稿の title/review/quality-gate/著者GO 後に投稿）"
+    },
+    {
+      "file": "articles/claude-code-eval-concepts.md",
+      "date": "2026-10-13",
+      "notes": "eval・eval ループ・goal を部品に分け、著者の「Eval ループ」がレビューのループだったと位置付けた記事。eval ループはグッドハートを嫌って避けてきた。2026-10-13 09:00 予約"
     }
   ]
 }
