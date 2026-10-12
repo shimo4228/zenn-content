@@ -14,7 +14,7 @@
 | 深い洞察 / 重要な示唆 / 本質的な問い | 洞察・示唆・問いそのもの |
 | 最先端 / cutting-edge / ever-evolving | 何が新しく、いつの情報か |
 | leverage / 活用する | 具体的な動作、または plain `use` |
-| 手元 / 手元で / 手元の環境 | 指している場所を名指しする（ローカル PC、自分の Mac、社内サーバー） |
+| 手元 / 手元で / 手元の環境 | 指している場所を具体的に書く（ローカル PC、自分の Mac、社内サーバー） |
 | 造語・証拠台帳や内部の呼び名（梯子、arm、face、shadow 等） | 既存の名前で呼ぶ（梯子 → アブレーション。規則は背骨 2）。既存の名前が無いときはやったことの名前で書く |
 | Moreover / Furthermore / It's worth noting | 接続を直接書くか削る |
 | delve / multifaceted / holistic / transformative / pivotal / landscape / tapestry / unlock / harness / unleash / empower / paradigm | 原稿固有の名詞と動詞 |
@@ -45,7 +45,7 @@
 - 具体的な現象を先に見せ、名前は後からつける
 - 一度定義したら同じ語を使い続ける（類義語に逃げない）
 - 確立した概念に由来するなら初出で系譜を示す
-- 英語直訳語を疑う（floor →「床」）。意味の通る技術語に置き換える
+- 英語直訳語を疑う（floor →「床」、name / pinpoint →「名指しする」）。意味の通る技術語か、日本語で普通に言う動詞（分かる、言える、指摘できる）に置き換える
 - 英語の名詞句を 2 つ以上そのまま繋げない（「read-only な second opinion を一発で」）。
   固有名詞・製品名・コード内ラベル・一貫使用の定着語は例外
 
