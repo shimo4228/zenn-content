@@ -1,0 +1,1481 @@
+{
+ "generated_by": "scripts/generate_article_index.py",
+ "items": [
+  {
+   "kind": "essay",
+   "slug": "nirodha-samapatti-reemergence",
+   "date": "2026-10-18",
+   "published_at": "2026-10-18 00:00",
+   "ja": {
+    "title": "瞑想で意識が完全に途切れたとき、何が「その人」をつないでいるのか",
+    "url": "https://note.com/sakamaki4228/n/n51831ead08ca",
+    "platform": "note"
+   },
+   "en": {
+    "title": "When Consciousness Fully Stops, How Does the Mind Return?",
+    "url": "https://shimo4228.substack.com/p/when-consciousness-fully-stops-how",
+    "platform": "Substack"
+   }
+  },
+  {
+   "kind": "article",
+   "slug": "claude-code-eval-concepts",
+   "date": "2026-10-13",
+   "published_at": "2026-10-13 09:00",
+   "ja": {
+    "title": "Evalとレビューの違い、わかりますか？",
+    "url": "https://zenn.dev/shimo4228/articles/claude-code-eval-concepts",
+    "platform": "Zenn"
+   },
+   "en": {
+    "title": "Can You Tell an Eval from a Review?",
+    "url": "https://dev.to/shimo4228/can-you-tell-an-eval-from-a-review-1b3",
+    "platform": "Dev.to"
+   }
+  },
+  {
+   "kind": "article",
+   "slug": "skill-description-pointer",
+   "date": "2026-10-09",
+   "published_at": "2026-10-09 20:39",
+   "ja": {
+    "title": "うわっ…私のスキルのdescription長すぎ…！？",
+    "url": "https://zenn.dev/shimo4228/articles/skill-description-pointer",
+    "platform": "Zenn"
+   },
+   "en": {
+    "title": "Whoa… My Claude Code Skill Descriptions Are Way Too Long…?!",
+    "url": "https://dev.to/shimo4228/whoa-my-claude-code-skill-descriptions-are-way-too-long-43l",
+    "platform": "Dev.to"
+   }
+  },
+  {
+   "kind": "article",
+   "slug": "readme-human-llm-fold",
+   "date": "2026-10-09",
+   "published_at": "2026-10-09 09:00",
+   "ja": {
+    "title": "READMEは人間とLLM、どちらのためのものか？",
+    "url": "https://zenn.dev/shimo4228/articles/readme-human-llm-fold",
+    "platform": "Zenn"
+   },
+   "en": {
+    "title": "Is a README for Humans or for LLMs?",
+    "url": "https://dev.to/shimo4228/is-a-readme-for-humans-or-for-llms-2206",
+    "platform": "Dev.to"
+   }
+  },
+  {
+   "kind": "article",
+   "slug": "harness-scope-writing-harness",
+   "date": "2026-10-03",
+   "published_at": "2026-10-03 17:31",
+   "ja": {
+    "title": "Claude ModsとOutput Styleで、Claude Codeを執筆用のハーネスにする",
+    "url": "https://zenn.dev/shimo4228/articles/harness-scope-writing-harness",
+    "platform": "Zenn"
+   },
+   "en": {
+    "title": "Turning Claude Code into a Writing Harness with Claude Mods and an Output Style",
+    "url": "https://dev.to/shimo4228/turning-claude-code-into-a-writing-harness-with-claude-mods-and-an-output-style-1a73",
+    "platform": "Dev.to"
+   }
+  },
+  {
+   "kind": "essay",
+   "slug": "agi-judgment-trail",
+   "date": "2026-10-01",
+   "published_at": "2026-10-01 00:00",
+   "ja": {
+    "title": "AGIが全てを飲み込むとしても、なぜ手を止めないのだろう",
+    "url": "https://note.com/shimo4228/n/nf87f16b3b9c8",
+    "platform": "note"
+   },
+   "en": null
+  },
+  {
+   "kind": "article",
+   "slug": "jev-guard-blind-to-local-verify",
+   "date": "2026-09-29",
+   "published_at": "2026-09-29 12:47",
+   "ja": {
+    "title": "「これ意味あるかな？」Claude Codeに入れたJevのプラグインを1週間で外すまで",
+    "url": "https://zenn.dev/shimo4228/articles/jev-guard-blind-to-local-verify",
+    "platform": "Zenn"
+   },
+   "en": {
+    "title": "\"Is There Any Point to This?\" Removing the Jev Plugins I Added to Claude Code After One Week",
+    "url": "https://dev.to/shimo4228/is-there-any-point-to-this-removing-the-jev-plugins-i-added-to-claude-code-after-one-week-49eh",
+    "platform": "Dev.to"
+   }
+  },
+  {
+   "kind": "essay",
+   "slug": "lost-referents-in-generated-prose",
+   "date": "2026-09-28",
+   "published_at": "2026-09-28 00:00",
+   "ja": {
+    "title": "AI の文章は、なぜ宙に浮いて感じるのか",
+    "url": "https://note.com/shimo4228/n/n97d77b49b1c8",
+    "platform": "note"
+   },
+   "en": {
+    "title": "Why Does AI Writing Feel Like It's Floating?",
+    "url": "https://shimo4228.substack.com/p/why-does-ai-writing-feel-like-its",
+    "platform": "Substack"
+   }
+  },
+  {
+   "kind": "article",
+   "slug": "local-judgment-read-logprobs",
+   "date": "2026-09-27",
+   "published_at": "2026-09-27 12:38",
+   "ja": {
+    "title": "Jev型判定モデルを足す前に、生成モデルの確率を読む",
+    "url": "https://zenn.dev/shimo4228/articles/local-judgment-read-logprobs",
+    "platform": "Zenn"
+   },
+   "en": {
+    "title": "Before Adding a Jev-Type Judgment Model, Read Your Generation Model's Probabilities",
+    "url": "https://dev.to/shimo4228/before-adding-a-jev-type-judgment-model-read-your-generation-models-probabilities-5da0",
+    "platform": "Dev.to"
+   }
+  },
+  {
+   "kind": "article",
+   "slug": "jev-research-judgment-offload",
+   "date": "2026-09-25",
+   "published_at": "2026-09-25 09:00",
+   "ja": {
+    "title": "LLMに任せていたリサーチの判定を、判定専用モデルJevに移す",
+    "url": "https://zenn.dev/shimo4228/articles/jev-research-judgment-offload",
+    "platform": "Zenn"
+   },
+   "en": {
+    "title": "Moving My Research Pipeline's Judgment Calls from an LLM to Jev, a Judgment-Only Model",
+    "url": "https://dev.to/shimo4228/moving-my-research-pipelines-judgment-calls-from-an-llm-to-jev-a-judgment-only-model-4ncj",
+    "platform": "Dev.to"
+   }
+  },
+  {
+   "kind": "article",
+   "slug": "local-decision-model-conditions",
+   "date": "2026-09-24",
+   "published_at": "2026-09-24 09:00",
+   "ja": {
+    "title": "Jevの判断をローカルで再現するには何が要るか",
+    "url": "https://zenn.dev/shimo4228/articles/local-decision-model-conditions",
+    "platform": "Zenn"
+   },
+   "en": {
+    "title": "What Does It Take to Reproduce Jev's Decisions Locally?",
+    "url": "https://dev.to/shimo4228/what-does-it-take-to-reproduce-jevs-decisions-locally-3i0n",
+    "platform": "Dev.to"
+   }
+  },
+  {
+   "kind": "article",
+   "slug": "jev-retrofit-limits",
+   "date": "2026-09-21",
+   "published_at": "2026-09-21 19:42",
+   "ja": {
+    "title": "JevのスキルルーターをClaude Codeに足して、スキル一覧を書き換える手前で引き返した",
+    "url": "https://zenn.dev/shimo4228/articles/jev-retrofit-limits",
+    "platform": "Zenn"
+   },
+   "en": {
+    "title": "I Added Jev's Skill Router to Claude Code and Turned Back Just Before Rewriting the Skill Listing",
+    "url": "https://dev.to/shimo4228/i-added-jevs-skill-router-to-claude-code-and-turned-back-just-before-rewriting-the-skill-listing-34in",
+    "platform": "Dev.to"
+   }
+  },
+  {
+   "kind": "article",
+   "slug": "jev-vs-opus-skill-selection",
+   "date": "2026-09-21",
+   "published_at": "2026-09-21 10:02",
+   "ja": {
+    "title": "文章を書かないモデルJevのスキル選択は、0.3秒でOpusにどこまで近づくか",
+    "url": "https://zenn.dev/shimo4228/articles/jev-vs-opus-skill-selection",
+    "platform": "Zenn"
+   },
+   "en": {
+    "title": "How Close to Opus Does Jev, a Model That Writes No Text, Get at Skill Selection in 0.3 Seconds?",
+    "url": "https://dev.to/shimo4228/how-close-to-opus-does-jev-a-model-that-writes-no-text-get-at-skill-selection-in-03-seconds-1nfj",
+    "platform": "Dev.to"
+   }
+  },
+  {
+   "kind": "article",
+   "slug": "top-model-as-default-leaks",
+   "date": "2026-09-17",
+   "published_at": "2026-09-17 08:30",
+   "ja": {
+    "title": "最上位モデルをセッション既定にしたら、重い実装とレビューでFableの使用限度が尽きた",
+    "url": "https://zenn.dev/shimo4228/articles/top-model-as-default-leaks",
+    "platform": "Zenn"
+   },
+   "en": {
+    "title": "I Made the Top Model My Session Default, and One Heavy Implementation Plus Its Review Burned Through Fable's Usage Limit",
+    "url": "https://dev.to/shimo4228/i-made-the-top-model-my-session-default-and-one-heavy-implementation-plus-its-review-burned-4182",
+    "platform": "Dev.to"
+   }
+  },
+  {
+   "kind": "article",
+   "slug": "domain-knowledge-travelers-vocabulary",
+   "date": "2026-09-16",
+   "published_at": "2026-09-16 09:00",
+   "ja": {
+    "title": "業務の中にいる人は、それを「ドメイン」とは呼ばない",
+    "url": "https://zenn.dev/shimo4228/articles/domain-knowledge-travelers-vocabulary",
+    "platform": "Zenn"
+   },
+   "en": {
+    "title": "People Inside the Business Don't Call It a 'Domain'",
+    "url": "https://dev.to/shimo4228/people-inside-the-business-dont-call-it-a-domain-3kb2",
+    "platform": "Dev.to"
+   }
+  },
+  {
+   "kind": "article",
+   "slug": "log-projection-blind-by-construction",
+   "date": "2026-09-14",
+   "published_at": "2026-09-14 09:00",
+   "ja": {
+    "title": "毎週読まれるログに、11秒の連打が写らなかった理由",
+    "url": "https://zenn.dev/shimo4228/articles/log-projection-blind-by-construction",
+    "platform": "Zenn"
+   },
+   "en": {
+    "title": "Why an 11-Second Burst Never Showed Up in the Log That Gets Read Every Week",
+    "url": "https://dev.to/shimo4228/why-an-11-second-burst-never-showed-up-in-the-log-that-gets-read-every-week-14nd",
+    "platform": "Dev.to"
+   }
+  },
+  {
+   "kind": "article",
+   "slug": "codemap-retirement",
+   "date": "2026-09-05",
+   "published_at": "2026-09-05 19:58",
+   "ja": {
+    "title": "3か月で159回commitしたLLM向けアーキテクチャ文書を消した。構造はLSP、理由はADR、図は人間に",
+    "url": "https://zenn.dev/shimo4228/articles/codemap-retirement",
+    "platform": "Zenn"
+   },
+   "en": {
+    "title": "I Deleted the LLM-Facing Architecture Docs I Had Committed 159 Times in 3 Months: Structure Goes to LSP, Reasons to ADRs, Diagrams to Humans",
+    "url": "https://dev.to/shimo4228/i-deleted-the-llm-facing-architecture-docs-i-had-committed-159-times-in-3-months-structure-goes-to-1a94",
+    "platform": "Dev.to"
+   }
+  },
+  {
+   "kind": "article",
+   "slug": "ai-knowledge-gap-diagnosis",
+   "date": "2026-09-02",
+   "published_at": "2026-09-02 19:19",
+   "ja": {
+    "title": "AIに知識の盲点を診断させたら、15日間の行き詰まりが85分で動いた",
+    "url": "https://zenn.dev/shimo4228/articles/ai-knowledge-gap-diagnosis",
+    "platform": "Zenn"
+   },
+   "en": {
+    "title": "I Asked AI to Diagnose My Knowledge Blind Spots — 15 Days of Deadlock Moved in 85 Minutes",
+    "url": "https://dev.to/shimo4228/i-asked-ai-to-diagnose-my-knowledge-blind-spots-15-days-of-deadlock-moved-in-85-minutes-3j2n",
+    "platform": "Dev.to"
+   }
+  },
+  {
+   "kind": "article",
+   "slug": "instrument-consumption-plan",
+   "date": "2026-08-31",
+   "published_at": "2026-08-31 08:30",
+   "ja": {
+    "title": "未使用コード検出が拾わなかった2,063行を消した——参照でなく消費を、新設時に書かせる",
+    "url": "https://zenn.dev/shimo4228/articles/instrument-consumption-plan",
+    "platform": "Zenn"
+   },
+   "en": {
+    "title": "My Dead-Code Scan Returned Zero, Then I Deleted 2,063 Lines: Detectors Measure References, Not Consumption",
+    "url": "https://dev.to/shimo4228/my-dead-code-scan-returned-zero-then-i-deleted-2063-lines-detectors-measure-references-not-4o4e",
+    "platform": "Dev.to"
+   }
+  },
+  {
+   "kind": "article",
+   "slug": "lint-as-subtraction",
+   "date": "2026-08-30",
+   "published_at": "2026-08-30 09:48",
+   "ja": {
+    "title": "AIレビューを減らした先に、複雑度の上限をRuffで置いた",
+    "url": "https://zenn.dev/shimo4228/articles/lint-as-subtraction",
+    "platform": "Zenn"
+   },
+   "en": {
+    "title": "After Cutting My AI Reviews, I Put a Complexity Ceiling in Ruff",
+    "url": "https://dev.to/shimo4228/after-cutting-my-ai-reviews-i-put-a-complexity-ceiling-in-ruff-1hho",
+    "platform": "Dev.to"
+   }
+  },
+  {
+   "kind": "article",
+   "slug": "review-chain-damping",
+   "date": "2026-08-29",
+   "published_at": "2026-08-29 07:20",
+   "ja": {
+    "title": "AIレビューを6系統から1系統へ——「指摘ゼロ」で終われないループの切り方",
+    "url": "https://zenn.dev/shimo4228/articles/review-chain-damping",
+    "platform": "Zenn"
+   },
+   "en": {
+    "title": "I Cut My AI Review Chain From 6 Stages to 1: Breaking the Loop That Never Hits Zero Findings",
+    "url": "https://dev.to/shimo4228/i-cut-my-ai-review-chain-from-6-stages-to-1-breaking-the-loop-that-never-hits-zero-findings-1moi",
+    "platform": "Dev.to"
+   }
+  },
+  {
+   "kind": "article",
+   "slug": "judge-degrades-into-reviewer",
+   "date": "2026-08-27",
+   "published_at": "2026-08-27 19:49",
+   "ja": {
+    "title": "KPI は改善していた。それでも自作の LLM judge を捨てた",
+    "url": "https://zenn.dev/shimo4228/articles/judge-degrades-into-reviewer",
+    "platform": "Zenn"
+   },
+   "en": {
+    "title": "My KPIs Improved. I Deleted My Homegrown LLM Judge Anyway",
+    "url": "https://dev.to/shimo4228/my-kpis-improved-i-deleted-my-homegrown-llm-judge-anyway-2n73",
+    "platform": "Dev.to"
+   }
+  },
+  {
+   "kind": "article",
+   "slug": "transcript-not-ledger",
+   "date": "2026-08-21",
+   "published_at": "2026-08-21 22:20",
+   "ja": {
+    "title": "評価を全部通った原稿が 2 本とも空疎だった。AI に渡す台帳には会話ログの原本を添える",
+    "url": "https://zenn.dev/shimo4228/articles/transcript-not-ledger",
+    "platform": "Zenn"
+   },
+   "en": {
+    "title": "Two Drafts Passed Every Eval and Both Were Hollow. Attach the Raw Transcript to the Ledger You Hand Your AI",
+    "url": "https://dev.to/shimo4228/two-drafts-passed-every-eval-and-both-were-hollow-attach-the-raw-transcript-to-the-ledger-you-hand-32p2",
+    "platform": "Dev.to"
+   }
+  },
+  {
+   "kind": "article",
+   "slug": "ai-task-loop-judge-bottleneck",
+   "date": "2026-08-20",
+   "published_at": "2026-08-20 19:25",
+   "ja": {
+    "title": "タスク41件をAIループに任せたら、詰まっていたのは実装より判断だった",
+    "url": "https://zenn.dev/shimo4228/articles/ai-task-loop-judge-bottleneck",
+    "platform": "Zenn"
+   },
+   "en": {
+    "title": "I Handed 41 Tasks to an AI Loop. The Bottleneck Was Judgment, Not Code",
+    "url": "https://dev.to/shimo4228/i-handed-41-tasks-to-an-ai-loop-the-bottleneck-was-judgment-not-code-23dp",
+    "platform": "Dev.to"
+   }
+  },
+  {
+   "kind": "article",
+   "slug": "ai-review-task-loop",
+   "date": "2026-08-16",
+   "published_at": "2026-08-16 22:38",
+   "ja": {
+    "title": "AIレビューの指摘をタスクへ送り続けたら、修理が終わらなくなった——4,541行を捨てるまで",
+    "url": "https://zenn.dev/shimo4228/articles/ai-review-task-loop",
+    "platform": "Zenn"
+   },
+   "en": {
+    "title": "AI Review Kept Creating Work: Why I Deleted 4,541 Lines",
+    "url": "https://dev.to/shimo4228/ai-review-kept-creating-work-why-i-deleted-4541-lines-22ec",
+    "platform": "Dev.to"
+   }
+  },
+  {
+   "kind": "article",
+   "slug": "ai-code-half-year-audit",
+   "date": "2026-08-14",
+   "published_at": "2026-08-14 06:02",
+   "ja": {
+    "title": "半年前のAIコードは現世代レビューに耐えるか — 実測25件の仕分け",
+    "url": "https://zenn.dev/shimo4228/articles/ai-code-half-year-audit",
+    "platform": "Zenn"
+   },
+   "en": {
+    "title": "Can Six-Month-Old AI Code Survive Today's Review? A 25-Bug Triage",
+    "url": "https://dev.to/shimo4228/can-six-month-old-ai-code-survive-todays-review-a-25-bug-triage-4o6d",
+    "platform": "Dev.to"
+   }
+  },
+  {
+   "kind": "essay",
+   "slug": "ai-desire-exhaustion",
+   "date": "2026-08-13",
+   "published_at": "2026-08-13 00:00",
+   "ja": {
+    "title": "AI に頼みたいことが尽きたあと、ひとつだけ残った欲望",
+    "url": "https://note.com/sakamaki4228/n/n2375bfc4d521",
+    "platform": "note"
+   },
+   "en": {
+    "title": "After I Ran Out of Things to Ask AI, One Desire Remained",
+    "url": "https://shimo4228.substack.com/p/after-i-ran-out-of-things-to-ask",
+    "platform": "Substack"
+   }
+  },
+  {
+   "kind": "essay",
+   "slug": "ideation-pharmacology",
+   "date": "2026-08-12",
+   "published_at": "2026-08-12 00:00",
+   "ja": {
+    "title": "ひらめきの薬理学 — 発想には用量がある",
+    "url": "https://note.com/shimo4228/n/n0eecbd0fb01e",
+    "platform": "note"
+   },
+   "en": null
+  },
+  {
+   "kind": "article",
+   "slug": "rag-to-adr-agent-memory",
+   "date": "2026-08-06",
+   "published_at": "2026-08-06 09:00",
+   "ja": {
+    "title": "Claude Code のメモリーにベクトルは 1 本もない — memory RAG の前に ADR を",
+    "url": "https://zenn.dev/shimo4228/articles/rag-to-adr-agent-memory",
+    "platform": "Zenn"
+   },
+   "en": {
+    "title": "Claude Code's Memory Has No Vectors — Try ADRs Before Memory RAG",
+    "url": "https://dev.to/shimo4228/claude-codes-memory-has-no-vectors-try-adrs-before-memory-rag-4kik",
+    "platform": "Dev.to"
+   }
+  },
+  {
+   "kind": "essay",
+   "slug": "on-embodiment-in-the-age-of-ai",
+   "date": "2026-08-04",
+   "published_at": "2026-08-04 00:00",
+   "ja": {
+    "title": "AI時代の身体性について",
+    "url": "https://note.com/sakamaki4228/n/n90c26af4fd5f",
+    "platform": "note"
+   },
+   "en": {
+    "title": "On Embodiment in the Age of AI",
+    "url": "https://shimo4228.substack.com/p/on-embodiment-in-the-age-of-ai",
+    "platform": "Substack"
+   }
+  },
+  {
+   "kind": "article",
+   "slug": "claude-code-claudemd-excludes",
+   "date": "2026-08-03",
+   "published_at": "2026-08-03 09:00",
+   "ja": {
+    "title": "Claude Codeに2つ目のハーネスを持たせる",
+    "url": "https://zenn.dev/shimo4228/articles/claude-code-claudemd-excludes",
+    "platform": "Zenn"
+   },
+   "en": {
+    "title": "Give Claude Code a Second Harness",
+    "url": "https://dev.to/shimo4228/give-claude-code-a-second-harness-27of",
+    "platform": "Dev.to"
+   }
+  },
+  {
+   "kind": "article",
+   "slug": "wikidata-ban-postmortem",
+   "date": "2026-07-30",
+   "published_at": "2026-07-30 08:32",
+   "ja": {
+    "title": "Wikidataから一夜でBAN — 個別編集は規約準拠のつもりでも、109 itemは宣伝判定で全削除",
+    "url": "https://zenn.dev/shimo4228/articles/wikidata-ban-postmortem",
+    "platform": "Zenn"
+   },
+   "en": {
+    "title": "Banned from Wikidata Overnight — I Believed Every Edit Was Compliant, but All 109 Items Were Deleted as Promotion",
+    "url": "https://dev.to/shimo4228/banned-from-wikidata-overnight-i-believed-every-edit-was-compliant-but-all-109-items-were-57nl",
+    "platform": "Dev.to"
+   }
+  },
+  {
+   "kind": "article",
+   "slug": "human-gate-intent-not-diff",
+   "date": "2026-07-29",
+   "published_at": "2026-07-29 12:13",
+   "ja": {
+    "title": "人間が承認すべきなのは diff ではなく意図——エージェント承認ゲートの判定表",
+    "url": "https://zenn.dev/shimo4228/articles/human-gate-intent-not-diff",
+    "platform": "Zenn"
+   },
+   "en": {
+    "title": "What Humans Should Approve Is Intent, Not the Diff — A Decision Table for Agent Approval Gates",
+    "url": "https://dev.to/shimo4228/what-humans-should-approve-is-intent-not-the-diff-a-decision-table-for-agent-approval-gates-1a3j",
+    "platform": "Dev.to"
+   }
+  },
+  {
+   "kind": "article",
+   "slug": "claude-security-harness-self-scan",
+   "date": "2026-07-28",
+   "published_at": "2026-07-28 09:00",
+   "ja": {
+    "title": "claude-security(ベータ)のコスト・出力・精度——189 エージェント 2 時間の実測",
+    "url": "https://zenn.dev/shimo4228/articles/claude-security-harness-self-scan",
+    "platform": "Zenn"
+   },
+   "en": {
+    "title": "claude-security Beta: Cost, Output, Accuracy — 189 Agents, 2 Hours, Measured",
+    "url": "https://dev.to/shimo4228/claude-security-beta-cost-output-accuracy-189-agents-2-hours-measured-1eji",
+    "platform": "Dev.to"
+   }
+  },
+  {
+   "kind": "article",
+   "slug": "claude5-rules-official-shift-audit",
+   "date": "2026-07-27",
+   "published_at": "2026-07-27 09:00",
+   "ja": {
+    "title": "Opus 5 世代でルールの書き方は公式に変わった——自作ルールの棚卸し手順",
+    "url": "https://zenn.dev/shimo4228/articles/claude5-rules-official-shift-audit",
+    "platform": "Zenn"
+   },
+   "en": {
+    "title": "Opus 5 Changed How Rules Should Be Written — Audit Yours",
+    "url": "https://dev.to/shimo4228/opus-5-changed-how-rules-should-be-written-audit-yours-4fb4",
+    "platform": "Dev.to"
+   }
+  },
+  {
+   "kind": "article",
+   "slug": "herdr-agent-multiplexer",
+   "date": "2026-07-21",
+   "published_at": "2026-07-21 09:00",
+   "ja": {
+    "title": "AI エージェント版 tmux「herdr」— エディタが要らなくなるまで",
+    "url": "https://zenn.dev/shimo4228/articles/herdr-agent-multiplexer",
+    "platform": "Zenn"
+   },
+   "en": {
+    "title": "herdr, a tmux for AI Agents — Until the Editor Disappeared",
+    "url": "https://dev.to/shimo4228/herdr-a-tmux-for-ai-agents-until-the-editor-disappeared-3hnn",
+    "platform": "Dev.to"
+   }
+  },
+  {
+   "kind": "article",
+   "slug": "agent-logs-to-opentelemetry",
+   "date": "2026-07-17",
+   "published_at": "2026-07-17 09:00",
+   "ja": {
+    "title": "AI エージェントの自前ログ、OpenTelemetry につないだら何が見える？",
+    "url": "https://zenn.dev/shimo4228/articles/agent-logs-to-opentelemetry",
+    "platform": "Zenn"
+   },
+   "en": {
+    "title": "What Do My AI Agent's Logs Look Like in OpenTelemetry?",
+    "url": "https://dev.to/shimo4228/what-do-my-ai-agents-logs-look-like-in-opentelemetry-27ic",
+    "platform": "Dev.to"
+   }
+  },
+  {
+   "kind": "article",
+   "slug": "chaos-tdd-fault-injection",
+   "date": "2026-07-16",
+   "published_at": "2026-07-16 09:00",
+   "ja": {
+    "title": "LLM エージェントに fault injection TDD を入れたら silent failure が3件出た",
+    "url": "https://zenn.dev/shimo4228/articles/chaos-tdd-fault-injection",
+    "platform": "Zenn"
+   },
+   "en": {
+    "title": "Fault Injection TDD Found 3 Silent Failures in My LLM Agent",
+    "url": "https://dev.to/shimo4228/fault-injection-tdd-found-3-silent-failures-in-my-llm-agent-3mld",
+    "platform": "Dev.to"
+   }
+  },
+  {
+   "kind": "article",
+   "slug": "llm-judge-checks-not-scores",
+   "date": "2026-07-15",
+   "published_at": "2026-07-15 09:00",
+   "ja": {
+    "title": "LLM-as-judge はスコアを集計しない — チェックは証拠、判定は総合判断",
+    "url": "https://zenn.dev/shimo4228/articles/llm-judge-checks-not-scores",
+    "platform": "Zenn"
+   },
+   "en": {
+    "title": "LLM-as-Judge Shouldn't Aggregate Scores: Binary Checks as Evidence, One Holistic Verdict",
+    "url": "https://dev.to/shimo4228/llm-as-judge-shouldnt-aggregate-scores-binary-checks-as-evidence-one-holistic-verdict-822",
+    "platform": "Dev.to"
+   }
+  },
+  {
+   "kind": "article",
+   "slug": "small-llm-by-choice",
+   "date": "2026-07-14",
+   "published_at": "2026-07-14 09:00",
+   "ja": {
+    "title": "自律エージェントをあえて M1 Mac で作る — 制約が設計を鍛えるという選択",
+    "url": "https://zenn.dev/shimo4228/articles/small-llm-by-choice",
+    "platform": "Zenn"
+   },
+   "en": {
+    "title": "Building an Autonomous Agent on an M1 Mac, by Choice",
+    "url": "https://dev.to/shimo4228/building-an-autonomous-agent-on-an-m1-mac-by-choice-5b5o",
+    "platform": "Dev.to"
+   }
+  },
+  {
+   "kind": "article",
+   "slug": "agent-observability-patterns",
+   "date": "2026-07-13",
+   "published_at": "2026-07-13 09:00",
+   "ja": {
+    "title": "AIエージェントの「なぜその判断？」に答えるオブザーバビリティ設計3パターン",
+    "url": "https://zenn.dev/shimo4228/articles/agent-observability-patterns",
+    "platform": "Zenn"
+   },
+   "en": {
+    "title": "Why Did My Agent Decide That? 3 Observability Patterns",
+    "url": "https://dev.to/shimo4228/why-did-my-agent-decide-that-3-observability-patterns-ami",
+    "platform": "Dev.to"
+   }
+  },
+  {
+   "kind": "article",
+   "slug": "iphone-claude-code-remote-control",
+   "date": "2026-07-09",
+   "published_at": "2026-07-09 09:00",
+   "ja": {
+    "title": "iPhone公式アプリでClaude Codeを運用する — 新セッション・再認証・git push、3つの穴の塞ぎ方",
+    "url": "https://zenn.dev/shimo4228/articles/iphone-claude-code-remote-control",
+    "platform": "Zenn"
+   },
+   "en": {
+    "title": "Claude Code from iPhone: Plugging 3 Holes in Remote Control",
+    "url": "https://dev.to/shimo4228/claude-code-from-iphone-plugging-3-holes-in-remote-control-17cf",
+    "platform": "Dev.to"
+   }
+  },
+  {
+   "kind": "article",
+   "slug": "non-code-asset-value-stocktake",
+   "date": "2026-07-08",
+   "published_at": "2026-07-08 09:00",
+   "ja": {
+    "title": "非コード資産の「価値」は linter では測れない —— LLM で棚卸しするスキルを作った",
+    "url": "https://zenn.dev/shimo4228/articles/non-code-asset-value-stocktake",
+    "platform": "Zenn"
+   },
+   "en": {
+    "title": "Linters Can't Measure a Non-Code Asset's Value — I Built an LLM Stocktake for It",
+    "url": "https://dev.to/shimo4228/linters-cant-measure-a-non-code-assets-value-i-built-an-llm-stocktake-for-it-4ng7",
+    "platform": "Dev.to"
+   }
+  },
+  {
+   "kind": "article",
+   "slug": "codex-review-cross-model-decorrelation",
+   "date": "2026-07-07",
+   "published_at": "2026-07-07 07:00",
+   "ja": {
+    "title": "Claude Codeから簡単にCodexレビューさせるスキルを作った",
+    "url": "https://zenn.dev/shimo4228/articles/codex-review-cross-model-decorrelation",
+    "platform": "Zenn"
+   },
+   "en": {
+    "title": "I Built a Skill for Easy Codex Reviews from Claude Code",
+    "url": "https://dev.to/shimo4228/i-built-a-skill-for-easy-codex-reviews-from-claude-code-4h89",
+    "platform": "Dev.to"
+   }
+  },
+  {
+   "kind": "essay",
+   "slug": "you-got-it-right-but-you-didnt-know-it",
+   "date": "2026-07-02",
+   "published_at": "2026-07-02 00:00",
+   "ja": null,
+   "en": {
+    "title": "You Got It Right — But You Didn't Know It",
+    "url": "https://shimo4228.substack.com/p/you-got-it-right-but-you-didnt-know",
+    "platform": "Substack"
+   }
+  },
+  {
+   "kind": "essay",
+   "slug": "how-the-mind-returns-after-cessation",
+   "date": "2026-06-14",
+   "published_at": "2026-06-14 00:00",
+   "ja": null,
+   "en": {
+    "title": "When Consciousness Fully Stops, How Does the Mind Return?",
+    "url": "https://shimo4228.substack.com/p/when-consciousness-fully-stops-how",
+    "platform": "Substack"
+   }
+  },
+  {
+   "kind": "essay",
+   "slug": "non-engineer-no-name-yet",
+   "date": "2026-06-05",
+   "published_at": "2026-06-05 00:00",
+   "ja": {
+    "title": "「非エンジニアの私が」の先に、名前はまだなかった",
+    "url": "https://note.com/shimo4228/n/nd6626c834ea5",
+    "platform": "note"
+   },
+   "en": null
+  },
+  {
+   "kind": "essay",
+   "slug": "ai-externalized-accountability-pollution",
+   "date": "2026-05-24",
+   "published_at": "2026-05-24 00:00",
+   "ja": {
+    "title": "AIによって外部化された責任は、どこへ行くのか",
+    "url": "https://note.com/shimo4228/n/ncd77818533f0",
+    "platform": "note"
+   },
+   "en": {
+    "title": "Where Does the Accountability Externalized by AI Go?",
+    "url": "https://shimo4228.substack.com/p/where-does-the-accountability-externalized",
+    "platform": "Substack"
+   }
+  },
+  {
+   "kind": "article",
+   "slug": "react-agent-business-quadrant-4",
+   "date": "2026-05-02",
+   "published_at": "2026-05-02 17:00",
+   "ja": {
+    "title": "ワークフロー象限と ReAct 象限の間のグラデーション — 設計フェーズと運用フェーズがスキル設計を分ける",
+    "url": "https://zenn.dev/shimo4228/articles/react-agent-business-quadrant-4",
+    "platform": "Zenn"
+   },
+   "en": null
+  },
+  {
+   "kind": "article",
+   "slug": "react-agent-business-quadrant-3",
+   "date": "2026-05-01",
+   "published_at": "2026-05-01 17:00",
+   "ja": {
+    "title": "本番運用に ReAct は必要か — 設計フェーズと運用フェーズを分ける",
+    "url": "https://zenn.dev/shimo4228/articles/react-agent-business-quadrant-3",
+    "platform": "Zenn"
+   },
+   "en": {
+    "title": "Is ReAct Needed in Production? — Separating Design and Operation Phases",
+    "url": "https://dev.to/shimo4228/is-react-needed-in-production-separating-design-and-operation-phases-4ll0",
+    "platform": "Dev.to"
+   }
+  },
+  {
+   "kind": "article",
+   "slug": "react-agent-business-quadrant-2",
+   "date": "2026-04-30",
+   "published_at": "2026-04-30 17:00",
+   "ja": {
+    "title": "(3) LLM ワークフロー象限が語彙から脱落している — 続・ReAct エージェントの適用域",
+    "url": "https://zenn.dev/shimo4228/articles/react-agent-business-quadrant-2",
+    "platform": "Zenn"
+   },
+   "en": {
+    "title": "(3) The LLM Workflow Quadrant Is Missing from Our Vocabulary",
+    "url": "https://dev.to/shimo4228/3-the-llm-workflow-quadrant-is-missing-from-our-vocabulary-n18",
+    "platform": "Dev.to"
+   }
+  },
+  {
+   "kind": "article",
+   "slug": "react-agent-business-quadrant",
+   "date": "2026-04-29",
+   "published_at": "2026-04-29 13:12",
+   "ja": {
+    "title": "ReAct エージェントが本当に必要な業務はどれか",
+    "url": "https://zenn.dev/shimo4228/articles/react-agent-business-quadrant",
+    "platform": "Zenn"
+   },
+   "en": {
+    "title": "Where ReAct Agents Are Actually Needed in Business",
+    "url": "https://dev.to/shimo4228/where-react-agents-are-actually-needed-in-business-33do",
+    "platform": "Dev.to"
+   }
+  },
+  {
+   "kind": "article",
+   "slug": "organic-growth-content-integrity",
+   "date": "2026-04-18",
+   "published_at": "2026-04-18 07:00",
+   "ja": {
+    "title": "AI 執筆チームの有機的成長と Content Integrity",
+    "url": "https://zenn.dev/shimo4228/articles/organic-growth-content-integrity",
+    "platform": "Zenn"
+   },
+   "en": {
+    "title": "Organic Growth and Content Integrity in an AI Writing Team",
+    "url": "https://dev.to/shimo4228/organic-growth-and-content-integrity-in-an-ai-writing-team-1h67",
+    "platform": "Dev.to"
+   }
+  },
+  {
+   "kind": "article",
+   "slug": "zed-observation-window-japanese-typography",
+   "date": "2026-04-16",
+   "published_at": "2026-04-16 07:00",
+   "ja": {
+    "title": "Zed を Claude Code の「観測窓」として構築する — IBM Plex で統一する日本語タイポグラフィ",
+    "url": "https://zenn.dev/shimo4228/articles/zed-observation-window-japanese-typography",
+    "platform": "Zenn"
+   },
+   "en": {
+    "title": "Building Zed as an Observation Window for Claude Code — Japanese Typography with IBM Plex",
+    "url": "https://dev.to/shimo4228/building-zed-as-an-observation-window-for-claude-code-japanese-typography-with-ibm-plex-6l9",
+    "platform": "Dev.to"
+   }
+  },
+  {
+   "kind": "article",
+   "slug": "agent-blackbox-capitalism-timescale",
+   "date": "2026-04-14",
+   "published_at": "2026-04-14 07:00",
+   "ja": {
+    "title": "AIエージェントのブラックボックスは二層ある — 技術の限界とビジネスの都合",
+    "url": "https://zenn.dev/shimo4228/articles/agent-blackbox-capitalism-timescale",
+    "platform": "Zenn"
+   },
+   "en": {
+    "title": "AI Agent Black Boxes Have Two Layers — Technical Limits and Business Incentives",
+    "url": "https://dev.to/shimo4228/ai-agent-black-boxes-have-two-layers-technical-limits-and-business-incentives-jhi",
+    "platform": "Dev.to"
+   }
+  },
+  {
+   "kind": "article",
+   "slug": "agent-causal-traceability-org-adoption",
+   "date": "2026-04-13",
+   "published_at": "2026-04-13 07:00",
+   "ja": {
+    "title": "事故のあとで因果を辿れるか",
+    "url": "https://zenn.dev/shimo4228/articles/agent-causal-traceability-org-adoption",
+    "platform": "Zenn"
+   },
+   "en": {
+    "title": "Can You Trace the Cause After an Incident?",
+    "url": "https://dev.to/shimo4228/can-you-trace-the-cause-after-an-incident-neo",
+    "platform": "Dev.to"
+   }
+  },
+  {
+   "kind": "article",
+   "slug": "ai-agent-accountability-wall",
+   "date": "2026-04-07",
+   "published_at": "2026-04-07 18:12",
+   "ja": {
+    "title": "登れる壁に看板を立てても意味がない — AIエージェントに必要なのはガードレールではなくアカウンタビリティだ",
+    "url": "https://zenn.dev/shimo4228/articles/ai-agent-accountability-wall",
+    "platform": "Zenn"
+   },
+   "en": null
+  },
+  {
+   "kind": "article",
+   "slug": "contemplative-agent-journey",
+   "date": "2026-04-05",
+   "published_at": "2026-04-05 20:55",
+   "ja": {
+    "title": "エピソードログから倫理が生まれるまで — Contemplative Agent 17日間の設計記録",
+    "url": "https://zenn.dev/shimo4228/articles/contemplative-agent-journey",
+    "platform": "Zenn"
+   },
+   "en": null
+  },
+  {
+   "kind": "article",
+   "slug": "agent-freedom-and-constraints",
+   "date": "2026-04-01",
+   "published_at": "2026-04-01 21:18",
+   "ja": {
+    "title": "自律エージェントの自由と制約 — 自己修正・信頼境界・ゲーム性の設計",
+    "url": "https://zenn.dev/shimo4228/articles/agent-freedom-and-constraints",
+    "platform": "Zenn"
+   },
+   "en": {
+    "title": "Freedom and Constraints of Autonomous Agents — Self-Modification, Trust Boundaries, and Emergent Gameplay",
+    "url": "https://dev.to/shimo4228/freedom-and-constraints-of-autonomous-agents-self-modification-trust-boundaries-and-emergent-3i0c",
+    "platform": "Dev.to"
+   }
+  },
+  {
+   "kind": "article",
+   "slug": "agent-memory-game-dev-distillation",
+   "date": "2026-03-30",
+   "published_at": "2026-03-30 21:56",
+   "ja": {
+    "title": "ゲーム開発のメモリ管理をAIエージェントの記憶蒸留に移植した",
+    "url": "https://zenn.dev/shimo4228/articles/agent-memory-game-dev-distillation",
+    "platform": "Zenn"
+   },
+   "en": {
+    "title": "Porting Game Dev Memory Management to AI Agent Memory Distillation",
+    "url": "https://dev.to/shimo4228/porting-game-dev-memory-management-to-ai-agent-memory-distillation-35lk",
+    "platform": "Dev.to"
+   }
+  },
+  {
+   "kind": "article",
+   "slug": "coding-agent-memory-architecture",
+   "date": "2026-03-26",
+   "published_at": "2026-03-26 07:17",
+   "ja": {
+    "title": "コーディングエージェントの知識をどこに置き、どう守らせるか",
+    "url": "https://zenn.dev/shimo4228/articles/coding-agent-memory-architecture",
+    "platform": "Zenn"
+   },
+   "en": {
+    "title": "Where to Put a Coding Agent's Knowledge — and How to Make It Stick",
+    "url": "https://dev.to/shimo4228/where-to-put-a-coding-agents-knowledge-and-how-to-make-it-stick-161g",
+    "platform": "Dev.to"
+   }
+  },
+  {
+   "kind": "article",
+   "slug": "mcp-install-and-hope-problem",
+   "date": "2026-03-24",
+   "published_at": "2026-03-24 19:30",
+   "ja": {
+    "title": "MCPツールの Install and Hope 問題",
+    "url": "https://zenn.dev/shimo4228/articles/mcp-install-and-hope-problem",
+    "platform": "Zenn"
+   },
+   "en": {
+    "title": "The Install and Hope Problem with MCP Tools",
+    "url": "https://dev.to/shimo4228/the-install-and-hope-problem-with-mcp-tools-89j",
+    "platform": "Dev.to"
+   }
+  },
+  {
+   "kind": "article",
+   "slug": "few-shot-for-small-models",
+   "date": "2026-03-23",
+   "published_at": "2026-03-23 08:16",
+   "ja": {
+    "title": "エージェントの記憶が壊れた — 9Bモデルと格闘した1日",
+    "url": "https://zenn.dev/shimo4228/articles/few-shot-for-small-models",
+    "platform": "Zenn"
+   },
+   "en": {
+    "title": "My Agent's Memory Broke — A Day Wrestling a 9B Model",
+    "url": "https://dev.to/shimo4228/my-agents-memory-broke-a-day-wrestling-a-9b-model-50ch",
+    "platform": "Dev.to"
+   }
+  },
+  {
+   "kind": "article",
+   "slug": "agent-essence-is-memory",
+   "date": "2026-03-21",
+   "published_at": "2026-03-21 19:55",
+   "ja": {
+    "title": "推論でもツールでもない — AIエージェントの本質は「記憶」ではないか",
+    "url": "https://zenn.dev/shimo4228/articles/agent-essence-is-memory",
+    "platform": "Zenn"
+   },
+   "en": {
+    "title": "Not Reasoning, Not Tools — What If the Essence of AI Agents Is Memory?",
+    "url": "https://dev.to/shimo4228/not-reasoning-not-tools-what-if-the-essence-of-ai-agents-is-memory-4k4n",
+    "platform": "Dev.to"
+   }
+  },
+  {
+   "kind": "article",
+   "slug": "ai-article-writing-process",
+   "date": "2026-03-20",
+   "published_at": "2026-03-20 19:47",
+   "ja": {
+    "title": "AI生成記事の実態 — 20回の対話で核心が変わった2時間",
+    "url": "https://zenn.dev/shimo4228/articles/ai-article-writing-process",
+    "platform": "Zenn"
+   },
+   "en": null
+  },
+  {
+   "kind": "article",
+   "slug": "symbiotic-agent-architecture",
+   "date": "2026-03-19",
+   "published_at": "2026-03-19 18:22",
+   "ja": {
+    "title": "自律エージェントにオーケストレーション層は本当に必要か",
+    "url": "https://zenn.dev/shimo4228/articles/symbiotic-agent-architecture",
+    "platform": "Zenn"
+   },
+   "en": null
+  },
+  {
+   "kind": "article",
+   "slug": "llm-app-sandwich-architecture",
+   "date": "2026-03-16",
+   "published_at": "2026-03-16 21:33",
+   "ja": {
+    "title": "LLMアプリの正体は「mdとコードのサンドイッチ」だった",
+    "url": "https://zenn.dev/shimo4228/articles/llm-app-sandwich-architecture",
+    "platform": "Zenn"
+   },
+   "en": null
+  },
+  {
+   "kind": "article",
+   "slug": "moltbook-agent-evolution-quadrilogy",
+   "date": "2026-03-14",
+   "published_at": "2026-03-14 07:57",
+   "ja": {
+    "title": "Moltbookエージェント進化記 — 自然言語で制御し、記憶で学び、失敗しても壊れない設計",
+    "url": "https://zenn.dev/shimo4228/articles/moltbook-agent-evolution-quadrilogy",
+    "platform": "Zenn"
+   },
+   "en": {
+    "title": "Natural Language as Architecture — Controlling an Autonomous Agent with Prompts, Memory, and Fail-Safe Design",
+    "url": "https://dev.to/shimo4228/natural-language-as-architecture-controlling-an-autonomous-agent-with-prompts-memory-and-m74",
+    "platform": "Dev.to"
+   }
+  },
+  {
+   "kind": "article",
+   "slug": "contemplative-alignment-benchmark",
+   "date": "2026-03-11",
+   "published_at": "2026-03-11 08:45",
+   "ja": {
+    "title": "Prompt-Based Alignmentには天井がある — 囚人のジレンマ3モデル実証",
+    "url": "https://zenn.dev/shimo4228/articles/contemplative-alignment-benchmark",
+    "platform": "Zenn"
+   },
+   "en": {
+    "title": "Prompt-Based Alignment Has a Ceiling — 3-Model Prisoner's Dilemma Evidence",
+    "url": "https://dev.to/shimo4228/prompt-based-alignment-has-a-ceiling-3-model-prisoners-dilemma-evidence-1pie",
+    "platform": "Dev.to"
+   }
+  },
+  {
+   "kind": "article",
+   "slug": "moltbook-agent-scratch-build",
+   "date": "2026-03-08",
+   "published_at": "2026-03-08 09:13",
+   "ja": {
+    "title": "Moltbookエージェント構築記 — Claude Codeとセキュリティファースト開発",
+    "url": "https://zenn.dev/shimo4228/articles/moltbook-agent-scratch-build",
+    "platform": "Zenn"
+   },
+   "en": {
+    "title": "I Built an AI Agent from Scratch Because Frameworks Are the Vulnerability",
+    "url": "https://dev.to/shimo4228/i-built-an-ai-agent-from-scratch-because-frameworks-are-the-vulnerability-elm",
+    "platform": "Dev.to"
+   }
+  },
+  {
+   "kind": "article",
+   "slug": "active-inference-viz-dev-story",
+   "date": "2026-03-07",
+   "published_at": "2026-03-07 08:22",
+   "ja": {
+    "title": "理論が分からない論文をブラウザで動かしてしまった ── 能動的推論 × Claude Code",
+    "url": "https://zenn.dev/shimo4228/articles/active-inference-viz-dev-story",
+    "platform": "Zenn"
+   },
+   "en": {
+    "title": "I Made a Paper I Don't Understand Run in the Browser — Active Inference × Claude Code",
+    "url": "https://dev.to/shimo4228/i-made-a-paper-i-dont-understand-run-in-the-browser-active-inference-x-claude-code-2jog",
+    "platform": "Dev.to"
+   }
+  },
+  {
+   "kind": "article",
+   "slug": "obsidian-cli-claude-code-vault-management",
+   "date": "2026-03-06",
+   "published_at": "2026-03-06 07:40",
+   "ja": {
+    "title": "Obsidian公式CLIが来た——もうVaultを裏口から触らなくていい",
+    "url": "https://zenn.dev/shimo4228/articles/obsidian-cli-claude-code-vault-management",
+    "platform": "Zenn"
+   },
+   "en": {
+    "title": "Obsidian's Official CLI Is Here — No More Hacking Your Vault from the Back Door",
+    "url": "https://dev.to/shimo4228/obsidians-official-cli-is-here-no-more-hacking-your-vault-from-the-back-door-3123",
+    "platform": "Dev.to"
+   }
+  },
+  {
+   "kind": "article",
+   "slug": "claude-code-effective-settings-10",
+   "date": "2026-03-05",
+   "published_at": "2026-03-05 07:35",
+   "ja": {
+    "title": "デフォルトのまま使うな ── Claude Code で本当に効いた設定10選",
+    "url": "https://zenn.dev/shimo4228/articles/claude-code-effective-settings-10",
+    "platform": "Zenn"
+   },
+   "en": {
+    "title": "Stop Using Default Settings — 10 Claude Code Configs That Actually Work",
+    "url": "https://dev.to/shimo4228/stop-using-default-settings-10-claude-code-configs-that-actually-work-243l",
+    "platform": "Dev.to"
+   }
+  },
+  {
+   "kind": "article",
+   "slug": "ecc-marketplace-contribution",
+   "date": "2026-03-04",
+   "published_at": "2026-03-04 07:32",
+   "ja": {
+    "title": "個人スキルを5万人に届ける最短経路が見つかった",
+    "url": "https://zenn.dev/shimo4228/articles/ecc-marketplace-contribution",
+    "platform": "Zenn"
+   },
+   "en": {
+    "title": "I Found the Shortest Route to Ship My Claude Code Skills to 57,000 Developers",
+    "url": "https://dev.to/shimo4228/i-found-the-shortest-route-to-ship-my-claude-code-skills-to-57000-developers-4g43",
+    "platform": "Dev.to"
+   }
+  },
+  {
+   "kind": "article",
+   "slug": "xcodebuildmcp-ios-verification",
+   "date": "2026-03-03",
+   "published_at": "2026-03-03 07:00",
+   "ja": {
+    "title": "Claude Codeにシミュレータを渡したら自分でタップしてスクショで検証し始めた",
+    "url": "https://zenn.dev/shimo4228/articles/xcodebuildmcp-ios-verification",
+    "platform": "Zenn"
+   },
+   "en": {
+    "title": "I Gave Claude Code a Simulator and It Started Tapping and Taking Screenshots on Its Own",
+    "url": "https://dev.to/shimo4228/i-gave-claude-code-a-simulator-and-it-started-tapping-and-taking-screenshots-on-its-own-57bj",
+    "platform": "Dev.to"
+   }
+  },
+  {
+   "kind": "article",
+   "slug": "kimi-delegation-failure-lessons",
+   "date": "2026-02-28",
+   "published_at": "2026-02-28 08:04",
+   "ja": {
+    "title": "ClaudeのプランをKimiに実行させたら丸投げだとキレられた",
+    "url": "https://zenn.dev/shimo4228/articles/kimi-delegation-failure-lessons",
+    "platform": "Zenn"
+   },
+   "en": {
+    "title": "Kimi Wrote 8,500 Lines, Blamed Me for Delegating, Then Claimed to Be Claude",
+    "url": "https://dev.to/shimo4228/kimi-wrote-8500-lines-blamed-me-for-delegating-then-claimed-to-be-claude-3991",
+    "platform": "Dev.to"
+   }
+  },
+  {
+   "kind": "article",
+   "slug": "claude-code-persistent-memory",
+   "date": "2026-02-27",
+   "published_at": "2026-02-27 07:20",
+   "ja": {
+    "title": "毎回コンテキストを失う Claude Code に記憶を埋め込んだ",
+    "url": "https://zenn.dev/shimo4228/articles/claude-code-persistent-memory",
+    "platform": "Zenn"
+   },
+   "en": {
+    "title": "Embedding Memory into Claude Code: From Session Loss to Persistent Context",
+    "url": "https://dev.to/shimo4228/embedding-memory-into-claude-code-from-session-loss-to-persistent-context-54d8",
+    "platform": "Dev.to"
+   }
+  },
+  {
+   "kind": "article",
+   "slug": "ai-peer-review-methodology",
+   "date": "2026-02-26",
+   "published_at": "2026-02-26 07:00",
+   "ja": {
+    "title": "Claudeの自信作をKimiが4件潰した ── AIピアレビュー実践記",
+    "url": "https://zenn.dev/shimo4228/articles/ai-peer-review-methodology",
+    "platform": "Zenn"
+   },
+   "en": {
+    "title": "Kimi Killed 4 of Claude's Best Ideas — An AI Peer Review in Practice",
+    "url": "https://dev.to/shimo4228/kimi-killed-4-of-claudes-best-ideas-an-ai-peer-review-in-practice-29bo",
+    "platform": "Dev.to"
+   }
+  },
+  {
+   "kind": "article",
+   "slug": "token-economics-ai-orchestration",
+   "date": "2026-02-25",
+   "published_at": "2026-02-25 21:22",
+   "ja": {
+    "title": "Geminiに自社Deep Researchを語らせたら、半分が自己弁護だった",
+    "url": "https://zenn.dev/shimo4228/articles/token-economics-ai-orchestration",
+    "platform": "Zenn"
+   },
+   "en": {
+    "title": "I Had Gemini Explain Its Own Deep Research — Half Was Self-Justification",
+    "url": "https://dev.to/shimo4228/i-asked-gemini-how-its-own-deep-research-works-half-of-it-was-inaccurate-1ki1",
+    "platform": "Dev.to"
+   }
+  },
+  {
+   "kind": "article",
+   "slug": "skill-stocktake-design-journey",
+   "date": "2026-02-24",
+   "published_at": "2026-02-24 20:05",
+   "ja": {
+    "title": "AI の苦手な仕事をスクリプトに逃がす — スキル棚卸しコマンドの設計・実装・公開の全記録",
+    "url": "https://zenn.dev/shimo4228/articles/skill-stocktake-design-journey",
+    "platform": "Zenn"
+   },
+   "en": {
+    "title": "Offloading AI's Weak Spots to Shell Scripts — Designing, Building, and Publishing a Skill Audit Command",
+    "url": "https://dev.to/shimo4228/offloading-ais-weak-spots-to-shell-scripts-designing-building-and-publishing-a-skill-audit-2ll8",
+    "platform": "Dev.to"
+   }
+  },
+  {
+   "kind": "article",
+   "slug": "claude-kimi-hybrid-setup",
+   "date": "2026-02-24",
+   "published_at": "2026-02-24 20:05",
+   "ja": {
+    "title": "Claude Code × Kimi K2.5 ハイブリッド環境を構築した ── Opus が設計し、K2.5 が実装する開発フロー",
+    "url": "https://zenn.dev/shimo4228/articles/claude-kimi-hybrid-setup",
+    "platform": "Zenn"
+   },
+   "en": {
+    "title": "Building a Claude Code × Kimi K2.5 Hybrid Environment: Opus Designs, K2.5 Implements",
+    "url": "https://dev.to/shimo4228/building-a-claude-code-x-kimi-k25-hybrid-environment-opus-designs-k25-implements-1ic",
+    "platform": "Dev.to"
+   }
+  },
+  {
+   "kind": "article",
+   "slug": "claude-code-context-orchestration",
+   "date": "2026-02-23",
+   "published_at": "2026-02-23 07:00",
+   "ja": {
+    "title": "Claude Code の真価はコード生成ではない",
+    "url": "https://zenn.dev/shimo4228/articles/claude-code-context-orchestration",
+    "platform": "Zenn"
+   },
+   "en": {
+    "title": "The Real Power of Claude Code Isn't Code Generation — It's Autonomous Context Orchestration",
+    "url": "https://dev.to/shimo4228/the-real-power-of-claude-code-isnt-code-generation-its-autonomous-context-orchestration-3djk",
+    "platform": "Dev.to"
+   }
+  },
+  {
+   "kind": "article",
+   "slug": "base-model-experience",
+   "date": "2026-02-22",
+   "published_at": "2026-02-22 22:06",
+   "ja": {
+    "title": "しつけの前と後 ── Baseモデルを手元で動かしたら「こんにちは」がアニメレビューになった",
+    "url": "https://zenn.dev/shimo4228/articles/base-model-experience",
+    "platform": "Zenn"
+   },
+   "en": {
+    "title": "Before and After Alignment — I Typed 'Hello' Into a Base Model and Got an Anime Review",
+    "url": "https://dev.to/shimo4228/before-and-after-alignment-i-typed-hello-into-a-base-model-and-got-an-anime-review-16fk",
+    "platform": "Dev.to"
+   }
+  },
+  {
+   "kind": "article",
+   "slug": "daily-research-postmortem",
+   "date": "2026-02-22",
+   "published_at": "2026-02-22 07:00",
+   "ja": {
+    "title": "2日間壊し続けたAIパイプライン ── Claudeの認知バイアスと人間の介入",
+    "url": "https://zenn.dev/shimo4228/articles/daily-research-postmortem",
+    "platform": "Zenn"
+   },
+   "en": {
+    "title": "What I Learned from Breaking My AI Pipeline for Two Days Straight",
+    "url": "https://dev.to/shimo4228/what-i-learned-from-breaking-my-ai-pipeline-for-two-days-straight-pol",
+    "platform": "Dev.to"
+   }
+  },
+  {
+   "kind": "article",
+   "slug": "daily-research-agent-team",
+   "date": "2026-02-21",
+   "published_at": "2026-02-21 12:04",
+   "ja": {
+    "title": "最強モデルで司令塔を組んだら9倍遅くなった ── なぜマルチエージェントを棄却したか",
+    "url": "https://zenn.dev/shimo4228/articles/daily-research-agent-team",
+    "platform": "Zenn"
+   },
+   "en": {
+    "title": "I Tried an Opus Orchestrator and Killed It — The ROI of Multi-Agent Systems",
+    "url": "https://dev.to/shimo4228/i-tried-an-opus-orchestrator-and-killed-it-the-roi-of-multi-agent-systems-1f7g",
+    "platform": "Dev.to"
+   }
+  },
+  {
+   "kind": "article",
+   "slug": "claude-code-zenn-writing-env",
+   "date": "2026-02-20",
+   "published_at": "2026-02-20 05:57",
+   "ja": {
+    "title": "Claude Codeで育てたZenn執筆環境 ── lint28件からエージェントレビューまで",
+    "url": "https://zenn.dev/shimo4228/articles/claude-code-zenn-writing-env",
+    "platform": "Zenn"
+   },
+   "en": null
+  },
+  {
+   "kind": "article",
+   "slug": "claude-code-skill-origin-tracking",
+   "date": "2026-02-19",
+   "published_at": "2026-02-19 19:42",
+   "ja": {
+    "title": "Claude Code スキルの出自管理 ── origin メタデータで79個を分類した",
+    "url": "https://zenn.dev/shimo4228/articles/claude-code-skill-origin-tracking",
+    "platform": "Zenn"
+   },
+   "en": null
+  },
+  {
+   "kind": "article",
+   "slug": "claude-code-context-audit",
+   "date": "2026-02-18",
+   "published_at": "2026-02-18 08:36",
+   "ja": {
+    "title": "Claude Code の設定ファイルを全棚卸しして分かった5つのこと",
+    "url": "https://zenn.dev/shimo4228/articles/claude-code-context-audit",
+    "platform": "Zenn"
+   },
+   "en": null
+  },
+  {
+   "kind": "article",
+   "slug": "claude-code-obsidian-vault-organization",
+   "date": "2026-02-16",
+   "published_at": "2026-02-16 22:59",
+   "ja": {
+    "title": "3,674ファイルのObsidian地獄をClaude Codeに1日で片付けさせた",
+    "url": "https://zenn.dev/shimo4228/articles/claude-code-obsidian-vault-organization",
+    "platform": "Zenn"
+   },
+   "en": null
+  },
+  {
+   "kind": "article",
+   "slug": "daily-research-automation",
+   "date": "2026-02-15",
+   "published_at": "2026-02-15 07:00",
+   "ja": {
+    "title": "Claude Code で毎朝AIリサーチが届く自動化を作った — Pythonコード0行",
+    "url": "https://zenn.dev/shimo4228/articles/daily-research-automation",
+    "platform": "Zenn"
+   },
+   "en": {
+    "title": "Zero Python Code: How I Built a Daily AI Research Report System",
+    "url": "https://dev.to/shimo4228/zero-python-code-how-i-built-a-daily-ai-research-report-system-4357",
+    "platform": "Dev.to"
+   }
+  },
+  {
+   "kind": "article",
+   "slug": "ecc-journey-part3",
+   "date": "2026-02-14",
+   "published_at": "2026-02-14 09:05",
+   "ja": {
+    "title": "Claude Code スキルが膨れ続けた 15 日間 — 3 回の棚卸しで学んだこと",
+    "url": "https://zenn.dev/shimo4228/articles/ecc-journey-part3",
+    "platform": "Zenn"
+   },
+   "en": {
+    "title": "15 Days of Skill Sprawl in Claude Code — Lessons from 3 Audits",
+    "url": "https://dev.to/shimo4228/15-days-of-skill-sprawl-in-claude-code-lessons-from-3-audits-27em",
+    "platform": "Dev.to"
+   }
+  },
+  {
+   "kind": "article",
+   "slug": "termius-iphone-claude-code",
+   "date": "2026-02-14",
+   "published_at": "2026-02-14 07:06",
+   "ja": {
+    "title": "Claude Code をiPhoneから操作する方法 — Termius + Tailscale + tmux 環境構築ガイド",
+    "url": "https://zenn.dev/shimo4228/articles/termius-iphone-claude-code",
+    "platform": "Zenn"
+   },
+   "en": {
+    "title": "Running Claude Code from iPhone via SSH + tmux",
+    "url": "https://dev.to/shimo4228/running-claude-code-from-iphone-via-ssh-tmux-4c10",
+    "platform": "Dev.to"
+   }
+  },
+  {
+   "kind": "article",
+   "slug": "cursor-to-zed-migration",
+   "date": "2026-02-12",
+   "published_at": "2026-02-12 21:47",
+   "ja": {
+    "title": "CursorからZedに乗り換えた — ビルトインAIを切って「黒い画面」に振り切った設定と理由",
+    "url": "https://zenn.dev/shimo4228/articles/cursor-to-zed-migration",
+    "platform": "Zenn"
+   },
+   "en": {
+    "title": "Cursor to Zed: Disabling Built-in AI for a CLI-First Setup",
+    "url": "https://dev.to/shimo4228/cursor-to-zed-disabling-built-in-ai-for-a-cli-first-setup-6e4",
+    "platform": "Dev.to"
+   }
+  },
+  {
+   "kind": "article",
+   "slug": "claude-code-self-generation",
+   "date": "2026-02-11",
+   "published_at": "2026-02-11 17:55",
+   "ja": {
+    "title": "Claude Codeに「お前自身がLLMだろ」と言った日 — 397問のデータ生成で学んだこと",
+    "url": "https://zenn.dev/shimo4228/articles/claude-code-self-generation",
+    "platform": "Zenn"
+   },
+   "en": {
+    "title": "The Day I Told Claude Code 'You ARE the LLM'",
+    "url": "https://dev.to/shimo4228/the-day-i-told-claude-code-you-are-the-llm-251j",
+    "platform": "Dev.to"
+   }
+  },
+  {
+   "kind": "article",
+   "slug": "ecc-journey-part2",
+   "date": "2026-02-11",
+   "published_at": "2026-02-11 01:03",
+   "ja": {
+    "title": "LLM の出力は信用するな — Claude API で PDF→Anki 自動生成 CLI を作って学んだ 6 つの防御策",
+    "url": "https://zenn.dev/shimo4228/articles/ecc-journey-part2",
+    "platform": "Zenn"
+   },
+   "en": {
+    "title": "Never Trust LLM Output — 6 Defenses from Building a PDF-to-Anki CLI",
+    "url": "https://dev.to/shimo4228/never-trust-llm-output-6-defenses-from-building-a-pdf-to-anki-cli-43mo",
+    "platform": "Dev.to"
+   }
+  },
+  {
+   "kind": "article",
+   "slug": "ecc-journey-part1",
+   "date": "2026-02-09",
+   "published_at": "2026-02-09 16:58",
+   "ja": {
+    "title": "Everything Claude Codeで初めて本格的な開発を始めた初心者の10日間",
+    "url": "https://zenn.dev/shimo4228/articles/ecc-journey-part1",
+    "platform": "Zenn"
+   },
+   "en": {
+    "title": "A Beginner's First 10 Days of Real Development with ECC",
+    "url": "https://dev.to/shimo4228/a-beginners-first-10-days-of-real-development-with-ecc-23k4",
+    "platform": "Dev.to"
+   }
+  }
+ ]
+}

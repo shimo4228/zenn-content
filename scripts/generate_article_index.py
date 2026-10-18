@@ -14,6 +14,9 @@ Source of truth (see docs/adr/0009):
 Outputs:
 
 - ``docs/PUBLICATIONS.md`` — the single exhaustive index (articles, essays, papers).
+- ``docs/publications.json`` — the same articles and essays as data, for the personal site
+  (shimo4228.github.io), whose build reads it to list the writing. Future ``published_at``
+  values are included; the reader drops them until their date.
 - ``README.md`` / ``README.ja.md`` — only the block between the
   ``<!-- reading-paths:start -->`` / ``<!-- reading-paths:end -->`` markers.
 
@@ -296,6 +299,28 @@ def render_routes(routes: list[Route], articles: list[Article], lang: str) -> st
     return "\n".join(lines)
 
 
+def render_feed(articles: list[Article], corpus: Corpus) -> str:
+    """Articles and essays as JSON, newest first. Only published editions get a URL entry."""
+    items: list[dict] = []
+    for a in articles:
+        items.append({
+            "kind": "article",
+            "slug": a.slug,
+            "date": a.date,
+            "published_at": a.published_at,
+            "ja": {"title": a.title_ja, "url": a.zenn_url, "platform": "Zenn"},
+            "en": {"title": a.title_en, "url": a.devto, "platform": "Dev.to"} if a.devto and a.title_en else None,
+        })
+    for e in corpus.essays:
+        item: dict = {"kind": "essay", "slug": e["slug"], "date": str(e["date"]), "published_at": f"{e['date']} 00:00"}
+        for lang, platform in (("ja", "note"), ("en", "Substack")):
+            ed = e.get(lang)
+            item[lang] = {"title": ed["title"], "url": ed["url"], "platform": platform} if ed else None
+        items.append(item)
+    items.sort(key=lambda i: (i["published_at"], i["slug"]), reverse=True)
+    return json.dumps({"generated_by": "scripts/generate_article_index.py", "items": items}, ensure_ascii=False, indent=1) + "\n"
+
+
 def splice(text: str, block: str) -> str:
     """Replace the marker block inside README text; markers must exist exactly once."""
     s, e = text.count(START), text.count(END)
@@ -315,7 +340,10 @@ def build_outputs(root: Path) -> dict[Path, str]:
     articles = load_articles(root)
     corpus = load_corpus(root, {a.slug for a in articles})
     routes = load_routes(root)
-    outputs = {root / "docs" / "PUBLICATIONS.md": render_index(articles, corpus)}
+    outputs = {
+        root / "docs" / "PUBLICATIONS.md": render_index(articles, corpus),
+        root / "docs" / "publications.json": render_feed(articles, corpus),
+    }
     for name, lang in (("README.md", "en"), ("README.ja.md", "ja")):
         p = root / name
         outputs[p] = splice(p.read_text(), render_routes(routes, articles, lang))

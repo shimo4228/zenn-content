@@ -238,3 +238,20 @@ def test_main_reports_source_errors_as_exit_2(repo: Path, capsys):
     (repo / "articles" / "nodate.md").write_text(_article("日付なし", published_at=None))
     assert gai.main(["--root", str(repo), "--check"]) == 2
     assert "published article without published_at" in capsys.readouterr().err
+
+
+def test_render_feed_lists_articles_and_essays_newest_first(repo: Path):
+    articles = gai.load_articles(repo)
+    data = json.loads(gai.render_feed(articles, _corpus(repo)))
+    items = data["items"]
+    dates = [i["published_at"] for i in items]
+    assert dates == sorted(dates, reverse=True)
+    newer = next(i for i in items if i["slug"] == "newer")
+    assert newer["kind"] == "article"
+    assert newer["ja"] == {"title": "新しい記事", "url": f"{gai.ZENN_BASE}/newer", "platform": "Zenn"}
+    assert newer["en"] == {"title": "Newer Article", "url": "https://dev.to/x/newer-1", "platform": "Dev.to"}
+    # An EN edition without a Dev.to URL is not published yet, so it has no entry.
+    assert next(i for i in items if i["slug"] == "legacy")["en"] is None
+    assert "draft" not in {i["slug"] for i in items}
+    b = next(i for i in items if i["slug"] == "essay-b")
+    assert b["kind"] == "essay" and b["ja"] is None and b["en"]["platform"] == "Substack"
