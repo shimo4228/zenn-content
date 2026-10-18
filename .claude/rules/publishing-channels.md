@@ -26,7 +26,7 @@ public-safety scan、channel の機械検査、著者の公開 GO で受け入�
 `fact-checker`・`title-reviewer` は EN では回さない。EN の題は translator の推奨案で決める。
 
 - 処分記録: orchestratorが指摘ごとに採用・不採用と理由を1行ずつ残している
-- ペルソナ読み（Zenn のみ）: 各ラウンドの読み手の JSON・判断の照合と、改稿したラウンドの `drift_count.py` の出力が
+- ペルソナ読み（Zenn のみ）: 各ラウンドの読み手の JSON・判断の照合と、改稿したラウンドの `drift_count.py`（skill: `persona-read-loop`）の出力が
   `drafts/<slug>/persona/` にあり、止めた理由（判断が一致 / 残りが著者へ渡すものだけ / 3 周）を処分記録に書いている。
   読み手の評価は受け入れ条件にしない
 - channel editor: 凍結稿へのreportあり。CRITICALとcanonical coverageのpending / unverifiedは

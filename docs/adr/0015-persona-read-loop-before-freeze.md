@@ -52,6 +52,13 @@ ADR-0011 が改稿ループを外した理由は二つ: judge を通った稿に
 
 1. **Zenn 稿の brief 承認後・構造凍結前に、ペルソナ読みを置く。** 手順の正本は
    `.claude/skills/writing-ecosystem/references/persona-read.md`。writing-ecosystem の §3.5 と brief の `Personas:` 行から指す
+
+   > **注記（2026-10-18, commit「refactor(writing): ペルソナ読みの手順を skill persona-read-loop へ移す」）**: 手順の正本（人選の役・
+   > 起動・照合・改稿の範囲・止めどき）と `drift_count.py`（test 込み）は harness の skill `persona-read-loop` の article preset と
+   > `scripts/` へ移った。`references/persona-read.md` には Zenn の記録の置き場と Decision 5 の比較材料だけが残る。起動は同 skill の
+   > `scripts/read.sh` で、Decision 3 の確かめは `read.sh --probe` が担う（auto memory を切り空の cwd で起動する。2.1.302 で
+   > `--setting-sources ""` だけでは cwd の project の auto memory が読み手に届いた）。drift_count.py には英語の最上級・限定句が加わった
+
 2. **読み手は記事ごとに 3 人（`primary` / `inflow` / `practitioner`）。`practitioner` は毎回「日本のハーネス実践者」にする。** 人選は
    brief で著者が確かめ、ラウンド間で固定する
 

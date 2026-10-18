@@ -4,6 +4,10 @@
 
 ## ペルソナ読み（references/persona-read.md）
 
+- 手順・prompt・照合・drift_count.py は 2026-10-18 に harness の skill: `persona-read-loop`（article preset）へ移した
+  （harness の plan `docs/plans/persona-read-skill.html`）。ここに残るのは Zenn の記録の置き場と比較材料。以下はこの repo で
+  回したときの出所と実測
+
 - 出所: 2026-10-09 の著者の提案「Readme judgeみたいに記事ごとのジャッジのペルソナを設定してループ回す形にしたらどう？」。
   止めどきは著者の言葉で「私が日本のハーネス構築において並ぶ者がいないほど考えていることがわかるレベルまでにして」。
   決定は ADR-0015、plan は `docs/plans/article-persona-loop.html`、調査は `docs/plans/research/2026-10-09-article-persona-loop.md`
@@ -16,7 +20,7 @@
 - 3 周の理由: readme-writer の運用に合わせた値で較正していない。改稿 1 回ごとに Clarity が下がり（arXiv:2609.14767、LLM judge の点）、
   同一モデルの反復で最終反復に人間の点が落ちた（arXiv:2407.04549）ので、増やす向きには逆らう。2 との比較は ADR-0015 の Open
 - drift の機械 diff の出所: arXiv:2608.28596 の drift 指標（未裏付けの数値・最上級の追加、hedge の除去）。語彙リストは論文に無く、
-  `scripts/drift_count.py` の語は手書き。カタカナを exit から外したのは、普通の外来語（ケース・ポイント）が毎ラウンド発火したため
+  `drift_count.py` の語は手書き。カタカナを exit から外したのは、普通の外来語（ケース・ポイント）が毎ラウンド発火したため
   （/code-review の指摘を再現して確認）
 - 隔離の確かめ: 2026-10-09、2.1.295 で `--setting-sources ""` だけで repo の中から起動しても著者の rules の見出しは見えず、外すと
   見えた。`--bare` はサブスクの認証を読まない

@@ -40,7 +40,7 @@ pointer、`collect-context` が作る evidence dossier の順に限定して受�
 | **Theme review** | `theme-reviewer` agent | 選択済みの問いへ findings と深化の問いを返す。合否は出さない | 外部言説に対する新規性を主張する稿で、著者が指示したとき |
 | **Pre-write** | `collect-context` skill | 素材収集と証拠台帳（Claims Register / 一次・⚠未検証の tier）。編集判断はしない | 執筆前に素材を集めるとき |
 | **Write** | 本 skill「editorial brief と執筆フロー」 | 中心命題・因果線・証拠選択・構成・執筆 | 初稿・改稿 |
-| **Persona read** | `references/persona-read.md` | 記事ごとの読み手 3 人が読後に残った判断を言い直し、見せ方だけを直す。受け入れはしない | Zenn 稿の構造凍結前 |
+| **Persona read** | skill: `persona-read-loop`（article preset）+ `references/persona-read.md`（Zenn の記録の置き場と比較材料） | 記事ごとの読み手 3 人が読後に残った判断を言い直し、見せ方だけを直す。受け入れはしない | Zenn 稿の構造凍結前 |
 | **Title generation** | `headline-craft` skill | 「開かせる一行」の候補生成 | 著者の内容 GO 後 |
 | **Title review** | `title-reviewer` agent | 本文との契約を fresh context で点検し findings を返す | headline-craft の後、quality-gate の前 |
 | **Review: 品質** | `editor` agent | 議論の動き・説明の質・AI slop・記事内用語（code / path の照合は `fact-checker`） | 実用チャンネルのレビュー時 |
@@ -80,7 +80,7 @@ local contract から出力 channel と読者を決める。テーマ未選択�
 Reader: <channel contract の読者と、中心命題の対話で著者が言った「誰に向けて書くか」の原文 1 行>
 Channel: <local contract の channel>
 Author's words: <中心命題の対話で著者が言った原文。要約・言い換えをしない>
-Personas: <Zenn のみ。primary / inflow / practitioner の 3 人を各 1〜2 文で（役割・既に知っていること・比べる相手・時間の予算）。選び方は references/persona-read.md>
+Personas: <Zenn のみ。primary（channel contract の読者）/ inflow（Zenn のトレンド・topic 検索・X 告知のうち、この記事が受ける経路から来た人）/ practitioner（日本のハーネス実践者。自分でも coding agent の harness を組み、日本語の記事を読み比べてきた人）の 3 人を各 1〜2 文で（役割・既に知っていること・比べる相手・時間の予算）。選び方は skill: persona-read-loop の article preset>
 Central thesis: <Author's words を、この原稿が成立させる命題一文にしたもの。必ず一つ。確度は Author's words のまま（背骨 1）>
 Entry bridge: <読者の出発点から、なぜ中心命題を考える意味があるかが伝わる場面・観察・問いを1〜2文で>
 Figure plan: <内容 GO の後に埋める。節 → 形（対比 / 流れ / 階層 / 2 軸 / 並列）→ 図の有無。並列は list のまま>
@@ -110,8 +110,9 @@ out-of-scope を保持する。翻訳先の local contract へ route し直す�
 ### 3.5. Persona read（Zenn）
 
 Zenn 稿は、構造凍結の前に brief の Personas の 3 人へ稿を読ませ、読後に残った著者の判断（決めたこと・決めなかったこと・
-その理由）の言い直しが brief と一致するまで、見せ方を直す。手順・止めどき・改稿の範囲は
-[`references/persona-read.md`](references/persona-read.md) が持つ。
+その理由）の言い直しが brief と一致するまで、見せ方を直す。手順・止めどき・改稿の範囲・drift の計測は skill: `persona-read-loop`
+の article preset が持ち、照合に使う著者の判断は brief の Causal spine から渡す。記録の置き場と、止めたラウンドで 1 回読ませる
+比較材料は [`references/persona-read.md`](references/persona-read.md) が持つ。
 
 ### 4. Freeze, review, and content GO
 
