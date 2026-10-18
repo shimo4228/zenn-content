@@ -1,5 +1,6 @@
 # Tells the personal site (shimo4228.github.io) to rebuild when the publication feed changes, so a new article
-# or essay appears in its writing list without waiting for the site's daily build.
+# or essay appears in its writing list without waiting for the site's daily build. The commit sha goes along so
+# the site fetches this exact feed rather than a CDN-cached copy of main.
 # Needs the secret SITE_DISPATCH_TOKEN: a fine-grained token limited to shimo4228/shimo4228.github.io with
 # Contents: Read and write. Without it this job does nothing and the site still picks the change up every morning.
 name: Notify site
@@ -27,4 +28,4 @@ jobs:
             -H "Authorization: Bearer $TOKEN" \
             -H "Accept: application/vnd.github+json" \
             https://api.github.com/repos/shimo4228/shimo4228.github.io/dispatches \
-            -d '{"event_type":"publications"}'
+            -d "{\"event_type\":\"publications\",\"client_payload\":{\"sha\":\"$GITHUB_SHA\"}}"
