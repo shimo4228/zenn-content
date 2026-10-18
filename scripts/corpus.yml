@@ -4,6 +4,15 @@
 # Zenn/Dev.to articles are NOT listed here — their source of truth is articles/*.md.
 
 essays:
+  - slug: nirodha-samapatti-reemergence
+    date: 2026-10-18
+    ja:
+      title: 瞑想で意識が完全に途切れたとき、何が「その人」をつないでいるのか
+      url: https://note.com/sakamaki4228/n/n51831ead08ca
+      file: note/nirodha-samapatti-reemergence.md
+    en:
+      title: When Consciousness Fully Stops, How Does the Mind Return?
+      url: https://shimo4228.substack.com/p/when-consciousness-fully-stops-how
   - slug: agi-judgment-trail
     date: 2026-10-01
     ja:
