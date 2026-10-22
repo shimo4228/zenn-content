@@ -108,7 +108,7 @@ Zenn / Dev.toの全稿は、末尾の関連link節に次の2行を含める。�
 
 ## Cadence and scheduling
 
-- Zenn: 週2〜3本。火〜水 7:00〜9:00 JSTを優先し、burstしない
+- Zenn: 週1本以上（下限。2026-10-22 著者判断、旧「週2〜3本」）。火〜水 7:00〜9:00 JSTを優先し、burstしない
 - note: 著者が一括承認した原文転載を毎日09:00 JSTに最大1本。検証と有効化条件は `docs/note-pipeline.md`
 - JP/EN pair: Zenn 09:00 JST、Dev.toは著者の公開GO後に英訳ができ次第すぐ投稿するのを既定とする
 - `scripts/schedule.json` schemaは `.claude/refs/schedule-schema.md`
