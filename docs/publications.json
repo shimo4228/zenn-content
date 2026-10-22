@@ -11,7 +11,11 @@
     "url": "https://zenn.dev/shimo4228/articles/detail-loop-reconstruct-expertise",
     "platform": "Zenn"
    },
-   "en": null
+   "en": {
+    "title": "Using Claude Code to Rebuild Expertise I Don't Have, One Testable Rule at a Time",
+    "url": "https://dev.to/shimo4228/using-claude-code-to-rebuild-expertise-i-dont-have-one-testable-rule-at-a-time-eol",
+    "platform": "Dev.to"
+   }
   },
   {
    "kind": "essay",

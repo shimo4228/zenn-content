@@ -10,7 +10,7 @@ Japanese originals on Zenn; English editions on Dev.to, or as source in `article
 ### 2026-10
 
 - **2026-10-22** [組版を知らない私が、日本語の細部を詰められるか](https://zenn.dev/shimo4228/articles/detail-loop-reconstruct-expertise)
-  EN: [Using Claude Code to Rebuild Expertise I Don't Have, One Testable Rule at a Time](../articles-en/detail-loop-reconstruct-expertise.md) (source) · `claudecode` `claude` `agentskills` `eval`
+  EN: [Using Claude Code to Rebuild Expertise I Don't Have, One Testable Rule at a Time](https://dev.to/shimo4228/using-claude-code-to-rebuild-expertise-i-dont-have-one-testable-rule-at-a-time-eol) · `claudecode` `claude` `agentskills` `eval`
 - **2026-10-13** [Evalとレビューの違い、わかりますか？](https://zenn.dev/shimo4228/articles/claude-code-eval-concepts)
   EN: [Can You Tell an Eval from a Review?](https://dev.to/shimo4228/can-you-tell-an-eval-from-a-review-1b3) · `claudecode` `eval` `review` `llmasajudge` `llmops`
 - **2026-10-09** [うわっ…私のスキルのdescription長すぎ…！？](https://zenn.dev/shimo4228/articles/skill-description-pointer)

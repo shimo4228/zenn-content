@@ -1076,7 +1076,7 @@
     },
     {
       "file": "articles-en/detail-loop-reconstruct-expertise.md",
-      "devto": null,
+      "devto": "https://dev.to/shimo4228/using-claude-code-to-rebuild-expertise-i-dont-have-one-testable-rule-at-a-time-eol",
       "devto_tags": [
         "claudecode",
         "agentskills",
