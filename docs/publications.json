@@ -2,6 +2,18 @@
  "generated_by": "scripts/generate_article_index.py",
  "items": [
   {
+   "kind": "article",
+   "slug": "detail-loop-reconstruct-expertise",
+   "date": "2026-10-22",
+   "published_at": "2026-10-22 16:50",
+   "ja": {
+    "title": "組版を知らない私が、日本語の細部を詰められるか",
+    "url": "https://zenn.dev/shimo4228/articles/detail-loop-reconstruct-expertise",
+    "platform": "Zenn"
+   },
+   "en": null
+  },
+  {
    "kind": "essay",
    "slug": "nirodha-samapatti-reemergence",
    "date": "2026-10-18",

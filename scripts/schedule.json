@@ -1069,6 +1069,21 @@
         "llmops"
       ],
       "notes": "EN translation of Evalとレビューの違い、わかりますか？（EN稿の title/review/quality-gate/著者GO 後に投稿）"
+    },
+    {
+      "file": "articles/detail-loop-reconstruct-expertise.md",
+      "notes": "detail-loop で執筆した初の記事（2026-10-22 即時公開）"
+    },
+    {
+      "file": "articles-en/detail-loop-reconstruct-expertise.md",
+      "devto": null,
+      "devto_tags": [
+        "claudecode",
+        "agentskills",
+        "typography",
+        "a11y"
+      ],
+      "notes": "EN translation of 組版を知らない私が、日本語の細部を詰められるか"
     }
   ]
 }
