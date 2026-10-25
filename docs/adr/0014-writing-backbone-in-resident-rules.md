@@ -87,6 +87,9 @@ plan の解消表は 18 項目で、うち 14 項目が同じ規則の 2 か所�
 - 著者の通読で、同じ型の指摘が 2 稿続けて出る — 原理に穴があるので、該当する原理の文を直す（細則を足さない）。記録は
   commit 本文の「指摘:」ブロック（`.claude/rules/correction-trailers.md` の試行が終わったら、その後継の記録先）で、
   同じ型かどうかは著者が判定する
+  > **注記（2026-10-25, commit「refactor(writing): 著者の指摘を commit に残す規則を writing-ecosystem の処分規律へ移す (harness RFC-0028)」）**
+  > 試行は「続ける」で終わり、`.claude/rules/correction-trailers.md` は消した。後継の記録先は `writing-ecosystem` の
+  > 「指摘の処分規律」（著者の指摘を積む・著者の撤回・commit へ写す）と `references/author-corrections.md`。
 - `writing-ecosystem` か `.claude/rules/` に、原理の再述でない細則が合計 20 行以上戻る — 背骨化が崩れているので棚卸しする
 - rules の読み込み機構が変わる、または `--add-dir` 経由で背骨の rule が載らないことが分かる — Decision 1 の前提が崩れるので、
   置き場を見直す

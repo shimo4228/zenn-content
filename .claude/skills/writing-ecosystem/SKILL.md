@@ -158,6 +158,16 @@ Zenn 稿は GO の時点で、通読の指摘数を [`evals/read-through-log.md`
 - **処分記録**: orchestrator は指摘ごとに採用・不採用と理由を 1 行ずつ残し、`quality-gate` へ
   凍結稿への report と並べて渡す。受け入れの証跡は「凍結稿への report + 処分記録 + 著者の
   内容 GO」で、反映後の稿への reviewer verdict は要らない
+- **著者の指摘を積む**: 著者の発言が brief・構成・本文・タイトルのどれかを変えたら、反映と同じターンで
+  `drafts/<slug>.corrections.md`（gitignore 下、非公開）に 1 件ずつ足す。1 件は著者の発言をそのままコピーした原文・対象・
+  修正前後の抜粋（各 2 行まで）・Trigger（何が起きて指摘したか）・Expect（修正が外れていたと分かる観測）。1 つの発言が
+  複数箇所を変えたら原文は 1 回で対象を並べる。ここに積むのは著者の指摘で、reviewer と機械の指摘は上の処分記録が持つ
+- **著者の撤回**: 著者が反映を却下・撤回した件は、その件に撤回と書いて残す
+- **commit へ写す**: その変更を含む記事の commit 本文に、積んだ件を 1 件 1 ブロック（`指摘:` 原文 / `Trigger:` / `Expect:`）で
+  `Context:` / `Decision:` / `Review-when:` の後ろに写す。写す前に project の公開安全規約（zenn-content は CLAUDE.md の
+  Public-repository safety）を原文にも当て、個人のパス・秘密・第三者の非公開情報を `[略]` にし、何を伏せたかを同じ行に書く。
+  修正前後の抜粋は `drafts/` にだけ置く。写し終えた件には `drafts/` 側に commit の SHA を書き足す。雛形は
+  [`references/author-corrections.md`](references/author-corrections.md)
 - **brief へ戻った round**: reviewer を走らせ直すのは、修正が central thesis・causal spine・
   主要節を変えて brief へ戻ったときだけ。その round は CRITICAL と変更部分の regression のみを
   blocking とし、新規 MEDIUM/MINOR は集計のみ
