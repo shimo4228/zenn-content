@@ -57,7 +57,7 @@ Articles are written from real sessions with Claude Code. Claude Code drafts the
 
 - [Publication channel contract](.claude/rules/publishing-channels.md) (Japanese) — Zenn / Dev.to / note / Substack audience, format, review, and handoff values
 - [Project skills](.claude/skills/) and [agents](.claude/agents/) (mostly Japanese): the writing flow, its acceptance gate and review agents, plus Zenn format, platform publishing and post-publication measurement
-- Conventions and review workflow: [CLAUDE.md](CLAUDE.md) · publishing pipeline: [docs/CODEMAPS/scripts.md](docs/CODEMAPS/scripts.md)
+- Conventions and review workflow: [CLAUDE.md](CLAUDE.md) · publishing scripts: [scripts/](scripts/)
 
 ```bash
 npm install && npm run preview     # local Zenn preview
@@ -100,6 +100,6 @@ Canonical facts: CC0 1.0 for all content (articles, translations and tooling). L
 
 Example: `npm run generate:index` rebuilds `docs/PUBLICATIONS.md` and the README reading-path blocks (between the `reading-paths` markers) from `articles/*.md` frontmatter, `scripts/schedule.json`, `scripts/corpus.yml` and `scripts/reading_paths.yml`; `npm run check:index` exits with an error when either is out of date, so the index and the reading-path blocks are never edited by hand; the "More from the author" links are curated by hand.
 
-Link map: [docs/PUBLICATIONS.md](docs/PUBLICATIONS.md) (every article, essay and paper with Japanese and English links), [llms.txt](llms.txt), [llms-full.txt](llms-full.txt), [CLAUDE.md](CLAUDE.md) (conventions), [.claude/rules/publishing-channels.md](.claude/rules/publishing-channels.md) (channel contract), [docs/CODEMAPS/scripts.md](docs/CODEMAPS/scripts.md) (publishing pipeline), [CITATION.cff](CITATION.cff), and the author's hub at https://github.com/shimo4228/shimo4228, which lists the research projects these articles report from.
+Link map: [docs/PUBLICATIONS.md](docs/PUBLICATIONS.md) (every article, essay and paper with Japanese and English links), [llms.txt](llms.txt), [llms-full.txt](llms-full.txt), [CLAUDE.md](CLAUDE.md) (conventions), [.claude/rules/publishing-channels.md](.claude/rules/publishing-channels.md) (channel contract), [scripts/](scripts/) (publishing scripts), [CITATION.cff](CITATION.cff), and the author's hub at https://github.com/shimo4228/shimo4228, which lists the research projects these articles report from.
 
 </details>

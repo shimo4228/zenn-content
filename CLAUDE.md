@@ -61,7 +61,8 @@ claiming human reception is unmeasured; the row format and collection procedure 
 
 ## Verification and publishing
 
-Pipeline details: `docs/CODEMAPS/scripts.md`.
+Pipeline details live in the scripts (`scripts/devto_crosspost.py --help`, `scripts/note_publish.py --help`) and the
+publishing skills below; the schedule.json schema is `.claude/refs/schedule-schema.md`.
 
 1. `/quality-gate <file>`
 2. author publication GO

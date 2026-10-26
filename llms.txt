@@ -10,7 +10,6 @@ Status: active and curated by hand; articles are added as they are published, an
 - [README (English)](README.md): human landing page — what the corpus is, three curated reading paths, where everything is
 - [README (Japanese)](README.ja.md): 日本語版ランディングページ（同じ骨格）
 - [Contributor guide](CLAUDE.md): writing guidelines, frontmatter conventions, review workflow
-- [Architecture](docs/CODEMAPS/architecture.md): directory layout and publishing data flow
 - [Citation metadata](CITATION.cff): the essay corpus as a citeable artifact, with its intrinsic content-derived identifier (Software Heritage snapshot)
 - [License](LICENSE): CC0 1.0 Universal public-domain dedication across all content
 

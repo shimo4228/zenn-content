@@ -57,7 +57,7 @@ LLM-as-judge の設計、別モデルによるレビュー、そして「レビ�
 
 - [媒体ごとの約束（publishing-channels.md）](.claude/rules/publishing-channels.md) — Zenn / Dev.to / note / Substack の読者・形式・レビュー・公開への受け渡し
 - [このリポジトリのスキル](.claude/skills/) と [エージェント](.claude/agents/) — 執筆の流れ、その受け入れゲートとレビュー担当、Zenn 形式、媒体への公開、公開後の計測
-- 規約とレビュー手順: [CLAUDE.md](CLAUDE.md)（英語） · 公開パイプライン: [docs/CODEMAPS/scripts.md](docs/CODEMAPS/scripts.md)（英語）
+- 規約とレビュー手順: [CLAUDE.md](CLAUDE.md)（英語） · 公開スクリプト: [scripts/](scripts/)
 
 ```bash
 npm install && npm run preview     # Zenn のローカルプレビュー
@@ -100,6 +100,6 @@ zenn-content は、Tatsuya Shimomoto（shimo4228）がコーディングエー�
 
 具体例: `npm run generate:index` は、`articles/*.md` の frontmatter、`scripts/schedule.json`、`scripts/corpus.yml`、`scripts/reading_paths.yml` から `docs/PUBLICATIONS.md` と README の読書経路（`reading-paths` マーカーの間）を作り直します。`npm run check:index` はどちらかが古いとエラーで終わるので、索引と読書経路のブロックを手で編集することはありません。「著者のほかの仕事」のリンクは人の手で選んでいます。
 
-参照先には、[docs/PUBLICATIONS.md](docs/PUBLICATIONS.md)（全記事・エッセイ・論文の日英リンク）、[llms.txt](llms.txt)、[llms-full.txt](llms-full.txt)、[CLAUDE.md](CLAUDE.md)（規約、英語）、[.claude/rules/publishing-channels.md](.claude/rules/publishing-channels.md)（媒体ごとの約束）、[docs/CODEMAPS/scripts.md](docs/CODEMAPS/scripts.md)（公開パイプライン、英語）、[CITATION.cff](CITATION.cff)、著者のハブ https://github.com/shimo4228/shimo4228 （記事の土台になっている研究プロジェクトの一覧）があります。
+参照先には、[docs/PUBLICATIONS.md](docs/PUBLICATIONS.md)（全記事・エッセイ・論文の日英リンク）、[llms.txt](llms.txt)、[llms-full.txt](llms-full.txt)、[CLAUDE.md](CLAUDE.md)（規約、英語）、[.claude/rules/publishing-channels.md](.claude/rules/publishing-channels.md)（媒体ごとの約束）、[scripts/](scripts/)（公開スクリプト）、[CITATION.cff](CITATION.cff)、著者のハブ https://github.com/shimo4228/shimo4228 （記事の土台になっている研究プロジェクトの一覧）があります。
 
 </details>
