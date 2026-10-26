@@ -19,7 +19,7 @@ README is a routing page, not an article list. The exhaustive generated index is
 
 Human-primary prose has one entrypoint, resident in this repository:
 `.claude/skills/writing-ecosystem/SKILL.md` (the
-review agents `editor` / `essay-reviewer` / `prose-clarity-reviewer` / `theme-reviewer` / `title-reviewer` /
+review agents `editor` / `essay-reviewer` / `prose-clarity-reviewer` / `title-reviewer` /
 `fact-checker` and the skills `quality-gate` / `session-theme-mining` live in `.claude/` too).
 The author's writing values and principles live only in `.claude/rules/writing-principles.md` (the backbone).
 Platform and repository values live only in `.claude/rules/publishing-channels.md`.

@@ -10,7 +10,6 @@
 | `collect-context` | Builds the evidence dossier; does not choose what enters the draft |
 | `headline-craft` / `title-reviewer` | Generate title candidates / review them against the frozen draft (findings only) |
 | `quality-gate` | Aggregates the project channel contract into PASS / FAIL / BLOCKED |
-| `theme-reviewer` | Opt-in pre-write findings for pieces that claim novelty against external discourse; no verdict |
 | `editor` / `essay-reviewer` | Practical-channel / essay-channel review |
 | `prose-clarity-reviewer` | First-contact clarity, title-axis, and insider-context review |
 | `fact-checker` | Web verification of factual claims |
@@ -29,7 +28,7 @@
 ## Data flow
 
 ```text
-session-theme-mining (optional) → author selection → theme-reviewer (opt-in, novelty claims only)
+session-theme-mining (optional) → author selection
   → collect-context (optional evidence dossier)
   → writing-ecosystem editorial brief: one thesis + causal spine + selected evidence + cut list
   → orchestrator draft → headline-craft → title-reviewer

@@ -37,7 +37,6 @@ pointer、`collect-context` が作る evidence dossier の順に限定して受�
 | フェーズ | コンポーネント | 軸 | トリガー |
 |---------|---------------|-----|----------|
 | **Theme discovery** | `session-theme-mining` skill | Claude / Codex 履歴横断から 0〜3 件の同格な問いを発見し、著者の選択で止まる | 執筆スコープがまだ決まっていないとき |
-| **Theme review** | `theme-reviewer` agent | 選択済みの問いへ findings と深化の問いを返す。合否は出さない | 外部言説に対する新規性を主張する稿で、著者が指示したとき |
 | **Pre-write** | `collect-context` skill | 素材収集と証拠台帳（Claims Register / 一次・⚠未検証の tier）。編集判断はしない | 執筆前に素材を集めるとき |
 | **Write** | 本 skill「editorial brief と執筆フロー」 | 中心命題・因果線・証拠選択・構成・執筆 | 初稿・改稿 |
 | **Persona read** | skill: `persona-read-loop`（article preset）+ `references/persona-read.md`（Zenn の記録の置き場と比較材料） | 記事ごとの読み手 3 人が読後に残った判断を言い直し、見せ方だけを直す。受け入れはしない | Zenn 稿の構造凍結前 |
@@ -59,9 +58,10 @@ flow の外へ route する先は末尾の Related。
 
 local contract から出力 channel と読者を決める。テーマ未選択なら `session-theme-mining` が
 0〜3 件の同格候補を出し、著者の選択で止まる。選択済みの問いは §2 の中心命題の対話へ進む。
-`theme-reviewer` は、稿が外部言説に対する新規性を主張し、著者が指示したときに起動する
-（findings と深化の問いだけを返す）。経験の報告では命題が外部言説との差分に依存しないので、
-起動しても論点が増えるだけになる。テーマ候補は同格のまま著者に渡し、選ぶのは著者である。
+稿が外部言説に対する新規性を主張するときは、orchestrator が skill: `search-first` で同型の主張を調べ、
+差分を §2 の中心命題の対話の材料にする。広い調査が要るときは Deep Research の prompt を書いて著者に渡す
+（著者が別ツールで実行し、結果を会話に貼る）。経験の報告では命題が外部言説との差分に依存しないので、
+この調査は要らない。テーマ候補は同格のまま著者に渡し、選ぶのは著者である。
 
 ### 2. Collect, then select
 

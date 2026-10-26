@@ -21,7 +21,7 @@ zenn-content is defined as a bilingual (Japanese / English) technical content re
 - **Toolchain**: Zenn CLI 0.4.5, Python 3.13 run through uv, httpx, python-frontmatter. No prose/markdown linter — textlint/markdownlint/husky/prh were removed 2026-07; only `zenn list:articles` frontmatter validation remains
 - **Writing agent**: Claude Code
 - **Project skills**: `.claude/skills/` — `zenn-format`, `publish-article`, `substack-publishing`, and `article-stocktake`. `writing-ecosystem`, `quality-gate`, `session-theme-mining`, and `note-publishing` are project-local too.
-- **Project agents**: `.claude/agents/` — `editor`, `essay-reviewer`, `prose-clarity-reviewer`, `fact-checker`, `theme-reviewer`, `title-reviewer`, `devto-translator` (article drafting is done directly by the orchestrator, not delegated to a subagent)
+- **Project agents**: `.claude/agents/` — `editor`, `essay-reviewer`, `prose-clarity-reviewer`, `fact-checker`, `title-reviewer`, `devto-translator` (article drafting is done directly by the orchestrator, not delegated to a subagent)
 - **Global writing assets**: `collect-context`, `headline-craft`, and `prose-translation` (in `~/.claude/skills/`)
 - **Project rules**: `.claude/rules/writing-principles.md` holds the writing backbone (the author's principles); `.claude/rules/publishing-channels.md` declares path, audience, register, review panel, validation, title constraints, and publish handoff per channel
 - **Dev.to URL ledger**: `scripts/schedule.json` (posted-URL record; not a membership list — JP membership is `articles/*.md` frontmatter)
@@ -79,7 +79,7 @@ Content Integrity means the author owns the central thesis, claims, and structur
 
 ## How does the publishing pipeline work?
 
-The publishing pipeline is: optional `session-theme-mining` → author theme selection → optional `theme-reviewer` and `collect-context` → approved one-thesis editorial brief → orchestrator draft → structural freeze → channel editor + `fact-checker` + first-contact read on Codex (may run on the frozen body before the title is final) → author content GO → `headline-craft` candidates → `title-reviewer` findings and author title selection → project-local `quality-gate` reading `.claude/rules/publishing-channels.md` → author GO → project-local publisher. Structural review changes invalidate the brief and any completed title work; copy edits do not. `publish-article` handles Zenn/Dev.to mechanics, `note-publishing` handles note, and `substack-publishing` handles Substack.
+The publishing pipeline is: optional `session-theme-mining` → author theme selection → optional `collect-context` → approved one-thesis editorial brief → orchestrator draft → structural freeze → channel editor + `fact-checker` + first-contact read on Codex (may run on the frozen body before the title is final) → author content GO → `headline-craft` candidates → `title-reviewer` findings and author title selection → project-local `quality-gate` reading `.claude/rules/publishing-channels.md` → author GO → project-local publisher. Structural review changes invalidate the brief and any completed title work; copy edits do not. `publish-article` handles Zenn/Dev.to mechanics, `note-publishing` handles note, and `substack-publishing` handles Substack.
 
 ## How are articles reviewed before publishing?
 

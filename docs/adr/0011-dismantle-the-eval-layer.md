@@ -60,6 +60,12 @@ ADR-0008 が risk として挙げた「judge の好みへの文体収束（平�
    そのまま移すが、**verdict・ランク・希少性モニタは持たない**。出力は findings と深化の問いだけで、
    深めるか・上限を承知で書くか・取り止めるかを決めるのは著者。fresh context の別プロセスで走る
    （本体が自分のテーマを審査する self-preference を避ける）。
+
+   > **注記（2026-10-26, commit「refactor(writing): theme-reviewer を退役し、外部言説との差は主ループが調べる」）**:
+   > `theme-reviewer` は退役した。2026-09-21（commit b5eebb9）に、経験の報告へ回すと論点が増えるため opt-in にした後、
+   > 起動が 36 日 0 回で、外部言説との差は orchestrator が skill `search-first` と Deep Research の prompt で調べる形に
+   > 移っていた。観点 T1-T8 は執筆側へ移さない（毎本で論点が増える形に戻るため）。テーマに verdict・ランクを置かない
+   > 判断と、Decision 2 以下はそのまま立つ。
 2. **`article-judge` agent を廃止し、K1-K4 を破棄する**。完成稿の評価は panel 4 本
    （チャンネル表のレビュー agent + fact-checker + zenn-clarity-reviewer + codex-review）
    + 著者通読に戻す。

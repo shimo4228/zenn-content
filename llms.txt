@@ -39,7 +39,7 @@ Zenn (JP) publishing is not scripted — it uses Zenn's native `published_at` fr
 
 - [Publication channel contract](.claude/rules/publishing-channels.md): Zenn / Dev.to / note / Substack path, audience, register, review panel, validation, title constraints, and publish handoff
 - [Project skills](.claude/skills/): the writing orchestrator `writing-ecosystem`, the acceptance gate `quality-gate`, theme discovery `session-theme-mining`, platform format and publishing (`zenn-format`, `publish-article`, `note-publishing`, `substack-publishing`), plus local reception measurement (`article-stocktake`)
-- [Project agents](.claude/agents/): review agents `editor`, `essay-reviewer`, `prose-clarity-reviewer`, `theme-reviewer`, `title-reviewer`, and `fact-checker`, all resident in this repository
+- [Project agents](.claude/agents/): review agents `editor`, `essay-reviewer`, `prose-clarity-reviewer`, `title-reviewer`, and `fact-checker`, all resident in this repository
 - [.claude/agents/devto-translator.md](.claude/agents/devto-translator.md): JP→EN translation and Dev.to-specific draft preparation; publishing is a separate gated step
 - [.claude/refs/schedule-schema.md](.claude/refs/schedule-schema.md): schedule.json schema
 
