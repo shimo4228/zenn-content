@@ -117,6 +117,8 @@ Zenn 稿は、構造凍結の前に brief の Personas の 3 人へ稿を読ま�
 ### 4. Freeze, review, and content GO
 
 本文の構造を凍結したら、local contract の channel reviewer、`fact-checker`、初見の読みを本文へ実行する。
+panel に渡す稿は `drafts/<slug>/frozen.md` に写して残し、処分記録の冒頭にその path を書く（構造を変えて panel を
+回し直したら `frozen-2.md` と番号を足す）。凍結稿と処分記録の組は、reviewer を変えるときに replay して確かめる材料になる。
 reviewer が見るのは本文の内側で判定できること（事実・構造・register・分類の軸・後方参照・矛盾）で、
 読者が何をすでに持っているか（何の話か分かるか）は著者の通読だけが持つ。
 初見の読みは Claude と別系統のモデルが担う — 同じ系統の reviewer は著者（orchestrator）と同じ所を
