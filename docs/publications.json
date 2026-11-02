@@ -3,6 +3,22 @@
  "items": [
   {
    "kind": "article",
+   "slug": "harness-stocktake-after-doctor",
+   "date": "2026-11-02",
+   "published_at": "2026-11-02 17:00",
+   "ja": {
+    "title": "Claude Code の harness 棚卸し、192項目を1枚の report と2回の判断に",
+    "url": "https://zenn.dev/shimo4228/articles/harness-stocktake-after-doctor",
+    "platform": "Zenn"
+   },
+   "en": {
+    "title": "Auditing My Claude Code Harness: 192 Items, One Report, Two Decisions",
+    "url": "https://dev.to/shimo4228/auditing-my-claude-code-harness-192-items-one-report-two-decisions-4h47",
+    "platform": "Dev.to"
+   }
+  },
+  {
+   "kind": "article",
    "slug": "detail-loop-reconstruct-expertise",
    "date": "2026-10-22",
    "published_at": "2026-10-22 16:50",

@@ -1084,6 +1084,22 @@
         "a11y"
       ],
       "notes": "EN translation of 組版を知らない私が、日本語の細部を詰められるか"
+    },
+    {
+      "file": "articles/harness-stocktake-after-doctor.md",
+      "date": "2026-11-02",
+      "notes": "harness-stocktake（plugin v0.1.0 / Action v1.0.0）の告知記事。半年磨いた棚卸しのパーツ 7 本を統合し、著者の harness で 192 項目を 1 枚の report と 2 回の判断に。ペルソナ読み r0〜r3。2026-11-02 17:00 即時公開"
+    },
+    {
+      "file": "articles-en/harness-stocktake-after-doctor.md",
+      "devto": "https://dev.to/shimo4228/auditing-my-claude-code-harness-192-items-one-report-two-decisions-4h47",
+      "devto_tags": [
+        "claudecode",
+        "agentskills",
+        "harness",
+        "claude"
+      ],
+      "notes": "EN translation of Claude Code の harness 棚卸し、192項目を1枚の report と2回の判断に（EN稿の editor review/quality-gate/著者GO 後に投稿）"
     }
   ]
 }
