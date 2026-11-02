@@ -29,7 +29,7 @@ zenn-content is defined as a bilingual (Japanese / English) technical content re
 - **Idea essays**: `note/` holds the Japanese canonical (first published on note since 2026-08), `substack/` the English edition (Substack); earlier essays were Substack-first. `note/` also holds verbatim note reposts of Zenn articles, whose canonical stays in `articles/`. Out of Zenn convention scope; URLs in `docs/PUBLICATIONS.md`
 - **Cover image format**: 1000x420 PNG, placed manually in `images/covers/{slug}.png` (auto-referenced if present)
 - **Pre-commit hooks**: none (husky/lint-staged removed 2026-07)
-- **Publishing cadence**: 2-3 articles per week (post-March 2026 policy)
+- **Publishing cadence**: at least one Zenn article per week (a floor, author decision 2026-10-22; previously 2–3 per week; Tuesday–Wednesday 07:00–09:00 JST preferred)
 - **Voice convention**: Zenn/Dev.to articles use a practical, direct-instruction register, unified across `type: tech` and `type: idea`; note/Substack essays use discovery tone. Existing articles are not retroactively rewritten
 - **Buzz timing window**: Tuesday–Wednesday 07:00–09:00 JST
 - **Discontinued platforms**: Qiita (JP) and Hashnode (EN), retired to reduce cross-platform SEO dilution
@@ -79,7 +79,7 @@ Content Integrity means the author owns the central thesis, claims, and structur
 
 ## How does the publishing pipeline work?
 
-The publishing pipeline is: optional `session-theme-mining` → author theme selection → optional `collect-context` → approved one-thesis editorial brief → orchestrator draft → structural freeze → channel editor + `fact-checker` + first-contact read on Codex (may run on the frozen body before the title is final) → author content GO → `headline-craft` candidates → `title-reviewer` findings and author title selection → project-local `quality-gate` reading `.claude/rules/publishing-channels.md` → author GO → project-local publisher. Structural review changes invalidate the brief and any completed title work; copy edits do not. `publish-article` handles Zenn/Dev.to mechanics, `note-publishing` handles note, and `substack-publishing` handles Substack.
+The publishing pipeline is: optional `session-theme-mining` → author theme selection → optional `collect-context` → approved one-thesis editorial brief → orchestrator draft → (Zenn only) persona-read loop with skill `persona-read-loop` → structural freeze → channel editor + `fact-checker` + first-contact read on Codex (may run on the frozen body before the title is final) → author content GO → `headline-craft` candidates → `title-reviewer` findings and author title selection → project-local `quality-gate` reading `.claude/rules/publishing-channels.md` → author GO → project-local publisher. Structural review changes invalidate the brief and any completed title work; copy edits do not. `publish-article` handles Zenn/Dev.to mechanics, `note-publishing` handles note, and `substack-publishing` handles Substack.
 
 ## How are articles reviewed before publishing?
 
@@ -103,7 +103,7 @@ Terminology consistency is defined in `.claude/rules/publishing-channels.md`. Th
 
 ## How often are new articles published?
 
-Publishing cadence is defined as 2–3 articles per week, not daily. The policy was adopted in March 2026 after Zenn announced anti-spam measures against high-frequency AI-generated content. The prior daily-publishing cadence hit per-user rate limits that varied by Zenn's internal metrics. Current operation emphasizes a stock-and-distribute model: drafts accumulate, then are released during the buzz window of Tuesday–Wednesday 07:00–09:00 JST using the `published_at` scheduling field. Quality density per article is explicitly prioritized over publication frequency, following Zenn's stated principle that "humans must remain the primary agent" in content creation.
+Publishing cadence is at least one Zenn article per week (a floor, set on 2026-10-22; it was 2–3 per week from March 2026), not daily. The 2–3 per week policy was adopted in March 2026 after Zenn announced anti-spam measures against high-frequency AI-generated content. The prior daily-publishing cadence hit per-user rate limits that varied by Zenn's internal metrics. Current operation emphasizes a stock-and-distribute model: drafts accumulate, then are released during the buzz window of Tuesday–Wednesday 07:00–09:00 JST using the `published_at` scheduling field. Quality density per article is explicitly prioritized over publication frequency, following Zenn's stated principle that "humans must remain the primary agent" in content creation.
 
 ## What license governs the articles?
 

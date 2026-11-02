@@ -7,6 +7,8 @@
 [.claude/skills/note-publishing/SKILL.md](../.claude/skills/note-publishing/SKILL.md)。
 この文書は時刻・承認・キュー・再開・受入条件を所有し、投稿手順を複製しない。
 
+現行の運用（2026-09-13 著者決定）: 無人 runner は未有効化。Claude が下書きを作って読み戻し verify し、著者が note で公開する。公開後の台帳反映は note_publish.py で行う。以下の 1 回の実行・定期実行の節は、有効化したときの手順。
+
 ## 素材と承認
 
 候補は本文を読んで選ぶ。一般読者が自分の問題として読めること、原文で成立すること、

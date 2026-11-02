@@ -1,0 +1,166 @@
+{
+  "evaluated_at": "2026-11-02T08:08:24Z",
+  "repo": "/Users/shimomoto_tatsuya/MyAI_Lab/zenn-content",
+  "assets": [
+    {
+      "path": "llms-full.txt",
+      "consumer": "LLM crawler / DeepWiki (linked from README.md:90, llms.txt)",
+      "reachability": "linked from README / llms.txt; no in-repo code consumer",
+      "verdict": "Update",
+      "reason": "Publishing cadence said 2–3 per week (:32, :106) against the 2026-10-22 floor of one Zenn article per week in publishing-channels.md; the pipeline line (:82) lacked the Zenn persona-read loop before structural freeze (docs-06 folded in)",
+      "action": "updated (:32 and :106 rewritten to the weekly floor with the March 2026 history kept; :82 gained the persona-read-loop step)"
+    },
+    {
+      "path": ".github/workflows/notify-site.yml",
+      "consumer": "CI (push of docs/publications.json → repository_dispatch to shimo4228.github.io)",
+      "reachability": "fires on push; 3 runs since 2026-10-18, all no-op because SITE_DISPATCH_TOKEN is not set",
+      "verdict": "Update",
+      "reason": "Workflow fires but exits without dispatching; the site also rebuilds daily by cron. Register the token or retire the workflow — author decision",
+      "action": "pending (author operation: register SITE_DISPATCH_TOKEN or retire)"
+    },
+    {
+      "path": "docs/note-pipeline.md",
+      "consumer": "human-navigation (CLAUDE.md:45, publishing-channels.md, note-publishing skill)",
+      "reachability": "linked from CLAUDE.md and .claude/rules/publishing-channels.md",
+      "verdict": "Update",
+      "reason": "Opening described a live daily 09:00 launchd runner that was never registered; operation has been manual since the 2026-09-13 author decision",
+      "action": "updated (paragraph after :8 states the current manual operation; runner sections read as enablement steps)"
+    },
+    {
+      "path": "scripts/note_daily.sh + scripts/note_daily_prompt.md",
+      "consumer": "launchd (never registered)",
+      "reachability": "0 runs; referenced only from docs/note-pipeline.md and note-publishing SKILL.md:225-226",
+      "verdict": "Keep",
+      "reason": "Retire was offered with Keep as the alternative; the author chose assets-03 (document the manual operation) over retiring the runner, which keeps it for future enablement",
+      "action": "skipped (author chose assets-03; runner kept)"
+    },
+    {
+      "path": ".claude/skills/session-theme-mining/pyproject.toml",
+      "consumer": "tool-invocation (uv / ruff / pytest for session-theme-mining)",
+      "reachability": "live; only the ruff comments pointed at paths absent from this repo",
+      "verdict": "Update",
+      "reason": "Comments at :30, :33-34 cited root ruff.toml, ADR-0056 and .claude/verify.md, which live in ~/.claude (claude-harness), not in this repo",
+      "action": "updated (comments now name ~/.claude/ruff.toml, claude-harness ADR-0056, ~/.claude/.claude/verify.md; settings unchanged)"
+    },
+    {
+      "path": ".claude/settings.local.json",
+      "consumer": "Claude Code permissions (git-ignored)",
+      "reachability": "loaded every session; all 5 allow entries are stale or over-broad",
+      "verdict": "Update",
+      "reason": "Allow entries cover a disabled claude-mem MCP tool, three one-off python3 -c commands and a broad Bash(python3 -c ' *) grant; permission edits are human operations",
+      "action": "pending (author edits permissions)"
+    },
+    {
+      "path": "images/zed-md-preview-tight-lineheight.png",
+      "consumer": "article image",
+      "reachability": "0 inbound references",
+      "verdict": "Retire",
+      "reason": "Added 2026-07-18 as Zed article material but the published article never used it; 576 KB with no reader",
+      "action": "soft-deleted (moved to archive/images/; git history keeps it)"
+    },
+    {
+      "path": "articles-en/{claude-code-claudemd-hierarchy,claude-code-crosspost-cli,claude-code-japanese-mcp,claude-code-multi-llm,claude-code-skill-cleanup,claude-code-zed-setup,claude-code-zenn-lint-hooks,prh-nodejs20-regex-error}.md + images/covers/<same slugs>.png",
+      "consumer": "public corpus / Dev.to cover",
+      "reachability": "0 inbound; JP originals removed 2026-02-22 (ba2a346); absent from docs/PUBLICATIONS.md",
+      "verdict": "Retire",
+      "reason": "EN orphans of 8 JP articles withdrawn on 2026-02-22; the index uses JP frontmatter as membership, so nothing reaches them; their dead JP rows in scripts/schedule.json pointed at missing files",
+      "action": "soft-deleted (16 files moved to archive/articles-en/ and archive/images/covers/; 8 dead articles/<slug>.md rows dropped from scripts/schedule.json)"
+    },
+    {
+      "path": "note/context-severance-brainstorm.md",
+      "consumer": "note essay corpus",
+      "reachability": "absent from scripts/corpus.yml and docs/PUBLICATIONS.md; named only as metadata in note/ideation-pharmacology.md:106,231",
+      "verdict": "Retire",
+      "reason": "Unpublished note draft committed 2026-08-12 into the published-only note/ folder (CLAUDE.md:5)",
+      "action": "soft-deleted (moved to drafts/; the path mentions in note/ideation-pharmacology.md:106,231 are left as historical metadata)"
+    },
+    {
+      "path": "note/ideation-pharmacology.note-paste.md",
+      "consumer": "note paste intermediate",
+      "reachability": "0 inbound references",
+      "verdict": "Retire",
+      "reason": "Copy of note/ideation-pharmacology.md minus the H1 and one rule; render_note_assets.sh builds the paste HTML from the canonical file, and the .note-paste.html stays",
+      "action": "soft-deleted (moved to archive/note/)"
+    },
+    {
+      "path": "planning/plans/users-shimomoto-tatsuya-myai-lab-contem-graceful-moth.md",
+      "consumer": "private plan store (git-ignored)",
+      "reachability": "byte-identical duplicate of planning/plans/myai-lab-contem-graceful-moth.md",
+      "verdict": "Retire",
+      "reason": "Duplicate (cmp identical, 9876 bytes); harness RFC-0033 records both copies — planning/plans/*.md now counts 10 instead of 11",
+      "action": "soft-deleted (renamed to .disabled in the main checkout; untracked)"
+    },
+    {
+      "path": "scripts/publish.log.disabled",
+      "consumer": "none",
+      "reachability": "0 writers and 0 readers; git-ignored by .gitignore:45",
+      "verdict": "Retire",
+      "reason": "Soft-deleted in the 2026-08-27 stocktake; real deletion is the human step that remains",
+      "action": "pending (author deletes the file)"
+    },
+    {
+      "path": ".repo-asset-stocktake.json",
+      "consumer": "repo-asset-stocktake changed mode",
+      "reachability": "read by the next stocktake run; git-ignored by .gitignore:34, force-added at commit",
+      "verdict": "Update",
+      "reason": "Previous ledger (2026-08-27) pointed at the deleted docs/CODEMAPS/* and missed notify-site.yml, docs/publications.json, the note runner, zenn_evidence.py and session-theme-mining",
+      "action": "updated (rewritten from the 2026-11-02 run)"
+    },
+    {
+      "path": "docs/plans/ (37 plans with 0 inbound)",
+      "consumer": "public decision record",
+      "reachability": "0 links and 0 commit-body mentions; placed by harness RFC-0033 on 2026-09-27",
+      "verdict": "Keep",
+      "reason": "Public record of past plans, intentionally not reached from an index",
+      "action": "none"
+    },
+    {
+      "path": ".github/workflows/validate.yml, package.json, package-lock.json, scripts/pyproject.toml, scripts/uv.lock, .claude/launch.json, .gitignore",
+      "consumer": "CI / tool-invocation",
+      "reachability": "Validate run green 2026-10-26; package scripts called from CI, skills and launch.json",
+      "verdict": "Keep",
+      "reason": "Each config has a live invoker; .gitignore ignores no tracked file",
+      "action": "none"
+    },
+    {
+      "path": "scripts/ executables, tests and data (devto_crosspost.py, generate_article_index.py, metrics_snapshot.py, note_publish.py, zenn_evidence.py, render_note_assets.sh, tests/, schedule.json, corpus.yml, reading_paths.yml, metrics/snapshots.jsonl, devto_crosspost.log) + docs/publications.json, docs/translation-glossary.json",
+      "consumer": "package.json scripts, publishing skills, devto-translator agent, site deploy.yml",
+      "reachability": "every script and data file has a caller or reader",
+      "verdict": "Keep",
+      "reason": "Live consumers via package.json, publish-article / note-publishing / substack-publishing / article-stocktake and the site build",
+      "action": "none"
+    },
+    {
+      "path": ".claude/ settings, refs and skill attachments (settings.json, harness-scope.json, output-styles/zenn-writing.md, refs/schedule-schema.md, writing-ecosystem MAINTENANCE.md / evals / references, note-publishing references, session-theme-mining references / THIRD_PARTY_NOTICES.md)",
+      "consumer": "Claude Code, harness-scope plugin, skills and agents",
+      "reachability": "linked from SKILL.md files, ADR-0015, or read by the plugin",
+      "verdict": "Keep",
+      "reason": "Each file is read by the runtime, a plugin or its owning skill",
+      "action": "none"
+    },
+    {
+      "path": "README.md, README.ja.md, CLAUDE.md, AGENTS.md, CITATION.cff, LICENSE, llms.txt, docs/PUBLICATIONS.md, docs/adr/, rfcs/, docs/plans/research/",
+      "consumer": "forge entrypoints / human-navigation",
+      "reachability": "displayed by GitHub or linked from README / llms.txt; PUBLICATIONS.md in sync per check:index",
+      "verdict": "Keep",
+      "reason": "Entry documents and public records; content freshness belongs to the docs source (context-sync)",
+      "action": "none"
+    },
+    {
+      "path": "articles/, articles-en/, note/, substack/, images/, figures/, books/.keep",
+      "consumer": "Zenn / Dev.to / note / Substack publishing and the generated index",
+      "reachability": "wired via frontmatter, cover slug convention and figure references (after the retirements above)",
+      "verdict": "Keep",
+      "reason": "Remaining published content is reachable; note/substack .html follow the commit-the-render convention",
+      "action": "none"
+    },
+    {
+      "path": "planning/plans/, drafts/, archive/, .notes/, .claude/worktrees/, .playwright-mcp/",
+      "consumer": "private work areas (git-ignored)",
+      "reachability": "ignored by .gitignore; planning/plans defined by harness RFC-0033:7",
+      "verdict": "Keep",
+      "reason": "Private stores that never reach the public surface",
+      "action": "none"
+    }
+  ]
+}
