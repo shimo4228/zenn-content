@@ -86,7 +86,7 @@ catchify の廃止、seo-optimizer のスコープ縮小は ADR-0001 で決定�
 - ~~`.claude/skills/ideation/SKILL.md` — テーマ検討~~ — 2026-08-23 に退役（45eb8fe）
 - ~~`.claude/skills/series-checker/SKILL.md`~~ — 2026-08-23 に `zenn-editorial-judgment`「シリーズ記事の整合」へ吸収・退役
 - `.claude/skills/quality-gate/SKILL.md` — 統一品質基準
-- `.claude/rules/content-integrity.md` — Content Integrity ルール
+- ~~`.claude/rules/content-integrity.md` — Content Integrity ルール~~ — 2026-08-23 に退役（45eb8fe）。執筆の原理は `.claude/rules/writing-principles.md` に
 
 ### 廃止
 
