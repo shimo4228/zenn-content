@@ -28,7 +28,8 @@ or start the session here.
 
 Do not restate the backbone or the shared flow here. `writing-ecosystem` owns the procedure: the editorial
 brief, review order, revision return conditions, and the boundary that excludes ADRs / memory / raw session
-history from writing-time rules.
+history from writing-time rules. Article direction comes from interviewing the author
+(`.claude/skills/article-interview/`); outlines and plans for an article are written only after its brief.
 
 The project output style `.claude/output-styles/zenn-writing.md` (selected in `.claude/settings.json`) governs how
 Claude talks with the author, not article prose. For coding work such as `scripts/`, set `"outputStyle": "default"` in

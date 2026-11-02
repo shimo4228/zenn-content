@@ -38,6 +38,7 @@ pointer、`collect-context` が作る evidence dossier の順に限定して受�
 |---------|---------------|-----|----------|
 | **Theme discovery** | `session-theme-mining` skill | Claude / Codex 履歴横断から 0〜3 件の同格な問いを発見し、著者の選択で止まる | 執筆スコープがまだ決まっていないとき |
 | **Pre-write** | `collect-context` skill | 素材収集と証拠台帳（Claims Register / 一次・⚠未検証の tier）。編集判断はしない | 執筆前に素材を集めるとき |
+| **Interview** | `.claude/skills/article-interview/SKILL.md` | 著者に一問ずつ聞き、台帳を dossier 末尾に書き、方向を著者が選ぶ。構成・題・命題は出さない | 素材集めの後、brief の前 |
 | **Write** | 本 skill「editorial brief と執筆フロー」 | 中心命題・因果線・証拠選択・構成・執筆 | 初稿・改稿 |
 | **Persona read** | skill: `persona-read-loop`（article preset）+ `references/persona-read.md`（Zenn の記録の置き場と比較材料） | 記事ごとの読み手 3 人が読後に残った判断を言い直し、見せ方だけを直す。受け入れはしない | Zenn 稿の構造凍結前 |
 | **Title** | `headline-craft` skill | 「開かせる一行」の候補生成と、本文から切り離した初見読み・約束の監査 | 著者の内容 GO 後、quality-gate の前 |
@@ -56,38 +57,45 @@ flow の外へ route する先は末尾の Related。
 ### 1. Route and discover
 
 local contract から出力 channel と読者を決める。テーマ未選択なら `session-theme-mining` が
-0〜3 件の同格候補を出し、著者の選択で止まる。選択済みの問いは §2 の中心命題の対話へ進む。
-稿が外部言説に対する新規性を主張するときは、orchestrator が skill: `search-first` で同型の主張を調べ、
-差分を §2 の中心命題の対話の材料にする。広い調査が要るときは Deep Research の prompt を書いて著者に渡す
-（著者が別ツールで実行し、結果を会話に貼る）。経験の報告では命題が外部言説との差分に依存しないので、
-この調査は要らない。テーマ候補は同格のまま著者に渡し、選ぶのは著者である。
+0〜3 件の同格候補を出し、著者の選択で止まる。選択済みの問いは §2 へ進む。テーマ候補は同格のまま
+著者に渡し、選ぶのは著者である。
 
-### 2. Collect, then select
+### 2. Collect, interview, then brief
 
-過去セッションや複数 repo の記録を素材にするときは `collect-context` で evidence dossier を作る（`fact-checker` に渡す台帳になる）。dossier は lookup material であり、本文へ
-全部入れる coverage checklist ではない。
+方向は著者へのインタビューから見つけ、著者が選ぶ。構成・plan・節表は、方向が決まって brief を書くまで作らない
+（材料から先に骨組みを作ると、対話がその骨組みの確認になる）。
 
-**中心命題は、書く前に著者と話して決める。** brief を書く前に、orchestrator は著者に、何に
-引っかかっているか・何を問いたいかを聞く。著者の答えを命題の形で言い返し、著者が違うと言えば
-直す。session-theme-mining で選ばれた問いや dossier の Claims は、この対話の材料であって答えでは
-ない。合意した著者の言葉は brief の Author's words に原文のまま置く。
+**2a. 集める。** 過去セッションや複数 repo の記録を素材にするときは `collect-context` で evidence dossier を作る
+（`fact-checker` に渡す台帳になる）。dossier は lookup material であり、本文へ全部入れる coverage checklist ではない。
+記録の無い稿（考えが材料のエッセイ、外部の言説への意見、まだ実装していない仮説）は 2a を飛ばし、2b から入る。
+「〜をやった話」なら記録がある、「〜と思っている話」なら無い。
 
-構成前に次の **editorial brief** を `docs/plans/<slug>.md` に書いて提示し、著者確認で止まる（reviewer の dispatch prompt に
-この path を渡す）。
+**2b. 聞く。** `.claude/skills/article-interview/SKILL.md` を読み、その手順で著者に聞く。dossier があればその path を
+持って入る。台帳は dossier 末尾の `## インタビュー` 節に書き、方向は著者が選ぶ。session-theme-mining で選ばれた問いと
+dossier の Claims は聞き手の準備で、方向の材料ではない。
+
+**2c. 差分を集める。** 選んだ方向で要るのに dossier に無い出来事（著者が語った出来事を含む）を、`collect-context` で
+足す。稿が外部言説に対する新規性を主張するときは、選んだ方向の同型の主張だけを skill: `search-first` で調べ、結果を
+brief の Out of scope か Entry bridge へ入れる。広い調査が要るときは Deep Research の prompt を書いて著者に渡す
+（著者が別ツールで実行し、結果を会話に貼る）。経験の報告では命題が外部言説との差分に依存しないので、この調査は要らない。
+
+**2d. brief。** 台帳と dossier から次の **editorial brief** を `docs/plans/<slug>.md` に書く（reviewer の dispatch prompt に
+この path を渡す）。著者に確認を求めるのは Causal spine だけで、他の欄は台帳と dossier から埋める — 方向は 2b で著者が
+選んでいる。進め方の plan が要るときは brief の後に書く。
 
 ```markdown
-Reader: <channel contract の読者と、中心命題の対話で著者が言った「誰に向けて書くか」の原文 1 行>
+Reader: <台帳③「読者について出た語」の原文 1 行。無ければ channel contract の読者と書き、「著者の発言なし」と添える>
 Channel: <local contract の channel>
-Author's words: <中心命題の対話で著者が言った原文。要約・言い換えをしない>
-Personas: <Zenn のみ。primary（channel contract の読者）/ inflow（Zenn のトレンド・topic 検索・X 告知のうち、この記事が受ける経路から来た人）/ practitioner（日本のハーネス実践者。自分でも coding agent の harness を組み、日本語の記事を読み比べてきた人）の 3 人を各 1〜2 文で（役割・既に知っていること・比べる相手・時間の予算）。選び方は skill: persona-read-loop の article preset>
-Central thesis: <Author's words を、この原稿が成立させる命題一文にしたもの。必ず一つ。確度は Author's words のまま（背骨 1）>
-Entry bridge: <読者の出発点から、なぜ中心命題を考える意味があるかが伝わる場面・観察・問いを1〜2文で>
+Author's words: <台帳①からの転記だけ。要約・言い換えをしない。記録（ログ）から採った発言は「記録から（session id）」と分けて書く>
+Personas: <Zenn のみ。primary（channel contract の読者。台帳③の語を優先）/ inflow（Zenn のトレンド・topic 検索・X 告知のうち、この記事が受ける経路から来た人）/ practitioner（日本のハーネス実践者。自分でも coding agent の harness を組み、日本語の記事を読み比べてきた人）の 3 人を各 1〜2 文で（役割・既に知っていること・比べる相手・時間の予算）。選び方と既定のモデルは skill: persona-read-loop の article preset。既定から外す読み手にだけ model を書く>
+Central thesis: <台帳⑥で著者が選んだ方向を、この原稿が成立させる命題一文にしたもの。必ず一つ。確度は Author's words のまま（背骨 1）>
+Entry bridge: <読者の出発点から、なぜ中心命題を考える意味があるかが伝わる場面・観察・問いを1〜2文で。既定は台帳②の 1 件目>
 Figure plan: <内容 GO の後に埋める。節 → 形（対比 / 流れ / 階層 / 2 軸 / 並列）→ 図の有無。並列は list のまま>
-Causal spine: <観察 / 問題 → 緊張 → 機序 → 著者の判断（決めたこと・決めなかったこと）>
+Causal spine: <観察 / 問題 → 緊張 → 機序 → 著者の判断（決めたこと・決めなかったこと）。観察は台帳②、緊張は台帳④から>
 Selected evidence:
-- <evidence id>: <因果線での役割>
+- <evidence id>: <因果線での役割。台帳②の出来事との対応>
 Out of scope:
-- <面白いがこの命題を進めない論点。本文に載る未検証の推論は、ここへ落とす前に著者へ聞く（背骨 4）>
+- <先頭に台帳⑥の捨てた方向と⑤の入らないと言われた記録。次に面白いがこの命題を進めない論点。本文に載る未検証の推論は、ここへ落とす前に著者へ聞く（背骨 4）>
 ```
 
 読者が何を知っているかを確かめるのは著者の通読である。Entry bridge は既存の疑問への接続と、新しい疑問が
@@ -110,7 +118,8 @@ out-of-scope を保持する。翻訳先の local contract へ route し直す�
 
 Zenn 稿は、構造凍結の前に brief の Personas の 3 人へ稿を読ませ、読後に残った著者の判断（決めたこと・決めなかったこと・
 その理由）の言い直しが brief と一致するまで、見せ方を直す。手順・止めどき・改稿の範囲・drift の計測は skill: `persona-read-loop`
-の article preset が持ち、照合に使う著者の判断は brief の Causal spine から渡す。記録の置き場と、止めたラウンドで 1 回読ませる
+の article preset が持ち、照合に使う著者の判断は brief の Causal spine の判断行と、台帳⑥⑦（著者がインタビューで言った原文）から
+渡す。記録の置き場と、止めたラウンドで 1 回読ませる
 比較材料は [`references/persona-read.md`](references/persona-read.md) が持つ。
 
 ### 4. Freeze, review, and content GO
@@ -130,7 +139,8 @@ causal spine・成功基準を渡すと、reviewer は答えを持って読み�
 これが panel の cross-model review を兼ねる（経緯は ADR-0013）。中継役の agent が返ってこないときは、Codex 側の結果を
 `node ~/.claude/plugins/cache/openai-codex/codex/*/scripts/codex-companion.mjs status` → `result <job-id>` で取り出す。
 plugin が使えないときは Claude の
-`prose-clarity-reviewer` agent で代替し、理由を処分記録に残す。channel reviewer の dispatch prompt には、承認済み brief の path と、AI が本文を生成したかを書く（Author's words と
+`prose-clarity-reviewer` agent で代替し、理由を処分記録に残す。channel reviewer の dispatch prompt には、承認済み brief の path、
+dossier の path（末尾の `## インタビュー` 節が確度照合の一次資料）、AI が本文を生成したかを書く（Author's words と
 の確度照合と、開示の照合に使う）。editor と essay-reviewer の両方を
 回すのは contract が要求する場合だけ。`fact-checker` の dispatch prompt には証拠台帳と一次資料の
 path（repo、出力ファイル）を名指しで渡す — code / path / 出力の照合はこの agent が持ち、channel
@@ -189,7 +199,7 @@ Zenn 稿は GO の時点で、通読の指摘数を [`evals/read-through-log.md`
 ### 5. Title
 
 内容 GO 済みの本文に対して `headline-craft` で候補を広く作り、その初見読みと約束の監査を見て
-著者がタイトルを選ぶ。`headline-craft` には本文のほかに、brief の中心命題と Author's words、
+著者がタイトルを選ぶ。`headline-craft` には本文のほかに、brief の中心命題と Author's words、台帳①（著者の語）、
 下の Title Conventions を渡す。候補を落とす条件は Title Conventions の「著者が決めること」に従う。
 タイトル選択後に本文の構造を変えたら、内容 GO とタイトル選択を
 やり直す。表現修正だけなら再実行しない。
@@ -283,7 +293,7 @@ AI が本文を書いた稿は、全 channel で [`references/publication-proced
 
 第一の形は**前提を問う**。著者や読者が当然としている前提を疑う問いを、著者の言葉のまま題に置く。
 問いは、読者も自分のこととして持てるものにする。
-素材は editorial brief の Author's words、本文が引用する著者の発言、本文の節見出し。
+素材は editorial brief の Author's words と台帳①、本文が引用する著者の発言、本文の節見出し。
 
 形を示す例（著者の既存の題。語を写すためのものではない）:
 

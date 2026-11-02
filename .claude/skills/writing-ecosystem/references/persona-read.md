@@ -10,7 +10,9 @@ skill: `persona-read-loop` の article preset が持つ。ここに置くのは 
 - 作業ディレクトリ（skill の `<work>`）は `drafts/<slug>/persona/`（drafts は非公開）。各ラウンドの稿 2 種・読み手の JSON・
   drift の出力（改稿したラウンドだけ、`r<N>-drift.json`）・比較の出力を残す。照合の 3 値と読み手の文の引用、比較の結果
   （自稿 / 比較記事 / 互角）は `drafts/<slug>/persona/log.md` に 1 ラウンド 1 節で書く
-- 読み手の prompt は article preset の日本語版を使う
+- 読み手の prompt は article preset の日本語版を使う。照合に使う著者の判断は、brief の Causal spine の判断行と、dossier 末尾の
+  台帳⑥⑦（著者がインタビューで言った原文）。台帳があれば台帳を正本にする
+- `log.md` の冒頭に書き手のモデルと読み手ごとのモデルを書く
 - drift の `--dossier` には collect-context の dossier（`drafts/article-context_<slug>_<date>.md`）を渡す:
 
   ```bash
@@ -21,7 +23,7 @@ skill: `persona-read-loop` の article preset が持つ。ここに置くのは 
 
 - 止めた理由を処分記録に 1 行で書く
 - 著者の内容 GO の時点で、通読が見つけた指摘の数を [`../evals/read-through-log.md`](../evals/read-through-log.md) に
-  1 行足す
+  1 行足す（読み手のモデルも書く）
 
 ## 比較材料（止めたラウンドで 1 回、`practitioner` だけ）
 
@@ -32,7 +34,7 @@ skill: `persona-read-loop` の article preset が持つ。ここに置くのは 
   `https://zenn.dev/api/articles?topicname=<topic>`（`articles` と `next_page` を返す。並びはいいね順に
   ならないので `liked_count` で自分で並べる）、本文は `https://zenn.dev/api/articles/<slug>` の `article.body_html`。
   topic は記事の題材に合わせる（harness / claudecode など）。取得は記事ごとにやり直す（1 週間で古くなる）
-- 比較記事 1 本ごとに 2 回読ませる。起動は persona-read-loop の `scripts/read.sh` で、人物は `persona-practitioner.txt`、
+- 比較記事 1 本ごとに 2 回読ませる。起動は persona-read-loop の `scripts/read.sh` で、モデルは practitioner と同じもの、人物は `persona-practitioner.txt`、
   prompt は下の問いの文だけを書いたファイル（`prompt.md` は使わない）、稿の位置には 2 本の本文を「記事 A」「記事 B」の
   見出しで連結したファイルを渡す。1 回目は A = 自稿（`r<N>.reader.md`）・B = 比較記事、2 回目は入れ替える。出力は
   `compare-<比較記事の slug>-ab.txt` / `-ba.txt`。比較記事は `body_html` をそのまま埋める（読み手は HTML のまま読める）。
