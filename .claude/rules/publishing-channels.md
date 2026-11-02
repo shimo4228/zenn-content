@@ -74,6 +74,9 @@ evidenceだけを使い、snippetは実行・検証済みにする。code block�
 
 - raw AI logs: `articles/_context/{slug}-{source}-log.md`
 - structured evidence dossier: `drafts/article-context_<topic>-<date>.md`
+- editorial brief: `docs/plans/<slug>.md` — 公開（git に載る。公開可能な書き方で書く）
+- 凍結稿・ペルソナ読み・著者の指摘: `drafts/<slug>/frozen.md`、`drafts/<slug>/persona/`、`drafts/<slug>.corrections.md` — 非公開（`drafts/` は gitignore）
+- 認証・画面ログ・投稿台帳: `.notes/` — 非公開（gitignore）
 
 ## Related links
 

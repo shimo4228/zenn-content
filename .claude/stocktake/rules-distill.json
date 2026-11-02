@@ -1,0 +1,148 @@
+{
+  "distilled_at": "2026-11-02T08:07:05Z",
+  "candidates": {
+    "published-at-required-when-published": {
+      "principle": "publishing-channels.md「Zenn frontmatter」の「省略はdraftまたは即時公開だけ」は実物と食い違う: 即時公開（published: true）でも published_at が無いと索引生成が ValueError で止まり、evidence script も deviation",
+      "verdict": "Revise",
+      "target": ".claude/rules/publishing-channels.md",
+      "evidence": [
+        "実物は必須か",
+        "機械検査も必須扱いか",
+        "他の記述はどちらか"
+      ],
+      "status": "applied (folded into rules-02)"
+    },
+    "work-artifact-public-private-locations": {
+      "principle": "執筆フローの作業物の置き場のうち、どれが公開 repo に載りどれが gitignore 下かは .gitignore だけが知っている事実で、常駐層の「Material locations」は raw log と dossier の 2 行しか持たない",
+      "verdict": "Append",
+      "target": ".claude/rules/publishing-channels.md",
+      "evidence": [
+        "非公開の置き場は repo 固有か",
+        "brief は公開側に置かれるか",
+        "非公開側の置き場"
+      ],
+      "status": "applied"
+    },
+    "devto-default-post-after-go": {
+      "principle": "skill→rule の逆向きの食い違い: Dev.to の投稿時期は常駐 rule が「著者の公開 GO 後に英訳ができ次第すぐ投稿」を既定にしている（2026-09-28 の commit で変更）のに、publish-article §3 は「日時を確認してから予約」「即時投稿は著者が明示した場合だけ」と旧既定の",
+      "verdict": "Revise",
+      "target": ".claude/skills/publish-article/SKILL.md",
+      "evidence": [
+        "rule の現行値",
+        "skill の記述",
+        "どちらが正本か"
+      ],
+      "status": "applied (folded into skills-03)"
+    },
+    "reception-metrics-do-not-change-body": {
+      "principle": "「受信指標・distribution の調整は題の語・tags・topics・timing までで、本文と中心命題は変えない」は 4 skill が繰り返すが、背骨の冒頭段落が同じ内容を ADR-0001 付きで常駐させている",
+      "verdict": "Already Covered",
+      "target": ".claude/rules/writing-principles.md",
+      "evidence": [
+        "rule の文",
+        "繰り返す skill",
+        "Recurrence"
+      ],
+      "status": "not-applied (Already Covered)"
+    },
+    "unpushed-commit-misses-schedule": {
+      "principle": "「未 push の commit は Zenn 予約と Dev.to job に届かないので push 状態を伝える」は publish-article §8 の罠で、CLAUDE.md「Verification and publishing」が同じ事実を常駐させている",
+      "verdict": "Already Covered",
+      "target": "CLAUDE.md",
+      "evidence": [
+        "CLAUDE.md の文",
+        "skill",
+        "Recurrence"
+      ],
+      "status": "not-applied (Already Covered)"
+    },
+    "rulings-go-to-contract-not-memory": {
+      "principle": "「著者の裁定・執筆時の規範は memory でなく channel contract（rules）へ書く",
+      "verdict": "Already Covered",
+      "target": "CLAUDE.md",
+      "evidence": [
+        "skill",
+        "CLAUDE.md",
+        "fresh-context reviewer に rules が届くかの runtime 挙動"
+      ],
+      "status": "not-applied (Already Covered)"
+    },
+    "zenn-publishing-values-in-contract": {
+      "principle": "skill 側に散る Zenn / 公開の platform 値（内部リンクは full URL、予約登録も投稿上限に数える、機械検査は `npm run evidence` の deviations 0、AI 開示は全媒体、初見の読みは Codex）は channel contract に既にあり、skill はそれ",
+      "verdict": "Already Covered",
+      "target": ".claude/rules/publishing-channels.md",
+      "evidence": [
+        "内部リンク",
+        "予約と上限",
+        "機械検査"
+      ],
+      "status": "not-applied (Already Covered)"
+    },
+    "substack-outside-article-rules": {
+      "principle": "substack-publishing は「記事規約 / lint / スケジュール公開を substack/ に適用しない除外を content repo の CLAUDE.md 等に明記しておく」と求めるが、CLAUDE.md と channel contract が substack/ を frontmatter",
+      "verdict": "Already Covered",
+      "target": "CLAUDE.md",
+      "evidence": [
+        "skill の要求",
+        "CLAUDE.md",
+        "contract"
+      ],
+      "status": "not-applied (Already Covered)"
+    },
+    "browser-paste-clipboard-traps": {
+      "principle": "「ブラウザ自動化では、ページ内 JS の navigator.clipboard や 127.0.0.1 への fetch はタイムアウトするので、OS クリップボードへ HTML flavor を osascript で載せて貼る」はこの環境固有の罠で 2 skill が繰り返すが、発火するのは note / Sub",
+      "verdict": "Too Specific",
+      "target": ".claude/skills/note-publishing/SKILL.md",
+      "evidence": [
+        "繰り返し",
+        "発火範囲",
+        "Recurrence"
+      ],
+      "status": "not-applied (Too Specific)"
+    },
+    "add-dir-does-not-load-rules": {
+      "principle": "「別 repo から `--add-dir` でこの repo を足したセッションでは rules が常駐しないので、書く前に writing-principles.md を Read する」は環境固有の罠だが、罠が起きるセッションでは CLAUDE.md も rules も読み込まれない（skill の記述による）た",
+      "verdict": "Too Specific",
+      "target": ".claude/skills/writing-ecosystem/SKILL.md",
+      "evidence": [
+        "skill の記述",
+        "CLAUDE.md の記述",
+        "`--add-dir` で追加ディレクトリの CLAUDE.md / .claude/rules が読み込まれるかの runtime 挙動"
+      ],
+      "status": "not-applied (Too Specific)"
+    },
+    "title-conventions-resident": {
+      "principle": "writing-ecosystem の Title Conventions（誠実さ・検索語を残す・著者の題の形は「前提を問う」）は著者固有の規範で Tests 1–3 を通るが、使う場面はタイトル作業だけで、その消費者（title-reviewer / editor / essay-reviewer / headlin",
+      "verdict": "Too Specific",
+      "target": ".claude/skills/writing-ecosystem/SKILL.md",
+      "evidence": [
+        "skill の宣言",
+        "消費者が読むか",
+        "CLAUDE.md の記述"
+      ],
+      "status": "not-applied (Too Specific)"
+    },
+    "author-picks-topics-images": {
+      "principle": "「topics・ハッシュタグ・見出し画像・テーマ候補は orchestrator が候補を出し、著者が選ぶ」は 4 skill に繰り返す著者固有の分担だが、選択が起きる地点はどれも該当 skill の手順の中で、その時 skill が読み込まれている",
+      "verdict": "Too Specific",
+      "target": ".claude/skills/note-publishing/SKILL.md",
+      "evidence": [
+        "繰り返し",
+        "rules との関係",
+        "Recurrence"
+      ],
+      "status": "not-applied (Too Specific)"
+    },
+    "x-announcement-manual": {
+      "principle": "「新規公開 1 本につき 1 回、著者が自分の X で手動告知する",
+      "verdict": "Too Specific",
+      "target": ".claude/skills/publish-article/SKILL.md",
+      "evidence": [
+        "skill",
+        "x-draft の範囲",
+        "Recurrence"
+      ],
+      "status": "not-applied (Too Specific)"
+    }
+  }
+}
