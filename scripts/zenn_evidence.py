@@ -61,7 +61,7 @@ TERMINOLOGY = {
     "Claude-Native": ["Claude-first", "Claude based"],
     "CLI-First": ["CLI first", "command-line first"],
     "半自動": ["semi-automatic", "partially automated"],
-    "Anki card": [],
+    "Anki card": ["flashcard"],
     "LLM critique": ["AI critique", "model critique"],
     "TDD": ["test driven", "test-first"],
 }

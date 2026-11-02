@@ -54,7 +54,7 @@ published_at: 2026-04-15 07:00
 ```
 
 - format: `YYYY-MM-DD HH:MM`、JST固定。slash区切り・秒付きは不可
-- 省略はdraftまたは即時公開だけ。通常は予約投稿を使う
+- `published: true` の稿は即時公開でも必須（`npm run generate:index` が published_at の無い公開稿で止まる）。通常は予約投稿を使う
 - 予約登録自体が投稿上限に計上される。公開予定日の3日以上前にpushし、Zennのデプロイ履歴を確認する
 - 登録拒否後は上限解除後のpushでdeployを再triggerする
 
@@ -72,8 +72,7 @@ evidenceだけを使い、snippetは実行・検証済みにする。code block�
 
 ## Material locations
 
-- raw AI logs: `articles/_context/{slug}-{source}-log.md`
-- structured evidence dossier: `drafts/article-context_<topic>-<date>.md`
+- evidence dossier: `drafts/article-context_<slug>_<date>.md`（collect-context の既定名。`drafts/` は git 管理外）
 - editorial brief: `docs/plans/<slug>.md` — 公開（git に載る。公開可能な書き方で書く）
 - 凍結稿・ペルソナ読み・著者の指摘: `drafts/<slug>/frozen.md`、`drafts/<slug>/persona/`、`drafts/<slug>.corrections.md` — 非公開（`drafts/` は gitignore）
 - 認証・画面ログ・投稿台帳: `.notes/` — 非公開（gitignore）
@@ -89,11 +88,8 @@ Zenn / Dev.toの全稿は、末尾の関連link節に次の2行を含める。�
 - [著者のGitHub](https://github.com/shimo4228) — DOI 付きの研究リポジトリ一覧
 ```
 
-2行は行き先が違うので併記する。正本リンクは**書いたもの**のコーパスへ、
-著者hubは**作ったもの**——DOI付きの研究repo群へ届く。Zennの記事ページは著者hubへのリンクを
-`<a href>`として持たない（`githubUsername`は`__NEXT_DATA__`のJSON値のみで、profile cardの
-リンク先はZenn内`/shimo4228`）。本文末のリンクはprofile cardと違い本文DOMの一部なので、
-本文抽出後も残る。
+2行は行き先が違うので併記する。正本リンクは**書いたもの**のコーパスへ、著者hubは**作ったもの**（DOI付きの研究repo群）へ届く。
+Zennの記事ページがhubへの`<a href>`を持たず、本文末のリンクだけが本文DOMに残る根拠はADR-0012 Decision 7。
 
 本文中のself-linkは読者の実行導線または直前の主張を支える一次資料に限定し、それ以外は末尾へ置く。
 

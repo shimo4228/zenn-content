@@ -1,0 +1,20 @@
+{
+  "evaluated_at": "2026-11-02T08:08:01Z",
+  "total_lines": 166,
+  "rules": {
+    "writing-principles": {
+      "path": "<harness>/rules/writing-principles.md",
+      "lines": 30,
+      "verdict": "Keep",
+      "reason": "30 行の執筆の背骨（ADR-0014 Decision 1 の「原理 6 本、30 行以内」をちょうど守る）。main loop と全 reviewer に常駐で届く唯一の価値観の置き場で、editor.md などは「背骨 2」と番号で参照するだけで本文を複製していない。禁止形（総称・比喩ラベルを作らない、証拠台帳を節に割り付けない）はどれも理由を 1 句添えた具体的動作で、機械ゲートが無い。substrate に吸収される性質の内容ではない（著者固有の判断基準）。",
+      "mtime": "2026-11-02T08:05:07Z"
+    },
+    "publishing-channels": {
+      "path": "<harness>/rules/publishing-channels.md",
+      "lines": 136,
+      "verdict": "Improve",
+      "reason": "channel 値の唯一の常駐置き場として残す価値はあるが、137 行のうち 3 箇所が実物と食い違い、1 箇所が ADR の写しになっている。(a) 57 行目「省略はdraftまたは即時公開だけ」は誤りで、published: true の稿に published_at が無いと generate_article_index.py が ValueError で止まる（zenn-format も required と書く）。(b) 89–93 行目の Zenn DOM の根拠説明は ADR-0012 Decision 7 の写しで、毎セッション読む必要が無い。(c) Material locations の raw AI logs の path は書き手も該当 file も無く、dossier の命名は実物（collect-context 既定）と区切り文字が違う。(d 任意) Project terminology 表は zenn_evidence.py の TERMINOLOGY と二重に持たれ、既に「Anki card」の禁止形が食い違っている。 適用: (a)(b)(c) を適用。(d) 任意は採らず、代替の zenn_evidence.py の Anki card だけ rule に揃えた。",
+      "mtime": "2026-11-02T08:07:28Z"
+    }
+  }
+}

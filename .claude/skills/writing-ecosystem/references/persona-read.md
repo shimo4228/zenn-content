@@ -11,12 +11,12 @@ skill: `persona-read-loop` の article preset が持つ。ここに置くのは 
   drift の出力（改稿したラウンドだけ、`r<N>-drift.json`）・比較の出力を残す。照合の 3 値と読み手の文の引用、比較の結果
   （自稿 / 比較記事 / 互角）は `drafts/<slug>/persona/log.md` に 1 ラウンド 1 節で書く
 - 読み手の prompt は article preset の日本語版を使う
-- drift の `--dossier` には collect-context の dossier（`drafts/article-context_<topic>-<date>.md`）を渡す:
+- drift の `--dossier` には collect-context の dossier（`drafts/article-context_<slug>_<date>.md`）を渡す:
 
   ```bash
   python3 <persona-read-loop の skill dir>/scripts/drift_count.py \
     drafts/<slug>/persona/r<N-1>.md drafts/<slug>/persona/r<N>.md \
-    --dossier drafts/article-context_<topic>-<date>.md > drafts/<slug>/persona/r<N>-drift.json
+    --dossier drafts/article-context_<slug>_<date>.md > drafts/<slug>/persona/r<N>-drift.json
   ```
 
 - 止めた理由を処分記録に 1 行で書く
