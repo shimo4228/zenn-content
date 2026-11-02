@@ -1,0 +1,54 @@
+{
+  "evaluated_at": "2026-11-02T08:07:10Z",
+  "total_desc_words": 322,
+  "agents": {
+    "devto-translator": {
+      "path": ".claude/agents/devto-translator.md",
+      "desc_words": 9,
+      "body_lines": 112,
+      "verdict": "Improve",
+      "reason": "Applied (agents-04): Phase 1 frontmatter rule now adds the `description:` the Dev.to contract requires (publishing-channels.md Dev.to contract); Phase 4 self-check reads the backbone rule and writing-ecosystem/references/style-diagnostics.md instead of 'writing-ecosystem の原則'; Phase 6 hands back to project-local writing-ecosystem instead of the nonexistent global workflow; self-check gains a frontmatter item. The 入力 section is left for docs/plans/deep-swimming-wozniak.md. desc_words is whitespace-counted and undercounts the Japanese description.",
+      "mtime": "2026-11-02T08:07:00Z"
+    },
+    "editor": {
+      "path": ".claude/agents/editor.md",
+      "desc_words": 72,
+      "body_lines": 180,
+      "verdict": "Keep",
+      "reason": "Description states scope (argument movement, explanation quality, AI slop, in-article terms), what it does not own (facts, code, paths, fixed terminology → fact-checker and the evidence script) and its dispatch point, matching the body. All body references exist; no suppression or over-constraint; split with essay-reviewer follows the channel table; a fresh-context review role that the main loop does not absorb.",
+      "mtime": "2026-11-02T08:05:07Z"
+    },
+    "essay-reviewer": {
+      "path": ".claude/agents/essay-reviewer.md",
+      "desc_words": 68,
+      "body_lines": 134,
+      "verdict": "Improve",
+      "reason": "Applied (agents-02): the overload threshold '4 を超えていない' was a severity floor looser than writing-ecosystem's one-thesis rule (Genre shapes, brief 'Central thesis: 必ず一つ'); inverted to list every argument and flag any argument outside the causal spine. Section-length-by-importance replaced by backbone 5 (split by discoveries). Stale 'idea article' wording replaced with essay-channel wording; description gains the NOT-for line (fact-checker / title-reviewer / editor).",
+      "mtime": "2026-11-02T08:06:46Z"
+    },
+    "fact-checker": {
+      "path": ".claude/agents/fact-checker.md",
+      "desc_words": 52,
+      "body_lines": 182,
+      "verdict": "Improve",
+      "reason": "Applied (agents-03): extraction step 'Skip claims that are ... common knowledge / hypotheticals' silently dropped claims no other layer checks (writing-ecosystem assigns facts to reviewers only); inverted to list every claim and mark unverified ones ⚪ NOT CHECKED with a reason (new verdict word). Verification steps now cover LOW claims with at least one route instead of HIGH/MEDIUM only.",
+      "mtime": "2026-11-02T08:06:46Z"
+    },
+    "prose-clarity-reviewer": {
+      "path": ".claude/agents/prose-clarity-reviewer.md",
+      "desc_words": 85,
+      "body_lines": 96,
+      "verdict": "Improve",
+      "reason": "Applied (agents-01), description only: it presented a parallel Claude-subagent dispatch as the default, while writing-ecosystem §4 and ADR-0013 make Codex (`codex:codex-rescue`) the reader with this file as its checklist and the Claude subagent the fallback when the plugin is unavailable. Body unchanged; the path Codex reads is unchanged.",
+      "mtime": "2026-11-02T08:06:46Z"
+    },
+    "title-reviewer": {
+      "path": ".claude/agents/title-reviewer.md",
+      "desc_words": 36,
+      "body_lines": 75,
+      "verdict": "Keep",
+      "reason": "Description states the dispatch point (after content GO and headline-craft, before quality-gate), out-of-scope work and that it gives no verdict/score/rank, matching the body; references (writing-ecosystem §5 Title, Title Conventions, headline-craft, docs/PUBLICATIONS.md) exist; not reading reception metrics is a deliberate Goodhart boundary. Note: its retirement is pending an author decision in the 2026-11-02 stocktake; re-evaluate when that decision lands. desc_words is whitespace-counted and undercounts the Japanese description.",
+      "mtime": "2026-11-02T08:05:07Z"
+    }
+  }
+}

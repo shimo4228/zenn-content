@@ -1,6 +1,6 @@
 ---
 name: prose-clarity-reviewer
-description: "First-contact reader clarity reviewer for human-primary articles, essays, blog posts, and newsletters. Reads once as the audience declared by the project's publication channel contract and flags first-screen failure, coined-term overuse, central-thesis carry-through, editorial meta-commentary, insider-context dependency, and translationese. Use after structural freeze of a draft or major revision, in parallel with the channel editor and fact-checker. NOT for academic papers or READMEs."
+description: "First-contact reader clarity checklist for human-primary articles, essays, blog posts, and newsletters: reads once as the audience declared by the project's publication channel contract and flags first-screen failure, coined-term overuse, central-thesis carry-through, editorial meta-commentary, insider-context dependency, and translationese. The default reader is Codex: writing-ecosystem §4 hands this file to `codex:codex-rescue` as its checklist after structural freeze. Dispatch it as a Claude subagent only as the fallback when the Codex plugin is unavailable, and record why in the disposition log. NOT for academic papers or READMEs."
 tools: ["Read", "Grep", "Glob"]
 model: opus
 origin: shimo4228

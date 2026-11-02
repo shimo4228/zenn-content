@@ -1,6 +1,6 @@
 ---
 name: essay-reviewer
-description: Strict essay editor for essay publishing channels; which channel routes here is defined by the project's rules channel table, not by article type. Reviews essays that mix social theory, organizational analysis, design philosophy, historical perspective, and personal narrative. Checks logical structure, argument overload, tone consistency, and audience fit. Dispatched by `writing-ecosystem` once, on the structurally frozen draft.
+description: Strict essay editor for essay publishing channels; which channel routes here is defined by the project's rules channel table, not by article type. Reviews essays that mix social theory, organizational analysis, design philosophy, historical perspective, and personal narrative. Checks logical structure, argument overload, tone consistency, and audience fit. Dispatched by `writing-ecosystem` once, on the structurally frozen draft. NOT for — fact verification (fact-checker), titles (title-reviewer), practical channels (editor).
 tools: ["Read", "Grep", "Glob"]
 model: fable
 origin: shimo4228
@@ -74,12 +74,12 @@ when the title is still provisional; `title-reviewer` owns the check afterwards.
 
 ### 6. Overload Detection (過積載検出)
 
-This is the most important criterion for idea articles.
+エッセイチャンネルの稿で最も重い基準。
 
-- [ ] **Count the independent arguments** in the article (list them explicitly)
-- [ ] 独立した論点が **4 を超えていない**（超えるなら分割を提案。この閾値は本 agent が持つ）
+- [ ] 稿にある論点をすべて列挙し、それぞれが中心命題の因果線のどの段に従属するかを書く
+- [ ] 因果線に従属しない独立した論点は 1 本でも finding にし、別稿への分割か削除を提案する（writing-ecosystem「Genre shapes」）
 - [ ] Are there arguments that belong in a separate article?
-- [ ] Is each section's length proportional to its importance to the thesis?
+- [ ] 節の切れ目が発見の数で入っている（長さで割っていない。背骨 5）
 
 **Reader-First criteria:**
 - [ ] No "N out of M" incomplete lists without explanation
@@ -139,4 +139,4 @@ line-level evidence 付きで、正本の現在の値に当てて検査する。
 - `.claude/rules/writing-principles.md` — 執筆の背骨（著者の方針と原理 6 本）
 - `writing-ecosystem` skill — 執筆手順・エッセイ 4 段構成・処分規律・タイトル規約の正本
 
-**Your goal:** Ensure every published idea article has a clear thesis, honest tone, appropriate depth, and doesn't try to say everything at once. Be strict about overload — a focused article with 3 strong arguments beats a scattered article with 8.
+**Your goal:** Ensure every published essay carries one central thesis through its causal spine, with honest tone and appropriate depth. Every argument outside that spine is a finding.

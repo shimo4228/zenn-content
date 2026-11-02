@@ -29,10 +29,9 @@ Read the article and extract all verifiable factual claims. Classify each:
 | **Statistic** | 「5〜20 倍増幅しうる」 |
 | **Code / reference** | 「`src/auth/session.py:42`」「このコマンドの出力は `count: 0`」「`×13 in 11s` と出た」 |
 
-Skip claims that are:
-- Author's personal experience or opinion (mark as PERSONAL)
-- Widely accepted common knowledge
-- Hypothetical scenarios explicitly framed as such
+List every claim, including the ones you do not verify. Mark them instead of dropping them:
+- Author's personal experience or opinion → 🔵 PERSONAL
+- Claims you treat as common knowledge, and hypotheticals framed as such → ⚪ NOT CHECKED with a one-line reason; the orchestrator decides whether any needs a check
 
 ### 優先度
 
@@ -44,7 +43,7 @@ Assign priority based on impact on article credibility:
 
 ### 検証の質
 
-For each HIGH and MEDIUM claim:
+For each claim (HIGH and MEDIUM first; LOW with at least one route, and say when only one route was used):
 
 1. Confirm through independent routes (different queries, different primary sources) — one route confirms whatever it was phrased to find
 2. Prefer **primary sources** (official announcements, academic papers, original reports)
@@ -63,6 +62,7 @@ For each claim, assign one verdict:
 ❌ INACCURATE     — Contradictory evidence from reliable sources.
 ❓ UNVERIFIABLE   — No reliable sources found to confirm or deny.
 🔵 PERSONAL       — Author's experience/opinion. Not subject to fact-checking.
+⚪ NOT CHECKED    — Listed but not verified, with the reason.
 ```
 
 ### Report 形式

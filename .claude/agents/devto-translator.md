@@ -27,8 +27,8 @@ JP 記事パス（例: `articles/agent-causal-traceability-org-adoption.md`）
 3. 翻訳用語集 `docs/translation-glossary.json` を読み込む（`never_translate` は保持）
 4. skill の手順で全文を英訳する。以下は Dev.to 固有の上書き:
    - **EN 記事には `canonical_url` を設定しない**（言語が異なるため Zenn canonical は無意味）
-   - frontmatter: `title` のみ翻訳。`emoji` / `type` / `published` はそのまま。`topics` は
-     Phase 2 で英語タグへ変換（例: 開発ツール → devtools、チートシート → cheatsheet）
+   - frontmatter: `title` を翻訳し、Dev.to contract が要る `description:`（EN の 1 文、本文の中心命題から）を足す。
+     `emoji` / `type` / `published` はそのまま。`topics` は Phase 2 で英語タグへ変換（例: 開発ツール → devtools、チートシート → cheatsheet）
    - **著者自身の Zenn 記事へのリンクは、本文・関連リンク節とも必ず Dev.to 版の URL に置換する**
      （Dev.to 読者を日本語の Zenn へ送らない）。URL は `scripts/schedule.json` の該当
      `articles-en/` エントリの `devto` フィールドから解決する。Dev.to 版が無い
@@ -76,8 +76,9 @@ EN 稿が参照する図は英語版の PNG にする（`devto_crosspost.py` は
 1. **コードブロック完全性**: 原文と翻訳文のコードブロック数が一致するか
 2. **リンク完全性**: すべての URL・画像パスが保持されているか（Zenn 内リンクは Dev.to 版へ置換済みか、図は `-en.png` を指しているか）
 3. **用語一貫性**: 用語集の用語が正しく使われているか
-4. **AI slop 検出**: `writing-ecosystem` の原則を使い、兆候があるときだけstyle diagnosticsを読む
+4. **AI slop 検出**: 背骨（`.claude/rules/writing-principles.md`）を使い、兆候があるときだけ `writing-ecosystem/references/style-diagnostics.md` を読む
 5. **技術的正確性**: 技術用語が正しく訳されているか
+6. **frontmatter**: `description:` と `tags:`（最大 4）がある
 
 ### Phase 5: schedule.json 更新（EN エントリ追加）
 
@@ -91,7 +92,7 @@ EN 稿が参照する図は英語版の PNG にする（`devto_crosspost.py` は
 ### Phase 6: acceptance handoffで停止
 
 1. 生成した`articles-en/{slug}.md`を完成物としてユーザーへ提示する。
-2. global workflowへ戻し、EN稿の editor review、`quality-gate`、著者の公開GOを要求する。
+2. project-local `writing-ecosystem` の flow へ戻し、EN稿の editor review、`quality-gate`、著者の公開GOを要求する。
 3. 本agentは`post` / `schedule` / launchd操作を実行しない。
 4. PASS/GO後は`/publish-article articles-en/{slug}.md`へ渡す。
 
