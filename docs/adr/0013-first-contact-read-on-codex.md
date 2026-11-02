@@ -63,6 +63,8 @@ companion script の `task` を 1 回呼ぶ中継役である。試行では Cod
   `codex exec` 直接起動の案を再訪する）
 - このアカウントで使える Codex のモデルが変わる（`~/.codex/config.toml` の `model` を見直す）
 
+> **注記（2026-11-02, read-through-log）**: 発火した。config の `model`（gpt-6.1-sol）はこのアカウントで使えず、harness-stocktake-after-doctor の初見の読みは gpt-5.6-sol で走った。10-12 の claude-code-eval-concepts は gpt-6-astra で、Review-when 1 の「3 本の間モデルを変えない」はこの稿で途切れている。config の `model` は著者が見直す。
+
 ## Alternatives Considered
 
 - **現状維持：Claude の `prose-clarity-reviewer` を残し、cross-model review を plugin で別に 1 回回す（panel 4 本）** —

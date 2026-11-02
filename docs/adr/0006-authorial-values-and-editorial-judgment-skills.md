@@ -4,6 +4,8 @@
 
 Accepted
 
+> **注記（2026-08-23, commit「refactor(writing): reduce project harness to channel rules」）**: Decision 1 の 2 skill と Decision 4 の対象 zenn-practical-writing は退役。価値観は `.claude/rules/writing-principles.md`（ADR-0014）、判断の手順は `writing-ecosystem` が持つ。
+
 ## Date
 
 2026-07-28

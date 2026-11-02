@@ -6,6 +6,8 @@ Accepted (2026-07-05)
 
 本 ADR は ADR-0001「存続（変更なし）」表の zenn-writer 行、および ADR-0002 §2 の `writing-standards.md` 参照を一部 supersede する（詳細は Consequences）。
 
+> **注記（2026-08-23, commit「refactor(writing): reduce project harness to channel rules」）**: zenn-practical-writing・zenn-idea-voice・rules/zenn-writing.md は退役。チャンネルの値は `.claude/rules/publishing-channels.md`、原理は `.claude/rules/writing-principles.md`（ADR-0014）、手順は `writing-ecosystem`。§4 の表と Addendum 2 本の住所は当時の記録。
+
 ## Context
 
 執筆エコシステムは当初、記事・エッセイ・論文の文体境界が曖昧なまま `writing-team` で運用されてきた。その後、channel ごとに文体と置き場所が確立した:
@@ -36,7 +38,7 @@ genre 中立 canon（AI-slop 禁止・タイトル誠実さ・ネタ 3 軸）は
 
 > **Superseded in part (2026-08-23)**: 下表の channel 行と文体の値は、
 > 2026-08-12 の「note = JA 正本（ですます）/ Substack = EN 翻訳」への逆転を反映していない。
-> **チャンネル→文体の実値の正本は `.claude/rules/zenn-writing.md`「チャンネル表」**（ADR-0010）。
+> **チャンネル→文体の実値の正本は `.claude/rules/publishing-channels.md`「Channel routing」**（ADR-0010。2026-08-23 に zenn-writing.md から移った）。
 > 下表は当時の記録として残す。運用の根拠として引かないこと。
 
 | channel | 文体 | 語り |

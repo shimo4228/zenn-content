@@ -147,3 +147,5 @@ ADR-0011 の理由 2（読み直しで指摘が尽きず本文が防御的にな
   `scripts/tests/test_drift_count.py` を消し、writing-ecosystem の §3.5・brief の `Personas:` 行・Ecosystem Map の行、
   `publishing-channels.md` の 1 行、`docs/CODEMAPS/scripts.md` の節、ADR-0011 の注記、`docs/adr/README.md` の行を戻す。
   `.claude/skills/writing-ecosystem/evals/read-through-log.md` は段を外しても通読指摘数の記録先として残す
+
+> **注記（2026-10-26, commit「chore(docs): docs/CODEMAPS を削除する」）**: 戻す対象のうち `scripts/drift_count.py`・`scripts/tests/test_drift_count.py` は 2026-10-18 に harness の skill `persona-read-loop` へ移った（戻すなら同 skill の article preset から Zenn の呼び出しを外す）。`docs/CODEMAPS/scripts.md` は消えたので戻す対象から外れる。

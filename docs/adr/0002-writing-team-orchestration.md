@@ -45,6 +45,8 @@ Accepted (2026-04-13)
 
 新しいエージェントは作らない。`writing-team` スキルで Claude Code にミッション種別の判定とチーム編成のテンプレートを提供する。
 
+> **注記（2026-08-23, commit「refactor(writing): reduce project harness to channel rules」）**: `writing-team` と `ideation` は 2026-08-23 に退役（45eb8fe）。orchestrator は project-local `.claude/skills/writing-ecosystem/SKILL.md` に。
+
 **理由**: オーケストレーターは「判断と指揮」を行う。Claude Code 本体がすでにその能力を持っており、別エージェントにすると文脈の断絶が起きる。
 
 ### 2. 共有リファレンス（`.claude/refs/`）で DRY 化する
@@ -80,8 +82,8 @@ catchify の廃止、seo-optimizer のスコープ縮小は ADR-0001 で決定�
 - ~~`.claude/refs/writing-standards.md`~~ — 存在しない。正本は global `writing-ecosystem` skill（ADR-0003 で無効化）
 - ~~`.claude/refs/translation-rules.md`~~ — 2026-08-23 に `devto-translator` agent へ吸収・退役
 - `.claude/refs/schedule-schema.md`
-- `.claude/skills/writing-team/SKILL.md` — オーケストレーター
-- `.claude/skills/ideation/SKILL.md` — テーマ検討
+- ~~`.claude/skills/writing-team/SKILL.md` — オーケストレーター~~ — 2026-08-23 に退役（45eb8fe）。orchestrator は project-local `.claude/skills/writing-ecosystem/SKILL.md` に
+- ~~`.claude/skills/ideation/SKILL.md` — テーマ検討~~ — 2026-08-23 に退役（45eb8fe）
 - ~~`.claude/skills/series-checker/SKILL.md`~~ — 2026-08-23 に `zenn-editorial-judgment`「シリーズ記事の整合」へ吸収・退役
 - `.claude/skills/quality-gate/SKILL.md` — 統一品質基準
 - `.claude/rules/content-integrity.md` — Content Integrity ルール

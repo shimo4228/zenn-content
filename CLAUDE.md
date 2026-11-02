@@ -38,8 +38,9 @@ Claude talks with the author, not article prose. For coding work such as `script
 
 - Zenn: `articles/`; format and syntax are owned by `zenn-format`
 - Dev.to: `articles-en/`; translation method is global `prose-translation`, platform conversion is `devto-translator`
-- note JA canonical: `note/`; no frontmatter
-- Substack EN translation: `substack/`; no frontmatter
+- note: `note/`（note 初出の JA 正本と、Zenn 記事の原文転載。転載の正本は `articles/`）
+- Substack EN translation: `substack/`
+  （frontmatter の有無は publishing-channels.md の Deterministic checks 列が持つ）
 - note publishing and corpus mirroring: `note-publishing`
 - Substack publishing and corpus mirroring: `substack-publishing`
 - note daily queue and scheduling: `docs/note-pipeline.md`

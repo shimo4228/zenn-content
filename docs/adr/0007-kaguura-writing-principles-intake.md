@@ -40,6 +40,8 @@ Kaguura Gichuru "How I Got 20,585 Substack Subscribers in 90 Days"（The Write P
 | net-giver コメント哲学 | global `public-comment` |
 | Substack 配信ファネル（Notes 3 型・recommendations 等） | global `substack-publishing` §7 |
 
+> **注記（2026-08-23, commit「refactor(writing): reduce project harness to channel rules」）**: zenn-practical-writing は退役。導入の設計は原理 P5（`.claude/rules/writing-principles.md`）と `writing-ecosystem` が持つ。
+
 > **注記（2026-09-29, ADR-0014）**: Craft 規約は原理 P1〜P6（`.claude/rules/writing-principles.md`）へ畳み、文レベルの 4 項目は `writing-ecosystem/references/style-diagnostics.md` へ移す。エッセイ 4 段構成は `writing-ecosystem` のジャンル表に残る。取り込み自体は有効。
 
 ### Content Integrity（ADR-0001）との整理

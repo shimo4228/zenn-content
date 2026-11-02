@@ -57,11 +57,15 @@ Accepted (2026-04-13)
 | **fact-checker** | 事実検証は Content Integrity の根幹 |
 | **zenn-writer** | 文体ガイド（発見調、Voice Pattern）は著者のスタイルの明文化であり、外部最適化ではない |
 
+> **注記（2026-08-23, commit「refactor(writing): reduce project harness to channel rules」）**: zenn-writer は 2026-07-06 に削除（ADR-0003 Addendum）。
+
 ### 新規
 
 | コンポーネント | 理由 |
 |-------------|------|
 | **content-integrity ルール** | この原則を毎セッション自動ロードし、確実に適用する |
+
+> **注記（2026-08-23, commit「refactor(writing): reduce project harness to channel rules」）**: content-integrity ルールは消した。原則の常駐先は `.claude/rules/writing-principles.md` の前文（ADR-0014）。
 
 ## Notes
 

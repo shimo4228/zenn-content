@@ -28,6 +28,8 @@ Accepted
 
 1. **チャンネルの値は `.claude/rules/zenn-writing.md` の「チャンネル表」1 箇所だけに置く。** 文体・声・置き場・既定 skill・レビュー agent を 4 チャンネル（Zenn / Dev.to / note / Substack）× 5 列の表にする。rules は main loop にも全 agent プロセスにも常駐するので、どの skill が発火しても値が届く。skill / agent / CLAUDE.md は値を持たずここを指す。
 
+   > **注記（2026-08-23, commit「refactor(writing): reduce project harness to channel rules」）**: `.claude/rules/zenn-writing.md` は同日 `.claude/rules/publishing-channels.md` に置き換わった。Decision 1 の「1 箇所」はこのファイルの「Channel routing」表。
+
 2. **global skill は genre 中立 canon に純化し、チャンネルの値を持たない。** `writing-ecosystem` は AI slop 禁止・craft・段落密度・専門用語の緩和策・タイトル原則・エッセイ 4 段構成・初稿手順を持つ。語尾・出力先・レビュー agent の割り当ては持たない。値を持たなければ競合しようがない。
 
    > **注記（2026-09-29, ADR-0014）**: canon のうち価値・方針（craft・AI slop・Voice の規範部分）は常駐 rule `.claude/rules/writing-principles.md` の原理 6 本へ移す。`writing-ecosystem` は手順の正本に絞る。チャンネルの値を持たない点はこのまま有効。
