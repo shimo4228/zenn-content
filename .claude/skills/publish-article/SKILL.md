@@ -69,13 +69,19 @@ published_at: 2026-04-15 09:00
 
 format、rate-limit、cadenceは`.claude/rules/publishing-channels.md`が正本。これはZenn channelだけに行う。
 
-Dev.to channelではdry-runを著者へ提示して日時を確認してから予約する。
+Dev.to channelではdry-runを著者へ提示し、既定（channel contract の Cadence）どおり公開GO後に`post <slug>`で投稿する。
+
+```bash
+cd scripts && uv run python devto_crosspost.py post <slug>
+```
+
+著者が日時を指定したときだけ`schedule <slug> --at …`で予約する。
 
 ```bash
 cd scripts && uv run python devto_crosspost.py schedule <slug> --at "2026-07-07 22:00 Asia/Tokyo"
 ```
 
-即時投稿は著者が明示した場合だけ`post <slug>`を実行する。
+`post`が成功すると（直接実行でも、予約したlaunchd jobの実行でも）、実URLは`schedule.json`の該当entryへ自動書き戻しされ、one-shot jobは自己削除される。
 
 ### 4. Register production state
 
@@ -87,8 +93,6 @@ Zenn稿の公開実行からEN稿を生成・予約しない。crosspostする�
 `devto-translator`で`articles-en/<slug>.md`を生成する。そのEN稿で channel editor のreview・
 `quality-gate`（EN 訳の受け入れ条件は channel contract）・著者の公開GOを完了してから、別runとして
 `/publish-article articles-en/<slug>.md`を実行する。
-
-Dev.to schedule成功時、実URLは`schedule.json`へ自動書き戻しされ、one-shot jobは自己削除される。
 
 ### 6. Regenerate the publication index
 
@@ -102,9 +106,9 @@ note/Substack essayは`scripts/corpus.yml`へentryを追加してから生成す
 
 ### 7. Announcement handoff（人間が実行）
 
-公開を確認したら、新規公開1本につき1回、著者が自分のXで手動告知する。告知は内容を変えない
-（ADR-0001の配信レイヤー）。下書きが要れば`x-draft`を使ってよいが、投稿は著者が行う。同じ公開物の
-繰り返し告知、他者の場での宣伝投稿、自動投稿はしない（判断の正本: personal-branding ADR-0005 /
+公開を確認したら、新規公開1本につき1回、著者が告知する。告知は内容を変えない（ADR-0001の
+配信レイヤー）。告知文の下書きが要れば`social-post`でX / Bluesky / Substack NotesのBuffer下書きに入れてよく、
+予約と公開は著者がBufferの画面で行う。同じ公開物の繰り返し告知、他者の場での宣伝投稿、自動投稿はしない（判断の正本: personal-branding ADR-0005 /
 authorship-strategy ADR-0007 第2項の注記）。完了報告に「告知: 著者待ち」と1行残す。
 
 ### 8. Commit and push boundary

@@ -30,10 +30,11 @@ project-local `quality-gate` PASSと著者GOの後に使う。noteの投稿操�
   scripts/render_note_assets.sh substack/<slug>-en.md   # note/<slug>.md も同じ
   ```
 
-  先頭 h1 の除外（タイトル欄に別入力するため）と `-f gfm`（§下記の罠）をスクリプトが持つ。
-  **手打ちの `pandoc` を書かない** — `-f gfm` を落とすと §5 の段落潰れを起こす。
+  先頭 h1 の除外（タイトル欄に別入力するため）と `-f gfm` をスクリプトが持つ。pandoc の既定方言は
+  「blank line なしで段落直後に始まるリスト」を段落に潰す（GitHub 上のレンダリングと乖離する）。
+  **手打ちの `pandoc` を書かない** — `-f gfm` を落とすとこの段落潰れを起こす。
 
-  ブラウザで `essay.html` を開く → 本文を選択 → コピー → Substack 本文に貼ると整形保持（見出し / 太字 / 斜体 / リンク / 区切り線）。Substack は貼り付け時に独自スタイルを当てるので、保持されるのは構造であって見た目の細部ではない。
+  ブラウザで生成された `<slug>.html`（原稿の隣）を開く → 本文を選択 → コピー → Substack 本文に貼ると整形保持（見出し / 太字 / 斜体 / リンク / 区切り線）。Substack は貼り付け時に独自スタイルを当てるので、保持されるのは構造であって見た目の細部ではない。
 
 ## 2. フィールド分け（本文に重複させない）
 
@@ -70,14 +71,13 @@ essay の **core metaphor** を1つ視覚化する。プロンプト規約:
 Substack エディタ（ProseMirror 系）への構造保持貼り付けは、**macOS システムクリップボードへ HTML flavor を直接書いて cmd+V** が最も確実:
 
 ```bash
-pandoc -f gfm body.md -o body.html   # -f gfm 必須（下記）。原稿ファイル全体なら
-                                     # scripts/render_note_assets.sh が h1 除外込みで同じ html を作る
-hex=$(xxd -p body.html | tr -d '\n')
+scripts/render_note_assets.sh substack/<slug>-en.md   # substack/<slug>-en.html を作る（h1 除外・-f gfm 込み）
+hex=$(xxd -p substack/<slug>-en.html | tr -d '\n')
 osascript -e "set the clipboard to «data HTML${hex}»"
 # → エディタ本文をクリックして cmd+V
 ```
 
-- **pandoc は `-f gfm` を指定**する。デフォルト方言は「blank line なしで段落直後に始まるリスト」を段落に潰す（GitHub 上のレンダリングと乖離する）。貼り付け後に `<ul>` の数などで構造を照合する
+- 貼り付け後に `<ul>` の数などで構造を照合する（`-f gfm` の理由は §1）
 - **動かない経路（試行済みの落とし穴）**:
   - ページ内 JS の `navigator.clipboard.write()` → `Runtime.evaluate` がタイムアウト
   - ページ内 JS から `fetch("http://127.0.0.1:…")` → https ページからの localhost fetch は Chrome の Private Network Access に塞がれハング
@@ -119,6 +119,8 @@ EN 版の初出は Substack、JA 正本は content repo の `note/`（note.com �
 
 出典: Kaguura Gichuru "How I Got 20,585 Substack Subscribers in 90 Days" (The Write Path, 2026-07)。執筆 craft・構成・タイトル原則は `writing-ecosystem` に取り込み済み — ここは **Substack 固有の配信運用**のみを持つ。
 
+Notes の本文を書いて Buffer の下書きに入れる作業（記事の告知も、著者の断片も）は global `social-post` が持つ。この節の配置・Notes の型・ケイデンスは、social-post で書く Note の型と頻度を選ぶ材料として使う。
+
 ### 3 つの配置
 
 | 面 | 読者 | 役割 |
@@ -139,7 +141,7 @@ EN 版の初出は Substack、JA 正本は content repo の `note/`（note.com �
 
 - **1 エッセイ → 3 Notes**: 冒頭の逸話 → Awareness / 中核ルール → Education / 書きたくなった根底の信念 → Conviction
 - **3 ヶ月逐語ルール**: 反応の良かった Note は数ヶ月後に同じ言葉で再投稿してよい（新規購読者には新規価値）
-- **警告**: テンプレートを機械的に埋めない。固有の思考が 100% 必須（writing-ecosystem の slop 判定原則「別の場所に貼っても通じるなら slop」と同じ）
+- **警告**: テンプレートを機械的に埋めない。固有の思考が 100% 必須（`.claude/rules/writing-principles.md` 原理 2 の「別の記事に貼っても通じる文は、著者の観察・数値に置き換える」と同じ）
 
 ### ケイデンス
 
@@ -189,4 +191,4 @@ draft (writing-ecosystem) — JA 正本は content repo の note/ に置き、no
 
 - `writing-ecosystem` skill — 執筆・レビューの orchestrator（Voice / AI-slop / Title / 出典の正本。本 skill の defer 先）
 - global `prose-translation` skill — bilingual公開時のJA→EN翻訳
-- `paper-deposit` skill — 学術 paper を Zenodo / SSRN に出す姉妹ワークフロー（human essay ではなく academic 向け）
+- `paper-deposit` skill（`~/MyAI_Lab/paper-lab` 常駐）— 学術 paper を Zenodo / SSRN に出す姉妹ワークフロー（human essay ではなく academic 向け）

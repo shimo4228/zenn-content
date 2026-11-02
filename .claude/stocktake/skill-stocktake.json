@@ -1,0 +1,69 @@
+{
+  "evaluated_at": "2026-11-02T08:12:23Z",
+  "skills": {
+    "article-stocktake": {
+      "path": ".claude/skills/article-stocktake/SKILL.md",
+      "verdict": "Improve",
+      "reason": "週次収集（Step 1）の記述が実物とずれ、Zenn views / note の記事別累計が 3 週連続で欠けている。組み込みブラウザは 2026-10-19・10-26・11-02 の定期収集でいずれもログイン画面へ飛ばされ（commit 51aaa1c / 8095d9f の本文、f1d9e46 の題「zenn_dash 0 件 / note_dash 0 件」）、L39「アプリが動いていれば読める」は観測と合わない。L25 が週次にする理由として挙げた「記事ごとの公開直後の伸び」はこの 3 週分が再構成できない。加えて note ダッシュボードの記事表は既定で「過去 28 日間」に従う（commit 1d004c3 の本文で発見）が、L44 は期間の切り替えを書かずに「累計」と読ませている。L91 の「global `title-reviewer`」は L75・L109 の project-local 表記と食い違う（title-reviewer は .claude/agents/ にある）。",
+      "mtime": "2026-11-02T08:11:51Z",
+      "outcome": "applied",
+      "note": "No リスト (1)(2)(3) を適用。(4) L91/L92 の title-reviewer 表記は title-reviewer 退役の問いが著者に戻っている間は触らず保留"
+    },
+    "note-publishing": {
+      "path": ".claude/skills/note-publishing/SKILL.md",
+      "verdict": "Keep",
+      "reason": "note への原文転載の唯一の操作手順で、名指す artifact はすべて実在し現行（scripts/note_publish.py の prepare / verify と全 flag、scripts/render_note_assets.sh、.notes/note-publishing/readback.py、docs/note-pipeline.md、references/hashtags.md）。docs/note-pipeline.md の「run draft が draft_ok を返す（未完了）」と本文 L225-226 の「通るまで install を実行しない」は一致している。外部 URL 12 本は 2026-11-02 の url_liveness で live（help-note は 301）。references/hashtags.md の valid-until は 2026-11-04 で、失効時の扱いをファイル自身が持つ。",
+      "mtime": "2026-11-02T08:05:07Z",
+      "outcome": "kept",
+      "folded_into": "distill-09"
+    },
+    "publish-article": {
+      "path": ".claude/skills/publish-article/SKILL.md",
+      "verdict": "Improve",
+      "reason": "Dev.to の既定が channel contract と逆になっている。publishing-channels.md L113 は「Dev.toは著者の公開GO後に英訳ができ次第すぐ投稿するのを既定とする」と定め、運用もそれに従っている（MEMORY の各 pipeline 行が「EN Dev.to 即時投稿」）が、本 skill L72-78 は「dry-runを著者へ提示して日時を確認してから予約する」を既定にし、即時投稿を「著者が明示した場合だけ」にしている — 指定の無い場合にだけ発火する既定の矛盾。また L106 の告知の下書き先 `x-draft` は現在「daily-research report から長い X 投稿を 1 本書く」skill で、公開記事の告知は global `social-post`（X / Bluesky / Substack Notes を Buffer の下書きにし、投稿は著者）が持つ。",
+      "mtime": "2026-11-02T08:11:51Z",
+      "outcome": "applied",
+      "note": "distill-03（同じ Dev.to 既定の食い違い）を同じ編集で満たした"
+    },
+    "quality-gate": {
+      "path": ".claude/skills/quality-gate/SKILL.md",
+      "verdict": "Improve",
+      "reason": "title-reviewer の確認を全 channel に固定で課しており、EN 訳を受け入れる contract と矛盾する。publishing-channels.md L24-26 は EN 訳（Dev.to / Substack）について「`fact-checker`・`title-reviewer` は EN では回さない。EN の題は translator の推奨案で決める」と定めるが、本 skill は Input L18 と Procedure 4（L37）で「最新 title-reviewer が本文の最後の構造変更後に実行され」を必須にし、Verdict の FAIL に「title decision」の未解決を含める。publish-article L87-89 は EN 稿にも quality-gate を通すので、文面どおりに回すと EN 稿は title-reviewer が無いだけで FAIL になる。冒頭 L10-11 の「reviewer 名…をハードコードしない」とも食い違う。",
+      "mtime": "2026-11-02T08:05:07Z",
+      "outcome": "pending",
+      "note": "著者が title-reviewer の退役を求め、その問いを著者へ戻しているため未適用"
+    },
+    "session-theme-mining": {
+      "path": ".claude/skills/session-theme-mining/SKILL.md",
+      "verdict": "Keep",
+      "reason": "過去セッションから記事の問いを 0〜3 件発見する唯一の手順で、helper の subcommand と flag（catalog の --since-days / --all / --seed / --before、trace、history-list、history-record --input）はすべて scripts/session_catalog.py L756-789 に実在する。cache の既定 path（L41 `~/.claude/cache/session-theme-mining`）も本文 L35 と一致し、history.json は 2026-10-22 に更新されていて使われている。disable-model-invocation: true なので description は常駐しない。",
+      "mtime": "2026-11-02T08:05:07Z",
+      "outcome": "kept",
+      "folded_into": "distill-12"
+    },
+    "substack-publishing": {
+      "path": ".claude/skills/substack-publishing/SKILL.md",
+      "verdict": "Improve",
+      "reason": "§7 配信ファネル（L118-173）が global `social-post` と Substack Notes の執筆で重なり、どちらも相手を指していない。social-post は「Substack Notes posts を Buffer の下書きにする」skill で、告知の書き出しを直近と変える・著者の断片をそのまま使うと定めるが、§7 は「1 エッセイ → 3 Notes」をテンプレート 3 型で組み、「反応の良かった Note は数ヶ月後に同じ言葉で再投稿してよい」（L141）とする。§7 の後半（プロフィール写真・Welcome email・やらないことの一覧）は一度きりの著者の設定と方針で、agent が実行する手順ではない。ほかに本文内の食い違いが 2 件ある — L33-34「手打ちの `pandoc` を書かない」の直後に §5 L73 が手打ちの pandoc を載せる、L142 が slop 判定原則を writing-ecosystem のものとするが、その文は .claude/rules/writing-principles.md L17 にある。L192 の `paper-deposit` は ~/MyAI_Lab/paper-lab/.claude/skills/ にしかなく、この repo からは解決しない。",
+      "mtime": "2026-11-02T08:12:01Z",
+      "outcome": "applied",
+      "note": "(3)(4)(5) と social-post への defer を適用。(1) の 3 ヶ月逐語ルールと social-post の書き出し変更のどちらに従うか、(2) §7 の一度きりの設定を残すかは著者判断として未決"
+    },
+    "writing-ecosystem": {
+      "path": ".claude/skills/writing-ecosystem/SKILL.md",
+      "verdict": "Update",
+      "reason": "執筆 orchestrator としての手順は現行で、名指す agent・skill・reference・Codex companion の path はすべて実在するが、外への参照に実物とずれた所が 2 種ある。SNS 下書きの行き先として description（L3「SNS 下書き（→ x-draft）」）と Related L315 が `x-draft` を指すが、x-draft は今「daily-research report から長い X 投稿を 1 本書く」skill で、記事告知と断片の投稿は `social-post` が持つ。L227 の `citation-formatter` agent は ~/.claude/agents にも .claude/agents にも無く、~/MyAI_Lab/paper-lab/.claude/agents/ にしかない（同じ節の publication-procedures.md は paper-ecosystem に所在を添えている）。",
+      "mtime": "2026-11-02T08:07:57Z",
+      "outcome": "applied",
+      "note": "description・Related・L227 だけを適用。title-reviewer に関わる箇所は触っていない"
+    },
+    "zenn-format": {
+      "path": ".claude/skills/zenn-format/SKILL.md",
+      "verdict": "Keep",
+      "reason": "Zenn の frontmatter・topics・記法・図の正本で、名指す script（scripts/zenn_evidence.py の --text / --online）、npm scripts（validate / evidence）、skill: mono-figure、pilot の articles/jev-retrofit-limits.md はすべて実在し、Zenn Markdown Guide の URL は 2026-11-02 に live。published_at を「`published: true`でrequired」とする L38 は実物（scripts/generate_article_index.py L95-96 が published_at 無しの公開記事で ValueError）と一致する。食い違っているのは rules 側で、publishing-channels.md L57「省略はdraftまたは即時公開だけ」が実物とずれている（rules ソースの範囲）。",
+      "mtime": "2026-11-02T08:05:07Z",
+      "outcome": "kept",
+      "folded_into": "distill-12"
+    }
+  }
+}

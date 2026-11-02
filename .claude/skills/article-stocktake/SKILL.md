@@ -36,12 +36,12 @@ cd scripts && uv run python metrics_snapshot.py
 
 `scripts/metrics/snapshots.jsonl` に追記される（Zenn: liked/bookmarked/comments、Dev.to: reactions/comments/views、フォロワー総数）。API 欠損は fail-soft — 片系が死んでいても続行し、警告のみ。
 
-続けて、Claude アプリの組み込みブラウザ（`mcp__Claude_Browser__*`）でダッシュボードを読み、同じファイルへ追記する。Chrome と拡張の起動に依存しないので、アプリが動いていれば読める。閲覧数は公開 API に無く、ここでしか取れない。
+続けて、Claude アプリの組み込みブラウザ（`mcp__Claude_Browser__*`）でダッシュボードを読み、同じファイルへ追記する。閲覧数は公開 API に無く、ここでしか取れない。組み込みブラウザのログインは切れることがあり、切れているとダッシュボードはログイン画面へ飛ぶ（2026-11-02 時点で 3 週続けて観測）。最初に両ダッシュボードを開いてログイン状態を確かめ、飛ばされた source は下のログイン行に従う。
 
 | source | 画面 | 読む値 |
 |---|---|---|
 | `zenn_dash` | `https://zenn.dev/dashboard/stats` の「投稿ごとの合計表示回数」（「もっと読み込む」を尽きるまで押す） | 記事ごとの `views`（累計）と、「表示回数」の直近 1 か月合計 |
-| `note_dash` | `https://note.com/dashboard` の記事表 | 記事ごとの `impressions` / `pv` / `likes` / `comments`（累計）と、上部の過去 28 日合計 |
+| `note_dash` | `https://note.com/dashboard` の記事表。期間を「全期間」に切り替えてから読む（既定は過去 28 日間で、記事表もその期間に従う） | 記事ごとの `impressions` / `pv` / `likes` / `comments`（全期間の累計）と、account 行 2 本 — 過去 28 日合計と全期間合計。記事ごとの値の合計が全期間合計と一致するか確かめる |
 
 - 行の形（1 記事 1 行、同じ収集回は同じ `ts`）:
   - `{"ts", "source": "zenn_dash", "slug", "views", "published_at"}`
@@ -51,7 +51,8 @@ cd scripts && uv run python metrics_snapshot.py
 - 数字はスクリーンショットから読まず、javascript_tool で DOM から取る。Zenn は `a[href*="/link/articles/"]`、note は `a[href*="/shimo4228/n/"]` ごとに、リンクを含む行の innerText を取り出して数値化し、件数が画面の記事数と一致するか確かめる。行の範囲は公開日（Zenn は「YYYY年M月D日に公開」）を目印に親要素をたどる — 題に「回」を含む記事があり、「回」を目印にすると数値の手前で止まる
 - `-` 表示は 0 として記録する
 - 組み込みブラウザでは、裏のタブ（`visibilityState: hidden`）でも note の記事表が読み込まれる（2026-10-05 確認）。Chrome の裏タブでは止まった
-- どちらかにログインしていなければ、その source を飛ばして報告する（ログインは著者が行う。Zenn の Google ログインは組み込みブラウザでパスキーが使えないので、別の確認方法を選ぶ）
+- ダッシュボードがログイン画面へ飛んだら、Claude in Chrome（`mcp__claude-in-chrome__*`）で同じ画面を読む。Chrome でも未ログインなら、その source を飛ばして報告する（ログインは著者が行う。Zenn の Google ログインは組み込みブラウザでパスキーが使えないので、Chrome 側か別の確認方法を選ぶ）
+- 同じ source が 2 回続けて欠けたら（`snapshots.jsonl` の直前の収集回にもその source の行が無い）、報告の冒頭に著者へのログイン依頼を置く。どのダッシュボードに、どのブラウザ（組み込み / Chrome）でログインしてほしいかを書く — 欠けた週の記事ごとの伸びは後から再構成できない
 
 ### Step 2: 正規化と tier 算出
 

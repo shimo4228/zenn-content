@@ -1,6 +1,6 @@
 ---
 name: writing-ecosystem
-description: 人間向け記事・エッセイ・ブログポスト・ニュースレターの唯一の執筆 orchestrator。project の publication channel contract を読み、中心命題 1 つの editorial brief、因果線、証拠の選択と除外、構成、執筆、review panel、著者の内容 GO、title-reviewer、quality-gate までを統括する。Use when — 「この記事を書いて」「このテーマでエッセイにして」「原稿の論点を一つに絞って構造改稿して」のような新規執筆・全体改稿・全文の別 channel 展開。NOT for — 一文や段落だけの翻訳（→ prose-translation）、title だけ（→ headline-craft / title-reviewer）、SNS 下書き（→ x-draft）、公開 thread 返信（→ public-comment）、AI 向け docs、README、paper、媒体固有の公開操作。
+description: 人間向け記事・エッセイ・ブログポスト・ニュースレターの唯一の執筆 orchestrator。project の publication channel contract を読み、中心命題 1 つの editorial brief、因果線、証拠の選択と除外、構成、執筆、review panel、著者の内容 GO、title-reviewer、quality-gate までを統括する。Use when — 「この記事を書いて」「このテーマでエッセイにして」「原稿の論点を一つに絞って構造改稿して」のような新規執筆・全体改稿・全文の別 channel 展開。NOT for — 一文や段落だけの翻訳（→ prose-translation）、title だけ（→ headline-craft / title-reviewer）、SNS の告知・断片（→ social-post）、公開 thread 返信（→ public-comment）、AI 向け docs、README、paper、媒体固有の公開操作。
 compatibility: Designed for Claude Code (or similar agent products). Orchestrates the review agents under <project>/.claude/agents/.
 user-invocable: true
 origin: shimo4228
@@ -224,7 +224,7 @@ fact-check で確定した一次資料を、**本文の出典セクションに�
 |---|---|
 | エッセイチャンネル | 末尾に `## 出典・参考文献`（ブロック構成は `fact-checker` の出力に従う） |
 | 実用チャンネルの記事 / tutorial | 本文中の inline link を基本に、必要なら末尾に補助的な References |
-| 学術 paper | 本ワークフローではなく `citation-formatter` agent（in-text ↔ reference の 1:1・format・DOI 検証） |
+| 学術 paper | 本ワークフローではなく `citation-formatter` agent（`~/MyAI_Lab/paper-lab` 常駐、`paper-ecosystem` の一部。in-text ↔ reference の 1:1・format・DOI 検証） |
 
 引用ごとに要る検証の深さ（帰属・中身・評価）は [`references/publication-procedures.md`](references/publication-procedures.md) を読む。
 
@@ -312,7 +312,7 @@ AI が本文を書いた稿は、全 channel で [`references/publication-proced
 ## Related（この flow の外へ route する先）
 
 - `prose-translation` skill — 日英双方向の voice 保持翻訳。一文・一段落の翻訳はこちらだけで足りる
-- `x-draft` skill — X 投稿の下書き（Voice は SNS register への意図的分岐）
+- `social-post` skill — 記事の告知と著者の断片を X / Bluesky / Substack Notes の Buffer 下書きにする（Voice は SNS register への意図的分岐）
 - `public-comment` skill — 公開 thread への返信
 - `readme-writer` skill — README / repo トップページ（Voice は ですます への意図的分岐）
 - `llms-txt-writer` skill — AI 向けドキュメント（llms.txt / FAQ 等）
