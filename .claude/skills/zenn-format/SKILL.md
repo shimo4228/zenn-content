@@ -7,7 +7,7 @@ origin: shimo4228
 
 # Zenn Format Skill
 
-文体と執筆プロセスはproject-local `writing-ecosystem`、titleは`title-reviewer` agent、channel値は
+文体と執筆プロセスはproject-local `writing-ecosystem`、titleは`headline-craft`、channel値は
 `.claude/rules/publishing-channels.md`、公開操作は`publish-article`が持つ。
 
 ## Frontmatter
@@ -161,6 +161,6 @@ validation後の公開処理は`publish-article`へ渡す。
 ## Related
 
 - `.claude/rules/publishing-channels.md`
-- project-local `writing-ecosystem` / `title-reviewer` agent
+- project-local `writing-ecosystem`; `headline-craft`
 - local `publish-article`
 - [Zenn Markdown Guide](https://zenn.dev/zenn/articles/markdown-guide)

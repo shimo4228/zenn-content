@@ -1,5 +1,5 @@
 {
-  "evaluated_at": "2026-11-02T08:07:10Z",
+  "evaluated_at": "2026-11-02T08:23:29Z",
   "total_desc_words": 322,
   "agents": {
     "devto-translator": {
@@ -44,11 +44,9 @@
     },
     "title-reviewer": {
       "path": ".claude/agents/title-reviewer.md",
-      "desc_words": 36,
-      "body_lines": 75,
-      "verdict": "Keep",
-      "reason": "Description states the dispatch point (after content GO and headline-craft, before quality-gate), out-of-scope work and that it gives no verdict/score/rank, matching the body; references (writing-ecosystem §5 Title, Title Conventions, headline-craft, docs/PUBLICATIONS.md) exist; not reading reception metrics is a deliberate Goodhart boundary. Note: its retirement is pending an author decision in the 2026-11-02 stocktake; re-evaluate when that decision lands. desc_words is whitespace-counted and undercounts the Japanese description.",
-      "mtime": "2026-11-02T08:05:07Z"
+      "verdict": "Retire",
+      "reason": "著者判断（2026-11-02）で退役。タイトルの候補と点検は headline-craft（初見読み §5・約束の監査 §6）に寄せた。Axis・Premise・Distinctness・語調の印・対抗案は headline-craft に無く、著者の判断で引き継がない。",
+      "status": "retired"
     }
   }
 }

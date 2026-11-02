@@ -21,7 +21,7 @@ zenn-content is defined as a bilingual (Japanese / English) technical content re
 - **Toolchain**: Zenn CLI 0.4.5, Python 3.13 run through uv, httpx, python-frontmatter. No prose/markdown linter — textlint/markdownlint/husky/prh were removed 2026-07; only `zenn list:articles` frontmatter validation remains
 - **Writing agent**: Claude Code
 - **Project skills**: `.claude/skills/` — `zenn-format`, `publish-article`, `substack-publishing`, and `article-stocktake`. `writing-ecosystem`, `quality-gate`, `session-theme-mining`, and `note-publishing` are project-local too.
-- **Project agents**: `.claude/agents/` — `editor`, `essay-reviewer`, `prose-clarity-reviewer`, `fact-checker`, `title-reviewer`, `devto-translator` (article drafting is done directly by the orchestrator, not delegated to a subagent)
+- **Project agents**: `.claude/agents/` — `editor`, `essay-reviewer`, `prose-clarity-reviewer`, `fact-checker`, `devto-translator` (article drafting is done directly by the orchestrator, not delegated to a subagent)
 - **Global writing assets**: `collect-context`, `headline-craft`, and `prose-translation` (in `~/.claude/skills/`)
 - **Project rules**: `.claude/rules/writing-principles.md` holds the writing backbone (the author's principles); `.claude/rules/publishing-channels.md` declares path, audience, register, review panel, validation, title constraints, and publish handoff per channel
 - **Dev.to URL ledger**: `scripts/schedule.json` (posted-URL record; not a membership list — JP membership is `articles/*.md` frontmatter)
@@ -67,7 +67,7 @@ zenn-content is defined as a GitHub-hosted content repository that produces long
 
 ## Who writes the articles in zenn-content?
 
-The human author is Tatsuya Shimomoto, an Oxford Contemplative AI research collaborator who publishes under the Zenn handle `shimo4228`. Drafting is done directly by the Claude Code orchestrator, using project-local `writing-ecosystem`: one central thesis, one causal spine, selected evidence with explicit roles, and an out-of-scope list are approved before drafting. After structural freeze, the project channel editor, `fact-checker`, and a first-contact read run on Codex (the Codex plugin's `codex:codex-rescue`, read-only, using the `prose-clarity-reviewer` checklist) inspect the frozen body while the title is still provisional; title work follows the author's content GO, with `headline-craft` generating candidates and `title-reviewer` returning findings. The author retains final approval before publication.
+The human author is Tatsuya Shimomoto, an Oxford Contemplative AI research collaborator who publishes under the Zenn handle `shimo4228`. Drafting is done directly by the Claude Code orchestrator, using project-local `writing-ecosystem`: one central thesis, one causal spine, selected evidence with explicit roles, and an out-of-scope list are approved before drafting. After structural freeze, the project channel editor, `fact-checker`, and a first-contact read run on Codex (the Codex plugin's `codex:codex-rescue`, read-only, using the `prose-clarity-reviewer` checklist) inspect the frozen body while the title is still provisional; title work follows the author's content GO, with `headline-craft` generating candidates and auditing them with a cold read isolated from the body. The author retains final approval before publication.
 
 ## How are articles cross-posted to Zenn and Dev.to?
 
@@ -79,7 +79,7 @@ Content Integrity means the author owns the central thesis, claims, and structur
 
 ## How does the publishing pipeline work?
 
-The publishing pipeline is: optional `session-theme-mining` → author theme selection → optional `collect-context` → approved one-thesis editorial brief → orchestrator draft → (Zenn only) persona-read loop with skill `persona-read-loop` → structural freeze → channel editor + `fact-checker` + first-contact read on Codex (may run on the frozen body before the title is final) → author content GO → `headline-craft` candidates → `title-reviewer` findings and author title selection → project-local `quality-gate` reading `.claude/rules/publishing-channels.md` → author GO → project-local publisher. Structural review changes invalidate the brief and any completed title work; copy edits do not. `publish-article` handles Zenn/Dev.to mechanics, `note-publishing` handles note, and `substack-publishing` handles Substack.
+The publishing pipeline is: optional `session-theme-mining` → author theme selection → optional `collect-context` → approved one-thesis editorial brief → orchestrator draft → (Zenn only) persona-read loop with skill `persona-read-loop` → structural freeze → channel editor + `fact-checker` + first-contact read on Codex (may run on the frozen body before the title is final) → author content GO → `headline-craft` candidates and cold-read audit → author title selection → project-local `quality-gate` reading `.claude/rules/publishing-channels.md` → author GO → project-local publisher. Structural review changes invalidate the brief and any completed title work; copy edits do not. `publish-article` handles Zenn/Dev.to mechanics, `note-publishing` handles note, and `substack-publishing` handles Substack.
 
 ## How are articles reviewed before publishing?
 
@@ -95,7 +95,7 @@ The publication channel contract defines register and reader promise: Zenn uses 
 
 ## What Claude Code skills power the writing workflow?
 
-The sole human-prose orchestrator is project-local `writing-ecosystem`. Theme discovery uses `session-theme-mining`; evidence collection uses `collect-context`; title generation and review are separated between `headline-craft` and `title-reviewer`; review uses the project agents in `.claude/agents/`; `quality-gate` aggregates the local contract. `writing-ecosystem`, `quality-gate`, and `session-theme-mining` are project-local alongside Zenn format, platform publishing (`publish-article`, `note-publishing`, `substack-publishing`), and reception measurement (`article-stocktake`). The retired project skills and judges are not runtime dependencies.
+The sole human-prose orchestrator is project-local `writing-ecosystem`. Theme discovery uses `session-theme-mining`; evidence collection uses `collect-context`; title generation and review are done by `headline-craft`; review uses the project agents in `.claude/agents/`; `quality-gate` aggregates the local contract. `writing-ecosystem`, `quality-gate`, and `session-theme-mining` are project-local alongside Zenn format, platform publishing (`publish-article`, `note-publishing`, `substack-publishing`), and reception measurement (`article-stocktake`). The retired project skills and judges are not runtime dependencies.
 
 ## What terminology must stay consistent across articles?
 

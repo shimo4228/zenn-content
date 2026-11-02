@@ -1,6 +1,6 @@
 ---
 name: quality-gate
-description: "人間向け公開物の受け入れゲート。完成稿と project の publication channel contract を読み、必須 reviewer verdict・機械検査・最新 title-reviewer findings が揃ったかを集約して PASS / FAIL / BLOCKED を返す。Use when — 公開直前、他人の原稿を公開してよいか確認するとき、/quality-gate <file>。NOT for — prose の再レビュー（→ editor / essay-reviewer / prose-clarity-reviewer）、タイトル候補の点検（→ title-reviewer）、公開操作（→ project-local publishing skill）、paper / README の専用ゲート。"
+description: "人間向け公開物の受け入れゲート。完成稿と project の publication channel contract を読み、必須 reviewer verdict・機械検査・著者のタイトル選択が揃ったかを集約して PASS / FAIL / BLOCKED を返す。Use when — 公開直前、他人の原稿を公開してよいか確認するとき、/quality-gate <file>。NOT for — prose の再レビュー（→ editor / essay-reviewer / prose-clarity-reviewer）、タイトル候補の生成と点検（→ headline-craft）、公開操作（→ project-local publishing skill）、paper / README の専用ゲート。"
 user-invocable: true
 origin: shimo4228
 ---
@@ -15,7 +15,7 @@ origin: shimo4228
 - 完成稿の path
 - `<project>/.claude/rules/*.md` の publication channel contract
 - contract が要求する reviewer report / deterministic check result
-- 本文の最後の構造変更より後に得た `title-reviewer` findings と、著者のタイトル選択
+- 本文の最後の構造変更より後の、著者のタイトル選択
 
 contract は対象 path ごとに少なくとも次を宣言する:
 
@@ -34,7 +34,7 @@ contract は対象 path ごとに少なくとも次を宣言する:
    処分記録と照合して確認する。report が無ければ FAIL。
 3. contract の deterministic checks を実行または証跡照合する。秘密・個人 path・未サニタイズの
    生ログは全公開物の共通 blocker とする。媒体固有 validator は contract の command を使う。
-4. 最新 `title-reviewer` が本文の最後の構造変更後に実行され、著者がタイトルを選択済みか確認する。
+4. contract がその channel にタイトル選択を求めるなら、著者が本文の最後の構造変更より後にタイトルを選択済みか確認する。
 5. prose を再レビューせず、証拠付きで 1 つの verdict を返す。
 
 ## Verdict

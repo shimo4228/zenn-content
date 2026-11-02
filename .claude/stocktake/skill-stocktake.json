@@ -1,5 +1,5 @@
 {
-  "evaluated_at": "2026-11-02T08:12:23Z",
+  "evaluated_at": "2026-11-02T08:23:29Z",
   "skills": {
     "article-stocktake": {
       "path": ".claude/skills/article-stocktake/SKILL.md",
@@ -7,7 +7,7 @@
       "reason": "週次収集（Step 1）の記述が実物とずれ、Zenn views / note の記事別累計が 3 週連続で欠けている。組み込みブラウザは 2026-10-19・10-26・11-02 の定期収集でいずれもログイン画面へ飛ばされ（commit 51aaa1c / 8095d9f の本文、f1d9e46 の題「zenn_dash 0 件 / note_dash 0 件」）、L39「アプリが動いていれば読める」は観測と合わない。L25 が週次にする理由として挙げた「記事ごとの公開直後の伸び」はこの 3 週分が再構成できない。加えて note ダッシュボードの記事表は既定で「過去 28 日間」に従う（commit 1d004c3 の本文で発見）が、L44 は期間の切り替えを書かずに「累計」と読ませている。L91 の「global `title-reviewer`」は L75・L109 の project-local 表記と食い違う（title-reviewer は .claude/agents/ にある）。",
       "mtime": "2026-11-02T08:11:51Z",
       "outcome": "applied",
-      "note": "No リスト (1)(2)(3) を適用。(4) L91/L92 の title-reviewer 表記は title-reviewer 退役の問いが著者に戻っている間は触らず保留"
+      "note": "No リスト (1)(2)(3) を適用。(4) L91/L92 の title-reviewer 表記は title-reviewer 退役の問いが著者に戻っている間は触らず保留。(4) は title-reviewer 退役に合わせ headline-craft に置き換えて解消"
     },
     "note-publishing": {
       "path": ".claude/skills/note-publishing/SKILL.md",
@@ -30,8 +30,8 @@
       "verdict": "Improve",
       "reason": "title-reviewer の確認を全 channel に固定で課しており、EN 訳を受け入れる contract と矛盾する。publishing-channels.md L24-26 は EN 訳（Dev.to / Substack）について「`fact-checker`・`title-reviewer` は EN では回さない。EN の題は translator の推奨案で決める」と定めるが、本 skill は Input L18 と Procedure 4（L37）で「最新 title-reviewer が本文の最後の構造変更後に実行され」を必須にし、Verdict の FAIL に「title decision」の未解決を含める。publish-article L87-89 は EN 稿にも quality-gate を通すので、文面どおりに回すと EN 稿は title-reviewer が無いだけで FAIL になる。冒頭 L10-11 の「reviewer 名…をハードコードしない」とも食い違う。",
       "mtime": "2026-11-02T08:05:07Z",
-      "outcome": "pending",
-      "note": "著者が title-reviewer の退役を求め、その問いを著者へ戻しているため未適用"
+      "outcome": "applied",
+      "note": "著者が title-reviewer の退役を選んだので、title-reviewer の確認をやめ、contract がその channel にタイトル選択を求めるときだけ著者の選択を確認する形に直した（EN 訳の矛盾も同時に解消）"
     },
     "session-theme-mining": {
       "path": ".claude/skills/session-theme-mining/SKILL.md",

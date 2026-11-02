@@ -98,6 +98,8 @@ ADR-0008 が risk として挙げた「judge の好みへの文体収束（平�
    > （本 ADR Context 2 でテーマ判定器について書いたのと同じ形）。findings だけを返す
    > `title-reviewer` に置き換え、採否は著者が持つ。
 
+   > **注記（2026-11-02, commit「refactor(agents): title-reviewer を退役し、タイトルの候補と点検を headline-craft に寄せる」）**: `title-reviewer` は退役した。タイトルの候補生成と、本文から切り離した初見読み・約束の監査は `headline-craft` が持ち、採否は引き続き著者が持つ。中心命題との軸・前提への問い・直近の題との形の重なりの 3 観点は、著者の判断で引き継がずに外した。
+
 ## Review-when
 
 - **著者通読を省く運用に変わったら** — 本 ADR の前提（最上位ゲートは人間の通読）が消える。

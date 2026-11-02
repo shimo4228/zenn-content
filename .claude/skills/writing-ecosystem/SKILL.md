@@ -1,6 +1,6 @@
 ---
 name: writing-ecosystem
-description: 人間向け記事・エッセイ・ブログポスト・ニュースレターの唯一の執筆 orchestrator。project の publication channel contract を読み、中心命題 1 つの editorial brief、因果線、証拠の選択と除外、構成、執筆、review panel、著者の内容 GO、title-reviewer、quality-gate までを統括する。Use when — 「この記事を書いて」「このテーマでエッセイにして」「原稿の論点を一つに絞って構造改稿して」のような新規執筆・全体改稿・全文の別 channel 展開。NOT for — 一文や段落だけの翻訳（→ prose-translation）、title だけ（→ headline-craft / title-reviewer）、SNS の告知・断片（→ social-post）、公開 thread 返信（→ public-comment）、AI 向け docs、README、paper、媒体固有の公開操作。
+description: 人間向け記事・エッセイ・ブログポスト・ニュースレターの唯一の執筆 orchestrator。project の publication channel contract を読み、中心命題 1 つの editorial brief、因果線、証拠の選択と除外、構成、執筆、review panel、著者の内容 GO、タイトル、quality-gate までを統括する。Use when — 「この記事を書いて」「このテーマでエッセイにして」「原稿の論点を一つに絞って構造改稿して」のような新規執筆・全体改稿・全文の別 channel 展開。NOT for — 一文や段落だけの翻訳（→ prose-translation）、title だけ（→ headline-craft）、SNS の告知・断片（→ social-post）、公開 thread 返信（→ public-comment）、AI 向け docs、README、paper、媒体固有の公開操作。
 compatibility: Designed for Claude Code (or similar agent products). Orchestrates the review agents under <project>/.claude/agents/.
 user-invocable: true
 origin: shimo4228
@@ -40,8 +40,7 @@ pointer、`collect-context` が作る evidence dossier の順に限定して受�
 | **Pre-write** | `collect-context` skill | 素材収集と証拠台帳（Claims Register / 一次・⚠未検証の tier）。編集判断はしない | 執筆前に素材を集めるとき |
 | **Write** | 本 skill「editorial brief と執筆フロー」 | 中心命題・因果線・証拠選択・構成・執筆 | 初稿・改稿 |
 | **Persona read** | skill: `persona-read-loop`（article preset）+ `references/persona-read.md`（Zenn の記録の置き場と比較材料） | 記事ごとの読み手 3 人が読後に残った判断を言い直し、見せ方だけを直す。受け入れはしない | Zenn 稿の構造凍結前 |
-| **Title generation** | `headline-craft` skill | 「開かせる一行」の候補生成 | 著者の内容 GO 後 |
-| **Title review** | `title-reviewer` agent | 本文との契約を fresh context で点検し findings を返す | headline-craft の後、quality-gate の前 |
+| **Title** | `headline-craft` skill | 「開かせる一行」の候補生成と、本文から切り離した初見読み・約束の監査 | 著者の内容 GO 後、quality-gate の前 |
 | **Review: 品質** | `editor` agent | 議論の動き・説明の質・AI slop・記事内用語（code / path の照合は `fact-checker`） | 実用チャンネルのレビュー時 |
 | **Review: 論理** | `essay-reviewer` agent | エッセイの論理構成・過積載・トーン | エッセイチャンネルのレビュー時 |
 | **Review: 初見明瞭性（cross-model）** | Codex plugin の `codex:codex-rescue` agent（読み取り専用、checklist は `prose-clarity-reviewer` agent） | 第一画面・中心命題・内部文脈依存・カテゴリのすり替え | 構造凍結後の review panel 時 |
@@ -144,7 +143,7 @@ Zenn 稿は GO の時点で、通読の指摘数を [`evals/read-through-log.md`
 図は内容 GO の後に起こす（brief の Figure plan をここで埋める。形の選び方と手順は project の format skill — Zenn は `zenn-format` の Figures。
 図の規約を持たない channel では Figure plan は「なし」と書く）。
 図の文字と本文の差分だけを `fact-checker` に回し、図を足した稿は著者がもう一度通読する。図と
-その直後の 1 文の追加は構造変更ではないので、この通読は確認であり、内容 GO と title-reviewer は
+その直後の 1 文の追加は構造変更ではないので、この通読は確認であり、内容 GO とタイトル選択は
 やり直さない。
 
 #### 指摘の処分規律
@@ -189,10 +188,10 @@ Zenn 稿は GO の時点で、通読の指摘数を [`evals/read-through-log.md`
 
 ### 5. Title
 
-内容 GO 済みの本文に対して `headline-craft` で候補を広く作り、`title-reviewer` の findings を見て
+内容 GO 済みの本文に対して `headline-craft` で候補を広く作り、その初見読みと約束の監査を見て
 著者がタイトルを選ぶ。`headline-craft` には本文のほかに、brief の中心命題と Author's words、
 下の Title Conventions を渡す。候補を落とす条件は Title Conventions の「著者が決めること」に従う。
-タイトル選択後に本文の構造を変えたら、内容 GO と title-reviewer を
+タイトル選択後に本文の構造を変えたら、内容 GO とタイトル選択を
 やり直す。表現修正だけなら再実行しない。
 
 ### 6. Acceptance
@@ -296,11 +295,9 @@ AI が本文を書いた稿は、全 channel で [`references/publication-proced
 
 ### 著者が決めること
 
-誠実さ以外の理由では候補を落とさない。語調と文体の印は `title-reviewer` が付け、採否は著者が決める。
+誠実さ以外の理由では候補を落とさない。採否は著者が決める。
 
-*この節は**規範**の正本。候補生成は `headline-craft`、凍結稿との契約点検は `title-reviewer` が
-正本。生成と点検は別の context で行う。`title-reviewer` の対抗案と直しは比較のための参照で、
-採るなら著者がその場で選ぶ。*
+*この節は**規範**の正本。候補生成と、本文から切り離した初見読み・約束の監査は `headline-craft` が正本。*
 
 ---
 

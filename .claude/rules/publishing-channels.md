@@ -2,7 +2,7 @@
 # Publishing Channel Contract
 
 このファイルは zenn-content の媒体固有の値だけを持つ。著者の方針と執筆の原理は `.claude/rules/writing-principles.md`、
-執筆手順は project-local `writing-ecosystem`、タイトル点検は `title-reviewer` agent が持つ。ここには path、読者との約束、
+執筆手順は project-local `writing-ecosystem`、タイトルの候補と点検は `headline-craft` が持つ。ここには path、読者との約束、
 register、review panel、機械検査、platform 形式、公開 handoff だけを置く。
 
 ## Channel routing
@@ -23,7 +23,7 @@ path がどの行にも一致しない、または複数行に一致する場合
 
 JP 正本がこの profile を通った後の EN 訳（Dev.to / Substack）は、channel editor の report とその処分記録、AI 開示、
 public-safety scan、channel の機械検査、著者の公開 GO で受け入れる。中身は JP で検証済みなので、ペルソナ読み・初見の読み・
-`fact-checker`・`title-reviewer` は EN では回さない。EN の題は translator の推奨案で決める。
+`fact-checker`・`headline-craft` は EN では回さない。EN の題は translator の推奨案で決める。
 
 - 処分記録: orchestratorが指摘ごとに採用・不採用と理由を1行ずつ残している
 - ペルソナ読み（Zenn のみ）: 各ラウンドの読み手の JSON・判断の照合と、改稿したラウンドの `drift_count.py`（skill: `persona-read-loop`）の出力が
@@ -35,7 +35,7 @@ public-safety scan、channel の機械検査、著者の公開 GO で受け入�
   reportあり。FAILの根拠になったfindingと、カテゴリのすり替え・事実誤り・帰属の誤りは全件処分済み
 - `fact-checker`: INACCURATEとPARTIALLYは全件処分済み（訂正、または一次ソースで反証）
 - 著者の内容GO: レビュー反映後の本文に対して出ている
-- `title-reviewer`: 著者の内容GO後（= 本文の最後の構造変更後）に実行し、findings を見て著者がタイトルを選択済み
+- タイトル: 著者の内容GO後（= 本文の最後の構造変更後）に `headline-craft` を実行し、その候補から著者がタイトルを選択済み
 - AI 開示: AI が本文を書いた稿は、全媒体で`writing-ecosystem/references/publication-procedures.md` の開示 block を
   最末尾に収録済み。Zenn も対象（AI 利用が前提の読者にも、この稿で誰が何をしたかは情報になる）
 - source embedding: Zenn/Dev.toは検証済み主張をinline linkまたはReferencesへ、note/Substackは
@@ -131,6 +131,7 @@ Zennの記事ページがhubへの`<a href>`を持たず、本文末のリンク
 
 - `.claude/rules/writing-principles.md` — 執筆の背骨（著者の方針と原理）
 - project-local `writing-ecosystem` — 共通執筆フロー
-- project-local `quality-gate` skill / `title-reviewer` agent — 共通受け入れ・タイトル点検
+- project-local `quality-gate` skill — 共通受け入れ
+- `headline-craft` skill — タイトルの候補生成と点検
 - local `zenn-format` / `publish-article` / `note-publishing` / `substack-publishing` — platform操作
 - local `devto-translator` — Dev.to固有のEN稿変換。投稿は`publish-article`
