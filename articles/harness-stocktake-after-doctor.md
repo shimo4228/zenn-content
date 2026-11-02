@@ -1,9 +1,10 @@
 ---
-title: "（仮）半年かけて磨いた棚卸しを一つにまとめたら、192項目が2回の判断で片付いた"
+title: "Claude Code の harness 棚卸し、192項目を1枚の report と2回の判断に"
 emoji: "🧹"
 type: "tech"
 topics: ["claudecode", "claude", "agentskills", "harness"]
-published: false
+published: true
+published_at: 2026-11-02 17:00
 ---
 
 前に書いた skill が、もう無いスクリプトを呼んでいる。rule と skill が同じことを違う言い方で言っている。CLAUDE.md が、消した command の名前を挙げている。Claude Code の harness（skills、rules、agents、hooks、CLAUDE.md）は、放っておくとこうして衛生状態が悪くなります。どれも書いたときは正しかったものです。
