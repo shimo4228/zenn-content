@@ -108,7 +108,7 @@ frontmatter: type tech / published: false / emoji 🚦
 
 - 新規: `articles/human-gate-intent-not-diff.md`（唯一の成果物）
 - 読むのみ: `drafts/article-context_human-gate-second-axis_2026-07-26.md`,
-  `~/.claude/docs/adr/0019-human-gate-layer.md`, `~/.claude/rules/common/human-gate.md`
+  `~/.claude/docs/decision-history/0019-human-gate-layer.md`, `~/.claude/rules/common/human-gate.md`
 - 今回は触らない: `articles-en/`, `schedule.json`, git commit / push
 
 ## 検証

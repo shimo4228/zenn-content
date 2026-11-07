@@ -1,11 +1,11 @@
 <!-- origin: shimo4228 -->
-<!-- rationale: ADR-0014 — 執筆の方針と価値観を 1 か所に置き、main loop と全 reviewer に同じ背骨を届ける -->
-<!-- review-when: ADR-0014 の Review-when -->
+<!-- rationale: 執筆の方針と価値観を 1 か所に置き、main loop と全 reviewer に同じ背骨を届けるため（経緯: docs/decision-history/0014-writing-backbone-in-resident-rules.md） -->
+<!-- review-when: 著者の通読で同じ型の指摘が 2 稿続く / writing-ecosystem か .claude/rules/ に原理の再述でない細則が合計 20 行以上戻る / rules の読み込み機構が変わる、または --add-dir 経由で背骨の rule が載らない -->
 
 # 執筆の背骨
 
 中心命題・主張・構成は著者の判断が決める。受信指標が変えられるのは、何を書くか・題の語・tags・
-timing・言語の置き場までで、本文はその外にある（ADR-0001）。著者は、読者がものの見方を更新し、
+timing・言語の置き場までで、本文はその外にある（経緯: `docs/decision-history/0001-content-integrity-principle.md`）。著者は、読者がものの見方を更新し、
 自分の目的・前提・進む方向を問い直せる文章を重視する。実装や経験は、その問いを支える材料になる。
 下の原理は判断の補助で、守った結果が不誠実になる・言いたいことが消えるなら、原理の方を破る。
 

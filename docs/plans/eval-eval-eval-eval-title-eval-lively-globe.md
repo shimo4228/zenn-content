@@ -88,11 +88,11 @@ git 追跡下なので履歴から復元可能（`rules/common/coding-style.md`�
 
 ## ADR
 
-- **`docs/adr/0012-*.md` を新設** — ADR-0008 の Decision 1・2・4 を supersede。
+- **`docs/decision-history/0012-*.md` を新設** — ADR-0008 の Decision 1・2・4 を supersede。
   Context に上の実績（judge 3 本の内訳・theme-eval の verdict が結果を変えていない事実）を記録。
   Review-when: 「著者通読を省く運用に変わったら」「panel が構造的欠陥を見逃す事例が再発したら」
-- **`docs/adr/0008`** に日付つき注記（削除しない）。ADR-0004 の追加基準は維持
-- `docs/adr/README.md` に行追加 + supersede 関係を追記
+- **`docs/decision-history/0008`** に日付つき注記（削除しない）。ADR-0004 の追加基準は維持
+- `docs/decision-history/README.md` に行追加 + supersede 関係を追記
 
 ## 検証
 

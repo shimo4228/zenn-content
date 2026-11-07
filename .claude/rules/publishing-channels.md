@@ -90,7 +90,7 @@ Zenn / Dev.toの全稿は、末尾の関連link節に次の2行を含める。�
 ```
 
 2行は行き先が違うので併記する。正本リンクは**書いたもの**のコーパスへ、著者hubは**作ったもの**（DOI付きの研究repo群）へ届く。
-Zennの記事ページがhubへの`<a href>`を持たず、本文末のリンクだけが本文DOMに残る根拠はADR-0012 Decision 7。
+Zennの記事ページはhubへのリンクを`<a href>`として持たない（`githubUsername`は`__NEXT_DATA__`のJSON値だけで、profile cardのリンク先はZenn内の`/shimo4228`）。だから本文末の1行がhubへの唯一の導線になる（経緯: `docs/decision-history/0012-zenn-review-deterministic-layer.md` Decision 7）。
 
 本文中のself-linkは読者の実行導線または直前の主張を支える一次資料に限定し、それ以外は末尾へ置く。
 

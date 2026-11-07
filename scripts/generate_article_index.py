@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Generate the exhaustive publication index and the README reading-path blocks.
 
-Source of truth (see docs/adr/0009):
+Source of truth (see docs/decision-history/0009):
 
 - ``articles/*.md`` frontmatter decides Zenn-article membership (``published: true``),
   title, topics, slug (filename) and ``published_at`` (required when published).

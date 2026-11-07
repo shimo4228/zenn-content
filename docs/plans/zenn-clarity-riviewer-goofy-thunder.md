@@ -38,7 +38,7 @@
 
 「5. **実測フィードバック**: article-stocktake の最新結果（memory: article-quality.md）— 過去に読者へ届いたテーマ・構造の事実。**推薦理由・優劣づけには使わない**（Notes の禁止条項は維持）」
 
-### 4. ADR-0005 `docs/adr/0005-post-publication-eval-loop.md`（新規）+ index 更新
+### 4. ADR-0005 `docs/decision-history/0005-post-publication-eval-loop.md`（新規）+ index 更新
 
 - Decision: 実測事後 Eval ループの採用。公開前の予測型エンゲージメントレビュアーは**不採用**（Alternatives に理由 3 点: Content Integrity 抵触 / ground truth なし / 旧バズ分析廃止の巻き戻し）
 - 還流の線引き（情報源 ○ / 推薦理由 ×）と、ランク別軸並記（乖離がシグナル）を記録

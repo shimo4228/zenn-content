@@ -8,7 +8,7 @@ cwd は `zenn-content` の git worktree（branch `task/rfc-0028-s1`）。成果�
 最初に読む: harness の `rfcs/0028-correction-commit-trailers.md`（`~/.claude/rfcs/`、特に Status の
 2026-10-18 著者判断）、この repo の `.claude/rules/correction-trailers.md`、
 `.claude/skills/writing-ecosystem/SKILL.md` の「#### 指摘の処分規律」節、同 skill の `MAINTENANCE.md`、
-`docs/adr/0014-writing-backbone-in-resident-rules.md` の 88 行目付近。
+`docs/decision-history/0014-writing-backbone-in-resident-rules.md` の 88 行目付近。
 
 Effort: low — 文面の移設で、仕様が細かい docs 変更
 
@@ -24,7 +24,7 @@ Effort: low — 文面の移設で、仕様が細かい docs 変更
    撤回の扱いの 3 つが、現行規則として書かれている。試行の日付・「試行」の語・撤退条件は SKILL.md に書かない
    （経緯は git と RFC が持つ）。長い雛形は `references/` に置いて SKILL.md から 1 行で指してよい
 3. 試行の読み（数えた値と著者の「続ける」判断の所在 = harness RFC-0028）は `MAINTENANCE.md` に経緯として 1 節で残す
-4. `grep -rn 'correction-trailers' .claude CLAUDE.md docs/adr` が、ADR の注記と MAINTENANCE.md の経緯以外で 0 件。
+4. `grep -rn 'correction-trailers' .claude CLAUDE.md docs/decision-history` が、ADR の注記と MAINTENANCE.md の経緯以外で 0 件。
    ADR-0014 の該当行は本文を書き換えず、`> **注記（2026-10-25, commit「<この commit の subject>」）**` 形式の注記で
    移設先を示す
 5. `npm run validate` が exit 0
@@ -48,7 +48,7 @@ Effort: low — 文面の移設で、仕様が細かい docs 変更
   書けないものは `Out-of-diff findings` に 1 行ずつ
 
 ## Must-not（境界）
-- 変えてよいのは `.claude/rules/correction-trailers.md`（削除）、`.claude/skills/writing-ecosystem/`、`docs/adr/0014-*.md`（注記の追記のみ）だけ
+- 変えてよいのは `.claude/rules/correction-trailers.md`（削除）、`.claude/skills/writing-ecosystem/`、`docs/decision-history/0014-*.md`（注記の追記のみ）だけ
 - `articles/`・`drafts/`・`.github/`・`.claude/settings.json` を変えない
 - `git add -A` を使わない ; harness の `rfcs/` の state は判断役が書く
 - この packet のファイルを編集しない — dispatch 時点で凍結した契約

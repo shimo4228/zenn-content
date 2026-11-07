@@ -16,7 +16,7 @@ Chain: Code Review 条件付き（settings/hooks 変更なし → 不要）、Ve
   - `CLAUDE.md:106` — 「`zenn-writer` skill は歴史的パス維持のための声のルーター」の一文を削除（振り分け表自体は既に zenn-practical-writing を直接指しているため、その行だけ落とす）
   - `docs/CODEMAPS/skills.md:9` — zenn-writer 行を削除し、現在のスキル構成（practical-writing / idea-voice / format の 3 層）に更新
   - `.claude/rules/zenn-writing.md` の Related 節に zenn-writer 言及があれば除去（本文確認の上）
-- `docs/adr/0003-zenn-practical-channel-axis.md` に追記（Consequences 節）: 「router は参照導線消滅を確認し 2026-07-06 に削除」— 新規 ADR は立てない（0003 の決定の後日談）
+- `docs/decision-history/0003-zenn-practical-channel-axis.md` に追記（Consequences 節）: 「router は参照導線消滅を確認し 2026-07-06 に削除」— 新規 ADR は立てない（0003 の決定の後日談）
 
 ### 2. zenn-format の修正（Improve）
 

@@ -139,7 +139,7 @@
       "action": "none"
     },
     {
-      "path": "README.md, README.ja.md, CLAUDE.md, AGENTS.md, CITATION.cff, LICENSE, llms.txt, docs/PUBLICATIONS.md, docs/adr/, rfcs/, docs/plans/research/",
+      "path": "README.md, README.ja.md, CLAUDE.md, AGENTS.md, CITATION.cff, LICENSE, llms.txt, docs/PUBLICATIONS.md, docs/decision-history/, rfcs/, docs/plans/research/",
       "consumer": "forge entrypoints / human-navigation",
       "reachability": "displayed by GitHub or linked from README / llms.txt; PUBLICATIONS.md in sync per check:index",
       "verdict": "Keep",

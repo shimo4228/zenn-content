@@ -17,8 +17,8 @@ as-of: 2026-11-02。親 plan は `~/.claude/docs/plans/enumerated-petting-beaver
 |---|---|
 | 2026-02-24 に `/skill-stocktake` の設計・実装・公開を Zenn に書いた | `articles/skill-stocktake-design-journey.md:2,7` |
 | 2026-02 に ECC へ出した PR 8 件がすべてマージされ、その中に skill-stocktake（PR #265）があった | `articles/ecc-marketplace-contribution.md:10,33,44` |
-| skill-stocktake の `origin` は `shimo4228`（自作）。ECC の更新で上書きしないと決めている | `~/.claude/skills/skill-stocktake/SKILL.md:9`、`~/.claude/docs/adr/0001-ecc-skill-management-policies.md:17` |
-| 1 件ずつの `[y/n/skip]` は 2026-07-03 に stocktake / distill 系 3 skill に入った（commit `f8b08bc`）。著者は 2026-10-31 に「1 個 1 個私に判断を聞く形だから、一括承認しづらい」と言った | `~/.claude/docs/adr/0097-batch-stocktake-report-and-two-decisions.md` Context |
+| skill-stocktake の `origin` は `shimo4228`（自作）。ECC の更新で上書きしないと決めている | `~/.claude/skills/skill-stocktake/SKILL.md:9`、`~/.claude/docs/decision-history/0001-ecc-skill-management-policies.md:17` |
+| 1 件ずつの `[y/n/skip]` は 2026-07-03 に stocktake / distill 系 3 skill に入った（commit `f8b08bc`）。著者は 2026-10-31 に「1 個 1 個私に判断を聞く形だから、一括承認しづらい」と言った | `~/.claude/docs/decision-history/0097-batch-stocktake-report-and-two-decisions.md` Context |
 | ADR-0097（2026-10-31）: 著者の判断は棚卸し 1 回につき 2 回（report の承認と ff 取り込み）。7 本の棚卸し skill が判定までを持ち、承認と適用は harness-stocktake の契約に渡す | ADR-0097 Decision 1・2 |
 | 初回の全体実行（2026-10-31）: 7 source・192 項目・非 Keep 74・判断 2 回・開始から report まで約 30 分 | `enumerated-petting-beaver.md:12`（192 は `research/2026-11-01-doctor-comparison.md:24` にもある。「判断 2 回」の観測は plan:12 にだけある） |
 | AKC の Curate phase: skills / rules / agents が増えたとき、または参照が切れたときに、重複・古い項目・発火しない項目を見つける | `~/MyAI_Lab/akc-cycle/README.md:69` |

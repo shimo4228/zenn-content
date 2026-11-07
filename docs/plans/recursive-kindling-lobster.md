@@ -145,7 +145,7 @@ trade-off の誠実さ / 読者問題ファースト / 第一画面 / タイト�
 
 ### 5. ADR
 
-`docs/adr/0012-zenn-review-deterministic-layer.md` に残す: code / LLM の境界線（どの項目を
+`docs/decision-history/0012-zenn-review-deterministic-layer.md` に残す: code / LLM の境界線（どの項目を
 どちらへ）、`npm run validate` の実効カバレッジと drift しない根拠、免除境界の実測値、
 search-first の却下理由（zenn-validator / textlint）、`lint:links` を `--online` として
 戻す判断と 2026-07 撤去との関係。

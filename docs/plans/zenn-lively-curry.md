@@ -38,7 +38,7 @@
 
 ### Step 1: ADR-0006 を切る
 
-`docs/adr/0006-authorial-values-and-editorial-judgment-skills.md` + `docs/adr/README.md` 索引更新。決定内容:
+`docs/decision-history/0006-authorial-values-and-editorial-judgment-skills.md` + `docs/decision-history/README.md` 索引更新。決定内容:
 1. 著者の判断・価値観を **2 スキルに分割**して正本化（価値観リファレンス = B / 運用ゲート = A。分割理由: 発火文脈が異なる — B は方針議論・企画時、A は執筆・改稿時）
 2. feedback memory は削除せず**一次資料（事例台帳）として残置**、先頭に昇格マークのみ付す
 3. **quality-gate に統合しない**（判断層を機械 gate 化するとテンプレート化の弊害 — feedback_reader-problem-not-author-framing 自身の警告）
@@ -118,13 +118,13 @@
 新規:
 - `.claude/skills/zenn-authorial-values/SKILL.md`
 - `.claude/skills/zenn-editorial-judgment/SKILL.md`
-- `docs/adr/0006-authorial-values-and-editorial-judgment-skills.md`
+- `docs/decision-history/0006-authorial-values-and-editorial-judgment-skills.md`
 - `~/.claude/skills/session-judgment-mining/SKILL.md`（global メタスキル — Step 7。zenn-content repo にはコミットしない）
 
 編集:
 - `.claude/skills/zenn-practical-writing/SKILL.md`（Phase 0 参照 + 装置免除条項 + Related）
 - `CLAUDE.md`（Writing skills 表 2 行）
-- `docs/adr/README.md`（索引）
+- `docs/decision-history/README.md`（索引）
 - memory: `MEMORY.md` / `feedback_*.md` 7 本（1 行ずつ）/ `article-quality.md`
 
 ## 検証
