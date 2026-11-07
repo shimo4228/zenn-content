@@ -124,7 +124,7 @@ Pay the incident cost upfront or pay it after the fact. As far as I know, there 
 **References**
 
 - contemplative-agent v1.3.1 release: https://github.com/shimo4228/contemplative-agent/releases/tag/v1.3.1
-- ADR-0015 (One external adapter per agent): same repository `docs/adr/0015-one-external-adapter-per-agent.md`
+- ADR-0015 (One external adapter per agent): same repository `docs/decision-history/0015-one-external-adapter-per-agent.md`
 - Laukkonen et al. 2025 "Contemplative Artificial Intelligence" arXiv:2504.15125
 
 **Series: AI Agent Governance**

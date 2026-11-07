@@ -131,7 +131,7 @@ ADR-0015 を書き終えて、並べて眺めていて、あっ、と声が出�
 **参照**
 
 - contemplative-agent v1.3.1 release: https://github.com/shimo4228/contemplative-agent/releases/tag/v1.3.1
-- ADR-0015 (1エージェント1外部アダプタ原則): 同リポジトリ `docs/adr/0015-one-external-adapter-per-agent.md`
+- ADR-0015 (1エージェント1外部アダプタ原則): 同リポジトリ `docs/decision-history/0015-one-external-adapter-per-agent.md`
 - Laukkonen et al. 2025 "Contemplative Artificial Intelligence" arXiv:2504.15125
 
 **シリーズ: AIエージェントのガバナンス**
