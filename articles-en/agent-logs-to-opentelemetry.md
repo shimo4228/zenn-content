@@ -234,7 +234,7 @@ Since the number of records to convert is known before sending, I sized the queu
 ## Related links
 
 - [contemplative-agent-otel](https://github.com/shimo4228/contemplative-agent-otel) — this article's conversion script (mapping table and tests included)
-- [ADR-0078: OTel Connection via Vocabulary Mapping and Offline Export](https://github.com/shimo4228/contemplative-agent/blob/main/docs/adr/0078-otel-connection-via-vocabulary-and-offline-export.md) — the primary source for this decision ([ADR-0075](https://github.com/shimo4228/contemplative-agent/blob/main/docs/adr/0075-observability-by-default.md): the companion decision to ship audit logs in the same PR as the feature)
+- [ADR-0078: OTel Connection via Vocabulary Mapping and Offline Export](https://github.com/shimo4228/contemplative-agent/blob/main/docs/decision-history/0078-otel-connection-via-vocabulary-and-offline-export.md) — the primary source for this decision ([ADR-0075](https://github.com/shimo4228/contemplative-agent/blob/main/docs/decision-history/0075-observability-by-default.md): the companion decision to ship audit logs in the same PR as the feature)
 - [OpenTelemetry GenAI semantic conventions](https://github.com/open-telemetry/semantic-conventions-genai) — canonical source of the standard vocabulary (Development status)
 - [Previous article: Why Did My Agent Decide That? 3 Observability Patterns](https://dev.to/shimo4228/why-did-my-agent-decide-that-3-observability-patterns-ami) — the 3 design patterns on the audit-log side
 - [Can You Trace the Cause After an Incident?](https://dev.to/shimo4228/can-you-trace-the-cause-after-an-incident-neo) — one step further back: why records that let you trace causality after an agent incident matter in the first place

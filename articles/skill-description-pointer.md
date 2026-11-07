@@ -139,7 +139,7 @@ def listing_width(text: str) -> int:
 
 - [mattpocock/skills（GitHub）](https://github.com/mattpocock/skills/tree/b0618bc) — invocationでスキルを分ける設計指針の出典
 - [Claude Code のスキルのドキュメント](https://code.claude.com/docs/en/skills) — `disable-model-invocation` などの公式の説明
-- [決定の記録（ADR-0092）](https://github.com/shimo4228/claude-harness/blob/main/docs/adr/0092-skill-description-as-resident-pointer.md) — この書き直しの判断と、測っていないこと
+- [決定の記録（ADR-0092）](https://github.com/shimo4228/claude-harness/blob/main/docs/decision-history/0092-skill-description-as-resident-pointer.md) — この書き直しの判断と、測っていないこと
 - [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/skill-description-pointer.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります
 - [著者のGitHub](https://github.com/shimo4228) — DOI 付きの研究リポジトリ一覧
 

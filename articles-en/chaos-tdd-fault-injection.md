@@ -223,7 +223,7 @@ The pattern from this work (fault vocabulary, ChaosBackend, hypothesis profile, 
 ## Related Links
 
 - [chaos-tdd-fault-injection](https://github.com/shimo4228/chaos-tdd-fault-injection) — the public skill generalizing this article's pattern (called "chaos-TDD" in the repo and its ADRs)
-- [ADR-0077: Chaos-TDD Fault Injection](https://github.com/shimo4228/contemplative-agent/blob/main/docs/adr/0077-chaos-tdd-fault-injection.md) — primary source for the design decisions (English; a Japanese version sits in the same directory)
+- [ADR-0077: Chaos-TDD Fault Injection](https://github.com/shimo4228/contemplative-agent/blob/main/docs/decision-history/0077-chaos-tdd-fault-injection.md) — primary source for the design decisions (English; a Japanese version sits in the same directory)
 - [Previous article: Why Did My Agent Decide That? 3 Observability Patterns](https://dev.to/shimo4228/why-did-my-agent-decide-that-3-observability-patterns-ami)
 - [Building an Autonomous Agent on an M1 Mac, on Purpose](https://zenn.dev/shimo4228/articles/small-llm-by-choice) — hub of the small-LLM series this article belongs to (Japanese)
 - [hypothesis documentation](https://hypothesis.readthedocs.io/en/latest/) / [responses](https://github.com/getsentry/responses)

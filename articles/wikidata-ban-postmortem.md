@@ -215,7 +215,7 @@ Wikidata は、個々の編集こそ許容されていても、自分を中心�
 
 ## 関連リンク
 
-- [ADR-0021: Self-Sovereign Entity Grounding](https://github.com/shimo4228/authorship-strategy/blob/main/docs/adr/0021-self-sovereign-entity-grounding.md) — 本記事の失敗から抽出した設計判断の実物
+- [ADR-0021: Self-Sovereign Entity Grounding](https://github.com/shimo4228/authorship-strategy/blob/main/docs/decision-history/0021-self-sovereign-entity-grounding.md) — 本記事の失敗から抽出した設計判断の実物
 - [謝罪の投稿(User talk:Shimo4228)](https://www.wikidata.org/wiki/User_talk:Shimo4228)
 - [GEO: Generative Engine Optimization (Aggarwal et al., KDD 2024)](https://arxiv.org/abs/2311.09735)
 - [Wikidata:Autobiography](https://www.wikidata.org/wiki/Wikidata:Autobiography) / [Wikidata:Notability](https://www.wikidata.org/wiki/Wikidata:Notability)

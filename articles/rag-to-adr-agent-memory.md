@@ -84,7 +84,7 @@ Anthropic 自身、この構造を場当たりの省略とは位置づけてい�
 
 ## 証拠 2: embedding は「具体的な違い」が見えない — 私の失敗
 
-私は M1 Mac 上のローカル小型モデルで自律エージェントを数ヶ月無人運用しており、その中で embedding クラスタリングに実際に失敗しています。記録は公開 repo の [ADR-0046](https://github.com/shimo4228/contemplative-agent/blob/main/docs/adr/0046-stocktake-llm-grouping-over-embedding-clustering.md) にあります。
+私は M1 Mac 上のローカル小型モデルで自律エージェントを数ヶ月無人運用しており、その中で embedding クラスタリングに実際に失敗しています。記録は公開 repo の [ADR-0046](https://github.com/shimo4228/contemplative-agent/blob/main/docs/decision-history/0046-stocktake-llm-grouping-over-embedding-clustering.md) にあります。
 
 エージェントが自動抽出したスキルの重複検出を、embedding 余弦類似度 + クラスタリングで組んだところ:
 
@@ -136,7 +136,7 @@ Ollama 経路では `prompt_eval_count` がキャッシュヒット時も全プ�
 
 このエージェントは、[あえて選んだ制約](https://zenn.dev/shimo4228/articles/small-llm-by-choice)としてローカルの小型モデル（8B 級）で動いています。コールドプレフィルの実測は 6.3〜7.1 ms/tok（証拠 3 の A/B と同一エージェント・同一モデルの数値です）。数百パターンの知識ストアを「毎回読ませて判断」するコストが払えません。
 
-だからパターンの分類・重複検出・ノイズ判定を embedding で組んでいます（[ADR-0019](https://github.com/shimo4228/contemplative-agent/blob/main/docs/adr/0019-discrete-categories-to-embedding-views.md)）。厳密には検索拡張生成そのものではなく「embedding を判定機として使う」構成ですが、凍結された判定者に関連性の判断を代行させるという、本記事で分解した RAG の中核と同じ設計です。効果は数字に出ています — LLM 呼び出しで組んでいた分類処理を embedding に置き換えて、LLM 時間を 1 日あたり約 20 分削減しました（ADR-0019、2026-04 時点の記録。embedding と LLM 呼び出しの比較であり、「読ませる」構成との比較実験ではありません）。この環境ではこの分業が明確に勝ちます。
+だからパターンの分類・重複検出・ノイズ判定を embedding で組んでいます（[ADR-0019](https://github.com/shimo4228/contemplative-agent/blob/main/docs/decision-history/0019-discrete-categories-to-embedding-views.md)）。厳密には検索拡張生成そのものではなく「embedding を判定機として使う」構成ですが、凍結された判定者に関連性の判断を代行させるという、本記事で分解した RAG の中核と同じ設計です。効果は数字に出ています — LLM 呼び出しで組んでいた分類処理を embedding に置き換えて、LLM 時間を 1 日あたり約 20 分削減しました（ADR-0019、2026-04 時点の記録。embedding と LLM 呼び出しの比較であり、「読ませる」構成との比較実験ではありません）。この環境ではこの分業が明確に勝ちます。
 
 証拠 2 の失敗と矛盾はしません。あちらは 18 件のスキル本文という読める規模の一回きりの判断だったので、LLM に戻すのが正解。こちらも規模自体は読める範囲ですが、分類が毎日高頻度で発生し、8B モデルには「毎回読ませる」コストが払えないため、embedding が正解 — 同じエージェントの中で、機構ごとに判定基準を当てた結果です。
 

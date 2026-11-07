@@ -220,8 +220,8 @@ Archify の architecture schema には、この対策の欄が用意されてい
 - [openai/codex rust-v0.153.4](https://github.com/openai/codex/releases/tag/rust-v0.153.4) — 2026-09-04 時点の最新版。LSP 関連の記載なし。built-in LSP の要望は [#8745](https://github.com/openai/codex/issues/8745) が open（取得: 2026-09-05）
 - [Coding Agents Need Codebase Maps, Not Bigger Prompts — Developers Digest](https://www.developersdigest.tech/blog/codebase-knowledge-graphs-ai-coding-agents) — 保存する graph を推す側の記事。「A stale graph is worse than no graph」と、いつ・どの commit から作ったかを graph 自身に持たせよという条件（2026-05-26。取得: 2026-09-05）
 - [clangd-lsp plugin never registers an LSP tool — anthropics/claude-code #90114](https://github.com/anthropics/claude-code/issues/90114)、[gopls-lsp plugin … LSP tool never available for Go — #91916](https://github.com/anthropics/claude-code/issues/91916) — 本文で触れた open issue（取得: 2026-09-05）
-- [ADR-0102: Retire docs/CODEMAPS — Contemplative Agent](https://github.com/shimo4228/contemplative-agent/blob/main/docs/adr/0102-retire-codemaps.md) — 本稿の判断記録。実測値と LSP probe の出力は `docs/evidence/adr-0102/` に凍結
-- [ADR-0062: codemap 機構の退役 — claude-harness](https://github.com/shimo4228/claude-harness/blob/main/docs/adr/0062-retire-codemap-machinery.md) — harness 側の撤去と、独立判定の勧告との差分
+- [ADR-0102: Retire docs/CODEMAPS — Contemplative Agent](https://github.com/shimo4228/contemplative-agent/blob/main/docs/decision-history/0102-retire-codemaps.md) — 本稿の判断記録。実測値と LSP probe の出力は `docs/evidence/adr-0102/` に凍結
+- [ADR-0062: codemap 機構の退役 — claude-harness](https://github.com/shimo4228/claude-harness/blob/main/docs/decision-history/0062-retire-codemap-machinery.md) — harness 側の撤去と、独立判定の勧告との差分
 
 ## 関連リンク
 
@@ -229,7 +229,7 @@ Archify の architecture schema には、この対策の欄が用意されてい
 - [AIレビューを減らした先に、複雑度の上限をRuffで置いた](https://zenn.dev/shimo4228/articles/lint-as-subtraction) — 前々編。機械へ渡せるものを渡す分類表
 - [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/codemap-retirement.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります
 - [著者のGitHub](https://github.com/shimo4228) — DOI 付きの研究リポジトリ一覧
-- [Contemplative Agent](https://github.com/shimo4228/contemplative-agent) — 本稿の測定対象。設計判断は `docs/adr/` にあります
+- [Contemplative Agent](https://github.com/shimo4228/contemplative-agent) — 本稿の測定対象。設計判断は `docs/decision-history/` にあります
 
 ---
 

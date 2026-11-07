@@ -104,7 +104,7 @@ I asked each condition only once. What I measured was whether folded contents ge
 
 ## I split how I write READMEs into top and bottom
 
-After seeing these results, I rewrote readme-writer (decision record: [ADR-0091](https://github.com/shimo4228/claude-harness/blob/main/docs/adr/0091-readme-human-top-llm-fold.md)).
+After seeing these results, I rewrote readme-writer (decision record: [ADR-0091](https://github.com/shimo4228/claude-harness/blob/main/docs/decision-history/0091-readme-human-top-llm-fold.md)).
 
 - The visible body is for human readers. A short opening paragraph says what the project does without using words the reader doesn't know yet, and the rest goes to removing friction until the reader can start using it. No line counts or section templates are set
 - Facts for LLMs (what it is, why it exists, exact specifications, an example, where the links go) and pointers to llms.txt and similar files go in prose inside a `<details>` at the end of the README
@@ -244,7 +244,7 @@ The author read two READMEs and two articles on a screen that shows them one sen
 - readme-writer (a Claude Code skill that writes READMEs): https://github.com/shimo4228/readme-writer
 - Procedure and full records of the README experiment: https://github.com/shimo4228/readme-writer/blob/main/skills/readme-writer/evals/grounding-canary/PROTOCOL.md
 - Raw data of the marks: https://github.com/shimo4228/readme-writer/blob/main/skills/readme-writer/evals/reader-cut/marks-2026-10-08.json
-- Decision record (ADR-0091): https://github.com/shimo4228/claude-harness/blob/main/docs/adr/0091-readme-human-top-llm-fold.md
+- Decision record (ADR-0091): https://github.com/shimo4228/claude-harness/blob/main/docs/decision-history/0091-readme-human-top-llm-fold.md
 
 {% enddetails %}
 

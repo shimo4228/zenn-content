@@ -333,7 +333,7 @@ ADRやRFCの受理ゲートを持っていなくても、同じ判定は回せ�
 - [AIレビューを減らした先に、複雑度の上限をRuffで置いた](https://zenn.dev/shimo4228/articles/lint-as-subtraction) — 前編。本稿が精緻化する分類表はここにあります
 - [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/instrument-consumption-plan.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります
 - [著者のGitHub](https://github.com/shimo4228) — DOI 付きの研究リポジトリ一覧
-- [Contemplative Agent](https://github.com/shimo4228/contemplative-agent) — 本稿の測定対象。設計判断は`docs/adr/`に、消費計画の義務はADR-0101にあります
+- [Contemplative Agent](https://github.com/shimo4228/contemplative-agent) — 本稿の測定対象。設計判断は`docs/decision-history/`に、消費計画の義務はADR-0101にあります
 
 ---
 

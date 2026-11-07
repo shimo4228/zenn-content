@@ -93,7 +93,7 @@ feat/fix で非自明な diff を実装したら、コミット前に以下を�
 
 codex-review の価値を「Claude だけでは見つからないバグをよく見つける」と表現したくなりますが、これは頻度の話にすると検証しづらい主張になります。実際に起きたことをそのまま書くと、こうなります。
 
-筆者の別の研究リポジトリ [Contemplative Agent](https://github.com/shimo4228/contemplative-agent) で、監視用の計器モジュールを1本追加したときのレビューです（[ADR-0071](https://github.com/shimo4228/contemplative-agent/blob/main/docs/adr/0071-read-only-pattern-composition-instruments.md)、[該当コミット](https://github.com/shimo4228/contemplative-agent/commit/224fdd97b740df7bf1b2a18bc77f6e8cc4980ec0)）。この計器は「パイプラインの挙動には一切手を出さず、埋め込みベクトルの分布や集計だけを読み取って表示する」という観測専用の設計です。同じ diff に対して、別モデル系統の `codex-review` と、Claude 側の通常レビュー（`python-reviewer`）を並列で走らせました。
+筆者の別の研究リポジトリ [Contemplative Agent](https://github.com/shimo4228/contemplative-agent) で、監視用の計器モジュールを1本追加したときのレビューです（[ADR-0071](https://github.com/shimo4228/contemplative-agent/blob/main/docs/decision-history/0071-read-only-pattern-composition-instruments.md)、[該当コミット](https://github.com/shimo4228/contemplative-agent/commit/224fdd97b740df7bf1b2a18bc77f6e8cc4980ec0)）。この計器は「パイプラインの挙動には一切手を出さず、埋め込みベクトルの分布や集計だけを読み取って表示する」という観測専用の設計です。同じ diff に対して、別モデル系統の `codex-review` と、Claude 側の通常レビュー（`python-reviewer`）を並列で走らせました。
 
 | レビュアー | 見つけたもの | 種類 |
 |---|---|---|
@@ -134,7 +134,7 @@ codex-review の価値を「Claude だけでは見つからないバグをよく
 
 - [codex-review スキル本体](https://github.com/shimo4228/codex-review) — `skills/codex-review/` を `~/.claude/skills/codex-review/` にコピーして導入できます
 - [claude-harness の `planning.md`](https://github.com/shimo4228/claude-harness/blob/main/rules/common/planning.md) — Review ステップ・Chain Matrix・早期停止条件の全文
-- [Contemplative Agent](https://github.com/shimo4228/contemplative-agent) / [ADR-0071](https://github.com/shimo4228/contemplative-agent/blob/main/docs/adr/0071-read-only-pattern-composition-instruments.md) / [該当コミット](https://github.com/shimo4228/contemplative-agent/commit/224fdd97b740df7bf1b2a18bc77f6e8cc4980ec0) — 今回の実例
+- [Contemplative Agent](https://github.com/shimo4228/contemplative-agent) / [ADR-0071](https://github.com/shimo4228/contemplative-agent/blob/main/docs/decision-history/0071-read-only-pattern-composition-instruments.md) / [該当コミット](https://github.com/shimo4228/contemplative-agent/commit/224fdd97b740df7bf1b2a18bc77f6e8cc4980ec0) — 今回の実例
 - [Codex CLI（本家）](https://github.com/openai/codex)
 - [shimo4228 の GitHub](https://github.com/shimo4228) — 他の公開リポジトリ一覧
 - [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/codex-review-cross-model-decorrelation.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります

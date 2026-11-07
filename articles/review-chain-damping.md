@@ -174,9 +174,9 @@ diff外指摘の起票も絞りました。HIGH指摘6件のうち即時性が�
 
 ## 出典・参考文献
 
-- [ADR-0055: レビューchainをfresh-context 1段+条件付きSecurityへ縮約する](https://github.com/shimo4228/claude-harness/blob/main/docs/adr/0055-review-chain-single-pass-regression.md)（縮約の決定・実測・7月31日の発見の記録）
-- [ADR-0042: 増築側の前段（/code-review化とeffort high固定）](https://github.com/shimo4228/claude-harness/blob/main/docs/adr/0042-retire-code-reviewer-and-scope-security-review-to-threat-surface.md)
-- [Contemplative Agent ADR-0098: 週次chainの7セッション→1縮約](https://github.com/shimo4228/contemplative-agent/blob/main/docs/adr/0098-weekly-single-session-and-triage-delegation.ja.md)
+- [ADR-0055: レビューchainをfresh-context 1段+条件付きSecurityへ縮約する](https://github.com/shimo4228/claude-harness/blob/main/docs/decision-history/0055-review-chain-single-pass-regression.md)（縮約の決定・実測・7月31日の発見の記録）
+- [ADR-0042: 増築側の前段（/code-review化とeffort high固定）](https://github.com/shimo4228/claude-harness/blob/main/docs/decision-history/0042-retire-code-reviewer-and-scope-security-review-to-threat-surface.md)
+- [Contemplative Agent ADR-0098: 週次chainの7セッション→1縮約](https://github.com/shimo4228/contemplative-agent/blob/main/docs/decision-history/0098-weekly-single-session-and-triage-delegation.ja.md)
 - [Claude Code公式ベストプラクティス "Add an adversarial review step"](https://code.claude.com/docs/en/best-practices)（2026年8月27日取得）
 
 ## 関連リンク

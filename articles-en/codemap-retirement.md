@@ -221,8 +221,8 @@ Few people keep a dedicated `docs/CODEMAPS/` directory. More likely you have a s
 - [openai/codex rust-v0.153.4](https://github.com/openai/codex/releases/tag/rust-v0.153.4) — the latest version as of 2026-09-04. No mention of LSP. The request for built-in LSP, [#8745](https://github.com/openai/codex/issues/8745), is open (retrieved 2026-09-05)
 - [Coding Agents Need Codebase Maps, Not Bigger Prompts — Developers Digest](https://www.developersdigest.tech/blog/codebase-knowledge-graphs-ai-coding-agents) — an article from the stored-graph camp. "A stale graph is worse than no graph," and the condition that the graph itself must carry when and from which commit it was built (2026-05-26; retrieved 2026-09-05)
 - [clangd-lsp plugin never registers an LSP tool — anthropics/claude-code #90114](https://github.com/anthropics/claude-code/issues/90114), [gopls-lsp plugin … LSP tool never available for Go — #91916](https://github.com/anthropics/claude-code/issues/91916) — the open issues mentioned in the body (retrieved 2026-09-05)
-- [ADR-0102: Retire docs/CODEMAPS — Contemplative Agent](https://github.com/shimo4228/contemplative-agent/blob/main/docs/adr/0102-retire-codemaps.md) — the decision record for this article. The measurements and LSP probe output are frozen in `docs/evidence/adr-0102/`
-- [ADR-0062: Retire the codemap machinery — claude-harness](https://github.com/shimo4228/claude-harness/blob/main/docs/adr/0062-retire-codemap-machinery.md) — the harness-side removal, and where it departs from the independent judgment's recommendation
+- [ADR-0102: Retire docs/CODEMAPS — Contemplative Agent](https://github.com/shimo4228/contemplative-agent/blob/main/docs/decision-history/0102-retire-codemaps.md) — the decision record for this article. The measurements and LSP probe output are frozen in `docs/evidence/adr-0102/`
+- [ADR-0062: Retire the codemap machinery — claude-harness](https://github.com/shimo4228/claude-harness/blob/main/docs/decision-history/0062-retire-codemap-machinery.md) — the harness-side removal, and where it departs from the independent judgment's recommendation
 
 ## Related links
 
@@ -230,4 +230,4 @@ Few people keep a dedicated `docs/CODEMAPS/` directory. More likely you have a s
 - [After Cutting My AI Reviews, I Put a Complexity Ceiling in Ruff](https://dev.to/shimo4228/after-cutting-my-ai-reviews-i-put-a-complexity-ceiling-in-ruff-1hho) — the one before that: the table for sorting out what can be handed to the machine
 - [The Markdown source of this article (GitHub)](https://github.com/shimo4228/zenn-content/blob/main/articles/codemap-retirement.md) — the Markdown for every article, plus the index (docs/PUBLICATIONS.md), lives in the same repository
 - [My GitHub](https://github.com/shimo4228) — my research repositories, with DOIs
-- [Contemplative Agent](https://github.com/shimo4228/contemplative-agent) — the subject measured in this article. The design decisions live in `docs/adr/`
+- [Contemplative Agent](https://github.com/shimo4228/contemplative-agent) — the subject measured in this article. The design decisions live in `docs/decision-history/`

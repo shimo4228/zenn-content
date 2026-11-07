@@ -94,7 +94,7 @@ Not just blind spots in code — a different model diligently catches overclaimi
 
 It's tempting to describe the value of codex-review as "it's good at finding bugs Claude alone would miss," but framed as a frequency claim, that's hard to verify. Here's what actually happened, described plainly.
 
-This is from a review on [Contemplative Agent](https://github.com/shimo4228/contemplative-agent), another research repository of mine, when I added a single monitoring instrument module ([ADR-0071](https://github.com/shimo4228/contemplative-agent/blob/main/docs/adr/0071-read-only-pattern-composition-instruments.md), [the commit in question](https://github.com/shimo4228/contemplative-agent/commit/224fdd97b740df7bf1b2a18bc77f6e8cc4980ec0)). This instrument is observation-only by design: it never touches pipeline behavior and only reads and displays the distribution and aggregates of embedding vectors. I ran `codex-review` (a different model lineage) and Claude's own regular review (`python-reviewer`) in parallel against the same diff.
+This is from a review on [Contemplative Agent](https://github.com/shimo4228/contemplative-agent), another research repository of mine, when I added a single monitoring instrument module ([ADR-0071](https://github.com/shimo4228/contemplative-agent/blob/main/docs/decision-history/0071-read-only-pattern-composition-instruments.md), [the commit in question](https://github.com/shimo4228/contemplative-agent/commit/224fdd97b740df7bf1b2a18bc77f6e8cc4980ec0)). This instrument is observation-only by design: it never touches pipeline behavior and only reads and displays the distribution and aggregates of embedding vectors. I ran `codex-review` (a different model lineage) and Claude's own regular review (`python-reviewer`) in parallel against the same diff.
 
 | Reviewer | What it found | Kind |
 |---|---|---|
@@ -135,6 +135,6 @@ I can't claim that running the same model lineage twice would only ever surface 
 
 - [The codex-review skill itself](https://github.com/shimo4228/codex-review) — install it by copying `skills/codex-review/` to `~/.claude/skills/codex-review/`
 - [claude-harness's `planning.md`](https://github.com/shimo4228/claude-harness/blob/main/rules/common/planning.md) — the full review step, Chain Matrix, and early-stop conditions
-- [Contemplative Agent](https://github.com/shimo4228/contemplative-agent) / [ADR-0071](https://github.com/shimo4228/contemplative-agent/blob/main/docs/adr/0071-read-only-pattern-composition-instruments.md) / [the commit in question](https://github.com/shimo4228/contemplative-agent/commit/224fdd97b740df7bf1b2a18bc77f6e8cc4980ec0) — the real example used here
+- [Contemplative Agent](https://github.com/shimo4228/contemplative-agent) / [ADR-0071](https://github.com/shimo4228/contemplative-agent/blob/main/docs/decision-history/0071-read-only-pattern-composition-instruments.md) / [the commit in question](https://github.com/shimo4228/contemplative-agent/commit/224fdd97b740df7bf1b2a18bc77f6e8cc4980ec0) — the real example used here
 - [Codex CLI (upstream)](https://github.com/openai/codex)
 - [shimo4228 on GitHub](https://github.com/shimo4228) — list of other public repositories

@@ -140,7 +140,7 @@ I decided three things: to settle invocation first, to write the model-invoked s
 
 - [mattpocock/skills (GitHub)](https://github.com/mattpocock/skills/tree/b0618bc) — the source of the design guideline that splits skills by invocation
 - [Claude Code skills documentation](https://code.claude.com/docs/en/skills) — the official explanation of `disable-model-invocation` and other fields
-- [Decision record (ADR-0092)](https://github.com/shimo4228/claude-harness/blob/main/docs/adr/0092-skill-description-as-resident-pointer.md) — the reasoning behind this rewrite, and what it did not measure
+- [Decision record (ADR-0092)](https://github.com/shimo4228/claude-harness/blob/main/docs/decision-history/0092-skill-description-as-resident-pointer.md) — the reasoning behind this rewrite, and what it did not measure
 - [The Markdown source of this article (GitHub)](https://github.com/shimo4228/zenn-content/blob/main/articles-en/skill-description-pointer.md) — every article's Markdown and the index (docs/PUBLICATIONS.md) live in the same repository
 - [The author's GitHub](https://github.com/shimo4228) — research repositories with DOIs
 

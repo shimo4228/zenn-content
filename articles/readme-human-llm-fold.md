@@ -103,7 +103,7 @@ llms.txtも、5つのうち4つは読みにいきました。サーバーログ�
 
 ## READMEの書き方を、上下で分けました
 
-この結果を見て、readme-writerを書き換えました（決定の記録は[ADR-0091](https://github.com/shimo4228/claude-harness/blob/main/docs/adr/0091-readme-human-top-llm-fold.md)）。
+この結果を見て、readme-writerを書き換えました（決定の記録は[ADR-0091](https://github.com/shimo4228/claude-harness/blob/main/docs/decision-history/0091-readme-human-top-llm-fold.md)）。
 
 - 見える本文は人間の読者に向けます。冒頭の短い段落で、読者がまだ知らない語を使わずに何をするものかを言い、残りは使い始めるまでの摩擦を取り除くことに使います。行数や節の型は決めません
 - LLM向けの事実（何であるか、なぜあるか、正確な仕様、例、リンク先）と、llms.txtなどへの導線は、READMEの末尾の`<details>`に文で置きます
@@ -242,7 +242,7 @@ LLM経由で情報を取り込むことは、これから増えていきます�
 - readme-writer（READMEを書くClaude Codeのスキル）: https://github.com/shimo4228/readme-writer
 - READMEの実験の手順と全記録: https://github.com/shimo4228/readme-writer/blob/main/skills/readme-writer/evals/grounding-canary/PROTOCOL.md
 - チェックの生データ: https://github.com/shimo4228/readme-writer/blob/main/skills/readme-writer/evals/reader-cut/marks-2026-10-08.json
-- 決定の記録（ADR-0091）: https://github.com/shimo4228/claude-harness/blob/main/docs/adr/0091-readme-human-top-llm-fold.md
+- 決定の記録（ADR-0091）: https://github.com/shimo4228/claude-harness/blob/main/docs/decision-history/0091-readme-human-top-llm-fold.md
 
 :::
 

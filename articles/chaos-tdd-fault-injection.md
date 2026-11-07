@@ -223,7 +223,7 @@ RED を書いた時点で、既存実装の 3 つの穴が露出しました。�
 ## 関連リンク
 
 - [chaos-tdd-fault-injection](https://github.com/shimo4228/chaos-tdd-fault-injection) — 本記事の型を汎用化した公開 skill（repo・ADR 上の実装時の呼び名は「chaos-TDD」）
-- [ADR-0077: Chaos-TDD Fault Injection](https://github.com/shimo4228/contemplative-agent/blob/main/docs/adr/0077-chaos-tdd-fault-injection.md) — 設計判断の一次資料（英語。同ディレクトリに日本語版あり）
+- [ADR-0077: Chaos-TDD Fault Injection](https://github.com/shimo4228/contemplative-agent/blob/main/docs/decision-history/0077-chaos-tdd-fault-injection.md) — 設計判断の一次資料（英語。同ディレクトリに日本語版あり）
 - [前作: AIエージェントの「なぜその判断？」に答えるオブザーバビリティ設計3パターン](https://zenn.dev/shimo4228/articles/agent-observability-patterns)
 - [自律エージェントをあえて M1 Mac で作る — 制約が設計を鍛えるという選択](https://zenn.dev/shimo4228/articles/small-llm-by-choice) — 本記事が属する小型 LLM 運用シリーズのハブ
 - [hypothesis ドキュメント](https://hypothesis.readthedocs.io/en/latest/) / [responses](https://github.com/getsentry/responses)

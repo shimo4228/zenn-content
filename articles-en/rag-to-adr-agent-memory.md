@@ -83,7 +83,7 @@ The same post (2025-09) also states the trade-off: "runtime exploration is slowe
 
 ## Evidence 2: embeddings can't see "the concrete difference" — my failure
 
-I have been running an autonomous agent unattended for months on a small local model on an M1 Mac, and within that I have concretely failed with embedding clustering. The record is public, in [ADR-0046](https://github.com/shimo4228/contemplative-agent/blob/main/docs/adr/0046-stocktake-llm-grouping-over-embedding-clustering.md).
+I have been running an autonomous agent unattended for months on a small local model on an M1 Mac, and within that I have concretely failed with embedding clustering. The record is public, in [ADR-0046](https://github.com/shimo4228/contemplative-agent/blob/main/docs/decision-history/0046-stocktake-llm-grouping-over-embedding-clustering.md).
 
 I built duplicate detection for the agent's auto-extracted skills using embedding cosine similarity + clustering:
 
@@ -135,7 +135,7 @@ In the decision table I wrote "with a weak LLM, embeddings are effective." The v
 
 This agent runs on a small local model (8B class) as a [deliberately chosen constraint](https://dev.to/shimo4228/building-an-autonomous-agent-on-an-m1-mac-by-choice-5b5o). Measured cold prefill is 6.3–7.1 ms/tok (same agent and same model as the A/B in Evidence 3). It cannot afford to "read and judge every time" over a knowledge store of hundreds of patterns.
 
-So pattern classification, duplicate detection, and noise filtering are built on embeddings ([ADR-0019](https://github.com/shimo4228/contemplative-agent/blob/main/docs/adr/0019-discrete-categories-to-embedding-views.md)). Strictly speaking this is not retrieval-augmented generation itself but "embeddings as a judge" — yet it is the same core design this article decomposed: delegating relevance judgment to a frozen judge. The effect shows up in numbers — replacing LLM-call-based classification with embeddings cut LLM time by about 20 minutes per day (ADR-0019, recorded as of 2026-04; that is an embeddings-vs-LLM-calls comparison, not a comparison against a "let the model read" configuration). In this environment, this division of labor clearly wins.
+So pattern classification, duplicate detection, and noise filtering are built on embeddings ([ADR-0019](https://github.com/shimo4228/contemplative-agent/blob/main/docs/decision-history/0019-discrete-categories-to-embedding-views.md)). Strictly speaking this is not retrieval-augmented generation itself but "embeddings as a judge" — yet it is the same core design this article decomposed: delegating relevance judgment to a frozen judge. The effect shows up in numbers — replacing LLM-call-based classification with embeddings cut LLM time by about 20 minutes per day (ADR-0019, recorded as of 2026-04; that is an embeddings-vs-LLM-calls comparison, not a comparison against a "let the model read" configuration). In this environment, this division of labor clearly wins.
 
 There is no contradiction with the failure in Evidence 2. That case was a one-off judgment over 18 skill bodies — readable scale — so moving back to the LLM was correct. This case is also readable in scale, but the classification fires daily at high frequency, and an 8B model cannot pay the "read every time" cost, so embeddings are correct — the same agent, with the decision rule applied per mechanism.
 

@@ -173,9 +173,9 @@ The adjacent question — where review findings should be sent — is covered in
 
 ## Sources and references
 
-- [ADR-0055: Contract the review chain to one fresh-context pass plus conditional security](https://github.com/shimo4228/claude-harness/blob/main/docs/adr/0055-review-chain-single-pass-regression.md) (the contraction decision, the measurements, and the record of the July 31 discovery)
-- [ADR-0042: The buildup-side predecessor (moving to /code-review and pinning effort high)](https://github.com/shimo4228/claude-harness/blob/main/docs/adr/0042-retire-code-reviewer-and-scope-security-review-to-threat-surface.md)
-- [Contemplative Agent ADR-0098: Collapsing the weekly chain from 7 sessions to 1](https://github.com/shimo4228/contemplative-agent/blob/main/docs/adr/0098-weekly-single-session-and-triage-delegation.ja.md)
+- [ADR-0055: Contract the review chain to one fresh-context pass plus conditional security](https://github.com/shimo4228/claude-harness/blob/main/docs/decision-history/0055-review-chain-single-pass-regression.md) (the contraction decision, the measurements, and the record of the July 31 discovery)
+- [ADR-0042: The buildup-side predecessor (moving to /code-review and pinning effort high)](https://github.com/shimo4228/claude-harness/blob/main/docs/decision-history/0042-retire-code-reviewer-and-scope-security-review-to-threat-surface.md)
+- [Contemplative Agent ADR-0098: Collapsing the weekly chain from 7 sessions to 1](https://github.com/shimo4228/contemplative-agent/blob/main/docs/decision-history/0098-weekly-single-session-and-triage-delegation.ja.md)
 - [Claude Code official best practices, "Add an adversarial review step"](https://code.claude.com/docs/en/best-practices) (retrieved August 27, 2026)
 
 ## Related links

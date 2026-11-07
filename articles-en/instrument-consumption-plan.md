@@ -334,4 +334,4 @@ Ledger state transitions and the life or death of code do not track each other i
 - [I Cut My AI Review Chain From 6 Stages to 1: Breaking the Loop That Never Hits Zero Findings](https://dev.to/shimo4228/i-cut-my-ai-review-chain-from-6-stages-to-1-breaking-the-loop-that-never-hits-zero-findings-1moi) — the one before that: how I cut the reviews back
 - [The Markdown source of this article (GitHub)](https://github.com/shimo4228/zenn-content/blob/main/articles/instrument-consumption-plan.md) — the Markdown for every article, plus the index (docs/PUBLICATIONS.md), lives in the same repository
 - [My GitHub](https://github.com/shimo4228) — my research repositories, with DOIs
-- [Contemplative Agent](https://github.com/shimo4228/contemplative-agent) — the subject measured in this article. The design decisions live in `docs/adr/`, and the consumption plan obligation is ADR-0101
+- [Contemplative Agent](https://github.com/shimo4228/contemplative-agent) — the subject measured in this article. The design decisions live in `docs/decision-history/`, and the consumption plan obligation is ADR-0101
