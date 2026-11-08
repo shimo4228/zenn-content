@@ -2,7 +2,7 @@
 title: "Prompt-Based Alignmentには天井がある — 囚人のジレンマ3モデル実証"
 emoji: "🧘"
 type: "tech"
-topics: ["ai", "llm", "alignment", "benchmark", "python"]
+topics: ["ai", "llm", "alignment", "benchmark", "buddhism"]
 published: true
 published_at: 2026-03-11 08:45
 ---
