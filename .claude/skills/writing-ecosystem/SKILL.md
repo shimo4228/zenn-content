@@ -272,7 +272,9 @@ local path・既存設定・認証・権限に依存する変更を読者へ渡�
 ### Voice
 
 register と語尾の実値は channel contract が持つ。contract が無い task では推測しない。AI slop と voice
-drift の兆候を見つけたときだけ [`references/style-diagnostics.md`](references/style-diagnostics.md) を読む。
+drift の兆候を見つけたときと、日本語稿を公開前に推敲するときに [`references/style-diagnostics.md`](references/style-diagnostics.md) を読む。
+推敲では、同じファイルの「日本語の構文の手当て」の照合を通った案だけを採る。推敲は表現修正なので
+内容 GO とタイトル選択はやり直さず、推敲後の稿を著者が通読する。
 AI が本文を書いた稿は、全 channel で [`references/publication-procedures.md`](references/publication-procedures.md) の「AI 開示」の型で末尾に開示を書く。
 
 ---
