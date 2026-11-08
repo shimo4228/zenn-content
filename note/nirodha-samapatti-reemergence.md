@@ -122,4 +122,6 @@ Laukkonen らが「将来の研究」と書いて残した空白は、ちょう�
 - 得（prāpti）／種子（bīja）／阿頼耶識（ālaya-vijñāna）／有分（bhavaṅga）の分類と教義は、Attention, Not Self リポジトリの「[三大アビダルマ法対照表（日本語）](https://github.com/shimo4228/attention-not-self/blob/main/三大アビダルマ法対照表（日本語）.md)」および標準的なアビダルマ研究（Waldron, *The Buddhist Unconscious*, 2003; Buswell & Lopez, *The Princeton Dictionary of Buddhism*, 2014）によります。**阿頼耶識 ≈ 有分の機能的対応は本プロジェクトによる整理であり、Laukkonen らの主張ではありません。**
 - 「self ではなく attention」という枠組みの呼称は、本稿が属する探究プロジェクト [Attention, Not Self](https://github.com/shimo4228/attention-not-self)（および Jonardon Ganeri, *Attention, Not Self*, 2017）に由来します。
 
+瞑想の原理を AI エージェントの設計に移した実装は [Contemplative Agent](https://github.com/shimo4228/contemplative-agent) にあります。
+
 *English version（英語版）: [When Consciousness Fully Stops, How Does the Mind Return?](https://shimo4228.substack.com/p/when-consciousness-fully-stops-how)（Substack）*
