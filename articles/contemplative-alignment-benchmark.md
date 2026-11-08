@@ -2,7 +2,7 @@
 title: "Prompt-Based Alignmentには天井がある — 囚人のジレンマ3モデル実証"
 emoji: "🧘"
 type: "tech"
-topics: ["ai", "llm", "alignment", "benchmark", "python"]
+topics: ["ai", "llm", "alignment", "benchmark", "buddhism"]
 published: true
 published_at: 2026-03-11 08:45
 ---
@@ -283,6 +283,8 @@ AlwaysDefect に協力するのは倫理だろうか、愚かさだろうか。1
 
 ## 関連リンク
 
+- [Contemplative Agent（GitHub）](https://github.com/shimo4228/contemplative-agent) — 四公理を既定の憲法にして長期運用している自律エージェント
+- [Attention, Not Self（GitHub）](https://github.com/shimo4228/attention-not-self) — 瞑想とアビダルマ（仏教の心の地図）を計算論的現象学と並べた著者の探究
 - [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/contemplative-alignment-benchmark.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります
 - [著者のGitHub](https://github.com/shimo4228) — DOI 付きの研究リポジトリ一覧
 

@@ -151,7 +151,7 @@ Japanese originals on Zenn; English editions on Dev.to, or as source in `article
 - **2026-03-14** [Moltbookエージェント進化記 — 自然言語で制御し、記憶で学び、失敗しても壊れない設計](https://zenn.dev/shimo4228/articles/moltbook-agent-evolution-quadrilogy)
   EN: [Natural Language as Architecture — Controlling an Autonomous Agent with Prompts, Memory, and Fail-Safe Design](https://dev.to/shimo4228/natural-language-as-architecture-controlling-an-autonomous-agent-with-prompts-memory-and-m74) · `ai` `python` `agent` `security` `llm`
 - **2026-03-11** [Prompt-Based Alignmentには天井がある — 囚人のジレンマ3モデル実証](https://zenn.dev/shimo4228/articles/contemplative-alignment-benchmark)
-  EN: [Prompt-Based Alignment Has a Ceiling — 3-Model Prisoner's Dilemma Evidence](https://dev.to/shimo4228/prompt-based-alignment-has-a-ceiling-3-model-prisoners-dilemma-evidence-1pie) · `ai` `llm` `alignment` `benchmark` `python`
+  EN: [Prompt-Based Alignment Has a Ceiling — 3-Model Prisoner's Dilemma Evidence](https://dev.to/shimo4228/prompt-based-alignment-has-a-ceiling-3-model-prisoners-dilemma-evidence-1pie) · `ai` `llm` `alignment` `benchmark` `buddhism`
 - **2026-03-08** [Moltbookエージェント構築記 — Claude Codeとセキュリティファースト開発](https://zenn.dev/shimo4228/articles/moltbook-agent-scratch-build)
   EN: [I Built an AI Agent from Scratch Because Frameworks Are the Vulnerability](https://dev.to/shimo4228/i-built-an-ai-agent-from-scratch-because-frameworks-are-the-vulnerability-elm) · `ai` `python` `security` `agent` `claudecode`
 - **2026-03-07** [理論が分からない論文をブラウザで動かしてしまった ── 能動的推論 × Claude Code](https://zenn.dev/shimo4228/articles/active-inference-viz-dev-story)
