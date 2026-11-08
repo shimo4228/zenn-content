@@ -1,6 +1,6 @@
 # What Did You Stop Making Because of AI? Mine Was Music
 
-> "There's no point in me making it," I thought, and I quit making music. Later I started a collection of first-person accounts from people who had run out of things they wanted to do with AI. What it kept finding was something else.
+> "There's no point in me making it," I thought, and quit music. Then I started collecting accounts from people who ran out of things to do with AI. What turned up was something else.
 
 One morning in July 2026, I wrote this to Claude Code (a tool where you tell an AI what to do and it writes the program): "I want to do something new, but I haven't had any ideas lately. Back when I had things I wanted to do, I never ran out of ideas."
 
