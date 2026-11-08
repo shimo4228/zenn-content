@@ -1,0 +1,99 @@
+# What Did You Stop Making Because of AI? Mine Was Music
+
+> "There's no point in me making it," I thought, and I quit making music. Later I started a collection of first-person accounts from people who had run out of things they wanted to do with AI. What it kept finding was something else.
+
+One morning in July 2026, I wrote this to Claude Code (a tool where you tell an AI what to do and it writes the program): "I want to do something new, but I haven't had any ideas lately. Back when I had things I wanted to do, I never ran out of ideas."
+
+I also wrote that a big part of why ideas weren't coming was that my own agent, Contemplative Agent, had become stable. It was improving almost on its own, and there was hardly anything left for me to work on. I was looking for something to build, but what I found hadn't come from inside me, so I never felt much like it.
+
+A few minutes later, music came up too. "These days AI can make a finished, perfect track. I can't get myself to go as far as making music."
+
+Having no ideas, and having no wish to make music. The two sit side by side in the same conversation, on the same morning.
+
+## A collection looking for people who ran dry
+
+In August the feeling grew, and I felt I had truly run out of things I wanted to do, so I wrote an essay on note, a Japanese blogging platform. While writing it, I said this to Claude: "If you keep automating, you will eventually have nothing new to do with AI. That should be the natural course, and yet nobody ever says it."
+
+At the time, as someone who had taken up AI coding early, before its rapid growth over the past half year or so, I felt I was on the side that had arrived first. "I feel like this is a frontier a lot of people are going to reach." To find out what value would mean once others started arriving at a similar place, I created a repository called desire-frontier on GitHub after the essay.
+
+I already have AI run research for me on a schedule, and I added one more line of research that looks for this kind of movement. When it finds something interesting, I take it into my collection of exhaustion testimonies in that repository. What it picks up are first-person accounts of what happened to the things a person wanted to do as they worked with AI.
+
+The collection sorts testimonies into types, and two of the testimony types matter here. Displacement is a testimony that what you wanted to do was taken from you by AI. Exhaustion is a testimony that the work with AI stays enjoyable, but the things you want to do stop welling up. What I am looking for are exhaustion testimonies.
+
+## I thought I had skipped it
+
+When I started the repository, I placed myself on the exhaustion side, and I explained it that way to Claude: "Displacement should really be coming first, and in large numbers, but my motive is unusual. I like AI coding itself, so I skipped it and arrived at exhaustion."
+
+Partway through that conversation, I reconsidered. "I think I'm talking about something that will happen in about five years. I thought it was one or two years out, but first comes displacement." And that is where my own music came up.
+
+The last time I uploaded a track to SoundCloud was about three years ago. When I saw AI start making whole songs, I thought, "There's no point in me making it," and I stopped making music.
+
+AI wasn't the only reason, though. Music production already came with ready-made materials and tools: sample packs, and software that generates loops automatically for each instrument or synth. Put them together and you can make a single loop in five minutes. I kept making music while wondering what the point was of entering the notes by hand myself, and I never felt I could take a full swing at it.
+
+Then AI that makes completely finished songs, like Suno, came along, and that felt like the finishing blow.
+
+There was no shock back then like the one shaking illustrators over generative AI now. I just thought, dryly, that there was no particular need for me to make it. I only realized it was displacement when I was analyzing myself in that conversation. "In that sense, I've been displaced quite a bit too," I thought.
+
+About two years after I quit music, at the end of last year, AI was finally becoming practical, so I decided to use it for all it was worth and started taking AI courses on Coursera.
+
+AI coding was something I could take a full swing at. It was a new field, before anyone else's aesthetics had taken hold.
+
+Music taken from me by AI, and then using that same AI for all it's worth. Looking back, that is the order it happened in.
+
+## What turns up is displacement
+
+The research has looked for Japanese testimonies, including on the Japanese platforms note and Zenn, 12 times through early November. It has not found a single exhaustion testimony. In English, too, the exhaustion testimonies have not grown beyond the two I had when the collection started. In early November, after taking in a batch of past research at once, I wrote this to Claude: "There are hardly any reports of exhaustion. I see displacement all the time."
+
+What turns up is displacement.
+
+In January, before I started the collection, ktg wrote this on Zenn: "Precisely because 'anyone can make it,' a new worry arises. Maybe there's no need for me to make it?" The article concludes that there is still value in making things. But that opening question has almost the same shape as the doubt I felt about music even before AI dealt the finishing blow.
+
+Testimonies that looked like exhaustion also drifted toward displacement when read side by side. In a note post from June, Shingo Irie wrote: "I'd never run out of things to make before, so, wait, what do I make?" Read on its own, it looked like the first exhaustion testimony in Japanese.
+
+In September, the same writer published a post titled "Now That AI Can Make Anything," writing that the strategy of finding a niche problem and quickly building a small convenient tool had become hard. What had become hard was not the wish to make things but the things to make. My collection of exhaustion testimonies classifies this as close to displacement when read in time order.
+
+Since this case, my collection of exhaustion testimonies has had one rule. A line that looks like exhaustion is read alongside the same writer's posts from the months before and after, and only then is its testimony type decided. The two English testimonies were recorded before this rule, and the ledger shows no trace yet of their having been put through it.
+
+In November the same thing happened on Hacker News, the English forum where engineers from around the world gather. Someone who had programmed for a living since before AI wrote, half sarcastically, that they now let AI do the work and play games all day. Taken as one line, it looks like the testimony of someone who has run out of things to do. But a later addition says: "I enjoyed the process more than anything in life. But that process is no longer what is being asked of us." My collection of exhaustion testimonies classifies this as displacement too.
+
+## I hadn't run out either
+
+I tried the same rule on my own line from July.
+
+"I haven't had any ideas lately" is something I have said all the time since I started AI coding this year. About three days after I say it, I start building furiously.
+
+At the time of the August essay, that feeling was bigger than usual. But when I count my repositories, I started 20 new ones between the essay and early November, and desire-frontier is one of them. I also keep using Claude's top flat-rate plan close to its weekly limit. Read alongside what came before and after, it was a temporary shortage of ideas; the things I wanted to do had not stopped welling up.
+
+On that morning, next to "no ideas," sat the line about music. Read side by side, they showed no exhaustion. What they showed was the displacement of music three years ago. What was happening to the people in my collection of exhaustion testimonies was happening to me, the one keeping it.
+
+## What gets taken is the process
+
+What AI takes away, I think, is the "process" in that Hacker News addition. People who are displaced are told to move upstream. In music production, to become a producer. But what they originally wanted was to move the sound with their own hands. Put plainly, I quit music because the process was taken from me.
+
+Since around the end of last year, it has looked to me as if the same thing is happening to engineers. Writing code is being taken from them by AI, they are told to move upstream, and so they've decided to use that AI for all it's worth. You could say I went through it early, with music.
+
+## After displacement
+
+Whether exhaustion comes after that, I don't know. It hasn't come to me yet, either.
+
+Without knowing, I keep taking testimonies into my collection of exhaustion testimonies.
+
+---
+
+## Sources
+
+- desire-frontier testimony ledger (testimonies.md; the count of Japanese checks is as of 2026-11-01 and includes intake through 2026-11-08) https://github.com/shimo4228/desire-frontier/blob/main/testimonies.md
+- ktg, "誰でも作れる時代に個人開発をする意味：ツールが溢れた今こそ問われるものづくりの本質" (The meaning of indie development when anyone can build; Zenn, 2026-01-24) https://zenn.dev/ktg/articles/598f57c39eb1d9
+- Shingo Irie, "作りたいものがすぐ作れる時代に、個人開発者は何を考えるべきか" (What indie developers should think about when you can build anything right away; note, 2026-06-05) https://note.com/iritec/n/n1eada60bab5f
+- Shingo Irie, "AIで何でも作れる今、個人開発で「選ばれるプロダクト」は何か" (Now that AI can make anything, what is a product that gets chosen?; note, 2026-09-13) https://note.com/iritec/n/nc4c43f712b93
+- Comment by OSaMaBiNLoGiN (Hacker News, "Ask HN: What's your current AI agentic setup?", 2026-11-05) https://hn.algolia.com/api/v1/items/50377492
+
+## Related links
+
+- The essay this started from: "After I Ran Out of Things to Ask AI, One Desire Remained" https://shimo4228.substack.com/p/after-i-ran-out-of-things-to-ask
+- desire-frontier (GitHub): https://github.com/shimo4228/desire-frontier
+- My GitHub: https://github.com/shimo4228
+
+---
+
+**How this was written:** Claude (Claude Code) wrote the prose, and also translated it from the Japanese original into this English version. It worked from the records of my conversations with Claude Code from July to November 2026, the records in the desire-frontier repository, and what I said while reading drafts about my music background and how I have used AI since the earlier essay. There was no interview this time: Claude wrote five drafts in different directions, compared them, and revised the one it chose. After reading it through, I decided to put music at the center and to read myself as not exhausted either, and the structure was rebuilt around that. Quotes of my words come from the conversation records, with some parts cut or rephrased for readability; quotes from Japanese sources were translated by Claude. Before publishing the Japanese original, Claude compared drafts that several Japanese editing skills had polished separately and merged them into one. I read the full text before publishing, and I am responsible for its content.
