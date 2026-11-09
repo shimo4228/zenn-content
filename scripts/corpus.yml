@@ -4,6 +4,12 @@
 # Zenn/Dev.to articles are NOT listed here — their source of truth is articles/*.md.
 
 essays:
+  - slug: stopped-music-ran-out-of-asks
+    date: 2026-11-09
+    ja:
+      title: AIで「私が作る意味はない」とやめたものは？ 私は音楽でした
+      url: https://note.com/sakamaki4228/n/n23943a221425
+      file: note/stopped-music-ran-out-of-asks.md
   - slug: nirodha-samapatti-reemergence
     date: 2026-10-18
     ja:

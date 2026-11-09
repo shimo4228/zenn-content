@@ -66,6 +66,7 @@ python3 -c "import json;d=json.load(open('$D/note.json'))['data'];print(d['publi
 
 | slug | 公開 | tags |
 |---|---|---|
+| stopped-music-ran-out-of-asks | 2026-11-09 | #AIコーディング #AIと音楽 #剥奪 #作る意味 #音楽をやめた |
 | harness-scope-writing-harness | 2026-10-04 | #Claude #スキル #AIライティング #MOD #ハーネス #自動化したいこと #ClaudeMods |
 | agi-judgment-trail | 2026-10-01 | #ClaudeCode #情熱 #AGI #不条理 #無意味 #ハーネスエンジニアリング |
 | lost-referents-in-generated-prose | 2026-09-28 | #AI #ClaudeCode #AIライティング #ハーネス #AIスロップ #共通基盤 |

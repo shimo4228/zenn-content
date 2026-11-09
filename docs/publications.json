@@ -2,6 +2,18 @@
  "generated_by": "scripts/generate_article_index.py",
  "items": [
   {
+   "kind": "essay",
+   "slug": "stopped-music-ran-out-of-asks",
+   "date": "2026-11-09",
+   "published_at": "2026-11-09 00:00",
+   "ja": {
+    "title": "AIで「私が作る意味はない」とやめたものは？ 私は音楽でした",
+    "url": "https://note.com/sakamaki4228/n/n23943a221425",
+    "platform": "note"
+   },
+   "en": null
+  },
+  {
    "kind": "article",
    "slug": "harness-stocktake-after-doctor",
    "date": "2026-11-02",
