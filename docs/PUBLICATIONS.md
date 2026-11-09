@@ -215,7 +215,7 @@ Japanese originals on Zenn; English editions on Dev.to, or as source in `article
 Japanese canonical on note, English edition on Substack; sources in `note/` and `substack/`.
 
 - **2026-11-09** JA: [AIで「私が作る意味はない」とやめたものは？ 私は音楽でした](https://note.com/sakamaki4228/n/n23943a221425) (note)
-  EN: —
+  EN: [What Did You Stop Making Because of AI? Mine Was Music](https://shimo4228.substack.com/p/what-did-you-stop-making-because) (Substack)
 - **2026-10-18** JA: [瞑想で意識が完全に途切れたとき、何が「その人」をつないでいるのか](https://note.com/sakamaki4228/n/n51831ead08ca) (note)
   EN: [When Consciousness Fully Stops, How Does the Mind Return?](https://shimo4228.substack.com/p/when-consciousness-fully-stops-how) (Substack)
 - **2026-10-01** JA: [AGIが全てを飲み込むとしても、なぜ手を止めないのだろう](https://note.com/shimo4228/n/nf87f16b3b9c8) (note)
