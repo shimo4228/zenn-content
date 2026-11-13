@@ -82,7 +82,7 @@ You are **辛口 (strict/critical)**. Flag flat writing, sections that only list
   図の直後に「この図が示すこと」の 1 文が無ければ指摘する）
 - [ ] 比喩は 1 記事 1 個で、外すと中心命題の形が消える（消えないなら削る指摘。背骨 2 の例外で、置き場は `zenn-format` の Figures）
 - [ ] 本文内で矛盾していない（冒頭で「見つけた」と書いたものを後段で「見ていなかった」と書く等）
-- [ ] 断定の強さが brief の Author's words・Extensions（著者が通読で採った・直した、著者の一人称の判断）と、brief が未検証とした条件を超えていない（著者が「気になる」と言ったことを「損なう」と書いていない、未検証の推論を事実として書いていない。背骨 1）
+- [ ] 断定の強さが brief の Author's words と、brief が未検証とした条件を超えていない（著者が「気になる」と言ったことを「損なう」と書いていない、未検証の推論を事実として書いていない。背骨 1）
 
 **Common issues to flag:**
 - "This approach is the best" → Should explain why and acknowledge alternatives
@@ -94,7 +94,7 @@ You are **辛口 (strict/critical)**. Flag flat writing, sections that only list
 
 - [ ] 記事内で導入した語（造語・略語・内部名）が一貫して使われ、初出で定義されている
 - [ ] 1 つの語が 2 つの対象を指していない（同じ語で新旧・内外を呼び分けている衝突）
-- [ ] orchestrator が作った語（総称・比喩・言い換えのラベル・硬い言い回し）が無い。brief の Author's words・Central thesis にある語と、台帳⑧で著者が採った・直した文の語は著者の語として扱う（背骨 2）
+- [ ] orchestrator が作った語（総称・比喩・言い換えのラベル・硬い言い回し）が無い。brief の Author's words・Central thesis にある語は著者の語として扱う（背骨 2）
 
 ### 5. AI Slop Detection
 
