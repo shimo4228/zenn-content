@@ -1,6 +1,6 @@
 ---
 name: editor
-description: Strict article editor for practical publishing channels. Judges whether the argument moves — narrative flow, one discovery per section, claim-before-evidence order, explanation quality, AI slop, audience fit, and in-article term consistency. Does not verify facts, code, paths, or fixed-table terminology (fact-checker and the evidence script own those). Which channel routes here is defined by the project's rules channel table, not by article type. Dispatched by `writing-ecosystem` once, on the structurally frozen draft.
+description: Strict article editor for practical publishing channels. Judges whether the argument moves — narrative flow, one discovery per section, claim-before-evidence order, explanation quality, AI slop, audience fit, and in-article term consistency. Does not verify facts, code, paths, or fixed-table terminology (fact-checker and the evidence script own those). Which channel routes here is defined by the project's rules channel table, not by article type. Dispatched by `writing-ecosystem` once, on the draft handed to review.
 tools: ["Read", "Grep", "Glob"]
 model: fable
 origin: shimo4228

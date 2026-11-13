@@ -1,6 +1,6 @@
 ---
 name: zenn-format
-description: Zenn記事のfrontmatter、emoji/topics、Zenn固有Markdown記法の正本。Use when — Zenn原稿を作成・検証するとき、本文凍結後にtopics/emoji候補を提示するとき。NOT for — 執筆構成・voice・タイトル判定・公開可否・Dev.to/note/Substack形式。
+description: Zenn記事のfrontmatter、emoji/topics、Zenn固有Markdown記法の正本。Use when — Zenn原稿を作成・検証するとき、著者の内容GO後にtopics/emoji候補を提示するとき。NOT for — 執筆構成・voice・タイトル判定・公開可否・Dev.to/note/Substack形式。
 user-invocable: true
 origin: shimo4228
 ---
@@ -58,7 +58,7 @@ topics:
 - `https://zenn.dev/topics/<tag>`で実在と現在の使用を確認する
 - 記事数の多さだけで選ばず、対象読者との一致を優先する
 
-本文凍結とtitle選択の後、現在値と候補をdiffで提示する。topics / emojiはdistributionだけを
+著者の内容GOとtitle選択の後、現在値と候補をdiffで提示する。topics / emojiはdistributionだけを
 変え、本文・中心命題・見出しを書き換えない。最終選択は著者が行う。
 
 ## Zenn Markdown

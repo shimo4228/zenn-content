@@ -40,11 +40,11 @@ pointer、`collect-context` が作る evidence dossier の順に限定して受�
 | **Pre-write** | `collect-context` skill | 素材収集と証拠台帳（Claims Register / 一次・⚠未検証の tier）。編集判断はしない | 執筆前に素材を集めるとき |
 | **Interview** | `.claude/skills/article-interview/SKILL.md` | 著者に一問ずつ聞き、台帳を dossier 末尾に書き、方向を著者が選ぶ。構成・題・命題は出さない | 素材集めの後、brief の前 |
 | **Write** | 本 skill「editorial brief と執筆フロー」 | 中心命題・因果線・証拠選択・構成・執筆 | 初稿・改稿 |
-| **Persona read** | skill: `persona-read-loop`（article preset）+ `references/persona-read.md`（Zenn の記録の置き場と比較材料） | 記事ごとの読み手 3 人が読後に残った判断を言い直し、見せ方だけを直す。受け入れはしない | Zenn 稿の構造凍結前 |
+| **Persona read** | skill: `persona-read-loop`（article preset）+ `references/persona-read.md`（Zenn の記録の置き場と比較材料） | 記事ごとの読み手 3 人が読後に残った判断を言い直し、見せ方だけを直す。受け入れはしない | Zenn 稿のレビュー前 |
 | **Title** | `headline-craft` skill | 「開かせる一行」の候補生成と、本文から切り離した初見読み・約束の監査 | 著者の内容 GO 後、quality-gate の前 |
 | **Review: 品質** | `editor` agent | 議論の動き・説明の質・AI slop・記事内用語（code / path の照合は `fact-checker`） | 実用チャンネルのレビュー時 |
 | **Review: 論理** | `essay-reviewer` agent | エッセイの論理構成・過積載・トーン | エッセイチャンネルのレビュー時 |
-| **Review: 初見明瞭性（cross-model）** | Codex plugin の `codex:codex-rescue` agent（読み取り専用、checklist は `prose-clarity-reviewer` agent） | 第一画面・中心命題・内部文脈依存・カテゴリのすり替え | 構造凍結後の review panel 時 |
+| **Review: 初見明瞭性（cross-model）** | Codex plugin の `codex:codex-rescue` agent（読み取り専用、checklist は `prose-clarity-reviewer` agent） | 第一画面・中心命題・内部文脈依存・カテゴリのすり替え | 初稿のレビュー時 |
 | **Review: 事実** | `fact-checker` agent | 事実主張の Web 検証と、code / path / 出力のローカル照合 | 公開前検証時 |
 | **Acceptance** | `quality-gate` skill | local contract の reviewer verdict と機械検査を集約 | 公開直前 |
 | **Publish** | project-local publishing skill | platform API / UI / schedule / corpus 更新 | 著者 GO 後 |
@@ -118,17 +118,19 @@ out-of-scope を保持する。翻訳先の local contract へ route し直す�
 
 ### 3.5. Persona read（Zenn）
 
-Zenn 稿は、構造凍結の前に brief の Personas の 3 人へ稿を読ませ、読後に残った著者の判断（決めたこと・決めなかったこと・
+Zenn 稿は、レビューの前に brief の Personas の 3 人へ稿を読ませ、読後に残った著者の判断（決めたこと・決めなかったこと・
 その理由）の言い直しが brief と一致するまで、見せ方を直す。手順・止めどき・改稿の範囲・drift の計測は skill: `persona-read-loop`
 の article preset が持ち、照合に使う著者の判断は brief の Causal spine の判断行と、台帳⑥⑦（著者がインタビューで言った原文）から
 渡す。記録の置き場と、止めたラウンドで 1 回読ませる
 比較材料は [`references/persona-read.md`](references/persona-read.md) が持つ。
 
-### 4. Freeze, review, and content GO
+### 4. Review and content GO
 
-本文の構造を凍結したら、local contract の channel reviewer、`fact-checker`、初見の読みを本文へ実行する。
-panel に渡す稿は `drafts/<slug>/frozen.md` に写して残し、処分記録の冒頭にその path を書く（構造を変えて panel を
-回し直したら `frozen-2.md` と番号を足す）。凍結稿と処分記録の組は、reviewer を変えるときに replay して確かめる材料になる。
+初稿ができたら、local contract の channel reviewer、`fact-checker`、初見の読みを本文へ実行する。
+レビューに渡した版は `drafts/<slug>/review.md` に写して残し、処分記録の冒頭にその path を書く。稿はこの後も著者の通読で
+動くので、写しは「どの版への report か」を残すためのもので、構造を止める宣言ではない。写しと処分記録の組は、reviewer を
+変えるときに replay して確かめる材料になる。panel の前に命題が動いたら、brief を書き直してから渡す（reviewer は brief を照合の
+相手にする）。
 reviewer が見るのは本文の内側で判定できること（事実・構造・register・分類の軸・後方参照・矛盾）で、
 読者が何をすでに持っているか（何の話か分かるか）は著者の通読だけが持つ。
 初見の読みは Claude と別系統のモデルが担う — 同じ系統の reviewer は著者（orchestrator）と同じ所を
@@ -167,11 +169,11 @@ Zenn 稿は GO の時点で、通読の指摘数を [`evals/read-through-log.md`
 - **裁定の書き戻し**: 裁定結果は memory でなく channel contract に書く（fresh-context reviewer に
   届く唯一の層）。著者が同種指摘を 2 回却下したら、その場で contract の該当行を更新または削除する
 - **著者の通読指摘は種類への指摘**: 1 箇所を指摘されたら、同じ型を全文から探して直す
-- **panel の回数**: channel reviewer・初見の読み（Codex）は構造凍結時に各 1 回。レビュー修正を確かめるのは著者の通読で、reviewer ではない。修正を reviewer に読み
+- **panel の回数**: channel reviewer・初見の読み（Codex）は 1 本の稿に各 1 回。レビュー修正を確かめるのは著者の通読で、reviewer ではない。修正を reviewer に読み
   直させると、読むたびに新しい指摘が生まれて終わらず、限定句と段落分割が積もって本文が
   防御的になる
 - **処分記録**: orchestrator は指摘ごとに採用・不採用と理由を 1 行ずつ残し、`quality-gate` へ
-  凍結稿への report と並べて渡す。受け入れの証跡は「凍結稿への report + 処分記録 + 著者の
+  レビューに渡した版への report と並べて渡す。受け入れの証跡は「その report + 処分記録 + 著者の
   内容 GO」で、反映後の稿への reviewer verdict は要らない
 - **著者の指摘を積む**: 著者の発言が brief・構成・本文・タイトルのどれかを変えたら、反映と同じターンで
   `drafts/<slug>.corrections.md`（gitignore 下、非公開）に 1 件ずつ足す。1 件は著者の発言をそのままコピーした原文・対象・
@@ -183,9 +185,8 @@ Zenn 稿は GO の時点で、通読の指摘数を [`evals/read-through-log.md`
   Public-repository safety）を原文にも当て、個人のパス・秘密・第三者の非公開情報を `[略]` にし、何を伏せたかを同じ行に書く。
   修正前後の抜粋は `drafts/` にだけ置く。写し終えた件には `drafts/` 側に commit の SHA を書き足す。雛形は
   [`references/author-corrections.md`](references/author-corrections.md)
-- **brief へ戻った round**: reviewer を走らせ直すのは、修正が central thesis・causal spine・
-  主要節を変えて brief へ戻ったときだけ。その round は CRITICAL と変更部分の regression のみを
-  blocking とし、新規 MEDIUM/MINOR は集計のみ
+- **通読で命題が動いたとき**: 著者の通読で命題が動いたら、記事を書き直し（背骨 4: 継ぎ足さずに書き直すかを著者に聞く）、
+  brief は記録として後から合わせる。reviewer は走らせ直さない — 書き直した稿を確かめるのは著者の次の通読
 - **`fact-checker` の回数**: 著者の通読の前に 1 回。以後は、本文に新しい引用・数値・外部ソースが
   入ったときだけ、その差分を対象に回す。全文の再照合は構造が動くたびに同じ主張を払い直すことになる
 - **cross-model 指摘の採用**: 初見の読みの findings と、カテゴリのすり替え・事実誤り・帰属の誤りを

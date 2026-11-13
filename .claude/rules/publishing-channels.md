@@ -29,9 +29,9 @@ public-safety scan、channel の機械検査、著者の公開 GO で受け入�
 - ペルソナ読み（Zenn のみ）: 各ラウンドの読み手の JSON・判断の照合と、改稿したラウンドの `drift_count.py`（skill: `persona-read-loop`）の出力が
   `drafts/<slug>/persona/` にあり、止めた理由（判断が一致 / 残りが著者へ渡すものだけ / 3 周）を処分記録に書いている。
   読み手の評価は受け入れ条件にしない
-- channel editor: 凍結稿へのreportあり。CRITICALとcanonical coverageのpending / unverifiedは
+- channel editor: レビューに渡した版へのreportあり。CRITICALとcanonical coverageのpending / unverifiedは
   全件処分済み
-- 初見の読み（Codex plugin の `codex:codex-rescue`、読み取り専用、checklist は `prose-clarity-reviewer`）: 凍結稿への
+- 初見の読み（Codex plugin の `codex:codex-rescue`、読み取り専用、checklist は `prose-clarity-reviewer`）: レビューに渡した版への
   reportあり。FAILの根拠になったfindingと、カテゴリのすり替え・事実誤り・帰属の誤りは全件処分済み
 - `fact-checker`: INACCURATEとPARTIALLYは全件処分済み（訂正、または一次ソースで反証）
 - 著者の内容GO: レビュー反映後の本文に対して出ている
@@ -75,7 +75,7 @@ evidenceだけを使い、snippetは実行・検証済みにする。code block�
 - evidence dossier: `drafts/article-context_<slug>_<date>.md`（collect-context の既定名。`drafts/` は git 管理外）。末尾の
   `## インタビュー` 節が article-interview の台帳
 - editorial brief: `docs/plans/<slug>.md` — 公開（git に載る。公開可能な書き方で書く）
-- 凍結稿・ペルソナ読み・著者の指摘: `drafts/<slug>/frozen.md`、`drafts/<slug>/persona/`、`drafts/<slug>.corrections.md` — 非公開（`drafts/` は gitignore）
+- レビューに渡した版・ペルソナ読み・著者の指摘: `drafts/<slug>/review.md`（旧稿は `frozen.md`）、`drafts/<slug>/persona/`、`drafts/<slug>.corrections.md` — 非公開（`drafts/` は gitignore）
 - 認証・画面ログ・投稿台帳: `.notes/` — 非公開（gitignore）
 
 ## Related links
