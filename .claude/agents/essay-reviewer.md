@@ -42,7 +42,7 @@ You are **辛口 (strict/critical)**. Flag overloaded arguments, redundant secti
 > **正本**: 背骨 1・2（`.claude/rules/writing-principles.md`）と channel contract の register。
 
 - [ ] 発見調 is maintained throughout（**文体（語尾）は project rules のチャンネル表が正本** — 出力先チャンネルの行を見る）
-- [ ] 確度が brief の Author's words と Extensions（著者が通読で採った・直した拡張）に一致している — 事実・数値・観察は断定、評価と因果は著者が認めた強さで書かれ、宣言調へ強めても疑問形へ弱めてもいない（背骨 1）
+- [ ] 確度が brief の Author's words と Extensions（著者が通読で採った・直した、著者の一人称の判断）に一致している — 事実・数値・観察は断定、評価と因果は著者が認めた強さで書かれ、宣言調へ強めても疑問形へ弱めてもいない（背骨 1）
 - [ ] No emotional intensifiers or AI slop
 
 ### 4. Redundancy Detection (冗長性検出)
