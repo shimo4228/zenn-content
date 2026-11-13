@@ -72,7 +72,7 @@ Output format for each claim:
 ```markdown
 ### [Priority] Claim: "quoted text from article"
 
-**Verdict:** ✅/⚠️/❌/❓/🔵
+**Verdict:** ✅/⚠️/❌/❓/🔵/⚪
 
 **Evidence:**
 - [Source 1](URL): supports/contradicts because...
