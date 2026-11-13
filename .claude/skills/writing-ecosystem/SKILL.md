@@ -158,6 +158,8 @@ Zenn 稿は GO の時点で、通読の指摘数を [`evals/read-through-log.md`
 
 #### 指摘の処分規律
 
+この panel と処分規律を改修するときは、先に skill: `eval-foundations`（判定と eval の共通の原則）を読む。
+
 - **CRITICAL の意味**: 読者への約束・事実・中心命題を壊すもののみ。規約と運用実態の衝突は
   CRITICAL でなく「裁定要求」として報告し、裁定者は著者
 - **裁定の書き戻し**: 裁定結果は memory でなく channel contract に書く（fresh-context reviewer に
