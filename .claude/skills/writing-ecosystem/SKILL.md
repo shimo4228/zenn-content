@@ -39,7 +39,6 @@ pointer、`collect-context` が作る evidence dossier の順に限定して受�
 | **Theme discovery** | `session-theme-mining` skill | Claude / Codex 履歴横断から 0〜3 件の同格な問いを発見し、著者の選択で止まる | 執筆スコープがまだ決まっていないとき |
 | **Pre-write** | `collect-context` skill | 素材収集と証拠台帳（Claims Register / 一次・⚠未検証の tier）。編集判断はしない | 執筆前に素材を集めるとき |
 | **Interview** | `.claude/skills/article-interview/SKILL.md` | 著者に一問ずつ聞き、台帳を dossier 末尾に書き、方向を著者が選ぶ。構成・題・命題は出さない | 素材集めの後、brief の前 |
-| **First read** | 本 skill §3「初稿の通読」 | 著者が初稿を通読し、記事全体が自分の考えとして通るかを見て、気になった所を指摘する | 初稿の後、構造凍結の前 |
 | **Write** | 本 skill「editorial brief と執筆フロー」 | 中心命題・因果線・証拠選択・構成・執筆 | 初稿・改稿 |
 | **Persona read** | skill: `persona-read-loop`（article preset）+ `references/persona-read.md`（Zenn の記録の置き場と比較材料） | 記事ごとの読み手 3 人が読後に残った判断を言い直し、見せ方だけを直す。受け入れはしない | Zenn 稿の構造凍結前 |
 | **Title** | `headline-craft` skill | 「開かせる一行」の候補生成と、本文から切り離した初見読み・約束の監査 | 著者の内容 GO 後、quality-gate の前 |
@@ -113,12 +112,6 @@ Out of scope:
 答えの順や言い回しをなぞって並べない（背骨 2・4）。読者を入れる場面、節の順、例、機序の説明は orchestrator が組み立て、
 因果線の各段を自分の推論で展開する。執筆中に別の中心命題が現れたら混ぜずに停止し、editorial brief を
 再確認する（背骨 4）。out-of-scope は本文から外す — `details` に押し込むと、読者には本文の一部として届く。
-
-**初稿の通読。** 初稿ができたら、通読用の稿を著者が開ける形（この repo では private な Artifact）で渡す。著者が見るのは、
-記事全体が自分の考えとして通るかで、段落ごとの出どころではない。稿に印を付けず、判断を仰ぐ一覧も別に立てない — 印の有無で稿を
-分けると印の無い所が答えの言い直しに寄り、一覧は著者が全体を読めば済む確認を増やす。著者は気になった所を指摘し、orchestrator は
-指摘を `drafts/<slug>.corrections.md` に積んで直す。著者が捨てた段落は brief の Out of scope へ移し、捨てた結果因果線が切れたら、
-切れた所を著者に 1 問で聞く。内容 GO は §4 の通読で出す。
 
 翻訳は `prose-translation` を使い、承認済み central thesis、causal spine、selected evidence、
 out-of-scope を保持する。翻訳先の local contract へ route し直す。
