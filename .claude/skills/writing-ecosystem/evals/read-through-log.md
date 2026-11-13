@@ -2,7 +2,7 @@
 # 通読指摘数の記録（ペルソナ読みの KPI）
 
 Zenn 稿で著者の通読が見つけた指摘の数。`references/persona-read.md` を直すとき・段ごと外すかを決めるときの
-主な入力にする。著者の内容 GO の時点で 1 行足す。
+主な入力にする。1 行足す時点は `SKILL.md` §4 が持つ。「ペルソナ読み」の欄には読み手のモデルも書く。
 
 比較の基準は「ペルソナ読み: なし」の行。ペルソナ読みを使う前で、panel が今と同じ構成（Codex の初見の読みを含む）の
 直近 3 本 — `jev-guard-blind-to-local-verify`・`harness-scope-writing-harness`・`readme-human-llm-fold` — の通読指摘数を、

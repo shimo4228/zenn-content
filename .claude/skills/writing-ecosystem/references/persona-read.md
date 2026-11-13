@@ -22,8 +22,6 @@ skill: `persona-read-loop` の article preset が持つ。ここに置くのは 
   ```
 
 - 止めた理由を処分記録に 1 行で書く
-- 著者の内容 GO の時点で、通読が見つけた指摘の数を [`../evals/read-through-log.md`](../evals/read-through-log.md) に
-  1 行足す（読み手のモデルも書く）
 
 ## 比較材料（止めたラウンドで 1 回、`practitioner` だけ）
 
