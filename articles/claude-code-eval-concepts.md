@@ -218,6 +218,7 @@ README 本体と記事で eval ループをしてこなかったのは、足り�
 - [非数値のアセスメントは「eval」なのか（Deep Research の出力）](https://github.com/shimo4228/zenn-content/blob/main/docs/plans/research/2026-10-12-eval-vs-review-deep-research.md) — 主要な資料が eval をどう定義しているか
 - [AI の苦手な仕事をスクリプトに逃がす — スキル棚卸しコマンドの設計・実装・公開の全記録](https://zenn.dev/shimo4228/articles/skill-stocktake-design-journey) — 2026年2月、スキルの棚卸しでルーブリックの点数をやめ、総合判断にした記録
 - [LLM-as-judge はスコアを集計しない — チェックは証拠、判定は総合判断](https://zenn.dev/shimo4228/articles/llm-judge-checks-not-scores) — `llm-as-judge` スキルが点数を集計しない理由
+- [人間が Eval するのは、どこなのか（note）](https://note.com/shimo4228/n/nd1c6c8c2cfcf) — この記事の後に書いた続きの問い。人間が Eval しなければならない所を探すと、誰が説明を引き受けるかの話と切り離せなくなる
 - [評価を全部通った原稿が 2 本とも空疎だった。AI に渡す台帳には会話ログの原本を添える](https://zenn.dev/shimo4228/articles/transcript-not-ledger) — 評価を通ることと、良いことがずれた例
 - [KPI は改善していた。それでも自作の LLM judge を捨てた](https://zenn.dev/shimo4228/articles/judge-degrades-into-reviewer) — judge の点数が上がっても良くならなかった例
 - [この記事のMarkdown正本（GitHub）](https://github.com/shimo4228/zenn-content/blob/main/articles/claude-code-eval-concepts.md) — 全記事のMarkdownと索引（docs/PUBLICATIONS.md）は同じリポジトリにあります

@@ -3,6 +3,22 @@
  "items": [
   {
    "kind": "essay",
+   "slug": "human-eval-final-artifact",
+   "date": "2026-11-14",
+   "published_at": "2026-11-14 00:00",
+   "ja": {
+    "title": "人間が Eval するのは、どこなのか",
+    "url": "https://note.com/shimo4228/n/nd1c6c8c2cfcf",
+    "platform": "note"
+   },
+   "en": {
+    "title": "Where Does the Human Do the Eval?",
+    "url": "https://shimo4228.substack.com/p/where-does-the-human-do-the-eval",
+    "platform": "Substack"
+   }
+  },
+  {
+   "kind": "essay",
    "slug": "stopped-music-ran-out-of-asks",
    "date": "2026-11-09",
    "published_at": "2026-11-09 00:00",
