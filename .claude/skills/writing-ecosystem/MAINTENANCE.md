@@ -44,7 +44,9 @@
 - 確かめていないこと: 拡張の通読で著者の読む回数が 1 回増える負担と、§4 の通読の指摘が減るか。次の 1 本の台帳⑧と
   `drafts/<slug>.corrections.md` で見る
 
-## ペルソナ読み（references/persona-read.md）
+## ペルソナ読み（references/persona-read.md、2026-11-14 に削除）
+
+- 2026-11-14 に既定の flow から外し、references/persona-read.md を消した。著者が頼んだときだけ skill: `persona-read-loop` で回す（ADR-0015 の注記）
 
 - 手順・prompt・照合・drift_count.py は 2026-10-18 に harness の skill: `persona-read-loop`（article preset）へ移した
   （harness の plan `docs/plans/persona-read-skill.html`）。ここに残るのは Zenn の記録の置き場と比較材料。以下はこの repo で
@@ -145,5 +147,5 @@
   read-through-log の「処分で落とした件」で見張る（レビューチェーンの改善案、提案 5）
 - 同時に入れた改善案（同報告）: 提案 1（著者の発言が無い一人称の判断は記録だけ）、4（Codex の文面を references/first-contact-read.md に固定し、
   稿を先に読ませ、使えないときは Claude で代替しない）、5（read-through-log を全 channel に）、6（総合評価の廃止）、7（方向は代理決定しない）。
-  提案 3（ペルソナ読みを既定から外す）は ADR-0015 の判定者が著者なので入れていない
+  提案 3（ペルソナ読みを既定から外す）は、判定者の著者が同日に「外す」と決めた（ADR-0015 の 2026-11-14 注記）
 - 確かめていないこと: 5 本に分けたことで、著者の通読の指摘が減るか、処分の手間に見合うか。次の 3 本の read-through-log で見る

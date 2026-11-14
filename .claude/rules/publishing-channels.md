@@ -22,13 +22,10 @@ path がどの行にも一致しない、または複数行に一致する場合
 全channelで次の証跡を要求する。レビューの回数と、反映後の稿を確かめる役は `writing-ecosystem` の指摘の処分規律が持つ。
 
 JP 正本がこの profile を通った後の EN 訳（Dev.to / Substack）は、`review-prose` と `review-conventions` の report とその処分記録、AI 開示、
-public-safety scan、channel の機械検査、著者の公開 GO で受け入れる。中身は JP で検証済みなので、ペルソナ読み・初見の読み・
+public-safety scan、channel の機械検査、著者の公開 GO で受け入れる。中身は JP で検証済みなので、初見の読み・
 `fact-checker`・`headline-craft` は EN では回さない。EN の題は translator の推奨案で決める。
 
 - 処分記録: orchestratorが指摘ごとに採用・不採用と理由を1行ずつ残している
-- ペルソナ読み（Zenn のみ）: 各ラウンドの読み手の JSON・判断の照合と、改稿したラウンドの `drift_count.py`（skill: `persona-read-loop`）の出力が
-  `drafts/<slug>/persona/` にあり、止めた理由（判断が一致 / 残りが著者へ渡すものだけ / 3 周）を処分記録に書いている。
-  読み手の評価は受け入れ条件にしない
 - 観点別レビュー（`review-structure` / `review-certainty` / `review-explanation` / `review-prose` / `review-conventions`）:
   レビューに渡した版への report が 5 本あり。CRITICAL と Pending / unverified は全件処分済み。「記録だけするもの」は処分記録に残っている
 - 初見の読み（Codex plugin の `codex:codex-rescue`、読み取り専用、文面は `writing-ecosystem/references/first-contact-read.md`）: レビューに渡した版への
@@ -75,7 +72,7 @@ evidenceだけを使い、snippetは実行・検証済みにする。code block�
 - evidence dossier: `drafts/article-context_<slug>_<date>.md`（collect-context の既定名。`drafts/` は git 管理外）。末尾の
   `## インタビュー` 節が article-interview の台帳
 - editorial brief: `docs/plans/<slug>.md` — 公開（git に載る。公開可能な書き方で書く）
-- レビューに渡した版・ペルソナ読み・著者の指摘: `drafts/<slug>/review.md`（旧稿は `frozen.md`）、`drafts/<slug>/persona/`、`drafts/<slug>.corrections.md` — 非公開（`drafts/` は gitignore）
+- レビューに渡した版・著者の指摘: `drafts/<slug>/review.md`（旧稿は `frozen.md`）、`drafts/<slug>.corrections.md` — 非公開（`drafts/` は gitignore）
 - 認証・画面ログ・投稿台帳: `.notes/` — 非公開（gitignore）
 
 ## Related links

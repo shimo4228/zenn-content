@@ -91,6 +91,12 @@ ADR-0011 の理由 2（読み直しで指摘が尽きず本文が防御的にな
 
 ## Review-when
 
+> **注記（2026-11-14, commit「refactor(writing): ペルソナ読みを既定の flow から外す」）**: 判定者の著者が、ペルソナ読みを
+> Zenn 稿の既定の flow から外すと決めた（著者「外す」）。きっかけはレビューチェーンの改善案（同日、eval-foundations に沿う提案 3）で、
+> 上の 3 本対 3 本の比較は、同じ窓で panel を観点別 5 本に変えたため測れなくなった。§3.5 は「著者が頼んだときだけ
+> skill: persona-read-loop で回す」1 段落に縮め、`references/persona-read.md` と contract の証跡行・brief の `Personas:` 行を消した。
+> 本 ADR の Decision は、頼まれて回すときの記録として残る。
+
 判定者は著者。記録は `.claude/skills/writing-ecosystem/evals/read-through-log.md` と、その稿の commit 本文に置く（`drafts/` は非公開で消えうる）。
 
 - ペルソナ読みを回した Zenn 稿 3 本で、著者の通読の指摘数が基準の 3 本（Decision 9）と比べて減らない — 段ごと外すかを著者が決める。

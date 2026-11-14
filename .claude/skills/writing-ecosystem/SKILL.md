@@ -40,7 +40,6 @@ pointer、`collect-context` が作る evidence dossier の順に限定して受�
 | **Pre-write** | `collect-context` skill | 素材収集と証拠台帳（Claims Register / 一次・⚠未検証の tier）。編集判断はしない | 執筆前に素材を集めるとき |
 | **Interview** | `.claude/skills/article-interview/SKILL.md` | 著者に一問ずつ聞き、台帳を dossier 末尾に書き、方向を著者が選ぶ。構成・題・命題は出さない | 素材集めの後、brief の前 |
 | **Write** | 本 skill「editorial brief と執筆フロー」 | 中心命題・因果線・証拠選択・構成・執筆 | 初稿・改稿 |
-| **Persona read** | skill: `persona-read-loop`（article preset）+ `references/persona-read.md`（Zenn の記録の置き場と比較材料） | 記事ごとの読み手 3 人が読後に残った判断を言い直し、見せ方だけを直す。受け入れはしない | Zenn 稿のレビュー前 |
 | **Title** | `headline-craft` skill | 「開かせる一行」の候補生成と、本文から切り離した初見読み・約束の監査 | 著者の内容 GO 後、quality-gate の前 |
 | **Review: 観点別** | `review-structure` / `review-certainty` / `review-explanation` / `review-prose` / `review-conventions` agent | 構造・確度・説明と証拠・文章と語・規約を 1 観点ずつ。総合評価は出さない | 初稿のレビュー時（全 channel） |
 | **Review: 初見明瞭性（cross-model）** | Codex plugin の `codex:codex-rescue` agent（読み取り専用、checklist は `prose-clarity-reviewer` agent） | 第一画面・中心命題・内部文脈依存・カテゴリのすり替え | 初稿のレビュー時 |
@@ -87,7 +86,6 @@ brief の Out of scope か Entry bridge へ入れる。広い調査が要ると�
 Reader: <台帳③「読者について出た語」の原文 1 行。無ければ channel contract の読者と書き、「著者の発言なし」と添える>
 Channel: <local contract の channel>
 Author's words: <台帳①からの転記だけ。要約・言い換えをしない（reviewer が確度をこの欄と照らす）。記録（ログ）から採った発言は「記録から（session id）」と分けて書く>
-Personas: <Zenn のみ。primary（channel contract の読者。台帳③の語を優先）/ inflow（Zenn のトレンド・topic 検索・X 告知のうち、この記事が受ける経路から来た人）/ practitioner（日本のハーネス実践者。自分でも coding agent の harness を組み、日本語の記事を読み比べてきた人）の 3 人を各 1〜2 文で（役割・既に知っていること・比べる相手・時間の予算）。選び方と既定のモデルは skill: persona-read-loop の article preset。既定から外す読み手にだけ model を書く>
 Central thesis: <台帳⑥で著者が選んだ方向を、この原稿が成立させる命題一文にしたもの。必ず一つ。確度は Author's words のまま（背骨 1）>
 Entry bridge: <読者の出発点から、なぜ中心命題を考える意味があるかが伝わる場面・観察・問いを1〜2文で。既定は台帳②の 1 件目>
 Figure plan: <内容 GO の後に埋める。節 → 形（対比 / 流れ / 階層 / 2 軸 / 並列）→ 図の有無。並列は list のまま>
@@ -116,13 +114,10 @@ Out of scope:
 翻訳は `prose-translation` を使い、承認済み central thesis、causal spine、selected evidence、
 out-of-scope を保持する。翻訳先の local contract へ route し直す。
 
-### 3.5. Persona read（Zenn）
+### 3.5. Persona read（著者が頼んだときだけ）
 
-Zenn 稿は、レビューの前に brief の Personas の 3 人へ稿を読ませ、読後に残った著者の判断（決めたこと・決めなかったこと・
-その理由）の言い直しが brief と一致するまで、見せ方を直す。手順・止めどき・改稿の範囲・drift の計測は skill: `persona-read-loop`
-の article preset が持ち、照合に使う著者の判断は brief の Causal spine の判断行と、台帳⑥⑦（著者がインタビューで言った原文）から
-渡す。記録の置き場と、止めたラウンドで 1 回読ませる
-比較材料は [`references/persona-read.md`](references/persona-read.md) が持つ。
+既定の flow には入れない。著者が頼んだときだけ skill: `persona-read-loop` の article preset で回し、読み手の人選は
+その skill が持つ。記録は `drafts/<slug>/persona/` に置く（経緯: ADR-0015 の 2026-11-14 注記）。
 
 ### 4. Review and content GO
 
