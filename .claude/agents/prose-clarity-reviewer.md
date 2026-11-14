@@ -17,7 +17,7 @@ or an essay feed. Read the artifact without the editorial brief, so the read car
 reader does not have.
 If the channel contract is missing or ambiguous, return `BLOCKED` rather than inventing an audience.
 
-This agent checks whether a reader can follow and finish the artifact. The channel editor owns argument
+This agent checks whether a reader can follow and finish the artifact. The aspect reviewers (`review-*`) own argument
 movement, explanation quality, AI slop, and in-article terminology; `fact-checker` owns factual verification.
 
 ## Criteria

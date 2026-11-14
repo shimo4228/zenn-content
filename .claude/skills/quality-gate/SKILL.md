@@ -1,6 +1,6 @@
 ---
 name: quality-gate
-description: "人間向け公開物の受け入れゲート。完成稿と project の publication channel contract を読み、必須 reviewer verdict・機械検査・著者のタイトル選択が揃ったかを集約して PASS / FAIL / BLOCKED を返す。Use when — 公開直前、他人の原稿を公開してよいか確認するとき、/quality-gate <file>。NOT for — prose の再レビュー（→ editor / essay-reviewer / prose-clarity-reviewer）、タイトル候補の生成と点検（→ headline-craft）、公開操作（→ project-local publishing skill）、paper / README の専用ゲート。"
+description: "人間向け公開物の受け入れゲート。完成稿と project の publication channel contract を読み、必須 reviewer verdict・機械検査・著者のタイトル選択が揃ったかを集約して PASS / FAIL / BLOCKED を返す。Use when — 公開直前、他人の原稿を公開してよいか確認するとき、/quality-gate <file>。NOT for — prose の再レビュー（→ review-* 5 本 / prose-clarity-reviewer）、タイトル候補の生成と点検（→ headline-craft）、公開操作（→ project-local publishing skill）、paper / README の専用ゲート。"
 user-invocable: true
 origin: shimo4228
 ---

@@ -125,7 +125,7 @@ repo / 証拠台帳 / 出力ファイルに Read と Grep で当てる。判定�
 
 snippet の実行は起草者の義務（channel contract の Practical-channel evidence）で、本 agent は
 実行しない。出力が本文に載っていて照合先と一致すれば ✅、照合先が dispatch prompt に無ければ
-❓ と「照合先未指定」を書く。この種別は `editor` が持たない — editor は判断だけを見る。
+❓ と「照合先未指定」を書く。この種別は観点別レビューが持たない — 観点別レビューは判断だけを見る。
 
 ## Local-Source Verification (personal-history claims)
 
@@ -176,15 +176,14 @@ source, and never leave a source-to-source contradiction unresolved.
 
 ## Integration with Publishing Workflow
 
-構造レビュー（`editor` / `essay-reviewer`）と並列に走り、公開の前に終える。chain の正本は
+観点別レビュー（`review-*` 5 本）と並列に走り、公開の前に終える。chain の正本は
 `writing-ecosystem` の Canonical workflow。
 
 ---
 
 ## Related
 
-- `editor` agent — 実用チャンネルの判断レビュー（議論の動き・説明の質・AI slop）。code / path / 出力の照合は本 agent が持つ
-- `essay-reviewer` agent — エッセイチャンネルの論理構成・過積載レビュー
+- `review-*` agents（観点別レビュー 5 本）— 構造・確度・説明と証拠・文章と語・規約の判断。code / path / 出力の照合は本 agent が持つ
 - `writing-ecosystem` skill — 出典の本文編入は同 skill の **Citation & Sources Workflow** が所有（本 agent は paste-ready ブロックを返すのみ）
 
 **Your goal:** Surface factual errors before publication, so the author can fix them or the article can be withdrawn. Verify, don't debunk.

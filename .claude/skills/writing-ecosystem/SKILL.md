@@ -1,6 +1,6 @@
 ---
 name: writing-ecosystem
-description: 人間向け記事・エッセイ・ブログポスト・ニュースレターの唯一の執筆 orchestrator。project の publication channel contract を読み、中心命題 1 つの editorial brief、因果線、証拠の選択と除外、構成、執筆、review panel、著者の内容 GO、タイトル、quality-gate までを統括する。Use when — 「この記事を書いて」「このテーマでエッセイにして」「原稿の論点を一つに絞って構造改稿して」のような新規執筆・全体改稿・全文の別 channel 展開。NOT for — 一文や段落だけの翻訳（→ prose-translation）、title だけ（→ headline-craft）、SNS の告知・断片（→ social-post）、公開 thread 返信（→ public-comment）、AI 向け docs、README、paper、媒体固有の公開操作。
+description: 人間向け記事・エッセイ・ブログポスト・ニュースレターの唯一の執筆 orchestrator。project の publication channel contract を読み、中心命題 1 つの editorial brief、因果線、証拠の選択と除外、構成、執筆、観点別レビュー、著者の内容 GO、タイトル、quality-gate までを統括する。Use when — 「この記事を書いて」「このテーマでエッセイにして」「原稿の論点を一つに絞って構造改稿して」のような新規執筆・全体改稿・全文の別 channel 展開。NOT for — 一文や段落だけの翻訳（→ prose-translation）、title だけ（→ headline-craft）、SNS の告知・断片（→ social-post）、公開 thread 返信（→ public-comment）、AI 向け docs、README、paper、媒体固有の公開操作。
 compatibility: Designed for Claude Code (or similar agent products). Orchestrates the review agents under <project>/.claude/agents/.
 user-invocable: true
 origin: shimo4228
@@ -42,8 +42,7 @@ pointer、`collect-context` が作る evidence dossier の順に限定して受�
 | **Write** | 本 skill「editorial brief と執筆フロー」 | 中心命題・因果線・証拠選択・構成・執筆 | 初稿・改稿 |
 | **Persona read** | skill: `persona-read-loop`（article preset）+ `references/persona-read.md`（Zenn の記録の置き場と比較材料） | 記事ごとの読み手 3 人が読後に残った判断を言い直し、見せ方だけを直す。受け入れはしない | Zenn 稿のレビュー前 |
 | **Title** | `headline-craft` skill | 「開かせる一行」の候補生成と、本文から切り離した初見読み・約束の監査 | 著者の内容 GO 後、quality-gate の前 |
-| **Review: 品質** | `editor` agent | 議論の動き・説明の質・AI slop・記事内用語（code / path の照合は `fact-checker`） | 実用チャンネルのレビュー時 |
-| **Review: 論理** | `essay-reviewer` agent | エッセイの論理構成・過積載・トーン | エッセイチャンネルのレビュー時 |
+| **Review: 観点別** | `review-structure` / `review-certainty` / `review-explanation` / `review-prose` / `review-conventions` agent | 構造・確度・説明と証拠・文章と語・規約を 1 観点ずつ。総合評価は出さない | 初稿のレビュー時（全 channel） |
 | **Review: 初見明瞭性（cross-model）** | Codex plugin の `codex:codex-rescue` agent（読み取り専用、checklist は `prose-clarity-reviewer` agent） | 第一画面・中心命題・内部文脈依存・カテゴリのすり替え | 初稿のレビュー時 |
 | **Review: 事実** | `fact-checker` agent | 事実主張の Web 検証と、code / path / 出力のローカル照合 | 公開前検証時 |
 | **Acceptance** | `quality-gate` skill | local contract の reviewer verdict と機械検査を集約 | 公開直前 |
@@ -72,7 +71,8 @@ local contract から出力 channel と読者を決める。テーマ未選択�
 
 **2b. 聞く。** `.claude/skills/article-interview/SKILL.md` を読み、その手順で著者に聞く。dossier があればその path を
 持って入る。台帳は dossier 末尾の `## インタビュー` 節に書き、方向は著者が選ぶ。session-theme-mining で選ばれた問いと
-dossier の Claims は聞き手の準備で、方向の材料ではない。
+dossier の Claims は聞き手の準備で、方向の材料ではない。方向（何を問う記事にするか）は orchestrator が代わりに決めない —
+候補を同格で並べ、著者が選ぶ。
 
 **2c. 差分を集める。** 選んだ方向で要るのに dossier に無い出来事（著者が語った出来事を含む）を、`collect-context` で
 足す。稿が外部言説に対する新規性を主張するときは、選んだ方向の同型の主張だけを skill: `search-first` で調べ、結果を
@@ -126,33 +126,34 @@ Zenn 稿は、レビューの前に brief の Personas の 3 人へ稿を読ま�
 
 ### 4. Review and content GO
 
-初稿ができたら、local contract の channel reviewer、`fact-checker`、初見の読みを本文へ実行する。
+初稿ができたら、観点別レビュー 5 本・`fact-checker`・初見の読みを、同じ版に対して 1 回ずつ並列に回す。
 レビューに渡した版は `drafts/<slug>/review.md` に写して残し、処分記録の冒頭にその path を書く。稿はこの後も著者の通読で
 動くので、写しは「どの版への report か」を残すためのもので、構造を止める宣言ではない。写しと処分記録の組は、reviewer を
-変えるときに replay して確かめる材料になる。panel の前に命題が動いたら、brief を書き直してから渡す（reviewer は brief を照合の
+変えるときに replay して確かめる材料になる。レビューの前に命題が動いたら、brief を書き直してから渡す（reviewer は brief を照合の
 相手にする）。
-reviewer が見るのは本文の内側で判定できること（事実・構造・register・分類の軸・後方参照・矛盾）で、
-読者が何をすでに持っているか（何の話か分かるか）は著者の通読だけが持つ。
-初見の読みは Claude と別系統のモデルが担う — 同じ系統の reviewer は著者（orchestrator）と同じ所を
-読み飛ばす。Codex plugin（openai/codex-plugin-cc）の `codex:codex-rescue` agent を background で起動し、
-prompt の先頭に「Read-only review. Do not edit files (no --write).」と書く（書かないと rescue は書き込み可で走る）。
-続けて「`.claude/agents/prose-clarity-reviewer.md` の checklist を読み、channel contract の読者として原稿を 1 回だけ読み、
-checklist の形式で報告する。加えて本文から弁護できるカテゴリのすり替え・事実の矛盾・帰属の誤りを挙げる。
-ヘッジの追加は求めない。日本語で書く」と、checklist・contract・原稿の path だけを渡す。central thesis・
-causal spine・成功基準を渡すと、reviewer は答えを持って読み、「何をしたのか分からない」を検出できなくなる。
-これが panel の cross-model review を兼ねる（経緯は ADR-0013）。中継役の agent が返ってこないときは、Codex 側の結果を
+
+**観点別レビュー。** `review-structure`（構造）・`review-certainty`（確度）・`review-explanation`（説明と証拠）・`review-prose`（文章と語）・
+`review-conventions`（規約）。各 agent は自分の観点だけを見て、総合評価を出さない（共通の約束は
+[`references/review-output-format.md`](references/review-output-format.md)）。観点を一つの agent にまとめると、観点どうしと全体の
+判断が滲む（eval-foundations 原則 5）。記事全体の判断は著者の通読が持つ（原則 4）。dispatch prompt には稿の path、channel、
+承認済み brief の path、dossier の path（末尾の `## インタビュー` 節が確度照合の一次資料）、AI が本文を生成したかを書く。
+同じ文面で 5 本に渡し、ほかの agent の結果は渡さない。全 channel で 5 本を回す（channel の違いは各 agent が contract の該当行から読む）。
+
+**事実。** `fact-checker` の dispatch prompt には証拠台帳と一次資料の path（repo、出力ファイル）を名指しで渡す — code / path / 出力の
+照合はこの agent が持ち、観点別レビューは判断だけを持つ。
+
+**初見の読み。** Claude と別系統のモデルが担う — 同じ系統の reviewer は orchestrator と同じ所を読み飛ばす（原則 3）。
+Codex plugin（openai/codex-plugin-cc）の `codex:codex-rescue` agent を background で起動し、[`references/first-contact-read.md`](references/first-contact-read.md)
+の文面をそのまま渡す（文面を毎回組み立てない。原則 8）。central thesis・causal spine・成功基準は渡さない — 答えを持って読むと
+「何をしたのか分からない」を検出できなくなる（経緯は ADR-0013）。中継役の agent が返ってこないときは、Codex 側の結果を
 `node ~/.claude/plugins/cache/openai-codex/codex/*/scripts/codex-companion.mjs status` → `result <job-id>` で取り出す。
-plugin が使えないときは Claude の
-`prose-clarity-reviewer` agent で代替し、理由を処分記録に残す。channel reviewer の dispatch prompt には、承認済み brief の path、
-dossier の path（末尾の `## インタビュー` 節が確度照合の一次資料）、AI が本文を生成したかを書く（Author's words と
-の確度照合と、開示の照合に使う）。editor と essay-reviewer の両方を
-回すのは contract が要求する場合だけ。`fact-checker` の dispatch prompt には証拠台帳と一次資料の
-path（repo、出力ファイル）を名指しで渡す — code / path / 出力の照合はこの agent が持ち、channel
-reviewer は判断だけを持つ。
+Codex が使えないときは Claude で代替せず、処分記録に「別系統の読み: なし（理由）」と書き、著者への報告に 1 行で添える
+（同じ系統で埋めると、別系統の読みがあったように見える）。
 
 採用した指摘は orchestrator が反映し（回数と戻り条件は下の処分規律）、out-of-scope が本文へ戻っていないことを
 確認してから著者が本文を通読し、**内容 GO** を出す。内容が確定するのはこの GO であり、タイトル作業はその後に置く。
-Zenn 稿は GO の時点で、通読の指摘数を [`evals/read-through-log.md`](evals/read-through-log.md) に 1 行足す。
+GO の時点で、通読の指摘数と、そのうちレビューが先に挙げていたのに orchestrator が処分で落とした件数を
+[`evals/read-through-log.md`](evals/read-through-log.md) に 1 行足す（全 channel。下の処分規律の「処分の偏りを見張る」）。
 
 図は内容 GO の後に起こす（brief の Figure plan をここで埋める。形の選び方と手順は project の format skill — Zenn は `zenn-format` の Figures。
 図の規約を持たない channel では Figure plan は「なし」と書く）。
@@ -162,14 +163,14 @@ Zenn 稿は GO の時点で、通読の指摘数を [`evals/read-through-log.md`
 
 #### 指摘の処分規律
 
-この panel と処分規律を改修するときは、先に skill: `eval-foundations`（判定と eval の共通の原則）を読む。
+このレビューと処分規律を改修するときは、先に skill: `eval-foundations`（判定と eval の共通の原則）を読む。
 
 - **CRITICAL の意味**: 読者への約束・事実・中心命題を壊すもののみ。規約と運用実態の衝突は
   CRITICAL でなく「裁定要求」として報告し、裁定者は著者
 - **裁定の書き戻し**: 裁定結果は memory でなく channel contract に書く（fresh-context reviewer に
   届く唯一の層）。著者が同種指摘を 2 回却下したら、その場で contract の該当行を更新または削除する
 - **著者の通読指摘は種類への指摘**: 1 箇所を指摘されたら、同じ型を全文から探して直す
-- **panel の回数**: channel reviewer・初見の読み（Codex）は 1 本の稿に各 1 回。レビュー修正を確かめるのは著者の通読で、reviewer ではない。修正を reviewer に読み
+- **レビューの回数**: 観点別レビュー・初見の読み（Codex）は 1 本の稿に各 1 回。レビュー修正を確かめるのは著者の通読で、reviewer ではない。修正を reviewer に読み
   直させると、読むたびに新しい指摘が生まれて終わらず、限定句と段落分割が積もって本文が
   防御的になる
 - **処分記録**: orchestrator は指摘ごとに採用・不採用と理由を 1 行ずつ残し、`quality-gate` へ
@@ -187,6 +188,13 @@ Zenn 稿は GO の時点で、通読の指摘数を [`evals/read-through-log.md`
   [`references/author-corrections.md`](references/author-corrections.md)
 - **通読で命題が動いたとき**: 著者の通読で命題が動いたら、記事を書き直し（背骨 4: 継ぎ足さずに書き直すかを著者に聞く）、
   brief は記録として後から合わせる。reviewer は走らせ直さない — 書き直した稿を確かめるのは著者の次の通読
+- **報告の扱い**: 観点別レビューの「記録だけするもの」（著者の発言が無い一人称の判断など）は、処分記録に残すだけで著者に回さない。
+  構造再設計の提案も、著者に別立てで聞かず、orchestrator が採るか捨てるかを決めて処分記録に書く。著者は通読で気になった所だけを言う
+- **処分の偏りを見張る**: 処分は書き手の orchestrator が持つ（受け入れを著者の通読が持つので、書き手の文脈での判断が許される。
+  eval-foundations「判定者の文脈」）。書き手は自分の稿への指摘を落とす側に偏るので、内容 GO の時点で、著者の通読の指摘のうち
+  レビューが先に挙げていたのに orchestrator が不採用・部分採用にした件を数え、`evals/read-through-log.md` に書く。
+  この件数が 2 本続けて 1 以上なら、事実・帰属・カテゴリのすり替えの指摘を orchestrator が落とせないようにするか、
+  処分を別の agent に移すかを著者に聞く
 - **`fact-checker` の回数**: 著者の通読の前に 1 回。以後は、本文に新しい引用・数値・外部ソースが
   入ったときだけ、その差分を対象に回す。全文の再照合は構造が動くたびに同じ主張を払い直すことになる
 - **cross-model 指摘の採用**: 初見の読みの findings と、カテゴリのすり替え・事実誤り・帰属の誤りを
@@ -199,7 +207,7 @@ Zenn 稿は GO の時点で、通読の指摘数を [`evals/read-through-log.md`
   | カテゴリのすり替え（実行↔動機、順番づけ↔確率の近さ 等） | 常に採用検討 |
   | 概念・歴史的接続の過大主張、帰属の誤り | 常に採用検討 |
   | 文体規約違反（register 混在・意図外の常体） | 採用（意図的ブレイクと照合の上で） |
-  | 構造再設計の提案 | 著者判断へ昇格 |
+  | 構造再設計の提案 | orchestrator が採否を決め、理由を処分記録に書く |
 
 ### 5. Title
 

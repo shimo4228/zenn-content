@@ -3,25 +3,25 @@
 
 このファイルは zenn-content の媒体固有の値だけを持つ。著者の方針と執筆の原理は `.claude/rules/writing-principles.md`、
 執筆手順は project-local `writing-ecosystem`、タイトルの候補と点検は `headline-craft` が持つ。ここには path、読者との約束、
-register、review panel、機械検査、platform 形式、公開 handoff だけを置く。
+register、レビューの構成、機械検査、platform 形式、公開 handoff だけを置く。
 
 ## Channel routing
 
-| Channel | Path matcher | Reader promise | Register | Channel editor | Deterministic checks | Title constraints | Publish handoff |
+| Channel | Path matcher | Reader promise | Register | Reviewers | Deterministic checks | Title constraints | Publish handoff |
 |---|---|---|---|---|---|---|---|
-| Zenn | `articles/*.md` | 検索・feedから来たengineerが、数秒で用途を理解し再現または判断できる | 日本語ですます。直接指示・具体観察・判断則を優先し、修辞疑問で結論を弱めない。結論の決め台詞を常体で置くのは著者の意図的ブレイクとして許容し、reviewerはCRITICALにしない | `editor` | `npm run validate`; `npm run evidence -- articles/<slug>.md`（deviations 0。公開直前は`--online`も）; brief の Figure plan が本文と一致（人手） | 原則50字以内、正確さに必要なら60字まで。em dash（——）連結不可 | `zenn-format` → `publish-article` |
-| Dev.to | `articles-en/*.md` | 英語圏のengineerが同じ成果を再現または判断できる | Natural English。direct、practical、outcome-first。essayistic hedgeへ寄せない | `editor` | `devto-translator` self-check; `devto_crosspost.py post <slug> --dry-run` | local上限なし。検索/フィードは原稿の性質で選ぶ | `devto-translator` → `publish-article` |
-| note | `note/*.md` | 読者が、一つの問いを自分の問題として考えられる | 日本語ですます、発見調。評価は問いへ開けるが事実は断定する | `essay-reviewer` | 新規稿はfrontmatterなし | platform上限なし。feedで問いと対象が分かる。feedのカードで見えるのはPCで約33字・モバイルで約30字（2026-10-01 著者観測）なので、対象語と問いは先頭30字に置く | `note-publishing` |
-| Substack | `substack/*.md` | 英語圏の一般読者がJA正本と同じ問いを追える | Natural English、discovery tone。JA正本の確度を保つ | `essay-reviewer` | 新規稿はfrontmatterなし; `prose-translation`後のレビュー完了 | title/subtitleを分ける | `substack-publishing` |
+| Zenn | `articles/*.md` | 検索・feedから来たengineerが、数秒で用途を理解し再現または判断できる | 日本語ですます。直接指示・具体観察・判断則を優先し、修辞疑問で結論を弱めない。結論の決め台詞を常体で置くのは著者の意図的ブレイクとして許容し、reviewerはCRITICALにしない | 観点別 5 本 | `npm run validate`; `npm run evidence -- articles/<slug>.md`（deviations 0。公開直前は`--online`も）; brief の Figure plan が本文と一致（人手） | 原則50字以内、正確さに必要なら60字まで。em dash（——）連結不可 | `zenn-format` → `publish-article` |
+| Dev.to | `articles-en/*.md` | 英語圏のengineerが同じ成果を再現または判断できる | Natural English。direct、practical、outcome-first。essayistic hedgeへ寄せない | 観点別 5 本 | `devto-translator` self-check; `devto_crosspost.py post <slug> --dry-run` | local上限なし。検索/フィードは原稿の性質で選ぶ | `devto-translator` → `publish-article` |
+| note | `note/*.md` | 読者が、一つの問いを自分の問題として考えられる | 日本語ですます、発見調。評価は問いへ開けるが事実は断定する | 観点別 5 本 | 新規稿はfrontmatterなし | platform上限なし。feedで問いと対象が分かる。feedのカードで見えるのはPCで約33字・モバイルで約30字（2026-10-01 著者観測）なので、対象語と問いは先頭30字に置く | `note-publishing` |
+| Substack | `substack/*.md` | 英語圏の一般読者がJA正本と同じ問いを追える | Natural English、discovery tone。JA正本の確度を保つ | 観点別 5 本 | 新規稿はfrontmatterなし; `prose-translation`後のレビュー完了 | title/subtitleを分ける | `substack-publishing` |
 
 path がどの行にも一致しない、または複数行に一致する場合、`writing-ecosystem` と
 `quality-gate` は推測せず BLOCKED を返す。
 
 ## Shared acceptance profile
 
-全channelで次の証跡を要求する。panel の回数と、反映後の稿を確かめる役は `writing-ecosystem` の指摘の処分規律が持つ。
+全channelで次の証跡を要求する。レビューの回数と、反映後の稿を確かめる役は `writing-ecosystem` の指摘の処分規律が持つ。
 
-JP 正本がこの profile を通った後の EN 訳（Dev.to / Substack）は、channel editor の report とその処分記録、AI 開示、
+JP 正本がこの profile を通った後の EN 訳（Dev.to / Substack）は、`review-prose` と `review-conventions` の report とその処分記録、AI 開示、
 public-safety scan、channel の機械検査、著者の公開 GO で受け入れる。中身は JP で検証済みなので、ペルソナ読み・初見の読み・
 `fact-checker`・`headline-craft` は EN では回さない。EN の題は translator の推奨案で決める。
 
@@ -29,10 +29,10 @@ public-safety scan、channel の機械検査、著者の公開 GO で受け入�
 - ペルソナ読み（Zenn のみ）: 各ラウンドの読み手の JSON・判断の照合と、改稿したラウンドの `drift_count.py`（skill: `persona-read-loop`）の出力が
   `drafts/<slug>/persona/` にあり、止めた理由（判断が一致 / 残りが著者へ渡すものだけ / 3 周）を処分記録に書いている。
   読み手の評価は受け入れ条件にしない
-- channel editor: レビューに渡した版へのreportあり。CRITICALとcanonical coverageのpending / unverifiedは
-  全件処分済み
-- 初見の読み（Codex plugin の `codex:codex-rescue`、読み取り専用、checklist は `prose-clarity-reviewer`）: レビューに渡した版への
-  reportあり。FAILの根拠になったfindingと、カテゴリのすり替え・事実誤り・帰属の誤りは全件処分済み
+- 観点別レビュー（`review-structure` / `review-certainty` / `review-explanation` / `review-prose` / `review-conventions`）:
+  レビューに渡した版への report が 5 本あり。CRITICAL と Pending / unverified は全件処分済み。「記録だけするもの」は処分記録に残っている
+- 初見の読み（Codex plugin の `codex:codex-rescue`、読み取り専用、文面は `writing-ecosystem/references/first-contact-read.md`）: レビューに渡した版への
+  reportあり、または処分記録に「別系統の読み: なし（理由）」。FAILの根拠になったfindingと、カテゴリのすり替え・事実誤り・帰属の誤りは全件処分済み
 - `fact-checker`: INACCURATEとPARTIALLYは全件処分済み（訂正、または一次ソースで反証）
 - 著者の内容GO: レビュー反映後の本文に対して出ている
 - タイトル: 著者の内容GO後（= 本文の最後の構造変更後）に `headline-craft` を実行し、その候補から著者がタイトルを選択済み

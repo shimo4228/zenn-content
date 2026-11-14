@@ -19,7 +19,7 @@ README is a routing page, not an article list. The exhaustive generated index is
 
 Human-primary prose has one entrypoint, resident in this repository:
 `.claude/skills/writing-ecosystem/SKILL.md` (the
-review agents `editor` / `essay-reviewer` / `prose-clarity-reviewer` /
+review agents `review-structure` / `review-certainty` / `review-explanation` / `review-prose` / `review-conventions` / `prose-clarity-reviewer` /
 `fact-checker` and the skills `quality-gate` / `session-theme-mining` live in `.claude/` too).
 The author's writing values and principles live only in `.claude/rules/writing-principles.md` (the backbone).
 Platform and repository values live only in `.claude/rules/publishing-channels.md`.
@@ -47,7 +47,7 @@ Claude talks with the author, not article prose. For coding work such as `script
 - note daily queue and scheduling: `docs/note-pipeline.md`
 - Zenn / Dev.to publishing pipeline: `publish-article`
 
-Exact register, audience promise, reviewer panel, title limit, `published_at`, cadence, terminology, and
+Exact register, audience promise, review aspects, title limit, `published_at`, cadence, terminology, and
 publish handoff are defined in `.claude/rules/publishing-channels.md`; do not duplicate their values here.
 
 Drafting stays in the orchestrator. Review and acceptance follow `writing-ecosystem` (resident in
