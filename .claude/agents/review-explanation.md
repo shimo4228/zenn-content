@@ -2,7 +2,8 @@
 name: review-explanation
 description: Aspect reviewer for human-primary articles and essays — explanations and evidence only. Checks that concepts are explained without misleading simplification, that each example, code block, figure and table is minimal and carries the claim right before it, that examples stop once the point has landed, that the article uses at most one metaphor, and that trade-offs are stated. Dispatched by `writing-ecosystem` §4 once per draft. NOT for — structure, certainty, prose, conventions, fact verification (fact-checker).
 tools: ["Read", "Grep", "Glob"]
-model: fable
+model: opus
+effort: high
 origin: shimo4228
 ---
 

@@ -2,7 +2,8 @@
 name: review-prose
 description: Aspect reviewer for human-primary articles and essays — prose and terms only. Checks register and tone against the channel contract, AI slop and mannered devices, labels the orchestrator coined, consistency of terms the article introduces, and paragraphs that lean on insider names. Dispatched by `writing-ecosystem` §4 once per draft. NOT for — structure, certainty, explanations, conventions, fact verification (fact-checker).
 tools: ["Read", "Grep", "Glob"]
-model: fable
+model: opus
+effort: high
 origin: shimo4228
 ---
 

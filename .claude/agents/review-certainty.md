@@ -2,7 +2,8 @@
 name: review-certainty
 description: Aspect reviewer for human-primary articles and essays — certainty only. Compares how strongly the draft states the author's evaluations, judgments and causal claims against what the author actually said in the interview ledger and the brief's Author's words, and flags unverified inference stated as fact. Sentences in the author's voice with no corresponding author statement are recorded, not graded. Dispatched by `writing-ecosystem` §4 once per draft. NOT for — structure, explanations, prose, conventions, fact verification (fact-checker).
 tools: ["Read", "Grep", "Glob"]
-model: fable
+model: opus
+effort: high
 origin: shimo4228
 ---
 

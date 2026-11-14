@@ -2,7 +2,8 @@
 name: review-structure
 description: Aspect reviewer for human-primary articles and essays — structure only. Checks that one central thesis is carried through the causal spine, each section has one role and one discovery, no independent argument rides along (overload), sections do not repeat each other, and the ending is the author's judgment. Dispatched by `writing-ecosystem` §4 once per draft, alongside the other aspect reviewers. NOT for — certainty against the author's words (review-certainty), explanations and examples (review-explanation), prose and terms (review-prose), conventions (review-conventions), facts (fact-checker).
 tools: ["Read", "Grep", "Glob"]
-model: fable
+model: opus
+effort: high
 origin: shimo4228
 ---
 
